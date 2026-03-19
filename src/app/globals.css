@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+  font-family: 'Cafe24SurroundAir';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SurroundAir.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+body {
+  color: #1a1a1f;
+  background: #fdf6f8;
+  font-family: 'Cafe24SurroundAir', 'Nunito', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25 !important;
+}
+
+p, li, span, div {
+  line-height: inherit;
+}
+
+::selection { background: rgba(212,86,122,0.2); }
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #e8457f, #c4506e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 0 0.05em;
+    display: inline-block;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #c9956b, #e6b98a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+  .font-display {
+    font-family: 'Nunito', 'Cafe24SurroundAir', sans-serif;
+  }
+  .font-logo {
+    font-family: 'Jua', sans-serif;
+  }
+}
+
+/* ── Animations ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.hero-anim { animation: fade-up 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-d1 { animation-delay: 0.1s; }
+.hero-d2 { animation-delay: 0.25s; }
+.hero-d3 { animation-delay: 0.4s; }
+.hero-d4 { animation-delay: 0.55s; }
+.hero-d5 { animation-delay: 0.7s; }
+
+.anim-marquee { animation: marquee 40s linear infinite; }
+.anim-float { animation: float 4s ease-in-out infinite; }
+.anim-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.anim-pulse { animation: pulse-soft 3s ease-in-out infinite; }
+.anim-spin-slow { animation: spin-slow 20s linear infinite; }
+
+.reveal { opacity: 1; transform: none; }
+.reveal-ready .reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Glass ── */
+.glass {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* ── Shimmer button ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ── Gradient border card ── */
+.card-gradient {
+  position: relative;
+  border-radius: 16px;
+  background: white;
+}
+.card-gradient::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #f0c0d0, #e8d5c4, #f0c0d0);
+  z-index: -1;
+}
+
+/* ── Decorative blob ── */
+.blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
