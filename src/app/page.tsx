@@ -510,7 +510,6 @@ function Footer() {
             <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
           ))}
         </div>
-        <div className="text-[0.6rem] sm:text-xs" style={{ color: `${mt}80` }}>&copy; 2026 인연연구소</div>
       </div>
     </footer>
   );
