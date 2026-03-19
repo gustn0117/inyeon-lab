@@ -538,15 +538,22 @@ function ContactSection() {
 function Footer() {
   return (
     <footer className="py-10 sm:py-14 bg-white border-t border-pink-50/50">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-5">
-        <div className="flex items-center gap-2">
-          <span style={{ color: pk }}>{I.heart("w-4 h-4")}</span>
-          <span className="font-logo text-lg">인연<span style={{ color: pk }}>연구소</span></span>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mb-8">
+          <div className="flex items-center gap-2">
+            <span style={{ color: pk }}>{I.heart("w-4 h-4")}</span>
+            <span className="font-logo text-lg">인연<span style={{ color: pk }}>연구소</span></span>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {["소개", "장점", "가격", "컨설팅", "상담"].map((l, i) => (
+              <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap justify-center gap-6">
-          {["소개", "장점", "가격", "컨설팅", "상담"].map((l, i) => (
-            <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
-          ))}
+        <div className="pt-6 border-t border-pink-50/50 text-center sm:text-left">
+          <div className="text-[0.65rem] space-y-1" style={{ color: `${mt}90` }}>
+            <p>대표자: 김가영 | 사업자등록번호: 463-09-00868</p>
+          </div>
         </div>
       </div>
     </footer>
