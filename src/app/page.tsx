@@ -145,24 +145,21 @@ function AboutSection() {
     <section id="about" className="py-20 sm:py-28 lg:py-36 bg-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image side */}
+          {/* Stats side */}
           <div className="reveal relative order-2 lg:order-1">
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-pink-200/20">
-              <Image src="/couple-walk.jpg" alt="커플 산책" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -right-4 sm:right-6 glass rounded-2xl px-5 py-4 shadow-xl z-10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: `${pk}15`, color: pk }}>{I.heart("w-5 h-5")}</div>
-                <div>
-                  <div className="text-2xl font-extrabold" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>92%</div>
-                  <div className="text-[0.6rem] font-medium" style={{ color: mt }}>재이용률</div>
-                </div>
+            <div className="rounded-[2rem] p-8 sm:p-10 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #fff5f8, #fdf0f4)" }}>
+              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-3xl" style={{ background: pk }} />
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full opacity-15 blur-3xl" style={{ background: gd }} />
+              <div className="grid grid-cols-2 gap-5 relative z-10">
+                {[{ v: "2,400+", l: "누적 상담", icon: I.users }, { v: "92%", l: "재이용률", icon: I.heart }, { v: "48h", l: "평균 매칭", icon: I.clock }, { v: "4.9", l: "만족도", icon: I.star }].map((s, i) => (
+                  <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 text-center shadow-sm border border-pink-50/50">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style={{ background: `${pk}10`, color: pk }}>{s.icon("w-5 h-5")}</div>
+                    <div className="text-2xl font-extrabold mb-0.5" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
+                    <div className="text-[0.65rem] font-medium" style={{ color: mt }}>{s.l}</div>
+                  </div>
+                ))}
               </div>
             </div>
-            {/* Decorative */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full opacity-40 blur-2xl" style={{ background: pk }} />
           </div>
 
           {/* Text side */}
@@ -388,15 +385,25 @@ function ConsultSection() {
             </div>
           </div>
           <div className="reveal order-1 lg:order-2 relative">
-            <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-pink-200/20">
-              <Image src="/consult.jpg" alt="상담" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-            </div>
-            <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl px-5 py-4">
-              <div className="text-[0.6rem] font-bold mb-1.5 uppercase tracking-wider" style={{ color: gd }}>Satisfaction</div>
-              <div className="flex items-center gap-2.5">
+            <div className="rounded-[2rem] p-8 sm:p-10 relative overflow-hidden" style={{ background: "linear-gradient(160deg, #fff5f8, #fdf0f4)" }}>
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20 blur-3xl" style={{ background: "#7c6dd8" }} />
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)`, color: "white" }}>{I.chat("w-7 h-7")}</div>
+                <div className="text-lg font-extrabold mb-1" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>1:1 맞춤 컨설팅</div>
+                <div className="text-xs" style={{ color: mt }}>당신만을 위한 연애 전문가</div>
+              </div>
+              <div className="space-y-3">
+                {["프로필 매력도 분석", "대화법 & 매너 코칭", "만남 후 심층 피드백", "장기 연애 전략 설계"].map((t, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl px-4 py-3 border border-pink-50/50">
+                    <span style={{ color: pk }}>{I.check("w-4 h-4 flex-shrink-0")}</span>
+                    <span className="text-sm font-medium" style={{ color: sb }}>{t}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 flex items-center justify-center gap-2 bg-white/80 rounded-xl px-4 py-3 border border-pink-50/50">
                 <div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => <span key={i} style={{ color: gd }}>{I.star("w-4 h-4")}</span>)}</div>
                 <span className="text-lg font-extrabold" style={{ fontFamily: "'Nunito', sans-serif" }}>4.9</span>
+                <span className="text-xs ml-1" style={{ color: mt }}>만족도</span>
               </div>
             </div>
           </div>
