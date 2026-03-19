@@ -14,6 +14,7 @@ function useReveal() {
   }, []);
 }
 
+const KAKAO = "https://open.kakao.com/o/sAnvRami";
 const pk = "#d4567a";
 const pkL = "#f0a0b8";
 const gd = "#c9956b";
@@ -67,7 +68,7 @@ function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map(l => <a key={l.h} href={l.h} className="text-sm hover:text-[#d4567a] transition-colors" style={{ color: sb }}>{l.l}</a>)}
-          <a href="#contact" className="text-sm text-white px-5 py-2 rounded-full btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="text-sm text-white px-5 py-2 rounded-full btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
       </div>
@@ -75,7 +76,7 @@ function Navbar() {
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-pink-50">
           <div className="px-4 py-4 space-y-1">
             {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-2.5 px-3 rounded-lg hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
-            <a href="#contact" onClick={() => setOpen(false)} className="block text-center text-sm text-white py-2.5 rounded-full mt-3" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block text-center text-sm text-white py-2.5 rounded-full mt-3" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
           </div>
         </div>
       )}
@@ -114,7 +115,7 @@ function HeroSection() {
           </p>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-24 px-4 sm:px-0">
-            <a href="#contact" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-lg shadow-pink-200/40 hover:shadow-xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-lg shadow-pink-200/40 hover:shadow-xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
               무료 상담 신청 {I.arrowR("w-4 h-4 group-hover:translate-x-0.5 transition-transform")}
             </a>
             <a href="#about" className="group inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md transition-all" style={{ color: sb }}>
@@ -221,7 +222,7 @@ function AboutSection() {
 /* ═══ FEATURES ═══ */
 function FeaturesSection() {
   const features = [
-    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 졸업증명서, 신분증 등 꼼꼼한 서류검토", color: "#e8457f" },
+    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 졸업증명서 등 꼼꼼한 서류검토", color: "#e8457f" },
     { icon: I.currency, t: "결정사 1/10 비용", d: "11만원부터 시작하는 합리적인 비용", color: gd },
     { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지", color: "#7c6dd8" },
     { icon: I.sparkle, t: "맞춤 이상형 매칭", d: "사람이 직접 매칭하는 프리미엄 서비스", color: "#4db6ac" },
@@ -312,7 +313,7 @@ function PricingSection() {
                 <li key={i} className="flex items-center gap-2 text-[0.65rem] sm:text-xs" style={{ color: sb }}><span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: `${pk}30` }} />{t}</li>
               ))}
             </ul>
-            <a href="#contact" className="block text-center py-2.5 sm:py-3 rounded-full border-2 border-pink-100 text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-2.5 sm:py-3 rounded-full border-2 border-pink-100 text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
           <div className="rounded-2xl p-5 sm:p-7 relative shadow-xl shadow-pink-200/20 text-white" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
             <div className="absolute -top-2.5 sm:-top-3 right-4 sm:right-6 bg-white text-[0.55rem] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-md flex items-center gap-1" style={{ color: pk }}>
@@ -326,7 +327,7 @@ function PricingSection() {
                 <li key={i} className="flex items-center gap-2 text-[0.65rem] sm:text-xs text-white/80">{I.check("w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/60 flex-shrink-0")}{t}</li>
               ))}
             </ul>
-            <a href="#contact" className="block text-center py-2.5 sm:py-3 rounded-full bg-white text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-2.5 sm:py-3 rounded-full bg-white text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
           </div>
         </div>
       </div>
@@ -438,7 +439,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 
 function FAQSection() {
   const fqs = [
-    { q: "어떤 서류를 제출해야 하나요?", a: "신분증, 재직증명서, 최종학력 졸업증명서를 기본으로 요청드립니다. 서류는 매칭 목적 외 절대 사용되지 않으며, 종료 후 안전하게 폐기됩니다." },
+    { q: "어떤 서류를 제출해야 하나요?", a: "재직증명서, 졸업증명서 등을 기본으로 요청드립니다. 서류는 매칭 목적 외 절대 사용되지 않으며, 종료 후 안전하게 폐기됩니다." },
     { q: "매칭까지 얼마나 걸리나요?", a: "서류 확인 후 평균 48시간 이내에 첫 프로필을 제안합니다." },
     { q: "소개팅 앱과 뭐가 다른가요?", a: "앱은 사진으로만 판단하지만, 인연연구소는 서류 검증 + 전문 상담사의 성격·가치관 분석 기반 매칭입니다." },
     { q: "결혼을 전제로 해야 하나요?", a: "아닙니다. 가벼운 소개팅부터 진지한 만남까지, 목적에 맞춰 매칭해 드립니다." },
@@ -478,17 +479,18 @@ function ContactSection() {
         <h2 className="reveal font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3 sm:mb-4">당신의 인연,<br />여기서 시작됩니다</h2>
         <p className="text-xs sm:text-sm mb-10 sm:mb-12 text-white/40 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
         <div className="space-y-2.5 sm:space-y-3 max-w-xs mx-auto mb-8 sm:mb-10 reveal">
-          {[{ icon: I.chat, l: "카카오톡", v: "준비 중" }, { icon: I.phone, l: "전화 상담", v: "준비 중" }].map((c, i) => (
-            <div key={i} className="rounded-xl py-3.5 sm:py-4 px-4 sm:px-5 flex items-center gap-3 sm:gap-4" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <span className="text-white/30">{c.icon("w-4 h-4 flex-shrink-0")}</span>
-              <div className="text-left">
-                <div className="text-[0.5rem] sm:text-[0.55rem] text-white/25 uppercase tracking-wider">{c.l}</div>
-                <div className="text-xs sm:text-sm text-white/50">{c.v}</div>
-              </div>
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-xl py-3.5 sm:py-4 px-4 sm:px-5 flex items-center gap-3 sm:gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+            <span className="text-white/50">{I.chat("w-4 h-4 flex-shrink-0")}</span>
+            <div className="text-left">
+              <div className="text-[0.5rem] sm:text-[0.55rem] text-white/40 uppercase tracking-wider">카카오톡</div>
+              <div className="text-xs sm:text-sm text-white/70">오픈채팅 상담하기</div>
             </div>
-          ))}
+            <span className="ml-auto text-white/30">{I.arrowR("w-4 h-4")}</span>
+          </a>
         </div>
-        <p className="text-[0.6rem] sm:text-xs text-white/15 tracking-widest uppercase reveal">Coming Soon</p>
+        <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-lg shadow-pink-500/20 hover:shadow-xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+          지금 상담 시작하기 {I.arrowR("w-4 h-4")}
+        </a>
       </div>
     </section>
   );
@@ -517,7 +519,7 @@ function Footer() {
 /* ═══ KAKAO ═══ */
 function KakaoButton() {
   return (
-    <a href="#" onClick={(e) => { e.preventDefault(); alert("카카오톡 채널 준비 중입니다."); }}
+    <a href={KAKAO} target="_blank" rel="noopener noreferrer"
       className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[90] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg shadow-yellow-400/30 hover:scale-110 transition-all duration-300"
       style={{ background: "#FEE500" }} aria-label="카카오톡 상담">
       <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="#3C1E1E">
