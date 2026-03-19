@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 function useReveal() {
   useEffect(() => {
@@ -16,11 +17,9 @@ function useReveal() {
 
 const KAKAO = "https://open.kakao.com/o/sAnvRami";
 const pk = "#d4567a";
-const pkL = "#f0a0b8";
 const gd = "#c9956b";
-const gdL = "#e6b98a";
-const mt = "#b0b0b0";
-const sb = "#777";
+const mt = "#999";
+const sb = "#666";
 
 const I = {
   heart: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="currentColor"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" /></svg>,
@@ -39,19 +38,8 @@ const I = {
   eye: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
   doc: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>,
   phone: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>,
+  clock: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
 };
-
-function FloatingDeco() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-      <div className="absolute top-[15%] left-[8%] w-3 h-3 rounded-full anim-float opacity-20" style={{ background: pkL }} />
-      <div className="absolute top-[25%] right-[12%] w-2 h-2 rounded-full anim-float opacity-15" style={{ background: gd, animationDelay: "1s" }} />
-      <div className="absolute top-[60%] left-[5%] w-4 h-4 rounded-full anim-float-slow opacity-10" style={{ background: pk, animationDelay: "2s" }} />
-      <div className="absolute bottom-[20%] left-[15%] text-[#f0c0d0] opacity-10 anim-float-slow" style={{ animationDelay: "1.5s" }}>{I.heart("w-6 h-6")}</div>
-      <div className="absolute top-[20%] right-[20%] text-[#e8d5c4] opacity-10 anim-float" style={{ animationDelay: "2.5s" }}>{I.sparkle("w-5 h-5")}</div>
-    </div>
-  );
-}
 
 /* ═══ NAV ═══ */
 function Navbar() {
@@ -60,23 +48,23 @@ function Navbar() {
   useEffect(() => { const h = () => setScrolled(window.scrollY > 50); window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h); }, []);
   const links = [{ h: "#about", l: "소개" }, { h: "#features", l: "장점" }, { h: "#pricing", l: "가격" }, { h: "#consult", l: "컨설팅" }, { h: "#contact", l: "상담" }];
   return (
-    <nav className={`fixed inset-x-0 top-0 z-[100] backdrop-blur-xl transition-all duration-500 ${scrolled ? "bg-white/85 shadow-sm shadow-pink-100" : "bg-[#fef8fa]/90"}`}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-1.5 sm:gap-2">
-          <span style={{ color: pk }}>{I.heart("w-4 h-4 sm:w-5 sm:h-5")}</span>
-          <span className="font-logo text-base sm:text-xl" style={{ letterSpacing: "-0.02em" }}>인연<span style={{ color: pk }}>연구소</span></span>
+    <nav className={`fixed inset-x-0 top-0 z-[100] backdrop-blur-xl transition-all duration-500 ${scrolled ? "bg-white/90 shadow-sm shadow-pink-100/50" : "bg-transparent"}`}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2">
+          <span style={{ color: pk }}>{I.heart("w-5 h-5")}</span>
+          <span className="font-logo text-lg sm:text-xl" style={{ letterSpacing: "-0.02em" }}>인연<span style={{ color: pk }}>연구소</span></span>
         </a>
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          {links.map(l => <a key={l.h} href={l.h} className="text-sm hover:text-[#d4567a] transition-colors" style={{ color: sb }}>{l.l}</a>)}
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="text-sm text-white px-5 py-2 rounded-full btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-medium hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#555" }}>{l.l}</a>)}
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
       </div>
       {open && (
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-pink-50">
-          <div className="px-4 py-4 space-y-1">
-            {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-2.5 px-3 rounded-lg hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block text-center text-sm text-white py-2.5 rounded-full mt-3" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+          <div className="px-5 py-5 space-y-1">
+            {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-3 px-4 rounded-xl hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
           </div>
         </div>
       )}
@@ -87,67 +75,63 @@ function Navbar() {
 /* ═══ HERO ═══ */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#fff0f5] via-[#fdf5f7] to-[#f9ecf0]" />
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
+      {/* Background image */}
       <div className="absolute inset-0">
-        <img src="/1000018278.png" alt="" className="w-full h-full object-cover opacity-[0.08]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fff0f5]/80 via-[#fdf5f7]/50 to-[#f9ecf0]" />
+        <Image src="/hero-couple.jpg" alt="" fill className="object-cover object-center" priority />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#fff5f8]/60 via-transparent to-white/90" />
       </div>
-      <div className="absolute -top-20 -right-20 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] blob anim-pulse" style={{ background: "rgba(240,180,200,0.12)" }} />
-      <div className="absolute -bottom-20 -left-20 w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] blob anim-pulse" style={{ background: "rgba(232,213,196,0.1)", animationDelay: "1.5s" }} />
-      <FloatingDeco />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 md:pt-40 pb-10 sm:pb-12 text-center">
-        <div className="max-w-xl sm:max-w-2xl mx-auto">
-          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-4 py-1.5 sm:px-5 sm:py-2 mb-6 sm:mb-10 border border-pink-100 shadow-sm shadow-pink-50">
-            <span style={{ color: gd }}>{I.sparkle("w-3.5 h-3.5 sm:w-4 sm:h-4")}</span>
-            <span className="text-[0.65rem] sm:text-xs font-medium" style={{ color: gd }}>Premium Matching Service</span>
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 w-full">
+        <div className="max-w-lg pt-24 sm:pt-0">
+          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-pink-100/50">
+            <span style={{ color: gd }}>{I.sparkle("w-4 h-4")}</span>
+            <span className="text-xs font-bold tracking-wider" style={{ color: gd }}>PREMIUM MATCHING</span>
           </div>
 
-          <h1 className="hero-anim hero-d2 font-display text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 sm:mb-6">
+          <h1 className="hero-anim hero-d2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
             설레는 만남,<br /><span className="text-gradient">인연연구소</span>에서
           </h1>
 
-          <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed sm:leading-loose max-w-sm sm:max-w-md mx-auto mb-8 sm:mb-10 px-2" style={{ color: sb }}>
+          <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mb-10" style={{ color: sb }}>
             아무나 만날 수는 없고, 결정사는 부담스러울 때.<br />
             서류검토로 신원이 보장된 사람만.<br />
             부담 없는 <strong style={{ color: pk }}>프리미엄 소개팅</strong>.
           </p>
 
-          <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-24 px-4 sm:px-0">
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white px-8 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-lg shadow-pink-200/40 hover:shadow-xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-              무료 상담 신청 {I.arrowR("w-4 h-4 group-hover:translate-x-0.5 transition-transform")}
+          <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-start gap-3 mb-12">
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+              무료 상담 시작하기 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
             </a>
-            <a href="#about" className="group inline-flex items-center gap-2 text-sm font-medium px-5 py-3 rounded-full bg-white border border-pink-100 shadow-sm hover:shadow-md transition-all" style={{ color: sb }}>
-              알아보기 {I.arrowD("w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform")}
+            <a href="#about" className="group inline-flex items-center gap-2 text-sm font-medium px-6 py-4 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-pink-200 hover:shadow-md transition-all" style={{ color: sb }}>
+              더 알아보기 {I.arrowD("w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform")}
             </a>
           </div>
-        </div>
-      </div>
 
-      <div className="relative z-10 bg-white/50 backdrop-blur-sm border-t border-pink-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-5 sm:py-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-          {[{ v: "2,400+", l: "누적 상담" }, { v: "92%", l: "재이용률" }, { v: "48h", l: "평균 매칭" }, { v: "4.9", l: "만족도" }].map((s, i) => (
-            <div key={i} className="hero-anim text-center" style={{ animationDelay: `${0.8 + i * 0.1}s` }}>
-              <div className="font-display text-lg sm:text-2xl font-extrabold" style={{ color: pk }}>{s.v}</div>
-              <div className="text-[0.6rem] sm:text-xs mt-0.5" style={{ color: mt }}>{s.l}</div>
-            </div>
-          ))}
+          <div className="hero-anim hero-d5 flex gap-8 sm:gap-12">
+            {[{ v: "2,400+", l: "누적 상담" }, { v: "92%", l: "재이용률" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
+              <div key={i}>
+                <div className="text-xl sm:text-2xl font-extrabold" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
+                <div className="text-[0.65rem] sm:text-xs mt-1" style={{ color: mt }}>{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-/* ═══ MARQUEE ═══ */
-function Marquee() {
+/* ═══ TRUST BAR ═══ */
+function TrustBar() {
   const items = ["신원보장 100%", "48시간 매칭", "프리미엄 퀄리티", "1:1 컨설팅", "20-30대 전용", "개인정보 보호"];
   return (
-    <div className="py-3 sm:py-3.5 overflow-hidden" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+    <div className="py-4 overflow-hidden border-y border-pink-50" style={{ background: "linear-gradient(135deg, #fff8fa, #fff0f5)" }}>
       <div className="anim-marquee flex whitespace-nowrap">
         {[...items, ...items].map((t, i) => (
-          <span key={i} className="inline-flex items-center gap-3 sm:gap-4 mx-5 sm:mx-8 text-white/80 text-[0.65rem] sm:text-xs font-medium tracking-wider">
-            <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white/40" />{t}
+          <span key={i} className="inline-flex items-center gap-4 mx-8 text-xs font-bold tracking-widest uppercase" style={{ color: `${pk}60` }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: `${pk}30` }} />{t}
           </span>
         ))}
       </div>
@@ -158,59 +142,74 @@ function Marquee() {
 /* ═══ ABOUT ═══ */
 function AboutSection() {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-28 bg-white relative">
-      <FloatingDeco />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
-            <span style={{ color: pk }}>{I.heart("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>About Us</span>
+    <section id="about" className="py-20 sm:py-28 lg:py-36 bg-white relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image side */}
+          <div className="reveal relative order-2 lg:order-1">
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-pink-200/20">
+              <Image src="/couple-walk.jpg" alt="커플 산책" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
+            {/* Floating card */}
+            <div className="absolute -bottom-6 -right-4 sm:right-6 glass rounded-2xl px-5 py-4 shadow-xl z-10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: `${pk}15`, color: pk }}>{I.heart("w-5 h-5")}</div>
+                <div>
+                  <div className="text-2xl font-extrabold" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>92%</div>
+                  <div className="text-[0.6rem] font-medium" style={{ color: mt }}>재이용률</div>
+                </div>
+              </div>
+            </div>
+            {/* Decorative */}
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full opacity-40 blur-2xl" style={{ background: pk }} />
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">결혼정보회사가 아닌, <span className="text-gradient">프리미엄 소개팅</span></h2>
-          <p className="text-xs sm:text-sm leading-relaxed mt-3 sm:mt-4 max-w-md mx-auto px-2" style={{ color: sb }}>20·30대를 위한 소개팅 전문. 가벼운 마음으로 좋은 사람을. 단, 아무나 만나지는 않습니다.</p>
-        </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 items-center">
-          <div className="reveal">
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="p-4 sm:p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                <div className="text-[0.65rem] sm:text-xs font-bold mb-3 sm:mb-4" style={{ color: mt }}>기존 결혼정보회사</div>
-                <ul className="space-y-2 sm:space-y-2.5">
+          {/* Text side */}
+          <div className="reveal order-1 lg:order-2">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
+              <span style={{ color: pk }}>{I.heart("w-3.5 h-3.5")}</span>
+              <span className="text-xs font-bold" style={{ color: pk }}>About Us</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-5" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+              결혼정보회사가 아닌,<br /><span className="text-gradient">프리미엄 소개팅</span>
+            </h2>
+            <p className="text-sm leading-relaxed mb-8" style={{ color: sb }}>
+              20·30대를 위한 소개팅 전문.<br />
+              가벼운 마음으로 좋은 사람을 만나세요.<br />
+              단, 아무나 만나지는 않습니다.
+            </p>
+
+            {/* Comparison cards */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="p-5 bg-gray-50 rounded-2xl">
+                <div className="text-[0.65rem] font-bold mb-4 tracking-wider uppercase" style={{ color: mt }}>기존 결혼정보회사</div>
+                <ul className="space-y-2.5">
                   {["100~500만원 이상", "결혼 전제 만남", "복잡한 절차", "30~50대 위주"].map((t, i) => (
-                    <li key={i} className="flex items-center gap-2 text-[0.65rem] sm:text-xs" style={{ color: "#ccc" }}><span className="w-2 sm:w-3 h-px bg-gray-200" />{t}</li>
+                    <li key={i} className="flex items-center gap-2 text-xs" style={{ color: "#bbb" }}><span className="w-3 h-px bg-gray-200" />{t}</li>
                   ))}
                 </ul>
               </div>
-              <div className="p-4 sm:p-6 rounded-2xl relative border-2 shadow-lg shadow-pink-100/50" style={{ borderColor: `${pk}30`, background: "linear-gradient(135deg, #fff5f8, white)" }}>
-                <div className="absolute -top-2 right-3 sm:right-4 text-white text-[0.5rem] sm:text-[0.6rem] font-bold px-2 sm:px-3 py-0.5 rounded-full" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>PICK</div>
-                <div className="text-[0.65rem] sm:text-xs font-bold mb-3 sm:mb-4" style={{ color: pk }}>인연연구소</div>
-                <ul className="space-y-2 sm:space-y-2.5">
+              <div className="p-5 rounded-2xl relative shadow-lg" style={{ background: "linear-gradient(160deg, #fff5f8, #fff)", border: `2px solid ${pk}20` }}>
+                <div className="absolute -top-2.5 right-4 text-white text-[0.55rem] font-bold px-3 py-0.5 rounded-full" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>PICK</div>
+                <div className="text-[0.65rem] font-bold mb-4 tracking-wider uppercase" style={{ color: pk }}>인연연구소</div>
+                <ul className="space-y-2.5">
                   {["11만원부터", "부담 없는 소개팅", "48시간 매칭", "20·30대 전용"].map((t, i) => (
-                    <li key={i} className="flex items-center gap-1.5 sm:gap-2 text-[0.65rem] sm:text-xs font-medium" style={{ color: sb }}>
-                      <span style={{ color: pk }}>{I.check("w-3 h-3 flex-shrink-0")}</span>{t}
+                    <li key={i} className="flex items-center gap-2 text-xs font-medium" style={{ color: sb }}>
+                      <span style={{ color: pk }}>{I.check("w-3.5 h-3.5 flex-shrink-0")}</span>{t}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-5">
-              {[{ icon: I.shield, t: "3종 서류 검증" }, { icon: I.sparkle, t: "48시간 매칭" }, { icon: I.chat, t: "1:1 컨설팅" }].map((b, i) => (
-                <div key={i} className="flex-1 flex items-center gap-2 bg-gradient-to-r from-pink-50 to-white rounded-xl p-2.5 sm:p-3 border border-pink-50">
-                  <span style={{ color: pk }}>{b.icon("w-4 h-4 flex-shrink-0")}</span>
-                  <span className="text-[0.6rem] sm:text-[0.68rem] font-medium" style={{ color: sb }}>{b.t}</span>
+            <div className="flex flex-wrap gap-3">
+              {[{ icon: I.shield, t: "서류 검증" }, { icon: I.clock, t: "48h 매칭" }, { icon: I.chat, t: "1:1 컨설팅" }].map((b, i) => (
+                <div key={i} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: `${pk}06`, border: `1px solid ${pk}10` }}>
+                  <span style={{ color: pk }}>{b.icon("w-4 h-4")}</span>
+                  <span className="text-xs font-bold" style={{ color: sb }}>{b.t}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="reveal relative">
-            <div className="aspect-[3/4] max-w-[320px] sm:max-w-none mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-pink-200/30 border-4 border-white">
-              <img src="/1000018277.png" alt="인연연구소" className="w-full h-full object-cover object-[center_30%]" />
-            </div>
-            <div className="absolute -bottom-4 sm:-bottom-5 left-2 sm:-left-5 glass rounded-2xl px-4 sm:px-5 py-3 sm:py-4 z-10 shadow-lg">
-              <div className="text-xl sm:text-2xl font-display font-extrabold" style={{ color: pk }}>92%</div>
-              <div className="text-[0.55rem] sm:text-[0.6rem]" style={{ color: mt }}>재이용률</div>
             </div>
           </div>
         </div>
@@ -222,30 +221,31 @@ function AboutSection() {
 /* ═══ FEATURES ═══ */
 function FeaturesSection() {
   const features = [
-    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서, 신분증 등등 꼼꼼한 서류검토", color: "#e8457f" },
-    { icon: I.currency, t: "결정사 1/10 비용", d: "11만원부터 시작하는 합리적인 비용", color: gd },
-    { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지", color: "#7c6dd8" },
-    { icon: I.sparkle, t: "맞춤 이상형 매칭", d: "사람이 직접 매칭하는 프리미엄 서비스", color: "#4db6ac" },
+    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서, 신분증 등등 꼼꼼한 서류검토로 안전한 만남을 보장합니다.", color: "#e8457f" },
+    { icon: I.currency, t: "결정사 1/10 비용", d: "100만원이 넘는 결정사 비용 대신, 11만원부터 시작하는 합리적인 프리미엄.", color: gd },
+    { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#7c6dd8" },
+    { icon: I.sparkle, t: "맞춤 이상형 매칭", d: "AI가 아닌 사람이 직접 성격, 가치관, 라이프스타일을 분석해 매칭합니다.", color: "#4db6ac" },
   ];
   return (
-    <section id="features" className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#fdf6f8] to-[#fff0f5] relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-200 to-transparent" />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+    <section id="features" className="py-20 sm:py-28 lg:py-36 relative" style={{ background: "linear-gradient(180deg, #fdf6f8, #fff0f5)" }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.sparkle("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>Why Us</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Why Us</span>
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">인연연구소만의 <span className="text-gradient">특별한 장점</span></h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            인연연구소만의 <span className="text-gradient">특별한 장점</span>
+          </h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 reveal">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 reveal">
           {features.map((f, i) => (
-            <div key={i} className="bg-white rounded-2xl p-4 sm:p-6 border border-pink-50 shadow-sm hover:shadow-xl hover:shadow-pink-100/30 hover:-translate-y-1 transition-all duration-300">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-3 sm:mb-5" style={{ background: `${f.color}12`, color: f.color }}>
-                {f.icon("w-4 h-4 sm:w-5 sm:h-5")}
+            <div key={i} className="group bg-white rounded-2xl p-6 sm:p-7 border border-pink-50/80 hover:shadow-2xl hover:shadow-pink-100/20 hover:-translate-y-2 transition-all duration-500">
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-colors" style={{ background: `${f.color}10`, color: f.color }}>
+                {f.icon("w-6 h-6")}
               </div>
-              <h3 className="text-xs sm:text-sm font-bold mb-1 sm:mb-2">{f.t}</h3>
-              <p className="text-[0.65rem] sm:text-xs leading-relaxed" style={{ color: mt }}>{f.d}</p>
+              <h3 className="text-sm sm:text-base font-bold mb-2">{f.t}</h3>
+              <p className="text-xs leading-relaxed" style={{ color: mt }}>{f.d}</p>
             </div>
           ))}
         </div>
@@ -257,30 +257,34 @@ function FeaturesSection() {
 /* ═══ PROCESS ═══ */
 function ProcessSection() {
   const steps = [
-    { icon: I.phone, t: "상담 신청", d: "카카오톡 또는 전화로 간편 신청" },
-    { icon: I.doc, t: "서류 검토", d: "3종 서류로 신원 확인" },
-    { icon: I.users, t: "맞춤 매칭", d: "이상형 기준 최적의 상대" },
-    { icon: I.heart, t: "인연 시작", d: "프로필 전달, 만남 시작" },
+    { icon: I.phone, t: "상담 신청", d: "카카오톡으로 간편하게 신청하세요" },
+    { icon: I.doc, t: "서류 검토", d: "재직증명서, 혼인관계증명서, 신분증 등등으로 신원 확인" },
+    { icon: I.users, t: "맞춤 매칭", d: "이상형 기준 최적의 상대를 찾아드려요" },
+    { icon: I.heart, t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작" },
   ];
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+    <section className="py-20 sm:py-28 lg:py-36 bg-white">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.heart("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>Process</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Process</span>
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight"><span className="text-gradient">4단계</span>로 시작하는 인연</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            <span className="text-gradient">4단계</span>로 시작하는 인연
+          </h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="text-center relative">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-md shadow-pink-100/30" style={{ background: "linear-gradient(135deg, #fff0f5, #fdf5f7)", color: pk }}>
-                {s.icon("w-5 h-5 sm:w-6 sm:h-6")}
+            <div key={i} className="relative text-center group">
+              {/* Connector line */}
+              {i < 3 && <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-px bg-gradient-to-r from-pink-200 to-pink-100" />}
+              <div className="relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-pink-100/30 group-hover:shadow-xl group-hover:scale-105 transition-all" style={{ background: "linear-gradient(135deg, #fff0f5, #fff5f8)", color: pk }}>
+                {s.icon("w-6 h-6")}
               </div>
-              <div className="text-[0.6rem] sm:text-xs font-bold rounded-full inline-block px-2.5 sm:px-3 py-0.5 mb-1.5 sm:mb-2" style={{ background: `${pk}10`, color: pk }}>STEP {i + 1}</div>
-              <h3 className="text-xs sm:text-sm font-bold mb-0.5 sm:mb-1">{s.t}</h3>
-              <p className="text-[0.6rem] sm:text-xs" style={{ color: mt }}>{s.d}</p>
+              <div className="text-[0.6rem] font-bold rounded-full inline-block px-3 py-1 mb-2" style={{ background: `${pk}08`, color: pk }}>STEP {i + 1}</div>
+              <h3 className="text-sm font-bold mb-1">{s.t}</h3>
+              <p className="text-xs" style={{ color: mt }}>{s.d}</p>
             </div>
           ))}
         </div>
@@ -292,42 +296,56 @@ function ProcessSection() {
 /* ═══ PRICING ═══ */
 function PricingSection() {
   return (
-    <section id="pricing" className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#fdf6f8] to-[#fff0f5] relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+    <section id="pricing" className="py-20 sm:py-28 lg:py-36 relative" style={{ background: "linear-gradient(180deg, #fdf6f8, #fff0f5)" }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.currency("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>Pricing</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Pricing</span>
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">결정사의 <span className="text-gradient">1/10 비용</span></h2>
-          <p className="text-xs sm:text-sm leading-relaxed mt-2 sm:mt-3" style={{ color: sb }}>합리적인 가격, 그 이상의 퀄리티</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            결정사의 <span className="text-gradient">1/10 비용</span>
+          </h2>
+          <p className="text-sm mt-3" style={{ color: sb }}>합리적인 가격, 그 이상의 퀄리티</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto reveal">
-          <div className="bg-white rounded-2xl p-5 sm:p-7 border border-pink-50 shadow-sm hover:shadow-lg hover:shadow-pink-100/20 transition-all">
-            <div className="text-[0.6rem] sm:text-xs font-bold px-3 py-1 bg-gray-50 rounded-full inline-block mb-4 sm:mb-5" style={{ color: mt }}>BASIC</div>
-            <div className="font-display text-2xl sm:text-3xl font-extrabold mb-1">11만원<span className="text-sm sm:text-base font-normal ml-1" style={{ color: mt }}>~</span></div>
-            <p className="text-[0.65rem] sm:text-xs mb-5 sm:mb-7" style={{ color: mt }}>기본 매칭 서비스</p>
-            <ul className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-7">
-              {["신원보장 서류검토", "이상형 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
-                <li key={i} className="flex items-center gap-2 text-[0.65rem] sm:text-xs" style={{ color: sb }}><span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: `${pk}30` }} />{t}</li>
-              ))}
-            </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-2.5 sm:py-3 rounded-full border-2 border-pink-100 text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
-          </div>
-          <div className="rounded-2xl p-5 sm:p-7 relative shadow-xl shadow-pink-200/20 text-white" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-            <div className="absolute -top-2.5 sm:-top-3 right-4 sm:right-6 bg-white text-[0.55rem] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-md flex items-center gap-1" style={{ color: pk }}>
-              {I.star("w-2.5 h-2.5 sm:w-3 sm:h-3")} BEST
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto reveal">
+          {/* Basic */}
+          <div className="bg-white rounded-3xl p-7 sm:p-9 border border-pink-50 hover:shadow-xl transition-all">
+            <div className="text-xs font-bold px-4 py-1.5 bg-gray-50 rounded-full inline-block mb-6" style={{ color: mt }}>BASIC</div>
+            <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <span className="text-4xl font-extrabold">11만원</span>
+              <span className="text-base font-normal ml-1" style={{ color: mt }}>~</span>
             </div>
-            <div className="text-[0.6rem] sm:text-xs font-bold px-3 py-1 bg-white/20 rounded-full inline-block mb-4 sm:mb-5">PREMIUM</div>
-            <div className="font-display text-2xl sm:text-3xl font-extrabold mb-1">맞춤 상담</div>
-            <p className="text-[0.65rem] sm:text-xs mb-5 sm:mb-7 text-white/60">매칭 + 1:1 전문 컨설팅</p>
-            <ul className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-7">
-              {["기본 플랜 전체 포함", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리", "심층 피드백"].map((t, i) => (
-                <li key={i} className="flex items-center gap-2 text-[0.65rem] sm:text-xs text-white/80">{I.check("w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/60 flex-shrink-0")}{t}</li>
+            <p className="text-xs mb-8" style={{ color: mt }}>기본 매칭 서비스</p>
+            <ul className="space-y-3.5 mb-8">
+              {["신원보장 서류검토", "이상형 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm" style={{ color: sb }}>
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${pk}10`, color: pk }}>{I.check("w-3 h-3")}</span>{t}
+                </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-2.5 sm:py-3 rounded-full bg-white text-xs sm:text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+          </div>
+
+          {/* Premium */}
+          <div className="rounded-3xl p-7 sm:p-9 relative shadow-2xl shadow-pink-200/30 text-white" style={{ background: `linear-gradient(160deg, ${pk}, #c23065)` }}>
+            <div className="absolute -top-3 right-6 bg-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1.5" style={{ color: pk }}>
+              {I.star("w-3.5 h-3.5")} BEST
+            </div>
+            <div className="text-xs font-bold px-4 py-1.5 bg-white/15 rounded-full inline-block mb-6">PREMIUM</div>
+            <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <span className="text-4xl font-extrabold">맞춤 상담</span>
+            </div>
+            <p className="text-xs mb-8 text-white/50">매칭 + 1:1 전문 컨설팅</p>
+            <ul className="space-y-3.5 mb-8">
+              {["기본 플랜 전체 포함", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리", "심층 피드백"].map((t, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm text-white/80">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 bg-white/15">{I.check("w-3 h-3")}</span>{t}
+                </li>
+              ))}
+            </ul>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
           </div>
         </div>
       </div>
@@ -339,40 +357,46 @@ function PricingSection() {
 function ConsultSection() {
   const items = [
     { icon: I.eye, l: "첫인상 코칭", d: "대화법과 매너 가이드" },
-    { icon: I.sparkle, l: "스타일링 조언", d: "패션·그루밍 제안" },
+    { icon: I.sparkle, l: "스타일링 조언", d: "패션 & 그루밍 제안" },
     { icon: I.chat, l: "연애 피드백", d: "만남 후 전문 디브리핑" },
     { icon: I.users, l: "이상형 분석", d: "진짜 원하는 사람 찾기" },
   ];
   return (
-    <section id="consult" className="py-16 sm:py-20 lg:py-28 bg-white overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+    <section id="consult" className="py-20 sm:py-28 lg:py-36 bg-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
               <span style={{ color: pk }}>{I.chat("w-3.5 h-3.5")}</span>
-              <span className="text-xs font-medium" style={{ color: pk }}>Consulting</span>
+              <span className="text-xs font-bold" style={{ color: pk }}>Consulting</span>
             </div>
-            <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight mb-2 sm:mb-3">전문 상담사가 <span className="text-gradient">성공적인 만남</span>으로</h2>
-            <p className="text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8" style={{ color: sb }}>첫 만남이 어색한 분, 연애가 오래 이어지지 않는 분. 연애 전문 상담사가 1:1로 함께합니다.</p>
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+              전문 상담사가<br /><span className="text-gradient">성공적인 만남</span>으로
+            </h2>
+            <p className="text-sm leading-relaxed mb-10" style={{ color: sb }}>
+              첫 만남이 어색한 분, 연애가 오래 이어지지 않는 분.<br />
+              연애 전문 상담사가 1:1로 함께합니다.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
               {items.map((c, i) => (
-                <div key={i} className="p-3 sm:p-4 bg-gradient-to-br from-pink-50 to-white rounded-xl border border-pink-50 hover:shadow-md hover:shadow-pink-100/20 transition-all">
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center mb-2 sm:mb-3" style={{ background: `${pk}10`, color: pk }}>{c.icon("w-3.5 h-3.5 sm:w-4 sm:h-4")}</div>
-                  <div className="text-[0.65rem] sm:text-xs font-bold mb-0.5">{c.l}</div>
-                  <div className="text-[0.55rem] sm:text-[0.65rem]" style={{ color: mt }}>{c.d}</div>
+                <div key={i} className="p-5 rounded-2xl border border-pink-50/80 hover:shadow-lg hover:shadow-pink-100/15 transition-all bg-gradient-to-br from-[#fdf6f8] to-white">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: `${pk}10`, color: pk }}>{c.icon("w-4.5 h-4.5")}</div>
+                  <div className="text-sm font-bold mb-0.5">{c.l}</div>
+                  <div className="text-xs" style={{ color: mt }}>{c.d}</div>
                 </div>
               ))}
             </div>
           </div>
           <div className="reveal order-1 lg:order-2 relative">
-            <div className="aspect-[4/5] max-w-[300px] sm:max-w-none mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-pink-200/30 border-4 border-white">
-              <img src="/1000018278.png" alt="" className="w-full h-full object-cover" />
+            <div className="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-pink-200/20">
+              <Image src="/consult.jpg" alt="상담" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
-            <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 glass rounded-2xl px-4 sm:px-5 py-3 sm:py-4">
-              <div className="text-[0.55rem] sm:text-[0.6rem] font-bold mb-1" style={{ color: gd }}>SATISFACTION</div>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => <span key={i} style={{ color: gd }}>{I.star("w-3 h-3 sm:w-3.5 sm:h-3.5")}</span>)}</div>
-                <span className="font-display text-sm sm:text-base font-extrabold">4.9</span>
+            <div className="absolute bottom-6 left-6 right-6 glass rounded-2xl px-5 py-4">
+              <div className="text-[0.6rem] font-bold mb-1.5 uppercase tracking-wider" style={{ color: gd }}>Satisfaction</div>
+              <div className="flex items-center gap-2.5">
+                <div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => <span key={i} style={{ color: gd }}>{I.star("w-4 h-4")}</span>)}</div>
+                <span className="text-lg font-extrabold" style={{ fontFamily: "'Nunito', sans-serif" }}>4.9</span>
               </div>
             </div>
           </div>
@@ -390,27 +414,29 @@ function TestimonialsSection() {
     { n: "박OO", a: "26세 여성", j: "디자이너", t: "결혼정보회사는 너무 무겁고, 앱은 너무 가벼운데 딱 그 중간이라 좋았어요." },
   ];
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#fff0f5] to-[#fdf6f8]">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+    <section className="py-20 sm:py-28 lg:py-36" style={{ background: "linear-gradient(180deg, #fff0f5, #fdf6f8)" }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.star("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>Reviews</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Reviews</span>
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">회원들의 <span className="text-gradient">솔직한 후기</span></h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            회원들의 <span className="text-gradient">솔직한 후기</span>
+          </h2>
         </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 reveal">
+        <div className="grid md:grid-cols-3 gap-6 reveal">
           {reviews.map((v, i) => (
-            <div key={i} className="bg-white p-5 sm:p-6 rounded-2xl border border-pink-50 shadow-sm hover:shadow-lg hover:shadow-pink-100/20 transition-all">
-              <div className="flex items-center gap-1 mb-3 sm:mb-4">
-                {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-3 h-3 sm:w-3.5 sm:h-3.5")}</span>)}
+            <div key={i} className="bg-white p-7 rounded-2xl border border-pink-50/80 hover:shadow-xl hover:shadow-pink-100/15 transition-all">
+              <div className="flex items-center gap-1 mb-5">
+                {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-4 h-4")}</span>)}
               </div>
-              <p className="text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5" style={{ color: sb }}>&ldquo;{v.t}&rdquo;</p>
-              <div className="flex items-center gap-2.5 sm:gap-3 pt-3 sm:pt-4 border-t border-pink-50">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>{v.n[0]}</div>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: sb }}>&ldquo;{v.t}&rdquo;</p>
+              <div className="flex items-center gap-3 pt-5 border-t border-pink-50">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>{v.n[0]}</div>
                 <div>
-                  <div className="text-[0.65rem] sm:text-xs font-bold">{v.n}</div>
-                  <div className="text-[0.55rem] sm:text-[0.65rem]" style={{ color: mt }}>{v.a} / {v.j}</div>
+                  <div className="text-xs font-bold">{v.n}</div>
+                  <div className="text-[0.65rem]" style={{ color: mt }}>{v.a} / {v.j}</div>
                 </div>
               </div>
             </div>
@@ -425,13 +451,13 @@ function TestimonialsSection() {
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-pink-50 last:border-0">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-4 sm:py-5 text-left group">
-        <span className="text-xs sm:text-sm font-medium pr-4 group-hover:text-[#d4567a] transition-colors" style={{ color: "#555" }}>{q}</span>
-        <span className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center transition-all duration-300 ${open ? "bg-pink-100 rotate-180" : "bg-pink-50"}`} style={{ color: pk }}>{I.chevD("w-3 h-3 sm:w-3.5 sm:h-3.5")}</span>
+    <div className="border-b border-pink-50/80 last:border-0">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-5 sm:py-6 text-left group">
+        <span className="text-sm font-medium pr-4 group-hover:text-[#d4567a] transition-colors" style={{ color: "#444" }}>{q}</span>
+        <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${open ? "rotate-180" : ""}`} style={{ background: open ? `${pk}15` : `${pk}06`, color: pk }}>{I.chevD("w-3.5 h-3.5")}</span>
       </button>
-      <div className={`overflow-hidden transition-all duration-500 ${open ? "max-h-48 pb-4 sm:pb-5" : "max-h-0"}`}>
-        <p className="text-[0.65rem] sm:text-xs leading-relaxed" style={{ color: mt }}>{a}</p>
+      <div className={`overflow-hidden transition-all duration-500 ${open ? "max-h-48 pb-5 sm:pb-6" : "max-h-0"}`}>
+        <p className="text-xs sm:text-sm leading-relaxed" style={{ color: mt }}>{a}</p>
       </div>
     </div>
   );
@@ -446,16 +472,18 @@ function FAQSection() {
     { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 절대 제3자에게 공유되지 않습니다." },
   ];
   return (
-    <section id="faq" className="py-16 sm:py-20 lg:py-28 bg-white">
-      <div className="max-w-[600px] mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-12 reveal">
-          <div className="inline-flex items-center gap-2 bg-pink-50 rounded-full px-4 py-1.5 mb-3 sm:mb-4">
+    <section id="faq" className="py-20 sm:py-28 lg:py-36 bg-white">
+      <div className="max-w-2xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-12 sm:mb-16 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.chat("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-medium" style={{ color: pk }}>FAQ</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>FAQ</span>
           </div>
-          <h2 className="font-display text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight">자주 묻는 <span className="text-gradient">질문</span></h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            자주 묻는 <span className="text-gradient">질문</span>
+          </h2>
         </div>
-        <div className="bg-pink-50/30 rounded-2xl p-4 sm:p-6 reveal">
+        <div className="rounded-2xl p-6 sm:p-8 reveal" style={{ background: `${pk}04` }}>
           {fqs.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
         </div>
       </div>
@@ -466,29 +494,32 @@ function FAQSection() {
 /* ═══ CONTACT ═══ */
 function ContactSection() {
   return (
-    <section id="contact" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden" style={{ background: "linear-gradient(135deg, #1a1a1f, #2a1a20)" }}>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] rounded-full blur-[100px] sm:blur-[120px]" style={{ background: pk }} />
-        <div className="absolute bottom-1/4 right-1/4 w-[180px] sm:w-[250px] h-[180px] sm:h-[250px] rounded-full blur-[80px] sm:blur-[100px]" style={{ background: gd }} />
+    <section id="contact" className="relative py-24 sm:py-32 lg:py-40 overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1a1f, #2a1520)" }}>
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full blur-[200px] opacity-15" style={{ background: pk }} />
       </div>
 
-      <div className="relative z-10 max-w-lg mx-auto px-4 sm:px-6 text-center text-white">
-        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-          {I.heart("w-6 h-6 sm:w-7 sm:h-7")}
+      <div className="relative z-10 max-w-lg mx-auto px-5 sm:px-8 text-center text-white">
+        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-pink-500/20" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+          {I.heart("w-7 h-7")}
         </div>
-        <h2 className="reveal font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3 sm:mb-4">당신의 인연,<br />여기서 시작됩니다</h2>
-        <p className="text-xs sm:text-sm mb-10 sm:mb-12 text-white/40 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
-        <div className="space-y-2.5 sm:space-y-3 max-w-xs mx-auto mb-8 sm:mb-10 reveal">
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-xl py-3.5 sm:py-4 px-4 sm:px-5 flex items-center gap-3 sm:gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <span className="text-white/50">{I.chat("w-4 h-4 flex-shrink-0")}</span>
+        <h2 className="reveal text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+          당신의 인연,<br />여기서 시작됩니다
+        </h2>
+        <p className="text-sm mb-12 text-white/40 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
+
+        <div className="max-w-sm mx-auto mb-10 reveal">
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+            <span className="text-white/50">{I.chat("w-5 h-5 flex-shrink-0")}</span>
             <div className="text-left">
-              <div className="text-[0.5rem] sm:text-[0.55rem] text-white/40 uppercase tracking-wider">카카오톡</div>
-              <div className="text-xs sm:text-sm text-white/70">오픈채팅 상담하기</div>
+              <div className="text-[0.55rem] text-white/40 uppercase tracking-widest font-bold">카카오톡</div>
+              <div className="text-sm text-white/70 font-medium">오픈채팅 상담하기</div>
             </div>
             <span className="ml-auto text-white/30">{I.arrowR("w-4 h-4")}</span>
           </a>
         </div>
-        <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white px-8 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-lg shadow-pink-500/20 hover:shadow-xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+
+        <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-500/20 hover:shadow-2xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
           지금 상담 시작하기 {I.arrowR("w-4 h-4")}
         </a>
       </div>
@@ -499,15 +530,15 @@ function ContactSection() {
 /* ═══ FOOTER ═══ */
 function Footer() {
   return (
-    <footer className="py-8 sm:py-12 bg-white border-t border-pink-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+    <footer className="py-10 sm:py-14 bg-white border-t border-pink-50/50">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-5">
         <div className="flex items-center gap-2">
           <span style={{ color: pk }}>{I.heart("w-4 h-4")}</span>
-          <span className="font-logo text-base">인연<span style={{ color: pk }}>연구소</span></span>
+          <span className="font-logo text-lg">인연<span style={{ color: pk }}>연구소</span></span>
         </div>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {["소개", "장점", "가격", "컨설팅", "상담"].map((l, i) => (
-            <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
+            <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
           ))}
         </div>
       </div>
@@ -515,13 +546,13 @@ function Footer() {
   );
 }
 
-/* ═══ KAKAO ═══ */
+/* ═══ KAKAO FLOAT ═══ */
 function KakaoButton() {
   return (
     <a href={KAKAO} target="_blank" rel="noopener noreferrer"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[90] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg shadow-yellow-400/30 hover:scale-110 transition-all duration-300"
+      className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90] w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-yellow-400/25 hover:scale-110 hover:shadow-2xl transition-all duration-300"
       style={{ background: "#FEE500" }} aria-label="카카오톡 상담">
-      <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="#3C1E1E">
+      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#3C1E1E">
         <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z"/>
       </svg>
     </a>
@@ -532,7 +563,19 @@ export default function Home() {
   useReveal();
   return (
     <main>
-      <Navbar /><HeroSection /><Marquee /><AboutSection /><FeaturesSection /><ProcessSection /><PricingSection /><ConsultSection /><TestimonialsSection /><FAQSection /><ContactSection /><Footer /><KakaoButton />
+      <Navbar />
+      <HeroSection />
+      <TrustBar />
+      <AboutSection />
+      <FeaturesSection />
+      <ProcessSection />
+      <PricingSection />
+      <ConsultSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <ContactSection />
+      <Footer />
+      <KakaoButton />
     </main>
   );
 }
