@@ -18,8 +18,8 @@ function useReveal() {
 const KAKAO = "https://open.kakao.com/o/sAnvRami";
 const pk = "#d4567a";
 const gd = "#c9956b";
-const mt = "#999";
-const sb = "#666";
+const mt = "#666";
+const sb = "#333";
 
 const I = {
   heart: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="currentColor"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" /></svg>,
@@ -55,7 +55,7 @@ function Navbar() {
           <span className="font-logo text-lg sm:text-xl" style={{ letterSpacing: "-0.02em" }}>인연<span style={{ color: pk }}>연구소</span></span>
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-medium hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#555" }}>{l.l}</a>)}
+          {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-semibold hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#444" }}>{l.l}</a>)}
           <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
@@ -130,8 +130,8 @@ function TrustBar() {
     <div className="py-4 overflow-hidden border-y border-pink-50" style={{ background: "linear-gradient(135deg, #fff8fa, #fff0f5)" }}>
       <div className="anim-marquee flex whitespace-nowrap">
         {[...items, ...items].map((t, i) => (
-          <span key={i} className="inline-flex items-center gap-4 mx-8 text-xs font-bold tracking-widest uppercase" style={{ color: `${pk}60` }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: `${pk}30` }} />{t}
+          <span key={i} className="inline-flex items-center gap-4 mx-8 text-xs font-bold tracking-widest uppercase" style={{ color: pk, opacity: 0.5 }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: pk, opacity: 0.3 }} />{t}
           </span>
         ))}
       </div>
@@ -334,10 +334,10 @@ function PricingSection() {
             <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
               <span className="text-4xl font-extrabold">맞춤 상담</span>
             </div>
-            <p className="text-xs mb-8 text-white/50">매칭 + 1:1 전문 컨설팅</p>
+            <p className="text-xs mb-8 text-white/70">매칭 + 1:1 전문 컨설팅</p>
             <ul className="space-y-3.5 mb-8">
               {["기본 플랜 전체 포함", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리", "심층 피드백"].map((t, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-white/80">
+                <li key={i} className="flex items-center gap-3 text-sm text-white/90">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 bg-white/15">{I.check("w-3 h-3")}</span>{t}
                 </li>
               ))}
@@ -513,16 +513,16 @@ function ContactSection() {
         <h2 className="reveal text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
           당신의 인연,<br />여기서 시작됩니다
         </h2>
-        <p className="text-sm mb-12 text-white/40 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
+        <p className="text-sm mb-12 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
 
         <div className="max-w-sm mx-auto mb-10 reveal">
           <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <span className="text-white/50">{I.chat("w-5 h-5 flex-shrink-0")}</span>
+            <span className="text-white/70">{I.chat("w-5 h-5 flex-shrink-0")}</span>
             <div className="text-left">
-              <div className="text-[0.55rem] text-white/40 uppercase tracking-widest font-bold">카카오톡</div>
-              <div className="text-sm text-white/70 font-medium">오픈채팅 상담하기</div>
+              <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">카카오톡</div>
+              <div className="text-sm text-white/90 font-medium">오픈채팅 상담하기</div>
             </div>
-            <span className="ml-auto text-white/30">{I.arrowR("w-4 h-4")}</span>
+            <span className="ml-auto text-white/50">{I.arrowR("w-4 h-4")}</span>
           </a>
         </div>
 
@@ -551,7 +551,7 @@ function Footer() {
           </div>
         </div>
         <div className="pt-6 border-t border-pink-50/50 text-center sm:text-left">
-          <div className="text-[0.65rem] space-y-1" style={{ color: `${mt}90` }}>
+          <div className="text-[0.65rem] space-y-1" style={{ color: "#888" }}>
             <p>대표자: 김가영 | 사업자등록번호: 463-09-00868</p>
           </div>
         </div>
