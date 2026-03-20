@@ -79,12 +79,12 @@ function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image src="/hero-couple.jpg" alt="" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
+        <div className="absolute inset-0 bg-white/70" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#fff5f8]/60 via-transparent to-white/90" />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 w-full">
-        <div className="max-w-lg pt-24 sm:pt-0">
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 w-full text-center">
+        <div className="max-w-2xl mx-auto pt-24 sm:pt-0">
           <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-pink-100/50">
             <span style={{ color: gd }}>{I.sparkle("w-4 h-4")}</span>
             <span className="text-xs font-bold tracking-wider" style={{ color: gd }}>PREMIUM MATCHING</span>
@@ -94,13 +94,13 @@ function HeroSection() {
             설레는 만남,<br /><span className="text-gradient">인연연구소</span>에서
           </h1>
 
-          <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mb-10" style={{ color: sb }}>
+          <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-10" style={{ color: sb }}>
             아무나 만날 수는 없고, 결정사는 부담스러울 때.<br />
             서류검토로 신원이 보장된 사람만.<br />
             부담 없는 <strong style={{ color: pk }}>프리미엄 소개팅</strong>.
           </p>
 
-          <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-start gap-3 mb-12">
+          <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
             <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
               무료 상담 시작하기 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
             </a>
@@ -109,7 +109,7 @@ function HeroSection() {
             </a>
           </div>
 
-          <div className="hero-anim hero-d5 flex gap-8 sm:gap-12">
+          <div className="hero-anim hero-d5 flex justify-center gap-8 sm:gap-12">
             {[{ v: "2,400+", l: "누적 상담" }, { v: "92%", l: "재이용률" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
               <div key={i}>
                 <div className="text-xl sm:text-2xl font-extrabold" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
