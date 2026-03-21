@@ -515,12 +515,20 @@ function ContactSection() {
         </h2>
         <p className="text-sm mb-12 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
 
-        <div className="max-w-sm mx-auto mb-10 reveal">
+        <div className="max-w-sm mx-auto mb-10 space-y-3 reveal">
           <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
             <span className="text-white/70">{I.chat("w-5 h-5 flex-shrink-0")}</span>
             <div className="text-left">
               <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">카카오톡</div>
               <div className="text-sm text-white/90 font-medium">오픈채팅 상담하기</div>
+            </div>
+            <span className="ml-auto text-white/50">{I.arrowR("w-4 h-4")}</span>
+          </a>
+          <a href="tel:010-7617-0181" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+            <span className="text-white/70">{I.phone("w-5 h-5 flex-shrink-0")}</span>
+            <div className="text-left">
+              <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">전화 상담</div>
+              <div className="text-sm text-white/90 font-medium">010-7617-0181</div>
             </div>
             <span className="ml-auto text-white/50">{I.arrowR("w-4 h-4")}</span>
           </a>
