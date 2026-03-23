@@ -191,7 +191,7 @@ function AboutSection() {
                 <div className="absolute -top-2.5 right-4 text-white text-[0.55rem] font-bold px-3 py-0.5 rounded-full" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>PICK</div>
                 <div className="text-[0.65rem] font-bold mb-4 tracking-wider uppercase" style={{ color: pk }}>인연연구소</div>
                 <ul className="space-y-2.5">
-                  {["11만원부터", "부담 없는 소개팅", "48시간 매칭", "20·30대 전용"].map((t, i) => (
+                  {["6만원부터", "부담 없는 소개팅", "48시간 매칭", "20·30대 전용"].map((t, i) => (
                     <li key={i} className="flex items-center gap-2 text-xs font-medium" style={{ color: sb }}>
                       <span style={{ color: pk }}>{I.check("w-3.5 h-3.5 flex-shrink-0")}</span>{t}
                     </li>
@@ -219,7 +219,7 @@ function AboutSection() {
 function FeaturesSection() {
   const features = [
     { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서, 신분증 등등 꼼꼼한 서류검토로 안전한 만남을 보장합니다.", color: "#e8457f" },
-    { icon: I.currency, t: "결정사 1/10 비용", d: "100만원이 넘는 결정사 비용 대신, 11만원부터 시작하는 합리적인 프리미엄.", color: gd },
+    { icon: I.currency, t: "결정사 1/10 비용", d: "100만원이 넘는 결정사 비용 대신, 여성 회원 6만원부터 시작하는 합리적인 프리미엄.", color: gd },
     { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#7c6dd8" },
     { icon: I.sparkle, t: "맞춤 이상형 매칭", d: "AI가 아닌 사람이 직접 성격, 가치관, 라이프스타일을 분석해 매칭합니다.", color: "#4db6ac" },
   ];
@@ -311,10 +311,10 @@ function PricingSection() {
           <div className="bg-white rounded-3xl p-7 sm:p-9 border border-pink-50 hover:shadow-xl transition-all">
             <div className="text-xs font-bold px-4 py-1.5 bg-gray-50 rounded-full inline-block mb-6" style={{ color: mt }}>BASIC</div>
             <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              <span className="text-4xl font-extrabold">11만원</span>
+              <span className="text-4xl font-extrabold">6만원</span>
               <span className="text-base font-normal ml-1" style={{ color: mt }}>~</span>
             </div>
-            <p className="text-xs mb-8" style={{ color: mt }}>기본 매칭 서비스</p>
+            <p className="text-xs mb-8" style={{ color: mt }}>여성 회원 기준</p>
             <ul className="space-y-3.5 mb-8">
               {["신원보장 서류검토", "이상형 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm" style={{ color: sb }}>
