@@ -498,6 +498,50 @@ function FAQSection() {
   );
 }
 
+/* ═══ INQUIRY FORM ═══ */
+function InquiryForm() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+
+  const submit = async () => {
+    if (!name.trim() || !phone.trim()) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone }),
+      });
+      if (res.ok) { setStatus("done"); setName(""); setPhone(""); }
+      else setStatus("error");
+    } catch { setStatus("error"); }
+  };
+
+  if (status === "done") {
+    return (
+      <div className="rounded-2xl py-6 px-6 text-center" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}>
+        <p className="text-white/90 font-medium text-sm">문의가 접수되었습니다!</p>
+        <p className="text-white/50 text-xs mt-2">빠른 시일 내에 연락드리겠습니다.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl py-6 px-6 space-y-3" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
+      <p className="text-white/70 text-xs font-medium mb-4 text-center">간편 문의 남기기</p>
+      <input type="text" placeholder="이름" value={name} onChange={e => setName(e.target.value)}
+        className="w-full rounded-xl px-4 py-3 text-sm bg-white/10 text-white placeholder-white/40 border border-white/10 focus:border-pink-400/50 focus:outline-none transition-colors" />
+      <input type="tel" placeholder="전화번호" value={phone} onChange={e => setPhone(e.target.value)}
+        className="w-full rounded-xl px-4 py-3 text-sm bg-white/10 text-white placeholder-white/40 border border-white/10 focus:border-pink-400/50 focus:outline-none transition-colors" />
+      <button onClick={submit} disabled={status === "loading" || !name.trim() || !phone.trim()}
+        className="w-full rounded-xl py-3 text-sm font-bold text-white transition-all disabled:opacity-40" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+        {status === "loading" ? "접수 중..." : status === "error" ? "다시 시도" : "문의하기"}
+      </button>
+    </div>
+  );
+}
+
 /* ═══ CONTACT ═══ */
 function ContactSection() {
   return (
@@ -532,6 +576,10 @@ function ContactSection() {
             </div>
             <span className="ml-auto text-white/50">{I.arrowR("w-4 h-4")}</span>
           </a>
+        </div>
+
+        <div className="max-w-sm mx-auto mb-10 reveal">
+          <InquiryForm />
         </div>
 
         <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-500/20 hover:shadow-2xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
