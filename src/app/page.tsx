@@ -560,7 +560,7 @@ function Footer() {
         </div>
         <div className="pt-6 border-t border-pink-50/50 text-center sm:text-left">
           <div className="text-[0.65rem] space-y-1" style={{ color: "#888" }}>
-            <p>대표자: 김가영 | 사업자등록번호: 463-09-00868</p>
+            <p>대표자: 김가영 | 사업자등록번호: 463-59-00868</p>
           </div>
         </div>
       </div>
