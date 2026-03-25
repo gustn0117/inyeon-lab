@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
+const trackLead = () => { window.fbq?.("track", "Lead"); };
+
 function useReveal() {
   useEffect(() => {
     document.body.classList.add("reveal-ready");
@@ -56,7 +59,7 @@ function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-semibold hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#444" }}>{l.l}</a>)}
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
       </div>
@@ -64,7 +67,7 @@ function Navbar() {
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-pink-50">
           <div className="px-5 py-5 space-y-1">
             {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-3 px-4 rounded-xl hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => { trackLead(); setOpen(false); }} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
           </div>
         </div>
       )}
@@ -101,7 +104,7 @@ function HeroSection() {
           </p>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
               무료 상담 시작하기 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
             </a>
             <a href="#about" className="group inline-flex items-center gap-2 text-sm font-medium px-6 py-4 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-pink-200 hover:shadow-md transition-all" style={{ color: sb }}>
@@ -322,7 +325,7 @@ function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
           {/* Premium */}
@@ -342,7 +345,7 @@ function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
           </div>
         </div>
       </div>
@@ -560,7 +563,7 @@ function ContactSection() {
         <p className="text-sm mb-12 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
 
         <div className="max-w-sm mx-auto mb-10 space-y-3 reveal">
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
             <span className="text-white/70">{I.chat("w-5 h-5 flex-shrink-0")}</span>
             <div className="text-left">
               <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">카카오톡</div>
@@ -582,7 +585,7 @@ function ContactSection() {
           <InquiryForm />
         </div>
 
-        <a href={KAKAO} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-500/20 hover:shadow-2xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+        <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-500/20 hover:shadow-2xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
           지금 상담 시작하기 {I.arrowR("w-4 h-4")}
         </a>
       </div>
@@ -619,7 +622,7 @@ function Footer() {
 /* ═══ KAKAO FLOAT ═══ */
 function KakaoButton() {
   return (
-    <a href={KAKAO} target="_blank" rel="noopener noreferrer"
+    <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead}
       className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90] w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-yellow-400/25 hover:scale-110 hover:shadow-2xl transition-all duration-300"
       style={{ background: "#FEE500" }} aria-label="카카오톡 상담">
       <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#3C1E1E">
