@@ -98,9 +98,9 @@ function HeroSection() {
           </h1>
 
           <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-10" style={{ color: sb }}>
-            아무나 만날 수는 없고, 결정사는 부담스러울 때.<br />
-            서류검토로 신원이 보장된 사람만.<br />
-            부담 없는 <strong style={{ color: pk }}>프리미엄 소개팅</strong>.
+            거리, 나이, 종교, 직업까지 <strong style={{ color: pk }}>맞춤 매칭</strong>.<br />
+            매칭이 되어야 비용이 드는 <strong style={{ color: pk }}>후불제</strong>.<br />
+            서류검토로 신원이 보장된 사람만.
           </p>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
@@ -128,7 +128,7 @@ function HeroSection() {
 
 /* ═══ TRUST BAR ═══ */
 function TrustBar() {
-  const items = ["신원보장 100%", "48시간 매칭", "프리미엄 퀄리티", "1:1 컨설팅", "20-30대 전용", "개인정보 보호"];
+  const items = ["매칭 후 결제 후불제", "조건별 맞춤 매칭", "신원보장 100%", "48시간 매칭", "1:1 컨설팅", "20-30대 전용"];
   return (
     <div className="py-4 overflow-hidden border-y border-pink-50" style={{ background: "linear-gradient(135deg, #fff8fa, #fff0f5)" }}>
       <div className="anim-marquee flex whitespace-nowrap">
@@ -194,7 +194,7 @@ function AboutSection() {
                 <div className="absolute -top-2.5 right-4 text-white text-[0.55rem] font-bold px-3 py-0.5 rounded-full" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>PICK</div>
                 <div className="text-[0.65rem] font-bold mb-4 tracking-wider uppercase" style={{ color: pk }}>인연연구소</div>
                 <ul className="space-y-2.5">
-                  {["6만원부터", "부담 없는 소개팅", "48시간 매칭", "20·30대 전용"].map((t, i) => (
+                  {["매칭 후 결제 후불제", "거리·나이·직업 맞춤", "48시간 매칭", "20·30대 전용"].map((t, i) => (
                     <li key={i} className="flex items-center gap-2 text-xs font-medium" style={{ color: sb }}>
                       <span style={{ color: pk }}>{I.check("w-3.5 h-3.5 flex-shrink-0")}</span>{t}
                     </li>
@@ -204,7 +204,7 @@ function AboutSection() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {[{ icon: I.shield, t: "서류 검증" }, { icon: I.clock, t: "48h 매칭" }, { icon: I.chat, t: "1:1 컨설팅" }].map((b, i) => (
+              {[{ icon: I.currency, t: "후불제" }, { icon: I.sparkle, t: "맞춤 매칭" }, { icon: I.shield, t: "서류 검증" }].map((b, i) => (
                 <div key={i} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: `${pk}06`, border: `1px solid ${pk}10` }}>
                   <span style={{ color: pk }}>{b.icon("w-4 h-4")}</span>
                   <span className="text-xs font-bold" style={{ color: sb }}>{b.t}</span>
@@ -221,10 +221,10 @@ function AboutSection() {
 /* ═══ FEATURES ═══ */
 function FeaturesSection() {
   const features = [
-    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서, 신분증 등등 꼼꼼한 서류검토로 안전한 만남을 보장합니다.", color: "#e8457f" },
-    { icon: I.currency, t: "결정사 1/10 비용", d: "100만원이 넘는 결정사 비용 대신, 여성 회원 6만원부터 시작하는 합리적인 프리미엄.", color: gd },
-    { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#7c6dd8" },
-    { icon: I.sparkle, t: "맞춤 이상형 매칭", d: "AI가 아닌 사람이 직접 성격, 가치관, 라이프스타일을 분석해 매칭합니다.", color: "#4db6ac" },
+    { icon: I.currency, t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생합니다. 선불 부담 없이 안심하고 시작하세요.", color: "#e8457f" },
+    { icon: I.sparkle, t: "조건별 맞춤 매칭", d: "거리, 나이, 종교, 직업 등 원하는 조건을 세밀하게 반영해 딱 맞는 상대를 찾아드립니다.", color: gd },
+    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서 등등 꼼꼼한 서류검토로 안전한 만남을 보장합니다.", color: "#7c6dd8" },
+    { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#4db6ac" },
   ];
   return (
     <section id="features" className="py-20 sm:py-28 lg:py-36 relative" style={{ background: "linear-gradient(180deg, #fdf6f8, #fff0f5)" }}>
@@ -259,7 +259,7 @@ function ProcessSection() {
   const steps = [
     { icon: I.phone, t: "상담 신청", d: "카카오톡으로 간편하게 신청하세요" },
     { icon: I.doc, t: "서류 검토", d: "재직증명서, 혼인관계증명서, 신분증 등등으로 신원 확인" },
-    { icon: I.users, t: "맞춤 매칭", d: "이상형 기준 최적의 상대를 찾아드려요" },
+    { icon: I.users, t: "맞춤 매칭", d: "거리·나이·종교·직업 등 조건 반영 매칭" },
     { icon: I.heart, t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작" },
   ];
   return (
