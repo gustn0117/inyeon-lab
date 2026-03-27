@@ -51,7 +51,7 @@ function EventBanner() {
   return (
     <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 px-4" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
-        <span className="text-white text-xs sm:text-sm font-bold">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 첫매칭 무료! | 대기업·공무원·교사 등 다양한 직업 회원 환영</span>
+        <span className="text-white text-xs sm:text-sm font-bold flex flex-col sm:flex-row sm:gap-2 items-center">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 매칭 1회 무료 <span className="text-white/70 text-[0.65rem] sm:text-xs font-medium">대기업·공무원·교사 등 다양한 직업 회원 다수</span></span>
         <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
         <button onClick={() => setShow(false)} className="absolute right-3 sm:right-5 text-white/70 hover:text-white transition-colors">{I.x("w-4 h-4")}</button>
       </div>
