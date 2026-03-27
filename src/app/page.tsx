@@ -44,6 +44,21 @@ const I = {
   clock: (c = "w-6 h-6") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
 };
 
+/* ═══ EVENT BANNER ═══ */
+function EventBanner() {
+  const [show, setShow] = useState(true);
+  if (!show) return null;
+  return (
+    <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 px-4" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+      <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
+        <span className="text-white text-xs sm:text-sm font-bold">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 첫 매칭 무료 이벤트 진행 중!</span>
+        <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
+        <button onClick={() => setShow(false)} className="absolute right-3 sm:right-5 text-white/70 hover:text-white transition-colors">{I.x("w-4 h-4")}</button>
+      </div>
+    </div>
+  );
+}
+
 /* ═══ NAV ═══ */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -51,7 +66,7 @@ function Navbar() {
   useEffect(() => { const h = () => setScrolled(window.scrollY > 50); window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h); }, []);
   const links = [{ h: "#about", l: "소개" }, { h: "#features", l: "장점" }, { h: "#pricing", l: "가격" }, { h: "#consult", l: "컨설팅" }, { h: "#contact", l: "상담" }];
   return (
-    <nav className={`fixed inset-x-0 top-0 z-[100] backdrop-blur-xl transition-all duration-500 ${scrolled ? "bg-white/90 shadow-sm shadow-pink-100/50" : "bg-transparent"}`}>
+    <nav className={`fixed inset-x-0 top-[40px] z-[100] backdrop-blur-xl transition-all duration-500 ${scrolled ? "bg-white/90 shadow-sm shadow-pink-100/50" : "bg-transparent"}`}>
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
           <span style={{ color: pk }}>{I.heart("w-5 h-5")}</span>
@@ -636,6 +651,7 @@ export default function Home() {
   useReveal();
   return (
     <main>
+      <EventBanner />
       <Navbar />
       <HeroSection />
       <TrustBar />
