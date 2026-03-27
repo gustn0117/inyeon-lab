@@ -51,7 +51,7 @@ function EventBanner() {
   return (
     <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 px-4" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
-        <span className="text-white text-xs sm:text-sm font-bold">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 첫 매칭 무료 이벤트 진행 중!</span>
+        <span className="text-white text-xs sm:text-sm font-bold">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 첫매칭 무료! | 대기업·공무원·교사 등 다양한 직업 회원 환영</span>
         <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
         <button onClick={() => setShow(false)} className="absolute right-3 sm:right-5 text-white/70 hover:text-white transition-colors">{I.x("w-4 h-4")}</button>
       </div>
@@ -629,6 +629,7 @@ function Footer() {
             <p>대표자: 김가영 | 사업자등록번호: 463-59-00868</p>
           </div>
         </div>
+        <p className="sr-only">인연연구소 소개팅 서비스 지역: 강릉 동해 삼척 속초 원주 춘천 태백 고양 과천 광명 광주 구리 군포 김포 남양주 동두천 부천 성남 수원 시흥 안산 안성 안양 양주 여주 오산 용인 의왕 의정부 이천 파주 평택 포천 하남 화성 거제 김해 밀양 사천 양산 진주 창원 통영 경산 경주 구미 김천 문경 상주 안동 영주 영천 포항 광양 나주 목포 순천 여수 군산 김제 남원 익산 전주 정읍 계룡 공주 논산 당진 보령 서산 아산 천안 제천 청주 충주</p>
       </div>
     </footer>
   );
