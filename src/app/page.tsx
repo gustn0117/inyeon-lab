@@ -666,10 +666,39 @@ function KakaoButton() {
   );
 }
 
+/* ═══ POPUP ═══ */
+function Popup() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const dismissed = localStorage.getItem("popup_dismissed");
+    if (!dismissed || Number(dismissed) < Date.now()) setShow(true);
+  }, []);
+  const close = () => setShow(false);
+  const closeToday = () => {
+    localStorage.setItem("popup_dismissed", String(Date.now() + 24 * 60 * 60 * 1000));
+    setShow(false);
+  };
+  if (!show) return null;
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={close}>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div className="relative max-w-[420px] w-full rounded-2xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
+        <img src="/popup.png" alt="인연연구소 약속드립니다" className="w-full" />
+        <div className="flex border-t border-gray-100">
+          <button onClick={closeToday} className="flex-1 py-3.5 text-xs font-medium bg-white hover:bg-gray-50 transition-colors" style={{ color: mt }}>오늘 하루 보지 않기</button>
+          <div className="w-px bg-gray-100" />
+          <button onClick={close} className="flex-1 py-3.5 text-xs font-bold bg-white hover:bg-gray-50 transition-colors" style={{ color: pk }}>닫기</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   useReveal();
   return (
     <main>
+      <Popup />
       <EventBanner />
       <Navbar />
       <HeroSection />
