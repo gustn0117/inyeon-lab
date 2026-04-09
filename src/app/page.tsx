@@ -324,18 +324,18 @@ function PricingSection() {
           <p className="text-sm mt-3" style={{ color: sb }}>합리적인 가격, 그 이상의 퀄리티</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto reveal">
-          {/* Basic */}
-          <div className="bg-white rounded-3xl p-7 sm:p-9 border border-pink-50 hover:shadow-xl transition-all">
-            <div className="text-xs font-bold px-4 py-1.5 bg-gray-50 rounded-full inline-block mb-6" style={{ color: mt }}>BASIC</div>
+        <div className="grid sm:grid-cols-3 gap-5 sm:gap-6 max-w-4xl mx-auto reveal">
+          {/* 여성 */}
+          <div className="bg-white rounded-3xl p-7 border border-pink-50 hover:shadow-xl transition-all">
+            <div className="text-xs font-bold px-4 py-1.5 bg-pink-50 rounded-full inline-block mb-6" style={{ color: pk }}>여성 회원</div>
             <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              <span className="text-4xl font-extrabold">6만원</span>
-              <span className="text-base font-normal ml-1" style={{ color: mt }}>~</span>
+              <span className="text-3xl sm:text-4xl font-extrabold">6만원</span>
+              <span className="text-sm font-normal ml-1" style={{ color: mt }}>/회</span>
             </div>
-            <p className="text-xs mb-8" style={{ color: mt }}>여성 회원 기준</p>
-            <ul className="space-y-3.5 mb-8">
-              {["신원보장 서류검토", "이상형 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm" style={{ color: sb }}>
+            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제)</p>
+            <ul className="space-y-3 mb-8">
+              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${pk}10`, color: pk }}>{I.check("w-3 h-3")}</span>{t}
                 </li>
               ))}
@@ -343,24 +343,42 @@ function PricingSection() {
             <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
-          {/* Premium */}
-          <div className="rounded-3xl p-7 sm:p-9 relative shadow-2xl shadow-pink-200/30 text-white" style={{ background: `linear-gradient(160deg, ${pk}, #c23065)` }}>
+          {/* 남성 */}
+          <div className="bg-white rounded-3xl p-7 border border-pink-50 hover:shadow-xl transition-all">
+            <div className="text-xs font-bold px-4 py-1.5 bg-gray-50 rounded-full inline-block mb-6" style={{ color: sb }}>남성 회원</div>
+            <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <span className="text-3xl sm:text-4xl font-extrabold">9만원</span>
+              <span className="text-sm font-normal ml-1" style={{ color: mt }}>/회</span>
+            </div>
+            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제)</p>
+            <ul className="space-y-3 mb-8">
+              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${pk}10`, color: pk }}>{I.check("w-3 h-3")}</span>{t}
+                </li>
+              ))}
+            </ul>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+          </div>
+
+          {/* 무제한 */}
+          <div className="rounded-3xl p-7 relative shadow-2xl shadow-pink-200/30 text-white" style={{ background: `linear-gradient(160deg, ${pk}, #c23065)` }}>
             <div className="absolute -top-3 right-6 bg-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-1.5" style={{ color: pk }}>
               {I.star("w-3.5 h-3.5")} BEST
             </div>
-            <div className="text-xs font-bold px-4 py-1.5 bg-white/15 rounded-full inline-block mb-6">PREMIUM</div>
+            <div className="text-xs font-bold px-4 py-1.5 bg-white/15 rounded-full inline-block mb-6">UNLIMITED</div>
             <div className="mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              <span className="text-4xl font-extrabold">맞춤 상담</span>
+              <span className="text-3xl sm:text-4xl font-extrabold">무제한 매칭</span>
             </div>
-            <p className="text-xs mb-8 text-white/70">매칭 + 1:1 전문 컨설팅</p>
-            <ul className="space-y-3.5 mb-8">
-              {["기본 플랜 전체 포함", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리", "심층 피드백"].map((t, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-white/90">
+            <p className="text-xs mb-8 text-white/70">횟수 제한 없이 매칭 + 컨설팅</p>
+            <ul className="space-y-3 mb-8">
+              {["매칭 횟수 무제한", "조건별 맞춤 매칭", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리"].map((t, i) => (
+                <li key={i} className="flex items-center gap-2.5 text-sm text-white/90">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 bg-white/15">{I.check("w-3 h-3")}</span>{t}
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>프리미엄 상담</a>
+            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>무제한 상담</a>
           </div>
         </div>
       </div>
