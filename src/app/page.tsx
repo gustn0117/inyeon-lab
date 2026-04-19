@@ -128,7 +128,7 @@ function HeroSection() {
           </div>
 
           <div className="hero-anim hero-d5 flex justify-center gap-8 sm:gap-12">
-            {[{ v: "9,999+", l: "누적 상담" }, { v: "92%", l: "재이용률" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
+            {[{ v: "9,999+", l: "누적 상담" }, { v: "51:49", l: "남녀 성비" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
               <div key={i}>
                 <div className="text-xl sm:text-2xl font-extrabold" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
                 <div className="text-[0.65rem] sm:text-xs mt-1" style={{ color: mt }}>{s.l}</div>
@@ -169,7 +169,7 @@ function AboutSection() {
               <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-3xl" style={{ background: pk }} />
               <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full opacity-15 blur-3xl" style={{ background: gd }} />
               <div className="grid grid-cols-2 gap-5 relative z-10">
-                {[{ v: "9,999+", l: "누적 상담", icon: I.users }, { v: "92%", l: "재이용률", icon: I.heart }, { v: "48h", l: "평균 매칭", icon: I.clock }, { v: "4.9", l: "만족도", icon: I.star }].map((s, i) => (
+                {[{ v: "9,999+", l: "누적 상담", icon: I.users }, { v: "51:49", l: "남녀 성비", icon: I.heart }, { v: "48h", l: "평균 매칭", icon: I.clock }, { v: "4.9", l: "만족도", icon: I.star }].map((s, i) => (
                   <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 text-center shadow-sm border border-pink-50/50">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3" style={{ background: `${pk}10`, color: pk }}>{s.icon("w-5 h-5")}</div>
                     <div className="text-2xl font-extrabold mb-0.5" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
