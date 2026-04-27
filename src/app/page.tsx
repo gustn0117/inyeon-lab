@@ -490,6 +490,90 @@ function TestimonialsSection() {
   );
 }
 
+/* ═══ REVIEW GALLERY (실제 카톡 후기) ═══ */
+function ReviewGallery() {
+  const reviews = [
+    { src: "/reviews/review-1.jpeg", w: 1080, h: 970 },
+    { src: "/reviews/review-2.jpeg", w: 1080, h: 450 },
+    { src: "/reviews/review-3.jpeg", w: 1080, h: 402 },
+  ];
+  const [open, setOpen] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [open]);
+
+  return (
+    <section className="py-20 sm:py-28 lg:py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-12 sm:mb-16 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
+            <span style={{ color: pk }}>{I.chat("w-3.5 h-3.5")}</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Real Reviews</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            인연을 만난 회원들의 <span className="text-gradient">실제 후기</span>
+          </h2>
+          <p className="text-sm mt-3" style={{ color: sb }}>카카오톡으로 직접 보내주신 생생한 후기</p>
+        </div>
+
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 sm:gap-6 reveal">
+          {reviews.map((r, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setOpen(r.src)}
+              className="group block w-full mb-5 sm:mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-pink-50 bg-white shadow-sm hover:shadow-2xl hover:shadow-pink-100/30 hover:-translate-y-1 transition-all duration-500 cursor-zoom-in"
+              aria-label={`후기 ${i + 1} 크게 보기`}
+            >
+              <div className="relative w-full overflow-hidden">
+                <Image
+                  src={r.src}
+                  alt={`인연연구소 회원 후기 ${i + 1}`}
+                  width={r.w}
+                  height={r.h}
+                  className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {open && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-sm"
+          onClick={() => setOpen(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setOpen(null); }}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+            aria-label="닫기"
+          >
+            {I.x("w-5 h-5")}
+          </button>
+          <div className="relative max-w-5xl max-h-[90vh] w-auto" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={open}
+              alt="후기 원본"
+              className="block max-w-full max-h-[90vh] w-auto h-auto rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 /* ═══ FAQ ═══ */
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -709,6 +793,7 @@ export default function Home() {
       <PricingSection />
       <ConsultSection />
       <TestimonialsSection />
+      <ReviewGallery />
       <FAQSection />
       <ContactSection />
       <Footer />
