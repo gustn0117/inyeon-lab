@@ -622,20 +622,24 @@ function FAQSection() {
 function InquiryForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [errMsg, setErrMsg] = useState("");
 
   const submit = async () => {
     if (!name.trim() || !phone.trim()) return;
     setStatus("loading");
+    setErrMsg("");
     try {
       const res = await fetch("/api/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone }),
+        body: JSON.stringify({ name, phone, website }),
       });
+      const data = await res.json().catch(() => ({}));
       if (res.ok) { setStatus("done"); setName(""); setPhone(""); }
-      else setStatus("error");
-    } catch { setStatus("error"); }
+      else { setStatus("error"); setErrMsg(data?.error || "다시 시도해주세요."); }
+    } catch { setStatus("error"); setErrMsg("네트워크 오류"); }
   };
 
   if (status === "done") {
@@ -650,10 +654,24 @@ function InquiryForm() {
   return (
     <div className="rounded-2xl py-6 px-6 space-y-3" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}>
       <p className="text-white/70 text-xs font-medium mb-4 text-center">간편 문의 남기기</p>
-      <input type="text" placeholder="이름" value={name} onChange={e => setName(e.target.value)}
+      {/* honeypot - 사람에게는 안 보이고 봇만 채움 */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={website}
+        onChange={e => setWebsite(e.target.value)}
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+        aria-hidden="true"
+      />
+      <input type="text" placeholder="이름" value={name} maxLength={20} onChange={e => setName(e.target.value)}
         className="w-full rounded-xl px-4 py-3 text-sm bg-white/10 text-white placeholder-white/40 border border-white/10 focus:border-pink-400/50 focus:outline-none transition-colors" />
-      <input type="tel" placeholder="전화번호" value={phone} onChange={e => setPhone(e.target.value)}
+      <input type="tel" placeholder="전화번호 (예: 010-1234-5678)" value={phone} maxLength={13} onChange={e => setPhone(e.target.value)}
         className="w-full rounded-xl px-4 py-3 text-sm bg-white/10 text-white placeholder-white/40 border border-white/10 focus:border-pink-400/50 focus:outline-none transition-colors" />
+      {status === "error" && errMsg && (
+        <p className="text-xs text-red-300/90">{errMsg}</p>
+      )}
       <button onClick={submit} disabled={status === "loading" || !name.trim() || !phone.trim()}
         className="w-full rounded-xl py-3 text-sm font-bold text-white transition-all disabled:opacity-40" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
         {status === "loading" ? "접수 중..." : status === "error" ? "다시 시도" : "문의하기"}
