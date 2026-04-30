@@ -452,12 +452,17 @@ function ConsultSection() {
 /* ═══ REVIEW BOARD (관리자 작성 게시판) ═══ */
 type Review = { id: number; author: string; content: string };
 
+const PREVIEW_COUNT = 3;
+
 function ReviewBoard() {
   const [items, setItems] = useState<Review[] | null>(null);
 
   useEffect(() => {
     fetch("/api/review").then(r => r.ok ? r.json() : []).then(setItems).catch(() => setItems([]));
   }, []);
+
+  const preview = items?.slice(0, PREVIEW_COUNT) ?? null;
+  const hasMore = (items?.length ?? 0) > PREVIEW_COUNT;
 
   return (
     <section className="py-20 sm:py-28 lg:py-32 bg-white">
@@ -474,31 +479,41 @@ function ReviewBoard() {
         </div>
 
         <div className="reveal">
-          {items === null ? (
+          {preview === null ? (
             <div className="text-center py-16 text-sm" style={{ color: mt }}>불러오는 중...</div>
-          ) : items.length === 0 ? (
+          ) : preview.length === 0 ? (
             <div className="text-center py-16 rounded-2xl border border-dashed border-pink-100" style={{ color: mt }}>
               <p className="text-sm">아직 등록된 후기가 없습니다.</p>
             </div>
           ) : (
-            <ul className="divide-y divide-pink-50/80 border-y border-pink-50/80">
-              {items.map(r => (
-                <li key={r.id} className="py-6 sm:py-7">
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>
-                      {r.author?.[0] ?? "익"}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-bold" style={{ color: sb }}>{r.author}</div>
-                      <div className="flex items-center gap-1 mt-0.5">
-                        {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-3 h-3")}</span>)}
+            <>
+              <ul className="divide-y divide-pink-50/80 border-y border-pink-50/80">
+                {preview.map(r => (
+                  <li key={r.id} className="py-6 sm:py-7">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>
+                        {r.author?.[0] ?? "익"}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-bold" style={{ color: sb }}>{r.author}</div>
+                        <div className="flex items-center gap-1 mt-0.5">
+                          {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-3 h-3")}</span>)}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <p className="text-sm whitespace-pre-wrap break-words" style={{ color: sb, lineHeight: 1.75 }}>{r.content}</p>
-                </li>
-              ))}
-            </ul>
+                    <p className="text-sm whitespace-pre-wrap break-words line-clamp-5" style={{ color: sb, lineHeight: 1.75 }}>{r.content}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="text-center mt-10">
+                <a href="/reviews" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold border-2 transition-all hover:shadow-lg hover:shadow-pink-100/50"
+                  style={{ borderColor: `${pk}30`, color: pk, background: "white" }}>
+                  {hasMore ? `후기 더 보기 (${items!.length})` : "전체 후기 보기"}
+                  {I.arrowR("w-4 h-4")}
+                </a>
+              </div>
+            </>
           )}
         </div>
       </div>
