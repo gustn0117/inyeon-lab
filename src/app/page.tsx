@@ -449,127 +449,59 @@ function ConsultSection() {
   );
 }
 
-/* ═══ TESTIMONIALS ═══ */
-function TestimonialsSection() {
-  const reviews = [
-    { n: "김OO", a: "28세 여성", j: "마케터", t: "서류 검증이 되어 있어서 만나기 전부터 안심이 됐어요. 상담사 분도 정말 친절하셨습니다." },
-    { n: "이OO", a: "31세 남성", j: "개발자", t: "전문가가 이상형에 맞는 분을 직접 찾아주니까 정말 편했습니다. 가격도 합리적이에요." },
-    { n: "박OO", a: "26세 여성", j: "디자이너", t: "결혼정보회사는 너무 무겁고, 앱은 너무 가벼운데 딱 그 중간이라 좋았어요." },
-  ];
-  return (
-    <section className="py-20 sm:py-28 lg:py-36" style={{ background: "linear-gradient(180deg, #fff0f5, #fdf6f8)" }}>
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-14 sm:mb-20 reveal">
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
-            <span style={{ color: pk }}>{I.star("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-bold" style={{ color: pk }}>Reviews</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            회원들의 <span className="text-gradient">솔직한 후기</span>
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6 reveal">
-          {reviews.map((v, i) => (
-            <div key={i} className="bg-white p-7 rounded-2xl border border-pink-50/80 hover:shadow-xl hover:shadow-pink-100/15 transition-all">
-              <div className="flex items-center gap-1 mb-5">
-                {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-4 h-4")}</span>)}
-              </div>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: sb }}>&ldquo;{v.t}&rdquo;</p>
-              <div className="flex items-center gap-3 pt-5 border-t border-pink-50">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>{v.n[0]}</div>
-                <div>
-                  <div className="text-xs font-bold">{v.n}</div>
-                  <div className="text-[0.65rem]" style={{ color: mt }}>{v.a} / {v.j}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+/* ═══ REVIEW BOARD (관리자 작성 게시판) ═══ */
+type Review = { id: number; author: string; content: string };
 
-/* ═══ REVIEW GALLERY (실제 카톡 후기) ═══ */
-function ReviewGallery() {
-  const reviews = [
-    { src: "/reviews/review-1.jpeg", w: 1080, h: 970 },
-    { src: "/reviews/review-2.jpeg", w: 1080, h: 450 },
-    { src: "/reviews/review-3.jpeg", w: 1080, h: 402 },
-  ];
-  const [open, setOpen] = useState<string | null>(null);
+function ReviewBoard() {
+  const [items, setItems] = useState<Review[] | null>(null);
 
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
-  }, [open]);
+    fetch("/api/review").then(r => r.ok ? r.json() : []).then(setItems).catch(() => setItems([]));
+  }, []);
 
   return (
     <section className="py-20 sm:py-28 lg:py-32 bg-white">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12 sm:mb-16 reveal">
+      <div className="max-w-3xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-10 sm:mb-14 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
             <span style={{ color: pk }}>{I.chat("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-bold" style={{ color: pk }}>Real Reviews</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Review Board</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            인연을 만난 회원들의 <span className="text-gradient">실제 후기</span>
+            인연을 만난 회원들의 <span className="text-gradient">후기 게시판</span>
           </h2>
-          <p className="text-sm mt-3" style={{ color: sb }}>카카오톡으로 직접 보내주신 생생한 후기</p>
+          <p className="text-sm mt-3" style={{ color: sb }}>실제 사용하신 분들만 작성 가능한 게시판입니다.</p>
         </div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 sm:gap-6 reveal">
-          {reviews.map((r, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setOpen(r.src)}
-              className="group block w-full mb-5 sm:mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-pink-50 bg-white shadow-sm hover:shadow-2xl hover:shadow-pink-100/30 hover:-translate-y-1 transition-all duration-500 cursor-zoom-in"
-              aria-label={`후기 ${i + 1} 크게 보기`}
-            >
-              <div className="relative w-full overflow-hidden">
-                <Image
-                  src={r.src}
-                  alt={`인연연구소 회원 후기 ${i + 1}`}
-                  width={r.w}
-                  height={r.h}
-                  className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-            </button>
-          ))}
+        <div className="reveal">
+          {items === null ? (
+            <div className="text-center py-16 text-sm" style={{ color: mt }}>불러오는 중...</div>
+          ) : items.length === 0 ? (
+            <div className="text-center py-16 rounded-2xl border border-dashed border-pink-100" style={{ color: mt }}>
+              <p className="text-sm">아직 등록된 후기가 없습니다.</p>
+            </div>
+          ) : (
+            <ul className="divide-y divide-pink-50/80 border-y border-pink-50/80">
+              {items.map(r => (
+                <li key={r.id} className="py-6 sm:py-7">
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>
+                      {r.author?.[0] ?? "익"}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-bold" style={{ color: sb }}>{r.author}</div>
+                      <div className="flex items-center gap-1 mt-0.5">
+                        {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-3 h-3")}</span>)}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm whitespace-pre-wrap break-words" style={{ color: sb, lineHeight: 1.75 }}>{r.content}</p>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
-
-      {/* Lightbox */}
-      {open && (
-        <div
-          className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8 bg-black/85 backdrop-blur-sm"
-          onClick={() => setOpen(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <button
-            type="button"
-            onClick={(e) => { e.stopPropagation(); setOpen(null); }}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
-            aria-label="닫기"
-          >
-            {I.x("w-5 h-5")}
-          </button>
-          <div className="relative max-w-5xl max-h-[90vh] w-auto" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={open}
-              alt="후기 원본"
-              className="block max-w-full max-h-[90vh] w-auto h-auto rounded-xl shadow-2xl"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }
@@ -810,8 +742,7 @@ export default function Home() {
       <ProcessSection />
       <PricingSection />
       <ConsultSection />
-      <TestimonialsSection />
-      <ReviewGallery />
+      <ReviewBoard />
       <FAQSection />
       <ContactSection />
       <Footer />
