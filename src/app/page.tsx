@@ -449,6 +449,131 @@ function ConsultSection() {
   );
 }
 
+/* ═══ MEMBER JOBS (활동 회원 직업군) ═══ */
+function MemberJobsSection() {
+  const groups = [
+    {
+      label: "전문직",
+      color: "#d4567a",
+      jobs: ["의사", "약사", "치과의사", "한의사", "변호사", "회계사", "세무사", "변리사"],
+    },
+    {
+      label: "공직·교직",
+      color: "#7c6dd8",
+      jobs: ["5급 공무원", "7급·9급 공무원", "교사", "교수", "공기업", "법조계"],
+    },
+    {
+      label: "대기업·금융",
+      color: "#c9956b",
+      jobs: ["삼성", "LG", "현대", "SK", "은행원", "증권사", "외국계 금융", "컨설팅"],
+    },
+    {
+      label: "IT·스타트업",
+      color: "#4db6ac",
+      jobs: ["개발자", "PM·기획자", "디자이너", "스타트업 임직원", "데이터 사이언티스트"],
+    },
+    {
+      label: "기타 전문 분야",
+      color: "#e8a85a",
+      jobs: ["자영업·사업가", "마케터", "광고·미디어", "공연·예술", "프리랜서"],
+    },
+  ];
+
+  return (
+    <section className="py-20 sm:py-28 lg:py-32 bg-white">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-12 sm:mb-16 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
+            <span style={{ color: pk }}>{I.users("w-3.5 h-3.5")}</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Active Members</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            이런 분들이 <span className="text-gradient">함께하고 있어요</span>
+          </h2>
+          <p className="text-sm mt-3" style={{ color: sb }}>현재 활동 중인 검증된 회원들의 직업 분포</p>
+        </div>
+
+        <div className="space-y-5 sm:space-y-6 reveal">
+          {groups.map((g, i) => (
+            <div key={i} className="rounded-2xl p-6 sm:p-7 border border-pink-50 bg-white hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-2 h-2 rounded-full" style={{ background: g.color }} />
+                <h3 className="text-sm sm:text-base font-bold" style={{ color: sb }}>{g.label}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {g.jobs.map((j, k) => (
+                  <span key={k}
+                    className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium transition-colors"
+                    style={{ background: `${g.color}10`, color: g.color, border: `1px solid ${g.color}20` }}>
+                    {j}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-center text-xs mt-10 reveal" style={{ color: mt }}>
+          모든 회원은 재직증명서·신분 확인을 거친 검증된 실회원입니다.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ═══ SAFETY FLOW (개인정보 보호) ═══ */
+function SafetyFlowSection() {
+  const steps = [
+    { icon: I.doc, t: "1. 본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기." },
+    { icon: I.shield, t: "2. 암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다." },
+    { icon: I.eye, t: "3. 1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다. 공개 갤러리는 없습니다." },
+    { icon: I.x, t: "4. 종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다. 마케팅·재활용 일절 없음." },
+  ];
+
+  return (
+    <section className="py-20 sm:py-28 lg:py-32" style={{ background: "linear-gradient(180deg, #1a1a1f, #2a1520)" }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-14 sm:mb-20 reveal">
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 bg-white/10 border border-white/15">
+            <span className="text-white/80">{I.shield("w-3.5 h-3.5")}</span>
+            <span className="text-xs font-bold text-white/80">Privacy & Safety</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            당신의 정보, <span style={{ background: `linear-gradient(135deg, ${pk}, #ffb3c8)`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>이렇게 지킵니다</span>
+          </h2>
+          <p className="text-sm mt-3 text-white/60">프로필이 무분별하게 공개되지 않는 이유</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 reveal">
+          {steps.map((s, i) => (
+            <div key={i} className="relative rounded-2xl p-6 sm:p-7 border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors">
+              {i < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gradient-to-r from-white/30 to-transparent" />
+              )}
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: `${pk}25`, color: "#ffb3c8" }}>
+                {s.icon("w-6 h-6")}
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-white mb-2.5">{s.t}</h3>
+              <p className="text-xs sm:text-sm text-white/60" style={{ lineHeight: 1.7 }}>{s.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 sm:mt-16 max-w-2xl mx-auto text-center reveal">
+          <div className="rounded-2xl p-6 sm:p-7 bg-white/[0.04] border border-white/10">
+            <p className="text-sm sm:text-base text-white/90 font-medium mb-2">
+              개인정보보호법을 준수합니다
+            </p>
+            <p className="text-xs sm:text-sm text-white/50" style={{ lineHeight: 1.7 }}>
+              수집·이용·보관·파기 전 과정이 법적 기준을 충족하며, 매칭 외 목적으로 절대 사용되지 않습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══ PROMISE (인연연구소의 약속) ═══ */
 function PromiseSection() {
   const promises = [
@@ -746,11 +871,13 @@ export default function Home() {
       <HeroSection />
       <TrustBar />
       <AboutSection />
+      <MemberJobsSection />
       <FeaturesSection />
       <ProcessSection />
       <PricingSection />
       <ConsultSection />
       <PromiseSection />
+      <SafetyFlowSection />
       <FAQSection />
       <ContactSection />
       <Footer />
