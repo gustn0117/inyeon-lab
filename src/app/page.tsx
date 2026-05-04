@@ -453,29 +453,14 @@ function ConsultSection() {
 function MemberJobsSection() {
   const groups = [
     {
-      label: "전문직",
+      label: "여성 회원",
       color: "#d4567a",
-      jobs: ["의사", "약사", "치과의사", "한의사", "변호사", "회계사", "세무사", "변리사"],
+      jobs: ["교사", "통역사", "간호사", "아나운서", "승무원", "공무원"],
     },
     {
-      label: "공직·교직",
+      label: "남성 회원",
       color: "#7c6dd8",
-      jobs: ["5급 공무원", "7급·9급 공무원", "교사", "교수", "공기업", "법조계"],
-    },
-    {
-      label: "대기업·금융",
-      color: "#c9956b",
-      jobs: ["삼성", "LG", "현대", "SK", "은행원", "증권사", "외국계 금융", "컨설팅"],
-    },
-    {
-      label: "IT·스타트업",
-      color: "#4db6ac",
-      jobs: ["개발자", "PM·기획자", "디자이너", "스타트업 임직원", "데이터 사이언티스트"],
-    },
-    {
-      label: "기타 전문 분야",
-      color: "#e8a85a",
-      jobs: ["자영업·사업가", "마케터", "광고·미디어", "공연·예술", "프리랜서"],
+      jobs: ["공기업", "공무원", "대기업", "교사", "엔지니어", "사업가"],
     },
   ];
 
@@ -493,17 +478,17 @@ function MemberJobsSection() {
           <p className="text-sm mt-3" style={{ color: sb }}>현재 활동 중인 검증된 회원들의 직업 분포</p>
         </div>
 
-        <div className="space-y-5 sm:space-y-6 reveal">
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 reveal">
           {groups.map((g, i) => (
-            <div key={i} className="rounded-2xl p-6 sm:p-7 border border-pink-50 bg-white hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-2 h-2 rounded-full" style={{ background: g.color }} />
-                <h3 className="text-sm sm:text-base font-bold" style={{ color: sb }}>{g.label}</h3>
+            <div key={i} className="rounded-2xl p-7 sm:p-8 border border-pink-50 bg-white hover:shadow-xl hover:shadow-pink-100/30 transition-all">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: g.color }} />
+                <h3 className="text-base sm:text-lg font-bold" style={{ color: sb }}>{g.label}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {g.jobs.map((j, k) => (
                   <span key={k}
-                    className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium transition-colors"
+                    className="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs sm:text-[13px] font-medium"
                     style={{ background: `${g.color}10`, color: g.color, border: `1px solid ${g.color}20` }}>
                     {j}
                   </span>
