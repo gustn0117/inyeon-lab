@@ -27,6 +27,10 @@ export async function GET() {
   return NextResponse.json(data);
 }
 
+// CJK(중국어 한자/일본어 가나) 글자 카운트
+const CJK_RE = /[一-鿿぀-ヿ]/g;
+const cjkCount = (s: string) => (s.match(CJK_RE) ?? []).length;
+
 // POST: 관리자 - 후기 작성
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -39,6 +43,11 @@ export async function POST(req: NextRequest) {
   const c = (content ?? "").trim();
   if (!c) return NextResponse.json({ error: "후기 내용을 입력해주세요." }, { status: 400 });
   if (c.length > 2000) return NextResponse.json({ error: "후기는 2000자 이내로 작성해주세요." }, { status: 400 });
+
+  // 한자/가나가 5자 이상이면 스팸으로 판단 → silent drop
+  if (cjkCount(a) + cjkCount(c) >= 5) {
+    return NextResponse.json({ ok: true });
+  }
 
   const res = await supaFetch("reviews", {
     method: "POST",
