@@ -449,72 +449,65 @@ function ConsultSection() {
   );
 }
 
-/* ═══ REVIEW BOARD (관리자 작성 게시판) ═══ */
-type Review = { id: number; author: string; content: string };
-
-const PREVIEW_COUNT = 3;
-
-function ReviewBoard() {
-  const [items, setItems] = useState<Review[] | null>(null);
-
-  useEffect(() => {
-    fetch("/api/review").then(r => r.ok ? r.json() : []).then(setItems).catch(() => setItems([]));
-  }, []);
-
-  const preview = items?.slice(0, PREVIEW_COUNT) ?? null;
-  const hasMore = (items?.length ?? 0) > PREVIEW_COUNT;
+/* ═══ PROMISE (인연연구소의 약속) ═══ */
+function PromiseSection() {
+  const promises = [
+    {
+      icon: I.shield,
+      t: "아무나 받지 않습니다",
+      d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다. 까다로운 가입 기준을 통과한 분들만 매칭에 참여합니다.",
+    },
+    {
+      icon: I.sparkle,
+      t: "딱 맞게 매칭해드립니다",
+      d: "AI 자동 추천이 아닌, 전문 매칭사가 거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.",
+    },
+    {
+      icon: I.currency,
+      t: "매칭이 되어야 비용이 발생합니다",
+      d: "선불 결제는 없습니다. 실제 매칭이 성사된 경우에만 결제하시는 100% 후불제로 운영합니다.",
+    },
+    {
+      icon: I.eye,
+      t: "프로필은 무분별하게 공개되지 않습니다",
+      d: "회원님의 사진과 정보는 매칭이 확정된 1:1 상대에게만 비공개로 전달됩니다. 누구나 둘러볼 수 있는 공개 갤러리는 없습니다.",
+    },
+    {
+      icon: I.users,
+      t: "100% 실회원 매칭입니다",
+      d: "재직증명서, 혼인관계증명서 등으로 신원이 검증된 실제 회원과만 매칭됩니다. 가짜 프로필, 알바, 자동 응답은 단 한 건도 없습니다.",
+    },
+    {
+      icon: I.heart,
+      t: "한 분 한 분 정성으로",
+      d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 책임지고 함께합니다. 만남이 끝이 아닌 시작입니다.",
+    },
+  ];
 
   return (
-    <section className="py-20 sm:py-28 lg:py-32 bg-white">
-      <div className="max-w-3xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-10 sm:mb-14 reveal">
+    <section className="py-20 sm:py-28 lg:py-32" style={{ background: "linear-gradient(180deg, #fff8fa, #ffffff)" }}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="text-center mb-12 sm:mb-16 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
-            <span style={{ color: pk }}>{I.chat("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-bold" style={{ color: pk }}>Review Board</span>
+            <span style={{ color: pk }}>{I.heart("w-3.5 h-3.5")}</span>
+            <span className="text-xs font-bold" style={{ color: pk }}>Our Promise</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            인연을 만난 회원들의 <span className="text-gradient">후기 게시판</span>
+            인연연구소의 <span className="text-gradient">약속</span>
           </h2>
-          <p className="text-sm mt-3" style={{ color: sb }}>실제 사용하신 분들만 작성 가능한 게시판입니다.</p>
+          <p className="text-sm mt-3" style={{ color: sb }}>회원님께 드리는 6가지 다짐</p>
         </div>
 
-        <div className="reveal">
-          {preview === null ? (
-            <div className="text-center py-16 text-sm" style={{ color: mt }}>불러오는 중...</div>
-          ) : preview.length === 0 ? (
-            <div className="text-center py-16 rounded-2xl border border-dashed border-pink-100" style={{ color: mt }}>
-              <p className="text-sm">아직 등록된 후기가 없습니다.</p>
-            </div>
-          ) : (
-            <>
-              <ul className="divide-y divide-pink-50/80 border-y border-pink-50/80">
-                {preview.map(r => (
-                  <li key={r.id} className="py-6 sm:py-7">
-                    <div className="flex items-start gap-3 mb-3">
-                      <span className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: "linear-gradient(135deg, #fff0f5, #fce4ec)", color: pk }}>
-                        {r.author?.[0] ?? "익"}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-sm font-bold" style={{ color: sb }}>{r.author}</div>
-                        <div className="flex items-center gap-1 mt-0.5">
-                          {Array.from({ length: 5 }).map((_, j) => <span key={j} style={{ color: gd }}>{I.star("w-3 h-3")}</span>)}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-sm whitespace-pre-wrap break-words line-clamp-5" style={{ color: sb, lineHeight: 1.75 }}>{r.content}</p>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="text-center mt-10">
-                <a href="/reviews" className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold border-2 transition-all hover:shadow-lg hover:shadow-pink-100/50"
-                  style={{ borderColor: `${pk}30`, color: pk, background: "white" }}>
-                  {hasMore ? `후기 더 보기 (${items!.length})` : "전체 후기 보기"}
-                  {I.arrowR("w-4 h-4")}
-                </a>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 reveal">
+          {promises.map((p, i) => (
+            <div key={i} className="group bg-white rounded-2xl p-7 border border-pink-50 hover:shadow-xl hover:shadow-pink-100/30 hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: `${pk}10`, color: pk }}>
+                {p.icon("w-6 h-6")}
               </div>
-            </>
-          )}
+              <h3 className="text-base font-bold mb-2.5" style={{ color: sb }}>{p.t}</h3>
+              <p className="text-sm" style={{ color: mt, lineHeight: 1.7 }}>{p.d}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -757,7 +750,7 @@ export default function Home() {
       <ProcessSection />
       <PricingSection />
       <ConsultSection />
-      <ReviewBoard />
+      <PromiseSection />
       <FAQSection />
       <ContactSection />
       <Footer />
