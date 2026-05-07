@@ -18,7 +18,8 @@ function useReveal() {
   }, []);
 }
 
-const KAKAO = "https://open.kakao.com/o/sAnvRami";
+const KAKAO_ID = "inyeon_";
+const INSTAGRAM = "https://www.instagram.com/inyeon_lab?igsh=cHphNHZnaDV1MGpr";
 const pk = "#d4567a";
 const gd = "#c9956b";
 const mt = "#666";
@@ -52,7 +53,7 @@ function EventBanner() {
     <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 px-4" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
         <span className="text-white text-xs sm:text-sm font-bold flex flex-col sm:flex-row sm:gap-2 items-center">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 매칭 1회 무료 <span className="text-white/70 text-[0.65rem] sm:text-xs font-medium">대기업·공무원·교사 등 다양한 직업 회원 다수</span></span>
-        <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
+        <a href="#contact" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
         <button onClick={() => setShow(false)} className="absolute right-3 sm:right-5 text-white/70 hover:text-white transition-colors">{I.x("w-4 h-4")}</button>
       </div>
     </div>
@@ -74,7 +75,7 @@ function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-semibold hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#444" }}>{l.l}</a>)}
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+          <a href="#contact" onClick={trackLead} className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
       </div>
@@ -82,7 +83,7 @@ function Navbar() {
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-pink-50">
           <div className="px-5 py-5 space-y-1">
             {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-3 px-4 rounded-xl hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={() => { trackLead(); setOpen(false); }} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+            <a href="#contact" onClick={() => { trackLead(); setOpen(false); }} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
           </div>
         </div>
       )}
@@ -119,7 +120,7 @@ function HeroSection() {
           </p>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+            <a href="#contact" onClick={trackLead} className="group inline-flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/40 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
               무료 상담 시작하기 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
             </a>
             <a href="#about" className="group inline-flex items-center gap-2 text-sm font-medium px-6 py-4 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-pink-200 hover:shadow-md transition-all" style={{ color: sb }}>
@@ -340,7 +341,7 @@ function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
           {/* 남성 */}
@@ -358,7 +359,7 @@ function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
           {/* 무제한 */}
@@ -378,7 +379,7 @@ function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>무제한 상담</a>
+            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>무제한 상담</a>
           </div>
         </div>
       </div>
@@ -731,6 +732,47 @@ function InquiryForm() {
 }
 
 /* ═══ CONTACT ═══ */
+function KakaoIDCard() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    trackLead();
+    try {
+      await navigator.clipboard.writeText(KAKAO_ID);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // 클립보드 API 실패 시에도 시각 피드백
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="group block w-full rounded-3xl bg-white p-7 sm:p-8 shadow-2xl shadow-pink-500/20 hover:shadow-pink-500/30 hover:-translate-y-0.5 transition-all"
+      aria-label="카카오톡 ID 복사하기"
+    >
+      <div className="text-[0.6rem] font-bold tracking-widest uppercase mb-3" style={{ color: pk }}>
+        카카오톡으로 문의 주세요
+      </div>
+      <div className="flex items-center justify-center gap-3 mb-3">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl flex-shrink-0" style={{ background: "#FEE500" }}>
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#3C1E1E">
+            <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z" />
+          </svg>
+        </span>
+        <span className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: sb, fontFamily: "'Nunito', sans-serif" }}>
+          {KAKAO_ID}
+        </span>
+      </div>
+      <div className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-1.5 rounded-full transition-colors" style={{ background: copied ? "#22c55e" : `${pk}10`, color: copied ? "white" : pk }}>
+        {copied ? (<>{I.check("w-3.5 h-3.5")} 복사 완료!</>) : (<>탭하면 ID가 복사됩니다</>)}
+      </div>
+    </button>
+  );
+}
+
 function ContactSection() {
   return (
     <section id="contact" className="relative py-24 sm:py-32 lg:py-40 overflow-hidden" style={{ background: "linear-gradient(160deg, #1a1a1f, #2a1520)" }}>
@@ -747,35 +789,24 @@ function ContactSection() {
         </h2>
         <p className="text-sm mb-12 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
 
-        {/* QR 카드 (메인 진입) */}
-        <div className="max-w-xs mx-auto mb-6 reveal">
-          <div className="rounded-3xl bg-white p-6 shadow-2xl shadow-pink-500/10">
-            <div className="text-[0.6rem] font-bold tracking-widest uppercase text-center mb-3" style={{ color: pk }}>
-              카카오톡 오픈채팅
-            </div>
-            <div className="aspect-square w-full rounded-2xl overflow-hidden bg-white">
-              <Image
-                src="/qr.jpg"
-                alt="카카오톡 오픈채팅 QR 코드"
-                width={400}
-                height={400}
-                className="w-full h-full object-contain"
-                priority={false}
-              />
-            </div>
-            <p className="text-xs font-medium text-center mt-3" style={{ color: sb }}>
-              QR을 스캔하여 입장하세요
-            </p>
-          </div>
+        {/* 메인: 카톡 ID 카드 */}
+        <div className="max-w-sm mx-auto mb-6 reveal">
+          <KakaoIDCard />
         </div>
 
-        {/* 보조: 모바일·QR 안 되는 환경 */}
+        {/* 보조: 인스타그램, 전화 */}
         <div className="max-w-sm mx-auto mb-10 space-y-3 reveal">
-          <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
-            <span className="text-white/70">{I.chat("w-5 h-5 flex-shrink-0")}</span>
+          <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="rounded-2xl py-4 px-6 flex items-center gap-4 hover:bg-white/10 transition-colors" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}>
+            <span className="text-white/70">
+              <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+              </svg>
+            </span>
             <div className="text-left">
-              <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">모바일에서</div>
-              <div className="text-sm text-white/90 font-medium">탭하여 바로 입장하기</div>
+              <div className="text-[0.55rem] text-white/60 uppercase tracking-widest font-bold">인스타그램</div>
+              <div className="text-sm text-white/90 font-medium">@inyeon_lab</div>
             </div>
             <span className="ml-auto text-white/50">{I.arrowR("w-4 h-4")}</span>
           </a>
@@ -789,13 +820,9 @@ function ContactSection() {
           </a>
         </div>
 
-        <div className="max-w-sm mx-auto mb-10 reveal">
+        <div className="max-w-sm mx-auto reveal">
           <InquiryForm />
         </div>
-
-        <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead} className="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-500/20 hover:shadow-2xl transition-all reveal" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-          지금 상담 시작하기 {I.arrowR("w-4 h-4")}
-        </a>
       </div>
     </section>
   );
@@ -831,7 +858,7 @@ function Footer() {
 /* ═══ KAKAO FLOAT ═══ */
 function KakaoButton() {
   return (
-    <a href={KAKAO} target="_blank" rel="noopener noreferrer" onClick={trackLead}
+    <a href="#contact" onClick={trackLead}
       className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90] w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-yellow-400/25 hover:scale-110 hover:shadow-2xl transition-all duration-300"
       style={{ background: "#FEE500" }} aria-label="카카오톡 상담">
       <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#3C1E1E">
