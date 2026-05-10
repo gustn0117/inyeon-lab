@@ -575,9 +575,9 @@ function VideoSection() {
             <span className="text-xs font-bold" style={{ color: pk }}>Introduction</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            인연연구소를 <span className="text-gradient">영상으로</span> 만나보세요
+            <span className="text-gradient">나는솔로 출연자</span>도 하는 소개팅
           </h2>
-          <p className="text-sm mt-3" style={{ color: sb }}>한 번에 알 수 있는 인연연구소의 모든 것</p>
+          <p className="text-sm mt-3" style={{ color: sb }}>지금 영상으로 만나보세요</p>
         </div>
 
         <div className="reveal flex justify-center">
