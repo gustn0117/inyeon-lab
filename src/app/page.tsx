@@ -825,7 +825,11 @@ function ContactSection() {
         <h2 className="reveal text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
           당신의 인연,<br />여기서 시작됩니다
         </h2>
-        <p className="text-sm mb-12 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
+        <p className="text-sm mb-3 text-white/60 reveal">무료 상담으로 부담 없이 시작해 보세요.</p>
+        <div className="inline-flex items-center gap-2 mb-10 px-4 py-1.5 rounded-full reveal" style={{ background: "rgba(212,86,122,0.15)", border: "1px solid rgba(212,86,122,0.25)" }}>
+          <span style={{ color: "#ffb3c8" }}>{I.clock("w-3.5 h-3.5")}</span>
+          <span className="text-xs font-bold" style={{ color: "#ffb3c8" }}>365일 연중무휴 · 밤 12시까지 상담</span>
+        </div>
 
         {/* 메인: 카톡 ID 카드 */}
         <div className="max-w-sm mx-auto mb-6 reveal">
