@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import ChatWidget from "@/components/ChatWidget";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -898,18 +899,6 @@ function Footer() {
 }
 
 /* ═══ KAKAO FLOAT ═══ */
-function KakaoButton() {
-  return (
-    <a href="#contact" onClick={trackLead}
-      className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90] w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-yellow-400/25 hover:scale-110 hover:shadow-2xl transition-all duration-300"
-      style={{ background: "#FEE500" }} aria-label="카카오톡 상담">
-      <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#3C1E1E">
-        <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z"/>
-      </svg>
-    </a>
-  );
-}
-
 /* ═══ POPUP ═══ */
 function Popup() {
   const [show, setShow] = useState(false);
@@ -959,7 +948,7 @@ export default function Home() {
       <FAQSection />
       <ContactSection />
       <Footer />
-      <KakaoButton />
+      <ChatWidget />
     </main>
   );
 }
