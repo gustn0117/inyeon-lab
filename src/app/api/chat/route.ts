@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { verifyAdminPw } from "@/lib/adminPw";
 
 const SUPABASE_URL = "https://api.hsweb.pics";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE2NDE3NjkyMDAsImV4cCI6MTc5OTUzNTYwMH0.xTNteRFphY3F9W2PPWOwCQ9PDXD05ySRqkJu5d4Cej0";
-const ADMIN_PW = "1234";
 
 async function supa(path: string, opts: RequestInit = {}) {
   return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
   const pw = sp.get("pw");
   const session = sp.get("session");
   const since = sp.get("since") ?? "0";
-  const isAdmin = pw === ADMIN_PW;
+  const isAdmin = await verifyAdminPw(pw);
 
   // 어드민 - 세션 목록
   if (isAdmin && !session) {
@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
     if (content.length > 1000) return NextResponse.json({ error: "too_long" }, { status: 400 });
     if (cjkCount(content) >= 5) return NextResponse.json({ ok: true }); // silent drop
 
-    const isAdmin = body.pw === ADMIN_PW;
+    const isAdmin = await verifyAdminPw(body.pw);
     const sender = isAdmin ? "admin" : "visitor";
 
     // 방문자 메시지인 경우, 저장 전에 visitor 메시지 카운트 확인 (첫 메시지 여부)
@@ -187,7 +187,7 @@ export async function POST(req: NextRequest) {
 // DELETE: 어드민이 세션 삭제
 export async function DELETE(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
-  if (sp.get("pw") !== ADMIN_PW) return NextResponse.json({ error: "권한이 없습니다." }, { status: 401 });
+  if (!(await verifyAdminPw(sp.get("pw")))) return NextResponse.json({ error: "권한이 없습니다." }, { status: 401 });
   const session = sp.get("session");
   if (!session || !isUuid(session)) return NextResponse.json({ error: "session_invalid" }, { status: 400 });
 
