@@ -205,7 +205,7 @@ export default function ChatWidget() {
                 인연연구소 상담
                 <span className="text-[10px] font-medium bg-white/20 px-1.5 py-px rounded">ONLINE</span>
               </div>
-              <div className="text-[10px] text-white/85">365일 · 밤 12시까지 답변</div>
+              <div className="text-[10px] text-white/85">실시간 채팅 상담</div>
             </div>
             <button
               type="button"
