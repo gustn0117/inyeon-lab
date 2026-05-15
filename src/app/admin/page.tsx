@@ -309,7 +309,12 @@ export default function AdminPage() {
                       value={chatInput}
                       maxLength={1000}
                       onChange={e => setChatInput(e.target.value)}
-                      onKeyDown={e => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), sendChat())}
+                      onKeyDown={e => {
+                        if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing && e.keyCode !== 229) {
+                          e.preventDefault();
+                          sendChat();
+                        }
+                      }}
                       className="flex-1 rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none"
                     />
                     <button onClick={sendChat} disabled={!chatInput.trim() || chatSending}

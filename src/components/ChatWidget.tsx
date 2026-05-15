@@ -237,7 +237,7 @@ export default function ChatWidget() {
                 value={draftName}
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
-                onKeyDown={e => e.key === "Enter" && startSession()}
+                onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
                 className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3"
               />
               <button
@@ -315,7 +315,8 @@ export default function ChatWidget() {
                     rows={1}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => {
-                      if (e.key === "Enter" && !e.shiftKey) {
+                      // 한글 IME 조합 중에는 Enter 무시 (조합 완료 후 한 박자 늦게 전송되는 문제 방지)
+                      if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing && e.keyCode !== 229) {
                         e.preventDefault();
                         send();
                       }
