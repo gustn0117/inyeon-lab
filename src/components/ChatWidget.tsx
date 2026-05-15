@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-type Msg = { id: number; sender: "visitor" | "admin"; content: string; created_at: string };
+type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string };
 
 const PINK = "#d4567a";
 const STORAGE_KEY = "inyeon_chat";
@@ -46,6 +46,7 @@ export default function ChatWidget() {
         lastIdRef.current = newMsgs[newMsgs.length - 1].id;
         setMsgs(prev => [...prev, ...newMsgs]);
         if (!open) {
+          // 시스템/방문자 본인 메시지는 unread 제외, 관리자 답변만 카운트
           const adminNew = newMsgs.filter(m => m.sender === "admin").length;
           if (adminNew) setUnread(u => u + adminNew);
         }
@@ -165,22 +166,34 @@ export default function ChatWidget() {
               {/* 메시지 영역 */}
               <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50/50">
                 <div className="text-center text-[11px] text-gray-400 py-2">
-                  {name}님, 환영합니다. 상담사가 곧 답변드릴게요.
+                  {name}님, 환영합니다.
                 </div>
-                {msgs.map(m => (
-                  <div key={m.id} className={`flex ${m.sender === "visitor" ? "justify-end" : "justify-start"}`}>
-                    <div
-                      className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap break-words"
-                      style={
-                        m.sender === "visitor"
-                          ? { background: PINK, color: "white", borderBottomRightRadius: "6px" }
-                          : { background: "white", color: "#333", border: "1px solid #f3d6e0", borderBottomLeftRadius: "6px" }
-                      }
-                    >
-                      {m.content}
+                {msgs.map(m => {
+                  if (m.sender === "system") {
+                    return (
+                      <div key={m.id} className="flex justify-center px-2">
+                        <div className="max-w-[90%] rounded-xl px-3.5 py-2.5 text-[12px] leading-relaxed whitespace-pre-wrap break-words text-center"
+                          style={{ background: "#f3f4f6", color: "#666" }}>
+                          {m.content}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div key={m.id} className={`flex ${m.sender === "visitor" ? "justify-end" : "justify-start"}`}>
+                      <div
+                        className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap break-words"
+                        style={
+                          m.sender === "visitor"
+                            ? { background: PINK, color: "white", borderBottomRightRadius: "6px" }
+                            : { background: "white", color: "#333", border: "1px solid #f3d6e0", borderBottomLeftRadius: "6px" }
+                        }
+                      >
+                        {m.content}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* 입력 영역 */}

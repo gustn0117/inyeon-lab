@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 type Inquiry = { id: number; name: string; phone: string; created_at: string };
 type Review = { id: number; author: string; content: string };
 type Session = { id: string; visitor_name: string; created_at: string; last_visitor_at: string; last_admin_at: string | null; unread_admin: number; unread_visitor: number };
-type Msg = { id: number; sender: "visitor" | "admin"; content: string; created_at: string };
+type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string };
 type Tab = "inquiries" | "reviews" | "chat";
 
 const PINK = "#d4567a";
@@ -270,23 +270,36 @@ export default function AdminPage() {
                   <div ref={chatScrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50/50">
                     {chatMsgs.length === 0 ? (
                       <p className="text-xs text-gray-400 text-center py-8">메시지가 없습니다.</p>
-                    ) : chatMsgs.map(m => (
-                      <div key={m.id} className={`flex ${m.sender === "admin" ? "justify-end" : "justify-start"}`}>
-                        <div
-                          className="max-w-[75%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap break-words"
-                          style={
-                            m.sender === "admin"
-                              ? { background: PINK, color: "white", borderBottomRightRadius: "6px" }
-                              : { background: "white", color: "#333", border: "1px solid #f3d6e0", borderBottomLeftRadius: "6px" }
-                          }
-                        >
-                          {m.content}
-                          <div className="text-[9px] opacity-60 mt-1">
-                            {new Date(m.created_at).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })}
+                    ) : chatMsgs.map(m => {
+                      if (m.sender === "system") {
+                        return (
+                          <div key={m.id} className="flex justify-center px-2">
+                            <div className="max-w-[90%] rounded-xl px-3.5 py-2.5 text-[12px] leading-relaxed whitespace-pre-wrap break-words text-center"
+                              style={{ background: "#f3f4f6", color: "#666" }}>
+                              <div className="text-[9px] font-bold mb-1 opacity-60">자동 안내</div>
+                              {m.content}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div key={m.id} className={`flex ${m.sender === "admin" ? "justify-end" : "justify-start"}`}>
+                          <div
+                            className="max-w-[75%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap break-words"
+                            style={
+                              m.sender === "admin"
+                                ? { background: PINK, color: "white", borderBottomRightRadius: "6px" }
+                                : { background: "white", color: "#333", border: "1px solid #f3d6e0", borderBottomLeftRadius: "6px" }
+                            }
+                          >
+                            {m.content}
+                            <div className="text-[9px] opacity-60 mt-1">
+                              {new Date(m.created_at).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   <div className="border-t border-gray-100 p-3 flex gap-2 flex-shrink-0">

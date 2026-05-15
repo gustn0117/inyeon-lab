@@ -20,6 +20,17 @@ const CJK_RE = /[一-鿿぀-ヿ]/g;
 const cjkCount = (s: string) => (s.match(CJK_RE) ?? []).length;
 const isUuid = (v: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 
+const WELCOME_MSG = "문의주시면 매칭전문사가 24시간 내에 순차적으로 답변 드립니다. 따로 답변 알림이 가진 않으니, 카카오톡 아이디인 inyeon_으로 문의주시면 보다 빠르게 답변 받으실 수 있습니다.\n\n어떤 점이 궁금하실까요?";
+const RECEIVED_MSG = "채팅이 상담사에게 전달되었습니다.\n빠르게 안내드리도록 하겠습니다.\n폭언, 욕설 사용 시 채팅이 제한됩니다.";
+
+async function insertSystemMsg(session: string, content: string) {
+  await supa("chat_messages", {
+    method: "POST",
+    headers: { Prefer: "return=minimal", "Content-Profile": "inyeon_lab" },
+    body: JSON.stringify({ session_id: session, sender: "system", content }),
+  });
+}
+
 // GET
 //   ?session=<uuid>&since=<id>           : 방문자/공통 - 해당 세션 메시지 폴링 (since 이후만)
 //   ?pw=1234                              : 어드민 - 모든 세션 목록
@@ -97,6 +108,8 @@ export async function POST(req: NextRequest) {
     if (!r.ok) return NextResponse.json({ error: "create_failed" }, { status: 500 });
     const rows = await r.json();
     const session = Array.isArray(rows) ? rows[0] : rows;
+    // 환영 자동 메시지
+    if (session?.id) await insertSystemMsg(session.id, WELCOME_MSG);
     return NextResponse.json({ session_id: session?.id, visitor_name: session?.visitor_name });
   }
 
@@ -113,6 +126,19 @@ export async function POST(req: NextRequest) {
     const isAdmin = body.pw === ADMIN_PW;
     const sender = isAdmin ? "admin" : "visitor";
 
+    // 방문자 메시지인 경우, 저장 전에 visitor 메시지 카운트 확인 (첫 메시지 여부)
+    let isFirstVisitorMsg = false;
+    if (!isAdmin) {
+      const cnt = await supa(`chat_messages?session_id=eq.${session}&sender=eq.visitor&select=id&limit=1`, {
+        headers: { "Accept-Profile": "inyeon_lab" },
+        cache: "no-store",
+      });
+      if (cnt.ok) {
+        const arr = await cnt.json();
+        isFirstVisitorMsg = Array.isArray(arr) && arr.length === 0;
+      }
+    }
+
     // 메시지 저장
     const ins = await supa("chat_messages", {
       method: "POST",
@@ -120,6 +146,11 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({ session_id: session, sender, content }),
     });
     if (!ins.ok) return NextResponse.json({ error: "send_failed" }, { status: 500 });
+
+    // 방문자 첫 메시지 → 안내 자동 메시지
+    if (isFirstVisitorMsg) {
+      await insertSystemMsg(session, RECEIVED_MSG);
+    }
 
     // 세션 메타 갱신: 마지막 시각, 상대측 unread + 1
     const patch: Record<string, unknown> = isAdmin
