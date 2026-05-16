@@ -561,44 +561,6 @@ function SafetyFlowSection() {
   );
 }
 
-/* ═══ VIDEO (소개 영상) ═══ */
-function VideoSection() {
-  return (
-    <section className="py-20 sm:py-28 lg:py-32 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #fff8fa, #fff0f5)" }}>
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[180px]" style={{ background: pk, opacity: 0.15 }} />
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8">
-        <div className="text-center mb-12 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}10`, border: `1px solid ${pk}20` }}>
-            <span style={{ color: pk }}>{I.sparkle("w-3.5 h-3.5")}</span>
-            <span className="text-xs font-bold" style={{ color: pk }}>Introduction</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            <span className="text-gradient">나는솔로 출연자</span>도 하는 소개팅
-          </h2>
-          <p className="text-sm mt-3" style={{ color: sb }}>지금 영상으로 만나보세요</p>
-        </div>
-
-        <div className="reveal flex justify-center">
-          <div className="relative w-full max-w-[340px] sm:max-w-[380px] rounded-3xl overflow-hidden shadow-2xl shadow-pink-500/20 bg-black">
-            <div className="aspect-[9/16]">
-              <video
-                src="/intro.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ═══ PROMISE (인연연구소의 약속) ═══ */
 function PromiseSection() {
   const promises = [
@@ -937,7 +899,6 @@ export default function Home() {
       <HeroSection />
       <TrustBar />
       <AboutSection />
-      <VideoSection />
       <MemberJobsSection />
       <FeaturesSection />
       <ProcessSection />
