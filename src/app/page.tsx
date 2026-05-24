@@ -105,9 +105,27 @@ function HeroSection() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 w-full text-center">
         <div className="max-w-2xl mx-auto pt-24 sm:pt-0">
-          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-pink-100/50">
+          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-pink-100/50">
             <span style={{ color: gd }}>{I.sparkle("w-4 h-4")}</span>
             <span className="text-xs font-bold tracking-wider" style={{ color: gd }}>PREMIUM MATCHING</span>
+          </div>
+
+          {/* USP 강조 카드 2개 */}
+          <div className="hero-anim hero-d1 flex flex-col sm:flex-row items-stretch justify-center gap-2.5 sm:gap-3 mb-7 max-w-xl mx-auto">
+            <div className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-white/85 backdrop-blur-sm border-2 shadow-md" style={{ borderColor: `${pk}30` }}>
+              <span style={{ color: pk }}>{I.currency("w-5 h-5 flex-shrink-0")}</span>
+              <span className="text-[13px] sm:text-sm font-extrabold" style={{ color: sb }}>
+                가입비 0원<span className="mx-1.5" style={{ color: `${pk}50` }}>·</span>
+                <span style={{ color: pk }}>매칭 후 결제</span>
+              </span>
+            </div>
+            <div className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-white/85 backdrop-blur-sm border-2 shadow-md" style={{ borderColor: `${pk}30` }}>
+              <span style={{ color: pk }}>{I.sparkle("w-5 h-5 flex-shrink-0")}</span>
+              <span className="text-[13px] sm:text-sm font-extrabold" style={{ color: sb }}>
+                전문 매칭사<span className="mx-1.5" style={{ color: `${pk}50` }}>·</span>
+                <span style={{ color: pk }}>이상형 1:1 매칭</span>
+              </span>
+            </div>
           </div>
 
           <h1 className="hero-anim hero-d2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
@@ -115,9 +133,9 @@ function HeroSection() {
           </h1>
 
           <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-10" style={{ color: sb }}>
-            거리, 나이, 종교, 직업까지 <strong style={{ color: pk }}>맞춤 매칭</strong>.<br />
-            매칭이 되어야 비용이 드는 <strong style={{ color: pk }}>후불제</strong>.<br />
-            서류검토로 신원이 보장된 사람만.
+            전문 매칭사가 거리·나이·종교·직업·이상형까지 직접 분석.<br />
+            <strong style={{ color: pk }}>가입비 없이</strong> 매칭이 성사되면 결제하는 <strong style={{ color: pk }}>100% 후불제</strong>로<br />
+            만족도 높은 만남을 보장합니다.
           </p>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
