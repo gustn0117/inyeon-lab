@@ -958,6 +958,7 @@ export default function Home() {
       <EventBanner />
       <Navbar />
       <HeroSection />
+      <IdealMatchSection />
       <TrustBar />
       <AboutSection />
       <MemberJobsSection />
@@ -965,7 +966,6 @@ export default function Home() {
       <ProcessSection />
       <PricingSection />
       <ConsultSection />
-      <IdealMatchSection />
       <PromiseSection />
       <SafetyFlowSection />
       <FAQSection />
