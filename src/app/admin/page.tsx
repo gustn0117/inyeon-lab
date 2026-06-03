@@ -5,7 +5,12 @@ type Inquiry = { id: number; name: string; phone: string; created_at: string };
 type Review = { id: number; author: string; content: string };
 type Session = { id: string; visitor_name: string; created_at: string; last_visitor_at: string; last_admin_at: string | null; unread_admin: number; unread_visitor: number };
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string };
-type Tab = "inquiries" | "reviews" | "chat";
+type IdealMatch = {
+  id: number; gender: string | null; age_range: string | null; region: string | null;
+  ideal_age: string | null; ideal_region: string | null; ideal_style: string | null;
+  phone: string; created_at: string;
+};
+type Tab = "inquiries" | "reviews" | "chat" | "ideal";
 
 const PINK = "#d4567a";
 
@@ -23,6 +28,8 @@ export default function AdminPage() {
   const chatScrollRef = useRef<HTMLDivElement>(null);
   const [chatInput, setChatInput] = useState("");
   const [chatSending, setChatSending] = useState(false);
+
+  const [ideals, setIdeals] = useState<IdealMatch[]>([]);
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -54,6 +61,17 @@ export default function AdminPage() {
     const res = await fetch(`/api/chat?pw=${encodeURIComponent(pw)}`, { cache: "no-store" });
     if (res.ok) setSessions(await res.json());
   };
+  const fetchIdeals = async () => {
+    const res = await fetch(`/api/ideal-match?pw=${encodeURIComponent(pw)}`, { cache: "no-store" });
+    if (res.ok) setIdeals(await res.json());
+  };
+  const removeIdeal = async (id: number) => {
+    if (!confirm("이 이상형 진단을 삭제할까요?")) return;
+    setBusy(true);
+    await fetch(`/api/ideal-match?pw=${encodeURIComponent(pw)}&id=${id}`, { method: "DELETE" });
+    await fetchIdeals();
+    setBusy(false);
+  };
 
   const login = async () => {
     setLoading(true);
@@ -62,6 +80,7 @@ export default function AdminPage() {
     if (ok) {
       await fetchReviews();
       await fetchSessions();
+      await fetchIdeals();
       setAuthed(true);
     } else {
       setError("비밀번호가 틀렸습니다.");
@@ -262,6 +281,11 @@ export default function AdminPage() {
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "reviews" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "reviews" ? { background: PINK } : {}}>
             후기 ({reviews.length})
+          </button>
+          <button onClick={() => setTab("ideal")}
+            className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "ideal" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
+            style={tab === "ideal" ? { background: PINK } : {}}>
+            이상형 ({ideals.length})
           </button>
         </div>
 
@@ -467,6 +491,53 @@ export default function AdminPage() {
                     <p className="text-sm whitespace-pre-wrap break-words text-gray-600 leading-relaxed">{r.content}</p>
                   </div>
                 ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* IDEAL MATCHES */}
+        {tab === "ideal" && (
+          <>
+            <div className="flex items-center justify-end gap-3 mb-4">
+              <button onClick={fetchIdeals} disabled={busy}
+                className="text-sm font-medium hover:underline disabled:opacity-50" style={{ color: PINK }}>
+                새로고침
+              </button>
+            </div>
+            {ideals.length === 0 ? (
+              <div className="bg-white rounded-2xl shadow-sm p-8 text-center text-gray-400 text-sm">아직 진단 결과가 없습니다.</div>
+            ) : (
+              <div className="space-y-3">
+                {ideals.map(d => {
+                  const myInfo = [d.gender, d.age_range, d.region].filter(Boolean).join(" · ") || "-";
+                  const idealInfo = [d.ideal_age, d.ideal_region, d.ideal_style].filter(Boolean).join(" · ") || "-";
+                  return (
+                    <div key={d.id} className="bg-white rounded-2xl shadow-sm p-5">
+                      <div className="flex items-center justify-between mb-3 gap-3">
+                        <a href={`tel:${d.phone}`} className="text-base font-extrabold truncate" style={{ color: PINK }}>{d.phone}</a>
+                        <div className="flex items-center gap-3 flex-shrink-0">
+                          <span className="text-[11px] text-gray-400">
+                            {new Date(d.created_at).toLocaleString("ko-KR", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" })}
+                          </span>
+                          <button onClick={() => removeIdeal(d.id)} disabled={busy}
+                            className="text-xs text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50"
+                            aria-label="삭제">삭제</button>
+                        </div>
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-2 text-xs">
+                        <div className="rounded-xl px-3 py-2.5 bg-gray-50">
+                          <div className="text-[10px] font-bold text-gray-400 mb-1">본인</div>
+                          <div className="text-gray-700 font-medium">{myInfo}</div>
+                        </div>
+                        <div className="rounded-xl px-3 py-2.5" style={{ background: `${PINK}08` }}>
+                          <div className="text-[10px] font-bold mb-1" style={{ color: PINK }}>이상형</div>
+                          <div className="text-gray-700 font-medium">{idealInfo}</div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </>

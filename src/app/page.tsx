@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import ChatWidget from "@/components/ChatWidget";
+import IdealMatchModal from "@/components/IdealMatchModal";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -579,6 +580,49 @@ function SafetyFlowSection() {
   );
 }
 
+/* ═══ IDEAL MATCH (이상형 진단 진입) ═══ */
+function IdealMatchSection({ onOpen }: { onOpen: () => void }) {
+  return (
+    <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl" style={{ background: "white" }} />
+        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl" style={{ background: "#ffb3c8" }} />
+      </div>
+
+      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center text-white reveal">
+        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 bg-white/15 border border-white/25">
+          <span>{I.sparkle("w-3.5 h-3.5")}</span>
+          <span className="text-xs font-bold tracking-wider">IDEAL MATCH</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-3" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+          내 이상형과 매칭될 수 있을까?
+        </h2>
+        <p className="text-sm sm:text-base text-white/90 mb-3 leading-relaxed">
+          1분이면 끝나는 빠른 진단으로 매칭 가능성을 확인해 보세요.
+        </p>
+        <p className="text-xs sm:text-sm text-white/80 mb-8 leading-relaxed">
+          <strong className="text-white">여성 회원 1회 무료</strong> · 남성 회원도 저렴한 가격으로 소개 가능
+        </p>
+
+        <button
+          onClick={onOpen}
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-extrabold transition-all hover:scale-105 hover:shadow-2xl shadow-xl"
+          style={{ background: "white", color: pk }}
+        >
+          이상형 매칭 알아보기
+          {I.arrowR("w-4 h-4")}
+        </button>
+
+        <div className="flex flex-wrap justify-center gap-3 mt-7 text-[11px] text-white/85">
+          <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />가입비 0원</span>
+          <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />매칭 후 결제</span>
+          <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />전문 매칭사 1:1</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══ PROMISE (인연연구소의 약속) ═══ */
 function PromiseSection() {
   const promises = [
@@ -909,6 +953,7 @@ function Popup() {
 
 export default function Home() {
   useReveal();
+  const [idealOpen, setIdealOpen] = useState(false);
   return (
     <main>
       <Popup />
@@ -922,12 +967,14 @@ export default function Home() {
       <ProcessSection />
       <PricingSection />
       <ConsultSection />
+      <IdealMatchSection onOpen={() => setIdealOpen(true)} />
       <PromiseSection />
       <SafetyFlowSection />
       <FAQSection />
       <ContactSection />
       <Footer />
       <ChatWidget />
+      <IdealMatchModal open={idealOpen} onClose={() => setIdealOpen(false)} />
     </main>
   );
 }
