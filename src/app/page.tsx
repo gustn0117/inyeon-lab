@@ -5,7 +5,7 @@ import BigStats from "@/components/BigStats";
 import BigQuote from "@/components/BigQuote";
 import BentoBenefits from "@/components/BentoBenefits";
 import PhotoStory from "@/components/PhotoStory";
-import { RainbowOrbs, ParticleField, BurstStar, RaysOfLight } from "@/components/PremiumDeco";
+import { RainbowOrbs, Sparkles, BurstStar } from "@/components/PremiumDeco";
 import {
   useReveal,
   EventBanner,
@@ -24,11 +24,7 @@ function PageNav() {
     { href: "/contact", t: "상담·문의", d: "카톡 ID inyeon_", n: "04", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
   ];
   return (
-    <section className="relative mesh-rainbow py-24 sm:py-32 lg:py-40 overflow-hidden">
-      <RaysOfLight />
-      <RainbowOrbs />
-      <ParticleField count={10} />
-
+    <section className="relative py-16 sm:py-20 lg:py-24">
       <div className="container-apple relative">
         <div className="text-center mb-16 sm:mb-20 reveal">
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
@@ -64,7 +60,21 @@ function PageNav() {
 export default function Home() {
   useReveal();
   return (
-    <main>
+    <main className="relative">
+      {/* 페이지 전역 fixed 캔버스 (배경 끊김 방지) */}
+      <div
+        className="fixed inset-0 -z-20 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: "linear-gradient(180deg, #fff8fb 0%, #fffafc 30%, #fff5f9 60%, #fef9fb 100%)"
+        }}
+      />
+      {/* 페이지 전역 fixed 데코 */}
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
+        <RainbowOrbs />
+        <Sparkles count={10} />
+      </div>
+
       <EventBanner />
       <Navbar />
       <HeroSection />

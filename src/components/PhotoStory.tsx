@@ -4,7 +4,7 @@ import Image from "next/image";
 /* ═══ PHOTO STORY — 잡지 화보 스타일 ═══ */
 export default function PhotoStory() {
   return (
-    <section className="bg-sec py-24 sm:py-32 lg:py-40">
+    <section className="relative py-16 sm:py-20 lg:py-24">
       <div className="container-apple">
         {/* 헤더 — 좌 카피 + 우 캡션 */}
         <div className="grid grid-cols-12 gap-y-6 lg:gap-x-10 items-end mb-12 sm:mb-16 reveal">

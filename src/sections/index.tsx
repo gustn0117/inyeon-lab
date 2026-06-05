@@ -761,20 +761,15 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH — 밝은 핑크 그라데이션 ═══ */
+/* ═══ IDEAL MATCH — glass card CTA (페이지 캔버스 위) ═══ */
 export function IdealMatchSection() {
   return (
-    <section className="bg-base py-16 sm:py-24 lg:py-28">
+    <section className="relative py-12 sm:py-16 lg:py-20">
       <div className="container-apple">
-        <a href="/ideal-match" className="group block rounded-3xl relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]"
-          style={{
-            background: "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)",
-            boxShadow: "0 30px 80px -20px rgba(236, 77, 126, 0.3)"
-          }}>
-          {/* 밝은 핑크 글로우 */}
+        <a href="/ideal-match" className="group block rounded-3xl relative overflow-hidden p-10 sm:p-14 lg:p-16 transition-all hover:scale-[1.005] bg-white/70 backdrop-blur-xl card-rainbow"
+          style={{ boxShadow: "0 25px 60px -15px rgba(236, 77, 126, 0.2)" }}>
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-50 anim-float-slow" style={{ background: "#ffb3c8" }} />
           <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#ff8da8", animationDelay: "2s" }} />
-          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-25 anim-float-slow" style={{ background: "#fb7185", animationDelay: "3s" }} />
 
           {/* 떠다니는 별 */}
           <span className="absolute top-10 right-20 anim-twinkle"><BurstStar size={20} /></span>

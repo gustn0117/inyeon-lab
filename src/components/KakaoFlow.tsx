@@ -16,7 +16,7 @@ const CONV: Msg[] = [
 
 export default function KakaoFlow() {
   return (
-    <section className="py-20 sm:py-28 lg:py-32 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #fff9f3 0%, #faeede 100%)" }}>
+    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-50">
         <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl" style={{ background: "#ffe0e8" }} />
         <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl" style={{ background: "#fff0d6" }} />

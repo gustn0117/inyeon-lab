@@ -1,16 +1,12 @@
 "use client";
-import { RainbowOrbs, Sparkles, BurstStar, NoiseTexture } from "@/components/PremiumDeco";
+import { BurstStar } from "@/components/PremiumDeco";
 
 type Props = { eyebrow?: string; title: React.ReactNode; sub?: string };
 
 export default function SubPageHero({ eyebrow, title, sub }: Props) {
   return (
-    <section className="relative mesh-rainbow pt-28 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={6} />
-      <NoiseTexture />
-
-      <div className="container-apple relative text-center">
+    <section className="relative pt-28 sm:pt-36 lg:pt-40 pb-8 sm:pb-12">
+      <div className="container-apple text-center">
         {eyebrow && (
           <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 rounded-full glass-card ring-glow">
             <BurstStar size={14} />

@@ -1,29 +1,24 @@
 "use client";
-/* ═══ 화려한 Apple 섹션 모음 — About/Pricing/Contact 페이지용 ═══ */
-import { RainbowOrbs, Sparkles, ParticleField, BurstStar, NoiseTexture, FloatingHearts } from "@/components/PremiumDeco";
-
-const ACCENT = "#ec4d7e";
+/* ═══ Apple 섹션 모음 — 페이지 전역 캔버스 위에 떠 있는 카드 모델 ═══ */
+import { BurstStar } from "@/components/PremiumDeco";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
   arrowR: (c = "w-4 h-4") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>,
   phone: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>,
-  heart: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-9.55C.5 6.5 4.5 3 8 3c2 0 3.5 1 4 2.5C12.5 4 14 3 16 3c3.5 0 7.5 3.5 5.5 8.45C19 16.65 12 21 12 21z" /></svg>,
 };
 
 const KAKAO_ID = "inyeon_";
 const INSTAGRAM = "https://www.instagram.com/inyeon_lab?igsh=cHphNHZnaDV1MGpr";
 
-const SHADOW = "0 25px 60px -15px rgba(236,77,126,0.25)";
-const PINK_BG = "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)";
+/* 공통 padding (대폭 축소) */
+const SECTION_PY = "py-16 sm:py-20 lg:py-24";
 
-/* ═══ ABOUT — 화려한 split (좌 카피 + 우 통계) ═══ */
+/* ═══ ABOUT — split (좌 카피 + 우 통계 4) ═══ */
 export function AppleAbout() {
   return (
-    <section className="relative bg-base py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={6} />
-      <div className="container-apple relative">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
@@ -56,7 +51,7 @@ export function AppleAbout() {
               { v: "48h", l: "평균 매칭", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
               { v: "100%", l: "신원 검증", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
             ].map((s, i) => (
-              <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white relative overflow-hidden">
+              <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white-solid relative overflow-hidden">
                 <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
                 <div className="relative">
                   <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.v}</div>
@@ -71,19 +66,17 @@ export function AppleAbout() {
   );
 }
 
-/* ═══ MEMBER JOBS — 화려한 카드 + 직업 배지 ═══ */
+/* ═══ MEMBER JOBS — 2 그룹 카드 ═══ */
 export function AppleMemberJobs() {
   const groups = [
     { label: "여성 회원", jobs: ["교사", "통역사", "간호사", "아나운서", "승무원", "공무원", "경리", "디자이너"], c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
     { label: "남성 회원", jobs: ["공기업", "공무원", "대기업", "교사", "엔지니어", "사업가", "스타트업", "회계사"], c: "linear-gradient(135deg, #ff6ba0, #d4567a)" },
   ];
   return (
-    <section className="relative mesh-sunset py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={5} />
-      <div className="container-apple relative">
-        <div className="text-center mb-14 sm:mb-16 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">ACTIVE MEMBERS</span>
           </div>
@@ -94,15 +87,13 @@ export function AppleMemberJobs() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 reveal">
           {groups.map((g, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative overflow-hidden">
+            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
               <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full blur-3xl opacity-30" style={{ background: g.c }} />
               <div className="relative">
                 <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ background: g.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: 700 }}>{g.label}</h3>
                 <div className="flex flex-wrap gap-2">
                   {g.jobs.map((j, k) => (
-                    <span key={k} className="px-4 py-2 rounded-full text-sm font-bold text-ink border-2" style={{ background: "white", borderImage: g.c + " 1", borderColor: "rgba(236,77,126,0.2)" }}>
-                      {j}
-                    </span>
+                    <span key={k} className="px-4 py-2 rounded-full text-sm font-bold text-ink bg-white border border-pink-100">{j}</span>
                   ))}
                 </div>
               </div>
@@ -117,7 +108,7 @@ export function AppleMemberJobs() {
   );
 }
 
-/* ═══ PROMISE — 6개 카드 각자 다른 핑크 그라데이션 ═══ */
+/* ═══ PROMISE — 6 카드 ═══ */
 export function ApplePromise() {
   const promises = [
     { n: "01", t: "아무나 받지 않습니다", d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
@@ -128,13 +119,10 @@ export function ApplePromise() {
     { n: "06", t: "정성스러운 관리", d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 함께합니다.", c: "linear-gradient(135deg, #ff8da8, #fb7185)" },
   ];
   return (
-    <section className="relative bg-base py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <FloatingHearts />
-      <Sparkles count={6} />
-      <div className="container-apple relative">
-        <div className="text-center mb-14 sm:mb-16 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">OUR PROMISE</span>
           </div>
@@ -145,7 +133,7 @@ export function ApplePromise() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal">
           {promises.map((p, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9 relative overflow-hidden">
+            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 sm:p-9 relative overflow-hidden">
               <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: p.c }} />
               <div className="relative">
                 <div className="num-huge text-3xl sm:text-4xl mb-3" style={{ background: p.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{p.n}</div>
@@ -160,7 +148,7 @@ export function ApplePromise() {
   );
 }
 
-/* ═══ SAFETY — 4단계 그라데이션 카드 ═══ */
+/* ═══ SAFETY — 4단계 ═══ */
 export function AppleSafety() {
   const steps = [
     { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
@@ -169,12 +157,10 @@ export function AppleSafety() {
     { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
   ];
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden" style={{ background: PINK_BG }}>
-      <RainbowOrbs />
-      <Sparkles count={5} />
-      <div className="container-apple relative">
-        <div className="mb-14 sm:mb-16 reveal text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="mb-12 reveal text-center">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">PRIVACY & SAFETY</span>
           </div>
@@ -186,7 +172,7 @@ export function AppleSafety() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 relative overflow-hidden">
+            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
               <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
               <div className="relative">
                 <div className="num-huge text-3xl mb-3" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.n}</div>
@@ -196,7 +182,7 @@ export function AppleSafety() {
             </div>
           ))}
         </div>
-        <div className="mt-12 sm:mt-14 max-w-2xl mx-auto text-center reveal bg-white/70 backdrop-blur rounded-2xl p-6 border border-line">
+        <div className="mt-10 max-w-2xl mx-auto text-center reveal bg-white/70 backdrop-blur rounded-2xl p-6 border border-line">
           <p className="text-base font-bold text-ink mb-2">개인정보보호법을 준수합니다.</p>
           <p className="text-sm text-ink-soft leading-relaxed font-medium">수집·이용·보관·파기 전 과정이 법적 기준을 충족하며, 매칭 외 목적으로 절대 사용되지 않습니다.</p>
         </div>
@@ -205,15 +191,13 @@ export function AppleSafety() {
   );
 }
 
-/* ═══ PRICING — 3 카드 (BEST 강조) ═══ */
+/* ═══ PRICING — 3 카드 ═══ */
 export function ApplePricing() {
   return (
-    <section className="relative bg-base py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={6} />
-      <div className="container-apple relative">
-        <div className="text-center mb-14 sm:mb-16 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">PRICING</span>
           </div>
@@ -224,12 +208,12 @@ export function ApplePricing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto reveal">
           {/* 여성 */}
-          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative overflow-hidden">
+          <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }} />
             <div className="relative">
               <div className="label-sm mb-4 text-rainbow">여성 회원</div>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="num-huge text-5xl text-ink" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>6만원</span>
+                <span className="num-huge text-5xl" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>6만원</span>
                 <span className="text-sm text-ink-soft font-bold">/회</span>
               </div>
               <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
@@ -243,7 +227,7 @@ export function ApplePricing() {
           </div>
 
           {/* 남성 */}
-          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative overflow-hidden">
+          <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: "linear-gradient(135deg, #ff6ba0, #d4567a)" }} />
             <div className="relative">
               <div className="label-sm mb-4 text-rainbow">남성 회원</div>
@@ -261,10 +245,11 @@ export function ApplePricing() {
             </div>
           </div>
 
-          {/* 무제한 (강조) */}
-          <div className="card-rainbow hover-magnetic relative overflow-hidden p-8 sm:p-10 text-ink" style={{ background: PINK_BG, boxShadow: SHADOW }}>
+          {/* 무제한 BEST */}
+          <div className="card-rainbow hover-magnetic relative overflow-hidden p-8 sm:p-10 text-ink bg-white/85 backdrop-blur-xl">
             <div className="absolute -top-3 right-6 text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-lg" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }}>BEST</div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-3xl opacity-50" style={{ background: "#ffb3c8" }} />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "#ffb3c8" }} />
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-50" style={{ background: "#ff8da8" }} />
             <div className="relative">
               <div className="label-sm mb-4 text-rainbow">UNLIMITED</div>
               <div className="mb-2">
@@ -285,7 +270,7 @@ export function ApplePricing() {
   );
 }
 
-/* ═══ PROCESS — 4단계 그라데이션 + 화살표 ═══ */
+/* ═══ PROCESS — 4단계 ═══ */
 export function AppleProcess() {
   const steps = [
     { n: "01", t: "상담 신청", d: "카카오톡 ID inyeon_ 으로 간편하게 신청하세요.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
@@ -294,12 +279,10 @@ export function AppleProcess() {
     { n: "04", t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
   ];
   return (
-    <section className="relative mesh-sunset py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={5} />
-      <div className="container-apple relative">
-        <div className="text-center mb-14 sm:mb-16 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">HOW IT WORKS</span>
           </div>
@@ -309,7 +292,7 @@ export function AppleProcess() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 relative overflow-hidden">
+            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
               <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
               <div className="relative">
                 <div className="num-huge text-3xl mb-3" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.n}</div>
@@ -324,7 +307,7 @@ export function AppleProcess() {
   );
 }
 
-/* ═══ FEATURES — 4 카드 그라데이션 ═══ */
+/* ═══ FEATURES — 4 카드 ═══ */
 export function AppleFeatures() {
   const features = [
     { t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생. 선불 부담 없이 안심하고 시작.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
@@ -333,12 +316,10 @@ export function AppleFeatures() {
     { t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
   ];
   return (
-    <section className="relative bg-base py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={6} />
-      <div className="container-apple relative">
-        <div className="text-center mb-14 sm:mb-16 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple">
+        <div className="text-center mb-12 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">WHY US</span>
           </div>
@@ -348,7 +329,7 @@ export function AppleFeatures() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {features.map((f, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9 relative overflow-hidden">
+            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 sm:p-9 relative overflow-hidden">
               <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: f.c }} />
               <div className="relative">
                 <div className="w-10 h-10 rounded-2xl mb-5 flex items-center justify-center text-white shadow-lg" style={{ background: f.c }}>
@@ -365,12 +346,12 @@ export function AppleFeatures() {
   );
 }
 
-/* ═══ CONSULT — 화려한 풀폭 CTA ═══ */
+/* ═══ CONSULT — glass card CTA (페이지 캔버스 위에 떠 있는) ═══ */
 export function AppleConsult() {
   return (
-    <section className="bg-base py-16 sm:py-24 lg:py-28">
+    <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink relative overflow-hidden" style={{ background: PINK_BG, boxShadow: SHADOW }}>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink relative overflow-hidden bg-white/70 backdrop-blur-xl" style={{ boxShadow: "0 25px 60px -15px rgba(236,77,126,0.18)" }}>
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-50" style={{ background: "#ffb3c8" }} />
           <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#ff8da8" }} />
           <span className="absolute top-8 right-8 anim-twinkle"><BurstStar size={20} /></span>
@@ -400,14 +381,14 @@ export function AppleConsult() {
   );
 }
 
-/* ═══ FAQ — 화려한 아코디언 ═══ */
+/* ═══ FAQ ═══ */
 import { useState } from "react";
 
 function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
   const [open, setOpen] = useState(false);
   const c = ["#ec4d7e", "#ff6ba0", "#fb7185", "#d4567a", "#ff8da8"][i % 5];
   return (
-    <div className="card-rainbow bg-white mb-3 sm:mb-4 overflow-hidden">
+    <div className="card-rainbow bg-white-solid mb-3 sm:mb-4 overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full p-5 sm:p-6 flex items-center justify-between text-left group">
         <span className="text-base sm:text-lg font-bold text-ink pr-6" style={{ fontWeight: 700 }}>{q}</span>
         <span className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-white shadow-md transition-all" style={{ background: c, transform: open ? "rotate(180deg)" : "none" }}>
@@ -430,12 +411,10 @@ export function AppleFAQ() {
     { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 절대 제3자에게 공유되지 않습니다." },
   ];
   return (
-    <section className="relative bg-base py-20 sm:py-28 lg:py-32 overflow-hidden">
-      <RainbowOrbs />
-      <Sparkles count={5} />
-      <div className="container-apple max-w-3xl relative">
-        <div className="text-center mb-12 sm:mb-14 reveal">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+    <section className={`relative ${SECTION_PY}`}>
+      <div className="container-apple max-w-3xl">
+        <div className="text-center mb-10 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">FAQ</span>
           </div>
@@ -451,12 +430,12 @@ export function AppleFAQ() {
   );
 }
 
-/* ═══ CONTACT — 화려한 풀폭 카톡 카드 ═══ */
+/* ═══ CONTACT — glass card 카톡 ═══ */
 export function AppleContact() {
   return (
-    <section className="bg-base py-16 sm:py-24 lg:py-28">
+    <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-16 lg:p-20 text-center text-ink relative overflow-hidden" style={{ background: PINK_BG, boxShadow: SHADOW }}>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 text-center text-ink relative overflow-hidden bg-white/70 backdrop-blur-xl" style={{ boxShadow: "0 25px 60px -15px rgba(236,77,126,0.18)" }}>
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-50" style={{ background: "#ffb3c8" }} />
           <div className="absolute -bottom-24 -left-20 w-80 h-80 rounded-full blur-3xl opacity-40" style={{ background: "#ff8da8" }} />
           <span className="absolute top-8 right-8 anim-twinkle"><BurstStar size={22} /></span>
@@ -489,7 +468,6 @@ export function AppleContact() {
               <p className="text-xs text-ink-soft font-medium">친구 추가 후 메시지를 보내주세요</p>
             </div>
 
-            {/* 보조 */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-md font-bold">
                 인스타그램 @inyeon_lab
