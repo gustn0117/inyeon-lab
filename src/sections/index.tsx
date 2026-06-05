@@ -127,86 +127,88 @@ export function Navbar() {
   );
 }
 
-/* ═══ HERO ═══ 화려한 풀 모드 (멀티컬러 메시 + 광선 + 파티클) */
+/* ═══ HERO ═══ 결혼 사진 풀스크린 배경 + 화려한 오버레이 */
 export function HeroSection() {
   return (
-    <section className="relative mesh-rainbow pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
-      <RichMeshBg />
+    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+      {/* 풀스크린 결혼 사진 배경 */}
+      <div className="absolute inset-0 z-0">
+        <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" />
+        {/* 어두운 그라데이션 오버레이 (텍스트 가독성) */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,10,15,0.55) 0%, rgba(40,20,30,0.45) 40%, rgba(20,10,15,0.85) 100%)" }} />
+        {/* 멀티 컬러 그라데이션 오버레이 (화려함) */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(at 20% 20%, rgba(236,77,126,0.35) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(168,85,247,0.3) 0px, transparent 55%), radial-gradient(at 50% 100%, rgba(245,158,11,0.25) 0px, transparent 50%)" }} />
+      </div>
+
+      {/* 데코 (사진 위 떠다님) */}
       <RaysOfLight />
       <RainbowOrbs />
       <ParticleField count={14} />
       <Sparkles count={8} />
-      <NoiseTexture />
 
-      <div className="container-apple relative text-center">
+      <div className="container-apple relative z-10 text-center w-full">
         {/* 라벨 + 글로우 링 */}
-        <div className="hero-anim hero-d1 mb-7 sm:mb-9 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card ring-glow">
+        <div className="hero-anim hero-d1 mb-7 sm:mb-9 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/25 ring-glow">
           <BurstStar size={16} />
-          <span className="label-sm text-rainbow" style={{ background: "linear-gradient(110deg, #ec4d7e, #c084fc, #f59e0b)" , WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>PRIVATE IDEAL MATCH</span>
-          <span className="w-1 h-1 rounded-full bg-accent/40" />
-          <span className="text-[10px] font-bold text-ink-soft tracking-wider">EST. 2026</span>
+          <span className="label-sm text-rainbow">PRIVATE IDEAL MATCH</span>
+          <span className="w-1 h-1 rounded-full bg-white/50" />
+          <span className="text-[10px] font-bold text-white/80 tracking-wider">EST. 2026</span>
         </div>
 
-        {/* 거대 헤딩 + Rainbow */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative text-glow-multi" style={{ fontWeight: 700 }}>
+        {/* 거대 헤딩 — 흰 텍스트 + 멀티 글로우 */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative text-glow-multi" style={{ fontWeight: 700, textShadow: "0 4px 30px rgba(0,0,0,0.5), 0 0 60px rgba(236,77,126,0.4)" }}>
           이상형 소개팅,<br />
           <span className="text-rainbow relative inline-block">
             진짜 그분
-            <BurstStar size={28} className="absolute -top-4 -right-9 anim-twinkle" />
+            <BurstStar size={30} className="absolute -top-4 -right-10 anim-twinkle" />
           </span>
-          <span className="text-ink">으로.</span>
+          <span className="text-white">으로.</span>
         </h1>
 
-        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-ink-soft max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400 }}>
+        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400, textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
           전문 매칭사가 회원님의 이상형을 직접 분석.<br className="hidden sm:block" />
           마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제 소개팅.
         </p>
 
-        {/* CTA — 화려한 그라데이션 버튼 */}
-        <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-20">
+        {/* CTA — 화려한 그라데이션 + 화이트 버튼 */}
+        <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
           <a href="/ideal-match" className="btn btn-gradient shine w-full sm:w-auto sm:min-w-[240px]">
             ✨ 이상형 매칭 진단 →
           </a>
-          <a href="/about" className="btn glass-card w-full sm:w-auto text-ink hover-magnetic">
+          <a href="/about" className="btn w-full sm:w-auto bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-[1.02] transition-all">
             인연연구소 알아보기 →
           </a>
         </div>
 
-        {/* 큰 사진 + 프레임 글로우 */}
-        <div className="hero-anim hero-d5 relative max-w-5xl mx-auto">
-          <div className="absolute -inset-6 sm:-inset-8 blob-pink opacity-60 rounded-[2rem] pointer-events-none" />
-          <div className="relative rounded-3xl overflow-hidden bg-tertiary shadow-2xl border border-white/40" style={{ aspectRatio: "16/10", boxShadow: "0 30px 80px -20px rgba(236,77,126,0.3)" }}>
-            <Image src="/photos/p2.jpg" alt="" fill className="object-cover" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white">
-              <div className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] opacity-80 mb-1 flex items-center gap-2">
-                <span className="w-6 h-px bg-white/60" />
-                A NEW WAY TO MEET
-              </div>
-              <div className="text-base sm:text-lg font-bold">전문 매칭사 1:1 큐레이션</div>
-            </div>
-            <div className="absolute top-5 right-5 sm:top-7 sm:right-7 glass-card rounded-2xl px-4 py-2.5 anim-float-slow">
-              <div className="text-[9px] font-bold tracking-[0.22em]" style={{ color: "var(--accent)" }}>FEATURED</div>
-              <div className="text-xs sm:text-sm font-bold text-ink mt-0.5">2026 Edition</div>
-            </div>
-          </div>
-        </div>
-
-        {/* 통계 — 글래스 카드 */}
-        <div className="hero-anim hero-d5 mt-12 sm:mt-16 inline-flex items-center gap-6 sm:gap-10 px-8 py-5 rounded-2xl glass-card">
+        {/* 통계 — 글래스 카드 (다크 버전) */}
+        <div className="hero-anim hero-d5 inline-flex items-center gap-6 sm:gap-10 px-7 py-5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20">
           {[
             { v: "9,999+", l: "누적 상담" },
             { v: "51 : 49", l: "남녀 성비" },
             { v: "48h", l: "평균 매칭" },
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-6 sm:gap-10">
-              {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-accent/30 to-transparent" />}
+              {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-white/40 to-transparent" />}
               <div className="text-center">
-                <div className="num-huge text-xl sm:text-2xl lg:text-3xl text-ink">{s.v}</div>
-                <div className="text-[10px] sm:text-xs text-ink-soft mt-1 font-semibold tracking-wide">{s.l}</div>
+                <div className="num-huge text-xl sm:text-2xl lg:text-3xl text-white">{s.v}</div>
+                <div className="text-[10px] sm:text-xs text-white/70 mt-1 font-semibold tracking-wide">{s.l}</div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* 좌하단 캡션 (사진 출처/스타일 강조) */}
+        <div className="hero-anim hero-d5 absolute bottom-8 left-6 sm:left-10 hidden sm:flex items-center gap-3 text-white/70">
+          <span className="w-8 h-px bg-white/50" />
+          <span className="text-[10px] font-semibold tracking-[0.22em]">A NEW WAY TO MEET</span>
+        </div>
+
+        {/* 우하단 떠있는 작은 카드 */}
+        <div className="hero-anim hero-d5 absolute bottom-8 right-6 sm:right-10 hidden sm:block">
+          <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-2.5 anim-float-slow shadow-2xl">
+            <div className="text-[9px] font-bold tracking-[0.22em]" style={{ color: "var(--accent)" }}>FEATURED</div>
+            <div className="text-xs sm:text-sm font-bold text-ink mt-0.5">2026 Edition</div>
+          </div>
         </div>
       </div>
     </section>
