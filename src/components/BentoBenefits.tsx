@@ -26,10 +26,10 @@ export default function BentoBenefits() {
           {/* 메인 카드 1 - 후불제 (사진 배경 + 멀티 글로우) */}
           <article className="card-neon card-rainbow relative overflow-hidden min-h-[460px] text-white">
             <Image src="/photos/p1.jpg" alt="" fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-purple-900/50 to-black/90" />
-            {/* 멀티 컬러 글로우 */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-black/90" />
+            {/* 핑크 글로우 */}
             <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(236,77,126,0.6)" }} />
-            <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full blur-3xl" style={{ background: "rgba(168,85,247,0.45)" }} />
+            <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full blur-3xl" style={{ background: "rgba(251,113,133,0.45)" }} />
             <div className="relative h-full flex flex-col justify-end p-10 sm:p-14">
               <div className="label-sm mb-3 text-coral-gold">01 · CORE</div>
               <h3 className="h-card font-bold mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
@@ -43,9 +43,9 @@ export default function BentoBenefits() {
 
           {/* 메인 카드 2 - 다크 멀티컬러 */}
           <article className="card-neon mesh-noir text-white rounded-3xl card-rainbow relative overflow-hidden p-10 sm:p-14 min-h-[460px] flex flex-col justify-between">
-            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(168,85,247,0.5)" }} />
-            <div className="absolute -bottom-24 -left-20 w-72 h-72 rounded-full blur-3xl" style={{ background: "rgba(236,77,126,0.5)" }} />
-            <div className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full blur-3xl" style={{ background: "rgba(245,158,11,0.3)" }} />
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(236,77,126,0.55)" }} />
+            <div className="absolute -bottom-24 -left-20 w-72 h-72 rounded-full blur-3xl" style={{ background: "rgba(251,113,133,0.5)" }} />
+            <div className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full blur-3xl" style={{ background: "rgba(255,139,168,0.4)" }} />
             <span className="absolute top-8 right-8 anim-twinkle"><BurstStar size={20} /></span>
             <div className="relative label-sm text-coral-gold">02 · PRIVATE</div>
             <div className="relative">
@@ -63,8 +63,8 @@ export default function BentoBenefits() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 reveal">
           {[
             { n: "03", t: "신원 100% 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-            { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석.", c: "linear-gradient(135deg, #a855f7, #c084fc)" },
-            { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율.", c: "linear-gradient(135deg, #f59e0b, #fcd34d)" },
+            { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석.", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
+            { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율.", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
           ].map((b, i) => (
             <article key={i} className="card-rainbow hover-magnetic p-8 sm:p-10 relative bg-white overflow-hidden">
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full blur-3xl opacity-25" style={{ background: b.c }} />

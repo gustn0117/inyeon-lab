@@ -771,8 +771,8 @@ export function IdealMatchSection() {
         <a href="/ideal-match" className="group block mesh-noir text-white rounded-3xl relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]" style={{ boxShadow: "0 30px 80px -20px rgba(236, 77, 126, 0.4)" }}>
           {/* 멀티 글로우 — 핑크 + 보라 + 골드 */}
           <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-50 anim-float-slow" style={{ background: "#ec4d7e" }} />
-          <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#a855f7", animationDelay: "2s" }} />
-          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-30 anim-float-slow" style={{ background: "#f59e0b", animationDelay: "3s" }} />
+          <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#fb7185", animationDelay: "2s" }} />
+          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-30 anim-float-slow" style={{ background: "#ff8da8", animationDelay: "3s" }} />
 
           {/* 떠다니는 별 */}
           <span className="absolute top-10 right-20 anim-twinkle"><BurstStar size={20} /></span>

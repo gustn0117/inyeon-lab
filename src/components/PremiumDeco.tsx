@@ -164,15 +164,15 @@ export function FloatingHearts() {
   );
 }
 
-/** 멀티 컬러 글로우 오브 (화려한 5개 컬러 떠다님) */
+/** 핑크 글로우 오브 (5개 핑크 베리에이션 떠다님) */
 export function RainbowOrbs() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
       <div className="absolute top-[5%] left-[8%] w-[500px] h-[500px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(236, 77, 126, 0.35)" }} />
-      <div className="absolute top-[15%] right-[5%] w-[450px] h-[450px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(168, 85, 247, 0.3)", animationDelay: "2s" }} />
-      <div className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(245, 158, 11, 0.25)", animationDelay: "4s" }} />
+      <div className="absolute top-[15%] right-[5%] w-[450px] h-[450px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(255, 107, 160, 0.3)", animationDelay: "2s" }} />
+      <div className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(255, 139, 168, 0.3)", animationDelay: "4s" }} />
       <div className="absolute bottom-[10%] right-[10%] w-[550px] h-[550px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(251, 113, 133, 0.3)", animationDelay: "1s" }} />
-      <div className="absolute top-[50%] left-[40%] w-[380px] h-[380px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(192, 132, 252, 0.25)", animationDelay: "3s" }} />
+      <div className="absolute top-[50%] left-[40%] w-[380px] h-[380px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(212, 86, 122, 0.28)", animationDelay: "3s" }} />
     </div>
   );
 }
@@ -186,9 +186,9 @@ export function RaysOfLight() {
   );
 }
 
-/** 멀티 컬러 파티클 필드 (떠다니는 작은 컬러 점들) */
+/** 핑크 파티클 필드 (떠다니는 작은 핑크 점들) */
 export function ParticleField({ count = 14 }: { count?: number }) {
-  const colors = ["#ec4d7e", "#c084fc", "#a855f7", "#fb7185", "#f59e0b", "#fcd34d"];
+  const colors = ["#ec4d7e", "#ff6ba0", "#fb7185", "#ff8da8", "#d4567a", "#ffb3c8"];
   const particles = Array.from({ length: count }, (_, i) => ({
     top: `${(i * 37) % 95}%`,
     left: `${(i * 53) % 95}%`,
@@ -217,30 +217,30 @@ export function ParticleField({ count = 14 }: { count?: number }) {
   );
 }
 
-/** 큰 그라데이션 메시 SVG (다채로운 색감) */
+/** 핑크 그라데이션 메시 SVG (핑크 베리에이션) */
 export function RichMeshBg() {
   return (
     <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <radialGradient id="rm1" cx="15%" cy="15%" r="50%">
-          <stop offset="0%" stopColor="#ec4d7e" stopOpacity="0.45" />
+          <stop offset="0%" stopColor="#ec4d7e" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#ec4d7e" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="rm2" cx="85%" cy="20%" r="50%">
-          <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ff6ba0" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#ff6ba0" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="rm3" cx="50%" cy="100%" r="60%">
-          <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ffb3c8" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#ffb3c8" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="rm4" cx="20%" cy="80%" r="40%">
           <stop offset="0%" stopColor="#fb7185" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#fb7185" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="rm5" cx="90%" cy="75%" r="45%">
-          <stop offset="0%" stopColor="#c084fc" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#c084fc" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ff8da8" stopOpacity="0.32" />
+          <stop offset="100%" stopColor="#ff8da8" stopOpacity="0" />
         </radialGradient>
       </defs>
       <rect width="1440" height="900" fill="url(#rm1)" />
@@ -252,15 +252,15 @@ export function RichMeshBg() {
   );
 }
 
-/** 큰 컬러 별 폭발 (단어 옆 강조) */
+/** 핑크 별 폭발 (단어 옆 강조) */
 export function BurstStar({ size = 40, className = "" }: { size?: number; className?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 60 60" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="burstGrad" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0%" stopColor="#ec4d7e" />
-          <stop offset="50%" stopColor="#c084fc" />
-          <stop offset="100%" stopColor="#f59e0b" />
+          <stop offset="50%" stopColor="#fb7185" />
+          <stop offset="100%" stopColor="#ff8da8" />
         </linearGradient>
       </defs>
       <g fill="url(#burstGrad)">

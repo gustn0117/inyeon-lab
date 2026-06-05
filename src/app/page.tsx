@@ -19,9 +19,9 @@ import {
 function PageNav() {
   const items = [
     { href: "/about", t: "인연연구소 소개", d: "검증된 회원, 안전한 시스템", n: "01", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { href: "/pricing", t: "가격·진행 절차", d: "가입비 0원, 매칭 후 결제", n: "02", c: "linear-gradient(135deg, #f59e0b, #fcd34d)" },
-    { href: "/ideal-match", t: "이상형 매칭 진단", d: "1분 진단으로 매칭 확인", n: "03", c: "linear-gradient(135deg, #a855f7, #c084fc)" },
-    { href: "/contact", t: "상담·문의", d: "카톡 ID inyeon_", n: "04", c: "linear-gradient(135deg, #14b8a6, #06b6d4)" },
+    { href: "/pricing", t: "가격·진행 절차", d: "가입비 0원, 매칭 후 결제", n: "02", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
+    { href: "/ideal-match", t: "이상형 매칭 진단", d: "1분 진단으로 매칭 확인", n: "03", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
+    { href: "/contact", t: "상담·문의", d: "카톡 ID inyeon_", n: "04", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
   ];
   return (
     <section className="relative mesh-rainbow py-24 sm:py-32 lg:py-40 overflow-hidden">
