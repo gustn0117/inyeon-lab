@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
-import { ContactSection, FAQSection } from "@/sections";
+import { AppleContact, AppleFAQ } from "@/sections/apple";
 
 function useReveal() {
   useEffect(() => {
@@ -23,11 +23,11 @@ export default function ContactPage() {
     <PageShell>
       <SubPageHero
         eyebrow="CONTACT"
-        title={<><span className="text-gradient">상담</span>·문의</>}
+        title={<>상담 · <span className="text-gradient">문의</span></>}
         sub="카톡으로 가장 빠르게 답변드려요"
       />
-      <ContactSection />
-      <FAQSection />
+      <AppleContact />
+      <AppleFAQ />
     </PageShell>
   );
 }
