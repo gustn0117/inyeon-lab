@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { MeshGradientBg, Sparkles, GlowOrbs, NoiseTexture, FloatingHearts, StarAccent } from "@/components/PremiumDeco";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -126,60 +127,82 @@ export function Navbar() {
   );
 }
 
-/* ═══ HERO ═══ Apple 미니멀 — 큰 헤딩 중앙 + 큰 사진 */
+/* ═══ HERO ═══ Apple + 프리미엄 SVG 이펙트 */
 export function HeroSection() {
   return (
-    <section className="bg-base pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32">
-      <div className="container-apple text-center">
-        {/* 라벨 */}
-        <div className="hero-anim hero-d1 mb-7 sm:mb-9">
-          <span className="label-sm">PRIVATE IDEAL MATCH</span>
+    <section className="relative bg-base pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
+      <MeshGradientBg />
+      <GlowOrbs variant="wide" />
+      <Sparkles count={8} />
+      <NoiseTexture />
+
+      <div className="container-apple relative text-center">
+        {/* 라벨 + 글로우 링 */}
+        <div className="hero-anim hero-d1 mb-7 sm:mb-9 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card ring-glow">
+          <StarAccent size={14} />
+          <span className="label-sm" style={{ color: "var(--accent)" }}>PRIVATE IDEAL MATCH</span>
+          <span className="w-1 h-1 rounded-full bg-accent/40" />
+          <span className="text-[10px] font-bold text-ink-soft tracking-wider">EST. 2026</span>
         </div>
 
-        {/* 거대 헤딩 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink" style={{ fontWeight: 700 }}>
+        {/* 거대 헤딩 + Aurora */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative" style={{ fontWeight: 700 }}>
           이상형 소개팅,<br />
-          <span className="text-gradient">진짜 그분</span>으로.
+          <span className="text-aurora-pink text-glow-pink relative inline-block">
+            진짜 그분
+            <StarAccent size={22} className="absolute -top-3 -right-7 anim-twinkle" />
+          </span>
+          <span className="text-ink">으로.</span>
         </h1>
 
-        {/* 부제 */}
         <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-ink-soft max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400 }}>
           전문 매칭사가 회원님의 이상형을 직접 분석.<br className="hidden sm:block" />
           마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제 소개팅.
         </p>
 
-        {/* CTA */}
+        {/* CTA — Premium glow + shine */}
         <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-20">
-          <a href="/ideal-match" className="btn btn-primary w-full sm:w-auto sm:min-w-[200px]">
+          <a href="/ideal-match" className="btn btn-premium shine text-white w-full sm:w-auto sm:min-w-[220px]" style={{ background: "linear-gradient(135deg, #ec4d7e, #d4567a)" }}>
             이상형 매칭 진단 →
           </a>
-          <a href="/about" className="btn-link">
+          <a href="/about" className="btn glass-card w-full sm:w-auto text-ink">
             인연연구소 알아보기 →
           </a>
         </div>
 
-        {/* 큰 사진 — 카페 데이트 분위기 */}
-        <div className="hero-anim hero-d5 relative max-w-5xl mx-auto rounded-3xl overflow-hidden bg-tertiary" style={{ aspectRatio: "16/10" }}>
-          <Image src="/photos/p2.jpg" alt="" fill className="object-cover" priority />
-          {/* 미세 그라데이션 (텍스트 가독성 위해) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-          {/* 좌하단 캡션 */}
-          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white">
-            <div className="text-[10px] sm:text-xs font-semibold tracking-[0.18em] opacity-80 mb-1">A NEW WAY TO MEET</div>
-            <div className="text-base sm:text-lg font-bold">전문 매칭사 1:1 큐레이션</div>
+        {/* 큰 사진 + 프레임 글로우 */}
+        <div className="hero-anim hero-d5 relative max-w-5xl mx-auto">
+          <div className="absolute -inset-6 sm:-inset-8 blob-pink opacity-60 rounded-[2rem] pointer-events-none" />
+          <div className="relative rounded-3xl overflow-hidden bg-tertiary shadow-2xl border border-white/40" style={{ aspectRatio: "16/10", boxShadow: "0 30px 80px -20px rgba(236,77,126,0.3)" }}>
+            <Image src="/photos/p2.jpg" alt="" fill className="object-cover" priority />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white">
+              <div className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] opacity-80 mb-1 flex items-center gap-2">
+                <span className="w-6 h-px bg-white/60" />
+                A NEW WAY TO MEET
+              </div>
+              <div className="text-base sm:text-lg font-bold">전문 매칭사 1:1 큐레이션</div>
+            </div>
+            <div className="absolute top-5 right-5 sm:top-7 sm:right-7 glass-card rounded-2xl px-4 py-2.5 anim-float-slow">
+              <div className="text-[9px] font-bold tracking-[0.22em]" style={{ color: "var(--accent)" }}>FEATURED</div>
+              <div className="text-xs sm:text-sm font-bold text-ink mt-0.5">2026 Edition</div>
+            </div>
           </div>
         </div>
 
-        {/* 작은 통계 */}
-        <div className="hero-anim hero-d5 mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-12 max-w-3xl mx-auto pt-8 border-t border-line">
+        {/* 통계 — 글래스 카드 */}
+        <div className="hero-anim hero-d5 mt-12 sm:mt-16 inline-flex items-center gap-6 sm:gap-10 px-8 py-5 rounded-2xl glass-card">
           {[
             { v: "9,999+", l: "누적 상담" },
             { v: "51 : 49", l: "남녀 성비" },
             { v: "48h", l: "평균 매칭" },
           ].map((s, i) => (
-            <div key={i} className="text-center">
-              <div className="num-huge text-2xl sm:text-3xl lg:text-4xl text-ink">{s.v}</div>
-              <div className="text-xs sm:text-sm text-ink-soft mt-1.5">{s.l}</div>
+            <div key={i} className="flex items-center gap-6 sm:gap-10">
+              {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-accent/30 to-transparent" />}
+              <div className="text-center">
+                <div className="num-huge text-xl sm:text-2xl lg:text-3xl text-ink">{s.v}</div>
+                <div className="text-[10px] sm:text-xs text-ink-soft mt-1 font-semibold tracking-wide">{s.l}</div>
+              </div>
             </div>
           ))}
         </div>

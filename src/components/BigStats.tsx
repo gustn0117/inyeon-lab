@@ -1,6 +1,7 @@
 "use client";
+import { GlowOrbs, DotPattern, StarAccent } from "@/components/PremiumDeco";
 
-/* ═══ BIG STATS — Apple 미니멀 큰 숫자 그리드 ═══ */
+/* ═══ BIG STATS — Apple + 글래스 카드 + 글로우 ═══ */
 export default function BigStats() {
   const stats = [
     { v: "9,999+", l: "누적 상담", sub: "2026년 5월 기준" },
@@ -9,24 +10,28 @@ export default function BigStats() {
     { v: "100%", l: "신원 검증", sub: "재직증명서 확인" },
   ];
   return (
-    <section className="bg-sec py-24 sm:py-32 lg:py-40">
-      <div className="container-apple">
-        {/* 헤더 */}
+    <section className="relative bg-sec py-24 sm:py-32 lg:py-40 overflow-hidden">
+      <DotPattern className="inset-0 opacity-50" />
+      <GlowOrbs variant="default" />
+
+      <div className="container-apple relative">
         <div className="text-center mb-16 sm:mb-24 reveal">
-          <div className="label-sm mb-6">BY THE NUMBERS</div>
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
+            <StarAccent size={12} />
+            <span className="label-sm">BY THE NUMBERS</span>
+          </div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
-            숫자로 보는 인연연구소.
+            숫자로 보는 <span className="text-aurora-pink">인연연구소.</span>
           </h2>
         </div>
 
-        {/* 4분할 큰 숫자 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 sm:gap-y-16 lg:gap-x-8 reveal">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {stats.map((s, i) => (
-            <div key={i} className="text-center sm:text-left">
-              <div className="num-huge text-5xl sm:text-6xl lg:text-7xl text-ink mb-3">
+            <div key={i} className="hover-magnetic glass-card rounded-2xl p-8 sm:p-10 text-center sm:text-left">
+              <div className="num-huge text-5xl sm:text-6xl lg:text-7xl text-aurora-pink mb-3">
                 {s.v}
               </div>
-              <div className="text-base sm:text-lg font-semibold text-ink mb-1">{s.l}</div>
+              <div className="text-base sm:text-lg font-bold text-ink mb-1">{s.l}</div>
               <div className="text-sm text-ink-soft">{s.sub}</div>
             </div>
           ))}
