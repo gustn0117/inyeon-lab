@@ -14,12 +14,12 @@
 html { scroll-behavior: smooth; }
 
 body {
-  color: #1a1a1f;
+  color: #2d1f25;
   background: #fefaf6;
   font-family: 'Cafe24SurroundAir', 'Nunito', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .font-serif-kr {
@@ -27,12 +27,9 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* 헤딩 기본값만 제공 (Tailwind leading-* 유틸로 오버라이드 가능하게 !important 제거) */
 h1, h2, h3, h4 {
-  line-height: 1.35 !important;
-}
-
-p, li, span, div {
-  line-height: inherit;
+  line-height: 1.25;
 }
 
 ::selection { background: rgba(212,86,122,0.2); }

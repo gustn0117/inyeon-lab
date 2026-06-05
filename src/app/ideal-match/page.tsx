@@ -283,15 +283,15 @@ export default function IdealMatchPage() {
   const progress = step === -1 ? 0 : step >= STEPS.length ? 100 : ((step + 1) / totalSteps) * 100;
 
   return (
-    <main className="min-h-screen relative overflow-hidden" style={{ background: "linear-gradient(160deg, #fff5f8, #ffffff 40%, #fff0f5)" }}>
-      {/* 배경 장식 */}
-      <div className="absolute inset-0 pointer-events-none opacity-50">
+    <main className="min-h-screen relative" style={{ background: "linear-gradient(160deg, #fff5f8, #ffffff 40%, #fff0f5)" }}>
+      {/* 배경 장식 — overflow-hidden을 별도 wrapper로 격리해 sticky 헤더와 충돌 안 함 */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: PINK_LIGHT }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "#ffe0eb" }} />
       </div>
 
       {/* 헤더: 진행률 + 닫기 */}
-      <header className="relative z-10 sticky top-0 backdrop-blur-md bg-white/70 border-b border-pink-50">
+      <header className="sticky top-0 z-10 backdrop-blur-md bg-white/80 border-b border-pink-50">
         <div className="max-w-xl mx-auto px-5 py-3.5 flex items-center gap-3">
           <a href="/" className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-pink-50 transition-colors" aria-label="홈으로" style={{ color: SB }}>
             {Icons.x()}
