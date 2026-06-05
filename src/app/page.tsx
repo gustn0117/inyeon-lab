@@ -5,7 +5,7 @@ import BigStats from "@/components/BigStats";
 import BigQuote from "@/components/BigQuote";
 import BentoBenefits from "@/components/BentoBenefits";
 import PhotoStory from "@/components/PhotoStory";
-import { RainbowOrbs, Sparkles, BurstStar } from "@/components/PremiumDeco";
+import { BurstStar } from "@/components/PremiumDeco";
 import {
   useReveal,
   EventBanner,
@@ -60,21 +60,7 @@ function PageNav() {
 export default function Home() {
   useReveal();
   return (
-    <main className="relative">
-      {/* 페이지 전역 fixed 캔버스 (배경 끊김 방지) */}
-      <div
-        className="fixed inset-0 -z-20 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background: "linear-gradient(180deg, #fff8fb 0%, #fffafc 30%, #fff5f9 60%, #fef9fb 100%)"
-        }}
-      />
-      {/* 페이지 전역 fixed 데코 */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
-        <RainbowOrbs />
-        <Sparkles count={10} />
-      </div>
-
+    <main className="relative bg-white">
       <EventBanner />
       <Navbar />
       <HeroSection />

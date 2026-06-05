@@ -43,7 +43,7 @@ html {
 
 body {
   color: var(--ink-2);
-  background: #fff8fb;          /* fallback (page-level fixed canvas가 위에 덮음) */
+  background: #ffffff;          /* 순수 흰 */
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
@@ -90,10 +90,10 @@ h1, h2, h3, h4, h5, h6 {
     .container-apple { padding-left: 2.5rem; padding-right: 2.5rem; }
   }
 
-  /* Colors — bg-base/sec는 transparent (페이지 캔버스 노출) */
-  .bg-base { background: transparent; }
-  .bg-sec { background: transparent; }
-  .bg-tertiary { background: var(--bg-tertiary); }
+  /* Colors — 모두 순수 흰 (단조롭지 않게 카드 그라데이션 보더로 변화) */
+  .bg-base { background: #ffffff; }
+  .bg-sec { background: #ffffff; }
+  .bg-tertiary { background: #f7f7f9; }
   .bg-white-solid { background: #ffffff; }
   .bg-dark { background: var(--bg-dark); }
   .bg-accent { background: var(--accent); }
