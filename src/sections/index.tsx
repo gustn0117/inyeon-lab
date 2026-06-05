@@ -131,11 +131,11 @@ export function Navbar() {
 export function HeroSection() {
   return (
     <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-      {/* 풀스크린 결혼 사진 배경 */}
+      {/* 풀스크린 결혼 사진 배경 (밝게 처리) */}
       <div className="absolute inset-0 z-0">
-        <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" />
-        {/* 미세 비네트 — 사진 색감 살리고 텍스트 가독성만 (밝게) */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.45) 100%)" }} />
+        <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" style={{ filter: "brightness(1.15) saturate(1.05)" }} />
+        {/* 매우 약한 비네트 — 하단만 살짝 (CTA 가독성용) */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 0%, transparent 55%, rgba(0,0,0,0.25) 100%)" }} />
       </div>
 
       {/* 작은 별 데코만 (색감 영향 없음) */}
@@ -146,12 +146,10 @@ export function HeroSection() {
         <div className="hero-anim hero-d1 mb-7 sm:mb-9 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/25 ring-glow">
           <BurstStar size={16} />
           <span className="label-sm text-rainbow">PRIVATE IDEAL MATCH</span>
-          <span className="w-1 h-1 rounded-full bg-white/50" />
-          <span className="text-[10px] font-bold text-white/80 tracking-wider">EST. 2026</span>
         </div>
 
-        {/* 거대 헤딩 — 흰 텍스트 + 핑크 글로우만 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700 }}>
+        {/* 거대 헤딩 — 흰 텍스트 + 핑크 글로우만 (검정 그림자 없음) */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative text-glow-multi" style={{ fontWeight: 700 }}>
           이상형 소개팅,<br />
           <span className="text-rainbow relative inline-block">
             진짜 그분
@@ -202,7 +200,7 @@ export function HeroSection() {
         <div className="hero-anim hero-d5 absolute bottom-8 right-6 sm:right-10 hidden sm:block">
           <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-4 py-2.5 anim-float-slow shadow-2xl">
             <div className="text-[9px] font-bold tracking-[0.22em]" style={{ color: "var(--accent)" }}>FEATURED</div>
-            <div className="text-xs sm:text-sm font-bold text-ink mt-0.5">2026 Edition</div>
+            <div className="text-xs sm:text-sm font-bold text-ink mt-0.5">New Edition</div>
           </div>
         </div>
       </div>
