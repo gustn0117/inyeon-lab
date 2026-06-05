@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import FloatingDeco from "@/components/FloatingDeco";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -99,7 +100,6 @@ export function Navbar() {
     { h: "/about", l: "소개" },
     { h: "/pricing", l: "가격" },
     { h: "/ideal-match", l: "이상형 매칭" },
-    { h: "/reviews", l: "후기" },
     { h: "/contact", l: "상담" },
   ];
   return (
@@ -130,60 +130,84 @@ export function Navbar() {
 /* ═══ HERO ═══ */
 export function HeroSection() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* Background image — 사진이 살아나도록 오버레이를 가벼운 그라데이션으로만 */}
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden noise">
+      {/* Background image */}
       <div className="absolute inset-0">
         <Image src="/hero-couple.jpg" alt="" fill className="object-cover object-center" priority />
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,245,249,0.45) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.95) 100%)" }} />
+        {/* 메시 그라데이션 오버레이 — 따뜻한 핑크/골드 톤 */}
+        <div className="absolute inset-0 mesh-rose opacity-60" />
       </div>
+
+      {/* 글로우 데코 (배경 위에 떠 있는 큰 원) */}
+      <div className="absolute -top-32 -left-24 w-[420px] h-[420px] dot-glow blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-32 -right-24 w-[440px] h-[440px] dot-glow-gold blur-2xl pointer-events-none" />
+
+      {/* 떠다니는 데코 */}
+      <FloatingDeco />
 
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 w-full text-center">
         <div className="max-w-xl mx-auto pt-24 sm:pt-0">
-          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 mb-7 border border-pink-100 shadow-sm">
-            <span style={{ color: gd }}>{I.sparkle("w-4 h-4")}</span>
-            <span className="text-xs font-bold tracking-[0.18em]" style={{ color: gd }}>PRIVATE IDEAL MATCH</span>
+          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 mb-7 border shadow-md anim-ring" style={{ borderColor: `${gd}40` }}>
+            <span style={{ color: gd }} className="anim-twinkle">{I.sparkle("w-4 h-4")}</span>
+            <span className="text-[11px] font-extrabold tracking-[0.22em]" style={{ color: gd }}>PRIVATE IDEAL MATCH</span>
+            <span className="w-1 h-1 rounded-full" style={{ background: gd }} />
+            <span className="text-[10px] font-semibold" style={{ color: gd, opacity: 0.7 }}>EST. 2026</span>
           </div>
 
-          <h1 className="hero-anim hero-d2 text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight mb-5" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif", color: "#1a1a1f", lineHeight: 1.25 }}>
-            <span className="text-gradient">이상형 소개팅</span>,<br />
-            마음에 드는 분으로
+          <h1 className="hero-anim hero-d2 text-halo relative text-[2.4rem] sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight mb-5" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif", color: "#1a1a1f", lineHeight: 1.2 }}>
+            <span className="relative inline-block">
+              <span className="text-aurora">이상형 소개팅</span>
+              <span className="absolute -top-3 -right-6 anim-spin-slow" style={{ color: gd }}>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+              </span>
+            </span>,<br />
+            마음에 드는 <span className="text-aurora">그 분</span>으로
           </h1>
 
           <p className="hero-anim hero-d3 text-[13.5px] sm:text-base leading-relaxed max-w-md mx-auto mb-8" style={{ color: sb }}>
             전문 매칭사가 회원님의 <strong style={{ color: pk }}>이상형 조건</strong>을 직접 분석.<br />
-            마음에 드는 이성과 <strong style={{ color: pk }}>매칭이 성사되어야</strong> 결제하는<br />
-            프라이빗 후불제 매칭입니다.
+            <strong style={{ color: pk }}>실제 사진과 자세한 프로필</strong>을 직접 전달드리고,<br />
+            마음에 드는 분으로 <strong style={{ color: pk }}>매칭이 성사되어야</strong> 결제하는 프라이빗 후불제.
           </p>
 
-          {/* USP 강조 카드 3개 — 더 컴팩트하게 */}
-          <div className="hero-anim hero-d3 grid grid-cols-3 gap-2 sm:gap-2.5 mb-9 max-w-md mx-auto">
+          {/* USP 강조 카드 3개 */}
+          <div className="hero-anim hero-d3 grid grid-cols-3 gap-2 sm:gap-3 mb-9 max-w-md mx-auto">
             {[
-              { t: "여성 1회", b: "무료" },
-              { t: "매칭 후", b: "결제" },
-              { t: "대면", b: "보장" },
+              { t: "여성 1회", b: "무료", badge: "EVENT" },
+              { t: "매칭 후", b: "결제", badge: null },
+              { t: "대면", b: "보장", badge: null },
             ].map((it, i) => (
-              <div key={i} className="rounded-xl bg-white/95 backdrop-blur-sm border shadow-sm py-2.5 px-2" style={{ borderColor: `${pk}25` }}>
+              <div key={i} className="relative rounded-2xl bg-white/95 backdrop-blur-sm border-[1.5px] py-3 px-2 transition-all hover:-translate-y-1 hover:shadow-lg" style={{ borderColor: `${pk}30`, boxShadow: `0 8px 24px -10px ${pk}30` }}>
+                {it.badge && (
+                  <span className="absolute -top-1.5 -right-1 text-[8.5px] font-extrabold tracking-widest px-1.5 py-0.5 rounded-full text-white shadow" style={{ background: gd }}>
+                    {it.badge}
+                  </span>
+                )}
                 <div className="text-[10.5px] font-semibold" style={{ color: mt }}>{it.t}</div>
-                <div className="text-sm sm:text-[15px] font-extrabold" style={{ color: pk }}>{it.b}</div>
+                <div className="text-[15px] sm:text-[16px] font-extrabold" style={{ color: pk }}>{it.b}</div>
               </div>
             ))}
           </div>
 
           <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-2.5 mb-10">
-            <a href="/ideal-match" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-full text-sm font-bold btn-shimmer shadow-xl shadow-pink-200/50 hover:shadow-2xl transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+            <a href="/ideal-match" className="group btn-premium w-full sm:w-auto sm:min-w-[200px] inline-flex items-center justify-center gap-2 text-white px-7 py-4 rounded-full text-sm font-extrabold transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
               이상형 매칭 진단 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
             </a>
-            <a href="/about" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-pink-200 hover:shadow-md transition-all" style={{ color: sb }}>
+            <a href="/about" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-4 rounded-full bg-white/95 backdrop-blur-sm border-[1.5px] hover:bg-pink-50/50 hover:shadow-md transition-all" style={{ color: pk, borderColor: `${pk}30` }}>
               인연연구소 알아보기
             </a>
           </div>
 
-          {/* 통계 — 흰 카드로 묶어 가독성 + 분리감 */}
-          <div className="hero-anim hero-d5 inline-flex items-center gap-6 sm:gap-10 px-6 sm:px-8 py-3.5 rounded-2xl bg-white/90 backdrop-blur-md shadow-lg border border-pink-100/80">
+          {/* 통계 — 가독성 + 럭셔리 카드 (구분선 + 글로우) */}
+          <div className="hero-anim hero-d5 inline-flex items-center gap-4 sm:gap-7 px-6 sm:px-8 py-4 rounded-2xl bg-white/95 backdrop-blur-md border border-pink-100 relative" style={{ boxShadow: `0 18px 50px -12px ${pk}30, 0 0 0 1px rgba(255,255,255,0.6) inset` }}>
             {[{ v: "9,999+", l: "누적 상담" }, { v: "51:49", l: "남녀 성비" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <div className="text-lg sm:text-xl font-extrabold leading-none" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
-                <div className="text-[10px] sm:text-[11px] mt-1" style={{ color: mt }}>{s.l}</div>
+              <div key={i} className="flex items-center gap-4 sm:gap-7">
+                {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-pink-200 to-transparent" />}
+                <div className="flex flex-col items-center">
+                  <div className="text-lg sm:text-xl font-extrabold leading-none tabular-nums" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
+                  <div className="text-[10px] sm:text-[11px] mt-1 font-semibold whitespace-nowrap" style={{ color: mt }}>{s.l}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -614,18 +638,34 @@ export function SafetyFlowSection() {
 /* ═══ IDEAL MATCH (이상형 진단 진입) — 흰 배경 + 핑크 액센트 카드 ═══ */
 export function IdealMatchSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
+      {/* 배경 데코 점들 */}
+      <div className="absolute top-8 left-[10%] w-2 h-2 rounded-full dot-glow anim-twinkle" style={{ animationDelay: "0.5s" }} />
+      <div className="absolute top-20 right-[15%] w-1.5 h-1.5 rounded-full dot-glow-gold anim-twinkle" style={{ animationDelay: "1.2s" }} />
+      <div className="absolute bottom-12 left-[20%] w-3 h-3 rounded-full dot-glow anim-twinkle" style={{ animationDelay: "2s" }} />
+
       <div className="max-w-3xl mx-auto px-5 sm:px-8 reveal">
         <a
           href="/ideal-match"
-          className="group relative block overflow-hidden rounded-3xl transition-all hover:-translate-y-0.5"
-          style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)`, boxShadow: `0 20px 50px -10px ${pk}55` }}
+          className="group relative block overflow-hidden rounded-3xl transition-all hover:-translate-y-1"
+          style={{ background: `radial-gradient(circle at 20% 0%, #ff7ea3 0%, transparent 50%), radial-gradient(circle at 80% 100%, #c23065 0%, transparent 55%), linear-gradient(135deg, ${pk}, #e8457f)`, boxShadow: `0 25px 60px -12px ${pk}60` }}
         >
           {/* 데코 */}
-          <div className="absolute inset-0 opacity-25 pointer-events-none">
+          <div className="absolute inset-0 opacity-35 pointer-events-none">
             <div className="absolute -top-12 -right-12 w-56 h-56 rounded-full blur-3xl" style={{ background: "white" }} />
             <div className="absolute -bottom-16 -left-12 w-48 h-48 rounded-full blur-3xl" style={{ background: "#ffd6e1" }} />
           </div>
+
+          {/* 반짝임 별 */}
+          <span className="absolute top-6 right-10 text-white/60 anim-twinkle" style={{ animationDelay: "0.3s" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+          </span>
+          <span className="absolute bottom-8 right-20 text-white/40 anim-twinkle" style={{ animationDelay: "1.5s" }}>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+          </span>
+          <span className="absolute top-14 left-16 text-white/50 anim-twinkle" style={{ animationDelay: "0.8s" }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+          </span>
 
           <div className="relative z-10 p-7 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-6 text-white">
             <div className="flex-1 min-w-0">
@@ -678,8 +718,8 @@ export function PromiseSection() {
     },
     {
       icon: I.eye,
-      t: "프로필은 무분별하게 공개되지 않습니다",
-      d: "회원님의 사진과 정보는 매칭이 확정된 1:1 상대에게만 비공개로 전달됩니다. 누구나 둘러볼 수 있는 공개 갤러리는 없습니다.",
+      t: "실제 사진과 자세한 프로필 전달",
+      d: "매칭 시 회원님께 상대방의 실제 사진과 직업·나이·가치관 등 자세한 프로필을 1:1 비공개로 보내드립니다. 누구나 둘러볼 수 있는 공개 갤러리는 없습니다.",
     },
     {
       icon: I.users,
@@ -945,7 +985,6 @@ export function Footer() {
               { l: "소개", h: "/about" },
               { l: "가격", h: "/pricing" },
               { l: "이상형 매칭", h: "/ideal-match" },
-              { l: "후기", h: "/reviews" },
               { l: "상담", h: "/contact" },
             ].map((it, i) => (
               <a key={i} href={it.h} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{it.l}</a>

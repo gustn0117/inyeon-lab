@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 
 type Inquiry = { id: number; name: string; phone: string; created_at: string };
-type Review = { id: number; author: string; content: string };
 type Session = { id: string; visitor_name: string; created_at: string; last_visitor_at: string; last_admin_at: string | null; unread_admin: number; unread_visitor: number };
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string };
 type IdealMatch = {
@@ -10,7 +9,7 @@ type IdealMatch = {
   ideal_age: string | null; ideal_region: string | null; ideal_style: string | null;
   phone: string; created_at: string;
 };
-type Tab = "inquiries" | "reviews" | "chat" | "ideal";
+type Tab = "inquiries" | "chat" | "ideal";
 
 const PINK = "#d4567a";
 
@@ -20,7 +19,6 @@ export default function AdminPage() {
   const [tab, setTab] = useState<Tab>("chat");
 
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
-  const [reviews, setReviews] = useState<Review[]>([]);
   const [sessions, setSessions] = useState<Session[]>([]);
   const [activeSession, setActiveSession] = useState<string | null>(null);
   const [chatMsgs, setChatMsgs] = useState<Msg[]>([]);
@@ -35,11 +33,6 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  // 후기 작성 폼
-  const [author, setAuthor] = useState("");
-  const [content, setContent] = useState("");
-  const [postMsg, setPostMsg] = useState("");
-
   // 비번 변경 모달
   const [pwModalOpen, setPwModalOpen] = useState(false);
   const [pwCurrent, setPwCurrent] = useState("");
@@ -52,10 +45,6 @@ export default function AdminPage() {
     const res = await fetch(`/api/inquiry?pw=${encodeURIComponent(password)}`);
     if (res.ok) { setInquiries(await res.json()); return true; }
     return false;
-  };
-  const fetchReviews = async () => {
-    const res = await fetch(`/api/review`);
-    if (res.ok) setReviews(await res.json());
   };
   const fetchSessions = async () => {
     const res = await fetch(`/api/chat?pw=${encodeURIComponent(pw)}`, { cache: "no-store" });
@@ -78,7 +67,6 @@ export default function AdminPage() {
     setError("");
     const ok = await fetchInquiries(pw);
     if (ok) {
-      await fetchReviews();
       await fetchSessions();
       await fetchIdeals();
       setAuthed(true);
@@ -160,34 +148,6 @@ export default function AdminPage() {
     setBusy(true);
     await fetch(`/api/inquiry?pw=${encodeURIComponent(pw)}&purgeBots=1`, { method: "DELETE" });
     await fetchInquiries();
-    setBusy(false);
-  };
-
-  const submitReview = async () => {
-    setPostMsg("");
-    if (!content.trim()) { setPostMsg("후기 내용을 입력해주세요."); return; }
-    setBusy(true);
-    const res = await fetch("/api/review", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pw, author: author.trim() || "익명", content }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (res.ok) {
-      setAuthor(""); setContent("");
-      await fetchReviews();
-      setPostMsg("등록되었습니다.");
-    } else {
-      setPostMsg(data?.error || "등록 실패");
-    }
-    setBusy(false);
-  };
-
-  const removeReview = async (id: number) => {
-    if (!confirm("이 후기를 삭제할까요?")) return;
-    setBusy(true);
-    await fetch(`/api/review?pw=${encodeURIComponent(pw)}&id=${id}`, { method: "DELETE" });
-    await fetchReviews();
     setBusy(false);
   };
 
@@ -276,11 +236,6 @@ export default function AdminPage() {
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "inquiries" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "inquiries" ? { background: PINK } : {}}>
             문의 ({inquiries.length})
-          </button>
-          <button onClick={() => setTab("reviews")}
-            className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "reviews" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
-            style={tab === "reviews" ? { background: PINK } : {}}>
-            후기 ({reviews.length})
           </button>
           <button onClick={() => setTab("ideal")}
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "ideal" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
@@ -442,60 +397,6 @@ export default function AdminPage() {
         )}
 
         {/* REVIEWS */}
-        {tab === "reviews" && (
-          <>
-            <div className="bg-white rounded-2xl shadow-sm p-5 mb-4">
-              <h2 className="text-sm font-bold mb-4">새 후기 작성</h2>
-              <input
-                type="text"
-                placeholder="작성자명 (예: 김OO 28세 여성)"
-                value={author}
-                maxLength={30}
-                onChange={e => setAuthor(e.target.value)}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3"
-              />
-              <textarea
-                placeholder="후기 내용을 입력해주세요..."
-                value={content}
-                maxLength={2000}
-                rows={5}
-                onChange={e => setContent(e.target.value)}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none resize-none"
-              />
-              <div className="flex items-center justify-between mt-3 gap-3">
-                {postMsg ? (
-                  <p className={`text-xs flex-1 ${postMsg.includes("등록") ? "text-green-600" : "text-red-500"}`}>{postMsg}</p>
-                ) : (
-                  <span className="text-xs text-gray-400 flex-1">{content.length}/2000</span>
-                )}
-                <button onClick={submitReview} disabled={busy || !content.trim()}
-                  className="px-5 py-2 rounded-xl text-sm font-bold text-white transition-colors disabled:opacity-40"
-                  style={{ background: PINK }}>
-                  {busy ? "등록 중..." : "등록"}
-                </button>
-              </div>
-            </div>
-
-            {reviews.length === 0 ? (
-              <div className="bg-white rounded-2xl shadow-sm p-8 text-center text-gray-400 text-sm">아직 등록된 후기가 없습니다.</div>
-            ) : (
-              <div className="space-y-3">
-                {reviews.map(r => (
-                  <div key={r.id} className="bg-white rounded-2xl shadow-sm p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div className="font-bold text-sm" style={{ color: "#333" }}>{r.author}</div>
-                      <button onClick={() => removeReview(r.id)} disabled={busy}
-                        className="flex-shrink-0 text-xs text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50"
-                        aria-label="삭제">삭제</button>
-                    </div>
-                    <p className="text-sm whitespace-pre-wrap break-words text-gray-600 leading-relaxed">{r.content}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-
         {/* IDEAL MATCHES */}
         {tab === "ideal" && (
           <>
