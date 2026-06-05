@@ -158,9 +158,16 @@ export function HeroSection() {
           </a>
         </div>
 
-        {/* 큰 사진 */}
+        {/* 큰 사진 — 카페 데이트 분위기 */}
         <div className="hero-anim hero-d5 relative max-w-5xl mx-auto rounded-3xl overflow-hidden bg-tertiary" style={{ aspectRatio: "16/10" }}>
-          <Image src="/hero-couple.jpg" alt="" fill className="object-cover" priority />
+          <Image src="/photos/p2.jpg" alt="" fill className="object-cover" priority />
+          {/* 미세 그라데이션 (텍스트 가독성 위해) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          {/* 좌하단 캡션 */}
+          <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white">
+            <div className="text-[10px] sm:text-xs font-semibold tracking-[0.18em] opacity-80 mb-1">A NEW WAY TO MEET</div>
+            <div className="text-base sm:text-lg font-bold">전문 매칭사 1:1 큐레이션</div>
+          </div>
         </div>
 
         {/* 작은 통계 */}

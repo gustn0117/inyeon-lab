@@ -4,6 +4,7 @@ import KakaoFlow from "@/components/KakaoFlow";
 import BigStats from "@/components/BigStats";
 import BigQuote from "@/components/BigQuote";
 import BentoBenefits from "@/components/BentoBenefits";
+import PhotoStory from "@/components/PhotoStory";
 import {
   useReveal,
   EventBanner,
@@ -55,6 +56,7 @@ export default function Home() {
       <HeroSection />
       <IdealMatchSection />
       <TrustBar />
+      <PhotoStory />
       <BigQuote />
       <BentoBenefits />
       <BigStats />

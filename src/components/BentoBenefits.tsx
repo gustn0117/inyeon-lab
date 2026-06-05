@@ -1,6 +1,7 @@
 "use client";
+import Image from "next/image";
 
-/* ═══ BENEFITS — Apple 카드 그리드 (큰 사진+간결한 텍스트) ═══ */
+/* ═══ BENEFITS — Apple 카드 그리드 (사진 + 텍스트 혼합) ═══ */
 export default function BentoBenefits() {
   return (
     <section className="bg-base py-24 sm:py-32 lg:py-40">
@@ -13,23 +14,25 @@ export default function BentoBenefits() {
           </h2>
         </div>
 
-        {/* 2x2 큰 카드 + 작은 3개 */}
+        {/* Row 1: 큰 카드 2개 (사진 + 텍스트) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6 reveal">
-          {/* 메인 카드 1 - 후불제 */}
-          <article className="card card-hover p-10 sm:p-14 min-h-[400px] flex flex-col justify-between">
-            <div className="label-sm">01 · CORE</div>
-            <div>
-              <h3 className="h-card font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
+          {/* 메인 카드 1 - 후불제 (사진 배경) */}
+          <article className="card card-hover relative overflow-hidden min-h-[440px] text-white">
+            <Image src="/photos/p1.jpg" alt="" fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/45 to-black/85" />
+            <div className="relative h-full flex flex-col justify-end p-10 sm:p-14">
+              <div className="label-sm mb-3" style={{ color: "var(--accent)" }}>01 · CORE</div>
+              <h3 className="h-card font-bold mb-4" style={{ fontWeight: 700 }}>
                 매칭이 되어야<br />결제합니다.
               </h3>
-              <p className="text-base sm:text-lg text-ink-soft leading-relaxed max-w-md">
+              <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-md">
                 가입비 0원. 마음에 드는 분으로 매칭 성사 시에만 결제하는 100% 후불제.
               </p>
             </div>
           </article>
 
-          {/* 메인 카드 2 - 사진/프로필 */}
-          <article className="card card-hover p-10 sm:p-14 min-h-[400px] flex flex-col justify-between bg-dark text-white">
+          {/* 메인 카드 2 - 사진/프로필 (다크 카드) */}
+          <article className="card card-hover p-10 sm:p-14 min-h-[440px] flex flex-col justify-between bg-dark text-white">
             <div className="label-sm" style={{ color: "var(--accent)" }}>02 · PRIVATE</div>
             <div>
               <h3 className="h-card font-bold mb-4" style={{ fontWeight: 700 }}>
@@ -42,7 +45,7 @@ export default function BentoBenefits() {
           </article>
         </div>
 
-        {/* 작은 카드 3개 */}
+        {/* Row 2: 작은 카드 3개 */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 reveal">
           {[
             { n: "03", t: "신원 100% 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만." },
