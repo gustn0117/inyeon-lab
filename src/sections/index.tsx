@@ -150,8 +150,8 @@ export function HeroSection() {
           <span className="text-[10px] font-bold text-white/80 tracking-wider">EST. 2026</span>
         </div>
 
-        {/* 거대 헤딩 — 흰 텍스트 + 멀티 글로우 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative text-glow-multi" style={{ fontWeight: 700, textShadow: "0 4px 30px rgba(0,0,0,0.5), 0 0 60px rgba(236,77,126,0.4)" }}>
+        {/* 거대 헤딩 — 흰 텍스트 + 핑크 글로우만 */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700 }}>
           이상형 소개팅,<br />
           <span className="text-rainbow relative inline-block">
             진짜 그분
@@ -160,7 +160,7 @@ export function HeroSection() {
           <span className="text-white">으로.</span>
         </h1>
 
-        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400, textShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
+        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400 }}>
           전문 매칭사가 회원님의 이상형을 직접 분석.<br className="hidden sm:block" />
           마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제 소개팅.
         </p>
