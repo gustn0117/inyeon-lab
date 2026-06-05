@@ -1,6 +1,9 @@
 "use client";
 import ChatWidget from "@/components/ChatWidget";
 import KakaoFlow from "@/components/KakaoFlow";
+import BigStats from "@/components/BigStats";
+import BigQuote from "@/components/BigQuote";
+import BentoBenefits from "@/components/BentoBenefits";
 import { WaveDivider, CurveDivider, OrnamentDivider } from "@/components/Divider";
 import {
   useReveal,
@@ -104,10 +107,11 @@ export default function Home() {
       <EventBanner />
       <Navbar />
       <HeroSection />
-      <WaveDivider from="#fdf7f1" to="#fdf7f1" />
       <IdealMatchSection />
       <TrustBar />
-      <CurveDivider from="#faeede" to="#fff9f3" />
+      <BigQuote />
+      <BentoBenefits />
+      <BigStats />
       <KakaoFlow />
       <OrnamentDivider />
       <PageNav />
