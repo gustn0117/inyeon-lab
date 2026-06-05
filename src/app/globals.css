@@ -1,124 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@300;400;500;600;700;800;900&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;600;700;900&family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
-@font-face {
-  font-family: 'Cafe24SurroundAir';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SurroundAir.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-/* G마켓 산스 Bold - 임팩트 헤딩용 */
+/* G마켓 산스 - 임팩트 헤딩 */
 @font-face {
   font-family: 'Gmarket Sans';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansTTFBold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Gmarket Sans';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansTTFMedium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+/* Pretendard - 본문 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
+
+/* Cafe24 - 옵션 */
+@font-face {
+  font-family: 'Cafe24SurroundAir';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SurroundAir.woff') format('woff');
+  font-weight: normal; font-style: normal; font-display: swap;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-
+/* ═══════════════════════════════════════
+   DESIGN SYSTEM — Editorial Boutique
+   ═══════════════════════════════════════ */
 :root {
-  /* ── Design Tokens — Premium Editorial Palette ── */
-  /* 배경 */
-  --c-cream: #fdf7f1;       /* 베이스 (따뜻한 크림) */
-  --c-cream-deep: #faeede;
-  --c-ivory: #fff9f3;
-  /* 메인 — 로즈/와인 */
-  --c-rose: #d4567a;
-  --c-rose-deep: #c23065;
-  --c-rose-soft: #f9c5d5;
-  --c-wine: #6e1a3e;        /* ★ NEW 딥 와인 (헤딩 강조) */
-  --c-wine-deep: #4a0f29;   /* ★ NEW 다크 와인 */
-  /* 골드 액센트 */
-  --c-gold: #c9956b;
-  --c-gold-soft: #e6c89f;
-  --c-gold-deep: #8e6840;   /* ★ NEW 딥 골드 */
-  /* 차콜 — 시각 대비용 */
-  --c-charcoal: #1a1614;    /* ★ NEW 차콜 블랙 */
-  --c-charcoal-2: #2a201f;  /* ★ NEW */
-  /* 텍스트 */
-  --c-plum: #2d1f25;
-  --c-mauve: #7a6166;
-  --c-mauve-light: #b5a8ad;
+  /* Background */
+  --bg: #f7f1e9;          /* 페이퍼 크림 (전체 베이스) */
+  --bg-card: #ffffff;
+  --bg-deep: #2a1820;     /* 다크 와인 */
+  --bg-charcoal: #15100f; /* 차콜 블랙 */
+
+  /* Brand */
+  --brand: #c23065;       /* 메인 로즈 (더 깊은 톤) */
+  --brand-soft: #f4b8c8;
+  --brand-deep: #6e1a3e;  /* 와인 */
+  --gold: #b8854a;        /* 골드 (더 진한) */
+  --gold-soft: #e6c89f;
+  --ink: #15100f;         /* 본문 텍스트 (블랙) */
+  --ink-soft: #5a4a50;
+  --line: rgba(21, 16, 15, 0.12);
 }
 
+html { scroll-behavior: smooth; }
+
 body {
-  color: var(--c-plum);
-  background: var(--c-cream);
-  font-family: 'Cafe24SurroundAir', 'Nunito', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: 'Pretendard Variable', 'Pretendard', 'Cafe24SurroundAir', -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   line-height: 1.7;
+  letter-spacing: -0.01em;
 }
 
-.font-serif-kr {
-  font-family: 'Noto Serif KR', 'Gowun Batang', serif !important;
-  letter-spacing: -0.02em;
-}
-
-/* 임팩트 헤딩 폰트 (G마켓 산스 Bold) — 큰 헤딩에 시각 위계 강화 */
-.font-impact {
-  font-family: 'Gmarket Sans', 'Cafe24SurroundAir', sans-serif !important;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-/* Editorial 헤딩 (Noto Serif KR Black) — 잡지 스타일 */
-.font-editorial {
-  font-family: 'Noto Serif KR', 'Gowun Batang', serif !important;
-  font-weight: 900;
+/* 헤딩 기본값 */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
   letter-spacing: -0.025em;
-}
-/* 무거운 한국어 헤딩 (Black Han Sans) — 임팩트 극대화 */
-.font-display-black {
-  font-family: 'Black Han Sans', 'Cafe24SurroundAir', sans-serif !important;
-  letter-spacing: -0.02em;
-  font-weight: 400;
+  font-weight: 700;
 }
 
-/* 헤딩 기본값만 제공 (Tailwind leading-* 유틸로 오버라이드 가능하게 !important 제거) */
-h1, h2, h3, h4 {
-  line-height: 1.25;
-}
+::selection { background: rgba(194, 48, 101, 0.2); }
 
-::selection { background: rgba(212,86,122,0.2); }
-
+/* ═══════════════════════════════════════
+   FONT UTILITIES
+   ═══════════════════════════════════════ */
 @layer utilities {
+  .font-impact {
+    font-family: 'Gmarket Sans', 'Pretendard Variable', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .font-editorial {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+  }
+  .font-serif-en {
+    font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  }
+  .font-body {
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+  }
+  .font-display {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+/* ═══════════════════════════════════════
+   COLOR UTILITIES
+   ═══════════════════════════════════════ */
+@layer utilities {
+  /* Text gradient — premium aurora */
   .text-gradient {
-    background: linear-gradient(135deg, #e8457f, #c4506e);
+    background: linear-gradient(110deg, #c23065 0%, #d4567a 35%, #b8854a 70%, #c23065 100%);
+    background-size: 200% 100%;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    padding: 0 0.05em;
+    -webkit-text-fill-color: transparent;
+    animation: aurora-shift 8s ease-in-out infinite;
     display: inline-block;
   }
   .text-gradient-gold {
-    background: linear-gradient(135deg, #c9956b, #e6b98a);
+    background: linear-gradient(135deg, #b8854a 0%, #e6c89f 50%, #b8854a 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-block;
   }
-  .font-display {
-    font-family: 'Nunito', 'Cafe24SurroundAir', sans-serif;
+
+  /* Brand backgrounds */
+  .bg-brand { background: var(--brand); }
+  .bg-brand-deep { background: var(--brand-deep); }
+  .bg-cream { background: var(--bg); }
+  .bg-paper { background: var(--bg-card); }
+  .bg-ink { background: var(--bg-charcoal); }
+  .bg-deep { background: var(--bg-deep); }
+
+  .text-brand { color: var(--brand); }
+  .text-brand-deep { color: var(--brand-deep); }
+  .text-gold { color: var(--gold); }
+  .text-ink { color: var(--ink); }
+  .text-ink-soft { color: var(--ink-soft); }
+
+  /* Editorial container */
+  .container-ed {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-  .font-logo {
-    font-family: 'Jua', sans-serif;
+  @media (min-width: 768px) {
+    .container-ed { padding-left: 2rem; padding-right: 2rem; }
   }
 }
 
-/* ── Animations ── */
+/* ═══════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════ */
+@keyframes aurora-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
@@ -128,20 +158,12 @@ h1, h2, h3, h4 {
   100% { transform: translateX(-50%); }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@keyframes float-slow {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
 }
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-}
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 @keyframes shimmer {
   0% { background-position: -200% 0; }
@@ -156,10 +178,8 @@ h1, h2, h3, h4 {
 .hero-d5 { animation-delay: 0.7s; }
 
 .anim-marquee { animation: marquee 40s linear infinite; }
-.anim-float { animation: float 4s ease-in-out infinite; }
-.anim-float-slow { animation: float-slow 6s ease-in-out infinite; }
-.anim-pulse { animation: pulse-soft 3s ease-in-out infinite; }
-.anim-spin-slow { animation: spin-slow 20s linear infinite; }
+.anim-float { animation: float 6s ease-in-out infinite; }
+.anim-twinkle { animation: twinkle 2.4s ease-in-out infinite; }
 
 .reveal { opacity: 1; transform: none; }
 .reveal-ready .reveal {
@@ -168,19 +188,91 @@ h1, h2, h3, h4 {
 }
 .reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Glass ── */
-.glass {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.5);
+/* ═══════════════════════════════════════
+   EDITORIAL COMPONENTS
+   ═══════════════════════════════════════ */
+@layer components {
+  /* 잡지 헤더 (큰 카피) */
+  .h-display {
+    font-family: 'Gmarket Sans', 'Pretendard Variable', sans-serif;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+  }
+
+  /* Editorial label (eyebrow) */
+  .label-ed {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Premium button */
+  .btn-ed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-ed-primary {
+    background: var(--ink);
+    color: white;
+  }
+  .btn-ed-primary:hover {
+    background: var(--brand-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -10px rgba(110, 26, 62, 0.5);
+  }
+  .btn-ed-secondary {
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ed-secondary:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  /* Editorial divider line */
+  .div-line {
+    height: 1px;
+    background: var(--line);
+  }
+  .div-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
 }
 
-/* ── Shimmer button ── */
-.btn-shimmer {
-  position: relative;
-  overflow: hidden;
+/* ═══════════════════════════════════════
+   UTILITY EXTENSIONS
+   ═══════════════════════════════════════ */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+.dot-glow {
+  background: radial-gradient(circle, rgba(194,48,101,0.4) 0%, rgba(194,48,101,0) 70%);
+}
+
+/* legacy backward-compat — 기존 클래스 매핑 */
+.font-logo { font-family: 'Gmarket Sans', sans-serif; font-weight: 700; }
+.text-aurora { @apply text-gradient; }
+.btn-shimmer { position: relative; overflow: hidden; }
 .btn-shimmer::after {
   content: '';
   position: absolute;
@@ -190,320 +282,7 @@ h1, h2, h3, h4 {
   animation: shimmer 3s ease-in-out infinite;
 }
 
-/* ── Gradient border card ── */
-.card-gradient {
-  position: relative;
-  border-radius: 16px;
-  background: white;
-}
-.card-gradient::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, #f0c0d0, #e8d5c4, #f0c0d0);
-  z-index: -1;
-}
-
-/* ── Decorative blob ── */
-.blob {
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-}
-
-/* ── Premium upgrades ── */
-
-/* ── 다양한 메시 그라데이션 배경 (섹션 리듬 만들기) ── */
-.mesh-rose {
-  background:
-    radial-gradient(at 22% 18%, rgba(255, 199, 219, 0.55) 0px, transparent 50%),
-    radial-gradient(at 78% 10%, rgba(255, 228, 200, 0.45) 0px, transparent 50%),
-    radial-gradient(at 50% 92%, rgba(255, 215, 230, 0.6) 0px, transparent 50%),
-    linear-gradient(180deg, #fff8fa 0%, #ffffff 50%, #fff5f8 100%);
-}
-.mesh-soft {
-  background:
-    radial-gradient(at 80% 20%, rgba(232, 213, 196, 0.35) 0px, transparent 50%),
-    radial-gradient(at 20% 80%, rgba(255, 199, 219, 0.45) 0px, transparent 50%),
-    linear-gradient(135deg, #fdf7f1 0%, #fff5f8 100%);
-}
-.mesh-cream {
-  background:
-    radial-gradient(at 15% 30%, rgba(230, 200, 159, 0.18) 0px, transparent 50%),
-    radial-gradient(at 85% 70%, rgba(249, 197, 213, 0.3) 0px, transparent 50%),
-    linear-gradient(180deg, #fdf7f1 0%, #fff9f3 100%);
-}
-.mesh-gold-rose {
-  background:
-    radial-gradient(at 20% 20%, rgba(230, 200, 159, 0.4) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, rgba(212, 86, 122, 0.18) 0px, transparent 55%),
-    linear-gradient(135deg, #faeede 0%, #fdf7f1 100%);
-}
-.mesh-plum {
-  background:
-    radial-gradient(at 25% 25%, rgba(212, 86, 122, 0.55) 0px, transparent 55%),
-    radial-gradient(at 75% 75%, rgba(194, 48, 101, 0.35) 0px, transparent 50%),
-    linear-gradient(135deg, #2d1f25 0%, #3f2a31 100%);
-}
-.mesh-blush {
-  background:
-    radial-gradient(at 30% 0%, rgba(249, 197, 213, 0.55) 0px, transparent 50%),
-    radial-gradient(at 70% 100%, rgba(230, 200, 159, 0.3) 0px, transparent 50%),
-    linear-gradient(180deg, #fff5f8 0%, #fef0eb 100%);
-}
-/* 다크 와인 (high-contrast 섹션용) */
-.mesh-wine {
-  background:
-    radial-gradient(at 22% 18%, rgba(212, 86, 122, 0.55) 0px, transparent 50%),
-    radial-gradient(at 78% 82%, rgba(201, 149, 107, 0.35) 0px, transparent 55%),
-    linear-gradient(135deg, #1a1614 0%, #2d1426 50%, #1a1614 100%);
-}
-.mesh-charcoal {
-  background:
-    radial-gradient(at 25% 25%, rgba(212, 86, 122, 0.35) 0px, transparent 50%),
-    radial-gradient(at 75% 75%, rgba(201, 149, 107, 0.25) 0px, transparent 55%),
-    linear-gradient(135deg, #1a1614 0%, #2a201f 100%);
-}
-
-/* Text gradient — 와인 골드 (럭셔리) */
-.text-wine-gold {
-  background: linear-gradient(135deg, #6e1a3e 0%, #c9956b 50%, #6e1a3e 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: aurora-shift 8s ease-in-out infinite;
-}
-
-/* 헤딩 후광 (글로우) */
-.text-glow {
-  text-shadow: 0 0 35px rgba(232, 69, 127, 0.18), 0 1px 2px rgba(0,0,0,0.04);
-}
-
-/* 텍스트 그라데이션 — 더 풍부한 핑크→로즈→골드 */
-.text-gradient-luxe {
-  background: linear-gradient(120deg, #e8457f 0%, #d4567a 35%, #c9956b 75%, #e8b07a 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-  animation: hue-slide 6s ease-in-out infinite alternate;
-}
-@keyframes hue-slide {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* 카드 — 호버 시 글로우 + 떠오름 */
-.card-luxe {
-  position: relative;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 1px 2px rgba(212,86,122,0.06), 0 8px 24px -8px rgba(212,86,122,0.08);
-  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-.card-luxe:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 1px 2px rgba(212,86,122,0.08), 0 24px 50px -12px rgba(212,86,122,0.22);
-}
-.card-luxe-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 22px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(232,69,127,0.6), rgba(201,149,107,0.4), rgba(232,69,127,0.6));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-.card-luxe-border:hover::before { opacity: 1; }
-
-/* 부유 데코 (꽃잎/별) */
-@keyframes drift {
-  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5; }
-  50% { opacity: 0.85; }
-  100% { transform: translateY(-30px) translateX(10px) rotate(180deg); opacity: 0.3; }
-}
-.anim-drift { animation: drift 12s ease-in-out infinite; }
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-.anim-twinkle { animation: twinkle 2.5s ease-in-out infinite; }
-
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(212, 86, 122, 0.4); }
-  70% { box-shadow: 0 0 0 16px rgba(212, 86, 122, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 86, 122, 0); }
-}
-.anim-ring { animation: pulse-ring 2.4s ease-out infinite; }
-
-/* 노이즈 텍스처 (미세 그레인) */
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* 작은 별 SVG (배경 데코용) */
-.star-deco {
-  width: 14px; height: 14px;
-  background: currentColor;
-  clip-path: polygon(50% 0%, 60% 35%, 100% 50%, 60% 65%, 50% 100%, 40% 65%, 0% 50%, 40% 35%);
-  display: inline-block;
-}
-
-/* 버튼 글로우 강화 */
-.btn-glow {
-  position: relative;
-  box-shadow: 0 10px 30px -5px rgba(232, 69, 127, 0.5), inset 0 1px 0 rgba(255,255,255,0.4);
-  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-.btn-glow:hover {
-  box-shadow: 0 18px 40px -5px rgba(232, 69, 127, 0.65), inset 0 1px 0 rgba(255,255,255,0.5);
-  transform: translateY(-2px);
-}
-
-/* 화려한 그라데이션 보더 (정적) */
-.border-luxe {
-  border: 1px solid;
-  border-image: linear-gradient(135deg, rgba(232,69,127,0.4), rgba(201,149,107,0.3)) 1;
-}
-
-/* 페이지 전환 부드러운 진입 */
-@keyframes page-in {
-  from { opacity: 0; transform: scale(0.99); }
-  to { opacity: 1; transform: scale(1); }
-}
-.page-in { animation: page-in 0.6s cubic-bezier(0.16,1,0.3,1); }
-
-/* 별 데코 SVG (절대배치용) */
-.deco-dot {
-  position: absolute;
-  border-radius: 9999px;
-}
-
-/* 동그라미 그라데이션 점 (가벼운 데코) */
-.dot-glow {
-  background: radial-gradient(circle, rgba(232,69,127,0.45) 0%, rgba(232,69,127,0) 70%);
-}
-.dot-glow-gold {
-  background: radial-gradient(circle, rgba(201,149,107,0.4) 0%, rgba(201,149,107,0) 70%);
-}
-
-/* ── Aurora text (헤딩 흐르는 그라데이션) ── */
-@keyframes aurora-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.text-aurora {
-  background: linear-gradient(110deg, #e8457f 0%, #d4567a 30%, #c9956b 55%, #d4567a 80%, #e8457f 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: aurora-shift 8s ease-in-out infinite;
-  display: inline-block;
-  padding: 0 0.05em;
-}
-
-/* 헤딩 후광 (글로우) — text-halo */
-@keyframes halo-breathe {
-  0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.65; transform: translate(-50%, -50%) scale(1.08); }
-}
-.text-halo { position: relative; isolation: isolate; }
-.text-halo::before {
-  content: '';
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 75%; height: 60%;
-  background: radial-gradient(ellipse at center, rgba(212,86,122,0.4), transparent 70%);
-  filter: blur(28px);
-  z-index: -1;
-  animation: halo-breathe 5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* ── Premium CTA — 자석 펄스 + Sheen ── */
-@keyframes cta-glow {
-  0%, 100% { box-shadow: 0 10px 30px rgba(212,86,122,0.35), 0 0 0 0 rgba(212,86,122,0.4); }
-  50% { box-shadow: 0 14px 44px rgba(212,86,122,0.5), 0 0 0 8px rgba(212,86,122,0); }
-}
-@keyframes sheen-once {
-  0% { transform: translateX(-120%) skewX(-20deg); }
-  100% { transform: translateX(220%) skewX(-20deg); }
-}
-.btn-premium {
-  position: relative;
-  overflow: hidden;
-  animation: cta-glow 2.8s ease-out infinite;
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), filter 0.3s;
-}
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 40%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-  transform: translateX(-120%) skewX(-20deg);
-  pointer-events: none;
-}
-.btn-premium:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(1.06);
-}
-.btn-premium:hover::before {
-  animation: sheen-once 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
-}
-
-/* ── Aurora Border Card (PageNav) ── */
-@keyframes aurora-border {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.card-aurora {
-  position: relative;
-  background: #fff;
-  border-radius: 1.5rem;
-  isolation: isolate;
-}
-.card-aurora::before {
-  content: '';
-  position: absolute;
-  inset: -1.5px;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(135deg, var(--ac, #f9c5d5) 0%, var(--ac2, #d4567a) 50%, var(--ac, #f9c5d5) 100%);
-  background-size: 300% 300%;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.4;
-  transition: opacity 0.5s;
-  z-index: -1;
-}
-.card-aurora:hover::before {
-  opacity: 1;
-  animation: aurora-border 4s ease infinite;
-}
-.card-aurora::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--ac2, rgba(212,86,122,0.1)) 0%, transparent 40%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-.card-aurora:hover::after { opacity: 0.45; }
+/* 기존 메시 배경 호환성 (점진 마이그레이션) */
+.mesh-rose, .mesh-soft, .mesh-cream, .mesh-blush { background: var(--bg); }
+.mesh-gold-rose { background: linear-gradient(180deg, var(--bg), #efe0d4); }
+.mesh-plum, .mesh-wine, .mesh-charcoal { background: var(--bg-deep); }

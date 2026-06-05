@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import FloatingDeco from "@/components/FloatingDeco";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -127,89 +126,134 @@ export function Navbar() {
   );
 }
 
-/* ═══ HERO ═══ */
+/* ═══ HERO ═══ 잡지 표지 스타일 — 비대칭 + 큰 타이포 + 큰 이미지 */
 export function HeroSection() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden noise">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <Image src="/hero-couple.jpg" alt="" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(253,247,241,0.45) 0%, rgba(253,247,241,0.62) 45%, rgba(253,247,241,0.96) 100%)" }} />
-        <div className="absolute inset-0 mesh-cream opacity-85" />
-      </div>
+    <section className="relative min-h-[100svh] bg-cream overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16">
+      {/* 배경 데코 */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-25 pointer-events-none" style={{ background: "#c23065" }} />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 pointer-events-none" style={{ background: "#b8854a" }} />
 
-      {/* 글로우 데코 (배경 위에 떠 있는 큰 원) */}
-      <div className="absolute -top-32 -left-24 w-[420px] h-[420px] dot-glow blur-2xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-24 w-[440px] h-[440px] dot-glow-gold blur-2xl pointer-events-none" />
-
-      {/* 떠다니는 데코 */}
-      <FloatingDeco />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 w-full text-center">
-        <div className="max-w-xl mx-auto pt-24 sm:pt-0">
-          <div className="hero-anim hero-d1 inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 mb-7 border shadow-md anim-ring" style={{ borderColor: `${gd}40` }}>
-            <span style={{ color: gd }} className="anim-twinkle">{I.sparkle("w-4 h-4")}</span>
-            <span className="text-[11px] font-extrabold tracking-[0.22em]" style={{ color: gd }}>PRIVATE IDEAL MATCH</span>
-            <span className="w-1 h-1 rounded-full" style={{ background: gd }} />
-            <span className="text-[10px] font-semibold" style={{ color: gd, opacity: 0.7 }}>EST. 2026</span>
+      <div className="container-ed relative h-full">
+        {/* 상단 라벨 (잡지 표지 ISSUE NO. 스타일) */}
+        <div className="hero-anim hero-d1 flex items-center justify-between mb-12 sm:mb-16">
+          <div className="flex items-center gap-3">
+            <span className="label-ed">ISSUE 01 · 2026</span>
           </div>
+          <div className="hidden sm:flex items-center gap-3">
+            <span className="label-ed">A NEW WAY TO MEET</span>
+            <span className="w-8 h-px bg-ink/30" />
+          </div>
+        </div>
 
-          <h1 className="hero-anim hero-d2 font-impact text-halo relative text-[2.6rem] sm:text-[3.6rem] lg:text-[4.4rem] tracking-tight mb-6" style={{ color: "#1a1614", lineHeight: 1.05 }}>
-            <span className="relative inline-block">
-              <span className="text-aurora">이상형</span>
-              <span className="absolute -top-4 -right-7 anim-spin-slow" style={{ color: gd }}>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+        {/* 메인 콘텐츠 — 12 컬럼 그리드 비대칭 */}
+        <div className="grid grid-cols-12 gap-x-4 sm:gap-x-8 gap-y-10 items-start">
+          {/* 좌측 타이포 */}
+          <div className="col-span-12 lg:col-span-7">
+            {/* 거대한 헤딩 */}
+            <h1 className="hero-anim hero-d2 h-display text-ink mb-8 sm:mb-10" style={{ fontSize: "clamp(2.8rem, 8vw, 5.6rem)" }}>
+              이상형으로,<br />
+              <span className="text-gradient">단 한 번의</span><br />
+              <span className="font-serif-en italic font-medium">진짜</span> 소개팅.
+            </h1>
+
+            <p className="hero-anim hero-d3 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mb-10" style={{ color: "var(--ink-soft)" }}>
+              <strong className="text-ink">전문 매칭사</strong>가 직접 분석한 회원의 <strong className="text-ink">실제 사진과 프로필</strong>을<br className="hidden sm:block" />
+              비공개로 전달드리고, 마음에 드는 분으로 <strong className="text-brand">매칭이 성사된 경우에만 결제</strong>하는<br className="hidden sm:block" />
+              프라이빗 후불제 소개팅 서비스.
+            </p>
+
+            {/* CTA */}
+            <div className="hero-anim hero-d4 flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12 sm:mb-14">
+              <a href="/ideal-match" className="btn-ed btn-ed-primary group sm:min-w-[220px]">
+                이상형 매칭 진단
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </a>
+              <a href="/about" className="btn-ed btn-ed-secondary group">
+                서비스 소개
+                <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </a>
+            </div>
+
+            {/* 미니 USP 라인 */}
+            <div className="hero-anim hero-d4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] sm:text-[13px] font-semibold text-ink/70">
+              <span className="inline-flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-brand" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6" /></svg>
+                가입비 0원
               </span>
-            </span>{" "}<span style={{ color: "#1a1614" }}>소개팅</span>,<br />
-            마음에 드는<br />
-            <span className="text-wine-gold">그 분</span>으로
-          </h1>
-
-          <p className="hero-anim hero-d3 text-[13.5px] sm:text-base leading-relaxed max-w-md mx-auto mb-8" style={{ color: sb }}>
-            전문 매칭사가 회원님의 <strong style={{ color: pk }}>이상형 조건</strong>을 직접 분석.<br />
-            <strong style={{ color: pk }}>실제 사진과 자세한 프로필</strong>을 직접 전달드리고,<br />
-            마음에 드는 분으로 <strong style={{ color: pk }}>매칭이 성사되어야</strong> 결제하는 프라이빗 후불제.
-          </p>
-
-          {/* USP 강조 카드 3개 */}
-          <div className="hero-anim hero-d3 grid grid-cols-3 gap-2 sm:gap-3 mb-9 max-w-md mx-auto">
-            {[
-              { t: "여성 1회", b: "무료", badge: "EVENT" },
-              { t: "매칭 후", b: "결제", badge: null },
-              { t: "대면", b: "보장", badge: null },
-            ].map((it, i) => (
-              <div key={i} className="relative rounded-2xl bg-white/95 backdrop-blur-sm border-[1.5px] py-3 px-2 transition-all hover:-translate-y-1 hover:shadow-lg" style={{ borderColor: `${pk}30`, boxShadow: `0 8px 24px -10px ${pk}30` }}>
-                {it.badge && (
-                  <span className="absolute -top-1.5 -right-1 text-[8.5px] font-extrabold tracking-widest px-1.5 py-0.5 rounded-full text-white shadow" style={{ background: gd }}>
-                    {it.badge}
-                  </span>
-                )}
-                <div className="text-[10.5px] font-semibold" style={{ color: mt }}>{it.t}</div>
-                <div className="text-[15px] sm:text-[16px] font-extrabold" style={{ color: pk }}>{it.b}</div>
-              </div>
-            ))}
+              <span className="w-1 h-1 rounded-full bg-ink/20" />
+              <span>여성 1회 무료</span>
+              <span className="w-1 h-1 rounded-full bg-ink/20" />
+              <span>매칭 후 결제</span>
+              <span className="w-1 h-1 rounded-full bg-ink/20" />
+              <span>대면 보장</span>
+            </div>
           </div>
 
-          <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-2.5 mb-10">
-            <a href="/ideal-match" className="group btn-premium w-full sm:w-auto sm:min-w-[200px] inline-flex items-center justify-center gap-2 text-white px-7 py-4 rounded-full text-sm font-extrabold transition-all" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-              이상형 매칭 진단 {I.arrowR("w-4 h-4 group-hover:translate-x-1 transition-transform")}
-            </a>
-            <a href="/about" className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-4 rounded-full bg-white/95 backdrop-blur-sm border-[1.5px] hover:bg-pink-50/50 hover:shadow-md transition-all" style={{ color: pk, borderColor: `${pk}30` }}>
-              인연연구소 알아보기
-            </a>
-          </div>
-
-          {/* 통계 — 가독성 + 럭셔리 카드 (구분선 + 글로우) */}
-          <div className="hero-anim hero-d5 inline-flex items-center gap-4 sm:gap-7 px-6 sm:px-8 py-4 rounded-2xl bg-white/95 backdrop-blur-md border border-pink-100 relative" style={{ boxShadow: `0 18px 50px -12px ${pk}30, 0 0 0 1px rgba(255,255,255,0.6) inset` }}>
-            {[{ v: "9,999+", l: "누적 상담" }, { v: "51:49", l: "남녀 성비" }, { v: "48h", l: "평균 매칭" }].map((s, i) => (
-              <div key={i} className="flex items-center gap-4 sm:gap-7">
-                {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-pink-200 to-transparent" />}
-                <div className="flex flex-col items-center">
-                  <div className="text-lg sm:text-xl font-extrabold leading-none tabular-nums" style={{ color: pk, fontFamily: "'Nunito', sans-serif" }}>{s.v}</div>
-                  <div className="text-[10px] sm:text-[11px] mt-1 font-semibold whitespace-nowrap" style={{ color: mt }}>{s.l}</div>
+          {/* 우측 큰 사진 + 데코 */}
+          <div className="col-span-12 lg:col-span-5 lg:pt-4">
+            <div className="hero-anim hero-d3 relative">
+              {/* 큰 사진 */}
+              <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-2xl overflow-hidden">
+                <Image src="/hero-couple.jpg" alt="" fill className="object-cover" priority />
+                {/* 위쪽에 미세 어둠 (텍스트 오버레이 가독성) */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+                {/* 좌상단 매거진 라벨 */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-full">
+                  <span className="label-ed">FEATURED</span>
+                </div>
+                {/* 좌하단 인용구 */}
+                <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <p className="font-serif-en italic text-lg sm:text-xl leading-tight" style={{ fontWeight: 500 }}>
+                    &ldquo;The art of matchmaking, redefined.&rdquo;
+                  </p>
                 </div>
               </div>
-            ))}
+
+              {/* 데코 — 작은 카드들 (떠 있는) */}
+              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 anim-float">
+                <div className="rounded-2xl bg-white shadow-xl p-3 sm:p-4 border border-line">
+                  <div className="text-[9px] font-extrabold tracking-[0.25em] text-gold mb-1">SUCCESS</div>
+                  <div className="font-impact text-2xl sm:text-3xl text-ink leading-none">9,999<span className="text-base text-brand">+</span></div>
+                  <div className="text-[10px] font-semibold text-ink/60 mt-0.5">누적 상담</div>
+                </div>
+              </div>
+              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 anim-float" style={{ animationDelay: "1.5s" }}>
+                <div className="rounded-2xl bg-ink text-white shadow-xl p-3 sm:p-4">
+                  <div className="text-[9px] font-extrabold tracking-[0.25em] text-brand-soft mb-1">MATCH TIME</div>
+                  <div className="font-impact text-2xl sm:text-3xl leading-none">48<span className="text-base text-gold-soft">h</span></div>
+                  <div className="text-[10px] font-semibold text-white/60 mt-0.5">평균 매칭</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 하단 큰 한 줄 (잡지 표지 인덱스 스타일) */}
+        <div className="hero-anim hero-d5 mt-16 sm:mt-20 pt-8 border-t border-ink/15">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="flex items-end gap-6 sm:gap-10">
+              <div>
+                <div className="label-ed mb-1">VOL.01</div>
+                <div className="font-impact text-3xl sm:text-4xl lg:text-5xl text-ink">INYEON</div>
+              </div>
+              <div className="hidden sm:block h-12 w-px bg-ink/15" />
+              <div className="hidden sm:block">
+                <div className="label-ed mb-1">RATIO</div>
+                <div className="font-impact text-2xl sm:text-3xl text-ink">51 : 49</div>
+                <div className="text-[10px] text-ink/50">남녀 성비</div>
+              </div>
+              <div className="hidden lg:block h-12 w-px bg-ink/15" />
+              <div className="hidden lg:block">
+                <div className="label-ed mb-1">VERIFIED</div>
+                <div className="font-impact text-2xl sm:text-3xl text-gradient">100%</div>
+                <div className="text-[10px] text-ink/50">실회원 인증</div>
+              </div>
+            </div>
+            <a href="#scroll" className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest text-ink/50 hover:text-ink transition-colors">
+              SCROLL
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" /></svg>
+            </a>
           </div>
         </div>
       </div>
