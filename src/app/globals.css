@@ -22,10 +22,18 @@
   --ink-tertiary: #86868b;
   --line: #e5e5e7;          /* Apple divider */
 
-  /* Accent — 핑크 1색만 */
-  --accent: #ec4d7e;        /* 비비드 핑크 (선명) */
+  /* Accent — 멀티컬러 풀 팔레트 (화려한 그라데이션용) */
+  --accent: #ec4d7e;        /* 비비드 핑크 */
   --accent-deep: #d4567a;
   --accent-soft: #fde7ee;
+  --c-purple: #a855f7;      /* 비비드 보라 */
+  --c-purple-deep: #7c3aed;
+  --c-gold: #f59e0b;        /* 진한 골드 */
+  --c-gold-soft: #fcd34d;
+  --c-teal: #14b8a6;        /* 청록 */
+  --c-coral: #fb7185;       /* 코랄 */
+  --c-violet: #c084fc;      /* 페일 보라 */
+  --c-orange: #fb923c;      /* 따뜻한 오렌지 */
 }
 
 html {
@@ -225,6 +233,156 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal-ready .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════
+   MAXIMALIST EFFECTS — 진짜 화려한 모드
+   ═══════════════════════════════════════ */
+@layer utilities {
+  /* 멀티 컬러 텍스트 그라데이션 (4색 핑크-보라-코랄-골드) */
+  .text-rainbow {
+    background: linear-gradient(110deg, #ec4d7e 0%, #c084fc 25%, #a855f7 50%, #fb7185 75%, #f59e0b 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shift 8s ease-in-out infinite;
+    display: inline-block;
+  }
+  /* 핑크-보라 그라데이션 */
+  .text-pink-purple {
+    background: linear-gradient(135deg, #ec4d7e 0%, #c084fc 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  /* 코랄-골드 그라데이션 */
+  .text-coral-gold {
+    background: linear-gradient(135deg, #fb7185 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  /* 거대 멀티 글로우 헤딩 */
+  .text-glow-multi {
+    text-shadow:
+      0 0 30px rgba(236, 77, 126, 0.4),
+      0 0 60px rgba(168, 85, 247, 0.2),
+      0 0 90px rgba(245, 158, 11, 0.15);
+  }
+
+  /* 풀 메시 배경 (페이지 전체) */
+  .mesh-rainbow {
+    background:
+      radial-gradient(at 0% 0%, rgba(236, 77, 126, 0.22) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.18) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(252, 211, 77, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(251, 113, 133, 0.18) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(192, 132, 252, 0.18) 0px, transparent 50%),
+      #fffafd;
+  }
+  .mesh-sunset {
+    background:
+      radial-gradient(at 20% 30%, rgba(251, 113, 133, 0.3) 0px, transparent 55%),
+      radial-gradient(at 80% 70%, rgba(245, 158, 11, 0.25) 0px, transparent 55%),
+      radial-gradient(at 50% 0%, rgba(236, 77, 126, 0.2) 0px, transparent 50%),
+      #fff8f3;
+  }
+  .mesh-violet {
+    background:
+      radial-gradient(at 30% 20%, rgba(168, 85, 247, 0.25) 0px, transparent 55%),
+      radial-gradient(at 70% 80%, rgba(236, 77, 126, 0.22) 0px, transparent 55%),
+      radial-gradient(at 50% 50%, rgba(192, 132, 252, 0.15) 0px, transparent 50%),
+      #fbf5ff;
+  }
+  .mesh-noir {
+    background:
+      radial-gradient(at 20% 20%, rgba(236, 77, 126, 0.45) 0px, transparent 55%),
+      radial-gradient(at 80% 80%, rgba(168, 85, 247, 0.35) 0px, transparent 55%),
+      radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.2) 0px, transparent 50%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a0a14 100%);
+  }
+
+  /* 그라데이션 보더 카드 (항상 보임) */
+  .card-rainbow {
+    position: relative;
+    background: white;
+    border-radius: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .card-rainbow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #ec4d7e, #c084fc, #f59e0b, #ec4d7e);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rainbow-shift 6s linear infinite;
+    pointer-events: none;
+  }
+  .card-rainbow:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 30px 70px -15px rgba(236, 77, 126, 0.4);
+  }
+
+  /* 네온 글로우 카드 (상시 핑크 그림자) */
+  .card-neon {
+    box-shadow:
+      0 0 0 1px rgba(236, 77, 126, 0.2),
+      0 10px 40px -10px rgba(236, 77, 126, 0.3),
+      0 20px 60px -20px rgba(168, 85, 247, 0.2);
+    transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .card-neon:hover {
+    box-shadow:
+      0 0 0 1px rgba(236, 77, 126, 0.4),
+      0 20px 60px -10px rgba(236, 77, 126, 0.5),
+      0 30px 80px -20px rgba(168, 85, 247, 0.4);
+    transform: translateY(-6px);
+  }
+
+  /* 큰 광선 (Hero 등에) */
+  .rays {
+    background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(236, 77, 126, 0.08) 30deg, transparent 60deg, rgba(168, 85, 247, 0.08) 90deg, transparent 120deg, rgba(245, 158, 11, 0.08) 150deg, transparent 180deg, rgba(236, 77, 126, 0.08) 210deg, transparent 240deg, rgba(168, 85, 247, 0.08) 270deg, transparent 300deg, rgba(245, 158, 11, 0.08) 330deg, transparent 360deg);
+    animation: rotate-slow 60s linear infinite;
+  }
+
+  /* 그라데이션 버튼 (CTA용) */
+  .btn-gradient {
+    background: linear-gradient(110deg, #ec4d7e 0%, #c084fc 35%, #a855f7 65%, #ec4d7e 100%);
+    background-size: 300% 100%;
+    color: white;
+    box-shadow: 0 15px 40px -10px rgba(236, 77, 126, 0.5);
+    animation: rainbow-shift 5s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-gradient:hover {
+    box-shadow: 0 25px 60px -10px rgba(236, 77, 126, 0.7), 0 0 30px rgba(168, 85, 247, 0.4);
+    transform: translateY(-3px) scale(1.03);
+  }
+}
+
+@keyframes rainbow-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes scale-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.anim-rotate-slow { animation: rotate-slow 60s linear infinite; }
+.anim-scale-pulse { animation: scale-pulse 4s ease-in-out infinite; }
 
 /* ═══════════════════════════════════════
    PREMIUM EFFECTS — 화려한 디테일

@@ -164,6 +164,112 @@ export function FloatingHearts() {
   );
 }
 
+/** 멀티 컬러 글로우 오브 (화려한 5개 컬러 떠다님) */
+export function RainbowOrbs() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div className="absolute top-[5%] left-[8%] w-[500px] h-[500px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(236, 77, 126, 0.35)" }} />
+      <div className="absolute top-[15%] right-[5%] w-[450px] h-[450px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(168, 85, 247, 0.3)", animationDelay: "2s" }} />
+      <div className="absolute bottom-[20%] left-[15%] w-[400px] h-[400px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(245, 158, 11, 0.25)", animationDelay: "4s" }} />
+      <div className="absolute bottom-[10%] right-[10%] w-[550px] h-[550px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(251, 113, 133, 0.3)", animationDelay: "1s" }} />
+      <div className="absolute top-[50%] left-[40%] w-[380px] h-[380px] rounded-full blur-3xl anim-float-slow anim-scale-pulse" style={{ background: "rgba(192, 132, 252, 0.25)", animationDelay: "3s" }} />
+    </div>
+  );
+}
+
+/** 회전하는 큰 광선 (배경 dramatic) */
+export function RaysOfLight() {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] rays opacity-70" />
+    </div>
+  );
+}
+
+/** 멀티 컬러 파티클 필드 (떠다니는 작은 컬러 점들) */
+export function ParticleField({ count = 14 }: { count?: number }) {
+  const colors = ["#ec4d7e", "#c084fc", "#a855f7", "#fb7185", "#f59e0b", "#fcd34d"];
+  const particles = Array.from({ length: count }, (_, i) => ({
+    top: `${(i * 37) % 95}%`,
+    left: `${(i * 53) % 95}%`,
+    size: 4 + (i % 4) * 2,
+    color: colors[i % colors.length],
+    delay: `${(i * 0.4) % 4}s`,
+  }));
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      {particles.map((p, i) => (
+        <span
+          key={i}
+          className="absolute rounded-full anim-twinkle"
+          style={{
+            top: p.top,
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            background: p.color,
+            boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
+            animationDelay: p.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/** 큰 그라데이션 메시 SVG (다채로운 색감) */
+export function RichMeshBg() {
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="rm1" cx="15%" cy="15%" r="50%">
+          <stop offset="0%" stopColor="#ec4d7e" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#ec4d7e" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="rm2" cx="85%" cy="20%" r="50%">
+          <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="rm3" cx="50%" cy="100%" r="60%">
+          <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="rm4" cx="20%" cy="80%" r="40%">
+          <stop offset="0%" stopColor="#fb7185" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#fb7185" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="rm5" cx="90%" cy="75%" r="45%">
+          <stop offset="0%" stopColor="#c084fc" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#c084fc" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="1440" height="900" fill="url(#rm1)" />
+      <rect width="1440" height="900" fill="url(#rm2)" />
+      <rect width="1440" height="900" fill="url(#rm3)" />
+      <rect width="1440" height="900" fill="url(#rm4)" />
+      <rect width="1440" height="900" fill="url(#rm5)" />
+    </svg>
+  );
+}
+
+/** 큰 컬러 별 폭발 (단어 옆 강조) */
+export function BurstStar({ size = 40, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 60 60" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id="burstGrad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ec4d7e" />
+          <stop offset="50%" stopColor="#c084fc" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+      <g fill="url(#burstGrad)">
+        <path d="M30 0 L34 24 L60 30 L34 36 L30 60 L26 36 L0 30 L26 24 Z" />
+      </g>
+    </svg>
+  );
+}
+
 /** 큰 별 (헤딩 옆 액센트) */
 export function StarAccent({ size = 24, className = "" }: { size?: number; className?: string }) {
   return (

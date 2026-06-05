@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { MeshGradientBg, Sparkles, GlowOrbs, NoiseTexture, FloatingHearts, StarAccent } from "@/components/PremiumDeco";
+import { MeshGradientBg, Sparkles, GlowOrbs, NoiseTexture, FloatingHearts, StarAccent, RainbowOrbs, RaysOfLight, ParticleField, RichMeshBg, BurstStar } from "@/components/PremiumDeco";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -127,30 +127,32 @@ export function Navbar() {
   );
 }
 
-/* ═══ HERO ═══ Apple + 프리미엄 SVG 이펙트 */
+/* ═══ HERO ═══ 화려한 풀 모드 (멀티컬러 메시 + 광선 + 파티클) */
 export function HeroSection() {
   return (
-    <section className="relative bg-base pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
-      <MeshGradientBg />
-      <GlowOrbs variant="wide" />
+    <section className="relative mesh-rainbow pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
+      <RichMeshBg />
+      <RaysOfLight />
+      <RainbowOrbs />
+      <ParticleField count={14} />
       <Sparkles count={8} />
       <NoiseTexture />
 
       <div className="container-apple relative text-center">
         {/* 라벨 + 글로우 링 */}
         <div className="hero-anim hero-d1 mb-7 sm:mb-9 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card ring-glow">
-          <StarAccent size={14} />
-          <span className="label-sm" style={{ color: "var(--accent)" }}>PRIVATE IDEAL MATCH</span>
+          <BurstStar size={16} />
+          <span className="label-sm text-rainbow" style={{ background: "linear-gradient(110deg, #ec4d7e, #c084fc, #f59e0b)" , WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>PRIVATE IDEAL MATCH</span>
           <span className="w-1 h-1 rounded-full bg-accent/40" />
           <span className="text-[10px] font-bold text-ink-soft tracking-wider">EST. 2026</span>
         </div>
 
-        {/* 거대 헤딩 + Aurora */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative" style={{ fontWeight: 700 }}>
+        {/* 거대 헤딩 + Rainbow */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative text-glow-multi" style={{ fontWeight: 700 }}>
           이상형 소개팅,<br />
-          <span className="text-aurora-pink text-glow-pink relative inline-block">
+          <span className="text-rainbow relative inline-block">
             진짜 그분
-            <StarAccent size={22} className="absolute -top-3 -right-7 anim-twinkle" />
+            <BurstStar size={28} className="absolute -top-4 -right-9 anim-twinkle" />
           </span>
           <span className="text-ink">으로.</span>
         </h1>
@@ -160,12 +162,12 @@ export function HeroSection() {
           마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제 소개팅.
         </p>
 
-        {/* CTA — Premium glow + shine */}
+        {/* CTA — 화려한 그라데이션 버튼 */}
         <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-20">
-          <a href="/ideal-match" className="btn btn-premium shine text-white w-full sm:w-auto sm:min-w-[220px]" style={{ background: "linear-gradient(135deg, #ec4d7e, #d4567a)" }}>
-            이상형 매칭 진단 →
+          <a href="/ideal-match" className="btn btn-gradient shine w-full sm:w-auto sm:min-w-[240px]">
+            ✨ 이상형 매칭 진단 →
           </a>
-          <a href="/about" className="btn glass-card w-full sm:w-auto text-ink">
+          <a href="/about" className="btn glass-card w-full sm:w-auto text-ink hover-magnetic">
             인연연구소 알아보기 →
           </a>
         </div>
@@ -764,23 +766,29 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH — Apple 다크 카드 풀폭 ═══ */
+/* ═══ IDEAL MATCH — 다크 + 멀티컬러 글로우 ═══ */
 export function IdealMatchSection() {
   return (
     <section className="bg-base py-16 sm:py-24 lg:py-28">
       <div className="container-apple">
-        <a href="/ideal-match" className="group block card-dark relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]">
-          {/* 미세 글로우 */}
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: "var(--accent)" }} />
+        <a href="/ideal-match" className="group block mesh-noir text-white rounded-3xl relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]" style={{ boxShadow: "0 30px 80px -20px rgba(236, 77, 126, 0.4)" }}>
+          {/* 멀티 글로우 — 핑크 + 보라 + 골드 */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-50 anim-float-slow" style={{ background: "#ec4d7e" }} />
+          <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#a855f7", animationDelay: "2s" }} />
+          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-30 anim-float-slow" style={{ background: "#f59e0b", animationDelay: "3s" }} />
+
+          {/* 떠다니는 별 */}
+          <span className="absolute top-10 right-20 anim-twinkle"><BurstStar size={20} /></span>
+          <span className="absolute bottom-12 left-12 anim-twinkle" style={{ animationDelay: "1s" }}><StarAccent size={14} /></span>
 
           <div className="relative grid grid-cols-12 gap-y-8 lg:gap-x-12 items-center">
             <div className="col-span-12 lg:col-span-8">
-              <div className="label-sm mb-4" style={{ color: "var(--accent)" }}>매칭 진단</div>
-              <h2 className="h-section font-bold text-white mb-6" style={{ fontWeight: 700 }}>
+              <div className="label-sm mb-4" style={{ color: "var(--c-gold-soft)" }}>매칭 진단</div>
+              <h2 className="h-section font-bold text-white mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
                 내 이상형과<br />
-                <span className="text-gradient">매칭될 수 있을까?</span>
+                <span className="text-rainbow">매칭될 수 있을까?</span>
               </h2>
-              <p className="text-base sm:text-lg text-white/65 max-w-xl leading-relaxed">
+              <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed">
                 나이·지역·직업·스타일 등 원하시는 조건을 알려주시면,<br className="hidden sm:block" />
                 담당 매칭사가 매칭 가능성을 직접 확인해드립니다.
               </p>
