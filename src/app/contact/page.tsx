@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import PageShell from "@/components/PageShell";
+import SubPageHero from "@/components/SubPageHero";
 import { ContactSection, FAQSection } from "@/sections";
 
 function useReveal() {
@@ -20,6 +21,11 @@ export default function ContactPage() {
   useReveal();
   return (
     <PageShell>
+      <SubPageHero
+        eyebrow="CONTACT"
+        title={<><span className="text-gradient">상담</span>·문의</>}
+        sub="카톡으로 가장 빠르게 답변드려요"
+      />
       <ContactSection />
       <FAQSection />
     </PageShell>

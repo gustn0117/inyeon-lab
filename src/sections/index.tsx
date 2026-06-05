@@ -53,7 +53,7 @@ export function EventBanner() {
     <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 px-4" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
         <span className="text-white text-xs sm:text-sm font-bold flex flex-col sm:flex-row sm:gap-2 items-center">{I.sparkle("w-3.5 h-3.5 inline-block mr-1")} 여성회원 매칭 1회 무료 <span className="text-white/70 text-[0.65rem] sm:text-xs font-medium">대기업·공무원·교사 등 다양한 직업 회원 다수</span></span>
-        <a href="#contact" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
+        <a href="/contact" onClick={trackLead} className="text-[0.65rem] sm:text-xs font-bold px-3 py-1 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
         <button onClick={() => setShow(false)} className="absolute right-3 sm:right-5 text-white/70 hover:text-white transition-colors">{I.x("w-4 h-4")}</button>
       </div>
     </div>
@@ -75,13 +75,13 @@ export function Navbar() {
   return (
     <nav className={`fixed inset-x-0 top-[40px] z-[100] backdrop-blur-xl transition-all duration-500 ${scrolled ? "bg-white/90 shadow-sm shadow-pink-100/50" : "bg-transparent"}`}>
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <span style={{ color: pk }}>{I.heart("w-5 h-5")}</span>
           <span className="font-logo text-lg sm:text-xl" style={{ letterSpacing: "-0.02em" }}>인연<span style={{ color: pk }}>연구소</span></span>
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => <a key={l.h} href={l.h} className="text-[13px] font-semibold hover:text-[#d4567a] transition-colors" style={{ color: scrolled ? sb : "#444" }}>{l.l}</a>)}
-          <a href="#contact" onClick={trackLead} className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+          <a href="/contact" onClick={trackLead} className="text-[13px] text-white px-6 py-2.5 rounded-full font-bold btn-shimmer transition-all hover:shadow-lg hover:shadow-pink-200/50" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: sb }}>{open ? I.x("w-5 h-5") : I.menu("w-5 h-5")}</button>
       </div>
@@ -89,7 +89,7 @@ export function Navbar() {
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-pink-50">
           <div className="px-5 py-5 space-y-1">
             {links.map(l => <a key={l.h} href={l.h} onClick={() => setOpen(false)} className="block text-sm py-3 px-4 rounded-xl hover:bg-pink-50 transition-colors" style={{ color: sb }}>{l.l}</a>)}
-            <a href="#contact" onClick={() => { trackLead(); setOpen(false); }} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
+            <a href="/contact" onClick={() => { trackLead(); setOpen(false); }} className="block text-center text-sm text-white py-3 rounded-full mt-3 font-bold" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>무료 상담</a>
           </div>
         </div>
       )}
@@ -134,9 +134,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          <h1 className="hero-anim hero-d2 font-serif-kr text-4xl sm:text-5xl lg:text-[3.6rem] font-bold tracking-tight mb-6" style={{ color: "#1a1a1f" }}>
+          <h1 className="hero-anim hero-d2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif", color: "#1a1a1f" }}>
             <span className="text-gradient">이상형 소개팅</span>,<br />
-            마음에 드는 분을 만나보세요
+            마음에 드는 분으로
           </h1>
 
           <p className="hero-anim hero-d3 text-sm sm:text-base leading-relaxed max-w-md mx-auto mb-10" style={{ color: sb }}>
@@ -367,7 +367,7 @@ export function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href="/contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
           {/* 남성 */}
@@ -385,7 +385,7 @@ export function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
+            <a href="/contact" onClick={trackLead} className="block text-center py-3.5 rounded-full border-2 border-pink-100 text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담 받기</a>
           </div>
 
           {/* 무제한 */}
@@ -405,7 +405,7 @@ export function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href="#contact" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>무제한 상담</a>
+            <a href="/contact" onClick={trackLead} className="block text-center py-3.5 rounded-full bg-white text-sm font-bold hover:bg-pink-50 transition-colors" style={{ color: pk }}>무제한 상담</a>
           </div>
         </div>
       </div>
@@ -912,8 +912,14 @@ export function Footer() {
             <span className="font-logo text-lg">인연<span style={{ color: pk }}>연구소</span></span>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            {["소개", "장점", "가격", "컨설팅", "상담"].map((l, i) => (
-              <a key={i} href={`#${["about", "features", "pricing", "consult", "contact"][i]}`} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{l}</a>
+            {[
+              { l: "소개", h: "/about" },
+              { l: "가격", h: "/pricing" },
+              { l: "이상형 매칭", h: "/ideal-match" },
+              { l: "후기", h: "/reviews" },
+              { l: "상담", h: "/contact" },
+            ].map((it, i) => (
+              <a key={i} href={it.h} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{it.l}</a>
             ))}
           </div>
         </div>
