@@ -269,6 +269,96 @@ h1, h2, h3, h4, h5, h6 {
   background: radial-gradient(circle, rgba(194,48,101,0.4) 0%, rgba(194,48,101,0) 70%);
 }
 
+/* ═══════════════════════════════════════
+   PREMIUM DECORATION
+   ═══════════════════════════════════════ */
+@layer utilities {
+  /* Glassmorphism */
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .glass-dark {
+    background: rgba(21, 16, 15, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Editorial card */
+  .card-ed {
+    background: var(--bg-card);
+    border-radius: 1.25rem;
+    border: 1px solid var(--line);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, box-shadow 0.4s;
+  }
+  .card-ed:hover {
+    transform: translateY(-4px);
+    border-color: rgba(194, 48, 101, 0.3);
+    box-shadow: 0 20px 50px -15px rgba(110, 26, 62, 0.18);
+  }
+
+  /* Premium gradient border (1px) */
+  .border-gradient {
+    position: relative;
+  }
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--brand), var(--gold), var(--brand-deep));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Mesh radial editorial */
+  .mesh-ed {
+    background:
+      radial-gradient(at 20% 20%, rgba(244, 184, 200, 0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(184, 133, 74, 0.18) 0px, transparent 50%),
+      var(--bg);
+  }
+  .mesh-ed-dark {
+    background:
+      radial-gradient(at 25% 25%, rgba(194, 48, 101, 0.6) 0px, transparent 55%),
+      radial-gradient(at 75% 75%, rgba(184, 133, 74, 0.35) 0px, transparent 55%),
+      linear-gradient(135deg, #15100f 0%, #2a1820 100%);
+  }
+
+  /* Halo (큰 글로우) */
+  .halo-rose::before {
+    content: '';
+    position: absolute;
+    inset: -100px;
+    background: radial-gradient(ellipse, rgba(194,48,101,0.18) 0%, transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Number display */
+  .num-display {
+    font-family: 'Gmarket Sans', sans-serif;
+    font-weight: 700;
+    font-feature-settings: 'tnum';
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+  }
+
+  /* Editorial separator */
+  .sep-dot::before {
+    content: '·';
+    margin: 0 0.5em;
+    color: var(--ink-soft);
+    opacity: 0.5;
+  }
+}
+
 /* legacy backward-compat — 기존 클래스 매핑 */
 .font-logo { font-family: 'Gmarket Sans', sans-serif; font-weight: 700; }
 .text-aurora { @apply text-gradient; }

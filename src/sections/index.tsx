@@ -679,64 +679,54 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH (이상형 진단 진입) — 크림 배경 + 핑크 액센트 카드 ═══ */
+/* ═══ IDEAL MATCH — 잡지 비대칭 split ═══ */
 export function IdealMatchSection() {
   return (
-    <section className="py-16 sm:py-20 mesh-cream relative overflow-hidden">
-      {/* 배경 데코 점들 */}
-      <div className="absolute top-8 left-[10%] w-2 h-2 rounded-full dot-glow anim-twinkle" style={{ animationDelay: "0.5s" }} />
-      <div className="absolute top-20 right-[15%] w-1.5 h-1.5 rounded-full dot-glow-gold anim-twinkle" style={{ animationDelay: "1.2s" }} />
-      <div className="absolute bottom-12 left-[20%] w-3 h-3 rounded-full dot-glow anim-twinkle" style={{ animationDelay: "2s" }} />
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-paper">
+      <div className="absolute top-0 right-[5%] w-[300px] h-[300px] rounded-full blur-3xl opacity-25 pointer-events-none" style={{ background: "#c23065" }} />
 
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 reveal">
-        <a
-          href="/ideal-match"
-          className="group relative block overflow-hidden rounded-3xl transition-all hover:-translate-y-1"
-          style={{ background: `radial-gradient(circle at 20% 0%, #ff7ea3 0%, transparent 50%), radial-gradient(circle at 80% 100%, #c23065 0%, transparent 55%), linear-gradient(135deg, ${pk}, #e8457f)`, boxShadow: `0 25px 60px -12px ${pk}60` }}
-        >
-          {/* 데코 */}
-          <div className="absolute inset-0 opacity-35 pointer-events-none">
-            <div className="absolute -top-12 -right-12 w-56 h-56 rounded-full blur-3xl" style={{ background: "white" }} />
-            <div className="absolute -bottom-16 -left-12 w-48 h-48 rounded-full blur-3xl" style={{ background: "#ffd6e1" }} />
+      <div className="container-ed relative">
+        <div className="flex items-center gap-3 mb-10 reveal">
+          <span className="w-12 h-px bg-ink/30" />
+          <span className="label-ed">FIND YOUR MATCH</span>
+        </div>
+
+        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 items-end">
+          <div className="col-span-12 lg:col-span-7 reveal">
+            <h2 className="h-display text-ink mb-6" style={{ fontSize: "clamp(2.2rem, 6vw, 4.2rem)" }}>
+              내 <span className="text-gradient">이상형</span>과<br />
+              매칭될 수 있을까?
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed max-w-xl text-ink-soft">
+              나이·지역·직업·스타일 등 원하시는 조건을 알려주시면,<br className="hidden sm:block" />
+              담당 매칭사가 1분 안에 매칭 가능성을 직접 확인해드립니다.
+            </p>
           </div>
 
-          {/* 반짝임 별 */}
-          <span className="absolute top-6 right-10 text-white/60 anim-twinkle" style={{ animationDelay: "0.3s" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
-          </span>
-          <span className="absolute bottom-8 right-20 text-white/40 anim-twinkle" style={{ animationDelay: "1.5s" }}>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
-          </span>
-          <span className="absolute top-14 left-16 text-white/50 anim-twinkle" style={{ animationDelay: "0.8s" }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
-          </span>
+          <div className="col-span-12 lg:col-span-5 reveal">
+            <a href="/ideal-match" className="group block bg-ink text-white rounded-2xl p-8 sm:p-10 relative overflow-hidden transition-all hover:-translate-y-1" style={{ boxShadow: "0 25px 60px -15px rgba(21,16,15,0.4)" }}>
+              <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl opacity-50" style={{ background: "#c23065" }} />
+              <div className="absolute -bottom-16 -left-12 w-40 h-40 rounded-full blur-3xl opacity-30" style={{ background: "#b8854a" }} />
 
-          <div className="relative z-10 p-7 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-6 text-white">
-            <div className="flex-1 min-w-0">
-              <div className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 mb-3 bg-white/15 border border-white/25">
-                <span>{I.sparkle("w-3 h-3")}</span>
-                <span className="text-[10px] font-bold tracking-[0.2em]">IDEAL MATCH</span>
+              <div className="relative">
+                <div className="label-ed mb-4" style={{ color: "var(--gold-soft)" }}>BEGIN HERE</div>
+                <div className="font-impact text-3xl sm:text-4xl leading-tight mb-3">
+                  매칭 진단<br />
+                  <span className="text-gradient">1분이면 충분</span>
+                </div>
+                <p className="text-sm text-white/70 mb-8 leading-relaxed">
+                  6가지 질문에 답하고 담당 매칭사의 답변을 받아보세요.
+                </p>
+                <div className="flex items-center gap-4">
+                  <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-extrabold bg-white text-ink group-hover:gap-3 transition-all">
+                    바로 시작 {I.arrowR("w-4 h-4")}
+                  </span>
+                  <span className="text-[11px] text-white/50">여성 1회 무료</span>
+                </div>
               </div>
-              <h2 className="text-xl sm:text-2xl lg:text-[28px] font-extrabold leading-tight mb-2" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-                내 이상형과 매칭될 수 있을까?
-              </h2>
-              <p className="text-xs sm:text-sm text-white/85 leading-relaxed mb-3">
-                1분 진단으로 매칭 가능성을 확인해 보세요.
-              </p>
-              <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-white/85">
-                <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />여성 1회 무료</span>
-                <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />가입비 0원</span>
-                <span className="inline-flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-white" />매칭 후 결제</span>
-              </div>
-            </div>
-            <div className="flex-shrink-0 self-start sm:self-center">
-              <span className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full text-sm font-extrabold transition-all group-hover:gap-2.5 shadow-md" style={{ background: "white", color: pk }}>
-                바로 진단하기
-                {I.arrowR("w-4 h-4")}
-              </span>
-            </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
     </section>
   );
