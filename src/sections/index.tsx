@@ -126,8 +126,63 @@ export function Navbar() {
   );
 }
 
-/* ═══ HERO ═══ 잡지 표지 스타일 — 비대칭 + 큰 타이포 + 큰 이미지 */
+/* ═══ HERO ═══ Apple 미니멀 — 큰 헤딩 중앙 + 큰 사진 */
 export function HeroSection() {
+  return (
+    <section className="bg-base pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32">
+      <div className="container-apple text-center">
+        {/* 라벨 */}
+        <div className="hero-anim hero-d1 mb-7 sm:mb-9">
+          <span className="label-sm">PRIVATE IDEAL MATCH</span>
+        </div>
+
+        {/* 거대 헤딩 */}
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink" style={{ fontWeight: 700 }}>
+          이상형 소개팅,<br />
+          <span className="text-gradient">진짜 그분</span>으로.
+        </h1>
+
+        {/* 부제 */}
+        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-ink-soft max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400 }}>
+          전문 매칭사가 회원님의 이상형을 직접 분석.<br className="hidden sm:block" />
+          마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제 소개팅.
+        </p>
+
+        {/* CTA */}
+        <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16 sm:mb-20">
+          <a href="/ideal-match" className="btn btn-primary w-full sm:w-auto sm:min-w-[200px]">
+            이상형 매칭 진단 →
+          </a>
+          <a href="/about" className="btn-link">
+            인연연구소 알아보기 →
+          </a>
+        </div>
+
+        {/* 큰 사진 */}
+        <div className="hero-anim hero-d5 relative max-w-5xl mx-auto rounded-3xl overflow-hidden bg-tertiary" style={{ aspectRatio: "16/10" }}>
+          <Image src="/hero-couple.jpg" alt="" fill className="object-cover" priority />
+        </div>
+
+        {/* 작은 통계 */}
+        <div className="hero-anim hero-d5 mt-12 sm:mt-16 grid grid-cols-3 gap-4 sm:gap-12 max-w-3xl mx-auto pt-8 border-t border-line">
+          {[
+            { v: "9,999+", l: "누적 상담" },
+            { v: "51 : 49", l: "남녀 성비" },
+            { v: "48h", l: "평균 매칭" },
+          ].map((s, i) => (
+            <div key={i} className="text-center">
+              <div className="num-huge text-2xl sm:text-3xl lg:text-4xl text-ink">{s.v}</div>
+              <div className="text-xs sm:text-sm text-ink-soft mt-1.5">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* 기존 Hero (legacy, 미사용) */
+function HeroSection_OLD() {
   return (
     <section className="relative min-h-[100svh] bg-cream overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16">
       {/* 배경 데코 */}
@@ -679,54 +734,38 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH — 잡지 비대칭 split ═══ */
+/* ═══ IDEAL MATCH — Apple 다크 카드 풀폭 ═══ */
 export function IdealMatchSection() {
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-paper">
-      <div className="absolute top-0 right-[5%] w-[300px] h-[300px] rounded-full blur-3xl opacity-25 pointer-events-none" style={{ background: "#c23065" }} />
+    <section className="bg-base py-16 sm:py-24 lg:py-28">
+      <div className="container-apple">
+        <a href="/ideal-match" className="group block card-dark relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]">
+          {/* 미세 글로우 */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: "var(--accent)" }} />
 
-      <div className="container-ed relative">
-        <div className="flex items-center gap-3 mb-10 reveal">
-          <span className="w-12 h-px bg-ink/30" />
-          <span className="label-ed">FIND YOUR MATCH</span>
-        </div>
+          <div className="relative grid grid-cols-12 gap-y-8 lg:gap-x-12 items-center">
+            <div className="col-span-12 lg:col-span-8">
+              <div className="label-sm mb-4" style={{ color: "var(--accent)" }}>매칭 진단</div>
+              <h2 className="h-section font-bold text-white mb-6" style={{ fontWeight: 700 }}>
+                내 이상형과<br />
+                <span className="text-gradient">매칭될 수 있을까?</span>
+              </h2>
+              <p className="text-base sm:text-lg text-white/65 max-w-xl leading-relaxed">
+                나이·지역·직업·스타일 등 원하시는 조건을 알려주시면,<br className="hidden sm:block" />
+                담당 매칭사가 매칭 가능성을 직접 확인해드립니다.
+              </p>
+            </div>
 
-        <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12 items-end">
-          <div className="col-span-12 lg:col-span-7 reveal">
-            <h2 className="h-display text-ink mb-6" style={{ fontSize: "clamp(2.2rem, 6vw, 4.2rem)" }}>
-              내 <span className="text-gradient">이상형</span>과<br />
-              매칭될 수 있을까?
-            </h2>
-            <p className="text-base sm:text-lg leading-relaxed max-w-xl text-ink-soft">
-              나이·지역·직업·스타일 등 원하시는 조건을 알려주시면,<br className="hidden sm:block" />
-              담당 매칭사가 1분 안에 매칭 가능성을 직접 확인해드립니다.
-            </p>
-          </div>
-
-          <div className="col-span-12 lg:col-span-5 reveal">
-            <a href="/ideal-match" className="group block bg-ink text-white rounded-2xl p-8 sm:p-10 relative overflow-hidden transition-all hover:-translate-y-1" style={{ boxShadow: "0 25px 60px -15px rgba(21,16,15,0.4)" }}>
-              <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl opacity-50" style={{ background: "#c23065" }} />
-              <div className="absolute -bottom-16 -left-12 w-40 h-40 rounded-full blur-3xl opacity-30" style={{ background: "#b8854a" }} />
-
-              <div className="relative">
-                <div className="label-ed mb-4" style={{ color: "var(--gold-soft)" }}>BEGIN HERE</div>
-                <div className="font-impact text-3xl sm:text-4xl leading-tight mb-3">
-                  매칭 진단<br />
-                  <span className="text-gradient">1분이면 충분</span>
-                </div>
-                <p className="text-sm text-white/70 mb-8 leading-relaxed">
-                  6가지 질문에 답하고 담당 매칭사의 답변을 받아보세요.
-                </p>
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-extrabold bg-white text-ink group-hover:gap-3 transition-all">
-                    바로 시작 {I.arrowR("w-4 h-4")}
-                  </span>
-                  <span className="text-[11px] text-white/50">여성 1회 무료</span>
-                </div>
+            <div className="col-span-12 lg:col-span-4 lg:text-right">
+              <span className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-ink font-semibold text-base group-hover:scale-105 transition-transform">
+                진단 시작 →
+              </span>
+              <div className="text-xs sm:text-sm text-white/45 mt-4">
+                여성 회원 1회 무료 · 1분 소요
               </div>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );
