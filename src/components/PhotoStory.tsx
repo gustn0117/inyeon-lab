@@ -44,13 +44,14 @@ export default function PhotoStory() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
             </figure>
 
-            <div className="rounded-2xl card-dark text-white p-7 sm:p-9 flex flex-col justify-between">
-              <div className="label-sm" style={{ color: "var(--accent)" }}>CHAPTER 03</div>
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-bold mb-3" style={{ fontWeight: 700 }}>
-                  그리고<br />새로운 인연.
+            <div className="card-rainbow hover-magnetic rounded-2xl text-ink p-7 sm:p-9 flex flex-col justify-between relative overflow-hidden bg-white-solid">
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full blur-3xl opacity-40" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }} />
+              <div className="relative label-sm">CHAPTER 03</div>
+              <div className="relative">
+                <h3 className="text-2xl sm:text-3xl font-bold text-ink mb-3" style={{ fontWeight: 700 }}>
+                  그리고<br /><span className="text-rainbow">새로운 인연.</span>
                 </h3>
-                <p className="text-sm text-white/65 leading-relaxed">
+                <p className="text-sm text-ink-soft leading-relaxed font-medium">
                   매칭사가 함께 만들어가는<br />당신만의 이야기.
                 </p>
               </div>

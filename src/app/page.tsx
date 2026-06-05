@@ -31,7 +31,7 @@ function PageNav() {
             <BurstStar size={14} />
             <span className="label-sm text-pink-purple">EXPLORE</span>
           </div>
-          <h2 className="h-section font-bold text-ink text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             더 자세히 <span className="text-rainbow">알아보기.</span>
           </h2>
         </div>

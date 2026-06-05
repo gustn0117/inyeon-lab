@@ -10,7 +10,7 @@ export default function BigQuote() {
           <BurstStar size={14} />
           <span className="label-sm text-rainbow">PHILOSOPHY</span>
         </div>
-        <h2 className="h-section font-bold text-ink mb-10 text-glow-multi" style={{ fontWeight: 700 }}>
+        <h2 className="h-section font-bold text-ink mb-10" style={{ fontWeight: 700 }}>
           앱은 가볍고,<br />
           결정사는 부담스럽다면.<br />
           <span className="text-rainbow">딱 그 사이.</span>

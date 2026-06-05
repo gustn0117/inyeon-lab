@@ -25,7 +25,7 @@ export function AppleAbout() {
               <BurstStar size={12} />
               <span className="label-sm text-rainbow">ABOUT US</span>
             </div>
-            <h2 className="h-section font-bold text-ink mb-7 text-glow-multi" style={{ fontWeight: 700 }}>
+            <h2 className="h-section font-bold text-ink mb-7" style={{ fontWeight: 700 }}>
               결혼정보회사가 아닌,<br />
               <span className="text-rainbow">프리미엄 소개팅.</span>
             </h2>
@@ -80,7 +80,7 @@ export function AppleMemberJobs() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">ACTIVE MEMBERS</span>
           </div>
-          <h2 className="h-section font-bold text-ink mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             이런 분들이 <span className="text-rainbow">함께하고 있어요.</span>
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">현재 활동 중인 검증된 회원들의 직업 분포</p>
@@ -126,7 +126,7 @@ export function ApplePromise() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">OUR PROMISE</span>
           </div>
-          <h2 className="h-section font-bold text-ink mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             인연연구소의 <span className="text-rainbow">약속.</span>
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">회원님께 드리는 6가지 다짐</p>
@@ -164,7 +164,7 @@ export function AppleSafety() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">PRIVACY & SAFETY</span>
           </div>
-          <h2 className="h-section font-bold text-ink mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             당신의 정보,<br />
             <span className="text-rainbow">이렇게 지킵니다.</span>
           </h2>
@@ -201,7 +201,7 @@ export function ApplePricing() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">PRICING</span>
           </div>
-          <h2 className="h-section font-bold text-ink mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             가입비 없이, <span className="text-rainbow">매칭 후 결제.</span>
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">합리적인 가격, 그 이상의 퀄리티</p>
@@ -286,7 +286,7 @@ export function AppleProcess() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">HOW IT WORKS</span>
           </div>
-          <h2 className="h-section font-bold text-ink mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             4단계로 시작하는 <span className="text-rainbow">인연.</span>
           </h2>
         </div>
@@ -323,7 +323,7 @@ export function AppleFeatures() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">WHY US</span>
           </div>
-          <h2 className="h-section font-bold text-ink text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             인연연구소만의 <span className="text-rainbow">특별한 장점.</span>
           </h2>
         </div>
@@ -361,7 +361,7 @@ export function AppleConsult() {
               <BurstStar size={12} />
               <span className="label-sm text-rainbow">CONSULTING</span>
             </div>
-            <h2 className="h-section font-bold text-ink mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
+            <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               전문 매칭사의<br />
               <span className="text-rainbow">1:1 컨설팅.</span>
             </h2>
@@ -418,7 +418,7 @@ export function AppleFAQ() {
             <BurstStar size={12} />
             <span className="label-sm text-rainbow">FAQ</span>
           </div>
-          <h2 className="h-section font-bold text-ink text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             자주 묻는 <span className="text-rainbow">질문.</span>
           </h2>
         </div>
@@ -446,7 +446,7 @@ export function AppleContact() {
               <BurstStar size={12} />
               <span className="label-sm text-rainbow">CONTACT</span>
             </div>
-            <h2 className="h-section font-bold text-ink mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
+            <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               당신의 인연,<br />
               <span className="text-rainbow">여기서 시작됩니다.</span>
             </h2>

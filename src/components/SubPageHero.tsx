@@ -13,7 +13,7 @@ export default function SubPageHero({ eyebrow, title, sub }: Props) {
             <span className="label-sm text-rainbow">{eyebrow}</span>
           </div>
         )}
-        <h1 className="h-section font-bold text-ink mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
+        <h1 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
           {title}
         </h1>
         {sub && (

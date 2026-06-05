@@ -12,7 +12,7 @@ export default function BentoBenefits() {
             <BurstStar size={14} />
             <span className="label-sm text-rainbow">OUR PROMISE</span>
           </div>
-          <h2 className="h-section font-bold text-ink text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             인연연구소만의 <span className="text-rainbow">약속.</span>
           </h2>
         </div>
@@ -26,8 +26,8 @@ export default function BentoBenefits() {
             <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl" style={{ background: "rgba(255,179,200,0.6)" }} />
             <div className="relative h-full flex flex-col justify-end p-10 sm:p-14">
               <div className="label-sm mb-3 text-coral-gold">01 · CORE</div>
-              <h3 className="h-card font-bold mb-4 text-glow-multi" style={{ fontWeight: 700 }}>
-                매칭이 되어야<br /><span className="text-rainbow">결제합니다.</span>
+              <h3 className="h-card font-bold mb-4 text-white" style={{ fontWeight: 700 }}>
+                매칭이 되어야<br /><span style={{ color: "#ffb3c8" }}>결제합니다.</span>
               </h3>
               <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-md font-medium">
                 가입비 0원. 마음에 드는 분으로 매칭 성사 시에만 결제하는 100% 후불제.

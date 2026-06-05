@@ -17,7 +17,7 @@ export default function BigStats() {
             <BurstStar size={14} />
             <span className="label-sm text-rainbow">BY THE NUMBERS</span>
           </div>
-          <h2 className="h-section font-bold text-ink text-glow-multi" style={{ fontWeight: 700 }}>
+          <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             숫자로 보는 <span className="text-rainbow">인연연구소.</span>
           </h2>
         </div>
