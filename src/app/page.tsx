@@ -1,6 +1,7 @@
 "use client";
 import ChatWidget from "@/components/ChatWidget";
 import KakaoFlow from "@/components/KakaoFlow";
+import { WaveDivider, CurveDivider, OrnamentDivider } from "@/components/Divider";
 import {
   useReveal,
   EventBanner,
@@ -42,41 +43,49 @@ const ArrowR = (
 );
 
 function PageNav() {
+  // 카드별 액센트 컬러로 단조로움 해소
   const items = [
-    { href: "/about", t: "인연연구소 소개", d: "검증된 회원, 안전한 시스템", icon: IconHeart },
-    { href: "/pricing", t: "가격·진행 절차", d: "가입비 0원, 매칭 후 결제", icon: IconDiamond },
-    { href: "/ideal-match", t: "이상형 매칭 진단", d: "1분 진단으로 매칭 확인", icon: IconSparkle },
-    { href: "/contact", t: "상담·문의", d: "카톡 ID inyeon_", icon: IconChat },
+    { href: "/about", t: "인연연구소 소개", d: "검증된 회원, 안전한 시스템", icon: IconHeart, c: "#d4567a" },
+    { href: "/pricing", t: "가격·진행 절차", d: "가입비 0원, 매칭 후 결제", icon: IconDiamond, c: "#c9956b" },
+    { href: "/ideal-match", t: "이상형 매칭 진단", d: "1분 진단으로 매칭 확인", icon: IconSparkle, c: "#b58dc4" },
+    { href: "/contact", t: "상담·문의", d: "카톡 ID inyeon_", icon: IconChat, c: "#7fa896" },
   ];
   return (
-    <section className="py-20 sm:py-28 mesh-soft relative overflow-hidden">
-      {/* 배경 데코 */}
-      <div className="absolute top-20 left-[5%] w-2.5 h-2.5 rounded-full dot-glow anim-twinkle" />
-      <div className="absolute bottom-24 right-[8%] w-2 h-2 rounded-full dot-glow-gold anim-twinkle" style={{ animationDelay: "1s" }} />
+    <section className="py-20 sm:py-28 mesh-plum relative overflow-hidden">
+      {/* 배경 데코 — 부드러운 골드 점들 */}
+      <div className="absolute top-20 left-[8%] w-2 h-2 rounded-full bg-white/40 anim-twinkle" />
+      <div className="absolute top-40 right-[15%] w-1.5 h-1.5 rounded-full bg-white/30 anim-twinkle" style={{ animationDelay: "1s" }} />
+      <div className="absolute bottom-24 left-[22%] w-2.5 h-2.5 rounded-full bg-white/35 anim-twinkle" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-32 right-[10%] w-1.5 h-1.5 rounded-full bg-white/40 anim-twinkle" style={{ animationDelay: "0.5s" }} />
 
       <div className="max-w-5xl mx-auto px-5 sm:px-8 relative">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 bg-white shadow-sm" style={{ color: PINK }}>
+          <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 bg-white/10 border border-white/20 backdrop-blur-sm" style={{ color: "#ffd6e1" }}>
             <span className="star-deco anim-twinkle" style={{ width: "10px", height: "10px" }} />
             <span className="text-[11px] font-extrabold tracking-[0.22em]">EXPLORE</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ color: "#222", fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
-            더 자세히 <span className="text-gradient-luxe">알아보기</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+            더 자세히 <span className="text-aurora">알아보기</span>
           </h2>
+          <p className="text-sm mt-3 text-white/65">궁금한 부분을 클릭해서 자세히 확인하세요</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 reveal">
           {items.map((it, i) => (
             <a key={i} href={it.href}
-              className="group card-luxe card-luxe-border relative overflow-hidden p-6">
-              {/* 호버 시 미세 글로우 */}
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full dot-glow opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
+              onMouseMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+              }}
+              style={{ ["--ac" as string]: `${it.c}40`, ["--ac2" as string]: it.c }}
+              className="card-aurora group p-6 sm:p-7 hover:-translate-y-1.5 transition-all duration-500 overflow-hidden">
               <div className="relative">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110 group-hover:rotate-3" style={{ background: `linear-gradient(135deg, ${PINK}15, ${PINK}05)`, color: PINK, border: `1px solid ${PINK}25` }}>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 text-white shadow-lg group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" style={{ background: `linear-gradient(135deg, ${it.c}, ${it.c}cc)`, boxShadow: `0 8px 22px -4px ${it.c}55` }}>
                   {it.icon("w-6 h-6")}
                 </div>
-                <div className="text-base font-extrabold mb-1.5" style={{ color: "#222" }}>{it.t}</div>
+                <div className="text-base font-extrabold mb-1.5" style={{ color: "#1a1a1f" }}>{it.t}</div>
                 <div className="text-[12.5px]" style={{ color: MT }}>{it.d}</div>
-                <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold group-hover:gap-2 transition-all" style={{ color: PINK }}>
+                <div className="mt-4 inline-flex items-center gap-1 text-xs font-bold group-hover:gap-2 transition-all" style={{ color: it.c }}>
                   바로가기 {ArrowR}
                 </div>
               </div>
@@ -95,9 +104,12 @@ export default function Home() {
       <EventBanner />
       <Navbar />
       <HeroSection />
+      <WaveDivider from="#fdf7f1" to="#fdf7f1" />
       <IdealMatchSection />
       <TrustBar />
+      <CurveDivider from="#faeede" to="#fff9f3" />
       <KakaoFlow />
+      <OrnamentDivider />
       <PageNav />
       <Footer />
       <ChatWidget />

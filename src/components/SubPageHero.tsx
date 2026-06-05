@@ -6,9 +6,10 @@ type Props = { eyebrow?: string; title: React.ReactNode; sub?: string };
 
 export default function SubPageHero({ eyebrow, title, sub }: Props) {
   return (
-    <section className="pt-28 sm:pt-32 pb-10 sm:pb-14 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #fff5f8, #ffffff)" }}>
-      <div className="absolute inset-0 pointer-events-none opacity-40">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "#ffd6e1" }} />
+    <section className="pt-28 sm:pt-32 pb-10 sm:pb-14 relative overflow-hidden mesh-cream">
+      <div className="absolute inset-0 pointer-events-none opacity-50">
+        <div className="absolute top-0 left-[20%] w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "#ffd6e1" }} />
+        <div className="absolute top-0 right-[20%] w-[300px] h-[300px] rounded-full blur-3xl" style={{ background: "#e6c89f", opacity: 0.5 }} />
       </div>
       <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center">
         {eyebrow && (

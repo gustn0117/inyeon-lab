@@ -13,9 +13,24 @@
 
 html { scroll-behavior: smooth; }
 
+:root {
+  /* ── Design Tokens — Warm Boutique Palette ── */
+  --c-cream: #fdf7f1;       /* 베이스 배경 (따뜻한 크림) */
+  --c-cream-deep: #faeede;  /* 보조 배경 */
+  --c-ivory: #fff9f3;       /* 카드 안 배경 */
+  --c-rose: #d4567a;        /* 메인 로즈 */
+  --c-rose-deep: #c23065;   /* 딥 로즈 (강조) */
+  --c-rose-soft: #f9c5d5;   /* 페일 로즈 */
+  --c-gold: #c9956b;        /* 골드 액센트 */
+  --c-gold-soft: #e6c89f;   /* 페일 골드 */
+  --c-plum: #2d1f25;        /* 다크 플럼 (텍스트) */
+  --c-mauve: #7a6166;       /* 웜그레이 (보조 텍스트) */
+  --c-mauve-light: #b5a8ad; /* 더 연한 웜그레이 */
+}
+
 body {
-  color: #2d1f25;
-  background: #fefaf6;
+  color: var(--c-plum);
+  background: var(--c-cream);
   font-family: 'Cafe24SurroundAir', 'Nunito', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -152,7 +167,7 @@ h1, h2, h3, h4 {
 
 /* ── Premium upgrades ── */
 
-/* 메시 그라데이션 배경 (Hero 등) */
+/* ── 다양한 메시 그라데이션 배경 (섹션 리듬 만들기) ── */
 .mesh-rose {
   background:
     radial-gradient(at 22% 18%, rgba(255, 199, 219, 0.55) 0px, transparent 50%),
@@ -164,7 +179,31 @@ h1, h2, h3, h4 {
   background:
     radial-gradient(at 80% 20%, rgba(232, 213, 196, 0.35) 0px, transparent 50%),
     radial-gradient(at 20% 80%, rgba(255, 199, 219, 0.45) 0px, transparent 50%),
-    linear-gradient(135deg, #fefaf6 0%, #fff5f8 100%);
+    linear-gradient(135deg, #fdf7f1 0%, #fff5f8 100%);
+}
+.mesh-cream {
+  background:
+    radial-gradient(at 15% 30%, rgba(230, 200, 159, 0.18) 0px, transparent 50%),
+    radial-gradient(at 85% 70%, rgba(249, 197, 213, 0.3) 0px, transparent 50%),
+    linear-gradient(180deg, #fdf7f1 0%, #fff9f3 100%);
+}
+.mesh-gold-rose {
+  background:
+    radial-gradient(at 20% 20%, rgba(230, 200, 159, 0.4) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(212, 86, 122, 0.18) 0px, transparent 55%),
+    linear-gradient(135deg, #faeede 0%, #fdf7f1 100%);
+}
+.mesh-plum {
+  background:
+    radial-gradient(at 25% 25%, rgba(212, 86, 122, 0.55) 0px, transparent 55%),
+    radial-gradient(at 75% 75%, rgba(194, 48, 101, 0.35) 0px, transparent 50%),
+    linear-gradient(135deg, #2d1f25 0%, #3f2a31 100%);
+}
+.mesh-blush {
+  background:
+    radial-gradient(at 30% 0%, rgba(249, 197, 213, 0.55) 0px, transparent 50%),
+    radial-gradient(at 70% 100%, rgba(230, 200, 159, 0.3) 0px, transparent 50%),
+    linear-gradient(180deg, #fff5f8 0%, #fef0eb 100%);
 }
 
 /* 헤딩 후광 (글로우) */

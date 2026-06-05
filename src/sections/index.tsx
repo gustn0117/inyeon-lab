@@ -134,9 +134,8 @@ export function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image src="/hero-couple.jpg" alt="" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,245,249,0.45) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0.95) 100%)" }} />
-        {/* 메시 그라데이션 오버레이 — 따뜻한 핑크/골드 톤 */}
-        <div className="absolute inset-0 mesh-rose opacity-60" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(253,247,241,0.45) 0%, rgba(253,247,241,0.62) 45%, rgba(253,247,241,0.96) 100%)" }} />
+        <div className="absolute inset-0 mesh-cream opacity-85" />
       </div>
 
       {/* 글로우 데코 (배경 위에 떠 있는 큰 원) */}
@@ -221,7 +220,7 @@ export function HeroSection() {
 export function TrustBar() {
   const items = ["매칭 후 결제 후불제", "조건별 맞춤 매칭", "신원보장 100%", "48시간 매칭", "1:1 컨설팅", "20-30대 전용"];
   return (
-    <div className="py-4 overflow-hidden border-y border-pink-50" style={{ background: "linear-gradient(135deg, #fff8fa, #fff0f5)" }}>
+    <div className="py-4 overflow-hidden border-y border-pink-100/60" style={{ background: "linear-gradient(135deg, #faeede 0%, #fff5f8 50%, #faeede 100%)" }}>
       <div className="anim-marquee flex whitespace-nowrap">
         {[...items, ...items].map((t, i) => (
           <span key={i} className="inline-flex items-center gap-4 mx-8 text-xs font-bold tracking-widest uppercase" style={{ color: pk, opacity: 0.5 }}>
@@ -236,7 +235,7 @@ export function TrustBar() {
 /* ═══ ABOUT ═══ */
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 sm:py-28 lg:py-36 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 sm:py-28 lg:py-36 mesh-cream relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Stats side */}
@@ -318,7 +317,7 @@ export function FeaturesSection() {
     { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#4db6ac" },
   ];
   return (
-    <section id="features" className="py-20 sm:py-28 lg:py-36 relative" style={{ background: "linear-gradient(180deg, #fdf6f8, #fff0f5)" }}>
+    <section id="features" className="py-20 sm:py-28 lg:py-36 mesh-blush relative">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14 sm:mb-20 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
@@ -354,7 +353,7 @@ export function ProcessSection() {
     { icon: I.heart, t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작" },
   ];
   return (
-    <section className="py-20 sm:py-28 lg:py-36 bg-white">
+    <section className="py-20 sm:py-28 lg:py-36 bg-[#fff9f3]">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14 sm:mb-20 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
@@ -387,7 +386,7 @@ export function ProcessSection() {
 /* ═══ PRICING ═══ */
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 sm:py-28 lg:py-36 relative" style={{ background: "linear-gradient(180deg, #fdf6f8, #fff0f5)" }}>
+    <section id="pricing" className="py-20 sm:py-28 lg:py-36 mesh-gold-rose relative">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14 sm:mb-20 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
@@ -471,7 +470,7 @@ export function ConsultSection() {
     { icon: I.users, l: "이상형 분석", d: "진짜 원하는 사람 찾기" },
   ];
   return (
-    <section id="consult" className="py-20 sm:py-28 lg:py-36 bg-white overflow-hidden">
+    <section id="consult" className="py-20 sm:py-28 lg:py-36 bg-[#fdf7f1] overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal order-2 lg:order-1">
@@ -541,7 +540,7 @@ export function MemberJobsSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 lg:py-32 bg-white">
+    <section className="py-20 sm:py-28 lg:py-32 mesh-cream">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-12 sm:mb-16 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
@@ -635,10 +634,10 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH (이상형 진단 진입) — 흰 배경 + 핑크 액센트 카드 ═══ */
+/* ═══ IDEAL MATCH (이상형 진단 진입) — 크림 배경 + 핑크 액센트 카드 ═══ */
 export function IdealMatchSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
+    <section className="py-16 sm:py-20 mesh-cream relative overflow-hidden">
       {/* 배경 데코 점들 */}
       <div className="absolute top-8 left-[10%] w-2 h-2 rounded-full dot-glow anim-twinkle" style={{ animationDelay: "0.5s" }} />
       <div className="absolute top-20 right-[15%] w-1.5 h-1.5 rounded-full dot-glow-gold anim-twinkle" style={{ animationDelay: "1.2s" }} />
@@ -734,7 +733,7 @@ export function PromiseSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 lg:py-32" style={{ background: "linear-gradient(180deg, #fff8fa, #ffffff)" }}>
+    <section className="py-20 sm:py-28 lg:py-32 mesh-rose">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-12 sm:mb-16 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
@@ -788,7 +787,7 @@ export function FAQSection() {
     { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 절대 제3자에게 공유되지 않습니다." },
   ];
   return (
-    <section id="faq" className="py-20 sm:py-28 lg:py-36 bg-white">
+    <section id="faq" className="py-20 sm:py-28 lg:py-36 bg-[#fff9f3]">
       <div className="max-w-2xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-12 sm:mb-16 reveal">
           <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5" style={{ background: `${pk}08`, border: `1px solid ${pk}15` }}>
