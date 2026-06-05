@@ -1,8 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@300;400;500;600;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@300;400;500;600;700;800;900&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;600;700;900&family=Black+Han+Sans&display=swap');
+
 @font-face {
   font-family: 'Cafe24SurroundAir';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SurroundAir.woff') format('woff');
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* G마켓 산스 Bold - 임팩트 헤딩용 */
+@font-face {
+  font-family: 'Gmarket Sans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansTTFBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gmarket Sans';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansTTFMedium.woff') format('woff');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -14,18 +30,28 @@
 html { scroll-behavior: smooth; }
 
 :root {
-  /* ── Design Tokens — Warm Boutique Palette ── */
-  --c-cream: #fdf7f1;       /* 베이스 배경 (따뜻한 크림) */
-  --c-cream-deep: #faeede;  /* 보조 배경 */
-  --c-ivory: #fff9f3;       /* 카드 안 배경 */
-  --c-rose: #d4567a;        /* 메인 로즈 */
-  --c-rose-deep: #c23065;   /* 딥 로즈 (강조) */
-  --c-rose-soft: #f9c5d5;   /* 페일 로즈 */
-  --c-gold: #c9956b;        /* 골드 액센트 */
-  --c-gold-soft: #e6c89f;   /* 페일 골드 */
-  --c-plum: #2d1f25;        /* 다크 플럼 (텍스트) */
-  --c-mauve: #7a6166;       /* 웜그레이 (보조 텍스트) */
-  --c-mauve-light: #b5a8ad; /* 더 연한 웜그레이 */
+  /* ── Design Tokens — Premium Editorial Palette ── */
+  /* 배경 */
+  --c-cream: #fdf7f1;       /* 베이스 (따뜻한 크림) */
+  --c-cream-deep: #faeede;
+  --c-ivory: #fff9f3;
+  /* 메인 — 로즈/와인 */
+  --c-rose: #d4567a;
+  --c-rose-deep: #c23065;
+  --c-rose-soft: #f9c5d5;
+  --c-wine: #6e1a3e;        /* ★ NEW 딥 와인 (헤딩 강조) */
+  --c-wine-deep: #4a0f29;   /* ★ NEW 다크 와인 */
+  /* 골드 액센트 */
+  --c-gold: #c9956b;
+  --c-gold-soft: #e6c89f;
+  --c-gold-deep: #8e6840;   /* ★ NEW 딥 골드 */
+  /* 차콜 — 시각 대비용 */
+  --c-charcoal: #1a1614;    /* ★ NEW 차콜 블랙 */
+  --c-charcoal-2: #2a201f;  /* ★ NEW */
+  /* 텍스트 */
+  --c-plum: #2d1f25;
+  --c-mauve: #7a6166;
+  --c-mauve-light: #b5a8ad;
 }
 
 body {
@@ -40,6 +66,25 @@ body {
 .font-serif-kr {
   font-family: 'Noto Serif KR', 'Gowun Batang', serif !important;
   letter-spacing: -0.02em;
+}
+
+/* 임팩트 헤딩 폰트 (G마켓 산스 Bold) — 큰 헤딩에 시각 위계 강화 */
+.font-impact {
+  font-family: 'Gmarket Sans', 'Cafe24SurroundAir', sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+/* Editorial 헤딩 (Noto Serif KR Black) — 잡지 스타일 */
+.font-editorial {
+  font-family: 'Noto Serif KR', 'Gowun Batang', serif !important;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+/* 무거운 한국어 헤딩 (Black Han Sans) — 임팩트 극대화 */
+.font-display-black {
+  font-family: 'Black Han Sans', 'Cafe24SurroundAir', sans-serif !important;
+  letter-spacing: -0.02em;
+  font-weight: 400;
 }
 
 /* 헤딩 기본값만 제공 (Tailwind leading-* 유틸로 오버라이드 가능하게 !important 제거) */
@@ -204,6 +249,30 @@ h1, h2, h3, h4 {
     radial-gradient(at 30% 0%, rgba(249, 197, 213, 0.55) 0px, transparent 50%),
     radial-gradient(at 70% 100%, rgba(230, 200, 159, 0.3) 0px, transparent 50%),
     linear-gradient(180deg, #fff5f8 0%, #fef0eb 100%);
+}
+/* 다크 와인 (high-contrast 섹션용) */
+.mesh-wine {
+  background:
+    radial-gradient(at 22% 18%, rgba(212, 86, 122, 0.55) 0px, transparent 50%),
+    radial-gradient(at 78% 82%, rgba(201, 149, 107, 0.35) 0px, transparent 55%),
+    linear-gradient(135deg, #1a1614 0%, #2d1426 50%, #1a1614 100%);
+}
+.mesh-charcoal {
+  background:
+    radial-gradient(at 25% 25%, rgba(212, 86, 122, 0.35) 0px, transparent 50%),
+    radial-gradient(at 75% 75%, rgba(201, 149, 107, 0.25) 0px, transparent 55%),
+    linear-gradient(135deg, #1a1614 0%, #2a201f 100%);
+}
+
+/* Text gradient — 와인 골드 (럭셔리) */
+.text-wine-gold {
+  background: linear-gradient(135deg, #6e1a3e 0%, #c9956b 50%, #6e1a3e 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: aurora-shift 8s ease-in-out infinite;
 }
 
 /* 헤딩 후광 (글로우) */

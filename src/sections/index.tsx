@@ -154,14 +154,15 @@ export function HeroSection() {
             <span className="text-[10px] font-semibold" style={{ color: gd, opacity: 0.7 }}>EST. 2026</span>
           </div>
 
-          <h1 className="hero-anim hero-d2 text-halo relative text-[2.4rem] sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-tight mb-5" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif", color: "#1a1a1f", lineHeight: 1.2 }}>
+          <h1 className="hero-anim hero-d2 font-impact text-halo relative text-[2.6rem] sm:text-[3.6rem] lg:text-[4.4rem] tracking-tight mb-6" style={{ color: "#1a1614", lineHeight: 1.05 }}>
             <span className="relative inline-block">
-              <span className="text-aurora">이상형 소개팅</span>
-              <span className="absolute -top-3 -right-6 anim-spin-slow" style={{ color: gd }}>
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
+              <span className="text-aurora">이상형</span>
+              <span className="absolute -top-4 -right-7 anim-spin-slow" style={{ color: gd }}>
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.5 7L21 9.5l-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 9.5 8 12 1z" /></svg>
               </span>
-            </span>,<br />
-            마음에 드는 <span className="text-aurora">그 분</span>으로
+            </span>{" "}<span style={{ color: "#1a1614" }}>소개팅</span>,<br />
+            마음에 드는<br />
+            <span className="text-wine-gold">그 분</span>으로
           </h1>
 
           <p className="hero-anim hero-d3 text-[13.5px] sm:text-base leading-relaxed max-w-md mx-auto mb-8" style={{ color: sb }}>

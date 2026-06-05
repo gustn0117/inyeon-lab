@@ -67,7 +67,7 @@ function PageNav() {
             <span className="star-deco anim-twinkle" style={{ width: "10px", height: "10px" }} />
             <span className="text-[11px] font-extrabold tracking-[0.22em]">EXPLORE</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+          <h2 className="font-impact text-[1.8rem] sm:text-4xl lg:text-5xl tracking-tight text-white" style={{ lineHeight: 1.15 }}>
             더 자세히 <span className="text-aurora">알아보기</span>
           </h2>
           <p className="text-sm mt-3 text-white/65">궁금한 부분을 클릭해서 자세히 확인하세요</p>

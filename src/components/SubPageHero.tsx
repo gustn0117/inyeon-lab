@@ -17,7 +17,7 @@ export default function SubPageHero({ eyebrow, title, sub }: Props) {
             <span className="text-[11px] font-bold tracking-widest">{eyebrow}</span>
           </div>
         )}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3" style={{ color: "#222", fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+        <h1 className="font-impact text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] tracking-tight mb-3" style={{ color: "#1a1614", lineHeight: 1.15 }}>
           {title}
         </h1>
         {sub && (

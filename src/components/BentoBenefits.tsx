@@ -22,7 +22,7 @@ export default function BentoBenefits() {
             <span className="star-deco anim-twinkle" style={{ width: "10px", height: "10px" }} />
             <span className="text-[11px] font-extrabold tracking-[0.22em]">WHY US</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ color: PLUM, fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+          <h2 className="font-impact text-[1.8rem] sm:text-4xl lg:text-5xl tracking-tight" style={{ color: PLUM, lineHeight: 1.15 }}>
             인연연구소만의 <span className="text-aurora">차별점</span>
           </h2>
         </div>
@@ -39,7 +39,7 @@ export default function BentoBenefits() {
               </div>
               <div>
                 <div className="text-[11px] font-extrabold tracking-[0.22em] mb-2 text-white/85">100% AFTER-PAY</div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight mb-3" style={{ fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+                <h3 className="font-impact text-[1.7rem] sm:text-[2.2rem] lg:text-[2.8rem] leading-[1.15] mb-3 tracking-tight">
                   매칭 후 결제,<br />가입비는 0원
                 </h3>
                 <p className="text-sm sm:text-base text-white/85 leading-relaxed max-w-md">

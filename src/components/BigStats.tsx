@@ -23,7 +23,7 @@ export default function BigStats() {
             <span className="star-deco anim-twinkle" style={{ width: "10px", height: "10px" }} />
             <span className="text-[11px] font-extrabold tracking-[0.22em]">BY THE NUMBERS</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{ color: PLUM, fontFamily: "'Cafe24SurroundAir', sans-serif" }}>
+          <h2 className="font-impact text-[1.8rem] sm:text-4xl lg:text-5xl tracking-tight" style={{ color: PLUM, lineHeight: 1.15 }}>
             숫자로 보는 <span className="text-aurora">인연연구소</span>
           </h2>
         </div>
