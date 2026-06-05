@@ -134,17 +134,12 @@ export function HeroSection() {
       {/* 풀스크린 결혼 사진 배경 */}
       <div className="absolute inset-0 z-0">
         <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" />
-        {/* 어두운 그라데이션 오버레이 (텍스트 가독성) */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(20,10,15,0.55) 0%, rgba(40,20,30,0.45) 40%, rgba(20,10,15,0.85) 100%)" }} />
-        {/* 멀티 컬러 그라데이션 오버레이 (화려함) */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(at 20% 20%, rgba(236,77,126,0.35) 0px, transparent 50%), radial-gradient(at 80% 30%, rgba(168,85,247,0.3) 0px, transparent 55%), radial-gradient(at 50% 100%, rgba(245,158,11,0.25) 0px, transparent 50%)" }} />
+        {/* 자연스러운 비네트 — 텍스트 가독성만 확보, 사진 색감은 그대로 */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.65) 100%)" }} />
       </div>
 
-      {/* 데코 (사진 위 떠다님) */}
-      <RaysOfLight />
-      <RainbowOrbs />
-      <ParticleField count={14} />
-      <Sparkles count={8} />
+      {/* 작은 별 데코만 (색감 영향 없음) */}
+      <Sparkles count={6} />
 
       <div className="container-apple relative z-10 text-center w-full">
         {/* 라벨 + 글로우 링 */}
