@@ -15,12 +15,12 @@
   --bg-tertiary: #f5f5f7;   /* 카드 배경 (Apple bg) */
   --bg-dark: #0a0a0a;       /* 다크 섹션 */
 
-  /* Text */
-  --ink: #050505;           /* 거의 검정 */
-  --ink-2: #1d1d1f;         /* Apple text */
-  --ink-soft: #6e6e73;      /* Apple secondary */
-  --ink-tertiary: #86868b;
-  --line: #e5e5e7;          /* Apple divider */
+  /* Text — 진한 톤 (시인성 강화) */
+  --ink: #050505;           /* 거의 검정 (헤딩) */
+  --ink-2: #1d1d1f;         /* 본문 진한 */
+  --ink-soft: #44454a;      /* 보조 텍스트 (이전 #6e6e73보다 진함) */
+  --ink-tertiary: #6e6e73;
+  --line: #e5e5e7;          /* divider */
 
   /* Accent — 멀티컬러 풀 팔레트 (화려한 그라데이션용) */
   --accent: #ec4d7e;        /* 비비드 핑크 */
@@ -45,12 +45,16 @@ body {
   color: var(--ink-2);
   background: var(--bg);
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;             /* 본문 기본 medium (시인성) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  line-height: 1.5;
+  line-height: 1.6;             /* 행간 늘림 (가독성) */
   letter-spacing: -0.011em;
 }
+
+/* 본문 p 태그 기본 강화 */
+p { font-weight: 500; }
 
 /* Apple typography */
 h1, h2, h3, h4, h5, h6 {
@@ -140,11 +144,11 @@ h1, h2, h3, h4, h5, h6 {
   .h-section { font-size: clamp(2rem, 5.5vw, 4.5rem); }
   .h-card { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 
-  /* Apple labels (eyebrow) */
+  /* Apple labels (eyebrow) — 시인성 강화 */
   .label-sm {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
     color: var(--accent);
     text-transform: uppercase;
   }
@@ -273,22 +277,22 @@ h1, h2, h3, h4, h5, h6 {
       0 0 90px rgba(251, 113, 133, 0.15);
   }
 
-  /* 풀 메시 배경 (페이지 전체, 핑크 톤만) */
+  /* 풀 메시 배경 (옅은 핑크 — 시인성 강화) */
   .mesh-rainbow {
     background:
-      radial-gradient(at 0% 0%, rgba(236, 77, 126, 0.22) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(251, 113, 133, 0.2) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(255, 214, 224, 0.4) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(236, 77, 126, 0.18) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(255, 139, 168, 0.2) 0px, transparent 50%),
-      #fffafd;
+      radial-gradient(at 0% 0%, rgba(236, 77, 126, 0.14) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(251, 113, 133, 0.12) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(255, 214, 224, 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(236, 77, 126, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255, 139, 168, 0.12) 0px, transparent 50%),
+      #fffcfd;
   }
   .mesh-sunset {
     background:
-      radial-gradient(at 20% 30%, rgba(251, 113, 133, 0.3) 0px, transparent 55%),
-      radial-gradient(at 80% 70%, rgba(236, 77, 126, 0.25) 0px, transparent 55%),
-      radial-gradient(at 50% 0%, rgba(255, 214, 224, 0.4) 0px, transparent 50%),
-      #fff5f8;
+      radial-gradient(at 20% 30%, rgba(251, 113, 133, 0.18) 0px, transparent 55%),
+      radial-gradient(at 80% 70%, rgba(236, 77, 126, 0.15) 0px, transparent 55%),
+      radial-gradient(at 50% 0%, rgba(255, 214, 224, 0.25) 0px, transparent 50%),
+      #fffafb;
   }
   .mesh-violet {
     background:
