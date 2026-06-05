@@ -144,28 +144,28 @@ export function AppleSafety() {
     { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다." },
   ];
   return (
-    <section className="bg-dark text-white py-20 sm:py-28 lg:py-32">
+    <section className="py-20 sm:py-28 lg:py-32" style={{ background: "linear-gradient(180deg, #fff5f8 0%, #ffe8ef 100%)" }}>
       <div className="container-apple">
         <div className="mb-14 sm:mb-16 reveal text-center">
-          <div className="label-sm mb-5" style={{ color: ACCENT }}>PRIVACY & SAFETY</div>
-          <h2 className="h-section font-bold mb-4" style={{ fontWeight: 700 }}>
+          <div className="label-sm mb-5">PRIVACY & SAFETY</div>
+          <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             당신의 정보,<br />
-            <span className="text-gradient">이렇게 지킵니다.</span>
+            <span className="text-rainbow">이렇게 지킵니다.</span>
           </h2>
-          <p className="text-base sm:text-lg text-white/60">프로필이 무분별하게 공개되지 않는 이유</p>
+          <p className="text-base sm:text-lg text-ink-soft">프로필이 무분별하게 공개되지 않는 이유</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="rounded-2xl bg-white/5 backdrop-blur p-7 border border-white/10">
-              <div className="label-sm mb-3" style={{ color: ACCENT }}>{s.n}</div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{s.d}</p>
+            <div key={i} className="rounded-2xl bg-white p-7 border border-line shadow-sm hover-magnetic">
+              <div className="label-sm mb-3">{s.n}</div>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed">{s.d}</p>
             </div>
           ))}
         </div>
         <div className="mt-12 sm:mt-14 max-w-2xl mx-auto text-center reveal">
-          <p className="text-base font-semibold mb-2">개인정보보호법을 준수합니다.</p>
-          <p className="text-sm text-white/55 leading-relaxed">수집·이용·보관·파기 전 과정이 법적 기준을 충족하며, 매칭 외 목적으로 절대 사용되지 않습니다.</p>
+          <p className="text-base font-semibold text-ink mb-2">개인정보보호법을 준수합니다.</p>
+          <p className="text-sm text-ink-soft leading-relaxed">수집·이용·보관·파기 전 과정이 법적 기준을 충족하며, 매칭 외 목적으로 절대 사용되지 않습니다.</p>
         </div>
       </div>
     </section>
@@ -215,20 +215,20 @@ export function ApplePricing() {
             </div>
             <a href="/contact" className="btn btn-secondary w-full">상담 받기</a>
           </div>
-          {/* 무제한 (다크) */}
-          <div className="card-dark p-8 sm:p-10 relative">
-            <div className="absolute -top-3 right-6 bg-white text-xs font-bold px-4 py-1 rounded-full" style={{ color: ACCENT }}>BEST</div>
-            <div className="label-sm mb-4" style={{ color: ACCENT }}>UNLIMITED</div>
+          {/* 무제한 (밝은 핑크 — BEST) */}
+          <div className="rounded-2xl p-8 sm:p-10 relative text-ink" style={{ background: "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)", boxShadow: "0 25px 60px -15px rgba(236,77,126,0.3)" }}>
+            <div className="absolute -top-3 right-6 text-white text-xs font-bold px-4 py-1 rounded-full" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }}>BEST</div>
+            <div className="label-sm mb-4">UNLIMITED</div>
             <div className="mb-2">
-              <span className="num-huge text-4xl">무제한 매칭</span>
+              <span className="num-huge text-4xl text-rainbow">무제한 매칭</span>
             </div>
-            <p className="text-sm text-white/65 mb-7">횟수 제한 없이 매칭 + 컨설팅</p>
+            <p className="text-sm text-ink-soft mb-7">횟수 제한 없이 매칭 + 컨설팅</p>
             <div className="space-y-2.5 mb-8">
               {["매칭 횟수 무제한", "조건별 맞춤 매칭", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리"].map((t, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm text-white/90"><span style={{ color: ACCENT }}>{I.check("w-4 h-4")}</span>{t}</div>
+                <div key={i} className="flex items-center gap-2 text-sm text-ink"><span className="text-accent">{I.check("w-4 h-4")}</span>{t}</div>
               ))}
             </div>
-            <a href="/contact" className="btn btn-primary w-full bg-white text-ink hover:bg-white">무제한 상담</a>
+            <a href="/contact" className="btn btn-gradient w-full">무제한 상담</a>
           </div>
         </div>
       </div>
@@ -302,20 +302,20 @@ export function AppleConsult() {
   return (
     <section className="bg-base py-16 sm:py-24 lg:py-28">
       <div className="container-apple">
-        <div className="card-dark p-10 sm:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="rounded-3xl p-10 sm:p-16 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink" style={{ background: "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)", boxShadow: "0 25px 60px -15px rgba(236,77,126,0.25)" }}>
           <div>
-            <div className="label-sm mb-5" style={{ color: ACCENT }}>CONSULTING</div>
-            <h2 className="h-section font-bold mb-6" style={{ fontWeight: 700 }}>
+            <div className="label-sm mb-5">CONSULTING</div>
+            <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               전문 매칭사의<br />
-              <span className="text-gradient">1:1 컨설팅.</span>
+              <span className="text-rainbow">1:1 컨설팅.</span>
             </h2>
-            <p className="text-base sm:text-lg text-white/65 leading-relaxed">
+            <p className="text-base sm:text-lg text-ink-soft leading-relaxed">
               첫 만남이 어색한 분, 연애가 오래 이어지지 않는 분.<br />
               연애 전문 상담사가 함께합니다.
             </p>
           </div>
           <div className="lg:text-right">
-            <a href="/contact" className="btn btn-primary bg-white text-ink hover:bg-white inline-flex">
+            <a href="/contact" className="btn btn-gradient inline-flex">
               상담 시작 →
             </a>
           </div>
@@ -375,19 +375,19 @@ export function AppleContact() {
   return (
     <section className="bg-base py-16 sm:py-24 lg:py-28">
       <div className="container-apple">
-        <div className="card-dark p-10 sm:p-16 lg:p-20 text-center">
-          <div className="label-sm mb-6" style={{ color: ACCENT }}>CONTACT</div>
-          <h2 className="h-section font-bold mb-6" style={{ fontWeight: 700 }}>
+        <div className="rounded-3xl p-10 sm:p-16 lg:p-20 text-center text-ink" style={{ background: "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)", boxShadow: "0 25px 60px -15px rgba(236,77,126,0.25)" }}>
+          <div className="label-sm mb-6">CONTACT</div>
+          <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
             당신의 인연,<br />
-            <span className="text-gradient">여기서 시작됩니다.</span>
+            <span className="text-rainbow">여기서 시작됩니다.</span>
           </h2>
-          <p className="text-base sm:text-lg text-white/65 mb-3">무료 상담으로 부담 없이 시작해 보세요.</p>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 mb-10">
-            <span className="text-xs font-bold" style={{ color: ACCENT }}>365일 · 밤 12시까지 상담</span>
+          <p className="text-base sm:text-lg text-ink-soft mb-3">무료 상담으로 부담 없이 시작해 보세요.</p>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm mb-10">
+            <span className="text-xs font-bold text-accent">365일 · 밤 12시까지 상담</span>
           </div>
 
           {/* 카톡 ID 카드 */}
-          <div className="max-w-md mx-auto mb-8 bg-white rounded-2xl p-7 text-ink">
+          <div className="max-w-md mx-auto mb-8 bg-white rounded-2xl p-7 text-ink shadow-md">
             <div className="label-sm mb-4">카카오톡으로 문의 주세요</div>
             <div className="flex items-center justify-center gap-3 mb-3">
               <span className="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-yellow-300">
@@ -400,10 +400,10 @@ export function AppleContact() {
 
           {/* 보조 */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white/10 text-white hover:bg-white/15 w-full sm:w-auto">
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-sm">
               인스타그램 @inyeon_lab
             </a>
-            <a href="tel:010-7617-0181" className="btn btn-secondary bg-white/10 text-white hover:bg-white/15 w-full sm:w-auto">
+            <a href="tel:010-7617-0181" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-sm">
               {I.phone("w-4 h-4")} 010-7617-0181
             </a>
           </div>

@@ -134,8 +134,8 @@ export function HeroSection() {
       {/* 풀스크린 결혼 사진 배경 */}
       <div className="absolute inset-0 z-0">
         <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" />
-        {/* 자연스러운 비네트 — 텍스트 가독성만 확보, 사진 색감은 그대로 */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.65) 100%)" }} />
+        {/* 미세 비네트 — 사진 색감 살리고 텍스트 가독성만 (밝게) */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.45) 100%)" }} />
       </div>
 
       {/* 작은 별 데코만 (색감 영향 없음) */}
@@ -763,16 +763,20 @@ export function SafetyFlowSection() {
   );
 }
 
-/* ═══ IDEAL MATCH — 다크 + 멀티컬러 글로우 ═══ */
+/* ═══ IDEAL MATCH — 밝은 핑크 그라데이션 ═══ */
 export function IdealMatchSection() {
   return (
     <section className="bg-base py-16 sm:py-24 lg:py-28">
       <div className="container-apple">
-        <a href="/ideal-match" className="group block mesh-noir text-white rounded-3xl relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]" style={{ boxShadow: "0 30px 80px -20px rgba(236, 77, 126, 0.4)" }}>
-          {/* 멀티 글로우 — 핑크 + 보라 + 골드 */}
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-50 anim-float-slow" style={{ background: "#ec4d7e" }} />
-          <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#fb7185", animationDelay: "2s" }} />
-          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-30 anim-float-slow" style={{ background: "#ff8da8", animationDelay: "3s" }} />
+        <a href="/ideal-match" className="group block rounded-3xl relative overflow-hidden p-10 sm:p-16 lg:p-20 transition-all hover:scale-[1.005]"
+          style={{
+            background: "linear-gradient(135deg, #fff5f8 0%, #ffe8ef 50%, #ffd6e4 100%)",
+            boxShadow: "0 30px 80px -20px rgba(236, 77, 126, 0.3)"
+          }}>
+          {/* 밝은 핑크 글로우 */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full blur-3xl opacity-50 anim-float-slow" style={{ background: "#ffb3c8" }} />
+          <div className="absolute -bottom-40 -left-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-40 anim-float-slow" style={{ background: "#ff8da8", animationDelay: "2s" }} />
+          <div className="absolute top-1/2 left-1/3 w-80 h-80 rounded-full blur-3xl opacity-25 anim-float-slow" style={{ background: "#fb7185", animationDelay: "3s" }} />
 
           {/* 떠다니는 별 */}
           <span className="absolute top-10 right-20 anim-twinkle"><BurstStar size={20} /></span>
@@ -780,22 +784,22 @@ export function IdealMatchSection() {
 
           <div className="relative grid grid-cols-12 gap-y-8 lg:gap-x-12 items-center">
             <div className="col-span-12 lg:col-span-8">
-              <div className="label-sm mb-4" style={{ color: "var(--c-gold-soft)" }}>매칭 진단</div>
-              <h2 className="h-section font-bold text-white mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
+              <div className="label-sm mb-4">매칭 진단</div>
+              <h2 className="h-section font-bold text-ink mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
                 내 이상형과<br />
                 <span className="text-rainbow">매칭될 수 있을까?</span>
               </h2>
-              <p className="text-base sm:text-lg text-white/75 max-w-xl leading-relaxed">
+              <p className="text-base sm:text-lg text-ink-soft max-w-xl leading-relaxed">
                 나이·지역·직업·스타일 등 원하시는 조건을 알려주시면,<br className="hidden sm:block" />
                 담당 매칭사가 매칭 가능성을 직접 확인해드립니다.
               </p>
             </div>
 
             <div className="col-span-12 lg:col-span-4 lg:text-right">
-              <span className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-ink font-semibold text-base group-hover:scale-105 transition-transform">
+              <span className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-semibold text-base group-hover:scale-105 transition-transform" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)", boxShadow: "0 12px 30px -8px rgba(236,77,126,0.5)" }}>
                 진단 시작 →
               </span>
-              <div className="text-xs sm:text-sm text-white/45 mt-4">
+              <div className="text-xs sm:text-sm text-ink-soft mt-4">
                 여성 회원 1회 무료 · 1분 소요
               </div>
             </div>
