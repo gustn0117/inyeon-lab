@@ -151,7 +151,7 @@ export function HeroSection() {
         </div>
 
         {/* 거대 헤딩 — 세리프 액센트 + 핑크 글로우 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 0 40px rgba(236,77,126,0.4), 0 0 80px rgba(236,77,126,0.2)" }}>
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 0 20px rgba(236,77,126,0.18)" }}>
           마음에 드는 사람만,<br />
           <span className="text-rainbow relative inline-block">
             진짜로 만나요
@@ -748,7 +748,7 @@ export function IdealMatchSection() {
           <div className="relative grid grid-cols-12 gap-y-8 lg:gap-x-12 items-center">
             <div className="col-span-12 lg:col-span-8">
               <div className="label-sm mb-4">매칭 진단</div>
-              <h2 className="h-section font-bold text-ink mb-6 text-glow-multi" style={{ fontWeight: 700 }}>
+              <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
                 내 이상형과<br />
                 <span className="text-rainbow">매칭될 수 있을까?</span>
               </h2>
