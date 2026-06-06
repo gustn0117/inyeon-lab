@@ -5,10 +5,6 @@ import SubPageHero from "@/components/SubPageHero";
 import { AppleAbout, AppleMemberJobs, ApplePromise, AppleSafety } from "@/sections/apple";
 import AboutStory from "@/components/AboutStory";
 import AboutValues from "@/components/AboutValues";
-import MatchingTeam from "@/components/MatchingTeam";
-import BigStats from "@/components/BigStats";
-import Testimonials from "@/components/Testimonials";
-import FinalCTA from "@/components/FinalCTA";
 
 function useReveal() {
   useEffect(() => {
@@ -35,13 +31,9 @@ export default function AboutPage() {
       <AboutStory />
       <AboutValues />
       <AppleAbout />
-      <MatchingTeam />
       <AppleMemberJobs />
-      <BigStats />
       <ApplePromise />
       <AppleSafety />
-      <Testimonials />
-      <FinalCTA />
     </PageShell>
   );
 }

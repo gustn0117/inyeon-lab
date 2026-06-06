@@ -4,9 +4,6 @@ import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
 import { AppleContact, AppleFAQ } from "@/sections/apple";
 import ContactInfo from "@/components/ContactInfo";
-import Persona from "@/components/Persona";
-import Testimonials from "@/components/Testimonials";
-import FinalCTA from "@/components/FinalCTA";
 
 function useReveal() {
   useEffect(() => {
@@ -32,10 +29,7 @@ export default function ContactPage() {
       />
       <AppleContact />
       <ContactInfo />
-      <Persona />
       <AppleFAQ />
-      <Testimonials />
-      <FinalCTA />
     </PageShell>
   );
 }
