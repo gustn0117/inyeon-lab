@@ -1,6 +1,7 @@
 "use client";
 /* ═══ Apple 섹션 모음 — 고급 SVG 풍성 ═══ */
 import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament, IconCalendar, IconLocation, IconCrown, IconLock, IconBadge, IconSparkleCluster, IconCoffee, IconMail } from "@/components/Icons";
+import CountUp from "@/components/CountUp";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
@@ -21,10 +22,7 @@ export function AppleAbout() {
       <div className="container-apple">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="reveal">
-            <div className="flex items-center gap-3 mb-4">
-              <Sparkle size={16} />
-              <div className="label-sm">ABOUT US</div>
-            </div>
+            <div className="eyebrow-lined mb-4">ABOUT US</div>
             <h2 className="h-section font-bold text-ink mb-7" style={{ fontWeight: 700 }}>
               결혼정보회사가 아닌,<br />
               <span className="text-rainbow relative inline-block">프리미엄 소개팅<HandUnderline /></span>.
@@ -48,14 +46,14 @@ export function AppleAbout() {
           <div className="reveal">
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
-                { v: "9,999+", l: "누적 상담", Icon: IconCouple },
-                { v: "51:49", l: "남녀 성비", Icon: IconHeart },
-                { v: "48h", l: "평균 매칭", Icon: IconCalendar },
-                { v: "100%", l: "신원 검증", Icon: IconBadge },
+                { render: () => <><CountUp end={9999} format="comma" />+</>, l: "누적 상담", Icon: IconCouple },
+                { render: () => <><CountUp end={51} format="plain" />:<CountUp end={49} format="plain" /></>, l: "남녀 성비", Icon: IconHeart },
+                { render: () => <><CountUp end={48} format="plain" />h</>, l: "평균 매칭", Icon: IconCalendar },
+                { render: () => <><CountUp end={100} format="plain" />%</>, l: "신원 검증", Icon: IconBadge },
               ].map((s, i) => (
-                <div key={i} className="card-rainbow group p-5 sm:p-6 text-center bg-white">
+                <div key={i} className="card-rainbow group tilt-3d p-5 sm:p-6 text-center bg-white">
                   <span className="icon-flip"><s.Icon size={28} className="mx-auto mb-2" /></span>
-                  <div className="num-huge text-2xl sm:text-3xl mb-1 leading-none text-accent">{s.v}</div>
+                  <div className="num-huge text-2xl sm:text-3xl mb-1 leading-none text-accent">{s.render()}</div>
                   <div className="text-xs sm:text-sm font-bold text-ink">{s.l}</div>
                 </div>
               ))}

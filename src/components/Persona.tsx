@@ -28,11 +28,7 @@ export default function Persona() {
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Sparkle size={14} />
-            <span className="label-sm">FOR YOU</span>
-            <Sparkle size={14} />
-          </div>
+          <div className="eyebrow-lined mb-4 mx-auto">FOR YOU</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             이런 분들이 <span className="text-rainbow relative inline-block">찾아주세요<HandUnderline /></span>.
           </h2>

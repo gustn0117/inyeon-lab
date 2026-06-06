@@ -31,11 +31,7 @@ export default function MainFAQ() {
     <section className="relative py-16 sm:py-20 lg:py-24">
       <div className="container-narrow">
         <div className="text-center mb-10 reveal">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Sparkle size={14} />
-            <span className="label-sm">QUICK FAQ</span>
-            <Sparkle size={14} />
-          </div>
+          <div className="eyebrow-lined mb-4 mx-auto">QUICK FAQ</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             궁금한 점, <span className="text-rainbow relative inline-block">미리 답변<HandUnderline /></span>.
           </h2>

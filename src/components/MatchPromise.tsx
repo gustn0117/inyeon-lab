@@ -31,11 +31,7 @@ export default function MatchPromise() {
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Sparkle size={14} />
-            <span className="label-sm">PROMISE TO YOU</span>
-            <Sparkle size={14} />
-          </div>
+          <div className="eyebrow-lined mb-4 mx-auto">PROMISE TO YOU</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             우리가 드리는 <span className="text-rainbow relative inline-block">세 가지 약속<HandUnderline /></span>.
           </h2>
