@@ -151,7 +151,7 @@ export function HeroSection() {
         </div>
 
         {/* 거대 헤딩 — 세리프 액센트 + 핑크 글로우 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 2px 12px rgba(0,0,0,0.25), 0 0 40px rgba(236,77,126,0.4), 0 0 80px rgba(236,77,126,0.2)" }}>
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 0 40px rgba(236,77,126,0.4), 0 0 80px rgba(236,77,126,0.2)" }}>
           <span className="font-serif-italic font-normal text-white/95">이상형</span> 소개팅,<br />
           <span className="text-rainbow relative inline-block">
             진짜 그분
