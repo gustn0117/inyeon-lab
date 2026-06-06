@@ -1,6 +1,6 @@
 "use client";
 /* ═══ Apple 섹션 모음 — 고급 SVG 풍성 ═══ */
-import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament } from "@/components/Icons";
+import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament, IconCalendar, IconLocation, IconCrown, IconLock, IconBadge, IconSparkleCluster, IconCoffee, IconMail, IllustCouple } from "@/components/Icons";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
@@ -48,8 +48,8 @@ export function AppleAbout() {
             {[
               { v: "9,999+", l: "누적 상담", Icon: IconCouple },
               { v: "51:49", l: "남녀 성비", Icon: IconHeart },
-              { v: "48h", l: "평균 매칭", Icon: IconClock },
-              { v: "100%", l: "신원 검증", Icon: IconShield },
+              { v: "48h", l: "평균 매칭", Icon: IconCalendar },
+              { v: "100%", l: "신원 검증", Icon: IconBadge },
             ].map((s, i) => (
               <div key={i} className="card-rainbow group p-6 sm:p-8 text-center bg-white">
                 <span className="icon-flip"><s.Icon size={32} className="mx-auto mb-3" /></span>
@@ -108,10 +108,10 @@ export function AppleMemberJobs() {
 export function ApplePromise() {
   const promises = [
     { n: "01", t: "아무나 받지 않습니다", d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다.", Icon: IconShield },
-    { n: "02", t: "딱 맞게 매칭해드립니다", d: "거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.", Icon: IconCouple },
+    { n: "02", t: "딱 맞게 매칭해드립니다", d: "거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.", Icon: IconLocation },
     { n: "03", t: "매칭 후 결제", d: "선불 결제 없음. 실제 매칭 성사 경우에만 결제하는 100% 후불제.", Icon: IconCurrency },
-    { n: "04", t: "사진·프로필 직접 전달", d: "실제 사진과 자세한 프로필을 매칭된 1:1 상대에게만 비공개로 전달.", Icon: IconDocument },
-    { n: "05", t: "100% 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", Icon: IconCheck },
+    { n: "04", t: "사진·프로필 직접 전달", d: "실제 사진과 자세한 프로필을 매칭된 1:1 상대에게만 비공개로 전달.", Icon: IconLock },
+    { n: "05", t: "100% 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", Icon: IconBadge },
     { n: "06", t: "정성스러운 관리", d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 함께합니다.", Icon: IconHeart },
   ];
   return (
@@ -145,10 +145,10 @@ export function ApplePromise() {
 /* ═══ SAFETY — 4단계 + SVG ═══ */
 export function AppleSafety() {
   const steps = [
-    { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", Icon: IconShield },
-    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다.", Icon: IconDocument },
-    { n: "03", t: "1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다.", Icon: IconChat },
-    { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", Icon: IconCheck },
+    { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", Icon: IconBadge },
+    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다.", Icon: IconLock },
+    { n: "03", t: "1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다.", Icon: IconMail },
+    { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", Icon: IconShield },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -236,7 +236,7 @@ export function ApplePricing() {
             <div className="absolute -top-3 right-6 text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-lg bg-accent">BEST</div>
             <div className="flex items-start justify-between mb-4">
               <div className="label-sm">UNLIMITED</div>
-              <IconDiamond size={32} />
+              <span className="icon-flip"><IconCrown size={36} /></span>
             </div>
             <div className="mb-2">
               <span className="num-huge text-4xl text-accent">무제한 매칭</span>
@@ -260,8 +260,8 @@ export function AppleProcess() {
   const steps = [
     { n: "01", t: "상담 신청", d: "카카오톡 ID inyeon_ 으로 간편하게 신청하세요.", Icon: IconChat },
     { n: "02", t: "서류 검토", d: "재직증명서·혼인관계증명서 등으로 신원 확인", Icon: IconDocument },
-    { n: "03", t: "맞춤 매칭", d: "거리·나이·종교·직업 등 조건 반영 매칭", Icon: IconFlower },
-    { n: "04", t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작", Icon: IconCouple },
+    { n: "03", t: "맞춤 매칭", d: "거리·나이·종교·직업 등 조건 반영 매칭", Icon: IconLocation },
+    { n: "04", t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작", Icon: IconCoffee },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>

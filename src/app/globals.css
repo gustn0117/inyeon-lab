@@ -88,16 +88,30 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
   }
 
-  /* Apple containers */
+  /* Apple containers — 반응형 정교화 */
   .container-apple {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
+    .container-apple { padding-left: 1.75rem; padding-right: 1.75rem; }
+  }
+  @media (min-width: 1024px) {
     .container-apple { padding-left: 2.5rem; padding-right: 2.5rem; }
+  }
+  /* 좁은 컨테이너 (FAQ, BigQuote 등) */
+  .container-narrow {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .container-narrow { padding-left: 1.75rem; padding-right: 1.75rem; }
   }
 
   /* Colors — 모두 순수 흰 (단조롭지 않게 카드 그라데이션 보더로 변화) */
