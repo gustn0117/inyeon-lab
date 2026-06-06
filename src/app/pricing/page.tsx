@@ -3,6 +3,11 @@ import { useEffect } from "react";
 import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
 import { ApplePricing, AppleProcess, AppleFeatures, AppleConsult } from "@/sections/apple";
+import WhyAfterpay from "@/components/WhyAfterpay";
+import Compare from "@/components/Compare";
+import MatchPromise from "@/components/MatchPromise";
+import MainFAQ from "@/components/MainFAQ";
+import FinalCTA from "@/components/FinalCTA";
 
 function useReveal() {
   useEffect(() => {
@@ -23,13 +28,18 @@ export default function PricingPage() {
     <PageShell>
       <SubPageHero
         eyebrow="PRICING"
-        title={<>가입비 0원,<br /><span className="text-gradient">매칭 후 결제.</span></>}
+        title={<>가입비 0원,<br /><span className="text-rainbow">매칭 후 결제.</span></>}
         sub="여성 회원은 첫 매칭 1회 무료. 모든 만남은 대면 소개팅으로 보장됩니다."
       />
       <ApplePricing />
+      <WhyAfterpay />
       <AppleProcess />
+      <Compare />
+      <MatchPromise />
       <AppleFeatures />
+      <MainFAQ />
       <AppleConsult />
+      <FinalCTA />
     </PageShell>
   );
 }

@@ -3,6 +3,10 @@ import { useEffect } from "react";
 import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
 import { AppleContact, AppleFAQ } from "@/sections/apple";
+import ContactInfo from "@/components/ContactInfo";
+import Persona from "@/components/Persona";
+import Testimonials from "@/components/Testimonials";
+import FinalCTA from "@/components/FinalCTA";
 
 function useReveal() {
   useEffect(() => {
@@ -23,11 +27,15 @@ export default function ContactPage() {
     <PageShell>
       <SubPageHero
         eyebrow="CONTACT"
-        title={<>상담 · <span className="text-gradient">문의</span></>}
+        title={<>상담 · <span className="text-rainbow">문의</span></>}
         sub="카톡으로 가장 빠르게 답변드려요"
       />
       <AppleContact />
+      <ContactInfo />
+      <Persona />
       <AppleFAQ />
+      <Testimonials />
+      <FinalCTA />
     </PageShell>
   );
 }

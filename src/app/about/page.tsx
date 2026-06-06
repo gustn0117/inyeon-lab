@@ -3,6 +3,12 @@ import { useEffect } from "react";
 import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
 import { AppleAbout, AppleMemberJobs, ApplePromise, AppleSafety } from "@/sections/apple";
+import AboutStory from "@/components/AboutStory";
+import AboutValues from "@/components/AboutValues";
+import MatchingTeam from "@/components/MatchingTeam";
+import BigStats from "@/components/BigStats";
+import Testimonials from "@/components/Testimonials";
+import FinalCTA from "@/components/FinalCTA";
 
 function useReveal() {
   useEffect(() => {
@@ -23,13 +29,19 @@ export default function AboutPage() {
     <PageShell>
       <SubPageHero
         eyebrow="ABOUT"
-        title={<>인연연구소를<br /><span className="text-gradient">소개합니다.</span></>}
+        title={<>인연연구소를<br /><span className="text-rainbow">소개합니다.</span></>}
         sub="결혼정보회사도, 가벼운 앱도 아닌 그 중간 — 검증된 만남을 부담 없이."
       />
+      <AboutStory />
+      <AboutValues />
       <AppleAbout />
+      <MatchingTeam />
       <AppleMemberJobs />
+      <BigStats />
       <ApplePromise />
       <AppleSafety />
+      <Testimonials />
+      <FinalCTA />
     </PageShell>
   );
 }
