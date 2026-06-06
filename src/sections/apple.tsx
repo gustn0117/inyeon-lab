@@ -14,12 +14,12 @@ const INSTAGRAM = "https://www.instagram.com/inyeon_lab?igsh=cHphNHZnaDV1MGpr";
 /* 공통 padding (대폭 축소) */
 const SECTION_PY = "py-16 sm:py-20 lg:py-24";
 
-/* ═══ ABOUT — split (좌 카피 + 우 통계 4) ═══ */
+/* ═══ ABOUT — split (좌 카피 + 우 일러스트+통계) ═══ */
 export function AppleAbout() {
   return (
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="reveal">
             <div className="flex items-center gap-3 mb-4">
               <Sparkle size={16} />
@@ -44,19 +44,27 @@ export function AppleAbout() {
             </div>
           </div>
 
-          <div className="reveal grid grid-cols-2 gap-3 sm:gap-5">
-            {[
-              { v: "9,999+", l: "누적 상담", Icon: IconCouple },
-              { v: "51:49", l: "남녀 성비", Icon: IconHeart },
-              { v: "48h", l: "평균 매칭", Icon: IconCalendar },
-              { v: "100%", l: "신원 검증", Icon: IconBadge },
-            ].map((s, i) => (
-              <div key={i} className="card-rainbow group p-6 sm:p-8 text-center bg-white">
-                <span className="icon-flip"><s.Icon size={32} className="mx-auto mb-3" /></span>
-                <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none text-accent">{s.v}</div>
-                <div className="text-sm sm:text-base font-bold text-ink">{s.l}</div>
-              </div>
-            ))}
+          {/* 우측: 큰 일러스트 + 4 통계 카드 */}
+          <div className="reveal">
+            {/* 큰 일러스트 */}
+            <div className="flex justify-center mb-6 lg:mb-8">
+              <IllustCouple size={260} className="w-48 sm:w-60 lg:w-72 h-auto" />
+            </div>
+            {/* 통계 4 카드 */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {[
+                { v: "9,999+", l: "누적 상담", Icon: IconCouple },
+                { v: "51:49", l: "남녀 성비", Icon: IconHeart },
+                { v: "48h", l: "평균 매칭", Icon: IconCalendar },
+                { v: "100%", l: "신원 검증", Icon: IconBadge },
+              ].map((s, i) => (
+                <div key={i} className="card-rainbow group p-5 sm:p-6 text-center bg-white">
+                  <span className="icon-flip"><s.Icon size={28} className="mx-auto mb-2" /></span>
+                  <div className="num-huge text-2xl sm:text-3xl mb-1 leading-none text-accent">{s.v}</div>
+                  <div className="text-xs sm:text-sm font-bold text-ink">{s.l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

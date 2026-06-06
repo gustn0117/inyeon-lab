@@ -6,6 +6,8 @@ import BigQuote from "@/components/BigQuote";
 import BentoBenefits from "@/components/BentoBenefits";
 import PhotoStory from "@/components/PhotoStory";
 import Testimonials from "@/components/Testimonials";
+import TrustBadges from "@/components/TrustBadges";
+import Compare from "@/components/Compare";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -67,9 +69,11 @@ export default function Home() {
       <EventBanner />
       <Navbar />
       <HeroSection />
+      <TrustBadges />
       <IdealMatchSection />
       <TrustBar />
       <BentoBenefits />
+      <Compare />
       <PhotoStory />
       <BigQuote />
       <Testimonials />
