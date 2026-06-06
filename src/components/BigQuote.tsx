@@ -1,11 +1,13 @@
 "use client";
-import { IconQuote, Sparkle, HandUnderline } from "@/components/Icons";
+import { IconQuote, Sparkle, HandUnderline, IllustHeartCluster } from "@/components/Icons";
 
 /* ═══ BIG QUOTE — 큰 SVG 따옴표 ═══ */
 export default function BigQuote() {
   return (
-    <section className="relative py-16 sm:py-24 lg:py-28">
-      <div className="container-apple text-center reveal">
+    <section className="relative py-16 sm:py-24 lg:py-28 overflow-hidden">
+      <IllustHeartCluster size={220} className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/4 opacity-15 pointer-events-none hidden lg:block" />
+      <IllustHeartCluster size={220} className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/4 opacity-15 pointer-events-none hidden lg:block -scale-x-100" />
+      <div className="container-apple text-center reveal relative">
         <IconQuote size={56} className="mx-auto mb-6 opacity-90" />
         <h2 className="h-section font-bold text-ink mb-10" style={{ fontWeight: 700 }}>
           앱은 가볍고,<br />

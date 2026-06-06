@@ -12,6 +12,9 @@ import MatchPromise from "@/components/MatchPromise";
 import DateMoments from "@/components/DateMoments";
 import Persona from "@/components/Persona";
 import MainFAQ from "@/components/MainFAQ";
+import ScrollProgress from "@/components/ScrollProgress";
+import FinalCTA from "@/components/FinalCTA";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -70,6 +73,7 @@ export default function Home() {
   useReveal();
   return (
     <main className="relative bg-white">
+      <ScrollProgress />
       <EventBanner />
       <Navbar />
       <HeroSection />
@@ -88,8 +92,10 @@ export default function Home() {
       <KakaoFlow />
       <MainFAQ />
       <PageNav />
+      <FinalCTA />
       <Footer />
       <ChatWidget />
+      <MobileStickyCTA />
     </main>
   );
 }
