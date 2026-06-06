@@ -243,32 +243,16 @@ h1, h2, h3, h4, h5, h6 {
    MAXIMALIST EFFECTS — 진짜 화려한 모드
    ═══════════════════════════════════════ */
 @layer utilities {
-  /* 핑크 흐르는 그라데이션 (단색 톤, 4 stop) */
+  /* 단색 핑크 (모든 액센트 통일) */
   .text-rainbow {
-    background: linear-gradient(110deg, #ec4d7e 0%, #ff6ba0 25%, #fb7185 50%, #ff8da8 75%, #ec4d7e 100%);
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rainbow-shift 8s ease-in-out infinite;
-    display: inline-block;
+    color: #ec4d7e;
+    -webkit-text-fill-color: #ec4d7e;
+    background: none;
+    animation: none;
+    display: inline;
   }
-  /* 핑크 단색 그라데이션 */
-  .text-pink-purple {
-    background: linear-gradient(135deg, #ec4d7e 0%, #fb7185 50%, #ff6ba0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-  }
-  /* 핑크-코랄 그라데이션 */
-  .text-coral-gold {
-    background: linear-gradient(135deg, #fb7185 0%, #ec4d7e 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-  }
+  .text-pink-purple { color: #ec4d7e; }
+  .text-coral-gold { color: #ec4d7e; }
 
   /* 핑크 글로우 헤딩 (단톤 강한 글로우) */
   .text-glow-multi {
@@ -303,46 +287,31 @@ h1, h2, h3, h4, h5, h6 {
       linear-gradient(135deg, #0a0a0a 0%, #1a0a10 100%);
   }
 
-  /* 그라데이션 보더 카드 (핑크 톤만, 항상 보임) */
+  /* 깔끔한 카드 — 흰 + 미세 border + 부드러운 그림자 */
   .card-rainbow {
-    position: relative;
     background: white;
-    border-radius: 1.5rem;
-    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
+    border-radius: 1.25rem;
+    border: 1px solid #f0e8ec;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
-  .card-rainbow::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, #ec4d7e, #ff8da8, #fb7185, #ec4d7e);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: rainbow-shift 6s linear infinite;
-    pointer-events: none;
-  }
+  .card-rainbow::before { content: none; }
   .card-rainbow:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow: 0 30px 70px -15px rgba(236, 77, 126, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
+    border-color: rgba(236, 77, 126, 0.3);
   }
 
-  /* 네온 글로우 카드 (핑크 톤만) */
   .card-neon {
-    box-shadow:
-      0 0 0 1px rgba(236, 77, 126, 0.2),
-      0 10px 40px -10px rgba(236, 77, 126, 0.3),
-      0 20px 60px -20px rgba(251, 113, 133, 0.2);
-    transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+    background: white;
+    border: 1px solid #f0e8ec;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
   }
   .card-neon:hover {
-    box-shadow:
-      0 0 0 1px rgba(236, 77, 126, 0.4),
-      0 20px 60px -10px rgba(236, 77, 126, 0.5),
-      0 30px 80px -20px rgba(251, 113, 133, 0.4);
-    transform: translateY(-6px);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
+    border-color: rgba(236, 77, 126, 0.3);
   }
 
   /* 큰 광선 (핑크 톤만) */
@@ -351,18 +320,17 @@ h1, h2, h3, h4, h5, h6 {
     animation: rotate-slow 60s linear infinite;
   }
 
-  /* 그라데이션 버튼 (핑크 톤만) */
+  /* 단색 핑크 버튼 */
   .btn-gradient {
-    background: linear-gradient(110deg, #ec4d7e 0%, #ff6ba0 35%, #fb7185 65%, #ec4d7e 100%);
-    background-size: 300% 100%;
+    background: #ec4d7e;
     color: white;
-    box-shadow: 0 15px 40px -10px rgba(236, 77, 126, 0.5);
-    animation: rainbow-shift 5s ease-in-out infinite;
-    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: 0 8px 24px -8px rgba(236, 77, 126, 0.4);
+    transition: all 0.3s ease;
   }
   .btn-gradient:hover {
-    box-shadow: 0 25px 60px -10px rgba(236, 77, 126, 0.7), 0 0 30px rgba(251, 113, 133, 0.4);
-    transform: translateY(-3px) scale(1.03);
+    background: #d4567a;
+    box-shadow: 0 12px 30px -8px rgba(236, 77, 126, 0.55);
+    transform: translateY(-2px);
   }
 }
 
@@ -463,13 +431,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   .shine:hover::after { left: 130%; }
 
-  /* Magnetic hover (살짝 떠오름 + scale) */
+  /* 깔끔한 hover (lift만) */
   .hover-magnetic {
-    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .hover-magnetic:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 30px 60px -20px rgba(236, 77, 126, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
   }
 
   /* Pulse glow (배경에서 부드럽게 빛남) */

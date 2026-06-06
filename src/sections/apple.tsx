@@ -21,10 +21,7 @@ export function AppleAbout() {
       <div className="container-apple">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full glass-card">
-              <BurstStar size={12} />
-              <span className="label-sm text-rainbow">ABOUT US</span>
-            </div>
+            <div className="label-sm mb-4">ABOUT US</div>
             <h2 className="h-section font-bold text-ink mb-7" style={{ fontWeight: 700 }}>
               결혼정보회사가 아닌,<br />
               <span className="text-rainbow">프리미엄 소개팅.</span>
@@ -52,9 +49,8 @@ export function AppleAbout() {
               { v: "100%", l: "신원 검증", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
             ].map((s, i) => (
               <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white-solid relative overflow-hidden">
-                <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
                 <div className="relative">
-                  <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.v}</div>
+                  <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none" style={{ color: "#ec4d7e" }}>{s.v}</div>
                   <div className="text-sm sm:text-base font-bold text-ink">{s.l}</div>
                 </div>
               </div>
@@ -76,10 +72,7 @@ export function AppleMemberJobs() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">ACTIVE MEMBERS</span>
-          </div>
+          <div className="label-sm mb-4">ACTIVE MEMBERS</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             이런 분들이 <span className="text-rainbow">함께하고 있어요.</span>
           </h2>
@@ -88,9 +81,8 @@ export function AppleMemberJobs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 reveal">
           {groups.map((g, i) => (
             <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full blur-3xl opacity-30" style={{ background: g.c }} />
               <div className="relative">
-                <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ background: g.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: 700 }}>{g.label}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ color: "#ec4d7e", fontWeight: 700 }}>{g.label}</h3>
                 <div className="flex flex-wrap gap-2">
                   {g.jobs.map((j, k) => (
                     <span key={k} className="px-4 py-2 rounded-full text-sm font-bold text-ink bg-white border border-pink-100">{j}</span>
@@ -122,10 +114,7 @@ export function ApplePromise() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">OUR PROMISE</span>
-          </div>
+          <div className="label-sm mb-4">OUR PROMISE</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             인연연구소의 <span className="text-rainbow">약속.</span>
           </h2>
@@ -134,9 +123,8 @@ export function ApplePromise() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal">
           {promises.map((p, i) => (
             <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 sm:p-9 relative overflow-hidden">
-              <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: p.c }} />
               <div className="relative">
-                <div className="num-huge text-3xl sm:text-4xl mb-3" style={{ background: p.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{p.n}</div>
+                <div className="num-huge text-3xl sm:text-4xl mb-3" style={{ color: "#ec4d7e" }}>{p.n}</div>
                 <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{p.t}</h3>
                 <p className="text-sm text-ink-soft leading-relaxed font-medium">{p.d}</p>
               </div>
@@ -160,10 +148,7 @@ export function AppleSafety() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="mb-12 reveal text-center">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">PRIVACY & SAFETY</span>
-          </div>
+          <div className="label-sm mb-4">PRIVACY & SAFETY</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             당신의 정보,<br />
             <span className="text-rainbow">이렇게 지킵니다.</span>
@@ -173,9 +158,8 @@ export function AppleSafety() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
             <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
               <div className="relative">
-                <div className="num-huge text-3xl mb-3" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.n}</div>
+                <div className="num-huge text-3xl mb-3" style={{ color: "#ec4d7e" }}>{s.n}</div>
                 <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
                 <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
               </div>
@@ -197,10 +181,7 @@ export function ApplePricing() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">PRICING</span>
-          </div>
+          <div className="label-sm mb-4">PRICING</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             가입비 없이, <span className="text-rainbow">매칭 후 결제.</span>
           </h2>
@@ -209,11 +190,10 @@ export function ApplePricing() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto reveal">
           {/* 여성 */}
           <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-            <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }} />
             <div className="relative">
               <div className="label-sm mb-4 text-rainbow">여성 회원</div>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="num-huge text-5xl" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>6만원</span>
+                <span className="num-huge text-5xl" style={{ color: "#ec4d7e" }}>6만원</span>
                 <span className="text-sm text-ink-soft font-bold">/회</span>
               </div>
               <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
@@ -228,11 +208,10 @@ export function ApplePricing() {
 
           {/* 남성 */}
           <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-            <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: "linear-gradient(135deg, #ff6ba0, #d4567a)" }} />
             <div className="relative">
               <div className="label-sm mb-4 text-rainbow">남성 회원</div>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="num-huge text-5xl" style={{ background: "linear-gradient(135deg, #ff6ba0, #d4567a)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>9만원</span>
+                <span className="num-huge text-5xl" style={{ color: "#ec4d7e" }}>9만원</span>
                 <span className="text-sm text-ink-soft font-bold">/회</span>
               </div>
               <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
@@ -282,10 +261,7 @@ export function AppleProcess() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">HOW IT WORKS</span>
-          </div>
+          <div className="label-sm mb-4">HOW IT WORKS</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             4단계로 시작하는 <span className="text-rainbow">인연.</span>
           </h2>
@@ -293,9 +269,8 @@ export function AppleProcess() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
             <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: s.c }} />
               <div className="relative">
-                <div className="num-huge text-3xl mb-3" style={{ background: s.c, WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.n}</div>
+                <div className="num-huge text-3xl mb-3" style={{ color: "#ec4d7e" }}>{s.n}</div>
                 <h3 className="text-lg sm:text-xl font-bold text-ink mb-2" style={{ fontWeight: 700 }}>{s.t}</h3>
                 <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
               </div>
@@ -319,25 +294,19 @@ export function AppleFeatures() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">WHY US</span>
-          </div>
+          <div className="label-sm mb-4">WHY US</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             인연연구소만의 <span className="text-rainbow">특별한 장점.</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {features.map((f, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 sm:p-9 relative overflow-hidden">
-              <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full blur-2xl opacity-30" style={{ background: f.c }} />
-              <div className="relative">
-                <div className="w-10 h-10 rounded-2xl mb-5 flex items-center justify-center text-white shadow-lg" style={{ background: f.c }}>
-                  <BurstStar size={18} className="text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{f.t}</h3>
-                <p className="text-sm text-ink-soft leading-relaxed font-medium">{f.d}</p>
+            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9">
+              <div className="w-10 h-10 rounded-2xl mb-5 flex items-center justify-center bg-accent-soft text-accent">
+                {I.check("w-5 h-5")}
               </div>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{f.t}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed font-medium">{f.d}</p>
             </div>
           ))}
         </div>
@@ -351,16 +320,9 @@ export function AppleConsult() {
   return (
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink relative overflow-hidden bg-white/70 backdrop-blur-xl" style={{ boxShadow: "0 25px 60px -15px rgba(236,77,126,0.18)" }}>
-          <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-50" style={{ background: "#ffb3c8" }} />
-          <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#ff8da8" }} />
-          <span className="absolute top-8 right-8 anim-twinkle"><BurstStar size={20} /></span>
-
-          <div className="relative">
-            <div className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-white shadow-sm">
-              <BurstStar size={12} />
-              <span className="label-sm text-rainbow">CONSULTING</span>
-            </div>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink bg-white">
+          <div>
+            <div className="label-sm mb-4">CONSULTING</div>
             <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               전문 매칭사의<br />
               <span className="text-rainbow">1:1 컨설팅.</span>
@@ -370,7 +332,7 @@ export function AppleConsult() {
               <strong className="text-ink">연애 전문 상담사가 함께합니다.</strong>
             </p>
           </div>
-          <div className="relative lg:text-right">
+          <div className="lg:text-right">
             <a href="/contact" className="btn btn-gradient inline-flex font-bold">
               상담 시작 →
             </a>
@@ -414,10 +376,7 @@ export function AppleFAQ() {
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple max-w-3xl">
         <div className="text-center mb-10 reveal">
-          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full glass-card">
-            <BurstStar size={12} />
-            <span className="label-sm text-rainbow">FAQ</span>
-          </div>
+          <div className="label-sm mb-4">FAQ</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             자주 묻는 <span className="text-rainbow">질문.</span>
           </h2>
@@ -435,17 +394,9 @@ export function AppleContact() {
   return (
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 text-center text-ink relative overflow-hidden bg-white/70 backdrop-blur-xl" style={{ boxShadow: "0 25px 60px -15px rgba(236,77,126,0.18)" }}>
-          <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-50" style={{ background: "#ffb3c8" }} />
-          <div className="absolute -bottom-24 -left-20 w-80 h-80 rounded-full blur-3xl opacity-40" style={{ background: "#ff8da8" }} />
-          <span className="absolute top-8 right-8 anim-twinkle"><BurstStar size={22} /></span>
-          <span className="absolute bottom-10 left-10 anim-twinkle" style={{ animationDelay: "1s" }}><BurstStar size={16} /></span>
-
-          <div className="relative">
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-white shadow-sm">
-              <BurstStar size={12} />
-              <span className="label-sm text-rainbow">CONTACT</span>
-            </div>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 text-center text-ink bg-white">
+          <div>
+            <div className="label-sm mb-4">CONTACT</div>
             <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               당신의 인연,<br />
               <span className="text-rainbow">여기서 시작됩니다.</span>
@@ -457,8 +408,8 @@ export function AppleContact() {
             </div>
 
             {/* 카톡 ID 카드 */}
-            <div className="max-w-md mx-auto mb-8 bg-white rounded-2xl p-7 text-ink shadow-xl card-rainbow">
-              <div className="label-sm mb-4 text-rainbow">카카오톡으로 문의 주세요</div>
+            <div className="max-w-md mx-auto mb-8 bg-accent-soft rounded-2xl p-7 text-ink">
+              <div className="label-sm mb-4">카카오톡으로 문의 주세요</div>
               <div className="flex items-center justify-center gap-3 mb-3">
                 <span className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-yellow-300 shadow-md">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z" /></svg>
