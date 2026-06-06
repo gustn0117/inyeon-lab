@@ -57,12 +57,12 @@ export default function BentoBenefits() {
             { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석.", Icon: IconChat },
             { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율.", Icon: IconCouple },
           ].map((b, i) => (
-            <article key={i} className="card-rainbow hover-magnetic p-8 sm:p-10 bg-white">
+            <article key={i} className="group card-rainbow p-8 sm:p-10 bg-white">
               <div className="flex items-center justify-between mb-4">
-                <b.Icon size={36} />
+                <span className="icon-flip"><b.Icon size={36} /></span>
                 <div className="label-sm">{b.n}</div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3" style={{ fontWeight: 700 }}>{b.t}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3 link-underline" style={{ fontWeight: 700 }}>{b.t}</h3>
               <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-medium">{b.d}</p>
             </article>
           ))}

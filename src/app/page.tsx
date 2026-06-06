@@ -39,17 +39,17 @@ function PageNav() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {items.map((it, i) => (
-            <a key={i} href={it.href} className="card-rainbow hover-magnetic group p-8 flex flex-col justify-between min-h-[210px] bg-white">
+            <a key={i} href={it.href} className="card-rainbow group p-8 flex flex-col justify-between min-h-[210px] bg-white">
               <div className="flex items-start justify-between mb-3">
-                <it.Icon size={38} />
+                <span className="icon-flip"><it.Icon size={38} /></span>
                 <span className="label-sm">{it.n}</span>
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-ink mb-2" style={{ fontWeight: 700 }}>{it.t}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-ink mb-2 link-underline" style={{ fontWeight: 700 }}>{it.t}</h3>
                 <p className="text-sm text-ink-soft">{it.d}</p>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-accent group-hover:gap-2 transition-all">
                   바로가기
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                  <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                 </div>
               </div>
             </a>

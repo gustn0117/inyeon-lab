@@ -1,5 +1,5 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -77,17 +77,15 @@ h1, h2, h3, h4, h5, h6 {
   .font-body {
     font-family: 'Pretendard Variable', sans-serif;
   }
-  /* 세리프 액센트 (헤딩 일부 단어) */
+  /* 세리프 유틸 폴백 (Pretendard만 사용) */
   .font-serif {
-    font-family: 'Fraunces', 'Cormorant Garamond', serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-weight: 700;
   }
   .font-serif-italic {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-style: normal;
+    font-weight: 700;
   }
 
   /* Apple containers */
@@ -339,32 +337,55 @@ h1, h2, h3, h4, h5, h6 {
       linear-gradient(135deg, #0a0a0a 0%, #1a0a10 100%);
   }
 
-  /* 깔끔한 카드 — 흰 + 미세 border + 부드러운 그림자 */
+  /* 카드 — 평상시 깨끗 + 호버 시 화려한 이펙트 */
   .card-rainbow {
+    position: relative;
     background: white;
     border-radius: 1.25rem;
     border: 1px solid #f0e8ec;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s ease;
+    overflow: hidden;
   }
-  .card-rainbow::before { content: none; }
+  /* 호버 시 그라데이션 보더 등장 */
+  .card-rainbow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #ec4d7e, #ff8da8, #fb7185, #ec4d7e);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: rainbow-shift 4s linear infinite;
+    pointer-events: none;
+  }
+  /* 호버 시 안쪽 그라데이션 글로우 */
+  .card-rainbow::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(236,77,126,0.12) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
   .card-rainbow:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
-    border-color: rgba(236, 77, 126, 0.3);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 25px 55px -15px rgba(236, 77, 126, 0.32), 0 0 0 1px rgba(236,77,126,0.1);
+    border-color: rgba(236, 77, 126, 0.4);
   }
+  .card-rainbow:hover::before { opacity: 1; }
+  .card-rainbow:hover::after { opacity: 1; }
 
-  .card-neon {
-    background: white;
-    border: 1px solid #f0e8ec;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
-  }
-  .card-neon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
-    border-color: rgba(236, 77, 126, 0.3);
-  }
+  .card-neon { @apply card-rainbow; }
 
   /* 큰 광선 (핑크 톤만) */
   .rays {
@@ -483,15 +504,131 @@ h1, h2, h3, h4, h5, h6 {
   }
   .shine:hover::after { left: 130%; }
 
-  /* 깔끔한 hover (lift만) */
+  /* hover-magnetic — 더 강한 lift + scale */
   .hover-magnetic {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
   }
   .hover-magnetic:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px -12px rgba(236, 77, 126, 0.18);
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 22px 50px -15px rgba(236, 77, 126, 0.28);
   }
 
+  /* shimmer (호버 시 빛 휩쓸기) */
+  .shimmer { position: relative; overflow: hidden; isolation: isolate; }
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+    transform: skewX(-20deg);
+    transition: left 0.85s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .shimmer:hover::before { left: 200%; }
+
+  /* 아이콘 호버 — rotate + scale */
+  .icon-flip {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+  }
+  .group:hover .icon-flip,
+  .icon-flip:hover {
+    transform: scale(1.18) rotate(-8deg);
+  }
+
+  /* 카드 안 글로우 (호버 시 등장) */
+  .glow-on-hover { position: relative; }
+  .glow-on-hover::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(236,77,126,0.25) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    filter: blur(15px);
+  }
+  .glow-on-hover:hover::before { opacity: 1; }
+
+  /* 텍스트 호버 underline 자라남 */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ec4d7e, #fb7185);
+    border-radius: 9999px;
+    transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .link-underline:hover::after,
+  .group:hover .link-underline::after { width: 100%; }
+
+  /* 떠다니는 컨테이너 (3D tilt 라이트) */
+  .tilt-soft {
+    transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .tilt-soft:hover {
+    transform: perspective(900px) rotateY(-1.5deg) rotateX(1.5deg) translateY(-5px);
+  }
+
+  /* 펄스 ring (CTA, 라벨 등) */
+  .ring-pulse {
+    animation: ring-pulse-anim 2.6s ease-out infinite;
+  }
+
+  /* 미세 dot 패턴 배경 */
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(236,77,126,0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* 스크롤 reveal stagger (.reveal 안 자식들) */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal-ready .stagger-children.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-ready .stagger-children.visible > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-ready .stagger-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
+  .reveal-ready .stagger-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
+  .reveal-ready .stagger-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
+  .reveal-ready .stagger-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-ready .stagger-children.visible > *:nth-child(6) { transition-delay: 0.4s; }
+
+  /* 펄스 ring keyframe */
+}
+@keyframes ring-pulse-anim {
+  0% { box-shadow: 0 0 0 0 rgba(236,77,126,0.5); }
+  70% { box-shadow: 0 0 0 18px rgba(236,77,126,0); }
+  100% { box-shadow: 0 0 0 0 rgba(236,77,126,0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+.anim-float-y { animation: float-y 3.5s ease-in-out infinite; }
+.anim-wiggle { animation: wiggle 1.5s ease-in-out infinite; }
+
+@layer utilities {
   /* Pulse glow (배경에서 부드럽게 빛남) */
   .pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;

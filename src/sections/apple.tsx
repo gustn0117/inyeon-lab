@@ -51,8 +51,8 @@ export function AppleAbout() {
               { v: "48h", l: "평균 매칭", Icon: IconClock },
               { v: "100%", l: "신원 검증", Icon: IconShield },
             ].map((s, i) => (
-              <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white">
-                <s.Icon size={32} className="mx-auto mb-3" />
+              <div key={i} className="card-rainbow group p-6 sm:p-8 text-center bg-white">
+                <span className="icon-flip"><s.Icon size={32} className="mx-auto mb-3" /></span>
                 <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none text-accent">{s.v}</div>
                 <div className="text-sm sm:text-base font-bold text-ink">{s.l}</div>
               </div>
@@ -82,10 +82,10 @@ export function AppleMemberJobs() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 reveal">
           {groups.map((g, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+            <div key={i} className="card-rainbow group bg-white p-8 sm:p-10 relative">
               <CornerOrnament size={50} className="top-0 right-0" />
               <div className="flex items-center gap-3 mb-6">
-                <g.Icon size={36} />
+                <span className="icon-flip"><g.Icon size={36} /></span>
                 <h3 className="text-xl sm:text-2xl font-bold text-accent" style={{ fontWeight: 700 }}>{g.label}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -126,13 +126,13 @@ export function ApplePromise() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal">
           {promises.map((p, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9 relative">
+            <div key={i} className="card-rainbow group bg-white p-7 sm:p-9 relative">
               <CornerOrnament size={50} className="top-0 right-0" />
               <div className="flex items-start gap-4 mb-4">
-                <p.Icon size={36} />
+                <span className="icon-flip"><p.Icon size={36} /></span>
                 <div className="num-huge text-2xl text-accent">{p.n}</div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{p.t}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5 link-underline" style={{ fontWeight: 700 }}>{p.t}</h3>
               <p className="text-sm text-ink-soft leading-relaxed font-medium">{p.d}</p>
             </div>
           ))}
@@ -163,10 +163,10 @@ export function AppleSafety() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7">
-              <s.Icon size={36} />
+            <div key={i} className="card-rainbow group bg-white p-7">
+              <span className="icon-flip"><s.Icon size={36} /></span>
               <div className="num-huge text-2xl mt-4 mb-2 text-accent">{s.n}</div>
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5 link-underline" style={{ fontWeight: 700 }}>{s.t}</h3>
               <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
             </div>
           ))}
@@ -194,7 +194,7 @@ export function ApplePricing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto reveal">
           {/* 여성 */}
-          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+          <div className="card-rainbow group bg-white p-8 sm:p-10 relative">
             <div className="flex items-start justify-between mb-4">
               <div className="label-sm">여성 회원</div>
               <IconHeart size={32} />
@@ -213,7 +213,7 @@ export function ApplePricing() {
           </div>
 
           {/* 남성 */}
-          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+          <div className="card-rainbow group bg-white p-8 sm:p-10 relative">
             <div className="flex items-start justify-between mb-4">
               <div className="label-sm">남성 회원</div>
               <IconRing size={32} />
@@ -232,7 +232,7 @@ export function ApplePricing() {
           </div>
 
           {/* 무제한 BEST */}
-          <div className="card-rainbow hover-magnetic p-8 sm:p-10 text-ink bg-white relative" style={{ borderColor: "rgba(236,77,126,0.5)", boxShadow: "0 12px 30px -10px rgba(236,77,126,0.25)" }}>
+          <div className="card-rainbow group p-8 sm:p-10 text-ink bg-white relative" style={{ borderColor: "rgba(236,77,126,0.5)", boxShadow: "0 12px 30px -10px rgba(236,77,126,0.25)" }}>
             <div className="absolute -top-3 right-6 text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-lg bg-accent">BEST</div>
             <div className="flex items-start justify-between mb-4">
               <div className="label-sm">UNLIMITED</div>
@@ -274,12 +274,12 @@ export function AppleProcess() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 relative">
+            <div key={i} className="card-rainbow group bg-white p-7 relative">
               <div className="flex items-center justify-between mb-4">
-                <s.Icon size={40} />
+                <span className="icon-flip"><s.Icon size={40} /></span>
                 <div className="num-huge text-3xl text-accent">{s.n}</div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2" style={{ fontWeight: 700 }}>{s.t}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2 link-underline" style={{ fontWeight: 700 }}>{s.t}</h3>
               <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
             </div>
           ))}
@@ -308,9 +308,9 @@ export function AppleFeatures() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {features.map((f, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9">
-              <f.Icon size={42} className="mb-5" />
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{f.t}</h3>
+            <div key={i} className="card-rainbow group bg-white p-7 sm:p-9">
+              <span className="icon-flip"><f.Icon size={42} className="mb-5" /></span>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5 link-underline" style={{ fontWeight: 700 }}>{f.t}</h3>
               <p className="text-sm text-ink-soft leading-relaxed font-medium">{f.d}</p>
             </div>
           ))}

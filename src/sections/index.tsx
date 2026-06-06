@@ -165,9 +165,9 @@ export function HeroSection() {
           마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="font-semibold">후불제 소개팅</strong>.
         </p>
 
-        {/* CTA — 화려한 그라데이션 + 화이트 버튼 */}
+        {/* CTA — 화려한 그라데이션 + ring-pulse + shimmer */}
         <div className="hero-anim hero-d4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
-          <a href="/ideal-match" className="btn btn-gradient shine w-full sm:w-auto sm:min-w-[240px]">
+          <a href="/ideal-match" className="btn btn-gradient shimmer ring-pulse w-full sm:w-auto sm:min-w-[240px] rounded-full">
             ✨ 이상형 매칭 진단 →
           </a>
           <a href="/about" className="btn w-full sm:w-auto bg-white/10 backdrop-blur-xl border border-white/30 text-white hover:bg-white/20 hover:scale-[1.02] transition-all">
