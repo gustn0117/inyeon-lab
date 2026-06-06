@@ -1,5 +1,5 @@
 "use client";
-import { IconHeart, IconStarShine, Sparkle, IllustHeartCluster } from "@/components/Icons";
+import { IconHeart, IconStarShine, Sparkle } from "@/components/Icons";
 
 /* ═══ FinalCTA — 마지막 풀폭 강조 CTA ═══ */
 export default function FinalCTA() {
@@ -7,10 +7,6 @@ export default function FinalCTA() {
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="container-apple">
         <div className="card-rainbow relative overflow-hidden bg-white p-10 sm:p-14 lg:p-20 text-center">
-          {/* 양옆 일러스트 */}
-          <IllustHeartCluster size={180} className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/3 opacity-25 pointer-events-none hidden md:block" />
-          <IllustHeartCluster size={180} className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/3 opacity-25 pointer-events-none hidden md:block -scale-x-100" />
-
           {/* 떠다니는 데코 */}
           <span className="absolute top-6 right-8 anim-float-y" style={{ animationDelay: "0s" }}>
             <Sparkle size={20} />

@@ -1,6 +1,6 @@
 "use client";
 /* ═══ Apple 섹션 모음 — 고급 SVG 풍성 ═══ */
-import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament, IconCalendar, IconLocation, IconCrown, IconLock, IconBadge, IconSparkleCluster, IconCoffee, IconMail, IllustCouple } from "@/components/Icons";
+import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament, IconCalendar, IconLocation, IconCrown, IconLock, IconBadge, IconSparkleCluster, IconCoffee, IconMail } from "@/components/Icons";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
@@ -44,13 +44,8 @@ export function AppleAbout() {
             </div>
           </div>
 
-          {/* 우측: 큰 일러스트 + 4 통계 카드 */}
+          {/* 우측: 4 통계 카드 */}
           <div className="reveal">
-            {/* 큰 일러스트 */}
-            <div className="flex justify-center mb-6 lg:mb-8">
-              <IllustCouple size={260} className="w-48 sm:w-60 lg:w-72 h-auto" />
-            </div>
-            {/* 통계 4 카드 */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
                 { v: "9,999+", l: "누적 상담", Icon: IconCouple },

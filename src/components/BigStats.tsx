@@ -1,5 +1,5 @@
 "use client";
-import { IconCouple, IconHeart, IconCalendar, IconBadge, Sparkle, HandUnderline, IllustStars } from "@/components/Icons";
+import { IconCouple, IconHeart, IconCalendar, IconBadge, Sparkle, HandUnderline } from "@/components/Icons";
 
 /* ═══ BIG STATS — SVG 아이콘 + 깔끔 ═══ */
 export default function BigStats() {
@@ -11,7 +11,6 @@ export default function BigStats() {
   ];
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <IllustStars size={240} className="absolute top-0 right-0 opacity-20 translate-x-8 -translate-y-8 pointer-events-none hidden md:block" />
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
           <div className="inline-flex items-center gap-2 mb-4">

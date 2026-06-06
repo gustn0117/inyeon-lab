@@ -1,5 +1,5 @@
 "use client";
-import { IconCoffee, IconHeart, IconLocation, IconCalendar, IconFlower, IconStarShine, Sparkle, HandUnderline, IllustFlower } from "@/components/Icons";
+import { IconCoffee, IconHeart, IconLocation, IconCalendar, IconFlower, IconStarShine, Sparkle, HandUnderline } from "@/components/Icons";
 
 /* ═══ DATE MOMENTS — 6 데이트 분위기 ═══ */
 const moments = [
@@ -14,7 +14,6 @@ const moments = [
 export default function DateMoments() {
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <IllustFlower size={280} className="absolute top-0 right-0 opacity-25 -translate-y-8 translate-x-12 pointer-events-none hidden md:block" />
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
           <div className="inline-flex items-center gap-2 mb-4">

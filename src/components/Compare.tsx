@@ -1,5 +1,5 @@
 "use client";
-import { IconCheck, IconCrown, Sparkle, HandUnderline, IllustFlower } from "@/components/Icons";
+import { IconCheck, IconCrown, Sparkle, HandUnderline } from "@/components/Icons";
 
 const rows = [
   { label: "가입비", app: "보통 무료", marriage: "100~500만원", us: "0원" },
@@ -14,7 +14,6 @@ const rows = [
 export default function Compare() {
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <IllustFlower size={240} className="absolute top-0 left-0 opacity-20 -translate-x-8 -translate-y-10 pointer-events-none hidden md:block" />
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
           <div className="inline-flex items-center gap-2 mb-4">

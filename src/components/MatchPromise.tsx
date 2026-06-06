@@ -1,5 +1,5 @@
 "use client";
-import { IconBadge, IconHeart, IconLock, Sparkle, HandUnderline, IllustHeartCluster } from "@/components/Icons";
+import { IconBadge, IconHeart, IconLock, Sparkle, HandUnderline } from "@/components/Icons";
 
 /* ═══ MATCH PROMISE — 3가지 보증 ═══ */
 const promises = [
@@ -29,7 +29,6 @@ const promises = [
 export default function MatchPromise() {
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <IllustHeartCluster size={280} className="absolute top-0 right-0 opacity-30 -translate-y-12 translate-x-12 pointer-events-none hidden md:block" />
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
           <div className="inline-flex items-center gap-2 mb-4">

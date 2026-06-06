@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import { IconShield, IconChat, IconCouple, Sparkle, HandUnderline, IllustStars } from "@/components/Icons";
+import { IconShield, IconChat, IconCouple, Sparkle, HandUnderline } from "@/components/Icons";
 
 /* ═══ BENEFITS — 페이지 캔버스 위 ═══ */
 export default function BentoBenefits() {
   return (
     <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <IllustStars size={240} className="absolute top-0 left-0 opacity-20 -translate-x-10 -translate-y-10 pointer-events-none hidden md:block" />
       <div className="container-apple relative">
         <div className="text-center mb-12 reveal">
           <div className="inline-flex items-center gap-2 mb-4">
