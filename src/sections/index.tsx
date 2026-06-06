@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MeshGradientBg, Sparkles, GlowOrbs, NoiseTexture, FloatingHearts, StarAccent, RainbowOrbs, RaysOfLight, ParticleField, RichMeshBg, BurstStar } from "@/components/PremiumDeco";
-import { IconBadge, IconCrown, IconCalendar, IconLocation } from "@/components/Icons";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -176,40 +175,6 @@ export function HeroSection() {
           </a>
         </div>
 
-        {/* 통계 — 글래스 카드 (다크 버전) */}
-        <div className="hero-anim hero-d5 inline-flex items-center gap-6 sm:gap-10 px-7 py-5 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20">
-          {[
-            { v: "9,999+", l: "누적 상담" },
-            { v: "51 : 49", l: "남녀 성비" },
-            { v: "48h", l: "평균 매칭" },
-          ].map((s, i) => (
-            <div key={i} className="flex items-center gap-6 sm:gap-10">
-              {i > 0 && <span className="w-px h-9 bg-gradient-to-b from-transparent via-white/40 to-transparent" />}
-              <div className="text-center">
-                <div className="num-huge text-xl sm:text-2xl lg:text-3xl text-white">{s.v}</div>
-                <div className="text-[10px] sm:text-xs text-white/70 mt-1 font-semibold tracking-wide">{s.l}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 좌하단 캡션 */}
-        <div className="hero-anim hero-d5 absolute bottom-8 left-6 sm:left-10 hidden sm:flex items-center gap-3 text-white/70">
-          <span className="w-8 h-px bg-white/50" />
-          <span className="text-[10px] font-semibold tracking-[0.22em]">A NEW WAY TO MEET</span>
-        </div>
-
-        {/* 우하단 떠있는 카드 — 인증 배지 (반응형: 모바일에도 보임) */}
-        <div className="hero-anim hero-d5 absolute bottom-6 right-4 sm:bottom-8 sm:right-10">
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 anim-float-slow shadow-2xl flex items-center gap-2 sm:gap-3">
-            <IconBadge size={24} className="sm:hidden" />
-            <IconBadge size={28} className="hidden sm:block" />
-            <div>
-              <div className="text-[8px] sm:text-[9px] font-bold tracking-[0.2em]" style={{ color: "var(--accent)" }}>VERIFIED</div>
-              <div className="text-[11px] sm:text-sm font-bold text-ink mt-0.5">100% 실회원</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
