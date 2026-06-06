@@ -5,7 +5,7 @@ import CountUp from "@/components/CountUp";
 /* ═══ BIG STATS — CountUp + 3D tilt 카드 ═══ */
 type Stat = { l: string; sub: string; Icon: any; render: () => React.ReactNode };
 const stats: Stat[] = [
-  { l: "누적 상담", sub: "2026년 5월 기준", Icon: IconCouple, render: () => <><CountUp end={9999} format="comma" />+</> },
+  { l: "누적 상담", sub: "지금까지 진행된 매칭", Icon: IconCouple, render: () => <><CountUp end={9999} format="comma" />+</> },
   { l: "남녀 성비", sub: "균형 잡힌 회원 풀", Icon: IconHeart, render: () => <><CountUp end={51} format="plain" />:<CountUp end={49} format="plain" /></> },
   { l: "평균 매칭", sub: "상담 후 평균 시간", Icon: IconCalendar, render: () => <><CountUp end={48} format="plain" />h</> },
   { l: "신원 검증", sub: "재직증명서 확인", Icon: IconBadge, render: () => <><CountUp end={100} format="plain" />%</> },

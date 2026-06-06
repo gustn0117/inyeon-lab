@@ -4,6 +4,7 @@ import PageShell from "@/components/PageShell";
 import SubPageHero from "@/components/SubPageHero";
 import { AppleContact, AppleFAQ } from "@/sections/apple";
 import ContactInfo from "@/components/ContactInfo";
+import QuickInquiry from "@/components/QuickInquiry";
 
 function useReveal() {
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function ContactPage() {
         sub="카톡으로 가장 빠르게 답변드려요"
       />
       <AppleContact />
+      <QuickInquiry />
       <ContactInfo />
       <AppleFAQ />
     </PageShell>

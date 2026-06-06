@@ -7,8 +7,8 @@ const cards = [
     Icon: IconClock,
     label: "OPERATING HOURS",
     t: "365일 · 12시까지",
-    d: "주말·공휴일 포함 매일 자정까지 응답합니다.",
-    meta: "AVG 응답 5분 이내",
+    d: "주말·공휴일 포함 매일 자정까지 운영합니다.",
+    meta: "확인 즉시 순차 답변",
   },
   {
     Icon: IconChat,
