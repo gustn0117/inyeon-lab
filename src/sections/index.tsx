@@ -317,13 +317,22 @@ function HeroSection_OLD() {
 
 /* ═══ TRUST BAR ═══ */
 export function TrustBar() {
-  const items = ["매칭 후 결제 후불제", "조건별 맞춤 매칭", "신원보장 100%", "48시간 매칭", "1:1 컨설팅", "20-30대 전용"];
+  const items = [
+    { t: "매칭 후 결제 후불제", icon: "💳" },
+    { t: "조건별 맞춤 매칭", icon: "✨" },
+    { t: "신원보장 100%", icon: "🛡️" },
+    { t: "48시간 매칭", icon: "⏱️" },
+    { t: "1:1 전문 컨설팅", icon: "💬" },
+    { t: "20·30대 전용", icon: "💝" },
+  ];
   return (
-    <div className="py-4 overflow-hidden border-y border-pink-100/60" style={{ background: "linear-gradient(135deg, #faeede 0%, #fff5f8 50%, #faeede 100%)" }}>
+    <div className="py-4 sm:py-5 overflow-hidden border-y border-pink-100 bg-accent-soft/40">
       <div className="anim-marquee flex whitespace-nowrap">
-        {[...items, ...items].map((t, i) => (
-          <span key={i} className="inline-flex items-center gap-4 mx-8 text-xs font-bold tracking-widest uppercase" style={{ color: pk, opacity: 0.5 }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: pk, opacity: 0.3 }} />{t}
+        {[...items, ...items].map((it, i) => (
+          <span key={i} className="inline-flex items-center gap-2.5 mx-7 text-xs sm:text-sm font-extrabold tracking-wider uppercase text-accent">
+            <span className="text-base">{it.icon}</span>
+            {it.t}
+            <span className="w-1.5 h-1.5 rounded-full bg-accent/40 mx-3" />
           </span>
         ))}
       </div>
@@ -1047,30 +1056,96 @@ export function ContactSection() {
 
 /* ═══ FOOTER ═══ */
 export function Footer() {
+  const cols = [
+    {
+      title: "서비스",
+      items: [
+        { l: "인연연구소 소개", h: "/about" },
+        { l: "가격·진행 절차", h: "/pricing" },
+        { l: "이상형 매칭 진단", h: "/ideal-match" },
+        { l: "상담·문의", h: "/contact" },
+      ],
+    },
+    {
+      title: "회사 정보",
+      items: [
+        { l: "대표자: 김가영" },
+        { l: "사업자등록: 463-59-00868" },
+        { l: "신고번호: 2026-서울-001" },
+        { l: "개인정보보호법 준수" },
+      ],
+    },
+    {
+      title: "고객 지원",
+      items: [
+        { l: "365일 · 밤 12시까지", b: true },
+        { l: "AVG 응답 5분 이내" },
+        { l: "100% 비공개 상담" },
+        { l: "후불제 · 가입비 0원" },
+      ],
+    },
+  ];
   return (
-    <footer className="py-10 sm:py-14 bg-white border-t border-pink-50/50">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mb-8">
-          <div className="flex items-center gap-2">
-            <span style={{ color: pk }}>{I.heart("w-4 h-4")}</span>
-            <span className="font-logo text-lg">인연<span style={{ color: pk }}>연구소</span></span>
+    <footer className="bg-white border-t border-pink-100 pt-14 sm:pt-16 pb-10">
+      <div className="container-apple">
+        {/* 상단: 4컬럼 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          {/* 로고 + 카톡 */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <span style={{ color: pk }}>{I.heart("w-5 h-5")}</span>
+              <span className="font-logo text-xl text-ink">인연<span style={{ color: pk }}>연구소</span></span>
+            </div>
+            <p className="text-sm text-ink-soft leading-relaxed font-medium mb-6 max-w-xs">
+              마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="text-ink">프라이빗 후불제 소개팅</strong>.
+            </p>
+            <a
+              href="https://open.kakao.com/me/inyeon_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-yellow-300 text-[#3C1E1E] font-bold text-sm hover:scale-[1.02] transition-transform"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z" /></svg>
+              카톡 ID inyeon_
+            </a>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {[
-              { l: "소개", h: "/about" },
-              { l: "가격", h: "/pricing" },
-              { l: "이상형 매칭", h: "/ideal-match" },
-              { l: "상담", h: "/contact" },
-            ].map((it, i) => (
-              <a key={i} href={it.h} className="text-xs font-medium hover:text-[#d4567a] transition-colors" style={{ color: mt }}>{it.l}</a>
-            ))}
+
+          {/* 컬럼 3개 */}
+          {cols.map((c, i) => (
+            <div key={i}>
+              <h4 className="caption-xs text-ink mb-4">{c.title}</h4>
+              <ul className="space-y-2.5">
+                {c.items.map((it: { l: string; h?: string; b?: boolean }, k) => (
+                  <li key={k}>
+                    {it.h ? (
+                      <a href={it.h} className="text-sm text-ink-soft hover:text-accent transition-colors font-medium">{it.l}</a>
+                    ) : (
+                      <span className={`text-sm font-medium ${it.b ? "text-accent font-bold" : "text-ink-soft"}`}>{it.l}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* 중단: 소셜 + 카톡 강조 */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-pink-100">
+          <div className="flex items-center gap-4">
+            <a href="https://www.instagram.com/inyeon_lab?igsh=cHphNHZnaDV1MGpr" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-accent-soft text-accent flex items-center justify-center hover:bg-accent hover:text-white transition-all" aria-label="Instagram">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+            </a>
+            <a href="tel:010-7617-0181" className="text-sm font-bold text-ink hover:text-accent transition-colors">
+              010-7617-0181
+            </a>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-ink-tertiary font-medium">
+            <span>© 2026 인연연구소</span>
+            <span className="w-1 h-1 rounded-full bg-ink-tertiary/50" />
+            <span>All Rights Reserved</span>
           </div>
         </div>
-        <div className="pt-6 border-t border-pink-50/50 text-center sm:text-left">
-          <div className="text-[0.65rem] space-y-1" style={{ color: "#888" }}>
-            <p>대표자: 김가영 | 사업자등록번호: 463-59-00868</p>
-          </div>
-        </div>
+
         <p className="sr-only">인연연구소 소개팅 서비스 지역: 강릉 동해 삼척 속초 원주 춘천 태백 고양 과천 광명 광주 구리 군포 김포 남양주 동두천 부천 성남 수원 시흥 안산 안성 안양 양주 여주 오산 용인 의왕 의정부 이천 파주 평택 포천 하남 화성 거제 김해 밀양 사천 양산 진주 창원 통영 경산 경주 구미 김천 문경 상주 안동 영주 영천 포항 광양 나주 목포 순천 여수 군산 김제 남원 익산 전주 정읍 계룡 공주 논산 당진 보령 서산 아산 천안 제천 청주 충주</p>
       </div>
     </footer>

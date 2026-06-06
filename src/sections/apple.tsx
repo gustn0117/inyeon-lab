@@ -256,7 +256,7 @@ export function ApplePricing() {
   );
 }
 
-/* ═══ PROCESS — 4단계 + SVG + 화살표 ═══ */
+/* ═══ PROCESS — 4단계 timeline 연결선 ═══ */
 export function AppleProcess() {
   const steps = [
     { n: "01", t: "상담 신청", d: "카카오톡 ID inyeon_ 으로 간편하게 신청하세요.", Icon: IconChat },
@@ -273,17 +273,28 @@ export function AppleProcess() {
             4단계로 시작하는 <span className="text-rainbow relative inline-block">인연<HandUnderline /></span>.
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
-          {steps.map((s, i) => (
-            <div key={i} className="card-rainbow group bg-white p-7 relative">
-              <div className="flex items-center justify-between mb-4">
-                <span className="icon-flip"><s.Icon size={40} /></span>
-                <div className="num-huge text-3xl text-accent">{s.n}</div>
+        <div className="relative reveal">
+          {/* 데스크탑 가로 연결선 (점선) */}
+          <div className="hidden lg:block absolute top-[68px] left-0 right-0 px-[12.5%] pointer-events-none">
+            <div className="w-full h-px border-t-2 border-dashed border-accent/30" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative">
+            {steps.map((s, i) => (
+              <div key={i} className="card-rainbow group bg-white p-7 relative">
+                {/* 동그란 번호 배지 (timeline 노드) */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="icon-flip"><s.Icon size={40} /></span>
+                  <div className="relative">
+                    <div className="w-11 h-11 rounded-full bg-accent text-white font-extrabold text-sm flex items-center justify-center shadow-lg">
+                      {s.n}
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2 link-underline" style={{ fontWeight: 700 }}>{s.t}</h3>
+                <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2 link-underline" style={{ fontWeight: 700 }}>{s.t}</h3>
-              <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
