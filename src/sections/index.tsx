@@ -152,12 +152,12 @@ export function HeroSection() {
 
         {/* 거대 헤딩 — 세리프 액센트 + 핑크 글로우 */}
         <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 0 40px rgba(236,77,126,0.4), 0 0 80px rgba(236,77,126,0.2)" }}>
-          <span className="font-serif-italic font-normal text-white/95">이상형</span> 소개팅,<br />
+          마음에 드는 사람만,<br />
           <span className="text-rainbow relative inline-block">
-            진짜 그분
+            진짜로 만나요
             <BurstStar size={30} className="absolute -top-4 -right-10 anim-twinkle" />
           </span>
-          <span className="text-white">으로.</span>
+          <span className="text-white">.</span>
         </h1>
 
         <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 400, textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
