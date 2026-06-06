@@ -400,6 +400,91 @@ export function IconMail({ size = 28, className = "", color = PINK }: Props) {
   );
 }
 
+/** 추상 꽃 일러스트 (큰 데코) */
+export function IllustFlower({ size = 200, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id={`ifG-${size}`} x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ec4d7e" />
+          <stop offset="100%" stopColor="#ff8da8" />
+        </linearGradient>
+        <radialGradient id={`ifBg-${size}`} cx="50%" cy="50%">
+          <stop offset="0%" stopColor="#fde7ee" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#fde7ee" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="90" fill={`url(#ifBg-${size})`} />
+      {/* 6장 꽃잎 (회전) */}
+      {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+        <g key={i} transform={`rotate(${deg} 100 100)`}>
+          <ellipse cx="100" cy="55" rx="20" ry="38" fill={`url(#ifG-${size})`} opacity="0.9" />
+          <ellipse cx="100" cy="55" rx="10" ry="25" fill="white" opacity="0.3" />
+        </g>
+      ))}
+      {/* 가운데 */}
+      <circle cx="100" cy="100" r="20" fill="#fcd34d" />
+      <circle cx="100" cy="100" r="10" fill="#f59e0b" />
+      {/* 떠다니는 작은 별 */}
+      <path d="M170 30 L 172 38 L 180 40 L 172 42 L 170 50 L 168 42 L 160 40 L 168 38 Z" fill={`url(#ifG-${size})`} opacity="0.7" />
+      <path d="M30 170 L 32 178 L 40 180 L 32 182 L 30 190 L 28 182 L 20 180 L 28 178 Z" fill={`url(#ifG-${size})`} opacity="0.5" />
+    </svg>
+  );
+}
+
+/** 하트 클러스터 (떠다니는 하트들) */
+export function IllustHeartCluster({ size = 200, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id={`ihG-${size}`} x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ec4d7e" />
+          <stop offset="100%" stopColor="#ff8da8" />
+        </linearGradient>
+      </defs>
+      {/* 큰 하트 */}
+      <path d="M100 175 C 100 175, 30 130, 30 80 C 30 55, 50 35, 70 35 C 85 35, 95 45, 100 60 C 105 45, 115 35, 130 35 C 150 35, 170 55, 170 80 C 170 130, 100 175, 100 175 Z" fill={`url(#ihG-${size})`} opacity="0.95" />
+      {/* 떠다니는 작은 하트들 */}
+      <g opacity="0.6">
+        <path d="M40 35 L 42 32 L 45 33 L 44 37 L 40 40 L 36 37 L 35 33 L 38 32 Z" fill={`url(#ihG-${size})`} />
+        <path d="M165 30 L 167 27 L 170 28 L 169 32 L 165 35 L 161 32 L 160 28 L 163 27 Z" fill={`url(#ihG-${size})`} />
+        <path d="M175 95 L 177 92 L 180 93 L 179 97 L 175 100 L 171 97 L 170 93 L 173 92 Z" fill={`url(#ihG-${size})`} />
+        <path d="M22 110 L 24 107 L 27 108 L 26 112 L 22 115 L 18 112 L 17 108 L 20 107 Z" fill={`url(#ihG-${size})`} />
+      </g>
+      {/* 별들 */}
+      <path d="M155 55 L 156 60 L 161 61 L 156 62 L 155 67 L 154 62 L 149 61 L 154 60 Z" fill="#fcd34d" opacity="0.8" />
+      <path d="M45 90 L 46 95 L 51 96 L 46 97 L 45 102 L 44 97 L 39 96 L 44 95 Z" fill="#fcd34d" opacity="0.6" />
+    </svg>
+  );
+}
+
+/** 별 모음 + 반지 일러스트 */
+export function IllustStars({ size = 200, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id={`isG-${size}`} x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ec4d7e" />
+          <stop offset="100%" stopColor="#ff8da8" />
+        </linearGradient>
+        <linearGradient id={`isGold-${size}`} x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#fcd34d" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+      {/* 중앙 큰 별 */}
+      <path d="M100 30 L 115 80 L 165 85 L 130 120 L 140 170 L 100 145 L 60 170 L 70 120 L 35 85 L 85 80 Z" fill={`url(#isG-${size})`} />
+      {/* 가운데 다이아 */}
+      <path d="M100 75 L 115 100 L 100 145 L 85 100 Z" fill={`url(#isGold-${size})`} opacity="0.85" />
+      {/* 작은 별 4방향 */}
+      <path d="M30 30 L 32 40 L 42 42 L 32 44 L 30 54 L 28 44 L 18 42 L 28 40 Z" fill={`url(#isG-${size})`} opacity="0.7" />
+      <path d="M170 35 L 171 42 L 178 43 L 171 44 L 170 51 L 169 44 L 162 43 L 169 42 Z" fill={`url(#isG-${size})`} opacity="0.7" />
+      <path d="M180 160 L 182 168 L 190 170 L 182 172 L 180 180 L 178 172 L 170 170 L 178 168 Z" fill={`url(#isG-${size})`} opacity="0.5" />
+      <path d="M20 150 L 22 158 L 30 160 L 22 162 L 20 170 L 18 162 L 10 160 L 18 158 Z" fill={`url(#isG-${size})`} opacity="0.5" />
+    </svg>
+  );
+}
+
 /** 큰 커플 일러스트 (섹션 사이드용) */
 export function IllustCouple({ size = 200, className = "" }: { size?: number; className?: string }) {
   return (

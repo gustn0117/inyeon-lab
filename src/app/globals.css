@@ -307,16 +307,63 @@ h1, h2, h3, h4, h5, h6 {
    MAXIMALIST EFFECTS — 진짜 화려한 모드
    ═══════════════════════════════════════ */
 @layer utilities {
-  /* 단색 핑크 (모든 액센트 통일) */
+  /* 핑크 그라데이션 (헤딩 강조어) */
   .text-rainbow {
-    color: #ec4d7e;
-    -webkit-text-fill-color: #ec4d7e;
-    background: none;
-    animation: none;
-    display: inline;
+    background: linear-gradient(110deg, #ec4d7e 0%, #ff6ba0 30%, #fb7185 60%, #ff8da8 85%, #ec4d7e 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shift 7s ease-in-out infinite;
+    display: inline-block;
   }
-  .text-pink-purple { color: #ec4d7e; }
-  .text-coral-gold { color: #ec4d7e; }
+  .text-pink-purple {
+    background: linear-gradient(135deg, #ec4d7e 0%, #fb7185 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .text-coral-gold {
+    background: linear-gradient(135deg, #fb7185 0%, #ec4d7e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  /* 하이라이터 박스 (마커 펜 느낌) */
+  .text-highlight {
+    background: linear-gradient(180deg, transparent 60%, rgba(236, 77, 126, 0.22) 60%, rgba(236, 77, 126, 0.3) 95%, transparent 95%);
+    padding: 0 0.15em;
+  }
+  /* 강조 박스 (작은 알약 배경) */
+  .text-pill {
+    display: inline-block;
+    padding: 0.1em 0.45em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 0.5em;
+    font-weight: 700;
+  }
+  /* outline + fill (큰 텍스트용) */
+  .text-outline {
+    -webkit-text-stroke: 1.5px #ec4d7e;
+    color: transparent;
+  }
+  /* 첫 글자 드롭 캡 */
+  .drop-cap::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.8;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--accent);
+    font-weight: 800;
+  }
+  /* 글자 글로우 (호버 시) */
+  .text-glow-hover { transition: text-shadow 0.4s ease; }
+  .text-glow-hover:hover {
+    text-shadow: 0 0 28px rgba(236, 77, 126, 0.55), 0 0 60px rgba(236, 77, 126, 0.3);
+  }
 
   /* 핑크 글로우 헤딩 (단톤 강한 글로우) */
   .text-glow-multi {
