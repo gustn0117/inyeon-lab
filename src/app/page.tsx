@@ -8,6 +8,10 @@ import PhotoStory from "@/components/PhotoStory";
 import Testimonials from "@/components/Testimonials";
 import TrustBadges from "@/components/TrustBadges";
 import Compare from "@/components/Compare";
+import MatchPromise from "@/components/MatchPromise";
+import DateMoments from "@/components/DateMoments";
+import Persona from "@/components/Persona";
+import MainFAQ from "@/components/MainFAQ";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -72,13 +76,17 @@ export default function Home() {
       <TrustBadges />
       <IdealMatchSection />
       <TrustBar />
+      <Persona />
       <BentoBenefits />
+      <MatchPromise />
       <Compare />
       <PhotoStory />
+      <DateMoments />
       <BigQuote />
       <Testimonials />
       <BigStats />
       <KakaoFlow />
+      <MainFAQ />
       <PageNav />
       <Footer />
       <ChatWidget />
