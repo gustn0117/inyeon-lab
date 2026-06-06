@@ -6,6 +6,9 @@ const rows = [
   { label: "결제 시점", app: "월 구독", marriage: "선불", us: "매칭 성사 후" },
   { label: "신원 확인", app: "사진만", marriage: "꼼꼼함", us: "재직·혼인관계 검증" },
   { label: "매칭 방식", app: "AI 추천", marriage: "주선자", us: "전문 매칭사 1:1" },
+  { label: "프로필 정보", app: "사진 + 한 줄", marriage: "신상 정보 위주", us: "사진 + 자세한 프로필" },
+  { label: "재매칭", app: "유료 / 운빨", marriage: "추가 비용", us: "마음 안 들면 무료 재추천" },
+  { label: "만남 보장", app: "없음", marriage: "있음", us: "대면 만남 일정 조율" },
   { label: "타겟", app: "전 연령", marriage: "30~50대", us: "20·30대 전용" },
   { label: "분위기", app: "가벼움", marriage: "결혼 전제", us: "딱 그 사이" },
 ];

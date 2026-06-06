@@ -15,6 +15,8 @@ import MainFAQ from "@/components/MainFAQ";
 import ScrollProgress from "@/components/ScrollProgress";
 import FinalCTA from "@/components/FinalCTA";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
+import MatchingTeam from "@/components/MatchingTeam";
+import WhyAfterpay from "@/components/WhyAfterpay";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -82,8 +84,10 @@ export default function Home() {
       <TrustBar />
       <Persona />
       <BentoBenefits />
+      <WhyAfterpay />
       <MatchPromise />
       <Compare />
+      <MatchingTeam />
       <PhotoStory />
       <DateMoments />
       <BigQuote />

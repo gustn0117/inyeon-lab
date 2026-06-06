@@ -1,7 +1,7 @@
 "use client";
-import { IconCouple, IconClock, IconBadge, IconCheck, Sparkle, HandUnderline } from "@/components/Icons";
+import { IconCouple, IconClock, IconBadge, IconCheck, IconHeart, Sparkle, HandUnderline } from "@/components/Icons";
 
-/* ═══ PERSONA — 3가지 회원 유형 ═══ */
+/* ═══ PERSONA — 4가지 회원 유형 ═══ */
 const personas = [
   {
     Icon: IconClock,
@@ -21,6 +21,12 @@ const personas = [
     t: "진짜 인연을 만나고 싶은 분",
     points: ["가벼운 만남은 지침", "결혼 전제는 부담", "조건이 맞으면 진지함"],
   },
+  {
+    Icon: IconHeart,
+    label: "FOR PRIVATE",
+    t: "조용히 시작하고 싶은 분",
+    points: ["주변에 알리고 싶지 않음", "프로필 공개 불편", "1:1 비공개로만 진행"],
+  },
 ];
 
 export default function Persona() {
@@ -35,7 +41,7 @@ export default function Persona() {
           <p className="text-base sm:text-lg text-ink-soft mt-4 font-medium">매칭사가 회원님의 결을 직접 확인하고 추천합니다</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 reveal">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {personas.map((p, i) => (
             <article key={i} className="group card-rainbow bg-white p-7 sm:p-9">
               <div className="flex items-center justify-between mb-5">
