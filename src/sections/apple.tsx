@@ -1,6 +1,6 @@
 "use client";
-/* ═══ Apple 섹션 모음 — 페이지 전역 캔버스 위에 떠 있는 카드 모델 ═══ */
-import { BurstStar } from "@/components/PremiumDeco";
+/* ═══ Apple 섹션 모음 — 고급 SVG 풍성 ═══ */
+import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament } from "@/components/Icons";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
@@ -21,10 +21,13 @@ export function AppleAbout() {
       <div className="container-apple">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="reveal">
-            <div className="label-sm mb-4">ABOUT US</div>
+            <div className="flex items-center gap-3 mb-4">
+              <Sparkle size={16} />
+              <div className="label-sm">ABOUT US</div>
+            </div>
             <h2 className="h-section font-bold text-ink mb-7" style={{ fontWeight: 700 }}>
               결혼정보회사가 아닌,<br />
-              <span className="text-rainbow">프리미엄 소개팅.</span>
+              <span className="text-rainbow relative inline-block">프리미엄 소개팅<HandUnderline /></span>.
             </h2>
             <p className="text-lg text-ink-soft leading-relaxed mb-8 font-medium">
               20·30대를 위한 소개팅 전문.<br />
@@ -34,7 +37,7 @@ export function AppleAbout() {
             <div className="space-y-3">
               {["매칭 후 결제 후불제", "거리·나이·직업 맞춤", "48시간 평균 매칭", "20·30대 전용"].map((t, i) => (
                 <div key={i} className="flex items-center gap-3 text-base font-semibold text-ink">
-                  <span className="w-6 h-6 rounded-full flex items-center justify-center text-white" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }}>{I.check("w-3.5 h-3.5")}</span>
+                  <IconCheck size={22} />
                   {t}
                 </div>
               ))}
@@ -43,16 +46,15 @@ export function AppleAbout() {
 
           <div className="reveal grid grid-cols-2 gap-3 sm:gap-5">
             {[
-              { v: "9,999+", l: "누적 상담", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-              { v: "51:49", l: "남녀 성비", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
-              { v: "48h", l: "평균 매칭", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
-              { v: "100%", l: "신원 검증", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
+              { v: "9,999+", l: "누적 상담", Icon: IconCouple },
+              { v: "51:49", l: "남녀 성비", Icon: IconHeart },
+              { v: "48h", l: "평균 매칭", Icon: IconClock },
+              { v: "100%", l: "신원 검증", Icon: IconShield },
             ].map((s, i) => (
-              <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white-solid relative overflow-hidden">
-                <div className="relative">
-                  <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none" style={{ color: "#ec4d7e" }}>{s.v}</div>
-                  <div className="text-sm sm:text-base font-bold text-ink">{s.l}</div>
-                </div>
+              <div key={i} className="card-rainbow hover-magnetic p-6 sm:p-8 text-center bg-white">
+                <s.Icon size={32} className="mx-auto mb-3" />
+                <div className="num-huge text-3xl sm:text-4xl lg:text-5xl mb-2 leading-none text-accent">{s.v}</div>
+                <div className="text-sm sm:text-base font-bold text-ink">{s.l}</div>
               </div>
             ))}
           </div>
@@ -62,11 +64,11 @@ export function AppleAbout() {
   );
 }
 
-/* ═══ MEMBER JOBS — 2 그룹 카드 ═══ */
+/* ═══ MEMBER JOBS — 2 그룹 카드 + SVG ═══ */
 export function AppleMemberJobs() {
   const groups = [
-    { label: "여성 회원", jobs: ["교사", "통역사", "간호사", "아나운서", "승무원", "공무원", "경리", "디자이너"], c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { label: "남성 회원", jobs: ["공기업", "공무원", "대기업", "교사", "엔지니어", "사업가", "스타트업", "회계사"], c: "linear-gradient(135deg, #ff6ba0, #d4567a)" },
+    { label: "여성 회원", jobs: ["교사", "통역사", "간호사", "아나운서", "승무원", "공무원", "경리", "디자이너"], Icon: IconHeart },
+    { label: "남성 회원", jobs: ["공기업", "공무원", "대기업", "교사", "엔지니어", "사업가", "스타트업", "회계사"], Icon: IconRing },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -80,14 +82,16 @@ export function AppleMemberJobs() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 reveal">
           {groups.map((g, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-              <div className="relative">
-                <h3 className="text-xl sm:text-2xl font-bold mb-6" style={{ color: "#ec4d7e", fontWeight: 700 }}>{g.label}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {g.jobs.map((j, k) => (
-                    <span key={k} className="px-4 py-2 rounded-full text-sm font-bold text-ink bg-white border border-pink-100">{j}</span>
-                  ))}
-                </div>
+            <div key={i} className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+              <CornerOrnament size={50} className="top-0 right-0" />
+              <div className="flex items-center gap-3 mb-6">
+                <g.Icon size={36} />
+                <h3 className="text-xl sm:text-2xl font-bold text-accent" style={{ fontWeight: 700 }}>{g.label}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {g.jobs.map((j, k) => (
+                  <span key={k} className="px-4 py-2 rounded-full text-sm font-bold text-ink bg-accent-soft">{j}</span>
+                ))}
               </div>
             </div>
           ))}
@@ -100,15 +104,15 @@ export function AppleMemberJobs() {
   );
 }
 
-/* ═══ PROMISE — 6 카드 ═══ */
+/* ═══ PROMISE — 6 카드 + 각자 SVG ═══ */
 export function ApplePromise() {
   const promises = [
-    { n: "01", t: "아무나 받지 않습니다", d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { n: "02", t: "딱 맞게 매칭해드립니다", d: "거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
-    { n: "03", t: "매칭 후 결제", d: "선불 결제 없음. 실제 매칭 성사 경우에만 결제하는 100% 후불제.", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
-    { n: "04", t: "사진·프로필 직접 전달", d: "실제 사진과 자세한 프로필을 매칭된 1:1 상대에게만 비공개로 전달.", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
-    { n: "05", t: "100% 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", c: "linear-gradient(135deg, #ec4d7e, #ff6ba0)" },
-    { n: "06", t: "정성스러운 관리", d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 함께합니다.", c: "linear-gradient(135deg, #ff8da8, #fb7185)" },
+    { n: "01", t: "아무나 받지 않습니다", d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다.", Icon: IconShield },
+    { n: "02", t: "딱 맞게 매칭해드립니다", d: "거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.", Icon: IconCouple },
+    { n: "03", t: "매칭 후 결제", d: "선불 결제 없음. 실제 매칭 성사 경우에만 결제하는 100% 후불제.", Icon: IconCurrency },
+    { n: "04", t: "사진·프로필 직접 전달", d: "실제 사진과 자세한 프로필을 매칭된 1:1 상대에게만 비공개로 전달.", Icon: IconDocument },
+    { n: "05", t: "100% 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", Icon: IconCheck },
+    { n: "06", t: "정성스러운 관리", d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 함께합니다.", Icon: IconHeart },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -122,12 +126,14 @@ export function ApplePromise() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 reveal">
           {promises.map((p, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 sm:p-9 relative overflow-hidden">
-              <div className="relative">
-                <div className="num-huge text-3xl sm:text-4xl mb-3" style={{ color: "#ec4d7e" }}>{p.n}</div>
-                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{p.t}</h3>
-                <p className="text-sm text-ink-soft leading-relaxed font-medium">{p.d}</p>
+            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9 relative">
+              <CornerOrnament size={50} className="top-0 right-0" />
+              <div className="flex items-start gap-4 mb-4">
+                <p.Icon size={36} />
+                <div className="num-huge text-2xl text-accent">{p.n}</div>
               </div>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{p.t}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed font-medium">{p.d}</p>
             </div>
           ))}
         </div>
@@ -136,13 +142,13 @@ export function ApplePromise() {
   );
 }
 
-/* ═══ SAFETY — 4단계 ═══ */
+/* ═══ SAFETY — 4단계 + SVG ═══ */
 export function AppleSafety() {
   const steps = [
-    { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다.", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
-    { n: "03", t: "1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다.", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
-    { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
+    { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", Icon: IconShield },
+    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다.", Icon: IconDocument },
+    { n: "03", t: "1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다.", Icon: IconChat },
+    { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", Icon: IconCheck },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -157,12 +163,11 @@ export function AppleSafety() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
-              <div className="relative">
-                <div className="num-huge text-3xl mb-3" style={{ color: "#ec4d7e" }}>{s.n}</div>
-                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
-                <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
-              </div>
+            <div key={i} className="card-rainbow hover-magnetic bg-white p-7">
+              <s.Icon size={36} />
+              <div className="num-huge text-2xl mt-4 mb-2 text-accent">{s.n}</div>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{s.t}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
             </div>
           ))}
         </div>
@@ -189,59 +194,60 @@ export function ApplePricing() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto reveal">
           {/* 여성 */}
-          <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-            <div className="relative">
-              <div className="label-sm mb-4 text-rainbow">여성 회원</div>
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="num-huge text-5xl" style={{ color: "#ec4d7e" }}>6만원</span>
-                <span className="text-sm text-ink-soft font-bold">/회</span>
-              </div>
-              <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
-              <div className="space-y-3 mb-8">
-                {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><span className="text-accent">{I.check("w-4 h-4")}</span>{t}</div>
-                ))}
-              </div>
-              <a href="/contact" className="btn btn-secondary w-full font-bold">상담 받기</a>
+          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+            <div className="flex items-start justify-between mb-4">
+              <div className="label-sm">여성 회원</div>
+              <IconHeart size={32} />
             </div>
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="num-huge text-5xl text-accent">6만원</span>
+              <span className="text-sm text-ink-soft font-bold">/회</span>
+            </div>
+            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
+            <div className="space-y-3 mb-8">
+              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
+              ))}
+            </div>
+            <a href="/contact" className="btn btn-secondary w-full font-bold">상담 받기</a>
           </div>
 
           {/* 남성 */}
-          <div className="card-rainbow hover-magnetic bg-white-solid p-8 sm:p-10 relative overflow-hidden">
-            <div className="relative">
-              <div className="label-sm mb-4 text-rainbow">남성 회원</div>
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="num-huge text-5xl" style={{ color: "#ec4d7e" }}>9만원</span>
-                <span className="text-sm text-ink-soft font-bold">/회</span>
-              </div>
-              <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
-              <div className="space-y-3 mb-8">
-                {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><span className="text-accent">{I.check("w-4 h-4")}</span>{t}</div>
-                ))}
-              </div>
-              <a href="/contact" className="btn btn-secondary w-full font-bold">상담 받기</a>
+          <div className="card-rainbow hover-magnetic bg-white p-8 sm:p-10 relative">
+            <div className="flex items-start justify-between mb-4">
+              <div className="label-sm">남성 회원</div>
+              <IconRing size={32} />
             </div>
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="num-huge text-5xl text-accent">9만원</span>
+              <span className="text-sm text-ink-soft font-bold">/회</span>
+            </div>
+            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
+            <div className="space-y-3 mb-8">
+              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
+              ))}
+            </div>
+            <a href="/contact" className="btn btn-secondary w-full font-bold">상담 받기</a>
           </div>
 
           {/* 무제한 BEST */}
-          <div className="card-rainbow hover-magnetic relative overflow-hidden p-8 sm:p-10 text-ink bg-white/85 backdrop-blur-xl">
-            <div className="absolute -top-3 right-6 text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-lg" style={{ background: "linear-gradient(135deg, #ec4d7e, #fb7185)" }}>BEST</div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full blur-3xl opacity-40" style={{ background: "#ffb3c8" }} />
-            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-50" style={{ background: "#ff8da8" }} />
-            <div className="relative">
-              <div className="label-sm mb-4 text-rainbow">UNLIMITED</div>
-              <div className="mb-2">
-                <span className="num-huge text-4xl text-rainbow">무제한 매칭</span>
-              </div>
-              <p className="text-sm text-ink-soft mb-7 font-medium">횟수 제한 없이 매칭 + 컨설팅</p>
-              <div className="space-y-3 mb-8">
-                {["매칭 횟수 무제한", "조건별 맞춤 매칭", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리"].map((t, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><span className="text-accent">{I.check("w-4 h-4")}</span>{t}</div>
-                ))}
-              </div>
-              <a href="/contact" className="btn btn-gradient w-full font-bold">무제한 상담</a>
+          <div className="card-rainbow hover-magnetic p-8 sm:p-10 text-ink bg-white relative" style={{ borderColor: "rgba(236,77,126,0.5)", boxShadow: "0 12px 30px -10px rgba(236,77,126,0.25)" }}>
+            <div className="absolute -top-3 right-6 text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-lg bg-accent">BEST</div>
+            <div className="flex items-start justify-between mb-4">
+              <div className="label-sm">UNLIMITED</div>
+              <IconDiamond size={32} />
             </div>
+            <div className="mb-2">
+              <span className="num-huge text-4xl text-accent">무제한 매칭</span>
+            </div>
+            <p className="text-sm text-ink-soft mb-7 font-medium">횟수 제한 없이 매칭 + 컨설팅</p>
+            <div className="space-y-3 mb-8">
+              {["매칭 횟수 무제한", "조건별 맞춤 매칭", "1:1 전문 컨설팅", "연애 코칭 & 스타일링", "VIP 전담 관리"].map((t, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
+              ))}
+            </div>
+            <a href="/contact" className="btn btn-gradient w-full font-bold">무제한 상담</a>
           </div>
         </div>
       </div>
@@ -249,13 +255,13 @@ export function ApplePricing() {
   );
 }
 
-/* ═══ PROCESS — 4단계 ═══ */
+/* ═══ PROCESS — 4단계 + SVG + 화살표 ═══ */
 export function AppleProcess() {
   const steps = [
-    { n: "01", t: "상담 신청", d: "카카오톡 ID inyeon_ 으로 간편하게 신청하세요.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { n: "02", t: "서류 검토", d: "재직증명서·혼인관계증명서 등으로 신원 확인", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
-    { n: "03", t: "맞춤 매칭", d: "거리·나이·종교·직업 등 조건 반영 매칭", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
-    { n: "04", t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
+    { n: "01", t: "상담 신청", d: "카카오톡 ID inyeon_ 으로 간편하게 신청하세요.", Icon: IconChat },
+    { n: "02", t: "서류 검토", d: "재직증명서·혼인관계증명서 등으로 신원 확인", Icon: IconDocument },
+    { n: "03", t: "맞춤 매칭", d: "거리·나이·종교·직업 등 조건 반영 매칭", Icon: IconFlower },
+    { n: "04", t: "인연 시작", d: "프로필 전달 후 설레는 만남 시작", Icon: IconCouple },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -263,17 +269,18 @@ export function AppleProcess() {
         <div className="text-center mb-12 reveal">
           <div className="label-sm mb-4">HOW IT WORKS</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
-            4단계로 시작하는 <span className="text-rainbow">인연.</span>
+            4단계로 시작하는 <span className="text-rainbow relative inline-block">인연<HandUnderline /></span>.
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {steps.map((s, i) => (
-            <div key={i} className="card-rainbow hover-magnetic bg-white-solid p-7 relative overflow-hidden">
-              <div className="relative">
-                <div className="num-huge text-3xl mb-3" style={{ color: "#ec4d7e" }}>{s.n}</div>
-                <h3 className="text-lg sm:text-xl font-bold text-ink mb-2" style={{ fontWeight: 700 }}>{s.t}</h3>
-                <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
+            <div key={i} className="card-rainbow hover-magnetic bg-white p-7 relative">
+              <div className="flex items-center justify-between mb-4">
+                <s.Icon size={40} />
+                <div className="num-huge text-3xl text-accent">{s.n}</div>
               </div>
+              <h3 className="text-lg sm:text-xl font-bold text-ink mb-2" style={{ fontWeight: 700 }}>{s.t}</h3>
+              <p className="text-sm text-ink-soft leading-relaxed font-medium">{s.d}</p>
             </div>
           ))}
         </div>
@@ -282,13 +289,13 @@ export function AppleProcess() {
   );
 }
 
-/* ═══ FEATURES — 4 카드 ═══ */
+/* ═══ FEATURES — 4 카드 + SVG ═══ */
 export function AppleFeatures() {
   const features = [
-    { t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생. 선불 부담 없이 안심하고 시작.", c: "linear-gradient(135deg, #ec4d7e, #fb7185)" },
-    { t: "조건별 맞춤 매칭", d: "거리·나이·종교·직업 등 조건을 세밀하게 반영해 딱 맞는 상대를 찾아드립니다.", c: "linear-gradient(135deg, #ff6ba0, #ec4d7e)" },
-    { t: "확실한 신원보장", d: "재직증명서·혼인관계증명서 등 꼼꼼한 서류검토로 안전한 만남 보장.", c: "linear-gradient(135deg, #fb7185, #ff8da8)" },
-    { t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", c: "linear-gradient(135deg, #d4567a, #ec4d7e)" },
+    { t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생. 선불 부담 없이 안심하고 시작.", Icon: IconCurrency },
+    { t: "조건별 맞춤 매칭", d: "거리·나이·종교·직업 등 조건을 세밀하게 반영해 딱 맞는 상대를 찾아드립니다.", Icon: IconStarShine },
+    { t: "확실한 신원보장", d: "재직증명서·혼인관계증명서 등 꼼꼼한 서류검토로 안전한 만남 보장.", Icon: IconShield },
+    { t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", Icon: IconChat },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>
@@ -296,15 +303,13 @@ export function AppleFeatures() {
         <div className="text-center mb-12 reveal">
           <div className="label-sm mb-4">WHY US</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
-            인연연구소만의 <span className="text-rainbow">특별한 장점.</span>
+            인연연구소만의 <span className="text-rainbow relative inline-block">특별한 장점<HandUnderline /></span>.
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 reveal">
           {features.map((f, i) => (
             <div key={i} className="card-rainbow hover-magnetic bg-white p-7 sm:p-9">
-              <div className="w-10 h-10 rounded-2xl mb-5 flex items-center justify-center bg-accent-soft text-accent">
-                {I.check("w-5 h-5")}
-              </div>
+              <f.Icon size={42} className="mb-5" />
               <h3 className="text-lg sm:text-xl font-bold text-ink mb-2.5" style={{ fontWeight: 700 }}>{f.t}</h3>
               <p className="text-sm text-ink-soft leading-relaxed font-medium">{f.d}</p>
             </div>
@@ -320,12 +325,17 @@ export function AppleConsult() {
   return (
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink bg-white">
-          <div>
-            <div className="label-sm mb-4">CONSULTING</div>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center text-ink bg-white relative">
+          <CornerOrnament size={70} className="top-0 left-0" />
+          <CornerOrnament size={70} className="bottom-0 right-0 rotate-180" />
+          <div className="relative">
+            <div className="flex items-center gap-3 mb-4">
+              <IconChat size={40} />
+              <div className="label-sm">CONSULTING</div>
+            </div>
             <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               전문 매칭사의<br />
-              <span className="text-rainbow">1:1 컨설팅.</span>
+              <span className="text-rainbow relative inline-block">1:1 컨설팅<HandUnderline /></span>.
             </h2>
             <p className="text-base sm:text-lg text-ink-soft leading-relaxed font-medium">
               첫 만남이 어색한 분, 연애가 오래 이어지지 않는 분.<br />
@@ -394,9 +404,14 @@ export function AppleContact() {
   return (
     <section className={`relative ${SECTION_PY}`}>
       <div className="container-apple">
-        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 text-center text-ink bg-white">
-          <div>
-            <div className="label-sm mb-4">CONTACT</div>
+        <div className="card-rainbow rounded-3xl p-10 sm:p-14 lg:p-16 text-center text-ink bg-white relative">
+          <CornerOrnament size={80} className="top-0 left-0" />
+          <CornerOrnament size={80} className="top-0 right-0 -scale-x-100" />
+          <div className="relative">
+            <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-accent-soft">
+              <Sparkle size={14} />
+              <div className="label-sm">CONTACT</div>
+            </div>
             <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               당신의 인연,<br />
               <span className="text-rainbow">여기서 시작됩니다.</span>

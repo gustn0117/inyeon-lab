@@ -1,4 +1,5 @@
 "use client";
+import { Sparkle, HandUnderline } from "@/components/Icons";
 
 type Props = { eyebrow?: string; title: React.ReactNode; sub?: string };
 
@@ -7,7 +8,11 @@ export default function SubPageHero({ eyebrow, title, sub }: Props) {
     <section className="relative pt-28 sm:pt-36 lg:pt-40 pb-8 sm:pb-12">
       <div className="container-apple text-center">
         {eyebrow && (
-          <div className="label-sm mb-4">{eyebrow}</div>
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Sparkle size={14} />
+            <div className="label-sm">{eyebrow}</div>
+            <Sparkle size={14} />
+          </div>
         )}
         <h1 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
           {title}

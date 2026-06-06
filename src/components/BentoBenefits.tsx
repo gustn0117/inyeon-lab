@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { IconShield, IconChat, IconCouple, Sparkle, HandUnderline } from "@/components/Icons";
 
 /* ═══ BENEFITS — 페이지 캔버스 위 ═══ */
 export default function BentoBenefits() {
@@ -7,9 +8,13 @@ export default function BentoBenefits() {
     <section className="relative py-16 sm:py-20 lg:py-24">
       <div className="container-apple">
         <div className="text-center mb-12 reveal">
-          <div className="label-sm mb-4">OUR PROMISE</div>
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Sparkle size={14} />
+            <div className="label-sm">OUR PROMISE</div>
+            <Sparkle size={14} />
+          </div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
-            인연연구소만의 <span className="text-rainbow">약속.</span>
+            인연연구소만의 <span className="text-rainbow relative inline-block">약속<HandUnderline /></span>.
           </h2>
         </div>
 
@@ -45,15 +50,18 @@ export default function BentoBenefits() {
           </article>
         </div>
 
-        {/* Row 2: 작은 카드 3개 */}
+        {/* Row 2: 작은 카드 3개 + SVG */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 reveal">
           {[
-            { n: "03", t: "신원 100% 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만." },
-            { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석." },
-            { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율." },
+            { n: "03", t: "신원 100% 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만.", Icon: IconShield },
+            { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석.", Icon: IconChat },
+            { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율.", Icon: IconCouple },
           ].map((b, i) => (
-            <article key={i} className="card-rainbow hover-magnetic p-8 sm:p-10 bg-white-solid">
-              <div className="label-sm mb-4">{b.n}</div>
+            <article key={i} className="card-rainbow hover-magnetic p-8 sm:p-10 bg-white">
+              <div className="flex items-center justify-between mb-4">
+                <b.Icon size={36} />
+                <div className="label-sm">{b.n}</div>
+              </div>
               <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3" style={{ fontWeight: 700 }}>{b.t}</h3>
               <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-medium">{b.d}</p>
             </article>
