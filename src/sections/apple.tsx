@@ -76,7 +76,7 @@ export function AppleMemberJobs() {
         <div className="text-center mb-12 reveal">
           <div className="label-sm mb-4">ACTIVE MEMBERS</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
-            이런 분들이 <span className="text-rainbow">함께하고 있어요.</span>
+            이런 분들이 <span className="text-rainbow relative inline-block">함께하고 있어요<HandUnderline /></span>.
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">현재 활동 중인 검증된 회원들의 직업 분포</p>
         </div>
@@ -120,7 +120,7 @@ export function ApplePromise() {
         <div className="text-center mb-12 reveal">
           <div className="label-sm mb-4">OUR PROMISE</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
-            인연연구소의 <span className="text-rainbow">약속.</span>
+            인연연구소의 <span className="text-rainbow relative inline-block">약속<HandUnderline /></span>.
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">회원님께 드리는 6가지 다짐</p>
         </div>
@@ -157,7 +157,7 @@ export function AppleSafety() {
           <div className="label-sm mb-4">PRIVACY & SAFETY</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
             당신의 정보,<br />
-            <span className="text-rainbow">이렇게 지킵니다.</span>
+            <span className="text-rainbow relative inline-block">이렇게 지킵니다<HandUnderline /></span>.
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">프로필이 무분별하게 공개되지 않는 이유</p>
         </div>
@@ -188,7 +188,7 @@ export function ApplePricing() {
         <div className="text-center mb-12 reveal">
           <div className="label-sm mb-4">PRICING</div>
           <h2 className="h-section font-bold text-ink mb-4" style={{ fontWeight: 700 }}>
-            가입비 없이, <span className="text-rainbow">매칭 후 결제.</span>
+            가입비 없이, <span className="text-rainbow relative inline-block">매칭 후 결제<HandUnderline /></span>.
           </h2>
           <p className="text-base sm:text-lg text-ink-soft font-medium">합리적인 가격, 그 이상의 퀄리티</p>
         </div>
@@ -388,7 +388,7 @@ export function AppleFAQ() {
         <div className="text-center mb-10 reveal">
           <div className="label-sm mb-4">FAQ</div>
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
-            자주 묻는 <span className="text-rainbow">질문.</span>
+            자주 묻는 <span className="text-rainbow relative inline-block">질문<HandUnderline /></span>.
           </h2>
         </div>
         <div className="reveal">
@@ -414,7 +414,7 @@ export function AppleContact() {
             </div>
             <h2 className="h-section font-bold text-ink mb-6" style={{ fontWeight: 700 }}>
               당신의 인연,<br />
-              <span className="text-rainbow">여기서 시작됩니다.</span>
+              <span className="text-rainbow relative inline-block">여기서 시작됩니다<HandUnderline /></span>.
             </h2>
             <p className="text-base sm:text-lg text-ink-soft mb-3 font-medium">무료 상담으로 부담 없이 시작해 보세요.</p>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm mb-10">

@@ -5,6 +5,7 @@ import BigStats from "@/components/BigStats";
 import BigQuote from "@/components/BigQuote";
 import BentoBenefits from "@/components/BentoBenefits";
 import PhotoStory from "@/components/PhotoStory";
+import Testimonials from "@/components/Testimonials";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -68,9 +69,10 @@ export default function Home() {
       <HeroSection />
       <IdealMatchSection />
       <TrustBar />
+      <BentoBenefits />
       <PhotoStory />
       <BigQuote />
-      <BentoBenefits />
+      <Testimonials />
       <BigStats />
       <KakaoFlow />
       <PageNav />
