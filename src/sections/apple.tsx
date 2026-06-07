@@ -2,6 +2,7 @@
 /* ═══ Apple 섹션 모음 — 고급 SVG 풍성 ═══ */
 import { IconHeart, IconDiamond, IconRing, IconStarShine, IconFlower, IconShield, IconChat, IconCouple, IconCheck, IconDocument, IconQuote, IconClock, IconCurrency, Sparkle, HandUnderline, DotPattern, CornerOrnament, IconCalendar, IconLocation, IconCrown, IconLock, IconBadge, IconSparkleCluster, IconCoffee, IconMail } from "@/components/Icons";
 import CountUp from "@/components/CountUp";
+import KakaoCopyButton from "@/components/KakaoCopyButton";
 
 const I = {
   check: (c = "w-5 h-5") => <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>,
@@ -446,7 +447,8 @@ export function AppleContact() {
               <p className="text-xs text-ink-soft font-medium">친구 추가 후 메시지를 보내주세요</p>
             </div>
 
-            <div className="flex justify-center max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+              <KakaoCopyButton />
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-md font-bold">
                 인스타그램 @inyeon_lab
               </a>

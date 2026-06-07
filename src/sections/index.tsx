@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MeshGradientBg, Sparkles, GlowOrbs, NoiseTexture, FloatingHearts, StarAccent, RainbowOrbs, RaysOfLight, ParticleField, RichMeshBg, BurstStar } from "@/components/PremiumDeco";
+import KakaoCopyButton from "@/components/KakaoCopyButton";
 
 declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const trackLead = () => { window.fbq?.("track", "Lead"); };
@@ -1098,10 +1099,7 @@ export function Footer() {
             <p className="text-sm text-ink-soft leading-relaxed font-medium mb-6 max-w-xs">
               마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="text-ink">프라이빗 후불제 소개팅</strong>.
             </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-yellow-300 text-[#3C1E1E] font-bold text-sm">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.735 1.81 5.13 4.533 6.478l-.926 3.408c-.082.3.258.546.521.378l3.96-2.532c.618.094 1.257.144 1.912.144 5.523 0 10-3.463 10-7.876C22 6.463 17.523 3 12 3z" /></svg>
-              카톡 ID inyeon_
-            </div>
+            <KakaoCopyButton variant="pill" />
           </div>
 
           {/* 컬럼 3개 */}
