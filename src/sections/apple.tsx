@@ -446,10 +446,7 @@ export function AppleContact() {
               <p className="text-xs text-ink-soft font-medium">친구 추가 후 메시지를 보내주세요</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-              <a href="https://open.kakao.com/me/inyeon_" target="_blank" rel="noopener noreferrer" className="btn bg-yellow-300 text-[#3C1E1E] hover:bg-yellow-400 w-full sm:w-auto shadow-md font-bold">
-                카톡 친구 추가하기
-              </a>
+            <div className="flex justify-center max-w-md mx-auto">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-md font-bold">
                 인스타그램 @inyeon_lab
               </a>
