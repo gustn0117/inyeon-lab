@@ -447,10 +447,13 @@ export function AppleContact() {
               <p className="text-xs text-ink-soft font-medium">친구 추가 후 메시지를 보내주세요</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-2xl mx-auto">
               <KakaoCopyButton />
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-md font-bold">
                 인스타그램 @inyeon_lab
+              </a>
+              <a href="tel:01076170181" className="btn btn-secondary bg-white text-ink hover:bg-white/90 w-full sm:w-auto shadow-md font-bold">
+                {I.phone("w-4 h-4")} 010-7617-0181
               </a>
             </div>
           </div>
