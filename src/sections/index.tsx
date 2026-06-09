@@ -132,11 +132,11 @@ export function Navbar() {
 export function HeroSection() {
   return (
     <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-24 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-      {/* 풀스크린 결혼 사진 배경 */}
+      {/* 풀스크린 결혼 사진 배경 (밝게 처리) */}
       <div className="absolute inset-0 z-0">
-        <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" style={{ filter: "brightness(1.05) saturate(1.05)" }} />
-        {/* 비네트 — 상하단 어둡게 + 중앙 살짝 (텍스트 가독성) */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.25) 65%, rgba(0,0,0,0.55) 100%)" }} />
+        <Image src="/photos/wedding1.jpg" alt="" fill className="object-cover object-center" priority sizes="100vw" style={{ filter: "brightness(1.18) saturate(1.05)" }} />
+        {/* 흰 오버레이 — 검정 글자 배경 강화 */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.25) 50%, rgba(0,0,0,0.3) 100%)" }} />
       </div>
 
       {/* 작은 별 데코만 (색감 영향 없음) */}
@@ -152,18 +152,18 @@ export function HeroSection() {
         </div>
 
         {/* 거대 헤딩 — 세리프 액센트 + 핑크 글로우 */}
-        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-white relative" style={{ fontWeight: 700, textShadow: "0 2px 16px rgba(0,0,0,0.55), 0 0 24px rgba(0,0,0,0.35)" }}>
+        <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative" style={{ fontWeight: 700, textShadow: "0 2px 14px rgba(255,255,255,0.7), 0 0 24px rgba(255,255,255,0.4)" }}>
           마음에 드는 사람만,<br />
-          <span className="text-rainbow relative inline-block" style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.5))" }}>
+          <span className="text-rainbow relative inline-block" style={{ filter: "drop-shadow(0 2px 4px rgba(255,255,255,0.5))" }}>
             진짜로 만나요
             <BurstStar size={30} className="absolute -top-4 -right-10 anim-twinkle" />
           </span>
-          <span className="text-white">.</span>
+          <span className="text-ink">.</span>
         </h1>
 
-        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-white max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 500, textShadow: "0 2px 12px rgba(0,0,0,0.65), 0 0 16px rgba(0,0,0,0.35)" }}>
-          전문 매칭사가 회원님의 <strong className="font-bold">이상형</strong>을 직접 분석.<br className="hidden sm:block" />
-          마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="font-bold">후불제 소개팅</strong>.
+        <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-ink max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 600, textShadow: "0 1px 10px rgba(255,255,255,0.8), 0 0 14px rgba(255,255,255,0.5)" }}>
+          전문 매칭사가 회원님의 <strong className="font-extrabold text-accent">이상형</strong>을 직접 분석.<br className="hidden sm:block" />
+          마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="font-extrabold text-accent">후불제 소개팅</strong>.
         </p>
 
         {/* CTA — 화려한 그라데이션 + ring-pulse + shimmer */}
