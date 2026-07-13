@@ -65,15 +65,24 @@ export function EventBanner() {
     window.dispatchEvent(new Event("banner:close"));
   };
   if (!show) return null;
+  const msgs = (
+    <>
+      <span className="inline-flex items-center gap-1.5 mx-6 text-white text-[11.5px] sm:text-[13px] font-bold">
+        {I.sparkle("w-3.5 h-3.5")} 남성회원 — 이상형과 매칭될 때까지
+        <span className="px-2.5 py-[1px] rounded-full bg-white font-extrabold" style={{ color: pk }}>가입비·결제 0원</span>
+      </span>
+      <span className="mx-6 text-white/90 text-[11.5px] sm:text-[13px] font-bold">💝 여성회원 매칭 1회 무료</span>
+      <span className="mx-6 text-white/80 text-[11px] sm:text-xs font-semibold">🛡️ 대기업·공무원·교사 등 검증된 회원 다수</span>
+      <span className="mx-6 text-white text-[11.5px] sm:text-[13px] font-extrabold underline underline-offset-2">상담하기 →</span>
+    </>
+  );
   return (
-    <div className="fixed inset-x-0 top-0 z-[110] text-center py-2.5 pl-4 pr-10" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-      <div className="max-w-6xl mx-auto flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-        <span className="text-white text-[11.5px] sm:text-sm font-bold inline-flex items-center gap-1">
-          {I.sparkle("w-3.5 h-3.5")} 여성회원 매칭 1회 무료
-        </span>
-        <span className="text-white/80 text-[10.5px] sm:text-xs font-medium hidden sm:inline">· 대기업·공무원·교사 등 다양한 직업 회원 다수</span>
-        <a href="/contact" onClick={trackLead} className="text-[10.5px] sm:text-xs font-bold px-3 py-0.5 rounded-full bg-white hover:bg-pink-50 transition-colors" style={{ color: pk }}>상담하기</a>
-      </div>
+    <div className="fixed inset-x-0 top-0 z-[110] h-10 overflow-hidden" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
+      <a href="/contact" onClick={trackLead} className="anim-marquee-banner flex w-max items-center h-full" aria-label="남성회원 이상형 매칭 시까지 가입비·결제 0원 — 상담하기">
+        {msgs}
+        {[1, 2, 3, 4, 5].map((i) => <span key={i} aria-hidden="true" className="contents">{msgs}</span>)}
+      </a>
+      <div className="absolute right-0 top-0 h-full w-16 pointer-events-none" style={{ background: "linear-gradient(90deg, transparent, #e8457f)" }} />
       <button onClick={close} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors" aria-label="배너 닫기">{I.x("w-4 h-4")}</button>
     </div>
   );

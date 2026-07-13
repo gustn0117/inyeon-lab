@@ -296,6 +296,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .anim-marquee { animation: marquee 40s linear infinite; }
 
+.anim-marquee-banner { animation: marquee 30s linear infinite; }
+.anim-marquee-banner:hover,
+.anim-marquee-banner:focus-visible { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .anim-marquee,
+  .anim-marquee-banner { animation: none; }
+}
+
 .reveal { opacity: 1; transform: none; }
 .reveal-ready .reveal {
   opacity: 0; transform: translateY(20px);
