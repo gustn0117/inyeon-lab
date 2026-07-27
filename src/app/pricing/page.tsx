@@ -24,7 +24,7 @@ export default function PricingPage() {
       <SubPageHero
         eyebrow="PRICING"
         title={<>가입비 0원,<br /><span className="text-rainbow">매칭 후 결제.</span></>}
-        sub="여성 회원은 첫 매칭 1회 무료. 모든 만남은 대면 소개팅으로 보장됩니다."
+        sub="남녀 모두 첫 매칭 50% 할인. 모든 만남은 대면 소개팅으로 보장됩니다."
       />
       <ApplePricing />
       <AppleProcess />

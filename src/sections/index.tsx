@@ -71,7 +71,7 @@ export function EventBanner() {
         {I.sparkle("w-3.5 h-3.5")} 남성회원 — 이상형과 매칭될 때까지
         <span className="px-2.5 py-[1px] rounded-full bg-white font-extrabold" style={{ color: pk }}>가입비·결제 0원</span>
       </span>
-      <span className="mx-6 text-white/90 text-[11.5px] sm:text-[13px] font-bold">💝 여성회원 매칭 1회 무료</span>
+      <span className="mx-6 text-white/90 text-[11.5px] sm:text-[13px] font-bold">💝 남녀 모두 첫 매칭 50% 할인</span>
       <span className="mx-6 text-white/80 text-[11px] sm:text-xs font-semibold">🛡️ 대기업·공무원·교사 등 검증된 회원 다수</span>
       <span className="mx-6 text-white text-[11.5px] sm:text-[13px] font-extrabold underline underline-offset-2">상담하기 →</span>
     </>
@@ -246,7 +246,7 @@ function HeroSection_OLD() {
                 가입비 0원
               </span>
               <span className="w-1 h-1 rounded-full bg-ink/20" />
-              <span>여성 1회 무료</span>
+              <span>첫 매칭 50% 할인</span>
               <span className="w-1 h-1 rounded-full bg-ink/20" />
               <span>매칭 후 결제</span>
               <span className="w-1 h-1 rounded-full bg-ink/20" />
@@ -525,7 +525,7 @@ export function PricingSection() {
               <span className="text-3xl sm:text-4xl font-extrabold">6만원</span>
               <span className="text-sm font-normal ml-1" style={{ color: mt }}>/회</span>
             </div>
-            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제)</p>
+            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제) · <strong style={{ color: pk }}>첫 매칭 50% 할인</strong></p>
             <ul className="space-y-3 mb-8">
               {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
@@ -543,7 +543,7 @@ export function PricingSection() {
               <span className="text-3xl sm:text-4xl font-extrabold">9만원</span>
               <span className="text-sm font-normal ml-1" style={{ color: mt }}>/회</span>
             </div>
-            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제)</p>
+            <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제) · <strong style={{ color: pk }}>첫 매칭 50% 할인</strong></p>
             <ul className="space-y-3 mb-8">
               {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
@@ -782,7 +782,7 @@ export function IdealMatchSection() {
                 진단 시작 →
               </span>
               <div className="text-xs sm:text-sm text-ink-soft mt-4">
-                여성 회원 1회 무료 · 1분 소요
+                첫 매칭 50% 할인 · 1분 소요
               </div>
             </div>
           </div>

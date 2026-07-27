@@ -45,7 +45,7 @@ export default function FinalCTA() {
             </div>
 
             <div className="text-xs text-ink-tertiary font-medium">
-              <strong className="text-accent">여성 회원 1회 무료</strong> · 매칭 성사 시에만 결제 · 100% 후불제
+              <strong className="text-accent">남녀 모두 첫 매칭 50% 할인</strong> · 매칭 성사 시에만 결제 · 100% 후불제
             </div>
           </div>
         </div>

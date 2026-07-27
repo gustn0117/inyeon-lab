@@ -205,7 +205,7 @@ export function ApplePricing() {
               <span className="num-huge text-5xl text-accent">6만원</span>
               <span className="text-sm text-ink-soft font-bold">/회</span>
             </div>
-            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
+            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제) · <strong className="text-accent">첫 매칭 50% 할인</strong></p>
             <div className="space-y-3 mb-8">
               {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
@@ -224,7 +224,7 @@ export function ApplePricing() {
               <span className="num-huge text-5xl text-accent">9만원</span>
               <span className="text-sm text-ink-soft font-bold">/회</span>
             </div>
-            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제)</p>
+            <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제) · <strong className="text-accent">첫 매칭 50% 할인</strong></p>
             <div className="space-y-3 mb-8">
               {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>

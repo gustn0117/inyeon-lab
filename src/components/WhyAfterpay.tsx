@@ -69,7 +69,7 @@ export default function WhyAfterpay() {
               </div>
             ))}
             <p className="text-xs text-ink-tertiary text-center mt-3 font-medium">
-              여성 회원은 첫 매칭 1회 무료. 남성 ₩ 9만원, 무제한 상품 별도 안내.
+              남녀 모두 첫 매칭 50% 할인. 여성 ₩ 6만원 · 남성 ₩ 9만원 /회, 무제한 상품 별도 안내.
             </p>
           </div>
         </div>
