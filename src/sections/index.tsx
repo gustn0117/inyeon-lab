@@ -65,23 +65,28 @@ export function EventBanner() {
     window.dispatchEvent(new Event("banner:close"));
   };
   if (!show) return null;
-  const msgs = (
+  // dup: 마퀴 무한루프용 복제본 — 스크린리더/키보드에서 제외
+  const msgs = (dup: boolean) => (
     <>
+      <a href="/marriage" tabIndex={dup ? -1 : undefined} className="inline-flex items-center gap-1.5 mx-6 text-white text-[11.5px] sm:text-[13px] font-bold hover:underline underline-offset-2">
+        💍 결혼 목적 결정사식 매칭 — 성혼비 0원 · 최저가
+        <span className="px-2.5 py-[1px] rounded-full bg-white font-extrabold" style={{ color: pk }}>따로 신청받아요</span>
+      </a>
       <span className="inline-flex items-center gap-1.5 mx-6 text-white text-[11.5px] sm:text-[13px] font-bold">
         {I.sparkle("w-3.5 h-3.5")} 남성회원 — 이상형과 매칭될 때까지
         <span className="px-2.5 py-[1px] rounded-full bg-white font-extrabold" style={{ color: pk }}>가입비·결제 0원</span>
       </span>
       <span className="mx-6 text-white/90 text-[11.5px] sm:text-[13px] font-bold">💝 남녀 모두 첫 매칭 50% 할인</span>
       <span className="mx-6 text-white/80 text-[11px] sm:text-xs font-semibold">🛡️ 대기업·공무원·교사 등 검증된 회원 다수</span>
-      <span className="mx-6 text-white text-[11.5px] sm:text-[13px] font-extrabold underline underline-offset-2">상담하기 →</span>
+      <a href="/contact" onClick={trackLead} tabIndex={dup ? -1 : undefined} className="mx-6 text-white text-[11.5px] sm:text-[13px] font-extrabold underline underline-offset-2">상담하기 →</a>
     </>
   );
   return (
     <div className="fixed inset-x-0 top-0 z-[110] h-10 overflow-hidden" style={{ background: `linear-gradient(135deg, ${pk}, #e8457f)` }}>
-      <a href="/contact" onClick={trackLead} className="anim-marquee-banner flex w-max items-center h-full" aria-label="남성회원 이상형 매칭 시까지 가입비·결제 0원 — 상담하기">
-        {msgs}
-        {[1, 2, 3, 4, 5].map((i) => <span key={i} aria-hidden="true" className="contents">{msgs}</span>)}
-      </a>
+      <div className="anim-marquee-banner flex w-max items-center h-full">
+        {msgs(false)}
+        {[1, 2, 3, 4, 5].map((i) => <span key={i} aria-hidden="true" className="contents">{msgs(true)}</span>)}
+      </div>
       <div className="absolute right-0 top-0 h-full w-16 pointer-events-none" style={{ background: "linear-gradient(90deg, transparent, #e8457f)" }} />
       <button onClick={close} className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors" aria-label="배너 닫기">{I.x("w-4 h-4")}</button>
     </div>
@@ -110,6 +115,7 @@ export function Navbar() {
     { h: "/about", l: "소개" },
     { h: "/pricing", l: "가격" },
     { h: "/ideal-match", l: "이상형 매칭" },
+    { h: "/marriage", l: "결혼매칭" },
     { h: "/contact", l: "상담" },
   ];
   return (
@@ -1073,6 +1079,7 @@ export function Footer() {
         { l: "인연연구소 소개", h: "/about" },
         { l: "가격·진행 절차", h: "/pricing" },
         { l: "이상형 매칭 진단", h: "/ideal-match" },
+        { l: "결혼매칭 신청", h: "/marriage" },
         { l: "상담·문의", h: "/contact" },
       ],
     },

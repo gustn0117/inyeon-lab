@@ -298,7 +298,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .anim-marquee-banner { animation: marquee 30s linear infinite; }
 .anim-marquee-banner:hover,
-.anim-marquee-banner:focus-visible { animation-play-state: paused; }
+.anim-marquee-banner:focus-within { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .anim-marquee,
   .anim-marquee-banner { animation: none; }

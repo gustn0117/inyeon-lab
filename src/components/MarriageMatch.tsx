@@ -2,7 +2,64 @@
 import { useState } from "react";
 import { IconCheck, IconMail, Sparkle, HandUnderline } from "@/components/Icons";
 
-/* ═══ MarriageMatch — 결혼 목적 결정사식 정밀 매칭 신청 ═══ */
+/* ═══ MarriageMatch — 결혼 목적 결정사식 정밀 매칭 신청 (전용 페이지 /marriage) ═══ */
+const usps = [
+  { t: "학력·연봉·종교·직업까지 반영", d: "원하시는 조건을 구체적으로 반영하는 정밀 매칭" },
+  { t: "성혼비 0원", d: "결혼에 성공해도 성혼비·사례비를 받지 않습니다" },
+  { t: "결정사 대비 최저가", d: "거품 없는 가격으로 부담 없이 시작" },
+];
+
+/* 홈페이지용 티저 — 신청은 /marriage 페이지에서 별도로 */
+export function MarriageTeaser() {
+  return (
+    <section className="relative py-16 sm:py-20 lg:py-24">
+      <div className="container-apple">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="reveal">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Sparkle size={14} />
+              <div className="eyebrow-lined">MARRIAGE MATCHING</div>
+            </div>
+            <h2 className="h-section font-bold text-ink mb-5" style={{ fontWeight: 700, wordBreak: "keep-all" }}>
+              결혼까지 생각한다면,<br />
+              <span className="text-rainbow relative inline-block">결정사식 정밀 매칭<HandUnderline /></span>.
+            </h2>
+            <p className="text-lg text-ink-soft leading-relaxed mb-8 font-medium">
+              가벼운 소개팅을 넘어 <strong className="text-ink text-highlight">결혼을 목적으로</strong> 만나고
+              싶으신 분들을 위해, 결혼정보회사 방식의 조건 매칭을 준비했습니다.
+            </p>
+            <div className="space-y-4">
+              {usps.map((u, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <IconCheck size={22} />
+                  <div>
+                    <div className="text-base font-bold text-ink leading-tight">{u.t}</div>
+                    <div className="text-sm text-ink-soft font-medium mt-0.5">{u.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="reveal">
+            <div className="card-rainbow bg-white p-8 sm:p-10 text-center">
+              <div className="text-4xl mb-4">💍</div>
+              <p className="text-xl font-bold text-ink mb-2">결혼매칭은 따로 신청받아요</p>
+              <p className="text-sm text-ink-soft font-medium mb-7 leading-relaxed">
+                일반 소개팅과 별도로 진행되는 전용 매칭입니다.<br />
+                전용 페이지에서 번호를 남겨주세요.
+              </p>
+              <a href="/marriage" className="btn btn-gradient w-full font-bold inline-flex justify-center">
+                결혼매칭 신청하러 가기 →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function MarriageMatch() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -25,12 +82,6 @@ export default function MarriageMatch() {
       else { setStatus("error"); setErrMsg(data?.error || "다시 시도해주세요."); }
     } catch { setStatus("error"); setErrMsg("네트워크 오류"); }
   };
-
-  const usps = [
-    { t: "학력·연봉·종교·직업까지 반영", d: "원하시는 조건을 구체적으로 반영하는 정밀 매칭" },
-    { t: "성혼비 0원", d: "결혼에 성공해도 성혼비·사례비를 받지 않습니다" },
-    { t: "결정사 대비 최저가", d: "거품 없는 가격으로 부담 없이 시작" },
-  ];
 
   return (
     <section className="relative py-16 sm:py-20 lg:py-24">
