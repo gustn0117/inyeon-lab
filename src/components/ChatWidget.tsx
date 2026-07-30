@@ -149,10 +149,10 @@ export default function ChatWidget() {
       <div className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90]">
         {/* 첫 방문 안내 풍선 */}
         {tooltipShown && !open && !sessionId && (
-          <div className="absolute right-16 bottom-1 bg-white rounded-2xl shadow-xl px-4 py-2.5 animate-pulse-soft" style={{ animation: "float-in 0.4s ease-out", whiteSpace: "nowrap" }}>
+          <div className="absolute right-0 bottom-[4.25rem] sm:right-16 sm:bottom-1 bg-white rounded-2xl shadow-xl px-4 py-2.5 animate-pulse-soft" style={{ animation: "float-in 0.4s ease-out", whiteSpace: "nowrap" }}>
             <div className="text-[12px] font-bold" style={{ color: "#333" }}>실시간 상담 가능</div>
             <div className="text-[10px]" style={{ color: "#999" }}>365일 · 밤 12시까지</div>
-            <div className="absolute right-[-6px] bottom-3 w-3 h-3 bg-white transform rotate-45" />
+            <div className="hidden sm:block absolute right-[-6px] bottom-3 w-3 h-3 bg-white transform rotate-45" />
           </div>
         )}
 

@@ -76,7 +76,7 @@ function PageNav() {
 export default function Home() {
   useReveal();
   return (
-    <main className="relative bg-white">
+    <main className="relative bg-white pb-20 sm:pb-0">
       <ScrollProgress />
       <EventBanner />
       <Navbar />

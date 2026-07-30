@@ -18,7 +18,7 @@ export default function MobileStickyCTA() {
 
   return (
     <div
-      className={`fixed bottom-3 left-3 right-3 z-50 sm:hidden transition-all duration-300 ${
+      className={`fixed bottom-3 left-3 right-[5.5rem] z-50 sm:hidden transition-all duration-300 ${
         show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
       }`}
     >

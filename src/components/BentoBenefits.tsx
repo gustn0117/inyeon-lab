@@ -33,7 +33,7 @@ export default function BentoBenefits() {
           </article>
 
           {/* 메인 카드 2 - 깔끔 흰 카드 */}
-          <article className="card-rainbow hover-magnetic text-ink rounded-3xl p-10 sm:p-14 min-h-[440px] flex flex-col justify-between bg-white">
+          <article className="card-rainbow hover-magnetic text-ink rounded-3xl p-10 sm:p-14 sm:min-h-[440px] flex flex-col justify-between gap-6 bg-white">
             <div className="label-sm">02 · PRIVATE</div>
             <div>
               <h3 className="h-card font-bold mb-4 text-ink" style={{ fontWeight: 700 }}>

@@ -87,12 +87,8 @@ export default function MarriageMatch() {
     <section className="relative py-16 sm:py-20 lg:py-24">
       <div className="container-apple">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* 좌 — 카피 */}
+          {/* 좌 — 카피 (eyebrow는 SubPageHero에 이미 있어 생략) */}
           <div className="reveal">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Sparkle size={14} />
-              <div className="eyebrow-lined">MARRIAGE MATCHING</div>
-            </div>
             <h2 className="h-section font-bold text-ink mb-5" style={{ fontWeight: 700, wordBreak: "keep-all" }}>
               결혼까지 생각한다면,<br />
               <span className="text-rainbow relative inline-block">결정사식 정밀 매칭<HandUnderline /></span>.
