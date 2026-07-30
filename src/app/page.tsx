@@ -18,6 +18,7 @@ import MobileStickyCTA from "@/components/MobileStickyCTA";
 import MatchingTeam from "@/components/MatchingTeam";
 import WhyAfterpay from "@/components/WhyAfterpay";
 import QuickInquiry from "@/components/QuickInquiry";
+import MarriageMatch from "@/components/MarriageMatch";
 import { IconHeart, IconCurrency, IconStarShine, IconChat, Sparkle, HandUnderline } from "@/components/Icons";
 import {
   useReveal,
@@ -88,6 +89,7 @@ export default function Home() {
       <WhyAfterpay />
       <MatchPromise />
       <Compare />
+      <MarriageMatch />
       <MatchingTeam />
       <PhotoStory />
       <DateMoments />

@@ -380,7 +380,12 @@ export default function AdminPage() {
                 {inquiries.map(d => (
                   <div key={d.id} className="bg-white rounded-2xl shadow-sm p-5 flex items-center justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <div className="font-medium text-sm truncate">{d.name}</div>
+                      <div className="font-medium text-sm truncate flex items-center gap-1.5">
+                        {d.name.startsWith("💍") && (
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0" style={{ background: "#fce7f3", color: "#db2777" }}>💍 결혼매칭</span>
+                        )}
+                        <span className="truncate">{d.name.replace(/^💍/, "")}</span>
+                      </div>
                       <a href={`tel:${d.phone}`} className="text-sm block truncate" style={{ color: PINK }}>{d.phone}</a>
                     </div>
                     <div className="text-xs text-gray-400 text-right flex-shrink-0">
