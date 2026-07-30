@@ -169,7 +169,7 @@ export function HeroSection() {
         {/* 거대 헤딩 — 세리프 액센트 + 핑크 글로우 */}
         <h1 className="hero-anim hero-d2 h-hero font-bold mb-7 sm:mb-9 text-ink relative" style={{ fontWeight: 700, textShadow: "0 2px 14px rgba(255,255,255,0.7), 0 0 24px rgba(255,255,255,0.4)" }}>
           마음에 드는 사람만,<br />
-          <span className="text-rainbow relative inline-block" style={{ filter: "drop-shadow(0 2px 4px rgba(255,255,255,0.5))" }}>
+          <span className="text-rainbow-strong relative inline-block" style={{ filter: "drop-shadow(0 2px 4px rgba(255,255,255,0.5))" }}>
             진짜로 만나요
             <BurstStar size={30} className="absolute -top-4 -right-10 anim-twinkle" />
           </span>

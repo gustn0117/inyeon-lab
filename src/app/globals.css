@@ -325,6 +325,18 @@ h1, h2, h3, h4, h5, h6 {
     animation: rainbow-shift 7s ease-in-out infinite;
     display: inline-block;
   }
+  /* 진한 핑크 그라데이션 — 밝은 사진 배경 위 히어로용
+     (부모 h1의 흰 text-shadow가 투명 글자 뒤로 비쳐 색이 연해지므로 차단) */
+  .text-rainbow-strong {
+    text-shadow: none;
+    background: linear-gradient(110deg, #a61e4d 0%, #c2255c 30%, #d6336c 60%, #c2255c 85%, #a61e4d 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shift 7s ease-in-out infinite;
+    display: inline-block;
+  }
   .text-pink-purple {
     background: linear-gradient(135deg, #ec4d7e 0%, #fb7185 100%);
     -webkit-background-clip: text;
