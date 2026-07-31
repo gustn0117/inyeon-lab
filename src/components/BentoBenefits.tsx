@@ -27,7 +27,7 @@ export default function BentoBenefits() {
                 매칭이 되어야<br /><span style={{ color: "#ffb3c8" }}>결제합니다.</span>
               </h3>
               <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-md font-medium">
-                가입비 0원. 마음에 드는 분으로 매칭 성사 시에만 결제하는 100% 후불제.
+                가입비 0원. 마음에 드는 분으로 매칭 성사 시에만 결제하는 후불제.
               </p>
             </div>
           </article>
@@ -49,9 +49,9 @@ export default function BentoBenefits() {
         {/* Row 2: 작은 카드 3개 + SVG */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 reveal">
           {[
-            { n: "03", t: "신원 100% 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만.", Icon: IconShield },
+            { n: "03", t: "신원 서류 검증", d: "재직증명서·혼인관계증명서로 확인된 실회원만.", Icon: IconShield },
             { n: "04", t: "전문 매칭사 1:1", d: "AI 자동 추천이 아닌, 사람이 직접 분석.", Icon: IconChat },
-            { n: "05", t: "대면 소개팅 보장", d: "실제 만남 일정까지 책임지고 조율.", Icon: IconCouple },
+            { n: "05", t: "대면 소개팅 진행", d: "실제 만남 일정까지 책임지고 조율.", Icon: IconCouple },
           ].map((b, i) => (
             <article key={i} className="group card-rainbow p-8 sm:p-10 bg-white">
               <div className="flex items-center justify-between mb-4">

@@ -6,7 +6,7 @@ import { IconCheck, IconMail, Sparkle, HandUnderline } from "@/components/Icons"
 const usps = [
   { t: "학력·연봉·종교·직업까지 반영", d: "원하시는 조건을 구체적으로 반영하는 정밀 매칭" },
   { t: "성혼비 0원", d: "결혼에 성공해도 성혼비·사례비를 받지 않습니다" },
-  { t: "결정사 대비 최저가", d: "거품 없는 가격으로 부담 없이 시작" },
+  { t: "결정사 대비 합리적 가격", d: "거품 없는 가격으로 부담 없이 시작" },
 ];
 
 /* 홈페이지용 티저 — 신청은 /marriage 페이지에서 별도로 */
@@ -169,7 +169,7 @@ export default function MarriageMatch() {
                     {status === "loading" ? "접수 중..." : status === "error" ? "다시 시도" : "결혼매칭 상담 신청"}
                   </button>
                   <p className="text-[11px] text-ink-tertiary font-medium text-center pt-2">
-                    남기신 정보는 매칭 상담 외 절대 사용되지 않습니다.
+                    남기신 정보는 매칭 상담 외 목적으로 사용하지 않습니다. <a href="/privacy" className="underline underline-offset-2">개인정보처리방침</a>
                   </p>
                 </div>
               )}

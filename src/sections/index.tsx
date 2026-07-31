@@ -69,7 +69,7 @@ export function EventBanner() {
   const msgs = (dup: boolean) => (
     <>
       <a href="/marriage" tabIndex={dup ? -1 : undefined} className="inline-flex items-center gap-1.5 mx-6 text-white text-[11.5px] sm:text-[13px] font-bold hover:underline underline-offset-2">
-        💍 결혼 목적 결정사식 매칭 — 성혼비 0원 · 최저가
+        💍 결혼 목적 결정사식 매칭 — 성혼비 0원 · 합리적 가격
         <span className="px-2.5 py-[1px] rounded-full bg-white font-extrabold" style={{ color: pk }}>따로 신청받아요</span>
       </a>
       <span className="inline-flex items-center gap-1.5 mx-6 text-white text-[11.5px] sm:text-[13px] font-bold">
@@ -256,7 +256,7 @@ function HeroSection_OLD() {
               <span className="w-1 h-1 rounded-full bg-ink/20" />
               <span>매칭 후 결제</span>
               <span className="w-1 h-1 rounded-full bg-ink/20" />
-              <span>대면 보장</span>
+              <span>대면 소개팅</span>
             </div>
           </div>
 
@@ -336,7 +336,7 @@ export function TrustBar() {
   const items = [
     { t: "매칭 후 결제 후불제", icon: "💳" },
     { t: "조건별 맞춤 매칭", icon: "✨" },
-    { t: "신원보장 100%", icon: "🛡️" },
+    { t: "서류 신원 검증", icon: "🛡️" },
     { t: "48시간 매칭", icon: "⏱️" },
     { t: "1:1 전문 컨설팅", icon: "💬" },
     { t: "20·30대 전용", icon: "💝" },
@@ -437,7 +437,7 @@ export function FeaturesSection() {
   const features = [
     { icon: I.currency, t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생합니다. 선불 부담 없이 안심하고 시작하세요.", color: "#e8457f" },
     { icon: I.sparkle, t: "조건별 맞춤 매칭", d: "거리, 나이, 종교, 직업 등 원하는 조건을 세밀하게 반영해 딱 맞는 상대를 찾아드립니다.", color: gd },
-    { icon: I.shield, t: "확실한 신원보장", d: "재직증명서, 혼인관계증명서 등등 꼼꼼한 서류검토로 안전한 만남을 보장합니다.", color: "#7c6dd8" },
+    { icon: I.shield, t: "꼼꼼한 신원 검증", d: "재직증명서, 혼인관계증명서 등 꼼꼼한 서류검토로 안심할 수 있는 만남을 준비합니다.", color: "#7c6dd8" },
     { icon: I.chat, t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", color: "#4db6ac" },
   ];
   return (
@@ -533,7 +533,7 @@ export function PricingSection() {
             </div>
             <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제) · <strong style={{ color: pk }}>첫 매칭 50% 할인</strong></p>
             <ul className="space-y-3 mb-8">
-              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+              {["신원 서류 검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${pk}10`, color: pk }}>{I.check("w-3 h-3")}</span>{t}
                 </li>
@@ -551,7 +551,7 @@ export function PricingSection() {
             </div>
             <p className="text-xs mb-8" style={{ color: mt }}>매칭 성사 시 결제 (후불제) · <strong style={{ color: pk }}>첫 매칭 50% 할인</strong></p>
             <ul className="space-y-3 mb-8">
-              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+              {["신원 서류 검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: sb }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${pk}10`, color: pk }}>{I.check("w-3 h-3")}</span>{t}
                 </li>
@@ -709,7 +709,7 @@ export function MemberJobsSection() {
 export function SafetyFlowSection() {
   const steps = [
     { icon: I.doc, t: "1. 본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기." },
-    { icon: I.shield, t: "2. 암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다." },
+    { icon: I.shield, t: "2. 암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에 공개되지 않습니다." },
     { icon: I.eye, t: "3. 1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다. 공개 갤러리는 없습니다." },
     { icon: I.x, t: "4. 종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다. 마케팅·재활용 일절 없음." },
   ];
@@ -749,7 +749,7 @@ export function SafetyFlowSection() {
               개인정보보호법을 준수합니다
             </p>
             <p className="text-xs sm:text-sm text-white/50" style={{ lineHeight: 1.7 }}>
-              수집·이용·보관·파기 전 과정이 법적 기준을 충족하며, 매칭 외 목적으로 절대 사용되지 않습니다.
+              수집·이용·보관·파기 전 과정이 법적 기준을 준수하며, 매칭 외 목적으로 사용하지 않습니다.
             </p>
           </div>
         </div>
@@ -814,7 +814,7 @@ export function PromiseSection() {
     {
       icon: I.currency,
       t: "매칭이 되어야 비용이 발생합니다",
-      d: "선불 결제는 없습니다. 실제 매칭이 성사된 경우에만 결제하시는 100% 후불제로 운영합니다.",
+      d: "선불 결제는 없습니다. 실제 매칭이 성사된 경우에만 결제하시는 후불제로 운영합니다.",
     },
     {
       icon: I.eye,
@@ -823,7 +823,7 @@ export function PromiseSection() {
     },
     {
       icon: I.users,
-      t: "100% 실회원 매칭입니다",
+      t: "서류로 검증된 실회원 매칭입니다",
       d: "재직증명서, 혼인관계증명서 등으로 신원이 검증된 실제 회원과만 매칭됩니다. 가짜 프로필, 알바, 자동 응답은 단 한 건도 없습니다.",
     },
     {
@@ -885,7 +885,7 @@ export function FAQSection() {
     { q: "매칭까지 얼마나 걸리나요?", a: "서류 확인 후 평균 48시간 이내에 첫 프로필을 제안합니다." },
     { q: "소개팅 앱과 뭐가 다른가요?", a: "앱은 사진으로만 판단하지만, 인연연구소는 서류 검증 + 전문 상담사의 성격·가치관 분석 기반 매칭입니다." },
     { q: "결혼을 전제로 해야 하나요?", a: "아닙니다. 가벼운 소개팅부터 진지한 만남까지, 목적에 맞춰 매칭해 드립니다." },
-    { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 절대 제3자에게 공유되지 않습니다." },
+    { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 제3자에게 공유하지 않습니다." },
   ];
   return (
     <section id="faq" className="py-20 sm:py-28 lg:py-36 bg-[#fff9f3]">
@@ -1086,9 +1086,12 @@ export function Footer() {
     {
       title: "회사 정보",
       items: [
+        // 주의: 상호·대표자·사업자등록번호는 사업자등록증 표기와 정확히 일치해야 함 (구글 심사)
+        { l: "상호: 인연연구소" },
         { l: "대표자: 김가영" },
-        { l: "사업자등록: 463-59-00868" },
-        { l: "개인정보보호법 준수" },
+        { l: "사업자등록번호: 463-59-00868" },
+        { l: "주소: (사업장 주소 확인 중)" },
+        { l: "이메일: (이메일 확인 중)" },
       ],
     },
     {
@@ -1096,7 +1099,7 @@ export function Footer() {
       items: [
         { l: "카톡 ID inyeon_", b: true },
         { l: "365일 · 밤 12시까지" },
-        { l: "100% 비공개 상담" },
+        { l: "비공개 상담" },
         { l: "후불제 · 가입비 0원" },
       ],
     },
@@ -1154,6 +1157,17 @@ export function Footer() {
             <span className="w-1 h-1 rounded-full bg-ink-tertiary/50" />
             <span>All Rights Reserved</span>
           </div>
+        </div>
+
+        {/* 하단: 법적 고지 — 만 19세 미만 이용불가 + 약관/개인정보처리방침 독립 링크 */}
+        <div className="mt-6 pt-6 border-t border-pink-50">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-3">
+            <a href="/terms" className="text-[13px] font-semibold text-ink-soft hover:text-accent transition-colors underline underline-offset-2">이용약관</a>
+            <a href="/privacy" className="text-[13px] font-bold text-ink hover:text-accent transition-colors underline underline-offset-2">개인정보처리방침</a>
+          </div>
+          <p className="text-[13px] font-semibold text-ink-soft">
+            본 서비스는 만 19세 미만의 청소년은 이용할 수 없습니다.
+          </p>
         </div>
 
         <p className="sr-only">

@@ -111,9 +111,9 @@ export function ApplePromise() {
   const promises = [
     { n: "01", t: "아무나 받지 않습니다", d: "전문 매칭사가 신원과 진정성을 직접 확인한 회원만 받습니다.", Icon: IconShield },
     { n: "02", t: "딱 맞게 매칭해드립니다", d: "거리·나이·종교·직업·가치관까지 직접 분석해 한 분 한 분 맞춰드립니다.", Icon: IconLocation },
-    { n: "03", t: "매칭 후 결제", d: "선불 결제 없음. 실제 매칭 성사 경우에만 결제하는 100% 후불제.", Icon: IconCurrency },
+    { n: "03", t: "매칭 후 결제", d: "선불 결제 없음. 실제 매칭 성사 경우에만 결제하는 후불제.", Icon: IconCurrency },
     { n: "04", t: "사진·프로필 직접 전달", d: "실제 사진과 자세한 프로필을 매칭된 1:1 상대에게만 비공개로 전달.", Icon: IconLock },
-    { n: "05", t: "100% 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", Icon: IconBadge },
+    { n: "05", t: "서류 검증 실회원", d: "재직증명서·혼인관계증명서로 신원이 검증된 실제 회원과만 매칭.", Icon: IconBadge },
     { n: "06", t: "정성스러운 관리", d: "매칭 후 만남 피드백, 다음 소개 조정까지 전담 매칭사가 함께합니다.", Icon: IconHeart },
   ];
   return (
@@ -148,7 +148,7 @@ export function ApplePromise() {
 export function AppleSafety() {
   const steps = [
     { n: "01", t: "본인 확인", d: "재직증명서·혼인관계증명서 등으로 신원을 확인합니다. 검증 후 원본은 즉시 폐기.", Icon: IconBadge },
-    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에서 절대 접근할 수 없습니다.", Icon: IconLock },
+    { n: "02", t: "암호화 저장", d: "프로필 정보는 암호화되어 저장됩니다. 외부에 공개되지 않습니다.", Icon: IconLock },
     { n: "03", t: "1:1 비공개 전달", d: "프로필은 매칭이 확정된 상대에게만 비공개로 전달됩니다.", Icon: IconMail },
     { n: "04", t: "종료 후 파기", d: "서비스 이용 종료 시 모든 개인정보를 즉시 파기합니다.", Icon: IconShield },
   ];
@@ -207,7 +207,7 @@ export function ApplePricing() {
             </div>
             <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제) · <strong className="text-accent">첫 매칭 50% 할인</strong></p>
             <div className="space-y-3 mb-8">
-              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+              {["신원 서류 검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
               ))}
             </div>
@@ -226,7 +226,7 @@ export function ApplePricing() {
             </div>
             <p className="text-sm text-ink-soft mb-7 font-medium">매칭 성사 시 결제 (후불제) · <strong className="text-accent">첫 매칭 50% 할인</strong></p>
             <div className="space-y-3 mb-8">
-              {["신원보장 서류검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
+              {["신원 서류 검토", "조건별 맞춤 매칭", "프로필 제공", "피드백 리포트"].map((t, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-ink font-semibold"><IconCheck size={16} />{t}</div>
               ))}
             </div>
@@ -307,7 +307,7 @@ export function AppleFeatures() {
   const features = [
     { t: "매칭 후 결제 후불제", d: "매칭이 성사되어야 비용이 발생. 선불 부담 없이 안심하고 시작.", Icon: IconCurrency },
     { t: "조건별 맞춤 매칭", d: "거리·나이·종교·직업 등 조건을 세밀하게 반영해 딱 맞는 상대를 찾아드립니다.", Icon: IconStarShine },
-    { t: "확실한 신원보장", d: "재직증명서·혼인관계증명서 등 꼼꼼한 서류검토로 안전한 만남 보장.", Icon: IconShield },
+    { t: "꼼꼼한 신원 검증", d: "재직증명서·혼인관계증명서 등 꼼꼼한 서류검토로 안전한 만남 지향.", Icon: IconShield },
     { t: "1:1 전문 컨설팅", d: "프로필 작성부터 만남 후 피드백까지, 연애 전문가가 함께합니다.", Icon: IconChat },
   ];
   return (
@@ -393,7 +393,7 @@ export function AppleFAQ() {
     { q: "매칭까지 얼마나 걸리나요?", a: "서류 확인 후 평균 48시간 이내에 첫 프로필을 제안합니다." },
     { q: "소개팅 앱과 뭐가 다른가요?", a: "앱은 사진으로만 판단하지만, 인연연구소는 서류 검증 + 전문 상담사의 성격·가치관 분석 기반 매칭입니다." },
     { q: "결혼을 전제로 해야 하나요?", a: "아닙니다. 가벼운 소개팅부터 진지한 만남까지, 목적에 맞춰 매칭해 드립니다." },
-    { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 절대 제3자에게 공유되지 않습니다." },
+    { q: "개인정보는 안전한가요?", a: "모든 서류와 개인정보는 암호화 저장하며, 매칭 목적 외 제3자에게 공유하지 않습니다." },
   ];
   return (
     <section className={`relative ${SECTION_PY}`}>

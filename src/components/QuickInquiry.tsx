@@ -92,7 +92,7 @@ export default function QuickInquiry() {
                 {status === "loading" ? "접수 중..." : status === "error" ? "다시 시도" : "연락 받기"}
               </button>
               <p className="text-[11px] text-ink-tertiary font-medium text-center pt-2">
-                남기신 정보는 매칭 상담 외 절대 사용되지 않습니다.
+                남기신 정보는 매칭 상담 외 목적으로 사용하지 않습니다. <a href="/privacy" className="underline underline-offset-2">개인정보처리방침</a>
               </p>
             </div>
           )}

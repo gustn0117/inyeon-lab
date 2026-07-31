@@ -17,7 +17,7 @@ export default function WhyAfterpay() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* 좌 — 카피 */}
           <div className="reveal lg:sticky lg:top-32">
-            <div className="eyebrow-lined mb-4">100% AFTER-PAY</div>
+            <div className="eyebrow-lined mb-4">AFTER-PAY</div>
             <h2 className="h-section font-bold text-ink mb-7" style={{ fontWeight: 700 }}>
               <span className="text-rainbow relative inline-block">매칭 후 결제<HandUnderline /></span>,<br />
               왜 가능할까?

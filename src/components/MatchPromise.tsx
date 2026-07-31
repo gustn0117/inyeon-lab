@@ -5,23 +5,23 @@ import { IconBadge, IconHeart, IconLock, Sparkle, HandUnderline } from "@/compon
 const promises = [
   {
     Icon: IconBadge,
-    label: "01 / 매칭 보증",
+    label: "01 / 매칭 약속",
     t: "성사될 때까지",
     body: "마음에 드는 분을 만날 때까지 책임지고 매칭해드립니다. 한 번이 마지막이 아닙니다.",
     cap: "AVG 2~3회 매칭 진행"
   },
   {
     Icon: IconHeart,
-    label: "02 / 정성 보증",
+    label: "02 / 정성 약속",
     t: "1:1 전담 매칭사",
     body: "정해진 매칭사 한 분이 처음부터 끝까지 함께. 만남 전 코칭, 만남 후 피드백까지.",
     cap: "전문 상담사 책임 매칭"
   },
   {
     Icon: IconLock,
-    label: "03 / 비밀 보증",
-    t: "100% 비공개",
-    body: "프로필은 매칭된 상대에게만 1:1 전달. 외부 공개 절대 없음. 서비스 종료 시 즉시 파기.",
+    label: "03 / 비밀 약속",
+    t: "철저한 비공개",
+    body: "프로필은 매칭된 상대에게만 1:1 전달. 외부 공개 없음. 서비스 종료 시 즉시 파기.",
     cap: "개인정보보호법 준수"
   },
 ];
@@ -35,7 +35,7 @@ export default function MatchPromise() {
           <h2 className="h-section font-bold text-ink" style={{ fontWeight: 700 }}>
             우리가 드리는 <span className="text-rainbow relative inline-block">세 가지 약속<HandUnderline /></span>.
           </h2>
-          <p className="text-base sm:text-lg text-ink-soft mt-4 font-medium">매칭사가 직접 책임지는 보증 시스템</p>
+          <p className="text-base sm:text-lg text-ink-soft mt-4 font-medium">매칭사가 직접 책임지는 매칭 시스템</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 reveal">

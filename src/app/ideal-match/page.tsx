@@ -350,7 +350,10 @@ export default function IdealMatchPage() {
                 진단 시작하기 {Icons.arrowR("w-4 h-4")}
               </button>
               <p className="text-[10.5px] mt-3" style={{ color: "#bbb" }}>
-                입력 정보는 매칭 외 목적으로 사용되지 않습니다.
+                입력 정보는 매칭 외 목적으로 사용하지 않습니다. <a href="/privacy" className="underline underline-offset-2">개인정보처리방침</a> · <a href="/terms" className="underline underline-offset-2">이용약관</a>
+              </p>
+              <p className="text-[10.5px] mt-1.5" style={{ color: "#bbb" }}>
+                본 서비스는 만 19세 미만의 청소년은 이용할 수 없습니다.
               </p>
             </section>
           )}

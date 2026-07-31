@@ -24,7 +24,7 @@ export default function MarriagePage() {
       <SubPageHero
         eyebrow="MARRIAGE MATCHING"
         title={<>결혼 목적 매칭,<br /><span className="text-rainbow">결정사보다 가볍게.</span></>}
-        sub="학력·연봉·종교·직업까지 반영하는 결정사식 정밀 매칭. 성혼비 없이, 최저가로 시작하세요. 일반 소개팅과 별도로 신청받습니다."
+        sub="학력·연봉·종교·직업까지 반영하는 결정사식 정밀 매칭. 성혼비 없이, 부담 없는 가격으로 시작하세요. 일반 소개팅과 별도로 신청받습니다."
       />
       <MarriageMatch />
     </PageShell>

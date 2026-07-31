@@ -3,10 +3,10 @@ import { IconBadge, IconLock, IconShield, IconCheck, Sparkle } from "@/component
 
 /* ═══ TRUST BADGES — 인증/안전 4종 ═══ */
 const badges = [
-  { Icon: IconBadge, t: "신원 100% 검증", d: "재직·혼인관계증명서" },
+  { Icon: IconBadge, t: "신원 서류 검증", d: "재직·혼인관계증명서" },
   { Icon: IconLock, t: "개인정보 보호", d: "암호화 저장 · 즉시 폐기" },
   { Icon: IconShield, t: "안전한 만남", d: "검증된 회원만 매칭" },
-  { Icon: IconCheck, t: "후불제 보장", d: "매칭 성사 시에만 결제" },
+  { Icon: IconCheck, t: "후불제 운영", d: "매칭 성사 시에만 결제" },
 ];
 
 export default function TrustBadges() {

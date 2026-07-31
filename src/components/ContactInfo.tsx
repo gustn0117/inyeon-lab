@@ -27,7 +27,7 @@ const cards = [
   {
     Icon: IconBadge,
     label: "PRIVACY",
-    t: "100% 비공개",
+    t: "철저한 비공개",
     d: "문의 내용·연락처 모두 매칭사 외 공유 안 됨.",
     meta: "개인정보보호법 준수",
   },
