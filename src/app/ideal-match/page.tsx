@@ -329,7 +329,7 @@ export default function IdealMatchPage() {
               <div className="space-y-3 max-w-sm mx-auto mb-10 text-left">
                 {[
                   { t: "1분이면 끝나요", d: "선택지만 탭하시면 됩니다" },
-                  { t: "첫 매칭 50% 할인", d: "남녀 모두 첫 매칭 할인 적용" },
+                  { t: "부담 없는 매칭비", d: "여성 3만원대 · 남성 4만원대" },
                   { t: "전문 매칭사 1:1 연락", d: "조건에 맞는 분이 있을 때만" },
                 ].map((b, i) => (
                   <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-white shadow-sm">
@@ -438,7 +438,7 @@ export default function IdealMatchPage() {
                   </div>
                   <div className="flex-1">
                     <p className="text-[13px] font-bold mb-1" style={{ color: SB }}>
-                      남녀 모두 첫 매칭 <span style={{ color: PINK }}>50% 할인</span>
+                      매칭비 <span style={{ color: PINK }}>여성 3만원대 · 남성 4만원대</span>
                     </p>
                     <p className="text-[12px] leading-relaxed" style={{ color: MT }}>
                       이상형 조건에 맞는 분이 있을 경우<br />담당 매칭사가 직접 연락드리겠습니다.

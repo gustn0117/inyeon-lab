@@ -7,7 +7,7 @@ const steps = [
   { n: "02", t: "프로필·서류 검토", d: "재직증명서·혼인관계증명서 확인. 비용 0원.", price: "₩ 0" },
   { n: "03", t: "프로필 전달", d: "조건이 맞는 분의 실제 사진·프로필 1:1 비공개 전달.", price: "₩ 0" },
   { n: "04", t: "매칭 동의", d: "마음에 들지 않으면 다음 분 추천. 여기까지 비용 없음.", price: "₩ 0" },
-  { n: "05", t: "만남 확정 → 결제", d: "두 분 모두 동의 시 결제 진행. 만남 일정도 매칭사가 조율.", price: "₩ 6만원~", highlight: true },
+  { n: "05", t: "만남 확정 → 결제", d: "두 분 모두 동의 시 결제 진행. 만남 일정도 매칭사가 조율.", price: "₩ 3만원대~", highlight: true },
 ];
 
 export default function WhyAfterpay() {
@@ -69,7 +69,7 @@ export default function WhyAfterpay() {
               </div>
             ))}
             <p className="text-xs text-ink-tertiary text-center mt-3 font-medium">
-              남녀 모두 첫 매칭 50% 할인. 여성 ₩ 6만원 · 남성 ₩ 9만원 /회, 무제한 상품 별도 안내.
+              매칭비 여성 3만원대 · 남성 4만원대 /회, 무제한 상품 별도 안내.
             </p>
           </div>
         </div>
