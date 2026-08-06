@@ -181,7 +181,7 @@ export function HeroSection() {
 
         <p className="hero-anim hero-d3 text-lg sm:text-xl lg:text-2xl text-ink max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed" style={{ fontWeight: 600, textShadow: "0 1px 10px rgba(255,255,255,0.8), 0 0 14px rgba(255,255,255,0.5)" }}>
           전문 매칭사가 회원님의 <strong className="font-extrabold text-accent">이상형</strong>을 직접 분석.<br className="hidden sm:block" />
-          마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="font-extrabold text-accent">후불제 소개팅</strong>.
+          마음에 드는 분으로 매칭 성사 시에만 결제하는 <strong className="font-extrabold text-accent">20·30대 전용 후불제 소개팅</strong>.
         </p>
 
         {/* CTA — 화려한 그라데이션 + ring-pulse + shimmer */}
