@@ -82,6 +82,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <TrustBadges />
+      <BigStats />
       <IdealMatchSection />
       <TrustBar />
       <Persona />
@@ -95,7 +96,6 @@ export default function Home() {
       <DateMoments />
       <BigQuote />
       <Testimonials />
-      <BigStats />
       <KakaoFlow />
       <MainFAQ />
       <QuickInquiry />

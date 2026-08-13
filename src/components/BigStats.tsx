@@ -34,6 +34,20 @@ export default function BigStats() {
             </div>
           ))}
         </div>
+
+        {/* 회원 직업 어필 — 전문직·대기업 강조 */}
+        <div className="mt-10 text-center reveal">
+          <p className="text-sm sm:text-base font-bold text-ink mb-4">
+            <span className="text-accent">대기업 · 전문직 · 공무원</span> 등 검증된 직업의 회원분들이 활동 중이에요
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+            {["대기업", "공기업", "공무원", "교사", "간호사", "회계사", "엔지니어", "아나운서", "승무원", "통역사", "사업가", "디자이너"].map((j, i) => (
+              <span key={i} className="px-3.5 py-1.5 rounded-full bg-accent-soft text-accent text-xs sm:text-sm font-bold">
+                {j}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
