@@ -16,47 +16,113 @@ async function supa(path: string, opts: RequestInit = {}) {
   });
 }
 
-const PHONE_RE = /^01[0-9]-?\d{3,4}-?\d{4}$/;
-const SHORT = (s: unknown) => (typeof s === "string" ? s.trim().slice(0, 30) : null);
-const CJK_RE = /[一-鿿぀-ヿ]/g;
+const PHONE_RE = /^010-?\d{4}-?\d{4}$/;
 const BOT_KEYWORDS = /(select|insert|update|delete|drop|union|sleep|waitfor|pg_sleep|dbms_pipe|chr\(|benchmark|--|;|\|\||xp_|sp_|\bor\b\s*\d|<script)/i;
 
-// POST: 진단 제출
+type NewApplicationBody = {
+  formVersion?: number;
+  website?: string;
+  gender?: string;
+  phone?: string;
+  region?: string;
+  birthYear?: string | number;
+  job?: string;
+  height?: string | number;
+  eligibilityConfirmed?: boolean;
+  privacyConsent?: boolean;
+};
+
+const normalizePhone = (phone: string) => {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length === 11) return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+  return phone.trim();
+};
+
+// POST: 간단 매칭 신청 제출
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
-  if (!body) return NextResponse.json({ error: "잘못된 요청입니다." }, { status: 400 });
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json({ error: "잘못된 요청입니다." }, { status: 400 });
+  }
 
-  const { website, gender, age_range, region, ideal_age, ideal_region, ideal_style, phone } = body as {
-    website?: string;
-    gender?: string;
-    age_range?: string;
-    region?: string;
-    ideal_age?: string;
-    ideal_region?: string;
-    ideal_style?: string;
-    phone?: string;
-  };
+  const newApplication = body as NewApplicationBody;
+  const {
+    formVersion,
+    website,
+    gender,
+    phone,
+    region,
+    birthYear,
+    job,
+    height,
+    eligibilityConfirmed,
+    privacyConsent,
+  } = newApplication;
 
-  // honeypot: 봇이 채우는 hidden 필드
+  if (formVersion !== 2) {
+    return NextResponse.json({ error: "새 신청 페이지에서 다시 접수해주세요." }, { status: 400 });
+  }
+  if (website !== undefined && typeof website !== "string") {
+    return NextResponse.json({ error: "잘못된 요청입니다." }, { status: 400 });
+  }
   if (website && website.length > 0) return NextResponse.json({ ok: true });
+  if (gender !== "여성" && gender !== "남성") {
+    return NextResponse.json({ error: "회원 유형을 다시 선택해주세요." }, { status: 400 });
+  }
+  if (eligibilityConfirmed !== true) {
+    return NextResponse.json({ error: "미혼·연령 가입 조건을 확인해주세요." }, { status: 400 });
+  }
+  if (privacyConsent !== true) {
+    return NextResponse.json({ error: "개인정보 수집·이용 동의가 필요합니다." }, { status: 400 });
+  }
+  if (typeof phone !== "string" || typeof region !== "string" || typeof job !== "string") {
+    return NextResponse.json({ error: "입력값 형식이 올바르지 않습니다." }, { status: 400 });
+  }
+  if ((typeof birthYear !== "string" && typeof birthYear !== "number")
+    || (typeof height !== "string" && typeof height !== "number")) {
+    return NextResponse.json({ error: "출생연도와 키를 다시 입력해주세요." }, { status: 400 });
+  }
 
-  const p = (phone ?? "").trim();
-  if (!p) return NextResponse.json({ error: "연락처를 입력해주세요." }, { status: 400 });
-  if (!PHONE_RE.test(p)) return NextResponse.json({ error: "전화번호 형식이 올바르지 않습니다. (예: 010-1234-5678)" }, { status: 400 });
+  const p = normalizePhone(phone);
+  const r = region.trim();
+  const j = job.trim();
+  const by = Number(birthYear);
+  const h = Number(height);
+  const currentYear = Number(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Seoul", year: "numeric" }).format(new Date()));
+  const maxAge = gender === "여성" ? 35 : 39;
+  // 출생연도만 수집하므로 생일 경계에 해당하는 한 해를 포함하고, 자격 체크로 본인 확인을 받습니다.
+  const oldestBirthYear = currentYear - maxAge - 1;
+  const youngestBirthYear = currentYear - 19;
 
-  // 봇/스팸 차단
-  const all = [gender, age_range, region, ideal_age, ideal_region, ideal_style, p].filter(Boolean).join(" ");
-  if (BOT_KEYWORDS.test(all)) return NextResponse.json({ ok: true });
-  const cjk = (all.match(CJK_RE) ?? []).length;
-  if (cjk >= 5) return NextResponse.json({ ok: true });
+  if (!PHONE_RE.test(p)) {
+    return NextResponse.json({ error: "전화번호 형식이 올바르지 않습니다. (예: 010-1234-5678)" }, { status: 400 });
+  }
+  if (r.length < 2 || r.length > 30) {
+    return NextResponse.json({ error: "지역을 2~30자로 입력해주세요." }, { status: 400 });
+  }
+  if (!Number.isInteger(by) || by < oldestBirthYear || by > youngestBirthYear) {
+    return NextResponse.json({ error: `${maxAge}세 이하 성인에 해당하는 출생연도를 입력해주세요.` }, { status: 400 });
+  }
+  if (j.length < 2 || j.length > 30) {
+    return NextResponse.json({ error: "직업을 2~30자로 입력해주세요." }, { status: 400 });
+  }
+  if (!Number.isInteger(h) || h < 130 || h > 220) {
+    return NextResponse.json({ error: "키는 130~220cm 사이로 입력해주세요." }, { status: 400 });
+  }
 
+  const all = [gender, r, String(by), j, String(h), p].join(" ");
+  if (BOT_KEYWORDS.test(all)) {
+    return NextResponse.json({ error: "입력 내용을 다시 확인해주세요." }, { status: 400 });
+  }
+
+  // 기존 운영 DB 스키마와 호환되도록 새 신청 필드를 기존 text 컬럼에 명시적으로 매핑합니다.
   const payload = {
-    gender: SHORT(gender),
-    age_range: SHORT(age_range),
-    region: SHORT(region),
-    ideal_age: SHORT(ideal_age),
-    ideal_region: SHORT(ideal_region),
-    ideal_style: SHORT(ideal_style),
+    gender,
+    age_range: `${by}년생`,
+    region: r,
+    ideal_age: j,
+    ideal_region: `${h}cm`,
+    ideal_style: "자가 자격확인·개인정보동의 v1",
     phone: p,
   };
 
@@ -79,7 +145,7 @@ export async function GET(req: NextRequest) {
     headers: { "Accept-Profile": "inyeon_lab" },
     cache: "no-store",
   });
-  if (!res.ok) return NextResponse.json([], { status: 200 });
+  if (!res.ok) return NextResponse.json({ error: "신청 목록을 불러오지 못했습니다." }, { status: 502 });
   return NextResponse.json(await res.json());
 }
 

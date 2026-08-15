@@ -240,7 +240,7 @@ export default function AdminPage() {
           <button onClick={() => setTab("ideal")}
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "ideal" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "ideal" ? { background: PINK } : {}}>
-            이상형 ({ideals.length})
+            신청서 ({ideals.length})
           </button>
         </div>
 
@@ -382,7 +382,7 @@ export default function AdminPage() {
                     <div className="min-w-0 flex-1">
                       <div className="font-medium text-sm truncate flex items-center gap-1.5">
                         {d.name.startsWith("💍") && (
-                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0" style={{ background: "#fce7f3", color: "#db2777" }}>💍 결혼매칭</span>
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded flex-shrink-0" style={{ background: "#f3f4f6", color: "#6b7280" }}>이전 문의</span>
                         )}
                         <span className="truncate">{d.name.replace(/^💍/, "")}</span>
                       </div>
@@ -412,10 +412,11 @@ export default function AdminPage() {
               </button>
             </div>
             {ideals.length === 0 ? (
-              <div className="bg-white rounded-2xl shadow-sm p-8 text-center text-gray-400 text-sm">아직 진단 결과가 없습니다.</div>
+              <div className="bg-white rounded-2xl shadow-sm p-8 text-center text-gray-400 text-sm">아직 매칭 신청이 없습니다.</div>
             ) : (
               <div className="space-y-3">
                 {ideals.map(d => {
+                  const isSimpleApplication = /^\d{4}년생$/.test(d.age_range ?? "");
                   const myInfo = [d.gender, d.age_range, d.region].filter(Boolean).join(" · ") || "-";
                   const idealInfo = [d.ideal_age, d.ideal_region, d.ideal_style].filter(Boolean).join(" · ") || "-";
                   return (
@@ -431,16 +432,34 @@ export default function AdminPage() {
                             aria-label="삭제">삭제</button>
                         </div>
                       </div>
-                      <div className="grid sm:grid-cols-2 gap-2 text-xs">
-                        <div className="rounded-xl px-3 py-2.5 bg-gray-50">
-                          <div className="text-[10px] font-bold text-gray-400 mb-1">본인</div>
-                          <div className="text-gray-700 font-medium">{myInfo}</div>
+                      {isSimpleApplication ? (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                          {[
+                            ["회원 유형", d.gender],
+                            ["출생연도", d.age_range],
+                            ["지역", d.region],
+                            ["직업", d.ideal_age],
+                            ["키", d.ideal_region],
+                            ["가입 확인", d.ideal_style],
+                          ].map(([label, value]) => (
+                            <div key={label} className="rounded-xl px-3 py-2.5 bg-gray-50">
+                              <div className="text-[10px] font-bold text-gray-400 mb-1">{label}</div>
+                              <div className="text-gray-700 font-medium break-words">{value || "-"}</div>
+                            </div>
+                          ))}
                         </div>
-                        <div className="rounded-xl px-3 py-2.5" style={{ background: `${PINK}08` }}>
-                          <div className="text-[10px] font-bold mb-1" style={{ color: PINK }}>이상형</div>
-                          <div className="text-gray-700 font-medium">{idealInfo}</div>
+                      ) : (
+                        <div className="grid sm:grid-cols-2 gap-2 text-xs">
+                          <div className="rounded-xl px-3 py-2.5 bg-gray-50">
+                            <div className="text-[10px] font-bold text-gray-400 mb-1">이전 진단 · 본인</div>
+                            <div className="text-gray-700 font-medium">{myInfo}</div>
+                          </div>
+                          <div className="rounded-xl px-3 py-2.5" style={{ background: `${PINK}08` }}>
+                            <div className="text-[10px] font-bold mb-1" style={{ color: PINK }}>이전 진단 · 이상형</div>
+                            <div className="text-gray-700 font-medium">{idealInfo}</div>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   );
                 })}

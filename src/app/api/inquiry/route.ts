@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   if (!body) return NextResponse.json({ ok: true }); // silently drop
 
-  const { name, phone, website, kind } = body as { name?: string; phone?: string; website?: string; kind?: string };
+  const { name, phone, website } = body as { name?: string; phone?: string; website?: string };
 
   // honeypot: 봇은 hidden 필드를 채움
   if (website && website.length > 0) return NextResponse.json({ ok: true });
@@ -56,8 +56,7 @@ export async function POST(req: NextRequest) {
   const res = await supaFetch("inquiries", {
     method: "POST",
     headers: { Prefer: "return=minimal", "Content-Profile": "inyeon_lab" },
-    // 결혼매칭 신청은 💍 마커로 구분 저장 (별도 컬럼 없이 어드민에서 배지 표시)
-    body: JSON.stringify({ name: kind === "marriage" ? `💍${n}` : n, phone: p }),
+    body: JSON.stringify({ name: n, phone: p }),
   });
 
   if (!res.ok) {

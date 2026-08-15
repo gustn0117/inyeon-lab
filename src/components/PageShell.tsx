@@ -1,15 +1,14 @@
-"use client";
 import ChatWidget from "@/components/ChatWidget";
-import { EventBanner, Navbar, Footer } from "@/sections";
+import { RenewalFooter, RenewalHeader } from "@/components/RenewalShell";
+import styles from "@/components/renewal.module.css";
 
 export default function PageShell({ children }: { children: React.ReactNode }) {
   return (
-    <main className="relative bg-white">
-      <EventBanner />
-      <Navbar />
-      {children}
-      <Footer />
+    <div className={styles.site}>
+      <RenewalHeader />
+      <main className="relative bg-white">{children}</main>
+      <RenewalFooter />
       <ChatWidget />
-    </main>
+    </div>
   );
 }

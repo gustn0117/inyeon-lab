@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const PINK = "#d4567a";
+const INK = "#24271a";
+const LEMON = "#f2e85c";
+const LEMON_WASH = "#fffceb";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
@@ -120,11 +122,12 @@ export default function ChatWidget() {
     setInput("");
 
     try {
-      await fetch("/api/chat", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "send", session: sessionId, content: text }),
       });
+      if (!res.ok) throw new Error("메시지 전송 실패");
     } catch {
       // 실패 시 임시 메시지 제거 + 입력 복구
       setMsgs(prev => prev.filter(m => m.id !== tempId));
@@ -151,7 +154,7 @@ export default function ChatWidget() {
         {tooltipShown && !open && !sessionId && (
           <div className="absolute right-0 bottom-[4.25rem] sm:right-16 sm:bottom-1 bg-white rounded-2xl shadow-xl px-4 py-2.5 animate-pulse-soft" style={{ animation: "float-in 0.4s ease-out", whiteSpace: "nowrap" }}>
             <div className="text-[12px] font-bold" style={{ color: "#333" }}>실시간 상담 가능</div>
-            <div className="text-[10px]" style={{ color: "#999" }}>365일 · 밤 12시까지</div>
+            <div className="text-[10px]" style={{ color: "#777" }}>궁금한 점을 남겨주세요</div>
             <div className="hidden sm:block absolute right-[-6px] bottom-3 w-3 h-3 bg-white transform rotate-45" />
           </div>
         )}
@@ -160,20 +163,20 @@ export default function ChatWidget() {
           type="button"
           onClick={() => setOpen(o => !o)}
           className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 group"
-          style={{ background: `linear-gradient(135deg, ${PINK}, #e8457f)` }}
+          style={{ background: LEMON, color: INK }}
           aria-label={open ? "채팅 닫기" : "실시간 채팅 열기"}
         >
           {/* 펄스 링 (첫 방문 시) */}
           {tooltipShown && !open && (
-            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: PINK, opacity: 0.4 }} />
+            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: LEMON, opacity: 0.4 }} />
           )}
 
           {open ? (
-            <svg className="w-5 h-5 text-white relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="w-5 h-5 text-[#171910] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           ) : (
-            <svg className="w-6 h-6 text-white relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg className="w-6 h-6 text-[#171910] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
           )}
@@ -188,11 +191,14 @@ export default function ChatWidget() {
       {/* 채팅 패널 */}
       {open && (
         <div
-          className="fixed bottom-24 right-4 sm:right-7 z-[95] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[75vh] sm:max-h-[600px] rounded-2xl bg-white shadow-2xl border border-pink-50 flex flex-col overflow-hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="인연연구소 실시간 상담"
+          className="fixed bottom-24 right-4 sm:right-7 z-[95] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[75vh] sm:max-h-[600px] rounded-2xl bg-white shadow-2xl border border-[#e8e8d8] flex flex-col overflow-hidden"
           style={{ animation: "slide-up 0.25s cubic-bezier(0.16,1,0.3,1)" }}
         >
           {/* 헤더 */}
-          <div className="relative flex items-center gap-3 px-5 py-4 text-white flex-shrink-0" style={{ background: `linear-gradient(135deg, ${PINK}, #e8457f)` }}>
+          <div className="relative flex items-center gap-3 px-5 py-4 text-white flex-shrink-0" style={{ background: INK }}>
             <div className="relative w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
@@ -203,7 +209,7 @@ export default function ChatWidget() {
             <div className="flex-1 min-w-0">
               <div className="text-sm font-bold flex items-center gap-1.5">
                 인연연구소 상담
-                <span className="text-[10px] font-medium bg-white/20 px-1.5 py-px rounded">ONLINE</span>
+                <span className="text-[10px] font-medium bg-white/20 px-1.5 py-px rounded">LIVE CHAT</span>
               </div>
               <div className="text-[10px] text-white/85">실시간 채팅 상담</div>
             </div>
@@ -221,9 +227,9 @@ export default function ChatWidget() {
 
           {/* 본문 */}
           {!sessionId ? (
-            <div className="p-7 flex-1 flex flex-col justify-center bg-gradient-to-b from-pink-50/40 to-white">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md" style={{ background: `linear-gradient(135deg, ${PINK}, #e8457f)` }}>
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <div className="p-7 flex-1 flex flex-col justify-center" style={{ background: `linear-gradient(180deg, ${LEMON_WASH}, #fff)` }}>
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md" style={{ background: LEMON }}>
+                <svg className="w-6 h-6 text-[#171910]" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                 </svg>
               </div>
@@ -238,12 +244,12 @@ export default function ChatWidget() {
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
                 onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3"
+                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#aaa13e] focus:outline-none mb-3"
               />
               <button
                 onClick={startSession}
-                className="w-full rounded-xl py-3 text-sm font-bold text-white transition-all hover:opacity-90 shadow-md"
-                style={{ background: `linear-gradient(135deg, ${PINK}, #e8457f)` }}
+                className="w-full rounded-xl py-3 text-sm font-bold transition-all hover:opacity-90 shadow-md"
+                style={{ background: LEMON, color: INK }}
               >
                 상담 시작하기
               </button>
@@ -278,7 +284,7 @@ export default function ChatWidget() {
                           style={
                             isVisitor
                               ? {
-                                  background: PINK,
+                                  background: INK,
                                   color: "white",
                                   borderBottomRightRadius: m.isSameAsPrev ? "16px" : "6px",
                                   opacity: m.pending ? 0.65 : 1,
@@ -286,7 +292,7 @@ export default function ChatWidget() {
                               : {
                                   background: "white",
                                   color: "#333",
-                                  border: "1px solid #f3d6e0",
+                                  border: "1px solid #e8e8d8",
                                   borderBottomLeftRadius: m.isSameAsPrev ? "16px" : "6px",
                                 }
                           }
@@ -305,7 +311,7 @@ export default function ChatWidget() {
               </div>
 
               {/* 입력 영역 */}
-              <div className="border-t border-pink-50 p-3 bg-white flex-shrink-0">
+              <div className="border-t border-[#e8e8d8] p-3 bg-white flex-shrink-0">
                 <div className="flex gap-2 items-end">
                   <textarea
                     ref={taRef}
@@ -321,15 +327,15 @@ export default function ChatWidget() {
                         send();
                       }
                     }}
-                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none resize-none leading-snug"
+                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#aaa13e] focus:outline-none resize-none leading-snug"
                     style={{ minHeight: "40px", maxHeight: "88px" }}
                   />
                   <button
                     onClick={send}
                     disabled={!input.trim() || sending}
-                    className="w-10 h-10 rounded-xl text-white flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
+                    className="w-10 h-10 rounded-xl text-[#171910] flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
                     style={{
-                      background: input.trim() ? `linear-gradient(135deg, ${PINK}, #e8457f)` : "#d1d5db",
+                      background: input.trim() ? LEMON : "#d1d5db",
                     }}
                     aria-label="전송"
                   >
