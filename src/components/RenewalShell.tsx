@@ -56,6 +56,7 @@ export function RenewalFooter() {
             상호 인연연구소 · 대표 김가영 · 사업자등록번호 463-59-00868<br />
             문의 010-7617-0181 · orelim0623@naver.com
           </p>
+          <p className={styles.legal}>본 서비스는 만 19세 미만의 청소년은 이용할 수 없습니다.</p>
           <p className={styles.legal}>© 인연연구소. All rights reserved.</p>
         </div>
       </div>
