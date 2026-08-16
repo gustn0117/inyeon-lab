@@ -180,14 +180,13 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={styles.heroImageWrap}>
               <Image
                 src={content.heroImage}
-                alt="소개팅 서비스를 이용하는 성인 남녀의 연출 이미지"
+                alt="소개팅 서비스를 이용하는 남녀의 모습"
                 fill
                 priority
                 sizes="(max-width: 900px) calc(100vw - 28px), (max-width: 1220px) 52vw, 650px"
                 quality={92}
                 className={`${styles.heroImage} ${content.heroImageClass}`}
               />
-              <span className={styles.imageCaption}>서비스 이해를 돕기 위한 연출 이미지</span>
             </div>
           </div>
         </section>
@@ -218,7 +217,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <figure key={item.src} className={`${styles.showcaseCard} ${index === 1 ? styles.showcaseCardLift : ""}`}>
                   <Image
                     src={item.src}
-                    alt="회원풀의 분위기를 보여주는 성인 모델 연출 이미지"
+                    alt="회원풀의 분위기를 보여주는 이미지"
                     fill
                     sizes="(max-width: 720px) calc(100vw - 28px), (max-width: 1180px) 31vw, 370px"
                     quality={91}
@@ -227,7 +226,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                   <span className={styles.showcaseImageShade} aria-hidden="true" />
                   <figcaption>
                     <strong>{item.label}</strong>
-                    <span>서비스 연출 이미지 · 실제 회원 사진이 아닙니다</span>
                   </figcaption>
                 </figure>
               ))}
@@ -256,7 +254,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               <figure className={styles.consultantVisual}>
                 <Image
                   src="/matching-consultant-v1.webp"
-                  alt="태블릿으로 매칭 조건을 검토하는 담당자 연출 이미지"
+                  alt="태블릿으로 매칭 조건을 검토하는 담당자"
                   fill
                   sizes="(max-width: 900px) calc(100vw - 28px), 48vw"
                   quality={92}
@@ -265,7 +263,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <span className={styles.consultantShade} aria-hidden="true" />
                 <figcaption>
                   <strong>마음에 들 때까지 프로필 제안</strong>
-                  <span>담당자가 조건과 소개 의사를 확인합니다 · 서비스 연출 이미지</span>
+                  <span>담당자가 조건과 소개 의사를 확인합니다</span>
                 </figcaption>
               </figure>
 
@@ -297,7 +295,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
         <section id="matching" className={styles.journeySection}>
           <Image
             src="/hero-meeting-v2-4k.webp"
-            alt="카페에서 대화를 나누는 성인 남녀의 연출 이미지"
+            alt="카페에서 대화를 나누는 남녀의 모습"
             fill
             sizes="100vw"
             quality={92}
@@ -320,7 +318,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               ))}
             </div>
             <span className={styles.journeySwipeHint}>옆으로 넘겨 5단계를 확인해보세요.</span>
-            <span className={styles.journeyCaption}>서비스 이해를 돕기 위한 연출 이미지</span>
           </div>
         </section>
 
