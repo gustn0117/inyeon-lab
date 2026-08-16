@@ -1366,6 +1366,13 @@
   line-height: 1.7;
 }
 
+.kakaoNote a {
+  color: #4d503d;
+  text-decoration: underline;
+  text-decoration-color: #b5aa26;
+  text-underline-offset: 3px;
+}
+
 .formCard {
   min-height: 500px;
   border: 1px solid var(--r-line);

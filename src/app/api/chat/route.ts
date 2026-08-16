@@ -20,7 +20,7 @@ const CJK_RE = /[一-鿿぀-ヿ]/g;
 const cjkCount = (s: string) => (s.match(CJK_RE) ?? []).length;
 const isUuid = (v: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 
-const WELCOME_MSG = "문의주시면 매칭전문사가 24시간 내에 순차적으로 답변 드립니다. 따로 답변 알림이 가진 않으니, 카카오톡 아이디인 inyeon_으로 문의주시면 보다 빠르게 답변 받으실 수 있습니다.\n\n어떤 점이 궁금하실까요?";
+const WELCOME_MSG = "문의주시면 매칭전문사가 24시간 내에 순차적으로 답변 드립니다. 빠른 답변이 필요하시면 홈페이지의 카카오톡 오픈채팅 버튼을 이용해주세요.\n\n어떤 점이 궁금하실까요?";
 const RECEIVED_MSG = "채팅이 상담사에게 전달되었습니다.\n빠르게 안내드리도록 하겠습니다.\n폭언, 욕설 사용 시 채팅이 제한됩니다.";
 
 async function insertSystemMsg(session: string, content: string) {

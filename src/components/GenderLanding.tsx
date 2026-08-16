@@ -3,6 +3,7 @@ import ApplicationForm from "@/components/ApplicationForm";
 import ChatWidget from "@/components/ChatWidget";
 import StickyApplyButton from "@/components/StickyApplyButton";
 import { RenewalFooter, RenewalHeader } from "@/components/RenewalShell";
+import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
 import styles from "@/components/renewal.module.css";
 
 type GenderKey = "women" | "men";
@@ -20,8 +21,8 @@ const MATCHING_STEPS = [
   },
   {
     number: "03",
-    title: "1:1 프로필 제안",
-    body: "기본 신원을 확인한 회원 중 조건과 분위기가 맞는 한 분을 비공개로 제안합니다.",
+    title: "마음에 들 때까지 프로필 제안",
+    body: "희망 조건에 맞춰 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.",
   },
   {
     number: "04",
@@ -54,9 +55,9 @@ const CONTENT = {
       { title: "조건과 분위기", body: "직업만이 아니라 생활권, 성향과 서로의 희망 조건까지 살핍니다." },
     ],
     promiseTitle: "좋은 만남에 필요한 기준은 분명하게.",
-    promiseLead: "프로필만 많이 보여주는 방식이 아니라, 담당자가 조건과 의사를 확인한 뒤 실제로 만날 수 있는 한 분을 연결합니다.",
+    promiseLead: "담당자가 조건과 소개 의사를 확인하며 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.",
     criteriaTitle: "능력과 매너를 함께 보는 회원풀",
-    criteria: ["직업·신원 확인", "20·30대 중심", "1:1 비공개 제안", "미혼 회원"],
+    criteria: ["직업·신원 확인", "20·30대 중심", "마음에 들 때까지 제안", "미혼 회원"],
     promises: [
       { title: "대면 소개팅 보장", body: "카톡만 주고받다 끝나는 소개가 아닙니다. 두 분이 매칭에 동의하면 담당자가 실제 만남 날짜와 장소까지 조율합니다." },
       { title: "신원 확인된 회원", body: "직업과 미혼 여부 등 기본 신원 확인 절차를 거친 회원 중에서 소개합니다." },
@@ -89,7 +90,7 @@ const CONTENT = {
     highlights: ["가입비 0원", "이상형 매칭 후 결제", "성비 균형 관리", "대면 소개팅 보장"],
     poolKicker: "CURATED WOMEN'S POOL",
     poolTitle: "거리·나이·스타일까지, 원하는 기준으로 살펴보는 여성 회원풀.",
-    poolLead: "막연한 랜덤 소개가 아닙니다. 실제 소개가 가능한 여성 회원과 남성 회원의 진행 상황을 함께 보며 성비 균형을 관리하고, 먼저 여쭤본 이상형 조건에 맞춰 한 분씩 제안합니다.",
+    poolLead: "막연한 랜덤 소개가 아닙니다. 실제 소개가 가능한 여성 회원과 남성 회원의 진행 상황을 함께 보며 성비 균형을 관리하고, 먼저 여쭤본 이상형 조건에 맞춰 마음에 들 때까지 프로필을 제안합니다.",
     poolImages: [
       { src: "/men-20s-woman-pool-v1.webp", label: "희망 거리·나이 확인" },
       { src: "/men-20s-woman-pool-v2.webp", label: "원하는 스타일 맞춤 제안" },
@@ -109,7 +110,7 @@ const CONTENT = {
       { title: "대면 소개팅 보장", body: "연락처만 전달하고 끝내지 않습니다. 담당자가 실제 만남 날짜와 장소를 조율해 소개팅으로 연결합니다." },
       { title: "신원 확인된 회원", body: "미혼 여부와 기본 신원을 확인한 회원 중 거리·나이·스타일 조건에 맞춰 제안합니다." },
     ],
-    preferenceSummary: "원하는 거리·나이·스타일을 먼저 확인하고 한 분씩 맞춤 제안",
+    preferenceSummary: "원하는 거리·나이·스타일을 먼저 확인하고 마음에 들 때까지 프로필 제안",
     finalStep: {
       number: "05",
       title: "결제 후 대면 일정 조율",
@@ -208,7 +209,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               </div>
               <div className={styles.showcaseLead}>
                 <p>{content.poolLead}</p>
-                <strong>많이 보여주는 것보다, 지금 서로 만나볼 이유가 있는 한 분을 찾습니다.</strong>
+                <strong>조건에 맞는 프로필을, 마음에 들 때까지 제안합니다.</strong>
               </div>
             </div>
 
@@ -248,7 +249,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={styles.curationIntro}>
               <span className={styles.eyebrow}>MATCHING, WITH A HUMAN TOUCH</span>
               <h2>자동 추천만으로는 알기 어려운 것까지,<br />담당자가 함께 봅니다.</h2>
-              <p>조건표 한 줄만 맞추는 방식이 아닙니다. 신청 정보와 희망 조건, 현재 소개 가능 상태, 진행 중인 매칭 흐름을 함께 살펴 실제로 만나볼 이유가 있는 한 분을 제안합니다.</p>
+              <p>조건표 한 줄만 맞추는 방식이 아닙니다. 신청 정보와 희망 조건, 현재 소개 가능 상태를 함께 살펴 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.</p>
             </div>
 
             <div className={styles.curationBody}>
@@ -263,7 +264,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 />
                 <span className={styles.consultantShade} aria-hidden="true" />
                 <figcaption>
-                  <strong>한 분씩 비공개로 제안</strong>
+                  <strong>마음에 들 때까지 프로필 제안</strong>
                   <span>담당자가 조건과 소개 의사를 확인합니다 · 서비스 연출 이미지</span>
                 </figcaption>
               </figure>
@@ -375,7 +376,9 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               <span className={styles.eyebrow}>SIMPLE APPLICATION</span>
               <h2>1분이면<br />신청이 끝나요.</h2>
               <p>{content.applicationLead}</p>
-              <p className={styles.kakaoNote}>추가 문의는 카톡 ID <strong>inyeon_</strong> 으로 보내주세요. 화면 오른쪽 아래 실시간 상담도 그대로 이용할 수 있습니다.</p>
+              <p className={styles.kakaoNote}>
+                추가 문의는 <a href={KAKAO_OPEN_CHAT_URL} target="_blank" rel="noopener noreferrer"><strong>카카오톡 오픈채팅</strong></a>으로 보내주세요. 화면 오른쪽 아래 실시간 상담도 그대로 이용할 수 있습니다.
+              </p>
             </div>
             <ApplicationForm gender={gender} />
           </div>
