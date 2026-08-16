@@ -374,7 +374,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               <h2>1분이면<br />신청이 끝나요.</h2>
               <p>{content.applicationLead}</p>
               <p className={styles.kakaoNote}>
-                추가 문의는 <a href={KAKAO_OPEN_CHAT_URL} target="_blank" rel="noopener noreferrer"><strong>카카오톡 오픈채팅</strong></a>으로 보내주세요. 화면 오른쪽 아래 실시간 상담도 그대로 이용할 수 있습니다.
+                추가 문의는 <strong>카톡 ID inyeon_</strong> 으로 보내주세요. 화면 오른쪽 아래 실시간 상담도 그대로 이용할 수 있습니다.
               </p>
             </div>
             <ApplicationForm gender={gender} />

@@ -47,7 +47,7 @@ export function RenewalFooter() {
           </div>
           <div>
             <div className={styles.footerTitle}>QUICK CONTACT</div>
-            <p className={styles.footerInfo}>추가 문의는 카카오톡 오픈채팅으로 보내주세요.</p>
+            <p className={styles.footerInfo}>추가 문의는 카톡 ID inyeon_ 으로 보내주세요.</p>
             <KakaoCopyButton variant="pill" className="mt-3" />
           </div>
         </div>
