@@ -28,7 +28,7 @@ export default function Home() {
           <div className={styles.choiceBrandRow}>
             <Link href="/" className={styles.choiceBrand} aria-label="인연연구소 홈">
               인연연구소
-              <span>PRIVATE MATCHING</span>
+              <span>1:1 이상형 소개팅</span>
             </Link>
             <span className={styles.choiceTrust}>신원 확인 · 1:1 비공개 매칭</span>
           </div>
