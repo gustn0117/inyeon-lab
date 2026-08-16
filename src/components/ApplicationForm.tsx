@@ -12,11 +12,13 @@ const COPY = {
   women: {
     label: "여성",
     maxAge: 35,
+    price: "33,000원",
     confirmation: "저는 만 19세 이상, 35세 이하의 미혼 여성입니다.",
   },
   men: {
     label: "남성",
     maxAge: 39,
+    price: "44,000원",
     confirmation: "저는 만 19세 이상, 39세 이하의 미혼 남성입니다.",
   },
 } as const;
@@ -134,6 +136,10 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
         <p className={styles.formDescription}>
           인연연구소는 성인 미혼 회원만 이용할 수 있으며, 매칭 진행 전 관련 정보를 확인할 수 있습니다.
         </p>
+        <div className={styles.formPriceSummary}>
+          <strong>지금 결제 0원</strong>
+          <span>양측 매칭 성사 시 {info.price}</span>
+        </div>
         <div className={styles.eligibilityBox}>
           <label className={styles.checkLabel}>
             <input
@@ -164,6 +170,10 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
       <div className={styles.formStep}>STEP 02 · BASIC INFO</div>
       <h3 ref={stageHeadingRef} tabIndex={-1}>기본 정보만 간단히 알려주세요.</h3>
       <p className={styles.formDescription}>연락처, 지역, 출생연도, 직업, 키만 입력하면 신청이 끝납니다.</p>
+      <div className={styles.formPriceSummary}>
+        <strong>가입비 0원</strong>
+        <span>양측 매칭 성사 시 {info.price}</span>
+      </div>
 
       <input
         className={styles.honeypot}
@@ -281,7 +291,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
           이전
         </button>
         <button type="submit" className={styles.formSubmit} disabled={submitting || !privacyConsent}>
-          {submitting ? "접수 중..." : "무료로 매칭 신청"}
+          {submitting ? "접수 중..." : "가입비 없이 신청서 제출"}
         </button>
       </div>
     </form>

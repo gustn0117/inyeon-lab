@@ -34,7 +34,7 @@ export default function Home() {
           </div>
           <div className={styles.choiceIntro}>
             <span className={styles.choiceIntroEyebrow}>CHOOSE YOUR GUIDE</span>
-            <h1>어떤 안내가 필요하세요?</h1>
+            <h1>소개팅 안내를 선택해주세요.</h1>
             <p>해당하는 안내를 선택하면 상세 정보와 신청서가 열립니다.</p>
           </div>
         </header>

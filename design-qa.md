@@ -3,27 +3,32 @@
 ## Scope
 
 - Routes: `/`, `/women`, `/men`
-- Reference: user-provided mobile screenshots and the gender-first, photo-led entry pattern
-- Viewports checked: 390 × 844 at DPR 2 and 1440 × 1000
-- States checked: home gender choice, detail hero, member-pool gallery, matching journey, promise cards, eligibility gate, and application entry
+- Reference: user-provided mobile screenshots plus the live `jusunking.com` gender-first entry at the same mobile viewport
+- Viewports checked: 390 × 844 and 1440 × 1000
+- States checked: home gender choice, both detail heroes, member-pool gallery, human-curation comparison, five-step journey, FAQ, eligibility gate, form entry, fixed CTA, and live-chat launcher
 
 ## Visual checks
 
-- Home stays within one viewport and contains only the brand, a short instruction, the split photo, and two clear gender choices.
+- Home stays within one viewport and contains only the brand, a short instruction, the split photo, and two clear gender choices. The first headline now names `소개팅` directly.
 - Mobile and desktop use separate high-resolution, art-directed images. Male and female click areas align with their respective subjects.
-- `/women` and `/men` share the same responsive layout while preserving gender-specific eligibility, price, pool copy, and CTA labels.
-- Member-pool images use a horizontal snap gallery on mobile and a three-card editorial composition on desktop.
-- The matching section maintains readable white text over the dark photographic treatment.
+- The male page hero and all three female member-pool cards use newly generated adult Korean women who read clearly as being in their twenties; no older female member image remains in the active page.
+- The female page leads with a male member image and the male page leads with a female member image, so each visitor sees the people they may be introduced to.
+- `/women` and `/men` preserve gender-specific eligibility, price, pool copy, FAQ answers, journey payment step, and fixed CTA labels.
+- The photo-led member-pool gallery is followed by a distinct consultant image and a readable comparison panel; generated images are explicitly labeled as service imagery rather than real members.
+- The matching section uses a high-resolution photographic background and keeps white copy readable over a dark scrim.
+- The source/prototype comparison at 390 × 844 confirms that the home keeps the reference's immediate two-way choice while making price, age conditions, and the service category clearer.
 - Korean headings use deliberate line breaks and `word-break: keep-all` where necessary; no syllable-level break remains in the key “카톡” and application copy.
-- The live-chat tooltip is hidden on small screens so it does not obscure primary content; the launcher remains available.
-- The fixed application CTA leaves room for the chat launcher on mobile.
+- The live-chat launcher remains available without overlapping the fixed application CTA.
 
 ## Responsive and interaction checks
 
-- Measured document width at 390px: `scrollWidth = 390px` on `/` and `/women`; no horizontal page overflow.
+- Measured document width at 390px: `scrollWidth = 390px` on `/`, `/women`, and `/men`; no horizontal page overflow.
 - Home links point to `/men` and `/women` and occupy the full corresponding half of the visual.
-- Detail CTAs point to `#apply`; `#member-pool`, `#matching`, and `#apply` land on the intended sections.
-- Eligibility confirmation remains the required first step before form fields are shown.
+- Detail pages render eight intentional sections. Mobile process cards scroll horizontally at a readable type size instead of shrinking into a dense two-column grid.
+- The fixed CTA hides when the application or footer enters the viewport, so it does not cover the eligibility control, form fields, consent copy, or legal information.
+- Eligibility confirmation remains the required first step. After confirmation, the expected `연락처`, `지역`, `출생연도`, `키`, `직업`, and privacy-consent fields appear on both routes.
+- The form repeats `지금 결제 0원` and the gender-specific success price before input, and the submit label states `가입비 없이 신청서 제출`.
+- Native FAQ details open and close without script-only controls; the first answer is visible by default.
 - Focus-visible outlines and reduced-motion overrides remain active.
 
 ## Build checks
@@ -31,5 +36,7 @@
 - TypeScript: pass
 - `git diff --check`: pass
 - Next.js production build: pass
+- Standalone image runtime: `sharp` present in `.next/standalone/node_modules`
+- Priority and lazy image requests: loaded successfully with non-zero natural dimensions
 
-final result: pass
+final result: passed
