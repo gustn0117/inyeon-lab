@@ -39,21 +39,59 @@ export default function Home() {
       <RenewalHeader />
       <main>
         <section className={styles.homeHero}>
-          <div className={styles.shell}>
-            <span className={styles.eyebrow}>IDENTITY-CHECKED · FACE-TO-FACE</span>
-            <h1 className={styles.homeTitle}>
-              카톡으로 끝나지 않는,<br /><span className={styles.lemonMark}>진짜 소개팅.</span>
-            </h1>
-            <p className={styles.homeLead}>
-              가입비 없이 시작하고, 원하는 조건의 상대와 매칭이 성사될 때만 결제하세요. 두 분이 동의한 매칭은 실제 대면 일정까지 책임지고 연결합니다.
-            </p>
-            <div className={styles.trustRow} aria-label="핵심 서비스 특징">
-              <span className={styles.trustPill}>가입비 0원</span>
-              <span className={styles.trustPill}>신원 확인 회원</span>
-              <span className={styles.trustPill}>대면 소개팅 보장</span>
+          <Image
+            src="/hero-meeting-v1.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className={styles.homeHeroImage}
+            aria-hidden="true"
+          />
+          <div className={styles.homeHeroScrim} aria-hidden="true" />
+          <div className={styles.homeHeroGlow} aria-hidden="true" />
+          <div className={`${styles.shell} ${styles.homeHeroInner}`}>
+            <div className={styles.homeHeroContent}>
+              <span className={styles.eyebrow}>IDENTITY-CHECKED · FACE-TO-FACE</span>
+              <h1 className={styles.homeTitle}>
+                카톡으로 끝나지 않는,<br /><span className={styles.lemonMark}>진짜 소개팅.</span>
+              </h1>
+              <p className={styles.homeLead}>
+                가입비 없이 시작하고, 원하는 조건의 상대와 매칭이 성사될 때만 결제하세요. 두 분이 동의한 매칭은 실제 대면 일정까지 책임지고 연결합니다.
+              </p>
+              <div className={styles.heroActions}>
+                <Link href="#choose" className={styles.heroPrimaryButton}>내 안내 선택하기</Link>
+                <span className={styles.heroActionNote}>여성 35세 · 남성 39세 이하 미혼</span>
+              </div>
+              <div className={styles.trustRow} aria-label="핵심 서비스 특징">
+                <span className={styles.trustPill}>가입비 0원</span>
+                <span className={styles.trustPill}>신원 확인 회원</span>
+                <span className={styles.trustPill}>대면 소개팅 보장</span>
+              </div>
+            </div>
+
+            <div className={styles.heroProofStack} aria-hidden="true">
+              <div className={`${styles.heroProofCard} ${styles.heroProofCardFirst}`}>
+                <span>MATCHING FEE</span>
+                <strong>성사된 뒤에만 결제</strong>
+              </div>
+              <div className={`${styles.heroProofCard} ${styles.heroProofCardSecond}`}>
+                <span>REAL MEETING</span>
+                <strong>대면 일정까지 직접 조율</strong>
+              </div>
             </div>
           </div>
+          <span className={styles.heroImageCaption}>서비스 연출 이미지</span>
         </section>
+
+        <div className={styles.heroSignal} aria-label="서비스 진행 방식">
+          <div className={`${styles.shell} ${styles.heroSignalInner}`}>
+            <span><b>01</b> 가입비 없이 신청</span>
+            <span><b>02</b> 신원 확인</span>
+            <span><b>03</b> 조건 맞춤 매칭</span>
+            <span><b>04</b> 실제 만남 조율</span>
+          </div>
+        </div>
 
         <section id="choose" className={styles.selector}>
           <div className={styles.shell}>
