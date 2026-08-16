@@ -34,7 +34,7 @@ export default function Home() {
           </div>
           <div className={styles.choiceIntro}>
             <span className={styles.choiceIntroEyebrow}>CHOOSE YOUR GUIDE</span>
-            <h1>소개팅 안내를 선택해주세요.</h1>
+            <h1>우리는 이상형 소개팅 인연연구소입니다.</h1>
             <p>해당하는 안내를 선택하면 상세 정보와 신청서가 열립니다.</p>
           </div>
         </header>
@@ -66,7 +66,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <span className={styles.choiceCaption}>서비스 이해를 돕기 위한 연출 이미지</span>
         </section>
       </main>
       <ChatWidget />
