@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ChatWidget from "@/components/ChatWidget";
+import { RenewalFooter } from "@/components/RenewalShell";
 import styles from "@/components/renewal.module.css";
 
 const ENTRANCES = [
@@ -68,6 +69,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <RenewalFooter />
       <ChatWidget />
     </div>
   );
