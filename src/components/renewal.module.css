@@ -1698,8 +1698,19 @@
   padding: 22px clamp(24px, 4vw, 64px) 25px;
   border-bottom: 1px solid var(--r-line);
   background:
-    radial-gradient(circle at 50% 115%, rgba(242, 232, 92, 0.22), transparent 32%),
-    #fff;
+    radial-gradient(circle at 50% 115%, rgba(242, 232, 92, 0.34), transparent 40%),
+    linear-gradient(180deg, var(--r-lemon-wash) 0%, #fff 72%);
+}
+
+/* 헤더 하단 레몬 경계선 포인트 */
+.choiceHeader::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--r-lemon) 18%, var(--r-lemon) 82%, transparent 100%);
+  content: "";
 }
 
 .choiceBrandRow {
@@ -1746,7 +1757,11 @@
 }
 
 .choiceIntroEyebrow {
-  color: #888a73;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--r-lemon-soft);
+  color: #75722e;
   font-family: Inter, sans-serif;
   font-size: 9px;
   font-weight: 820;
