@@ -9,6 +9,9 @@
 
 ## Visual checks
 
+- Current home iteration was compared against the user's annotated mobile screenshot: both replacement subjects now face the camera, share a matched eye line and visual scale, and remain clearly separated by the center divider.
+- Mobile gender labels are exactly the same smaller size (`22px`) and desktop labels resolve to the same `34px`; the brand lockup is also rebalanced to `16px` + `11px` on mobile so neither line overpowers the other.
+- The active home artwork is art-directed by viewport: mobile loads the 1882 × 3344 portrait WebP and desktop loads the 3328 × 1872 landscape source through Next Image. Both were visually inspected at 390 × 844 and 1440 × 900 with clean facial detail and no visible low-resolution enlargement.
 - Home stays within one viewport and contains only the brand, a short instruction, the split photo, and two clear gender choices. The first headline now names `소개팅` directly.
 - Mobile and desktop use separate high-resolution, art-directed images. Male and female click areas align with their respective subjects.
 - The male page hero and all three female member-pool cards use newly generated adult Korean women who read clearly as being in their twenties; no older female member image remains in the active page.
@@ -23,7 +26,7 @@
 ## Responsive and interaction checks
 
 - Measured document width at 390px: `scrollWidth = 390px` on `/`, `/women`, and `/men`; no horizontal page overflow.
-- Home links point to `/men` and `/women` and occupy the full corresponding half of the visual.
+- At 390px, the home links point to `/men` and `/women`, each measure exactly 195px wide, and occupy the full corresponding half of the 390px visual. At 1440px, each half measures 720px.
 - Detail pages render eight intentional sections. Mobile process cards scroll horizontally at a readable type size instead of shrinking into a dense two-column grid.
 - The fixed CTA hides when the application or footer enters the viewport, so it does not cover the eligibility control, form fields, consent copy, or legal information.
 - Eligibility confirmation remains the required first step. After confirmation, the expected `연락처`, `지역`, `출생연도`, `키`, `직업`, and privacy-consent fields appear on both routes.
