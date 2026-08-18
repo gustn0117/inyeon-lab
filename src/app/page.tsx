@@ -35,8 +35,8 @@ export default function Home() {
           </div>
           <div className={styles.choiceIntro}>
             <span className={styles.choiceIntroEyebrow}>CHOOSE YOUR GUIDE</span>
-            <h1>이상형 기반 <span className={styles.lemonMark}>맞춤형 소개팅</span></h1>
-            <p>나에게 맞는 인연을 매칭합니다</p>
+            <h1>이상형 기반 맞춤형 소개팅</h1>
+            <p>“나에게 맞는 인연을 매칭합니다”</p>
           </div>
         </header>
 
