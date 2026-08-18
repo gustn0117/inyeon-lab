@@ -42,9 +42,9 @@ export default function Home() {
 
         <section className={styles.choiceStage} aria-label="성별별 서비스 안내 선택">
           <picture className={styles.choicePicture} aria-hidden="true">
-            <source media="(max-width: 720px)" srcSet="/home-gender-front-mobile-tall-v3.webp" />
+            <source media="(max-width: 720px)" srcSet="/home-gender-front-mobile-athletic-v4.webp" />
             <Image
-              src="/home-gender-front-desktop-tall-v3.webp"
+              src="/home-gender-front-desktop-athletic-v4.webp"
               alt=""
               fill
               priority
