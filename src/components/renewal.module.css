@@ -1783,8 +1783,9 @@
 .choiceIntro p {
   margin: 6px 0 0;
   color: #70725e;
-  font-size: 12px;
-  line-height: 1.5;
+  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-size: clamp(19px, 2.2vw, 27px);
+  line-height: 1.4;
   word-break: keep-all;
 }
 
@@ -2775,7 +2776,7 @@
   .choiceIntro p {
     max-width: 330px;
     margin: 5px auto 0;
-    font-size: 10.5px;
+    font-size: clamp(16px, 4.6vw, 19px);
   }
 
   .choiceImage {
