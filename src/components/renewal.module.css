@@ -1810,7 +1810,7 @@
 
 .choiceImage {
   object-fit: cover;
-  object-position: center center;
+  object-position: center 10%;
 }
 
 .choiceShade {
