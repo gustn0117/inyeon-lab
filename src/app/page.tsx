@@ -37,6 +37,7 @@ export default function Home() {
             <span className={styles.choiceIntroEyebrow}>CHOOSE YOUR GUIDE</span>
             <h1>이상형 기반 맞춤형 소개팅</h1>
             <p>“나에게 맞는 인연을 매칭합니다”</p>
+            <span className={styles.choiceGuideNote}>해당되는 부분을 클릭하시면 상세 안내를 드려요 👇</span>
           </div>
         </header>
 

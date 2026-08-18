@@ -1789,6 +1789,18 @@
   word-break: keep-all;
 }
 
+.choiceGuideNote {
+  display: inline-block;
+  margin-top: 10px;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(36, 39, 26, 0.1);
+  color: #55573f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .choiceStage {
   position: relative;
   min-height: 0;
@@ -1901,15 +1913,18 @@
 
 .choiceLinkAction {
   display: inline-flex;
-  min-height: 38px;
+  min-height: 46px;
   align-items: center;
   gap: 9px;
   margin-top: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.54);
+  border: none;
   border-radius: 999px;
-  padding: 0 15px;
-  background: rgba(255, 255, 255, 0.13);
-  font-size: 11px;
+  padding: 0 22px;
+  background: var(--r-lemon);
+  color: var(--r-ink);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  text-shadow: none;
+  font-size: 13px;
   font-weight: 760;
   backdrop-filter: blur(8px);
 }
@@ -2825,10 +2840,10 @@
   }
 
   .choiceLinkAction {
-    min-height: 38px;
-    margin-top: 9px;
-    padding-inline: 11px;
-    font-size: 11px;
+    min-height: 42px;
+    margin-top: 10px;
+    padding-inline: 16px;
+    font-size: 12px;
   }
 
   .detailSignalInner {
