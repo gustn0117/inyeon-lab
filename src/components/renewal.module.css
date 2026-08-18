@@ -1814,8 +1814,8 @@
 .choiceShade {
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(14, 16, 10, 0.08), transparent 20%, transparent 80%, rgba(14, 16, 10, 0.08)),
-    linear-gradient(180deg, transparent 34%, rgba(18, 20, 13, 0.05) 56%, rgba(14, 16, 10, 0.76) 100%);
+    linear-gradient(90deg, rgba(14, 16, 10, 0.1), transparent 20%, transparent 80%, rgba(14, 16, 10, 0.1)),
+    linear-gradient(180deg, transparent 26%, rgba(18, 20, 13, 0.2) 52%, rgba(14, 16, 10, 0.88) 100%);
   pointer-events: none;
 }
 
@@ -1859,7 +1859,7 @@
   max-width: 330px;
   flex-direction: column;
   align-items: flex-start;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 22px rgba(0, 0, 0, 0.45);
   transition: transform 220ms ease;
 }
 
@@ -1877,7 +1877,7 @@
 .choiceLinkInner strong {
   margin-top: 5px;
   font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
-  font-size: clamp(31px, 4vw, 54px);
+  font-size: clamp(24px, 2.9vw, 38px);
   font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.1;
@@ -1892,9 +1892,9 @@
 
 .choiceLinkPrice {
   margin-top: 4px;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 11px;
-  font-weight: 650;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .choiceLinkAction {
@@ -2810,7 +2810,7 @@
 
   .choiceLinkInner strong {
     margin-top: 4px;
-    font-size: clamp(28px, 8.5vw, 38px);
+    font-size: clamp(22px, 6.4vw, 29px);
   }
 
   .choiceLinkCondition {
