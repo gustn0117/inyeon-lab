@@ -9,10 +9,10 @@
 
 ## Visual checks
 
-- Current home iteration was compared against the user's annotated mobile screenshot: both replacement subjects face the camera and remain clearly separated by the center divider. The male artwork now uses natural 185–190cm proportions with a visibly higher head and shoulder line plus fuller athletic thighs and calves; the straight relaxed-fit trousers avoid the previous overly thin silhouette.
+- The home now uses the original split-scene artwork: the two subjects look toward each other instead of posing directly at the camera, the height difference is restrained, and the center divider still keeps both choices visually distinct.
 - Mobile gender labels are exactly the same smaller size (`22px`) and desktop labels resolve to the same `34px`; the brand lockup is also rebalanced to `16px` + `11px` on mobile so neither line overpowers the other.
-- The active home artwork is art-directed by viewport: mobile loads the 1882 × 3344 portrait WebP and desktop loads the 3328 × 1872 landscape source through Next Image. The tall-male variants were visually inspected for natural anatomy, intact shoes, clean center seams, and unchanged female/right-side imagery before browser QA.
-- Desktop artwork uses a dedicated 10% vertical focal point so the taller man's hairline remains fully visible in the wide cover crop; the mobile art direction retains its independent 48% focal point and full-body framing.
+- The active home artwork is art-directed by viewport: mobile loads the 941 × 1672 portrait WebP and desktop loads the 3344 × 1882 landscape source through Next Image.
+- Both viewport variants use a top-aligned focal point so wide or short screens preserve comfortable space above both subjects' heads. The former 4px lemon divider between the header and photograph has been removed.
 - Home stays within one viewport and contains only the brand, a short instruction, the split photo, and two clear gender choices. The first headline now names `소개팅` directly.
 - Mobile and desktop use separate high-resolution, art-directed images. Male and female click areas align with their respective subjects.
 - The male page hero and all three female member-pool cards use newly generated adult Korean women who read clearly as being in their twenties; no older female member image remains in the active page.

@@ -1702,17 +1702,6 @@
     linear-gradient(180deg, #fdf6c4 0%, var(--r-lemon-wash) 46%, #fffdf2 100%);
 }
 
-/* 헤더 하단 레몬 경계선 포인트 */
-.choiceHeader::after {
-  position: absolute;
-  right: 0;
-  bottom: -1px;
-  left: 0;
-  height: 4px;
-  background: linear-gradient(90deg, transparent 0%, var(--r-lemon) 18%, var(--r-lemon) 82%, transparent 100%);
-  content: "";
-}
-
 .choiceBrandRow {
   display: flex;
   align-items: center;
@@ -1822,7 +1811,7 @@
 
 .choiceImage {
   object-fit: cover;
-  object-position: center 10%;
+  object-position: center top;
 }
 
 .choiceShade {
@@ -2795,7 +2784,7 @@
   }
 
   .choiceImage {
-    object-position: center 48%;
+    object-position: center top;
   }
 
   .choiceShade {
