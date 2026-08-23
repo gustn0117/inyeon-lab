@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
   const by = Number(birthYear);
   const h = Number(height);
   const currentYear = Number(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Seoul", year: "numeric" }).format(new Date()));
-  const maxAge = gender === "여성" ? 35 : 39;
+  const maxAge = gender === "여성" ? 39 : 43;
   // 출생연도만 수집하므로 생일 경계에 해당하는 한 해를 포함하고, 자격 체크로 본인 확인을 받습니다.
   const oldestBirthYear = currentYear - maxAge - 1;
   const youngestBirthYear = currentYear - 19;

@@ -9,14 +9,14 @@ const ENTRANCES = [
     href: "/men",
     eyebrow: "FOR MEN",
     title: "남성 회원",
-    condition: "39세 이하 미혼",
+    condition: "43세 이하 미혼",
     price: "매칭 성사 시 44,000원",
   },
   {
     href: "/women",
     eyebrow: "FOR WOMEN",
     title: "여성 회원",
-    condition: "35세 이하 미혼",
+    condition: "39세 이하 미혼",
     price: "매칭 성사 시 33,000원",
   },
 ] as const;

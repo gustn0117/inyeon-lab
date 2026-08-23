@@ -33,11 +33,11 @@ const MATCHING_STEPS = [
 
 const CONTENT = {
   women: {
-    kicker: "FOR WOMEN · 35 OR UNDER",
+    kicker: "FOR WOMEN · 39 OR UNDER",
     title: <>괜찮은 사람과,<br /><span className={styles.lemonMark}>부담 없는 시작.</span></>,
     lead: "가입비는 0원입니다. 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
     price: "33,000원",
-    condition: "35세 이하 미혼 여성만 신청 가능",
+    condition: "39세 이하 미혼 여성만 신청 가능",
     heroImage: "/women-pool-man-v1.webp",
     heroImageClass: styles.heroImageWomen,
     highlights: ["가입비 0원", "성비 균형 관리", "신원 확인 회원", "대면 소개팅 보장"],
@@ -57,7 +57,7 @@ const CONTENT = {
     promiseTitle: "좋은 만남에 필요한 기준은 분명하게.",
     promiseLead: "담당자가 조건과 소개 의사를 확인하며 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.",
     criteriaTitle: "능력과 매너를 함께 보는 회원풀",
-    criteria: ["직업·신원 확인", "20·30대 중심", "마음에 들 때까지 제안", "미혼 회원"],
+    criteria: ["직업·신원 확인", "20~40대 초반 중심", "마음에 들 때까지 제안", "미혼 회원"],
     promises: [
       { title: "대면 소개팅 보장", body: "카톡만 주고받다 끝나는 소개가 아닙니다. 두 분이 매칭에 동의하면 담당자가 실제 만남 날짜와 장소까지 조율합니다." },
       { title: "신원 확인된 회원", body: "직업과 미혼 여부 등 기본 신원 확인 절차를 거친 회원 중에서 소개합니다." },
@@ -80,11 +80,11 @@ const CONTENT = {
     stickyLabel: "가입비 0원 · 성사 시 33,000원",
   },
   men: {
-    kicker: "FOR MEN · 39 OR UNDER",
+    kicker: "FOR MEN · 43 OR UNDER",
     title: <>원하는 분과,<br /><span className={styles.lemonMark}>매칭된 뒤 결제.</span></>,
     lead: "가입비 0원. 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
     price: "44,000원",
-    condition: "39세 이하 미혼 남성만 신청 가능",
+    condition: "43세 이하 미혼 남성만 신청 가능",
     heroImage: "/men-20s-woman-hero-v1.webp",
     heroImageClass: styles.heroImageMen,
     highlights: ["가입비 0원", "이상형 매칭 후 결제", "성비 균형 관리", "대면 소개팅 보장"],

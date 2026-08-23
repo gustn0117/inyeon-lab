@@ -11,15 +11,15 @@ type Stage = "eligibility" | "form" | "done";
 const COPY = {
   women: {
     label: "여성",
-    maxAge: 35,
+    maxAge: 39,
     price: "33,000원",
-    confirmation: "저는 만 19세 이상, 35세 이하의 미혼 여성입니다.",
+    confirmation: "저는 만 19세 이상, 39세 이하의 미혼 여성입니다.",
   },
   men: {
     label: "남성",
-    maxAge: 39,
+    maxAge: 43,
     price: "44,000원",
-    confirmation: "저는 만 19세 이상, 39세 이하의 미혼 남성입니다.",
+    confirmation: "저는 만 19세 이상, 43세 이하의 미혼 남성입니다.",
   },
 } as const;
 

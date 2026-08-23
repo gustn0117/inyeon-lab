@@ -125,7 +125,7 @@ export function Navbar() {
           <span style={{ color: pk }}>{I.heart("w-5 h-5")}</span>
           <span className="flex flex-col leading-tight">
             <span className="font-logo text-lg sm:text-xl" style={{ letterSpacing: "-0.02em" }}>인연<span style={{ color: pk }}>연구소</span></span>
-            <span className="text-[9px] sm:text-[10px] font-bold tracking-widest" style={{ color: pk }}>20·30대 전용</span>
+            <span className="text-[9px] sm:text-[10px] font-bold tracking-widest" style={{ color: pk }}>1:1 이상형 소개팅</span>
           </span>
         </a>
         <div className="hidden md:flex items-center gap-8">
