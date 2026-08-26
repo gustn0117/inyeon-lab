@@ -38,16 +38,16 @@ const CONTENT = {
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
     price: "33,000원",
     condition: "한국나이 기준 1988년생까지의 미혼 여성만 신청 가능",
-    heroImage: "/inyeon-2026/male-01-v2.webp",
+    heroImage: "/inyeon-2026/male-01-v3.webp",
     heroImageClass: styles.heroImageWomen,
     highlights: ["가입비 0원", "매칭 후 결제", "100% 실회원", "대면 소개팅 보장"],
     poolKicker: "CURATED MEN'S POOL",
     poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀",
     poolLead: "등록된 숫자만 보여드리는 방식이 아닙니다. 실제 만남 의사가 확인된 회원과 진행 중인 소개 현황을 함께 살피고, 여성·남성의 소개 흐름이 한쪽으로 쏠리지 않도록 성비 균형을 관리합니다.",
     poolImages: [
-      { src: "/inyeon-2026/male-02-v2.webp", label: "직업·기본 신원 확인" },
-      { src: "/inyeon-2026/male-03-v2.webp", label: "현재 소개 가능 상태 확인" },
-      { src: "/inyeon-2026/male-04-v2.webp", label: "관계에 진지한 회원 중심" },
+      { src: "/inyeon-2026/male-02-v3.webp", label: "직업·기본 신원 확인" },
+      { src: "/inyeon-2026/male-03-v3.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/male-04-v3.webp", label: "관계에 진지한 회원 중심" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
@@ -57,7 +57,7 @@ const CONTENT = {
     promiseTitle: "좋은 만남에 필요한 기준은 분명하게",
     promiseLead: "담당자가 조건과 소개 의사를 확인하며 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.",
     criteriaTitle: "능력과 매너를 함께 보는 회원풀",
-    criteria: ["직업·신원 확인", "20~40대 초반 중심", "마음에 들 때까지 제안", "미혼 회원"],
+    criteria: ["직업·신원 확인", "20·30대 중심", "마음에 들 때까지 제안", "미혼 회원"],
     promises: [
       { title: "대면 소개팅 보장", body: "카톡만 주고받다 끝나는 소개가 아닙니다. 두 분이 매칭에 동의하면 담당자가 실제 만남 날짜와 장소까지 조율합니다." },
       { title: "신원 확인된 회원", body: "직업과 미혼 여부 등 기본 신원 확인 절차를 거친 회원 중에서 소개합니다." },
@@ -86,16 +86,16 @@ const CONTENT = {
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
     price: "44,000원",
     condition: "한국나이 기준 1984년생까지의 미혼 남성만 신청 가능",
-    heroImage: "/inyeon-2026/female-01-v2.webp",
+    heroImage: "/inyeon-2026/female-01-v3.webp",
     heroImageClass: styles.heroImageMen,
     highlights: ["가입비 0원", "매칭 후 결제", "100% 실회원", "대면 소개팅 보장"],
     poolKicker: "CURATED WOMEN'S POOL",
     poolTitle: "거리·나이·스타일까지, 원하는 기준으로 살펴보는 여성 회원풀",
     poolLead: "막연한 랜덤 소개가 아닙니다. 실제 소개가 가능한 여성 회원과 남성 회원의 진행 상황을 함께 보며 성비 균형을 관리하고, 먼저 여쭤본 이상형 조건에 맞춰 마음에 들 때까지 프로필을 제안합니다.",
     poolImages: [
-      { src: "/inyeon-2026/female-02-v2.webp", label: "희망 거리·나이 확인" },
-      { src: "/inyeon-2026/female-03-v2.webp", label: "원하는 스타일 맞춤 제안" },
-      { src: "/inyeon-2026/female-04-v2.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/female-02-v3.webp", label: "희망 거리·나이 확인" },
+      { src: "/inyeon-2026/female-03-v3.webp", label: "원하는 스타일 맞춤 제안" },
+      { src: "/inyeon-2026/female-04-v3.webp", label: "현재 소개 가능 상태 확인" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
@@ -203,7 +203,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           </div>
         </section>
 
-        <section id="member-pool" className={styles.showcaseSection}>
+        <section id="member-pool" className={styles.showcaseSection} data-floating-ui-guard>
           <div className={styles.shell}>
             <div className={styles.showcaseIntro}>
               <div>
@@ -263,7 +263,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={styles.curationBody}>
               <figure className={styles.consultantVisual}>
                 <Image
-                  src="/inyeon-2026/consultant-v2.webp"
+                  src="/inyeon-2026/consultant-v3.webp"
                   alt="무지 프로필 카드와 태블릿으로 매칭 조건을 검토하는 담당자의 연출 모습"
                   fill
                   sizes="(max-width: 900px) calc(100vw - 28px), 48vw"
@@ -304,7 +304,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
 
         <section id="matching" className={styles.journeySection} data-floating-ui-guard>
           <Image
-            src="/inyeon-2026/meeting-wide-v2.webp"
+            src="/inyeon-2026/meeting-wide-v3.webp"
             alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
             fill
             sizes="100vw"

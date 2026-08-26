@@ -3,9 +3,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const INK = "#c33f61";
-const LEMON = "#df6379";
-const LEMON_WASH = "#fff4f6";
+const INK = "#086aa6";
+const LEMON = "#0b79b6";
+const LEMON_WASH = "#effaff";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
@@ -313,7 +313,7 @@ export default function ChatWidget() {
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
                 onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#d9546e] focus:outline-none focus:ring-4 focus:ring-[#d9546e]/10 mb-3"
+                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#0b79b6] focus:outline-none focus:ring-4 focus:ring-[#0b79b6]/10 mb-3"
               />
               <button
                 onClick={startSession}
@@ -396,7 +396,7 @@ export default function ChatWidget() {
                         send();
                       }
                     }}
-                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#d9546e] focus:outline-none focus:ring-4 focus:ring-[#d9546e]/10 resize-none leading-snug"
+                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#0b79b6] focus:outline-none focus:ring-4 focus:ring-[#0b79b6]/10 resize-none leading-snug"
                     style={{ minHeight: "40px", maxHeight: "88px" }}
                   />
                   <button

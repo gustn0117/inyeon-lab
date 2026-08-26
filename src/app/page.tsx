@@ -88,10 +88,10 @@ export default function Home() {
           <picture className={styles.homeEntryPicture} aria-hidden="true">
             <source
               media="(max-width: 720px)"
-              srcSet="/inyeon-2026/home-hero-mobile-v2.webp"
+              srcSet="/inyeon-2026/home-hero-mobile-v3.webp"
             />
             <Image
-              src="/inyeon-2026/home-hero-desktop-v2.webp"
+              src="/inyeon-2026/home-hero-desktop-v3.webp"
               alt=""
               fill
               loading="eager"
@@ -173,7 +173,7 @@ export default function Home() {
           <div className={`${styles.shell} ${styles.homeIdentityGrid}`}>
             <figure className={styles.homeMeetingVisual}>
               <Image
-                src="/inyeon-2026/meeting-wide-v2.webp"
+                src="/inyeon-2026/meeting-wide-v3.webp"
                 alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
                 fill
                 sizes="(max-width: 900px) calc(100vw - 32px), 56vw"
@@ -273,10 +273,10 @@ export default function Home() {
           <picture className={styles.homeFinalPicture} aria-hidden="true">
             <source
               media="(max-width: 720px), (max-width: 960px) and (orientation: portrait)"
-              srcSet="/inyeon-2026/home-final-mobile-v2.webp"
+              srcSet="/inyeon-2026/home-final-mobile-v3.webp"
             />
             <Image
-              src="/inyeon-2026/home-final-desktop-v2.webp"
+              src="/inyeon-2026/home-final-desktop-v3.webp"
               alt=""
               fill
               sizes="100vw"

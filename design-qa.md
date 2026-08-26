@@ -15,7 +15,7 @@
 - The hero, in-person meeting, and final CTA scenes are newly generated for this project; none of the previous homepage photographs remain on the active route
 - The moving policy ticker supplements static copy and is hidden from assistive technology; an equivalent screen-reader sentence remains available
 - The page continues into service identity, operating principles, transparent prices, the four-step process, FAQ, and final gender CTAs
-- The homepage and shared active accents use white, cool gray, and clear rose; major headings and UI use one modern Korean sans-serif system
+- The homepage and shared active accents use white, sky blue, aqua, and cool gray with no active pink or brown theme surfaces; major headings and UI use one modern Korean sans-serif system
 - Short mobile screens use a compressed first-fold layout so both gender cards and both CTA labels remain visible
 - The chat launcher is hidden while the first-fold gender cards are visible, so it cannot intersect either CTA
 - Portrait tablets use the wide hero composition and keep both people, both cards, and both CTAs inside the first fold
@@ -45,11 +45,11 @@
 
 ## Image production and QA
 
-- Active generated assets: 14 versioned V2 WebP files under `public/inyeon-2026`
+- Active generated assets: 14 versioned V3 WebP files under `public/inyeon-2026`; prior V2 files remain only as rollback assets
 - Desktop and mobile homepage hero pairs preserve the same people, wardrobe, and setting while using independent wide and portrait compositions
 - Desktop and mobile final CTA pairs preserve the same people, wardrobe, and setting while using independent wide and portrait compositions
 - Every original was inspected for adult appearance, face and hand integrity, composition, and the absence of embedded text, logos, and watermarks
-- The male and female portrait sets use distinct 27–34-year-old adults, styling, poses, and settings while keeping one bright 2030 Seoul editorial direction
+- The male and female portrait sets use distinct 24–27-year-old adults, contemporary styling, and bright white/sky-blue/aqua settings while keeping one youthful 2030 Seoul editorial direction
 - Images were converted to sRGB WebP at quality 86 with metadata removed; the complete active set is approximately 1.1 MB
 - The 390 × 844 and 320 × 568 mobile hero crops show both people above the gender cards; the 768 × 1024 detail hero uses a portrait frame without clipping the subject
 - The mobile in-person journey crop keeps both participants readable while reserving the darker left side for text

@@ -5719,3 +5719,436 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Fresh 2030 palette — clear sky blue + aqua, with pink removed from active UI */
+.site {
+  --r-canvas: #f7fbfd;
+  --r-paper: #ffffff;
+  --r-ink: #142833;
+  --r-ink-soft: #5f7079;
+  --r-line: #dceaf0;
+  --r-lemon: #57cfcb;
+  --r-lemon-soft: #dff8f6;
+  --r-lemon-wash: #effaff;
+  --accent: #0b79b6;
+  --accent-deep: #086aa6;
+  --accent-soft: #e2f4fb;
+  --line: #dceaf0;
+  background:
+    radial-gradient(circle at 4% 0%, rgba(87, 207, 203, 0.16), transparent 28rem),
+    var(--r-canvas);
+}
+
+.site ::selection {
+  color: var(--r-ink);
+  background: rgba(87, 207, 203, 0.34);
+}
+
+.homeSite {
+  --home-wine: #0b79b6;
+  --home-wine-deep: #086aa6;
+  --home-blush: #dff8f6;
+  --home-blush-soft: #f3fbfd;
+  --home-dark: #142833;
+  --home-ink-soft: #5f7079;
+}
+
+.header {
+  border-color: rgba(208, 228, 236, 0.9);
+  background: rgba(248, 252, 253, 0.9);
+}
+
+.brandSub,
+.homeBrand span,
+.priceLabel,
+.priceZero,
+.eligibilityNote,
+.kakaoNote,
+.legal {
+  color: #657985;
+}
+
+.navLink:hover {
+  background: rgba(13, 127, 192, 0.09);
+}
+
+.navApply,
+.primaryButton,
+.formButton,
+.formSubmit,
+.stickyApply,
+.faqDetailIntro a {
+  color: #fff;
+  background: var(--accent-deep);
+  box-shadow: 0 14px 34px rgba(8, 106, 166, 0.2);
+}
+
+.lemonMark::after {
+  background: linear-gradient(90deg, rgba(87, 207, 203, 0.34), rgba(13, 127, 192, 0.72));
+}
+
+.eyebrow,
+.homeEntryEyebrow {
+  border-color: rgba(13, 127, 192, 0.2);
+  color: var(--accent-deep);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.homeEntry {
+  background: #eff7fa;
+}
+
+.homeEntryShade {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.98) 0, rgba(255, 255, 255, 0.72) 20%, rgba(255, 255, 255, 0) 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 252, 254, 0.5) 35%, rgba(20, 40, 51, 0.01) 62%, rgba(20, 40, 51, 0.48) 100%);
+}
+
+.homeTopbar {
+  border-color: rgba(20, 40, 51, 0.12);
+}
+
+.homeCategory {
+  border-color: rgba(13, 127, 192, 0.2);
+  color: #39515e;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.homeCategory span {
+  background: #19a9c1;
+  box-shadow: 0 0 0 4px rgba(25, 169, 193, 0.13);
+}
+
+.homeEntryCopy h1 span,
+.homePricingZero strong,
+.homePriceCard > strong {
+  color: var(--home-wine-deep);
+}
+
+.homeEntryCopy p,
+.homeChoiceCondition,
+.homeChoiceDescription,
+.homeFinalInner > p,
+.journeyIntro p,
+.journeyCard p {
+  color: #536873;
+}
+
+.homeTrustList span {
+  border-color: rgba(20, 40, 51, 0.12);
+  color: #334b57;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 8px 24px rgba(22, 65, 84, 0.06);
+}
+
+.homeChoiceCard {
+  color: var(--home-dark);
+  border-color: rgba(13, 127, 192, 0.24);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 54px rgba(22, 65, 84, 0.13), inset 0 1px 0 #fff;
+}
+
+.homeChoiceCard::after {
+  background: rgba(87, 207, 203, 0.17);
+}
+
+.homeChoicePrice {
+  color: #172d38;
+}
+
+.homeChoiceAction {
+  color: #fff;
+  background: var(--accent-deep);
+  box-shadow: 0 10px 26px rgba(8, 106, 166, 0.23);
+}
+
+.homeChoiceAction b {
+  color: #fff;
+}
+
+.homeTicker {
+  border-block-color: #d7edf3;
+  color: #304a57;
+  background: #effaff;
+}
+
+.homeTickerTrack b,
+.homeFaqIntro .homeSectionEyebrow,
+.homeFaqItem summary span,
+.homeFinalInner .homeSectionEyebrow {
+  color: #0b79b6;
+}
+
+.homeIdentitySection,
+.showcaseSection {
+  background:
+    radial-gradient(circle at 7% 12%, rgba(87, 207, 203, 0.11), transparent 25rem),
+    #fff;
+}
+
+.homeMeetingVisual,
+.heroImageWrap,
+.showcaseCard,
+.consultantVisual {
+  border-color: #dceaf0;
+  background: #e5f1f5;
+  box-shadow: 0 24px 64px rgba(22, 65, 84, 0.12);
+}
+
+.homePrincipleCard,
+.homePrincipleCard:last-child {
+  border-color: #e0ebef;
+}
+
+.homePricingSection {
+  background:
+    radial-gradient(circle at 91% 8%, rgba(87, 207, 203, 0.15), transparent 27rem),
+    #f3fbfd;
+}
+
+.homePricingZero {
+  border-color: rgba(13, 127, 192, 0.2);
+}
+
+.homePriceCard {
+  border-color: #dcebf0;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 22px 60px rgba(22, 65, 84, 0.09);
+}
+
+.homePriceCard::before {
+  background: rgba(87, 207, 203, 0.14);
+}
+
+.homePriceCard > p,
+.homeProcessCard {
+  border-color: #dfeaed;
+}
+
+.homeProcessCard {
+  background: linear-gradient(145deg, #fff 0%, #f7fcfd 100%);
+}
+
+.homeProcessCard::after {
+  color: rgba(13, 127, 192, 0.06);
+}
+
+.homeProcessCard > span {
+  background: linear-gradient(135deg, #0b79b6, #159fba);
+}
+
+.homeFaqSection {
+  color: var(--home-dark);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(87, 207, 203, 0.14), transparent 24rem),
+    #f3f9fb;
+}
+
+.homeFaqIntro h2,
+.homeFaqItem summary,
+.homeFinalInner h2 {
+  color: var(--home-dark);
+}
+
+.homeFaqIntro > p,
+.homeFaqItem p {
+  color: #5f7079;
+}
+
+.homeFaqList,
+.homeFaqItem {
+  border-color: #d8e7ec;
+}
+
+.homeFinalShade {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.94), rgba(242, 252, 253, 0.68) 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(237, 249, 252, 0.78));
+}
+
+.homeFinalActions a {
+  border-color: var(--accent-deep);
+  color: #fff;
+  background: var(--accent-deep);
+  box-shadow: 0 14px 36px rgba(8, 106, 166, 0.21);
+}
+
+.homeFinalActions a:last-child {
+  border-color: rgba(13, 127, 192, 0.25);
+  color: #29424f;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.detailSignal {
+  border-color: #d5ecf2;
+  color: var(--r-ink);
+  background: #effaff;
+}
+
+.detailSignalInner span,
+.detailSignalInner span:last-child {
+  border-color: rgba(13, 127, 192, 0.15);
+  color: #3c535f;
+}
+
+.showcaseLead strong {
+  border-color: #57cfcb;
+  color: #314a56;
+}
+
+.poolPointCard {
+  border-color: var(--r-line);
+}
+
+.curationSection {
+  border-color: #d8edf2;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(87, 207, 203, 0.15), transparent 24rem),
+    linear-gradient(180deg, #f8fdfe 0%, #eef9fc 100%);
+}
+
+.consultantVisual,
+.comparisonPanel {
+  border-color: #d8e8ed;
+}
+
+.comparisonPanel {
+  box-shadow: 0 24px 62px rgba(22, 65, 84, 0.08);
+}
+
+.comparisonOurs,
+.formPriceSummary,
+.eligibilityBox,
+.consentSummary {
+  border-color: #cfe8ef;
+  background: var(--r-lemon-wash);
+}
+
+.matchCriteria {
+  border-color: #d3eaf0;
+  background: #f2fbfd;
+}
+
+.criteriaItem {
+  border-color: #bfe3ea;
+  color: #385461;
+}
+
+.journeySection {
+  color: var(--r-ink);
+  background: #f3f9fb;
+}
+
+.journeyShade {
+  background:
+    linear-gradient(90deg, rgba(247, 252, 253, 0.97) 0%, rgba(247, 252, 253, 0.89) 45%, rgba(247, 252, 253, 0.42) 78%, rgba(247, 252, 253, 0.31) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(240, 249, 251, 0.86));
+}
+
+.journeyIntro h2,
+.journeyCard h3 {
+  color: var(--r-ink);
+}
+
+.journeyCard {
+  border-color: rgba(20, 40, 51, 0.13);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 48px rgba(22, 65, 84, 0.07);
+}
+
+.promiseCard {
+  border-color: var(--r-line);
+  background: #f8fbfc;
+}
+
+.promiseCardFeatured {
+  background: var(--r-lemon-soft);
+}
+
+.faqDetailSection {
+  background:
+    radial-gradient(circle at 90% 15%, rgba(87, 207, 203, 0.13), transparent 20rem),
+    #f5fafc;
+}
+
+.faqDetailList,
+.faqDetailItem {
+  border-color: #d8e6eb;
+}
+
+.formCard {
+  border-color: #dceaf0;
+  box-shadow: 0 24px 64px rgba(22, 65, 84, 0.08);
+}
+
+.checkLabel input {
+  accent-color: var(--accent-deep);
+}
+
+.field input {
+  border-color: #d7e5ea;
+}
+
+.field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(13, 127, 192, 0.12);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #b42318;
+  box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.1);
+}
+
+.checkLabel input[aria-invalid="true"] {
+  outline-color: rgba(180, 35, 24, 0.22);
+}
+
+.site a:focus-visible,
+.site button:focus-visible,
+.site input:focus-visible,
+.showcaseMosaic:focus-visible,
+.journeyGrid:focus-visible {
+  outline-color: rgba(13, 127, 192, 0.48);
+}
+
+.footer {
+  border-color: var(--r-line);
+  background: #eff7fa;
+}
+
+.footerCopy,
+.footerInfo,
+.footerLink,
+.legal {
+  color: #657985;
+}
+
+.footerBottom {
+  border-color: #d5e6ec;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .homeChoiceCard:hover {
+    border-color: rgba(13, 127, 192, 0.48);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 25px 66px rgba(22, 65, 84, 0.16), inset 0 1px 0 #fff;
+  }
+}
+
+@media (max-width: 720px) {
+  .homeEntryShade {
+    background:
+      linear-gradient(180deg, #fff 0, #fff 288px, rgba(245, 252, 254, 0.78) 337px, rgba(20, 40, 51, 0.01) 52%, rgba(20, 40, 51, 0.5) 100%);
+  }
+
+  .detailSignalInner span:nth-child(2n),
+  .detailSignalInner span:nth-child(-n + 2) {
+    border-color: rgba(13, 127, 192, 0.15);
+  }
+
+  .journeyShade {
+    background:
+      linear-gradient(180deg, rgba(247, 252, 253, 0.95) 0%, rgba(247, 252, 253, 0.8) 35%, rgba(240, 249, 251, 0.93) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.74), transparent);
+  }
+}
