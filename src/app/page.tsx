@@ -17,7 +17,7 @@ const ENTRANCES = [
     href: "/women",
     eyebrow: "FOR WOMEN",
     title: "여성 회원 안내",
-    condition: "39세 이하 미혼 여성",
+    condition: "한국나이 기준 1988년생까지",
     price: "매칭 성사 후 33,000원",
     description: "가입비 없이 이용 방식과 공개 금액을 확인하세요",
   },
@@ -28,7 +28,7 @@ const TRUST_ITEMS = [
   "가입비 없음",
   "매칭 후 결제",
   "금액 공개",
-  "알바 사용 X",
+  "100% 실회원",
   "대면 소개팅 보장",
 ] as const;
 
@@ -45,8 +45,8 @@ const PRINCIPLES = [
   },
   {
     number: "03",
-    title: "알바 회원 없이 실제 만남",
-    body: "알바 회원을 사용하지 않으며 성사된 매칭은 날짜와 장소를 조율해 대면 소개팅으로 연결",
+    title: "100% 실회원과 실제 만남",
+    body: "실제 소개 의사가 확인된 회원으로만 진행하며 성사된 매칭은 날짜와 장소를 조율해 대면 소개팅으로 연결",
   },
 ] as const;
 
@@ -84,14 +84,14 @@ export default function Home() {
   return (
     <div className={`${styles.site} ${styles.homeSite}`}>
       <main>
-        <section className={styles.homeEntry} aria-labelledby="home-title">
+        <section className={styles.homeEntry} aria-labelledby="home-title" data-floating-ui-guard>
           <picture className={styles.homeEntryPicture} aria-hidden="true">
             <source
               media="(max-width: 720px)"
-              srcSet="/inyeon-2026/home-hero-mobile.webp"
+              srcSet="/inyeon-2026/home-hero-mobile-v2.webp"
             />
             <Image
-              src="/inyeon-2026/home-hero-desktop.webp"
+              src="/inyeon-2026/home-hero-desktop-v2.webp"
               alt=""
               fill
               loading="eager"
@@ -102,6 +102,7 @@ export default function Home() {
             />
           </picture>
           <span className={styles.homeEntryShade} aria-hidden="true" />
+          <span className={`${styles.imageDisclosure} ${styles.homeEntryDisclosure}`}>서비스 연출 이미지</span>
 
           <header className={styles.homeTopbar}>
             <Link href="/" className={styles.homeBrand} aria-label="인연연구소 홈">
@@ -122,7 +123,7 @@ export default function Home() {
             </h1>
             <p>
               가입비 없이 시작해 매칭 후 결제
-              <br />금액은 투명하게 공개하고 알바 회원은 사용하지 않습니다
+              <br />금액은 투명하게 공개하고 100% 실회원으로 진행합니다
             </p>
             <div className={styles.homeTrustList} aria-label="인연연구소 핵심 운영 원칙">
               {TRUST_ITEMS.slice(1, 5).map((item) => <span key={item}>{item}</span>)}
@@ -172,7 +173,7 @@ export default function Home() {
           <div className={`${styles.shell} ${styles.homeIdentityGrid}`}>
             <figure className={styles.homeMeetingVisual}>
               <Image
-                src="/inyeon-2026/meeting-wide.webp"
+                src="/inyeon-2026/meeting-wide-v2.webp"
                 alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
                 fill
                 sizes="(max-width: 900px) calc(100vw - 32px), 56vw"
@@ -183,7 +184,7 @@ export default function Home() {
               <figcaption>
                 <span>FROM MATCH TO MEETING</span>
                 <strong>대면 소개팅 보장</strong>
-                <small>매칭 성사 후 날짜와 장소까지 조율</small>
+                <small>서비스 연출 이미지 · 매칭 성사 후 날짜와 장소까지 조율</small>
               </figcaption>
             </figure>
 
@@ -268,14 +269,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.homeFinalSection}>
+        <section className={styles.homeFinalSection} data-floating-ui-guard>
           <picture className={styles.homeFinalPicture} aria-hidden="true">
             <source
               media="(max-width: 720px), (max-width: 960px) and (orientation: portrait)"
-              srcSet="/inyeon-2026/home-final-mobile.webp"
+              srcSet="/inyeon-2026/home-final-mobile-v2.webp"
             />
             <Image
-              src="/inyeon-2026/home-final-desktop.webp"
+              src="/inyeon-2026/home-final-desktop-v2.webp"
               alt=""
               fill
               sizes="100vw"
@@ -284,6 +285,7 @@ export default function Home() {
             />
           </picture>
           <span className={styles.homeFinalShade} aria-hidden="true" />
+          <span className={`${styles.imageDisclosure} ${styles.homeFinalDisclosure}`}>서비스 연출 이미지</span>
           <div className={`${styles.shell} ${styles.homeFinalInner}`}>
             <span className={styles.homeSectionEyebrow}>START WITHOUT A MEMBERSHIP FEE</span>
             <h2>앱이 아닌 소개팅을 찾고 있다면<br />나에게 맞는 안내부터 확인해 보세요</h2>

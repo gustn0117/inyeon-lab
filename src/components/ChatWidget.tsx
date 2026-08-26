@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const INK = "#292321";
-const LEMON = "#d9aaa5";
-const LEMON_WASH = "#fbf4f2";
+const INK = "#c33f61";
+const LEMON = "#df6379";
+const LEMON_WASH = "#fff4f6";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
@@ -24,9 +24,18 @@ export default function ChatWidget() {
   const [sending, setSending] = useState(false);
   const [unread, setUnread] = useState(0);
   const [tooltipShown, setTooltipShown] = useState(false);
+  const [guarded, setGuarded] = useState(false);
   const lastIdRef = useRef(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
+  const launcherRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeChat = useCallback(() => {
+    setOpen(false);
+    requestAnimationFrame(() => launcherRef.current?.focus());
+  }, []);
 
   // 세션 복구
   useEffect(() => {
@@ -45,6 +54,27 @@ export default function ChatWidget() {
         return () => clearTimeout(t);
       }
     } catch {}
+  }, []);
+
+  // 핵심 CTA와 가로 탐색 영역에서는 플로팅 UI가 콘텐츠를 가리지 않도록 숨깁니다.
+  useEffect(() => {
+    const targets = [
+      ...Array.from(document.querySelectorAll("[data-floating-ui-guard]")),
+      ...Array.from(document.querySelectorAll("footer")),
+    ];
+    const visibleTargets = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visibleTargets.add(entry.target);
+        else visibleTargets.delete(entry.target);
+      });
+      const nextGuarded = visibleTargets.size > 0;
+      setGuarded(nextGuarded);
+      if (nextGuarded) setOpen(false);
+    }, { threshold: 0.01 });
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
   }, []);
 
   // 폴링 (열렸든 닫혔든 unread 알림 위해 동작)
@@ -78,12 +108,45 @@ export default function ChatWidget() {
   useEffect(() => {
     if (!open) return;
     const el = scrollRef.current;
-    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: reduceMotion ? "auto" : "smooth" });
     setUnread(0);
     // 열면 툴팁 숨기고 본 것으로 표시
     setTooltipShown(false);
     try { localStorage.setItem(TOOLTIP_KEY, "1"); } catch {}
   }, [msgs, open]);
+
+  // 대화상자 초기 초점, Escape 닫기, Tab 초점 순환
+  useEffect(() => {
+    if (!open) return;
+    const dialog = dialogRef.current;
+    const focusableSelector = "button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [href], [tabindex]:not([tabindex='-1'])";
+    const focusTimer = requestAnimationFrame(() => closeButtonRef.current?.focus());
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeChat();
+        return;
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      cancelAnimationFrame(focusTimer);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [closeChat, open]);
 
   // textarea 자동 높이 (최대 3줄)
   useEffect(() => {
@@ -149,7 +212,7 @@ export default function ChatWidget() {
   return (
     <>
       {/* 플로팅 버튼 */}
-      <div className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[90]">
+      {!guarded && <div className="fixed bottom-[calc(0.875rem+env(safe-area-inset-bottom))] right-3.5 sm:bottom-7 sm:right-7 z-[90]">
         {/* 첫 방문 안내 풍선 */}
         {tooltipShown && !open && !sessionId && (
           <div className="hidden sm:block absolute right-0 bottom-[4.25rem] sm:right-16 sm:bottom-1 bg-white rounded-2xl shadow-xl px-4 py-2.5 animate-pulse-soft" style={{ animation: "float-in 0.4s ease-out", whiteSpace: "nowrap" }}>
@@ -160,11 +223,14 @@ export default function ChatWidget() {
         )}
 
         <button
+          ref={launcherRef}
           type="button"
-          onClick={() => setOpen(o => !o)}
-          className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 group"
-          style={{ background: LEMON, color: INK }}
+          onClick={() => open ? closeChat() : setOpen(true)}
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-all duration-300 group"
+          style={{ background: LEMON, color: "white" }}
           aria-label={open ? "채팅 닫기" : "실시간 채팅 열기"}
+          aria-expanded={open}
+          aria-controls="inyeon-chat-dialog"
         >
           {/* 펄스 링 (첫 방문 시) */}
           {tooltipShown && !open && (
@@ -172,11 +238,11 @@ export default function ChatWidget() {
           )}
 
           {open ? (
-            <svg className="w-5 h-5 text-[#292321] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="w-5 h-5 text-white relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           ) : (
-            <svg className="w-6 h-6 text-[#292321] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
           )}
@@ -186,11 +252,13 @@ export default function ChatWidget() {
             </span>
           )}
         </button>
-      </div>
+      </div>}
 
       {/* 채팅 패널 */}
       {open && (
         <div
+          id="inyeon-chat-dialog"
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label="인연연구소 실시간 상담"
@@ -214,8 +282,9 @@ export default function ChatWidget() {
               <div className="text-[10px] text-white/85">실시간 채팅 상담</div>
             </div>
             <button
+              ref={closeButtonRef}
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={closeChat}
               className="w-8 h-8 rounded-full hover:bg-white/15 flex items-center justify-center transition-colors flex-shrink-0"
               aria-label="채팅 닫기"
             >
@@ -229,7 +298,7 @@ export default function ChatWidget() {
           {!sessionId ? (
             <div className="p-7 flex-1 flex flex-col justify-center" style={{ background: `linear-gradient(180deg, ${LEMON_WASH}, #fff)` }}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md" style={{ background: LEMON }}>
-                <svg className="w-6 h-6 text-[#292321]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                 </svg>
               </div>
@@ -244,16 +313,16 @@ export default function ChatWidget() {
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
                 onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#9f706f] focus:outline-none mb-3"
+                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#d9546e] focus:outline-none focus:ring-4 focus:ring-[#d9546e]/10 mb-3"
               />
               <button
                 onClick={startSession}
                 className="w-full rounded-xl py-3 text-sm font-bold transition-all hover:opacity-90 shadow-md"
-                style={{ background: LEMON, color: INK }}
+                style={{ background: INK, color: "white" }}
               >
                 상담 시작하기
               </button>
-              <p className="text-[10px] text-center mt-4" style={{ color: "#bbb" }}>
+              <p className="text-[11px] text-center mt-4" style={{ color: "#77727a" }}>
                 개인정보는 매칭 외 목적으로 사용되지 않습니다.
               </p>
             </div>
@@ -327,13 +396,13 @@ export default function ChatWidget() {
                         send();
                       }
                     }}
-                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#9f706f] focus:outline-none resize-none leading-snug"
+                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#d9546e] focus:outline-none focus:ring-4 focus:ring-[#d9546e]/10 resize-none leading-snug"
                     style={{ minHeight: "40px", maxHeight: "88px" }}
                   />
                   <button
                     onClick={send}
                     disabled={!input.trim() || sending}
-                    className="w-10 h-10 rounded-xl text-[#292321] flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
+                    className="w-10 h-10 rounded-xl text-white flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
                     style={{
                       background: input.trim() ? LEMON : "#d1d5db",
                     }}
@@ -345,7 +414,7 @@ export default function ChatWidget() {
                   </button>
                 </div>
                 <div className="flex items-center justify-between mt-1.5 px-1">
-                  <span className="text-[9.5px]" style={{ color: "#bbb" }}>Enter 전송 · Shift + Enter 줄바꿈</span>
+                  <span className="text-[10px]" style={{ color: "#77727a" }}>Enter 전송 · Shift + Enter 줄바꿈</span>
                   {input.length > 800 && (
                     <span className="text-[9.5px]" style={{ color: input.length >= 1000 ? "#ef4444" : "#bbb" }}>
                       {input.length}/1000

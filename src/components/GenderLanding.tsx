@@ -37,17 +37,17 @@ const CONTENT = {
     title: <>괜찮은 사람과,<br /><span className={styles.lemonMark}>부담 없는 시작</span></>,
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
     price: "33,000원",
-    condition: "39세 이하 미혼 여성만 신청 가능",
-    heroImage: "/inyeon-2026/male-01.webp",
+    condition: "한국나이 기준 1988년생까지의 미혼 여성만 신청 가능",
+    heroImage: "/inyeon-2026/male-01-v2.webp",
     heroImageClass: styles.heroImageWomen,
-    highlights: ["가입비 0원", "매칭 후 결제", "알바 회원 사용 X", "대면 소개팅 보장"],
+    highlights: ["가입비 0원", "매칭 후 결제", "100% 실회원", "대면 소개팅 보장"],
     poolKicker: "CURATED MEN'S POOL",
     poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀",
     poolLead: "등록된 숫자만 보여드리는 방식이 아닙니다. 실제 만남 의사가 확인된 회원과 진행 중인 소개 현황을 함께 살피고, 여성·남성의 소개 흐름이 한쪽으로 쏠리지 않도록 성비 균형을 관리합니다.",
     poolImages: [
-      { src: "/inyeon-2026/male-02.webp", label: "직업·기본 신원 확인" },
-      { src: "/inyeon-2026/male-03.webp", label: "현재 소개 가능 상태 확인" },
-      { src: "/inyeon-2026/male-04.webp", label: "관계에 진지한 회원 중심" },
+      { src: "/inyeon-2026/male-02-v2.webp", label: "직업·기본 신원 확인" },
+      { src: "/inyeon-2026/male-03-v2.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/male-04-v2.webp", label: "관계에 진지한 회원 중심" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
@@ -74,7 +74,7 @@ const CONTENT = {
       { question: "신청하면 바로 결제하나요?", answer: "아니요. 가입비는 0원이며, 조건에 맞는 분의 프로필을 확인하고 두 분 모두 소개를 원해 매칭이 성사될 때만 33,000원을 결제합니다." },
       { question: "어떤 상태가 ‘매칭 성사’인가요?", answer: "담당자가 제안한 프로필을 서로 확인한 뒤, 두 분 모두 실제로 만나보겠다고 동의한 상태를 뜻합니다." },
       { question: "카톡으로만 연결되고 끝나나요?", answer: "아니요. 연락처만 전달하고 끝내지 않습니다. 양측 동의 후 담당자가 날짜와 장소를 조율해 실제 대면 소개팅까지 안내합니다." },
-      { question: "알바 회원을 사용하나요?", answer: "아니요. 인연연구소는 알바 회원을 사용하지 않습니다." },
+      { question: "실회원만 소개하나요?", answer: "네. 인연연구소는 100% 실제 소개 의사가 확인된 실회원으로 진행합니다." },
       { question: "성비는 어떻게 관리하나요?", answer: "가입 인원만 보지 않고 현재 소개 가능한 여성·남성 회원과 진행 중인 매칭 수를 함께 살펴, 한쪽의 소개 흐름이 과도하게 밀리지 않도록 조율합니다. 시점별 정확한 성비는 달라질 수 있습니다." },
       { question: "신청하면 언제 소개받을 수 있나요?", answer: "신청 순서만으로 무리하게 연결하지 않고 지역·연령·희망 조건과 소개 가능 상태를 함께 확인합니다. 맞지 않는 소개를 서두르지 않아 안내 시점은 달라질 수 있습니다." },
     ],
@@ -86,16 +86,16 @@ const CONTENT = {
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
     price: "44,000원",
     condition: "한국나이 기준 1984년생까지의 미혼 남성만 신청 가능",
-    heroImage: "/inyeon-2026/female-01.webp",
+    heroImage: "/inyeon-2026/female-01-v2.webp",
     heroImageClass: styles.heroImageMen,
-    highlights: ["가입비 0원", "매칭 후 결제", "알바 회원 사용 X", "대면 소개팅 보장"],
+    highlights: ["가입비 0원", "매칭 후 결제", "100% 실회원", "대면 소개팅 보장"],
     poolKicker: "CURATED WOMEN'S POOL",
     poolTitle: "거리·나이·스타일까지, 원하는 기준으로 살펴보는 여성 회원풀",
     poolLead: "막연한 랜덤 소개가 아닙니다. 실제 소개가 가능한 여성 회원과 남성 회원의 진행 상황을 함께 보며 성비 균형을 관리하고, 먼저 여쭤본 이상형 조건에 맞춰 마음에 들 때까지 프로필을 제안합니다.",
     poolImages: [
-      { src: "/inyeon-2026/female-02.webp", label: "희망 거리·나이 확인" },
-      { src: "/inyeon-2026/female-03.webp", label: "원하는 스타일 맞춤 제안" },
-      { src: "/inyeon-2026/female-04.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/female-02-v2.webp", label: "희망 거리·나이 확인" },
+      { src: "/inyeon-2026/female-03-v2.webp", label: "원하는 스타일 맞춤 제안" },
+      { src: "/inyeon-2026/female-04-v2.webp", label: "현재 소개 가능 상태 확인" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
@@ -122,7 +122,7 @@ const CONTENT = {
       { question: "신청하면 바로 결제하나요?", answer: "아니요. 가입비는 0원이며, 원하는 거리·나이·스타일에 맞는 분을 확인하고 두 분 모두 소개를 원해 매칭이 성사될 때만 44,000원을 결제합니다." },
       { question: "어떤 상태가 ‘매칭 성사’인가요?", answer: "담당자가 제안한 프로필을 서로 확인한 뒤, 두 분 모두 실제로 만나보겠다고 동의한 상태를 뜻합니다." },
       { question: "카톡으로만 연결되고 끝나나요?", answer: "아니요. 연락처만 전달하고 끝내지 않습니다. 양측 동의 후 담당자가 날짜와 장소를 조율해 실제 대면 소개팅까지 안내합니다." },
-      { question: "알바 회원을 사용하나요?", answer: "아니요. 인연연구소는 알바 회원을 사용하지 않습니다." },
+      { question: "실회원만 소개하나요?", answer: "네. 인연연구소는 100% 실제 소개 의사가 확인된 실회원으로 진행합니다." },
       { question: "성비는 어떻게 관리하나요?", answer: "가입 인원만 보지 않고 현재 소개 가능한 여성·남성 회원과 진행 중인 매칭 수를 함께 살펴, 한쪽의 소개 흐름이 과도하게 밀리지 않도록 조율합니다. 시점별 정확한 성비는 달라질 수 있습니다." },
       { question: "신청하면 언제 소개받을 수 있나요?", answer: "신청 순서만으로 무리하게 연결하지 않고 지역·연령·희망 조건과 소개 가능 상태를 함께 확인합니다. 맞지 않는 소개를 서두르지 않아 안내 시점은 달라질 수 있습니다." },
     ],
@@ -166,7 +166,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
     <div className={styles.site}>
       <RenewalHeader applyHref="#apply" applyLabel="무료 신청" />
       <main>
-        <section className={styles.genderHero}>
+        <section className={styles.genderHero} data-floating-ui-guard>
           <div className={`${styles.shell} ${styles.genderHeroGrid}`}>
             <div className={styles.genderHeroCopy}>
               <div className={styles.genderKicker}>{content.kicker}</div>
@@ -216,7 +216,12 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               </div>
             </div>
 
-            <div className={styles.showcaseMosaic}>
+            <div
+              className={styles.showcaseMosaic}
+              role="region"
+              aria-label={`${featuredGender} 회원풀 연출 이미지 모음`}
+              tabIndex={0}
+            >
               {content.poolImages.map((item, index) => (
                 <figure key={item.src} className={`${styles.showcaseCard} ${index === 1 ? styles.showcaseCardLift : ""}`}>
                   <Image
@@ -258,7 +263,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={styles.curationBody}>
               <figure className={styles.consultantVisual}>
                 <Image
-                  src="/inyeon-2026/consultant.webp"
+                  src="/inyeon-2026/consultant-v2.webp"
                   alt="무지 프로필 카드와 태블릿으로 매칭 조건을 검토하는 담당자의 연출 모습"
                   fill
                   sizes="(max-width: 900px) calc(100vw - 28px), 48vw"
@@ -268,7 +273,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <span className={styles.consultantShade} aria-hidden="true" />
                 <figcaption>
                   <strong>마음에 들 때까지 프로필 제안</strong>
-                  <span>담당자가 조건과 소개 의사를 확인합니다</span>
+                  <span>서비스 연출 이미지 · 담당자가 조건과 소개 의사를 확인합니다</span>
                 </figcaption>
               </figure>
 
@@ -297,9 +302,9 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           </div>
         </section>
 
-        <section id="matching" className={styles.journeySection}>
+        <section id="matching" className={styles.journeySection} data-floating-ui-guard>
           <Image
-            src="/inyeon-2026/meeting-wide.webp"
+            src="/inyeon-2026/meeting-wide-v2.webp"
             alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
             fill
             sizes="100vw"
@@ -308,12 +313,18 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           />
           <span className={styles.journeyShade} aria-hidden="true" />
           <div className={`${styles.shell} ${styles.journeyContent}`}>
+            <span className={styles.journeyCaption}>서비스 연출 이미지</span>
             <div className={styles.journeyIntro}>
               <span>FROM PROFILE TO REAL MEETING</span>
               <h2><span className={styles.noWrap}>카톡만 하다</span><br /><span className={styles.noWrap}>끝나는 소개가 아닌,</span><br />실제 만남</h2>
               <p>연락처만 넘긴 뒤 알아서 이어가라는 방식이 아닙니다. 양쪽 의사를 확인하고, 성사된 소개의 날짜와 장소까지 담당자가 조율합니다.</p>
             </div>
-            <div className={styles.journeyGrid}>
+            <div
+              className={styles.journeyGrid}
+              role="region"
+              aria-label="신청부터 대면 소개팅까지의 5단계"
+              tabIndex={0}
+            >
               {matchingSteps.map((step) => (
                 <article key={step.number} className={styles.journeyCard}>
                   <span>{step.number}</span>
@@ -372,7 +383,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           </div>
         </section>
 
-        <section id="apply" className={styles.applySection}>
+        <section id="apply" className={styles.applySection} data-floating-ui-guard>
           <div className={`${styles.shell} ${styles.applyGrid}`}>
             <div className={styles.applyIntro}>
               <span className={styles.eyebrow}>SIMPLE APPLICATION</span>

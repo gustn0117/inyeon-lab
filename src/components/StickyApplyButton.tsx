@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import styles from "@/components/renewal.module.css";
 
 export default function StickyApplyButton({ label }: { label: string }) {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
-    const targets = [document.querySelector("#apply"), document.querySelector("footer")].filter(
-      (target): target is Element => Boolean(target),
-    );
+    const targets = [
+      ...Array.from(document.querySelectorAll("[data-floating-ui-guard]")),
+      ...Array.from(document.querySelectorAll("footer")),
+    ];
     const visibleTargets = new Set<Element>();
     const observer = new IntersectionObserver(
       (entries) => {

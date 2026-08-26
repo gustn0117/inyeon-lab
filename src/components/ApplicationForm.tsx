@@ -11,11 +11,11 @@ type Stage = "eligibility" | "form" | "done";
 const COPY = {
   women: {
     label: "여성",
-    oldestBirthYear: (year: number) => year - 39 - 1,
+    oldestBirthYear: (_year: number) => 1988,
     price: "33,000원",
-    confirmation: "저는 만 19세 이상, 39세 이하의 미혼 여성입니다.",
-    birthYearError: "39세 이하 성인에 해당하는 출생연도를 입력해주세요.",
-    eligibilityHint: "생일 기준 실제 나이로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
+    confirmation: "저는 만 19세 이상 미혼 여성이며, 한국나이 기준 1988년생까지의 가입 조건에 해당합니다.",
+    birthYearError: "한국나이 기준 1988년생까지에 해당하는 출생연도를 입력해주세요.",
+    eligibilityHint: "만 나이가 아닌 출생연도 기준으로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
   },
   men: {
     label: "남성",
@@ -56,35 +56,42 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
   const [height, setHeight] = useState("");
   const [website, setWebsite] = useState("");
   const [error, setError] = useState("");
+  const [errorFieldId, setErrorFieldId] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const stageHeadingRef = useRef<HTMLHeadingElement>(null);
-  const hasMountedRef = useRef(false);
+  const previousStageRef = useRef<Stage>(stage);
+  const errorId = `${gender}-form-error`;
 
   useEffect(() => {
-    if (hasMountedRef.current) stageHeadingRef.current?.focus();
-    else hasMountedRef.current = true;
+    if (previousStageRef.current !== stage) {
+      previousStageRef.current = stage;
+      stageHeadingRef.current?.focus();
+    }
   }, [stage]);
 
   const validate = () => {
-    if (!/^010-\d{4}-\d{4}$/.test(phone)) return "연락처를 정확히 입력해주세요.";
-    if (region.trim().length < 2) return "활동 가능한 지역을 입력해주세요.";
+    if (!/^010-\d{4}-\d{4}$/.test(phone)) return { message: "연락처를 정확히 입력해주세요.", fieldId: `${gender}-phone` };
+    if (region.trim().length < 2) return { message: "활동 가능한 지역을 입력해주세요.", fieldId: `${gender}-region` };
     const by = Number(birthYear);
     if (!Number.isInteger(by) || by < oldestBirthYear || by > youngestBirthYear) {
-      return info.birthYearError;
+      return { message: info.birthYearError, fieldId: `${gender}-birth-year` };
     }
-    if (job.trim().length < 2) return "직업을 2자 이상 입력해주세요.";
+    if (job.trim().length < 2) return { message: "직업을 2자 이상 입력해주세요.", fieldId: `${gender}-job` };
     const h = Number(height);
-    if (!Number.isInteger(h) || h < 130 || h > 220) return "키는 130~220cm 사이로 입력해주세요.";
-    if (!privacyConsent) return "개인정보 수집·이용에 동의해주세요.";
-    return "";
+    if (!Number.isInteger(h) || h < 130 || h > 220) return { message: "키는 130~220cm 사이로 입력해주세요.", fieldId: `${gender}-height` };
+    if (!privacyConsent) return { message: "개인정보 수집·이용에 동의해주세요.", fieldId: `${gender}-privacy` };
+    return null;
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError("");
+    setErrorFieldId(null);
     const validationError = validate();
     if (validationError) {
-      setError(validationError);
+      setError(validationError.message);
+      setErrorFieldId(validationError.fieldId);
+      requestAnimationFrame(() => document.getElementById(validationError.fieldId)?.focus());
       return;
     }
 
@@ -112,6 +119,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
       setStage("done");
     } catch (err) {
       setError(err instanceof Error ? err.message : "잠시 후 다시 시도해주세요.");
+      setErrorFieldId(null);
     } finally {
       setSubmitting(false);
     }
@@ -206,6 +214,8 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
             onChange={(event) => setPhone(formatPhone(event.target.value))}
             maxLength={13}
             required
+            aria-invalid={errorFieldId === `${gender}-phone`}
+            aria-describedby={errorFieldId === `${gender}-phone` ? errorId : undefined}
           />
         </div>
         <div className={`${styles.field} ${styles.fieldFull}`}>
@@ -218,6 +228,8 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
             value={region}
             onChange={(event) => setRegion(event.target.value.slice(0, 30))}
             required
+            aria-invalid={errorFieldId === `${gender}-region`}
+            aria-describedby={errorFieldId === `${gender}-region` ? errorId : undefined}
           />
         </div>
         <div className={styles.field}>
@@ -234,6 +246,8 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
               value={birthYear}
               onChange={(event) => setBirthYear(event.target.value.slice(0, 4))}
               required
+              aria-invalid={errorFieldId === `${gender}-birth-year`}
+              aria-describedby={errorFieldId === `${gender}-birth-year` ? errorId : undefined}
             />
             <span className={styles.inputUnit}>년생</span>
           </div>
@@ -252,6 +266,8 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
               value={height}
               onChange={(event) => setHeight(event.target.value.slice(0, 3))}
               required
+              aria-invalid={errorFieldId === `${gender}-height`}
+              aria-describedby={errorFieldId === `${gender}-height` ? errorId : undefined}
             />
             <span className={styles.inputUnit}>cm</span>
           </div>
@@ -266,6 +282,8 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
             value={job}
             onChange={(event) => setJob(event.target.value.slice(0, 30))}
             required
+            aria-invalid={errorFieldId === `${gender}-job`}
+            aria-describedby={errorFieldId === `${gender}-job` ? errorId : undefined}
           />
         </div>
       </div>
@@ -280,9 +298,12 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
         </div>
         <label className={styles.checkLabel}>
           <input
+            id={`${gender}-privacy`}
             type="checkbox"
             checked={privacyConsent}
             onChange={(event) => setPrivacyConsent(event.target.checked)}
+            aria-invalid={errorFieldId === `${gender}-privacy`}
+            aria-describedby={errorFieldId === `${gender}-privacy` ? errorId : undefined}
           />
           <span className={styles.checkText}>
             매칭 상담을 위한 개인정보 수집·이용에 동의합니다. {" "}
@@ -291,7 +312,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
         </label>
       </div>
 
-      {error && <p className={styles.formError} role="alert">{error}</p>}
+      {error && <p id={errorId} className={styles.formError} role="alert">{error}</p>}
 
       <div className={styles.formActions}>
         <button type="button" className={styles.formSecondary} onClick={() => setStage("eligibility")} disabled={submitting}>

@@ -51,7 +51,7 @@
 
 .brand {
   color: var(--r-ink);
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -186,7 +186,7 @@
 .homeTitle {
   max-width: 720px;
   margin: 23px 0 0;
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(44px, 5.8vw, 74px);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -1048,7 +1048,7 @@
 
 .footerBrand {
   margin-bottom: 12px;
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -1717,7 +1717,7 @@
   align-items: baseline;
   gap: 8px;
   color: var(--r-ink);
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -1764,7 +1764,7 @@
 
 .choiceIntro h1 {
   margin: 6px 0 0;
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(24px, 2.7vw, 34px);
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -1775,7 +1775,7 @@
 .choiceIntro p {
   margin: 6px 0 0;
   color: #70725e;
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(19px, 2.2vw, 27px);
   line-height: 1.4;
   word-break: keep-all;
@@ -1882,7 +1882,7 @@
 
 .choiceLinkInner strong {
   margin-top: 5px;
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(23px, 2.5vw, 34px);
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -2006,7 +2006,7 @@
 }
 
 .homeBrand strong {
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -2077,7 +2077,7 @@
 .homeEntryCopy h1 {
   margin: 15px 0 0;
   color: var(--home-dark);
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(42px, 5vw, 68px);
   font-weight: 700;
   letter-spacing: -0.065em;
@@ -2183,7 +2183,7 @@
 
 .homeChoiceCard > strong {
   margin-top: 5px;
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(21px, 2vw, 27px);
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -2266,7 +2266,7 @@
   align-items: center;
   gap: 20px;
   padding-right: 42px;
-  font-family: "Gowun Batang", "Pretendard Variable", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -2304,7 +2304,7 @@
 .homeFaqIntro h2,
 .homeFinalInner h2 {
   margin: 15px 0 0;
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(37px, 4.7vw, 57px);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -2372,7 +2372,7 @@
 
 .homeMeetingVisual figcaption strong {
   margin-top: 7px;
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: clamp(29px, 3.3vw, 42px);
   letter-spacing: -0.045em;
 }
@@ -2413,7 +2413,7 @@
 .homePrincipleCard h3 {
   margin: 0;
   color: var(--home-dark);
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -2615,7 +2615,7 @@
 
 .homeProcessCard h3 {
   margin: 62px 0 0;
-  font-family: "Gowun Batang", "Noto Serif KR", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.045em;
@@ -2679,7 +2679,7 @@
   gap: 20px;
   padding: 0 5px;
   color: #fff;
-  font-family: "Gowun Batang", "Pretendard Variable", serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -2743,6 +2743,32 @@
     radial-gradient(circle at 50% 48%, rgba(45, 35, 33, 0.43), rgba(35, 28, 26, 0.78) 66%),
     linear-gradient(180deg, rgba(30, 24, 23, 0.2), rgba(30, 24, 23, 0.7));
   inset: 0;
+}
+
+.imageDisclosure {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 0 9px;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(20, 18, 22, 0.52);
+  font-size: 10px;
+  font-weight: 650;
+  backdrop-filter: blur(10px);
+}
+
+.homeEntryDisclosure {
+  right: 24px;
+  bottom: 238px;
+}
+
+.homeFinalDisclosure {
+  right: 24px;
+  bottom: 22px;
 }
 
 .homeFinalInner {
@@ -4834,6 +4860,853 @@
 
   .formSecondary {
     order: 2;
+  }
+}
+
+/* 2030 premium refresh — cleaner typography, brighter neutrals, one rose accent */
+.site {
+  --r-canvas: #f8f8f9;
+  --r-paper: #ffffff;
+  --r-ink: #18161a;
+  --r-ink-soft: #646067;
+  --r-line: #e7e4e8;
+  --r-lemon: #df6379;
+  --r-lemon-soft: #f9e3e8;
+  --r-lemon-wash: #fff4f6;
+  --accent: #d9546e;
+  --accent-deep: #a93650;
+  --accent-soft: #fae4e9;
+  --line: #e7e4e8;
+  background:
+    radial-gradient(circle at 4% 0%, rgba(223, 99, 121, 0.11), transparent 28rem),
+    var(--r-canvas);
+}
+
+.homeSite {
+  --home-wine: #d9546e;
+  --home-wine-deep: #a93650;
+  --home-blush: #f8e4e8;
+  --home-blush-soft: #fdf7f8;
+  --home-dark: #19171b;
+  --home-ink-soft: #666168;
+}
+
+.brand,
+.homeBrand strong,
+.homeEntryCopy h1,
+.homeChoiceCard > strong,
+.homeTickerTrack span,
+.homeIdentityIntro h2,
+.homePricingIntro h2,
+.homeProcessIntro h2,
+.homeFaqIntro h2,
+.homeFinalInner h2,
+.homeMeetingVisual figcaption strong,
+.homePrincipleCard h3,
+.homeProcessCard h3,
+.homeFaqItem summary {
+  font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.brand,
+.homeBrand strong {
+  font-weight: 790;
+  letter-spacing: -0.045em;
+}
+
+.header {
+  border-color: rgba(231, 228, 232, 0.88);
+  background: rgba(250, 250, 251, 0.88);
+}
+
+.navLink:hover {
+  background: rgba(217, 84, 110, 0.09);
+}
+
+.navApply,
+.primaryButton,
+.formButton,
+.formSubmit,
+.stickyApply,
+.faqDetailIntro a {
+  border-color: transparent;
+  color: #fff;
+  background: var(--accent-deep);
+  box-shadow: 0 14px 34px rgba(169, 54, 80, 0.2);
+}
+
+.homeEntry {
+  background: #f4f4f5;
+}
+
+.homeEntryShade {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.97) 0, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 0) 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.91) 0%, rgba(255, 255, 255, 0.48) 34%, rgba(25, 23, 27, 0.02) 61%, rgba(25, 23, 27, 0.78) 100%);
+}
+
+.homeTopbar {
+  border-color: rgba(24, 22, 26, 0.12);
+}
+
+.homeBrand span,
+.homeEntryEyebrow,
+.homeSectionEyebrow,
+.homeChoiceEyebrow,
+.genderKicker,
+.eyebrow,
+.formStep,
+.comparisonHeading > span,
+.journeyIntro > span {
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  font-weight: 800;
+}
+
+.homeCategory {
+  border-color: rgba(217, 84, 110, 0.2);
+  color: #413d42;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.homeCategory span {
+  background: var(--home-wine);
+  box-shadow: 0 0 0 4px rgba(217, 84, 110, 0.11);
+}
+
+.homeEntryEyebrow {
+  border-color: rgba(217, 84, 110, 0.2);
+  color: var(--home-wine-deep);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.homeEntryCopy h1 {
+  font-size: clamp(46px, 5.4vw, 74px);
+  font-weight: 800;
+  letter-spacing: -0.062em;
+  line-height: 1.04;
+}
+
+.homeEntryCopy h1 span {
+  color: var(--home-wine-deep);
+}
+
+.homeEntryCopy p {
+  color: #4f4b51;
+  font-weight: 590;
+}
+
+.homeTrustList span {
+  border-color: rgba(31, 28, 33, 0.12);
+  color: #3d393f;
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+}
+
+.homeChoiceCard {
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(22, 20, 24, 0.86), rgba(67, 33, 43, 0.76));
+  box-shadow: 0 22px 56px rgba(18, 16, 20, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.homeChoiceCard::after {
+  background: rgba(232, 111, 133, 0.22);
+}
+
+.homeChoiceCard > strong {
+  font-weight: 760;
+  letter-spacing: -0.045em;
+}
+
+.homeChoiceCondition {
+  font-size: 12px;
+}
+
+.homeChoicePrice {
+  font-size: 13px;
+}
+
+.homeChoiceDescription {
+  font-size: 11px;
+}
+
+.homeChoiceAction {
+  font-size: 12px;
+}
+
+.homeTicker {
+  background: var(--home-dark);
+}
+
+.homeTickerTrack span {
+  font-size: 13.5px;
+  font-weight: 650;
+}
+
+.homeTickerTrack b,
+.homeFaqIntro .homeSectionEyebrow,
+.homeFaqItem summary span,
+.homeFinalInner .homeSectionEyebrow {
+  color: #f08aa0;
+}
+
+.homeIdentitySection {
+  background:
+    radial-gradient(circle at 7% 12%, rgba(217, 84, 110, 0.07), transparent 25rem),
+    #fff;
+}
+
+.homeIdentityIntro h2,
+.homePricingIntro h2,
+.homeProcessIntro h2,
+.homeFaqIntro h2,
+.homeFinalInner h2 {
+  font-weight: 760;
+  letter-spacing: -0.052em;
+  line-height: 1.1;
+}
+
+.homeMeetingVisual {
+  border-radius: 24px;
+  background: #ddd9dc;
+  box-shadow: 0 28px 70px rgba(31, 27, 33, 0.13);
+}
+
+.homeMeetingVisual figcaption strong {
+  font-weight: 740;
+}
+
+.homePrincipleCard {
+  border-color: #e9e6ea;
+}
+
+.homePrincipleCard > span {
+  color: var(--home-wine);
+}
+
+.homePrincipleCard h3 {
+  font-weight: 730;
+}
+
+.homePricingSection {
+  background:
+    radial-gradient(circle at 91% 8%, rgba(217, 84, 110, 0.1), transparent 27rem),
+    #fcf7f8;
+}
+
+.homePriceCard {
+  border-color: #eadfe2;
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 22px 60px rgba(72, 38, 48, 0.08);
+}
+
+.homePriceCard::before {
+  background: rgba(217, 84, 110, 0.1);
+}
+
+.homeProcessCard {
+  border-color: #e8e5e9;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.homeProcessCard h3 {
+  font-weight: 720;
+}
+
+.homeFaqSection {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(217, 84, 110, 0.17), transparent 24rem),
+    var(--home-dark);
+}
+
+.homeFinalShade {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(24, 20, 25, 0.38), rgba(20, 18, 22, 0.79) 68%),
+    linear-gradient(180deg, rgba(18, 16, 20, 0.18), rgba(18, 16, 20, 0.72));
+}
+
+.genderKicker,
+.eyebrow,
+.formStep,
+.comparisonHeading > span,
+.journeyIntro > span {
+  color: var(--accent);
+  letter-spacing: 0.11em;
+}
+
+.eyebrow {
+  border-color: rgba(217, 84, 110, 0.2);
+  color: var(--accent-deep);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.genderTitle,
+.showcaseIntro h2,
+.curationIntro h2,
+.journeyIntro h2,
+.promiseIntro h2,
+.faqDetailIntro h2,
+.applyIntro h2,
+.comparisonHeading h3,
+.formCard h3 {
+  font-weight: 750;
+  letter-spacing: -0.048em;
+}
+
+.lemonMark::after {
+  bottom: 0.03em;
+  height: 0.12em;
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(223, 99, 121, 0.28), rgba(217, 84, 110, 0.72));
+  transform: none;
+}
+
+.priceLabel,
+.priceZero,
+.eligibilityNote,
+.kakaoNote {
+  color: #6b666d;
+}
+
+.eligibilityNote {
+  font-size: 12.5px;
+}
+
+.heroImageWrap,
+.showcaseCard,
+.consultantVisual {
+  border-color: #e5e1e6;
+  background: #e9e7e9;
+  box-shadow: 0 24px 64px rgba(31, 27, 33, 0.12);
+}
+
+.heroImageWrap {
+  border-radius: 22px;
+}
+
+.imageCaption {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(20, 18, 22, 0.56);
+  font-size: 10px;
+}
+
+.detailSignal {
+  border-color: #2b282d;
+  background: #19171b;
+}
+
+.detailSignalInner span {
+  font-size: 12px;
+}
+
+.showcaseSection {
+  background:
+    radial-gradient(circle at 96% 8%, rgba(217, 84, 110, 0.1), transparent 23rem),
+    #fff;
+}
+
+.showcaseCard {
+  border-radius: 20px;
+}
+
+.poolPointGrid {
+  gap: 0;
+}
+
+.poolPointCard {
+  min-height: 132px;
+  border: 0;
+  border-top: 1px solid var(--r-line);
+  border-radius: 0;
+  padding: 24px 8px;
+  background: transparent;
+}
+
+.curationSection {
+  border-color: #eedee3;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(217, 84, 110, 0.1), transparent 24rem),
+    linear-gradient(180deg, #fffafb 0%, #f9f5f7 100%);
+}
+
+.consultantVisual,
+.comparisonPanel {
+  border-color: #e6dfe3;
+  border-radius: 22px;
+}
+
+.comparisonPanel {
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 24px 62px rgba(54, 37, 45, 0.08);
+}
+
+.comparisonHeaders {
+  color: #8a858c;
+}
+
+.comparisonHeaders strong,
+.comparisonLabel,
+.comparisonOurs {
+  color: #403b42;
+}
+
+.comparisonBefore {
+  color: #8b878e;
+}
+
+.comparisonOurs {
+  border-radius: 10px;
+  background: var(--r-lemon-wash);
+}
+
+.journeySection {
+  background: #18161a;
+}
+
+.journeyShade {
+  background:
+    linear-gradient(90deg, rgba(20, 18, 22, 0.95) 0%, rgba(20, 18, 22, 0.78) 44%, rgba(20, 18, 22, 0.28) 78%, rgba(20, 18, 22, 0.18) 100%),
+    linear-gradient(180deg, rgba(20, 18, 22, 0.2), rgba(20, 18, 22, 0.84));
+}
+
+.journeyCard {
+  border-radius: 14px;
+  background: rgba(22, 20, 24, 0.58);
+}
+
+.journeyCard p {
+  font-size: 12px;
+}
+
+.promiseCard {
+  border-radius: 16px;
+  background: #faf9fa;
+}
+
+.promiseCardFeatured {
+  background: var(--r-lemon-soft);
+}
+
+.promiseIndex {
+  color: var(--accent);
+}
+
+.matchCriteria {
+  border-color: #eddde2;
+  border-radius: 16px;
+  background: #fff7f8;
+}
+
+.criteriaItem {
+  border-color: #eccfd7;
+  color: #584c51;
+}
+
+.faqDetailSection {
+  background:
+    radial-gradient(circle at 90% 15%, rgba(217, 84, 110, 0.08), transparent 20rem),
+    #f8f7f8;
+}
+
+.faqDetailList,
+.faqDetailItem {
+  border-color: #dedade;
+}
+
+.faqDetailItem summary {
+  color: #3e393f;
+}
+
+.formCard {
+  border-radius: 22px;
+  box-shadow: 0 24px 64px rgba(31, 27, 33, 0.08);
+}
+
+.formPriceSummary,
+.eligibilityBox {
+  border-color: #eed4db;
+  background: var(--r-lemon-wash);
+}
+
+.checkText,
+.field label {
+  color: #3f3a41;
+}
+
+.checkHint {
+  color: #77727a;
+}
+
+.field input {
+  border-color: #dedade;
+}
+
+.field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(217, 84, 110, 0.11);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #c33f61;
+  box-shadow: 0 0 0 4px rgba(195, 63, 97, 0.1);
+}
+
+.checkLabel input[aria-invalid="true"] {
+  outline: 3px solid rgba(195, 63, 97, 0.18);
+  outline-offset: 3px;
+}
+
+.showcaseMosaic:focus-visible,
+.journeyGrid:focus-visible {
+  border-radius: 12px;
+  outline: 3px solid rgba(217, 84, 110, 0.45);
+  outline-offset: 5px;
+}
+
+@media (min-width: 721px) and (max-width: 900px) {
+  .heroImageWrap {
+    width: min(100%, 620px);
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    margin-inline: auto;
+  }
+
+  .heroImageWomen,
+  .heroImageMen {
+    object-position: center top;
+  }
+}
+
+@media (max-width: 720px) {
+  .navLink,
+  .navApply {
+    min-height: 44px;
+  }
+
+  .homeEntryShade {
+    background:
+      linear-gradient(180deg, #fff 0, #fff 288px, rgba(255, 255, 255, 0.76) 337px, rgba(25, 23, 27, 0.02) 52%, rgba(25, 23, 27, 0.78) 100%);
+  }
+
+  .homeEntryCopy h1 {
+    font-size: clamp(30px, 8.6vw, 36px);
+    line-height: 1.08;
+  }
+
+  .homeTrustList span {
+    min-height: 29px;
+    padding-inline: 9px;
+    font-size: 10.5px;
+  }
+
+  .homeChoiceCard {
+    min-height: 192px;
+    padding: 15px 13px;
+  }
+
+  .homeChoiceCard > strong {
+    font-size: clamp(17px, 4.8vw, 20px);
+  }
+
+  .homeChoiceCondition {
+    font-size: 11.5px;
+  }
+
+  .homeChoicePrice {
+    font-size: 12px;
+  }
+
+  .homeChoiceAction {
+    font-size: 11.5px;
+  }
+
+  .homeChoiceCard:last-child .homeChoiceAction {
+    right: 10px;
+    left: 10px;
+  }
+
+  .homeEntryDisclosure {
+    right: 14px;
+    bottom: 211px;
+  }
+
+  .homeFinalDisclosure {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .showcaseCard,
+  .showcaseCardLift,
+  .consultantVisual,
+  .comparisonPanel,
+  .formCard {
+    border-radius: 18px;
+  }
+
+  .poolPointGrid {
+    gap: 0;
+  }
+
+  .poolPointCard {
+    padding-inline: 4px;
+  }
+
+  .comparisonBefore {
+    background: #f2f0f2;
+  }
+
+  .comparisonBefore small,
+  .comparisonOurs small {
+    color: #77727a;
+  }
+
+  .journeyShade {
+    background:
+      linear-gradient(180deg, rgba(20, 18, 22, 0.8) 0%, rgba(20, 18, 22, 0.56) 33%, rgba(20, 18, 22, 0.9) 100%),
+      linear-gradient(90deg, rgba(20, 18, 22, 0.64), transparent);
+  }
+
+  .stickyApplyHidden {
+    transform: translateY(18px);
+  }
+}
+
+@media (max-width: 340px) {
+  .homeChoiceCard:last-child .homeChoiceAction {
+    right: 10px;
+    left: 10px;
+    gap: 9px;
+    padding-inline: 8px;
+    font-size: 10.5px;
+  }
+
+  .homeChoiceCard:last-child .homeChoiceAction b {
+    display: inline;
+  }
+}
+
+/* Client direction: keep the 2030 tone bright — no brown or large dark surfaces */
+.site {
+  --r-lemon: #e65f7d;
+  --r-lemon-soft: #fbe5ea;
+  --r-lemon-wash: #fff3f6;
+  --accent: #dc4f70;
+  --accent-deep: #c33f61;
+  --accent-soft: #fbe4e9;
+}
+
+.homeSite {
+  --home-wine: #dc4f70;
+  --home-wine-deep: #b83858;
+  --home-dark: #1b191d;
+}
+
+.navApply,
+.primaryButton,
+.formButton,
+.formSubmit,
+.stickyApply,
+.faqDetailIntro a {
+  background: #c33f61;
+  box-shadow: 0 14px 34px rgba(195, 63, 97, 0.2);
+}
+
+.homeChoiceCard {
+  color: var(--home-dark);
+  border-color: rgba(220, 79, 112, 0.24);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 54px rgba(46, 30, 38, 0.13), inset 0 1px 0 #fff;
+  backdrop-filter: blur(22px) saturate(1.05);
+}
+
+.homeChoiceCard::after {
+  background: rgba(230, 95, 125, 0.14);
+}
+
+.homeChoiceEyebrow {
+  color: var(--home-wine);
+}
+
+.homeChoiceCondition {
+  color: #535057;
+}
+
+.homeChoicePrice {
+  color: #242127;
+}
+
+.homeChoiceDescription {
+  color: #716c73;
+}
+
+.homeChoiceAction {
+  color: #fff;
+  background: #c33f61;
+  box-shadow: 0 10px 26px rgba(195, 63, 97, 0.22);
+}
+
+.homeChoiceAction b {
+  color: #fff;
+}
+
+.homeTicker {
+  border-block: 1px solid #f0dce2;
+  color: #3f3a41;
+  background: #fff5f7;
+}
+
+.homeTickerTrack b {
+  color: var(--home-wine);
+}
+
+.homeFaqSection {
+  color: var(--home-dark);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(220, 79, 112, 0.09), transparent 24rem),
+    #f7f6f8;
+}
+
+.homeFaqIntro .homeSectionEyebrow,
+.homeFaqItem summary span {
+  color: var(--home-wine);
+}
+
+.homeFaqIntro h2,
+.homeFaqItem summary {
+  color: var(--home-dark);
+}
+
+.homeFaqIntro > p,
+.homeFaqItem p {
+  color: #68636a;
+}
+
+.homeFaqList,
+.homeFaqItem {
+  border-color: #dedade;
+}
+
+.homeFinalShade {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.64) 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.44), rgba(250, 247, 249, 0.76));
+}
+
+.homeFinalInner .homeSectionEyebrow {
+  color: var(--home-wine);
+}
+
+.homeFinalInner h2 {
+  color: var(--home-dark);
+  text-shadow: none;
+}
+
+.homeFinalInner > p {
+  color: #5e5960;
+}
+
+.homeFinalActions a {
+  border-color: #c33f61;
+  color: #fff;
+  background: #c33f61;
+  box-shadow: 0 14px 36px rgba(195, 63, 97, 0.2);
+}
+
+.homeFinalActions a:last-child {
+  border-color: rgba(195, 63, 97, 0.24);
+  color: #352f36;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.detailSignal {
+  border-color: #f0d8df;
+  color: var(--r-ink);
+  background: #fff2f5;
+}
+
+.detailSignalInner span {
+  border-color: rgba(195, 63, 97, 0.14);
+  color: #49444b;
+}
+
+.detailSignalInner span:last-child {
+  border-color: rgba(195, 63, 97, 0.14);
+}
+
+.detailSignalInner b {
+  color: var(--accent);
+}
+
+.journeySection {
+  color: var(--r-ink);
+  background: #f7f7f8;
+}
+
+.journeyShade {
+  background:
+    linear-gradient(90deg, rgba(252, 251, 252, 0.97) 0%, rgba(252, 251, 252, 0.88) 45%, rgba(252, 251, 252, 0.4) 78%, rgba(252, 251, 252, 0.3) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(248, 247, 249, 0.84));
+}
+
+.journeyIntro h2,
+.journeyCard h3 {
+  color: var(--r-ink);
+}
+
+.journeyIntro p,
+.journeyCard p {
+  color: #5f5a62;
+}
+
+.journeyCard {
+  border-color: rgba(35, 31, 37, 0.13);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 48px rgba(42, 34, 40, 0.07);
+}
+
+.journeyCard > span {
+  color: var(--accent);
+}
+
+.journeySwipeHint,
+.journeyCaption {
+  color: #6c676e;
+}
+
+.imageDisclosure,
+.imageCaption {
+  border-color: rgba(35, 31, 37, 0.12);
+  color: #49444b;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .homeChoiceCard:hover {
+    border-color: rgba(220, 79, 112, 0.46);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 25px 66px rgba(46, 30, 38, 0.16), inset 0 1px 0 #fff;
+  }
+}
+
+@media (max-width: 720px) {
+  .homeChoiceCard {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .detailSignalInner span:nth-child(2n),
+  .detailSignalInner span:nth-child(-n + 2) {
+    border-color: rgba(195, 63, 97, 0.14);
+  }
+
+  .journeyShade {
+    background:
+      linear-gradient(180deg, rgba(252, 251, 252, 0.94) 0%, rgba(252, 251, 252, 0.79) 35%, rgba(248, 247, 249, 0.92) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.72), transparent);
+  }
+
+  .journeyCard {
+    background: rgba(255, 255, 255, 0.82);
   }
 }
 
