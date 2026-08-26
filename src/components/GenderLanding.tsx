@@ -190,7 +190,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 quality={92}
                 className={`${styles.heroImage} ${content.heroImageClass}`}
               />
-              <span className={styles.imageCaption}>서비스 이해를 돕기 위한 연출 이미지</span>
             </div>
           </div>
         </section>
@@ -239,7 +238,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 </figure>
               ))}
             </div>
-            <p className={styles.showcaseDisclaimer}>서비스 이해를 돕기 위한 연출 이미지입니다</p>
 
             <div className={styles.poolPointGrid}>
               {content.poolPoints.map((point) => (
@@ -273,7 +271,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <span className={styles.consultantShade} aria-hidden="true" />
                 <figcaption>
                   <strong>마음에 들 때까지 프로필 제안</strong>
-                  <span>서비스 연출 이미지 · 담당자가 조건과 소개 의사를 확인합니다</span>
+                  <span>담당자가 조건과 소개 의사를 확인합니다</span>
                 </figcaption>
               </figure>
 
@@ -313,7 +311,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           />
           <span className={styles.journeyShade} aria-hidden="true" />
           <div className={`${styles.shell} ${styles.journeyContent}`}>
-            <span className={styles.journeyCaption}>서비스 연출 이미지</span>
             <div className={styles.journeyIntro}>
               <span>FROM PROFILE TO REAL MEETING</span>
               <h2><span className={styles.noWrap}>카톡만 하다</span><br /><span className={styles.noWrap}>끝나는 소개가 아닌,</span><br />실제 만남</h2>

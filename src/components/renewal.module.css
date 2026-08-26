@@ -6152,3 +6152,47 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.74), transparent);
   }
 }
+
+/* ═══ 모바일 첫 화면: 사진을 카드 위 별도 밴드로 배치 (카드가 얼굴을 가리는 잘림 방지) ═══ */
+@media (max-width: 720px) {
+  .homeEntry {
+    height: auto;
+    min-height: 0;
+    grid-template-rows: 62px auto 330px auto;
+  }
+
+  .homeTopbar {
+    grid-row: 1;
+  }
+
+  .homeEntryCopy {
+    grid-row: 2;
+  }
+
+  .homeEntryPicture,
+  .homeEntryShade {
+    position: relative;
+    inset: auto;
+    grid-row: 3;
+    grid-column: 1;
+    height: 330px;
+  }
+
+  .homeEntryImage {
+    object-position: center 74%;
+    transform: none;
+    animation: none;
+  }
+
+  .homeEntryShade {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 20%, rgba(41, 35, 33, 0) 80%, rgba(41, 35, 33, 0.18) 100%);
+  }
+
+  .homeChoiceGrid {
+    grid-row: 4;
+    align-self: start;
+    margin-top: 14px;
+    padding-bottom: 22px;
+  }
+}

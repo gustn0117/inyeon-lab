@@ -102,7 +102,6 @@ export default function Home() {
             />
           </picture>
           <span className={styles.homeEntryShade} aria-hidden="true" />
-          <span className={`${styles.imageDisclosure} ${styles.homeEntryDisclosure}`}>서비스 연출 이미지</span>
 
           <header className={styles.homeTopbar}>
             <Link href="/" className={styles.homeBrand} aria-label="인연연구소 홈">
@@ -184,7 +183,7 @@ export default function Home() {
               <figcaption>
                 <span>FROM MATCH TO MEETING</span>
                 <strong>대면 소개팅 보장</strong>
-                <small>서비스 연출 이미지 · 매칭 성사 후 날짜와 장소까지 조율</small>
+                <small>매칭 성사 후 날짜와 장소까지 조율</small>
               </figcaption>
             </figure>
 
@@ -285,7 +284,6 @@ export default function Home() {
             />
           </picture>
           <span className={styles.homeFinalShade} aria-hidden="true" />
-          <span className={`${styles.imageDisclosure} ${styles.homeFinalDisclosure}`}>서비스 연출 이미지</span>
           <div className={`${styles.shell} ${styles.homeFinalInner}`}>
             <span className={styles.homeSectionEyebrow}>START WITHOUT A MEMBERSHIP FEE</span>
             <h2>앱이 아닌 소개팅을 찾고 있다면<br />나에게 맞는 안내부터 확인해 보세요</h2>
