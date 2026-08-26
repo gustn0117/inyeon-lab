@@ -3,44 +3,64 @@
 ## Scope
 
 - Routes: `/`, `/women`, `/men`
-- Reference: user-provided mobile screenshots plus the live `jusunking.com` gender-first entry at the same mobile viewport
-- Viewports checked: 390 × 844 and 1440 × 1000
-- States checked: home gender choice, both detail heroes, member-pool gallery, human-curation comparison, five-step journey, FAQ, eligibility gate, form entry, fixed CTA, and live-chat launcher
+- Viewports: 1440 × 900, 768 × 1024, 390 × 844, 375 × 667
+- States: home first fold and full page, gender detail pages, eligibility gate, application form, fixed chat launcher, reduced motion
 
-## Visual checks
+## Homepage
 
-- The home now uses the original split-scene artwork: the two subjects look toward each other instead of posing directly at the camera, the height difference is restrained, and the center divider still keeps both choices visually distinct.
-- Mobile gender labels are exactly the same smaller size (`22px`) and desktop labels resolve to the same `34px`; the brand lockup is also rebalanced to `16px` + `11px` on mobile so neither line overpowers the other.
-- The active home artwork is art-directed by viewport: mobile loads the 941 × 1672 portrait WebP and desktop loads the 3344 × 1882 landscape source through Next Image.
-- Both viewport variants use a top-aligned focal point so wide or short screens preserve comfortable space above both subjects' heads. The former 4px lemon divider between the header and photograph has been removed.
-- Home stays within one viewport and contains only the brand, a short instruction, the split photo, and two clear gender choices. The first headline now names `소개팅` directly.
-- Mobile and desktop use separate high-resolution, art-directed images. Male and female click areas align with their respective subjects.
-- The male page hero and all three female member-pool cards use newly generated adult Korean women who read clearly as being in their twenties; no older female member image remains in the active page.
-- The female page leads with a male member image and the male page leads with a female member image, so each visitor sees the people they may be introduced to.
-- `/women` and `/men` preserve gender-specific eligibility, price, pool copy, FAQ answers, journey payment step, and fixed CTA labels.
-- The photo-led member-pool gallery is followed by a distinct consultant image and a readable comparison panel; generated images are explicitly labeled as service imagery rather than real members.
-- The matching section uses a high-resolution photographic background and keeps white copy readable over a dark scrim.
-- The source/prototype comparison at 390 × 844 confirms that the home keeps the reference's immediate two-way choice while making price, age conditions, and the service category clearer.
-- Korean headings use deliberate line breaks and `word-break: keep-all` where necessary; no syllable-level break remains in the key “카톡” and application copy.
-- The live-chat launcher remains available without overlapping the fixed application CTA.
+- The first fold identifies the service as a capital-area relationship information company rather than an app
+- Membership fee, payment timing, public prices, no paid stand-in members, and in-person meeting support are visible before scrolling
+- Men and women have distinct full-card links with their eligibility and post-match prices
+- Desktop and mobile use separate art-directed hero images while preserving both subjects and the two selection cards
+- The hero, in-person meeting, and final CTA scenes are newly generated for this project; none of the previous homepage photographs remain on the active route
+- The moving policy ticker supplements static copy and is hidden from assistive technology; an equivalent screen-reader sentence remains available
+- The page continues into service identity, operating principles, transparent prices, the four-step process, FAQ, and final gender CTAs
+- The homepage and shared active accents use white, warm gray, and muted wine; the brand and major headings use the same Korean serif treatment
+- Short mobile screens use a compressed first-fold layout so both gender cards and both CTA labels remain visible
+- The mobile chat launcher does not intersect either CTA
+- Portrait tablets use the wide hero composition and keep both people, both cards, and both CTAs inside the first fold
 
-## Responsive and interaction checks
+## Detail pages and eligibility
 
-- Measured document width at 390px: `scrollWidth = 390px` on `/`, `/women`, and `/men`; no horizontal page overflow.
-- At 390px, the home links point to `/men` and `/women`, each measure exactly 195px wide, and occupy the full corresponding half of the 390px visual. At 1440px, each half measures 720px.
-- Detail pages render eight intentional sections. Mobile process cards scroll horizontally at a readable type size instead of shrinking into a dense two-column grid.
-- The fixed CTA hides when the application or footer enters the viewport, so it does not cover the eligibility control, form fields, consent copy, or legal information.
-- Eligibility confirmation remains the required first step. After confirmation, the expected `연락처`, `지역`, `출생연도`, `키`, `직업`, and privacy-consent fields appear on both routes.
-- The form repeats `지금 결제 0원` and the gender-specific success price before input, and the submit label states `가입비 없이 신청서 제출`.
-- Native FAQ details open and close without script-only controls; the first answer is visible by default.
-- Focus-visible outlines and reduced-motion overrides remain active.
+- `/women` and `/men` share one detail-page component while preserving their respective prices and eligibility copy
+- Both routes repeat the key operating principles: no membership fee, payment after a match, no paid stand-in members, and in-person meeting support
+- Service imagery used around the member-pool explanation is explicitly disclosed as staged imagery
+- Four newly generated male portraits and four newly generated female portraits replace the previous member-pool imagery
+- A newly generated matching-consultant scene and a newly generated in-person meeting scene replace the previous shared service photographs
+- Men are eligible from birth year 1984 onward under the stated Korean-age operating rule
+- The male form renders `min="1984"`; client validation and server validation reject earlier birth years with the same message
+- The women’s existing age rule remains unchanged
+- Eligibility confirmation is required before form fields are shown
 
-## Build checks
+## Responsive and accessibility checks
 
-- TypeScript: pass
-- `git diff --check`: pass
+- No horizontal overflow at 1440, 768, 390, or 375 pixels
+- At 390 × 844 and 375 × 667, both home cards and CTA labels are fully inside the first fold
+- At 768 × 1024, portrait artwork preserves both subjects and the chat launcher does not intersect the women’s CTA
+- Home FAQ uses native `details` controls and retains visible keyboard focus styles
+- `prefers-reduced-motion` disables the hero drift, ticker motion, and transitions
+- The fixed chat launcher remains available without covering the home gender CTAs or detail-page fixed application CTA
+- Informative generated photographs use Korean alt text that describes them as staged imagery; decorative homepage hero and final CTA art remain hidden from assistive technology
+
+## Image production and QA
+
+- Active generated assets: 14 WebP files under `public/inyeon-2026`
+- Desktop and mobile homepage hero pairs preserve the same people, wardrobe, and setting while using independent wide and portrait compositions
+- Desktop and mobile final CTA pairs preserve the same people, wardrobe, and setting while using independent wide and portrait compositions
+- Every original was inspected for adult appearance, face and hand integrity, composition, and the absence of embedded text, logos, and watermarks
+- The male and female portrait sets use distinct people, styling, poses, and settings while keeping one warm-white editorial art direction
+- Images were converted to sRGB WebP at quality 86 with metadata removed; the complete active set is approximately 1.1 MB
+- The 390 × 844 and 375 × 667 mobile hero crops show both people above the gender cards; the 768 × 1024 hero uses the wide composition without clipping either person
+- The mobile in-person journey crop keeps both participants readable while reserving the darker left side for text
+
+## Verification
+
 - Next.js production build: pass
-- Standalone image runtime: `sharp` present in `.next/standalone/node_modules`
-- Priority and lazy image requests: loaded successfully with non-zero natural dimensions
+- TypeScript: pass through the production build
+- `git diff --check`: pass
+- Home and `/men` local HTTP responses: 200
+- Browser console errors: none
+- Male form DOM: `min="1984"`, `max="2007"` when checked in 2026
+- Mobile hero network: one high-priority portrait request and no duplicate desktop-image request
 
-final result: passed
+Final result: passed

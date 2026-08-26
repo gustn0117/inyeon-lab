@@ -13,7 +13,7 @@ export function RenewalHeader({ applyHref = "/#choose", applyLabel = "안내 선
       <div className={`${styles.shell} ${styles.headerInner}`}>
         <Link href="/" className={styles.brand} aria-label="인연연구소 홈">
           인연연구소
-          <span className={styles.brandSub}>PRIVATE MATCHING</span>
+          <span className={styles.brandSub}>수도권 1:1 연애정보회사</span>
         </Link>
         <nav className={styles.nav} aria-label="주요 메뉴">
           <Link href="/women" className={styles.navLink}>여성 안내</Link>
@@ -33,7 +33,7 @@ export function RenewalFooter() {
           <div>
             <div className={styles.footerBrand}>인연연구소</div>
             <p className={styles.footerCopy}>
-              마음에 드는 분과 매칭이 성사될 때만 결제하는<br />신원 확인 기반 1:1 소개팅입니다.
+              가입비 없이 시작해 매칭이 성사된 뒤에만 결제하는<br />수도권 중심 1:1 연애정보회사
             </p>
           </div>
           <div>
@@ -47,7 +47,7 @@ export function RenewalFooter() {
           </div>
           <div>
             <div className={styles.footerTitle}>QUICK CONTACT</div>
-            <p className={styles.footerInfo}>추가 문의는 카톡 ID inyeon_ 으로 보내주세요.</p>
+            <p className={styles.footerInfo}>추가 문의는 카톡 ID inyeon_ 으로 보내주세요</p>
             <KakaoCopyButton variant="pill" className="mt-3" />
           </div>
         </div>

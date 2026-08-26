@@ -33,28 +33,28 @@ const MATCHING_STEPS = [
 
 const CONTENT = {
   women: {
-    kicker: "FOR WOMEN · 39 OR UNDER",
-    title: <>괜찮은 사람과,<br /><span className={styles.lemonMark}>부담 없는 시작.</span></>,
-    lead: "가입비는 0원입니다. 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
+    kicker: "연애정보회사 · 여성 안내",
+    title: <>괜찮은 사람과,<br /><span className={styles.lemonMark}>부담 없는 시작</span></>,
+    lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
     price: "33,000원",
     condition: "39세 이하 미혼 여성만 신청 가능",
-    heroImage: "/women-pool-man-v1.webp",
+    heroImage: "/inyeon-2026/male-01.webp",
     heroImageClass: styles.heroImageWomen,
-    highlights: ["가입비 0원", "성비 균형 관리", "신원 확인 회원", "대면 소개팅 보장"],
+    highlights: ["가입비 0원", "매칭 후 결제", "알바 회원 사용 X", "대면 소개팅 보장"],
     poolKicker: "CURATED MEN'S POOL",
-    poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀.",
+    poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀",
     poolLead: "등록된 숫자만 보여드리는 방식이 아닙니다. 실제 만남 의사가 확인된 회원과 진행 중인 소개 현황을 함께 살피고, 여성·남성의 소개 흐름이 한쪽으로 쏠리지 않도록 성비 균형을 관리합니다.",
     poolImages: [
-      { src: "/women-pool-man-v3.webp", label: "직업·기본 신원 확인" },
-      { src: "/match-men-v2-2x.webp", label: "현재 소개 가능 상태 확인" },
-      { src: "/women-pool-man-v2.webp", label: "관계에 진지한 회원 중심" },
+      { src: "/inyeon-2026/male-02.webp", label: "직업·기본 신원 확인" },
+      { src: "/inyeon-2026/male-03.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/male-04.webp", label: "관계에 진지한 회원 중심" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
       { title: "소개 가능 상태", body: "지금 실제로 만남 의사가 있는 회원을 중심으로 제안합니다." },
       { title: "조건과 분위기", body: "직업만이 아니라 생활권, 성향과 서로의 희망 조건까지 살핍니다." },
     ],
-    promiseTitle: "좋은 만남에 필요한 기준은 분명하게.",
+    promiseTitle: "좋은 만남에 필요한 기준은 분명하게",
     promiseLead: "담당자가 조건과 소개 의사를 확인하며 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.",
     criteriaTitle: "능력과 매너를 함께 보는 회원풀",
     criteria: ["직업·신원 확인", "20~40대 초반 중심", "마음에 들 때까지 제안", "미혼 회원"],
@@ -74,34 +74,35 @@ const CONTENT = {
       { question: "신청하면 바로 결제하나요?", answer: "아니요. 가입비는 0원이며, 조건에 맞는 분의 프로필을 확인하고 두 분 모두 소개를 원해 매칭이 성사될 때만 33,000원을 결제합니다." },
       { question: "어떤 상태가 ‘매칭 성사’인가요?", answer: "담당자가 제안한 프로필을 서로 확인한 뒤, 두 분 모두 실제로 만나보겠다고 동의한 상태를 뜻합니다." },
       { question: "카톡으로만 연결되고 끝나나요?", answer: "아니요. 연락처만 전달하고 끝내지 않습니다. 양측 동의 후 담당자가 날짜와 장소를 조율해 실제 대면 소개팅까지 안내합니다." },
+      { question: "알바 회원을 사용하나요?", answer: "아니요. 인연연구소는 알바 회원을 사용하지 않습니다." },
       { question: "성비는 어떻게 관리하나요?", answer: "가입 인원만 보지 않고 현재 소개 가능한 여성·남성 회원과 진행 중인 매칭 수를 함께 살펴, 한쪽의 소개 흐름이 과도하게 밀리지 않도록 조율합니다. 시점별 정확한 성비는 달라질 수 있습니다." },
       { question: "신청하면 언제 소개받을 수 있나요?", answer: "신청 순서만으로 무리하게 연결하지 않고 지역·연령·희망 조건과 소개 가능 상태를 함께 확인합니다. 맞지 않는 소개를 서두르지 않아 안내 시점은 달라질 수 있습니다." },
     ],
     stickyLabel: "가입비 0원 · 성사 시 33,000원",
   },
   men: {
-    kicker: "FOR MEN · 43 OR UNDER",
-    title: <>원하는 분과,<br /><span className={styles.lemonMark}>매칭된 뒤 결제.</span></>,
-    lead: "가입비 0원. 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
+    kicker: "연애정보회사 · 남성 안내",
+    title: <>원하는 분과,<br /><span className={styles.lemonMark}>매칭된 뒤 결제</span></>,
+    lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
     price: "44,000원",
-    condition: "43세 이하 미혼 남성만 신청 가능",
-    heroImage: "/men-20s-woman-hero-v1.webp",
+    condition: "한국나이 기준 1984년생까지의 미혼 남성만 신청 가능",
+    heroImage: "/inyeon-2026/female-01.webp",
     heroImageClass: styles.heroImageMen,
-    highlights: ["가입비 0원", "이상형 매칭 후 결제", "성비 균형 관리", "대면 소개팅 보장"],
+    highlights: ["가입비 0원", "매칭 후 결제", "알바 회원 사용 X", "대면 소개팅 보장"],
     poolKicker: "CURATED WOMEN'S POOL",
-    poolTitle: "거리·나이·스타일까지, 원하는 기준으로 살펴보는 여성 회원풀.",
+    poolTitle: "거리·나이·스타일까지, 원하는 기준으로 살펴보는 여성 회원풀",
     poolLead: "막연한 랜덤 소개가 아닙니다. 실제 소개가 가능한 여성 회원과 남성 회원의 진행 상황을 함께 보며 성비 균형을 관리하고, 먼저 여쭤본 이상형 조건에 맞춰 마음에 들 때까지 프로필을 제안합니다.",
     poolImages: [
-      { src: "/men-20s-woman-pool-v1.webp", label: "희망 거리·나이 확인" },
-      { src: "/men-20s-woman-pool-v2.webp", label: "원하는 스타일 맞춤 제안" },
-      { src: "/men-20s-woman-pool-v3.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-2026/female-02.webp", label: "희망 거리·나이 확인" },
+      { src: "/inyeon-2026/female-03.webp", label: "원하는 스타일 맞춤 제안" },
+      { src: "/inyeon-2026/female-04.webp", label: "현재 소개 가능 상태 확인" },
     ],
     poolPoints: [
       { title: "성비 밸런스", body: "활동 중인 여성·남성 회원과 소개 진행 상황을 함께 확인합니다." },
       { title: "이상형 조건", body: "원하는 거리·나이·스타일을 담당자가 먼저 구체적으로 확인합니다." },
       { title: "양측 동의", body: "한쪽만 마음에 든다고 성사되지 않습니다. 서로 동의한 소개만 진행합니다." },
     ],
-    promiseTitle: "카톡만 하다 끝나는 소개팅이 아닙니다.",
+    promiseTitle: "카톡만 하다 끝나는 소개팅이 아닙니다",
     promiseLead: "서로 프로필을 확인하고 두 분 모두 동의한 매칭만 진행합니다. 담당자가 일정과 장소까지 맡아 실제 대면 소개팅으로 연결합니다.",
     criteriaTitle: "원하는 이상형 조건부터 확인",
     criteria: ["활동 거리", "선호 나이", "원하는 스타일", "상호 프로필 동의"],
@@ -121,6 +122,7 @@ const CONTENT = {
       { question: "신청하면 바로 결제하나요?", answer: "아니요. 가입비는 0원이며, 원하는 거리·나이·스타일에 맞는 분을 확인하고 두 분 모두 소개를 원해 매칭이 성사될 때만 44,000원을 결제합니다." },
       { question: "어떤 상태가 ‘매칭 성사’인가요?", answer: "담당자가 제안한 프로필을 서로 확인한 뒤, 두 분 모두 실제로 만나보겠다고 동의한 상태를 뜻합니다." },
       { question: "카톡으로만 연결되고 끝나나요?", answer: "아니요. 연락처만 전달하고 끝내지 않습니다. 양측 동의 후 담당자가 날짜와 장소를 조율해 실제 대면 소개팅까지 안내합니다." },
+      { question: "알바 회원을 사용하나요?", answer: "아니요. 인연연구소는 알바 회원을 사용하지 않습니다." },
       { question: "성비는 어떻게 관리하나요?", answer: "가입 인원만 보지 않고 현재 소개 가능한 여성·남성 회원과 진행 중인 매칭 수를 함께 살펴, 한쪽의 소개 흐름이 과도하게 밀리지 않도록 조율합니다. 시점별 정확한 성비는 달라질 수 있습니다." },
       { question: "신청하면 언제 소개받을 수 있나요?", answer: "신청 순서만으로 무리하게 연결하지 않고 지역·연령·희망 조건과 소개 가능 상태를 함께 확인합니다. 맞지 않는 소개를 서두르지 않아 안내 시점은 달라질 수 있습니다." },
     ],
@@ -130,6 +132,7 @@ const CONTENT = {
 
 export default function GenderLanding({ gender }: { gender: GenderKey }) {
   const content = CONTENT[gender];
+  const featuredGender = gender === "women" ? "남성" : "여성";
   const comparisonRows = [
     {
       label: "희망 조건",
@@ -180,13 +183,14 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={styles.heroImageWrap}>
               <Image
                 src={content.heroImage}
-                alt="소개팅 서비스를 이용하는 남녀의 모습"
+                alt={`${featuredGender} 회원풀의 분위기를 보여주는 연출 이미지`}
                 fill
                 priority
                 sizes="(max-width: 900px) calc(100vw - 28px), (max-width: 1220px) 52vw, 650px"
                 quality={92}
                 className={`${styles.heroImage} ${content.heroImageClass}`}
               />
+              <span className={styles.imageCaption}>서비스 이해를 돕기 위한 연출 이미지</span>
             </div>
           </div>
         </section>
@@ -208,7 +212,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               </div>
               <div className={styles.showcaseLead}>
                 <p>{content.poolLead}</p>
-                <strong>조건에 맞는 프로필을, 마음에 들 때까지 제안합니다.</strong>
+                <strong>조건에 맞는 프로필을, 마음에 들 때까지 제안합니다</strong>
               </div>
             </div>
 
@@ -217,7 +221,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <figure key={item.src} className={`${styles.showcaseCard} ${index === 1 ? styles.showcaseCardLift : ""}`}>
                   <Image
                     src={item.src}
-                    alt="회원풀의 분위기를 보여주는 이미지"
+                    alt={`${item.label}을 표현한 ${featuredGender} 인물 연출 이미지`}
                     fill
                     sizes="(max-width: 720px) calc(100vw - 28px), (max-width: 1180px) 31vw, 370px"
                     quality={91}
@@ -230,6 +234,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 </figure>
               ))}
             </div>
+            <p className={styles.showcaseDisclaimer}>서비스 이해를 돕기 위한 연출 이미지입니다</p>
 
             <div className={styles.poolPointGrid}>
               {content.poolPoints.map((point) => (
@@ -246,15 +251,15 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <div className={styles.shell}>
             <div className={styles.curationIntro}>
               <span className={styles.eyebrow}>MATCHING, WITH A HUMAN TOUCH</span>
-              <h2>자동 추천만으로는 알기 어려운 것까지,<br />담당자가 함께 봅니다.</h2>
+              <h2>자동 추천만으로는 알기 어려운 것까지,<br />담당자가 함께 봅니다</h2>
               <p>조건표 한 줄만 맞추는 방식이 아닙니다. 신청 정보와 희망 조건, 현재 소개 가능 상태를 함께 살펴 마음에 드는 분을 찾을 때까지 프로필을 제안합니다.</p>
             </div>
 
             <div className={styles.curationBody}>
               <figure className={styles.consultantVisual}>
                 <Image
-                  src="/matching-consultant-v1.webp"
-                  alt="태블릿으로 매칭 조건을 검토하는 담당자"
+                  src="/inyeon-2026/consultant.webp"
+                  alt="무지 프로필 카드와 태블릿으로 매칭 조건을 검토하는 담당자의 연출 모습"
                   fill
                   sizes="(max-width: 900px) calc(100vw - 28px), 48vw"
                   quality={92}
@@ -270,7 +275,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
               <div className={styles.comparisonPanel}>
                 <div className={styles.comparisonHeading}>
                   <span>WHY INYEON LAB</span>
-                  <h3>연락처만 받는 소개와는 다릅니다.</h3>
+                  <h3>연락처만 받는 소개와는 다릅니다</h3>
                   <p>프로필 확인부터 대면 일정 조율까지, 어떤 기준으로 진행되는지 숨기지 않습니다.</p>
                 </div>
                 <div className={styles.comparisonHeaders} aria-hidden="true">
@@ -294,8 +299,8 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
 
         <section id="matching" className={styles.journeySection}>
           <Image
-            src="/hero-meeting-v2-4k.webp"
-            alt="카페에서 대화를 나누는 남녀의 모습"
+            src="/inyeon-2026/meeting-wide.webp"
+            alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
             fill
             sizes="100vw"
             quality={92}
@@ -305,7 +310,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <div className={`${styles.shell} ${styles.journeyContent}`}>
             <div className={styles.journeyIntro}>
               <span>FROM PROFILE TO REAL MEETING</span>
-              <h2><span className={styles.noWrap}>카톡만 하다</span><br /><span className={styles.noWrap}>끝나는 소개가 아닌,</span><br />실제 만남.</h2>
+              <h2><span className={styles.noWrap}>카톡만 하다</span><br /><span className={styles.noWrap}>끝나는 소개가 아닌,</span><br />실제 만남</h2>
               <p>연락처만 넘긴 뒤 알아서 이어가라는 방식이 아닙니다. 양쪽 의사를 확인하고, 성사된 소개의 날짜와 장소까지 담당자가 조율합니다.</p>
             </div>
             <div className={styles.journeyGrid}>
@@ -352,7 +357,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <div className={`${styles.shell} ${styles.faqDetailLayout}`}>
             <div className={styles.faqDetailIntro}>
               <span className={styles.eyebrow}>BEFORE YOU APPLY</span>
-              <h2>신청 전에<br />궁금한 점.</h2>
+              <h2>신청 전에<br />궁금한 점</h2>
               <p>가입비, 매칭 성사 기준, 성비 관리와 실제 만남까지의 진행 범위를 먼저 확인해보세요.</p>
               <a href="#apply">가입 조건 확인하고 신청</a>
             </div>
@@ -371,7 +376,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <div className={`${styles.shell} ${styles.applyGrid}`}>
             <div className={styles.applyIntro}>
               <span className={styles.eyebrow}>SIMPLE APPLICATION</span>
-              <h2>1분이면<br />신청이 끝나요.</h2>
+              <h2>1분이면<br />신청이 끝나요</h2>
               <p>{content.applicationLead}</p>
               <p className={styles.kakaoNote}>
                 추가 문의는 <strong>카톡 ID inyeon_</strong> 으로 보내주세요. 화면 오른쪽 아래 실시간 상담도 그대로 이용할 수 있습니다.

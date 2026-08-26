@@ -89,9 +89,8 @@ export async function POST(req: NextRequest) {
   const by = Number(birthYear);
   const h = Number(height);
   const currentYear = Number(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Seoul", year: "numeric" }).format(new Date()));
-  const maxAge = gender === "여성" ? 39 : 43;
-  // 출생연도만 수집하므로 생일 경계에 해당하는 한 해를 포함하고, 자격 체크로 본인 확인을 받습니다.
-  const oldestBirthYear = currentYear - maxAge - 1;
+  // 여성은 기존 실제 나이 기준을 유지하고, 남성은 운영 기준인 1984년생까지를 그대로 적용합니다.
+  const oldestBirthYear = gender === "여성" ? currentYear - 39 - 1 : 1984;
   const youngestBirthYear = currentYear - 19;
 
   if (!PHONE_RE.test(p)) {
@@ -101,7 +100,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "지역을 2~30자로 입력해주세요." }, { status: 400 });
   }
   if (!Number.isInteger(by) || by < oldestBirthYear || by > youngestBirthYear) {
-    return NextResponse.json({ error: `${maxAge}세 이하 성인에 해당하는 출생연도를 입력해주세요.` }, { status: 400 });
+    const error = gender === "여성"
+      ? "39세 이하 성인에 해당하는 출생연도를 입력해주세요."
+      : "한국나이 기준 1984년생까지에 해당하는 출생연도를 입력해주세요.";
+    return NextResponse.json({ error }, { status: 400 });
   }
   if (j.length < 2 || j.length > 30) {
     return NextResponse.json({ error: "직업을 2~30자로 입력해주세요." }, { status: 400 });

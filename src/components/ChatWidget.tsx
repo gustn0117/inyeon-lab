@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const INK = "#24271a";
-const LEMON = "#f2e85c";
-const LEMON_WASH = "#fffceb";
+const INK = "#292321";
+const LEMON = "#d9aaa5";
+const LEMON_WASH = "#fbf4f2";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
@@ -172,11 +172,11 @@ export default function ChatWidget() {
           )}
 
           {open ? (
-            <svg className="w-5 h-5 text-[#171910] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="w-5 h-5 text-[#292321] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           ) : (
-            <svg className="w-6 h-6 text-[#171910] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg className="w-6 h-6 text-[#292321] relative" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
           )}
@@ -194,7 +194,7 @@ export default function ChatWidget() {
           role="dialog"
           aria-modal="true"
           aria-label="인연연구소 실시간 상담"
-          className="fixed bottom-24 right-4 sm:right-7 z-[95] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[75vh] sm:max-h-[600px] rounded-2xl bg-white shadow-2xl border border-[#e8e8d8] flex flex-col overflow-hidden"
+          className="fixed bottom-24 right-4 sm:right-7 z-[95] w-[calc(100vw-2rem)] sm:w-[380px] max-h-[75vh] sm:max-h-[600px] rounded-2xl bg-white shadow-2xl border border-[#e9e2df] flex flex-col overflow-hidden"
           style={{ animation: "slide-up 0.25s cubic-bezier(0.16,1,0.3,1)" }}
         >
           {/* 헤더 */}
@@ -229,7 +229,7 @@ export default function ChatWidget() {
           {!sessionId ? (
             <div className="p-7 flex-1 flex flex-col justify-center" style={{ background: `linear-gradient(180deg, ${LEMON_WASH}, #fff)` }}>
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md" style={{ background: LEMON }}>
-                <svg className="w-6 h-6 text-[#171910]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-6 h-6 text-[#292321]" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                 </svg>
               </div>
@@ -244,7 +244,7 @@ export default function ChatWidget() {
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
                 onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#aaa13e] focus:outline-none mb-3"
+                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#9f706f] focus:outline-none mb-3"
               />
               <button
                 onClick={startSession}
@@ -292,7 +292,7 @@ export default function ChatWidget() {
                               : {
                                   background: "white",
                                   color: "#333",
-                                  border: "1px solid #e8e8d8",
+                                  border: "1px solid #e9e2df",
                                   borderBottomLeftRadius: m.isSameAsPrev ? "16px" : "6px",
                                 }
                           }
@@ -311,7 +311,7 @@ export default function ChatWidget() {
               </div>
 
               {/* 입력 영역 */}
-              <div className="border-t border-[#e8e8d8] p-3 bg-white flex-shrink-0">
+              <div className="border-t border-[#e9e2df] p-3 bg-white flex-shrink-0">
                 <div className="flex gap-2 items-end">
                   <textarea
                     ref={taRef}
@@ -327,13 +327,13 @@ export default function ChatWidget() {
                         send();
                       }
                     }}
-                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#aaa13e] focus:outline-none resize-none leading-snug"
+                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#9f706f] focus:outline-none resize-none leading-snug"
                     style={{ minHeight: "40px", maxHeight: "88px" }}
                   />
                   <button
                     onClick={send}
                     disabled={!input.trim() || sending}
-                    className="w-10 h-10 rounded-xl text-[#171910] flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
+                    className="w-10 h-10 rounded-xl text-[#292321] flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-30 hover:scale-105 active:scale-95 shadow-md"
                     style={{
                       background: input.trim() ? LEMON : "#d1d5db",
                     }}

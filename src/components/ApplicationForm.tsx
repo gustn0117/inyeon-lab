@@ -11,15 +11,19 @@ type Stage = "eligibility" | "form" | "done";
 const COPY = {
   women: {
     label: "여성",
-    maxAge: 39,
+    oldestBirthYear: (year: number) => year - 39 - 1,
     price: "33,000원",
     confirmation: "저는 만 19세 이상, 39세 이하의 미혼 여성입니다.",
+    birthYearError: "39세 이하 성인에 해당하는 출생연도를 입력해주세요.",
+    eligibilityHint: "생일 기준 실제 나이로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
   },
   men: {
     label: "남성",
-    maxAge: 43,
+    oldestBirthYear: (_year: number) => 1984,
     price: "44,000원",
-    confirmation: "저는 만 19세 이상, 43세 이하의 미혼 남성입니다.",
+    confirmation: "저는 만 19세 이상 미혼 남성이며, 한국나이 기준 1984년생까지의 가입 조건에 해당합니다.",
+    birthYearError: "한국나이 기준 1984년생까지에 해당하는 출생연도를 입력해주세요.",
+    eligibilityHint: "만 나이가 아닌 출생연도 기준으로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
   },
 } as const;
 
@@ -36,8 +40,11 @@ function formatPhone(value: string) {
 
 export default function ApplicationForm({ gender }: { gender: GenderKey }) {
   const info = COPY[gender];
-  const year = new Date().getFullYear();
-  const oldestBirthYear = year - info.maxAge - 1;
+  const year = Number(new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+  }).format(new Date()));
+  const oldestBirthYear = info.oldestBirthYear(year);
   const youngestBirthYear = year - 19;
   const [stage, setStage] = useState<Stage>("eligibility");
   const [eligible, setEligible] = useState(false);
@@ -63,7 +70,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
     if (region.trim().length < 2) return "활동 가능한 지역을 입력해주세요.";
     const by = Number(birthYear);
     if (!Number.isInteger(by) || by < oldestBirthYear || by > youngestBirthYear) {
-      return `${info.maxAge}세 이하 성인에 해당하는 출생연도를 입력해주세요.`;
+      return info.birthYearError;
     }
     if (job.trim().length < 2) return "직업을 2자 이상 입력해주세요.";
     const h = Number(height);
@@ -115,7 +122,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
       <div className={styles.formCard} aria-live="polite">
         <div className={styles.success}>
           <span className={styles.successBadge}>신청 접수 완료</span>
-          <h3 ref={stageHeadingRef} tabIndex={-1}>기본 정보를 확인한 뒤 연락드릴게요.</h3>
+          <h3 ref={stageHeadingRef} tabIndex={-1}>기본 정보를 확인한 뒤 연락드릴게요</h3>
           <p>
             담당 매칭사가 신청 내용을 검토한 뒤 안내드립니다. 조건에 맞는 매칭이 확인되기 전에는 비용이 발생하지 않습니다.
           </p>
@@ -132,7 +139,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
     return (
       <div className={styles.formCard}>
         <div className={styles.formStep}>STEP 01 · ELIGIBILITY</div>
-        <h3 ref={stageHeadingRef} tabIndex={-1}>신청 전 가입 조건을 확인해주세요.</h3>
+        <h3 ref={stageHeadingRef} tabIndex={-1}>신청 전 가입 조건을 확인해주세요</h3>
         <p className={styles.formDescription}>
           인연연구소는 성인 미혼 회원만 이용할 수 있으며, 매칭 진행 전 관련 정보를 확인할 수 있습니다.
         </p>
@@ -149,7 +156,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
             />
             <span className={styles.checkText}>
               {info.confirmation}
-              <span className={styles.checkHint}>생일 기준 실제 나이로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.</span>
+              <span className={styles.checkHint}>{info.eligibilityHint}</span>
             </span>
           </label>
         </div>
@@ -168,7 +175,7 @@ export default function ApplicationForm({ gender }: { gender: GenderKey }) {
   return (
     <form className={styles.formCard} onSubmit={submit} noValidate>
       <div className={styles.formStep}>STEP 02 · BASIC INFO</div>
-      <h3 ref={stageHeadingRef} tabIndex={-1}>기본 정보만 간단히 알려주세요.</h3>
+      <h3 ref={stageHeadingRef} tabIndex={-1}>기본 정보만 간단히 알려주세요</h3>
       <p className={styles.formDescription}>연락처, 지역, 출생연도, 직업, 키만 입력하면 신청이 끝납니다.</p>
       <div className={styles.formPriceSummary}>
         <strong>가입비 0원</strong>

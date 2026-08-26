@@ -3,14 +3,14 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "인연연구소 | 조건에 맞는 사람과 실제 만남까지",
+  title: "인연연구소 | 가입비 없이 매칭 후 결제하는 대면 소개팅",
   description:
-    "성비 균형을 관리하는 신원 확인 기반 1:1 소개팅. 거리·나이·스타일을 확인하고, 양측이 동의한 매칭을 실제 대면 일정까지 연결합니다.",
-  keywords: "소개팅, 인연매칭, 20대 소개팅, 30대 소개팅, 신원 확인, 대면 소개팅, 인연연구소",
+    "앱이 아닌 수도권 중심 연애정보회사. 가입비 없이 시작해 양측 매칭 성사 후 결제하며, 공개된 금액으로 실제 대면 소개팅까지 연결합니다.",
+  keywords: "연애정보회사, 수도권 소개팅, 소개팅, 인연매칭, 매칭 후 결제, 가입비 없는 소개팅, 대면 소개팅, 인연연구소",
   metadataBase: new URL("https://inyeon.today"),
   openGraph: {
-    title: "인연연구소 | 조건에 맞는 사람과 실제 만남까지",
-    description: "가입비 0원, 양측 동의 후 결제. 성비와 조건을 관리한 1:1 매칭을 실제 대면 소개팅까지 연결합니다.",
+    title: "인연연구소 | 가입비 없이 매칭 후 결제하는 대면 소개팅",
+    description: "앱이 아닌 수도권 중심 연애정보회사. 가입비 없이 시작해 양측 매칭 성사 후 결제하고 실제 대면 소개팅까지 연결합니다.",
     url: "https://inyeon.today",
     siteName: "인연연구소",
     locale: "ko_KR",
