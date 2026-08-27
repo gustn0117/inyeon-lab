@@ -9711,3 +9711,46 @@
     padding-top: 16px;
   }
 }
+
+/* ═══ 모바일 히어로: 로고 가운데 + 문구 가운데 정렬 + 팩트 띠 흰 배경 ═══ */
+@media (max-width: 720px) {
+  .homeCampaignHeader {
+    justify-content: center;
+  }
+
+  .homeCampaignHeaderAction {
+    display: none;
+  }
+
+  .homeCampaignBrand {
+    justify-content: center;
+  }
+
+  .homeCampaignCopy {
+    padding-top: 12px;
+    text-align: center;
+  }
+
+  .homeCampaignCopy h1,
+  .homeCampaignCopy p {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .homeCampaignKicker {
+    justify-content: center;
+  }
+
+  .homeCampaignProof {
+    overflow: hidden;
+    border: 1px solid rgba(20, 40, 51, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 6px 18px rgba(20, 40, 51, 0.06);
+  }
+
+  .homeCampaignProof > span {
+    background: transparent;
+  }
+}
