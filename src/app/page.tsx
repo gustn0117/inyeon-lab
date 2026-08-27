@@ -51,10 +51,67 @@ const PRINCIPLES = [
 ] as const;
 
 const PROCESS = [
-  { number: "01", title: "가입비 없이 신청", body: "기본 정보와 활동 지역을 간단히 남겨주세요" },
-  { number: "02", title: "희망 조건 확인", body: "담당자가 원하는 거리·나이·스타일을 확인해요" },
-  { number: "03", title: "양측 소개 의사 확인", body: "두 분 모두 만나고 싶을 때만 매칭이 성사돼요" },
-  { number: "04", title: "결제 후 대면 조율", body: "공개된 금액을 결제하면 날짜와 장소를 조율해요" },
+  {
+    number: "01",
+    title: "가입비 없이 신청",
+    body: "기본 정보와 활동 지역을 간단히 남겨주세요",
+    image: "/inyeon-2026/process-01-v1.webp",
+    alt: "밝은 공간에서 스마트폰으로 소개팅을 신청하는 20대 여성의 연출 이미지",
+  },
+  {
+    number: "02",
+    title: "희망 조건 확인",
+    body: "담당자가 원하는 거리·나이·스타일을 확인해요",
+    image: "/inyeon-2026/process-02-v1.webp",
+    alt: "매칭 담당자와 희망 조건을 상담하는 20대 남성의 연출 이미지",
+  },
+  {
+    number: "03",
+    title: "양측 소개 의사 확인",
+    body: "두 분 모두 만나고 싶을 때만 매칭이 성사돼요",
+    image: "/inyeon-2026/process-03-v1.webp",
+    alt: "서로 다른 공간에서 소개 프로필을 확인하는 20대 남녀의 연출 이미지",
+  },
+  {
+    number: "04",
+    title: "결제 후 대면 조율",
+    body: "공개된 금액을 결제하면 날짜와 장소를 조율해요",
+    image: "/inyeon-2026/process-04-v1.webp",
+    alt: "밝은 카페에서 첫 만남의 대화를 나누는 20대 남녀의 연출 이미지",
+  },
+] as const;
+
+const HOME_MEMBER_POOL = [
+  {
+    src: "/inyeon-2026/male-02-v3.webp",
+    alt: "밝은 야외 공간에서 하늘색 재킷을 입은 20대 남성의 서비스 연출 이미지",
+    label: "MEN · MOOD 01",
+  },
+  {
+    src: "/inyeon-2026/female-02-v3.webp",
+    alt: "화이트와 스카이블루 공간에서 미소 짓는 20대 여성의 서비스 연출 이미지",
+    label: "WOMEN · MOOD 01",
+  },
+  {
+    src: "/inyeon-2026/male-03-v3.webp",
+    alt: "밝은 전시 공간에서 아쿠아 재킷을 입은 20대 남성의 서비스 연출 이미지",
+    label: "MEN · MOOD 02",
+  },
+  {
+    src: "/inyeon-2026/female-03-v3.webp",
+    alt: "푸른 하늘이 보이는 공간에서 밝게 웃는 20대 여성의 서비스 연출 이미지",
+    label: "WOMEN · MOOD 02",
+  },
+  {
+    src: "/inyeon-2026/male-04-v3.webp",
+    alt: "화이트 셔츠와 스카이블루 팬츠를 입은 20대 남성의 서비스 연출 이미지",
+    label: "MEN · MOOD 03",
+  },
+  {
+    src: "/inyeon-2026/female-04-v3.webp",
+    alt: "화이트와 아쿠아 공간에서 하늘색 재킷을 입은 20대 여성의 서비스 연출 이미지",
+    label: "WOMEN · MOOD 03",
+  },
 ] as const;
 
 const FAQS = [
@@ -201,6 +258,60 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="home-pool" className={styles.homePoolSection} aria-labelledby="home-pool-title">
+          <div className={`${styles.shell} ${styles.homePoolHeader}`}>
+            <div>
+              <span className={styles.homeSectionEyebrow}>YOUNG &amp; BRIGHT CONNECTIONS</span>
+              <h2 id="home-pool-title">20·30대 중심의<br />밝고 트렌디한 만남</h2>
+            </div>
+            <div className={styles.homePoolLead}>
+              <p>인연연구소가 지향하는 밝고 편안한 1:1 만남의 분위기를 이미지로 미리 확인해 보세요</p>
+              <p id="home-pool-disclosure" className={styles.homePoolDisclosure}>
+                <span aria-hidden="true">i</span>
+                아래 사진은 실제 회원 사진이 아닌, 서비스 이해를 위한 연출 이미지입니다
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.homePoolGalleryFrame}>
+            <div
+              className={styles.homePoolGallery}
+              role="region"
+              aria-label="남녀 서비스 연출 이미지 모음"
+              aria-describedby="home-pool-disclosure"
+              tabIndex={0}
+            >
+              {HOME_MEMBER_POOL.map((item) => (
+                <figure key={item.src} className={styles.homePoolCard}>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 720px) 64vw, (max-width: 980px) 33vw, 17vw"
+                    quality={82}
+                    className={styles.homePoolImage}
+                  />
+                  <figcaption>
+                    <strong>{item.label}</strong>
+                    <span>서비스 이해를 위한 연출 이미지</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <p className={styles.homePoolSwipeHint} aria-hidden="true">옆으로 밀어 더 보기 <span>→</span></p>
+
+          <div className={`${styles.shell} ${styles.homePoolActions}`} aria-label="성별별 상세 안내">
+            <Link href="/men" className={styles.homePoolAction}>
+              남성 회원 안내 보기 <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="/women" className={styles.homePoolAction}>
+              여성 회원 안내 보기 <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </section>
+
         <section className={styles.homePricingSection} aria-labelledby="pricing-title">
           <div className={`${styles.shell} ${styles.homePricingLayout}`}>
             <div className={styles.homePricingIntro}>
@@ -231,22 +342,45 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.homeProcessSection}>
+        <section id="how-it-works" className={styles.homeProcessSection} aria-labelledby="process-title">
           <div className={styles.shell}>
             <div className={styles.homeProcessIntro}>
               <span className={styles.homeSectionEyebrow}>HOW IT WORKS</span>
-              <h2>신청부터 실제 만남까지<br />기준을 분명하게</h2>
+              <h2 id="process-title">신청부터 실제 만남까지<br />기준을 분명하게</h2>
               <p>앱처럼 막연하게 기다리지 않도록 진행 과정을 먼저 공개합니다</p>
+              <p id="process-image-disclosure" className={styles.homeProcessDisclosure}>
+                <span aria-hidden="true">i</span>
+                아래 사진은 서비스 이해를 위한 연출 이미지입니다
+              </p>
             </div>
-            <div className={styles.homeProcessGrid}>
+            <div
+              className={styles.homeProcessGrid}
+              role="region"
+              aria-label="인연연구소 진행 과정"
+              aria-describedby="process-image-disclosure"
+              tabIndex={0}
+            >
               {PROCESS.map((step) => (
-                <article key={step.number} className={styles.homeProcessCard} data-number={step.number}>
-                  <span>{step.number}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
+                <article key={step.number} className={styles.homeProcessCard}>
+                  <div className={styles.homeProcessMedia}>
+                    <Image
+                      src={step.image}
+                      alt={step.alt}
+                      fill
+                      sizes="(max-width: 720px) 80vw, (max-width: 960px) 48vw, 25vw"
+                      quality={84}
+                      className={styles.homeProcessImage}
+                    />
+                    <span className={styles.homeProcessNumber}>{step.number}</span>
+                  </div>
+                  <div className={styles.homeProcessCopy}>
+                    <h3>{step.title}</h3>
+                    <p>{step.body}</p>
+                  </div>
                 </article>
               ))}
             </div>
+            <p className={styles.homeProcessSwipeHint} aria-hidden="true">옆으로 밀어 과정 보기 <span>→</span></p>
           </div>
         </section>
 

@@ -3283,6 +3283,328 @@
   }
 }
 
+/* Home member-pool gallery — image-rich, youthful and clearly disclosed as staged */
+.homePoolSection {
+  position: relative;
+  padding: clamp(82px, 9vw, 126px) 0;
+  overflow: hidden;
+  border-block: 1px solid #dcecf1;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(87, 207, 203, 0.18), transparent 25rem),
+    radial-gradient(circle at 92% 88%, rgba(67, 164, 220, 0.13), transparent 27rem),
+    linear-gradient(180deg, #f9fdfe 0%, #effafd 100%);
+}
+
+.homePoolHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  align-items: end;
+  gap: clamp(44px, 8vw, 108px);
+}
+
+.homePoolHeader h2 {
+  margin: 15px 0 0;
+  color: var(--home-dark);
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  font-size: clamp(37px, 4.7vw, 57px);
+  font-weight: 750;
+  letter-spacing: -0.058em;
+  line-height: 1.16;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.homePoolLead > p:first-child {
+  margin: 0;
+  color: #536873;
+  font-size: 14px;
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.homePoolDisclosure {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 17px 0 0;
+  border: 1px solid #cbe7ee;
+  border-radius: 13px;
+  padding: 11px 13px;
+  color: #46616d;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 680;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.homePoolDisclosure > span {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #0b79b6, #25b8c5);
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.homePoolGalleryFrame {
+  width: min(1240px, calc(100% - 40px));
+  margin: clamp(38px, 5vw, 64px) auto 0;
+}
+
+.homePoolGallery {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  padding: 4px 4px 30px;
+}
+
+.homePoolGallery:focus-visible {
+  border-radius: 22px;
+  outline: 3px solid rgba(13, 127, 192, 0.48);
+  outline-offset: 5px;
+}
+
+.homePoolCard {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(170, 213, 226, 0.9);
+  border-radius: 22px;
+  background: #dff1f5;
+  box-shadow: 0 22px 54px rgba(22, 88, 112, 0.12);
+  isolation: isolate;
+}
+
+.homePoolCard:nth-child(even) {
+  margin-top: 26px;
+}
+
+.homePoolCard::after {
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 58%, rgba(241, 251, 253, 0.12) 70%, rgba(241, 251, 253, 0.82) 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+}
+
+.homePoolImage {
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.homePoolCard figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 9px;
+  bottom: 9px;
+  left: 9px;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  border: 1px solid rgba(199, 226, 233, 0.92);
+  border-radius: 12px;
+  padding: 9px 10px;
+  color: #244653;
+  background: rgba(251, 254, 255, 0.89);
+  box-shadow: 0 9px 24px rgba(23, 70, 86, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.homePoolCard figcaption strong {
+  color: #0b79b6;
+  font-family: Inter, sans-serif;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.homePoolCard figcaption span {
+  color: #46616d;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.homePoolSwipeHint {
+  display: none;
+}
+
+.homePoolActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.homePoolAction {
+  display: inline-flex;
+  min-width: 205px;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border: 1px solid var(--accent-deep);
+  border-radius: 999px;
+  padding: 0 22px;
+  color: #fff;
+  background: var(--accent-deep);
+  box-shadow: 0 14px 34px rgba(8, 106, 166, 0.18);
+  font-size: 12.5px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.homePoolAction:last-child {
+  border-color: rgba(13, 127, 192, 0.26);
+  color: #294955;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 34px rgba(22, 88, 112, 0.09);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .homePoolCard:hover .homePoolImage {
+    transform: scale(1.028);
+  }
+
+  .homePoolAction:hover {
+    box-shadow: 0 18px 42px rgba(8, 106, 166, 0.24);
+    transform: translateY(-3px);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 980px) {
+  .homePoolHeader {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .homePoolLead {
+    max-width: 650px;
+  }
+
+  .homePoolGallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .homePoolCard:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .homePoolCard:nth-child(3n + 2) {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .homePoolSection {
+    padding: 70px 0 64px;
+  }
+
+  .homePoolHeader {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .homePoolHeader h2 {
+    margin-top: 12px;
+    font-size: clamp(32px, 9.2vw, 39px);
+    line-height: 1.12;
+  }
+
+  .homePoolLead > p:first-child {
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+
+  .homePoolDisclosure {
+    margin-top: 13px;
+    padding: 10px 11px;
+    font-size: 10.5px;
+  }
+
+  .homePoolGalleryFrame {
+    width: 100%;
+    margin-top: 27px;
+  }
+
+  .homePoolGallery {
+    display: flex;
+    gap: 11px;
+    padding: 4px 20px 14px;
+    overflow-x: auto;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homePoolGallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .homePoolCard,
+  .homePoolCard:nth-child(even),
+  .homePoolCard:nth-child(3n + 2) {
+    flex: 0 0 min(64vw, 250px);
+    margin-top: 0;
+    border-radius: 18px;
+    scroll-snap-align: start;
+  }
+
+  .homePoolCard figcaption {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .homePoolSwipeHint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 7px 0 0;
+    color: #5e7580;
+    font-size: 10px;
+    font-weight: 720;
+  }
+
+  .homePoolSwipeHint span {
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  .homePoolActions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .homePoolAction {
+    min-width: 0;
+    min-height: 52px;
+    gap: 8px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 340px) {
   .homeChoiceCard:last-child .homeChoiceAction {
     right: 67px;
@@ -6194,5 +6516,212 @@
     align-self: start;
     margin-top: 14px;
     padding-bottom: 22px;
+  }
+}
+
+/* Image-led process story — reference-inspired scanability without borrowed claims */
+.homeProcessSection {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(87, 207, 203, 0.12), transparent 25rem),
+    #fff;
+}
+
+.homeProcessIntro {
+  max-width: 760px;
+}
+
+.homeProcessDisclosure {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 0;
+  border: 1px solid #cfe8ef;
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: #4d6672;
+  background: #f7fcfd;
+  font-size: 10.5px;
+  font-weight: 680;
+  line-height: 1.45;
+}
+
+.homeProcessDisclosure > span {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #0b79b6, #25b8c5);
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.homeProcessGrid {
+  gap: 14px;
+}
+
+.homeProcessGrid:focus-visible {
+  border-radius: 24px;
+  outline: 3px solid rgba(13, 127, 192, 0.48);
+  outline-offset: 6px;
+}
+
+.homeProcessCard {
+  min-height: 0;
+  border-color: #d9e9ee;
+  border-radius: 25px;
+  padding: 0 0 22px;
+  background: #fff;
+  box-shadow: 0 22px 58px rgba(22, 76, 96, 0.1);
+}
+
+.homeProcessCard::after {
+  display: none;
+}
+
+.homeProcessMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid #dcebf0;
+  background: #e6f4f7;
+}
+
+.homeProcessImage {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.homeProcessNumber {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  width: auto;
+  min-width: 42px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0 11px;
+  color: #fff;
+  background: rgba(8, 106, 166, 0.9);
+  box-shadow: 0 8px 24px rgba(8, 61, 91, 0.2);
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  font-weight: 850;
+  backdrop-filter: blur(10px);
+}
+
+.homeProcessCopy {
+  padding: 0 21px;
+}
+
+.homeProcessCard h3 {
+  margin: 19px 0 0;
+  color: var(--home-dark);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.homeProcessCard p {
+  margin: 9px 0 0;
+  color: #5f737d;
+  font-size: 11.5px;
+  line-height: 1.65;
+}
+
+.homeProcessSwipeHint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .homeProcessCard:hover .homeProcessImage {
+    transform: scale(1.035);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 960px) {
+  .homeProcessGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .homeProcessIntro > p:not(.homeProcessDisclosure) {
+    max-width: 315px;
+  }
+
+  .homeProcessDisclosure {
+    border-radius: 14px;
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+
+  .homeProcessGrid {
+    display: flex;
+    width: calc(100% + 32px);
+    gap: 11px;
+    margin: 34px 0 0 -16px;
+    padding: 4px 16px 16px;
+    overflow-x: auto;
+    scroll-padding-inline: 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .homeProcessGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .homeProcessCard {
+    flex: 0 0 min(80vw, 310px);
+    border-radius: 21px;
+    padding-bottom: 20px;
+    scroll-snap-align: start;
+  }
+
+  .homeProcessNumber {
+    top: 12px;
+    left: 12px;
+  }
+
+  .homeProcessCopy {
+    padding: 0 18px;
+  }
+
+  .homeProcessCard h3 {
+    margin-top: 17px;
+    font-size: 18px;
+  }
+
+  .homeProcessCard p {
+    font-size: 11px;
+  }
+
+  .homeProcessSwipeHint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 3px 0 0;
+    color: #607782;
+    font-size: 10px;
+    font-weight: 720;
+  }
+
+  .homeProcessSwipeHint span {
+    color: var(--accent);
+    font-size: 13px;
   }
 }
