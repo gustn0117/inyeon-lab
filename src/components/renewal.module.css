@@ -8610,3 +8610,65 @@
     object-position: 50% 50%;
   }
 }
+
+/* ═══ 히어로 반응형 보완 — 사진·버튼·텍스트 융화 ═══ */
+/* 1) 성별 카드: 버튼을 절대배치 → 그리드 우측 열로 이동해 텍스트와 절대 겹치지 않게 */
+@media (min-width: 721px) {
+  .homeChoiceGrid .homeChoiceCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-auto-rows: auto;
+    column-gap: 18px;
+    align-items: start;
+  }
+
+  .homeChoiceGrid .homeChoiceCard > * {
+    grid-column: 1;
+  }
+
+  .homeChoiceGrid .homeChoiceCard .homeChoiceAction {
+    position: static;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    align-self: end;
+    justify-self: end;
+    margin: 0;
+    white-space: nowrap;
+  }
+}
+
+/* 2) 태블릿 세로(721~980px): 사진을 좌우 여백 없이 꽉 채우고 인물 중심으로 */
+@media (min-width: 721px) and (max-width: 980px) and (orientation: portrait) {
+  .homeEntryImage {
+    object-fit: cover;
+    object-position: center 30%;
+  }
+}
+
+/* 3) 노트북·소형 데스크톱(981~1200px): 16:9 원본 비율을 유지한 채 하단 정렬 → 양쪽 인물 잘림 방지 */
+@media (min-width: 981px) and (max-width: 1200px) {
+  .homeEntryPicture {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: min(100%, calc(100vw * 9 / 16));
+  }
+
+  .homeEntryImage {
+    object-fit: cover;
+    object-position: center bottom;
+    transform: none;
+    animation: none;
+    /* 사진 윗선을 배경 워시에 녹여 경계 제거 */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.55) 14%, #000 34%);
+    mask-image: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.55) 14%, #000 34%);
+  }
+
+  .homeEntryShade {
+    background:
+      radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.72) 22%, rgba(255, 255, 255, 0) 48%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.6) 34%, rgba(20, 40, 51, 0.02) 62%, rgba(20, 40, 51, 0.5) 100%);
+  }
+}
