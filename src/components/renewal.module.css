@@ -8792,6 +8792,10 @@
   inset: 0;
 }
 
+.homeCampaignCenterBrand {
+  display: none;
+}
+
 .homeCampaignPicture {
   z-index: 0;
   display: block;
@@ -9110,6 +9114,44 @@
 
   .homeCampaignShade {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 23%, rgba(255, 255, 255, 0.18) 37%, transparent 49%);
+  }
+
+  .homeCampaignCenterBrand {
+    position: absolute;
+    top: clamp(285px, 46dvh, 520px);
+    left: 50%;
+    z-index: 2;
+    display: inline-flex;
+    min-width: 158px;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin: 0;
+    padding: 9px 20px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 999px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(8, 121, 174, 0.97), rgba(11, 115, 130, 0.96));
+    box-shadow: 0 12px 30px rgba(16, 76, 96, 0.2);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .homeCampaignCenterBrand span {
+    font-family: Inter, sans-serif;
+    font-size: 7px;
+    font-weight: 850;
+    letter-spacing: 0.18em;
+    line-height: 1;
+  }
+
+  .homeCampaignCenterBrand strong {
+    font-size: clamp(19px, 5.4vw, 23px);
+    font-weight: 820;
+    letter-spacing: -0.055em;
+    line-height: 1.1;
   }
 
   .homeCampaignHeader {

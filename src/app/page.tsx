@@ -153,8 +153,8 @@ export default function Home() {
         <section className={styles.homeCampaignEntry} aria-labelledby="home-title" data-floating-ui-guard>
           <ArtDirectedImage
             desktopSrc="/inyeon-2026/home-hero-desktop-v4.webp"
-            mobileSrc="/inyeon-2026/home-hero-mobile-v6-white.webp"
-            alt="밝은 공간에서 마주 보는 20대 남녀의 서비스 연출 이미지"
+            mobileSrc="/inyeon-2026/home-hero-mobile-v9-split-portraits-hq.png"
+            alt="스카이블루와 코랄의 서로 다른 공간에서 중앙을 바라보는 20대 남녀의 서비스 연출 이미지"
             pictureClassName={styles.homeCampaignPicture}
             className={styles.homeCampaignImage}
             media="(max-width: 980px) and (orientation: portrait)"
@@ -164,6 +164,10 @@ export default function Home() {
             priority
           />
           <span className={styles.homeCampaignShade} aria-hidden="true" />
+          <div className={styles.homeCampaignCenterBrand} aria-hidden="true">
+            <span>INYEON LAB</span>
+            <strong>인연연구소</strong>
+          </div>
 
           <header className={styles.homeCampaignHeader}>
             <Link href="/" className={styles.homeCampaignBrand} aria-label="인연연구소 홈">
