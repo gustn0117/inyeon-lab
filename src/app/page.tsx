@@ -157,7 +157,7 @@ export default function Home() {
             alt="밝은 공간에서 마주 보는 20대 남녀의 서비스 연출 이미지"
             pictureClassName={styles.homeCampaignPicture}
             className={styles.homeCampaignImage}
-            media="(max-width: 720px), (max-width: 980px) and (orientation: portrait)"
+            media="(max-width: 980px) and (orientation: portrait)"
             sizes="100vw"
             mobileSizes="100vw"
             quality={90}
@@ -196,7 +196,13 @@ export default function Home() {
 
           <div id="choose" className={styles.homeCampaignDock} aria-label="성별별 서비스 안내 선택">
             {ENTRANCES.map((entrance, index) => (
-              <Link key={entrance.href} href={entrance.href} className={styles.homeCampaignRoute}>
+              <Link
+                key={entrance.href}
+                href={entrance.href}
+                className={styles.homeCampaignRoute}
+                aria-label={`${entrance.title} 페이지로 이동. ${entrance.condition}. ${entrance.price}`}
+                data-gender={index === 0 ? "men" : "women"}
+              >
                 <span className={styles.homeCampaignRouteIndex}>0{index + 1}</span>
                 <div>
                   <small>{entrance.eyebrow}</small>
