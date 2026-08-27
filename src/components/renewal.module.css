@@ -9757,8 +9757,29 @@
 
 /* ═══ 모바일: 사진 가운데 로고 배지 제거 + 글씨 그림자로 시인성 확보 ═══ */
 @media (max-width: 720px) {
+  /* 가운데 로고: 파란 알약 배경은 제거하고 글씨만 남김 (흰 글로우 그림자로 시인성) */
   .homeCampaignCenterBrand {
-    display: none;
+    display: inline-flex;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--home-wine-deep, #0f5ea6);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 3px 16px rgba(255, 255, 255, 0.9), 0 8px 26px rgba(20, 40, 51, 0.12);
+  }
+
+  .homeCampaignCenterBrand span {
+    font-size: 9px;
+    color: #2c5a72;
+  }
+
+  .homeCampaignCenterBrand strong {
+    font-size: clamp(24px, 7.2vw, 30px);
+    letter-spacing: -0.04em;
   }
 
   .homeCampaignBrand strong,
