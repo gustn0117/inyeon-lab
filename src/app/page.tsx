@@ -153,7 +153,7 @@ export default function Home() {
         <section className={styles.homeCampaignEntry} aria-labelledby="home-title" data-floating-ui-guard>
           <ArtDirectedImage
             desktopSrc="/inyeon-2026/home-hero-desktop-v4.webp"
-            mobileSrc="/inyeon-2026/home-hero-mobile-v5-clean.webp"
+            mobileSrc="/inyeon-2026/home-hero-mobile-v6-white.webp"
             alt="밝은 공간에서 마주 보는 20대 남녀의 서비스 연출 이미지"
             pictureClassName={styles.homeCampaignPicture}
             className={styles.homeCampaignImage}
