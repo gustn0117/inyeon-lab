@@ -266,10 +266,6 @@ export default function Home() {
             </div>
             <div className={styles.homePoolLead}>
               <p>인연연구소가 지향하는 밝고 편안한 1:1 만남의 분위기를 이미지로 미리 확인해 보세요</p>
-              <p id="home-pool-disclosure" className={styles.homePoolDisclosure}>
-                <span aria-hidden="true">i</span>
-                아래 사진은 실제 회원 사진이 아닌, 서비스 이해를 위한 연출 이미지입니다
-              </p>
             </div>
           </div>
 
@@ -278,7 +274,6 @@ export default function Home() {
               className={styles.homePoolGallery}
               role="region"
               aria-label="남녀 서비스 연출 이미지 모음"
-              aria-describedby="home-pool-disclosure"
               tabIndex={0}
             >
               {HOME_MEMBER_POOL.map((item) => (
@@ -293,7 +288,6 @@ export default function Home() {
                   />
                   <figcaption>
                     <strong>{item.label}</strong>
-                    <span>서비스 이해를 위한 연출 이미지</span>
                   </figcaption>
                 </figure>
               ))}
@@ -348,16 +342,11 @@ export default function Home() {
               <span className={styles.homeSectionEyebrow}>HOW IT WORKS</span>
               <h2 id="process-title">신청부터 실제 만남까지<br />기준을 분명하게</h2>
               <p>앱처럼 막연하게 기다리지 않도록 진행 과정을 먼저 공개합니다</p>
-              <p id="process-image-disclosure" className={styles.homeProcessDisclosure}>
-                <span aria-hidden="true">i</span>
-                아래 사진은 서비스 이해를 위한 연출 이미지입니다
-              </p>
             </div>
             <div
               className={styles.homeProcessGrid}
               role="region"
               aria-label="인연연구소 진행 과정"
-              aria-describedby="process-image-disclosure"
               tabIndex={0}
             >
               {PROCESS.map((step) => (
