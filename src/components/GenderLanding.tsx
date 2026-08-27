@@ -164,104 +164,94 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
   const matchingSteps = [...MATCHING_STEPS, content.finalStep];
 
   return (
-    <div className={`${styles.site} ${styles.editorialGender}`}>
+    <div className={styles.site}>
       <RenewalHeader applyHref="#apply" applyLabel="무료 신청" />
       <main>
-        <section className={styles.genderEditorialHero} data-floating-ui-guard>
-          <div className={`${styles.shell} ${styles.genderEditorialHeroGrid}`}>
-            <div className={styles.genderEditorialCopy}>
-              <div className={styles.genderEditorialKicker}>{content.kicker}</div>
-              <h1 className={styles.genderEditorialTitle}>{content.title}</h1>
-              <p className={styles.genderEditorialLead}>{content.lead}</p>
-
-              <div className={styles.genderEditorialOffer}>
-                <div>
-                  <span>MEMBERSHIP FEE</span>
-                  <strong>가입비 0원</strong>
-                </div>
-                <div>
-                  <span>PAY AFTER MATCH</span>
-                  <strong>{content.price}</strong>
-                </div>
+        <section className={styles.genderHero} data-floating-ui-guard>
+          <div className={`${styles.shell} ${styles.genderHeroGrid}`}>
+            <div className={styles.genderHeroCopy}>
+              <div className={styles.genderKicker}>{content.kicker}</div>
+              <h1 className={styles.genderTitle}>{content.title}</h1>
+              <p className={styles.genderLead}>{content.lead}</p>
+              <div className={styles.priceBlock}>
+                <span className={styles.priceLabel}>매칭 성사 시</span>
+                <span className={styles.priceValue}>{content.price}</span>
+                <span className={styles.priceZero}>가입비 0원</span>
               </div>
-
-              <a className={styles.genderEditorialPrimary} href="#apply">
-                가입 조건 확인하고 신청 <span aria-hidden="true">→</span>
-              </a>
-              <p className={styles.genderEditorialEligibility}>{content.condition} · 매칭 전 신원 확인 절차가 진행됩니다</p>
+              <a className={styles.primaryButton} href="#apply">가입 조건 확인하고 신청</a>
+              <p className={styles.eligibilityNote}>{content.condition} · 매칭 전 신원 확인 절차가 진행됩니다.</p>
             </div>
-
-            <figure className={styles.genderEditorialVisual}>
+            <div className={styles.heroImageWrap}>
               <Image
                 src={content.heroImage}
                 alt={`${featuredGender} 회원풀의 분위기를 보여주는 연출 이미지`}
                 fill
                 priority
-                sizes="(max-width: 720px) calc(100vw - 32px), (max-width: 1220px) 40vw, 470px"
+                sizes="(max-width: 900px) calc(100vw - 28px), (max-width: 1220px) 52vw, 650px"
                 quality={88}
-                className={`${styles.genderEditorialImage} ${content.heroImageClass}`}
+                className={`${styles.heroImage} ${content.heroImageClass}`}
               />
-              <figcaption>
-                <span>CURATED, NOT RANDOM</span>
-                <strong>조건을 확인한 1:1 연결</strong>
-                <small>수도권 중심 · 담당자 매칭</small>
-              </figcaption>
-            </figure>
+            </div>
           </div>
+        </section>
 
-          <div className={`${styles.shell} ${styles.genderEditorialProof}`} aria-label="핵심 서비스 특징">
+        <section className={styles.detailSignal} aria-label="핵심 서비스 특징">
+          <div className={`${styles.shell} ${styles.detailSignalInner}`}>
             {content.highlights.map((item, index) => (
               <span key={item}><b>0{index + 1}</b>{item}</span>
             ))}
           </div>
         </section>
 
-        <section id="member-pool" className={styles.genderEditorialShowcase}>
+        <section id="member-pool" className={styles.showcaseSection} data-floating-ui-guard>
           <div className={styles.shell}>
-            <div className={styles.genderEditorialShowcaseIntro}>
+            <div className={styles.showcaseIntro}>
               <div>
-                <span>{content.poolKicker}</span>
+                <span className={styles.eyebrow}>{content.poolKicker}</span>
                 <h2>{content.poolTitle}</h2>
               </div>
-              <div>
+              <div className={styles.showcaseLead}>
                 <p>{content.poolLead}</p>
                 <strong>조건에 맞는 프로필을, 마음에 들 때까지 제안합니다</strong>
               </div>
             </div>
 
-            <div className={styles.genderEditorialShowcaseGrid}>
-              <div className={styles.genderEditorialPointList}>
-                {content.poolPoints.map((point, index) => (
-                  <article key={point.title}>
-                    <span>0{index + 1}</span>
-                    <div>
-                      <h3>{point.title}</h3>
-                      <p>{point.body}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+            <div
+              className={styles.showcaseMosaic}
+              role="region"
+              aria-label={`${featuredGender} 회원풀 연출 이미지 모음`}
+              tabIndex={0}
+            >
+              {content.poolImages.map((item, index) => (
+                <figure key={item.src} className={`${styles.showcaseCard} ${index === 1 ? styles.showcaseCardLift : ""}`}>
+                  <Image
+                    src={item.src}
+                    alt={`${item.label}을 표현한 ${featuredGender} 인물 연출 이미지`}
+                    fill
+                    sizes="(max-width: 720px) min(78vw, 330px), (max-width: 1180px) 31vw, 370px"
+                    quality={86}
+                    className={styles.showcaseImage}
+                  />
+                  <span className={styles.showcaseImageShade} aria-hidden="true" />
+                  <figcaption>
+                    <strong>{item.label}</strong>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
 
-              <div className={styles.genderEditorialImageRail} aria-label={`${featuredGender} 회원풀 분위기 이미지`}>
-                {content.poolImages.slice(0, 2).map((item, index) => (
-                  <figure key={item.src}>
-                    <Image
-                      src={item.src}
-                      alt={`${item.label}을 표현한 ${featuredGender} 인물 연출 이미지`}
-                      fill
-                      sizes="(max-width: 720px) 46vw, 250px"
-                      quality={88}
-                      className={styles.genderEditorialRailImage}
-                    />
-                    <figcaption><span>0{index + 1}</span>{item.label}</figcaption>
-                  </figure>
-                ))}
-              </div>
+            <div className={styles.poolPointGrid}>
+              {content.poolPoints.map((point) => (
+                <article key={point.title} className={styles.poolPointCard}>
+                  <h3>{point.title}</h3>
+                  <p>{point.body}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={`${styles.curationSection} ${styles.genderEditorialCuration}`}>
+        <section className={styles.curationSection} data-floating-ui-guard>
           <div className={styles.shell}>
             <div className={styles.curationIntro}>
               <span className={styles.eyebrow}>MATCHING, WITH A HUMAN TOUCH</span>
@@ -313,28 +303,43 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           </div>
         </section>
 
-        <section id="matching" className={styles.genderEditorialJourney}>
-          <div className={`${styles.shell} ${styles.genderEditorialJourneyLayout}`}>
-            <div className={styles.genderEditorialJourneyIntro}>
+        <section id="matching" className={styles.journeySection} data-floating-ui-guard>
+          <ArtDirectedImage
+            desktopSrc="/inyeon-2026/meeting-wide-v4.webp"
+            mobileSrc="/inyeon-2026/meeting-mobile-v4.webp"
+            alt="밝은 카페에서 대화를 나누는 20대 남녀의 연출 모습"
+            className={styles.journeyImage}
+            media="(max-width: 900px)"
+            sizes="100vw"
+            mobileSizes="(max-width: 480px) 600px, 100vw"
+            quality={88}
+          />
+          <span className={styles.journeyShade} aria-hidden="true" />
+          <div className={`${styles.shell} ${styles.journeyContent}`}>
+            <div className={styles.journeyIntro}>
               <span>FROM PROFILE TO REAL MEETING</span>
               <h2><span className={styles.noWrap}>카톡만 하다</span><br /><span className={styles.noWrap}>끝나는 소개가 아닌,</span><br />실제 만남</h2>
               <p>연락처만 넘긴 뒤 알아서 이어가라는 방식이 아닙니다. 양쪽 의사를 확인하고, 성사된 소개의 날짜와 장소까지 담당자가 조율합니다.</p>
             </div>
-            <div className={styles.genderEditorialJourneyList} aria-label="신청부터 대면 소개팅까지의 5단계">
+            <div
+              className={styles.journeyGrid}
+              role="region"
+              aria-label="신청부터 대면 소개팅까지의 5단계"
+              tabIndex={0}
+            >
               {matchingSteps.map((step) => (
-                <article key={step.number}>
+                <article key={step.number} className={styles.journeyCard}>
                   <span>{step.number}</span>
-                  <div>
-                    <h3>{step.title}</h3>
-                    <p>{step.body}</p>
-                  </div>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
                 </article>
               ))}
             </div>
+            <span className={styles.journeySwipeHint}>옆으로 넘겨 5단계를 확인해보세요.</span>
           </div>
         </section>
 
-        <section className={`${styles.promiseSection} ${styles.genderEditorialPromise}`}>
+        <section className={styles.promiseSection}>
           <div className={styles.shell}>
             <div className={styles.promiseIntro}>
               <div>

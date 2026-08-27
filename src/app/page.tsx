@@ -58,29 +58,6 @@ const PRINCIPLES = [
   },
 ] as const;
 
-const AUDIENCE_STANDARDS = [
-  {
-    number: "01",
-    title: "100% 실회원",
-    body: "실제 소개 의사가 확인된 회원을 기준으로 진행합니다",
-  },
-  {
-    number: "02",
-    title: "희망 조건 사전 확인",
-    body: "거리와 나이, 중요하게 보는 기준을 담당자가 먼저 확인합니다",
-  },
-  {
-    number: "03",
-    title: "양측 동의 후 매칭",
-    body: "두 분 모두 프로필을 보고 만나길 원할 때만 매칭이 성사됩니다",
-  },
-  {
-    number: "04",
-    title: "금액과 결제 시점 공개",
-    body: "가입비는 0원이며 공개된 금액은 매칭 성사 후에만 결제합니다",
-  },
-] as const;
-
 const PROCESS = [
   {
     number: "01",
@@ -170,83 +147,65 @@ const FAQS = [
 
 export default function Home() {
   return (
-    <div className={`${styles.site} ${styles.homeSite} ${styles.editorialHome}`}>
+    <div className={`${styles.site} ${styles.homeSite}`}>
       <main>
-        <section className={styles.homeEditorialEntry} aria-labelledby="home-title" data-floating-ui-guard>
-          <header className={styles.homeEditorialTopbar}>
-            <Link href="/" className={styles.homeEditorialBrand} aria-label="인연연구소 홈">
+        <section className={styles.homeCampaignEntry} aria-labelledby="home-title" data-floating-ui-guard>
+          <ArtDirectedImage
+            desktopSrc="/inyeon-2026/home-hero-desktop-v4.webp"
+            mobileSrc="/inyeon-2026/home-hero-mobile-v4.webp"
+            alt="밝은 공간에서 마주 보는 20대 남녀의 서비스 연출 이미지"
+            pictureClassName={styles.homeCampaignPicture}
+            className={styles.homeCampaignImage}
+            media="(max-width: 720px), (max-width: 980px) and (orientation: portrait)"
+            sizes="100vw"
+            mobileSizes="100vw"
+            quality={90}
+            priority
+          />
+          <span className={styles.homeCampaignShade} aria-hidden="true" />
+
+          <header className={styles.homeCampaignHeader}>
+            <Link href="/" className={styles.homeCampaignBrand} aria-label="인연연구소 홈">
               <strong>인연연구소</strong>
               <span>INYEON LAB</span>
             </Link>
-            <nav className={styles.homeEditorialNav} aria-label="홈페이지 주요 안내">
-              <a href="#home-pool">소개 방식</a>
+            <nav className={styles.homeCampaignNav} aria-label="홈페이지 주요 안내">
+              <a href="#home-pool">회원 분위기</a>
               <a href="#how-it-works">진행 과정</a>
               <a href="#pricing">금액 안내</a>
             </nav>
-            <a href="#choose" className={styles.homeEditorialNavAction}>
-              내 안내 선택 <span aria-hidden="true">↓</span>
-            </a>
+            <a href="#choose" className={styles.homeCampaignHeaderAction}>안내 선택 <span aria-hidden="true">↓</span></a>
           </header>
 
-          <div className={`${styles.shell} ${styles.homeEditorialHeroGrid}`}>
-            <div className={styles.homeEditorialCopy}>
-              <span className={styles.homeEditorialKicker}>SEOUL METRO · PRIVATE INTRODUCTION</span>
-              <h1 id="home-title">
-                가입비 없이 시작해
-                <span>매칭된 뒤 만나는 1:1 소개팅</span>
-              </h1>
-              <p>
-                앱에서 프로필만 넘겨보는 방식이 아닙니다<br />
-                담당자가 양측의 소개 의사를 확인하고 실제 대면 만남까지 연결합니다
-              </p>
-              <dl className={styles.homeEditorialFacts} aria-label="인연연구소 핵심 운영 기준">
-                {HERO_FACTS.map((fact) => (
-                  <div key={fact.label}>
-                    <dt>{fact.label}</dt>
-                    <dd>{fact.value}</dd>
-                  </div>
-                ))}
-              </dl>
+          <div className={styles.homeCampaignCopy}>
+            <span className={styles.homeCampaignKicker}>앱이 아닌 수도권 1:1 연애정보회사</span>
+            <h1 id="home-title">
+              매칭된 뒤 결제하고
+              <strong>대면으로 만나는 소개팅</strong>
+            </h1>
+            <p>가입비 없이 시작해, 두 분 모두 만남에 동의한 뒤에만 결제합니다</p>
+            <div className={styles.homeCampaignProof} aria-label="핵심 운영 기준">
+              <span>가입비 <b>0원</b></span>
+              <span>매칭 후 결제</span>
+              <span>100% 실회원</span>
+              <span>금액 공개</span>
+              <span>대면 소개팅 보장</span>
             </div>
+          </div>
 
-            <figure className={styles.homeEditorialVisual}>
-              <ArtDirectedImage
-                desktopSrc="/inyeon-2026/home-hero-desktop-v4.webp"
-                mobileSrc="/inyeon-2026/home-hero-mobile-v4.webp"
-                alt="밝은 공간에서 편안하게 마주 보는 20대 남녀의 서비스 연출 이미지"
-                pictureClassName={styles.homeEditorialPicture}
-                className={styles.homeEditorialImage}
-                media="(max-width: 720px)"
-                sizes="(max-width: 720px) calc(100vw - 32px), 520px"
-                mobileSizes="calc(100vw - 32px)"
-                quality={88}
-                priority
-              />
-              <figcaption>
-                <span>01 / REAL MEETING</span>
-                <strong>온라인에서 끝나지 않는 소개</strong>
-                <small>수도권 중심 · 실제 대면 일정 조율</small>
-              </figcaption>
-            </figure>
-
-            <div id="choose" className={styles.homeEditorialRoutes} aria-label="성별별 서비스 안내 선택">
-              <div className={styles.homeEditorialRoutePrompt}>
-                <span>CHOOSE YOUR GUIDE</span>
-                <strong>내 안내를 선택하면<br />조건과 금액을 바로 확인할 수 있어요</strong>
-              </div>
-              {ENTRANCES.map((entrance, index) => (
-                <Link key={entrance.href} href={entrance.href} className={styles.homeEditorialRoute}>
-                  <span className={styles.homeEditorialRouteIndex}>0{index + 1}</span>
-                  <div>
-                    <small>{entrance.eyebrow}</small>
-                    <strong>{entrance.title}</strong>
-                    <span>{entrance.condition}</span>
-                    <b>{entrance.price}</b>
-                  </div>
-                  <i aria-hidden="true">→</i>
-                </Link>
-              ))}
-            </div>
+          <div id="choose" className={styles.homeCampaignDock} aria-label="성별별 서비스 안내 선택">
+            {ENTRANCES.map((entrance, index) => (
+              <Link key={entrance.href} href={entrance.href} className={styles.homeCampaignRoute}>
+                <span className={styles.homeCampaignRouteIndex}>0{index + 1}</span>
+                <div>
+                  <small>{entrance.eyebrow}</small>
+                  <strong>{entrance.title}</strong>
+                  <em>{entrance.condition.replace("한국나이 기준 ", "")}</em>
+                  <b>{entrance.price.replace("매칭 성사 후 ", "매칭 후 ")}</b>
+                </div>
+                <i aria-hidden="true">→</i>
+              </Link>
+            ))}
           </div>
         </section>
 
@@ -263,53 +222,51 @@ export default function Home() {
           <p className={styles.srOnly}>{TRUST_ITEMS.join(" · ")}</p>
         </section>
 
-        <section id="home-pool" className={styles.homeEditorialAudience} aria-labelledby="home-pool-title">
-          <div className={`${styles.shell} ${styles.homeEditorialAudienceGrid}`}>
-            <div className={styles.homeEditorialAudienceCopy}>
-              <span className={styles.homeSectionEyebrow}>YOUNG, CLEAR, HUMAN-CURATED</span>
-              <h2 id="home-pool-title">20·30대가 이해하기 쉬운<br />분명한 소개 방식</h2>
-              <p>
-                사진의 분위기보다 중요한 건 실제 진행 기준입니다<br />
-                누구를, 언제, 어떤 비용으로 만나는지 처음부터 명확하게 안내합니다
-              </p>
-
-              <div className={styles.homeEditorialAudienceList}>
-                {AUDIENCE_STANDARDS.map((item) => (
-                  <article key={item.number}>
-                    <span>{item.number}</span>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p>{item.body}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+        <section id="home-pool" className={styles.homePoolSection} aria-labelledby="home-pool-title">
+          <div className={`${styles.shell} ${styles.homePoolHeader}`}>
+            <div>
+              <span className={styles.homeSectionEyebrow}>YOUNG &amp; BRIGHT CONNECTIONS</span>
+              <h2 id="home-pool-title">20·30대 중심의<br />밝고 트렌디한 만남</h2>
             </div>
+            <div className={styles.homePoolLead}>
+              <p>인연연구소가 지향하는 밝고 편안한 1:1 만남의 분위기를 이미지로 미리 확인해 보세요</p>
+            </div>
+          </div>
 
-            <div className={styles.homeEditorialAudienceMedia} aria-label="서비스 분위기 이미지">
-              {HOME_MEMBER_POOL.slice(0, 2).map((item, index) => (
-                <figure key={item.src}>
+          <div className={styles.homePoolGalleryFrame}>
+            <div
+              className={styles.homePoolGallery}
+              role="region"
+              aria-label="남녀 서비스 연출 이미지 모음"
+              tabIndex={0}
+            >
+              {HOME_MEMBER_POOL.map((item) => (
+                <figure key={item.src} className={styles.homePoolCard}>
                   <Image
                     src={item.src}
                     alt={item.alt}
                     fill
-                    sizes="(max-width: 720px) 46vw, 260px"
-                    quality={88}
-                    className={styles.homeEditorialAudienceImage}
+                    sizes="(max-width: 720px) 64vw, (max-width: 980px) 33vw, 17vw"
+                    quality={86}
+                    className={styles.homePoolImage}
                   />
-                  <figcaption><span>0{index + 1}</span>{index === 0 ? "MEN'S GUIDE" : "WOMEN'S GUIDE"}</figcaption>
+                  <figcaption>
+                    <strong>{item.label}</strong>
+                  </figcaption>
                 </figure>
               ))}
-              <div className={styles.homeEditorialAudienceNote}>
-                <span>INYEON LAB STANDARD</span>
-                <strong>100% 실회원</strong>
-                <p>실제 소개 의사가 확인된 회원을 기준으로 진행합니다</p>
-                <div>
-                  <Link href="/men">남성 안내 <b aria-hidden="true">→</b></Link>
-                  <Link href="/women">여성 안내 <b aria-hidden="true">→</b></Link>
-                </div>
-              </div>
             </div>
+          </div>
+
+          <p className={styles.homePoolSwipeHint} aria-hidden="true">옆으로 밀어 더 보기 <span>→</span></p>
+
+          <div className={`${styles.shell} ${styles.homePoolActions}`} aria-label="성별별 상세 안내">
+            <Link href="/men" className={styles.homePoolAction}>
+              남성 회원 안내 보기 <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="/women" className={styles.homePoolAction}>
+              여성 회원 안내 보기 <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </section>
 
@@ -371,25 +328,40 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="how-it-works" className={`${styles.homeProcessSection} ${styles.homeEditorialProcess}`} aria-labelledby="process-title">
-          <div className={`${styles.shell} ${styles.homeEditorialProcessLayout}`}>
+        <section id="how-it-works" className={styles.homeProcessSection} aria-labelledby="process-title">
+          <div className={styles.shell}>
             <div className={styles.homeProcessIntro}>
               <span className={styles.homeSectionEyebrow}>HOW IT WORKS</span>
               <h2 id="process-title">신청부터 실제 만남까지<br />기준을 분명하게</h2>
               <p>앱처럼 막연하게 기다리지 않도록 진행 과정을 먼저 공개합니다</p>
             </div>
-            <div className={styles.homeEditorialProcessList} aria-label="인연연구소 진행 과정">
+            <div
+              className={styles.homeProcessGrid}
+              role="region"
+              aria-label="인연연구소 진행 과정"
+              tabIndex={0}
+            >
               {PROCESS.map((step) => (
-                <article key={step.number}>
-                  <span>{step.number}</span>
-                  <div>
+                <article key={step.number} className={styles.homeProcessCard}>
+                  <div className={styles.homeProcessMedia}>
+                    <Image
+                      src={step.image}
+                      alt={step.alt}
+                      fill
+                      sizes="(max-width: 720px) 80vw, (max-width: 960px) 48vw, 25vw"
+                      quality={86}
+                      className={styles.homeProcessImage}
+                    />
+                    <span className={styles.homeProcessNumber}>{step.number}</span>
+                  </div>
+                  <div className={styles.homeProcessCopy}>
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
                   </div>
-                  <i aria-hidden="true">↘</i>
                 </article>
               ))}
             </div>
+            <p className={styles.homeProcessSwipeHint} aria-hidden="true">옆으로 밀어 과정 보기 <span>→</span></p>
           </div>
         </section>
 
@@ -441,16 +413,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.homeEditorialFinal} data-floating-ui-guard>
-          <div className={`${styles.shell} ${styles.homeEditorialFinalInner}`}>
-            <div>
-              <span>START WITHOUT A MEMBERSHIP FEE</span>
-              <h2>앱이 아닌 소개팅을 찾고 있다면<br />내 안내부터 확인해 보세요</h2>
-              <p>가입비 없음 · 매칭 후 결제 · 수도권 중심 대면 소개팅</p>
-            </div>
-            <div className={styles.homeEditorialFinalActions}>
-              <Link href="/men"><small>FOR MEN</small><strong>남성 안내 보기</strong><span aria-hidden="true">→</span></Link>
-              <Link href="/women"><small>FOR WOMEN</small><strong>여성 안내 보기</strong><span aria-hidden="true">→</span></Link>
+        <section className={styles.homeFinalSection} data-floating-ui-guard>
+          <ArtDirectedImage
+            desktopSrc="/inyeon-2026/home-final-desktop-v4.webp"
+            mobileSrc="/inyeon-2026/home-final-mobile-v4.webp"
+            alt=""
+            pictureClassName={styles.homeFinalPicture}
+            className={styles.homeFinalImage}
+            media="(max-width: 720px), (max-width: 960px) and (orientation: portrait)"
+            sizes="100vw"
+            mobileSizes="100vw"
+            quality={88}
+            ariaHidden
+          />
+          <span className={styles.homeFinalShade} aria-hidden="true" />
+          <div className={`${styles.shell} ${styles.homeFinalInner}`}>
+            <span className={styles.homeSectionEyebrow}>START WITHOUT A MEMBERSHIP FEE</span>
+            <h2>앱이 아닌 소개팅을 찾고 있다면<br />나에게 맞는 안내부터 확인해 보세요</h2>
+            <p>가입비 없음 · 매칭 후 결제 · 수도권 중심 대면 소개팅</p>
+            <div className={styles.homeFinalActions}>
+              <Link href="/men">남성 안내 보기 <span aria-hidden="true">→</span></Link>
+              <Link href="/women">여성 안내 보기 <span aria-hidden="true">→</span></Link>
             </div>
           </div>
         </section>
