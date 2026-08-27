@@ -9,20 +9,25 @@
 ## Homepage
 
 - The first fold identifies the service as a capital-area relationship information company rather than an app
-- Membership fee, payment timing, public prices, 100% real-member operation, and in-person meeting support are visible before scrolling
+- The hero now follows a promise → proof → action hierarchy over a full-bleed photograph instead of separating copy and imagery into stacked bands
+- A white top navigation exposes member mood, process, price, and a direct gender-selection action
+- The first-fold proof rail uses only approved operating facts: membership fee 0 won, payment after matching, 100% real members, and capital-area 1:1 operation
+- Membership fee, payment timing, public prices, 100% real-member operation, and in-person meeting support are visible before scrolling at the primary 390, 768, and 1440 viewports
 - Men and women have distinct full-card links with their eligibility and post-match prices
 - Desktop and mobile use separate art-directed hero images while preserving both subjects and the two selection cards
 - The hero, in-person meeting, and final CTA scenes are newly generated for this project; none of the previous homepage photographs remain on the active route
 - The moving policy ticker supplements static copy and is hidden from assistive technology; an equivalent screen-reader sentence remains available
-- The page continues into service identity, operating principles, a six-image 2030 mood gallery, transparent prices, a four-step image-led process, FAQ, and final gender CTAs
+- The page order is hero, moving fact strip, six-image 2030 mood gallery, service identity, four-step image-led process, transparent prices, FAQ, and final gender CTAs
+- Moving the member gallery to the first scroll makes the reference-inspired image density visible immediately rather than several sections later
 - The member gallery uses six staged portraits in a scan-friendly editorial rhythm; desktop shows all six, tablet uses a 3 × 2 grid, and mobile uses a clearly signposted horizontal gallery
 - Each process step has its own newly generated 4:3 scene for application, consultation, mutual intent confirmation, and the in-person meeting
 - Both new image-led sections disclose that the photographs are staged service imagery and keep all explanatory copy as live HTML text
 - The reference site informed image density, repeated card rhythm, and CTA discoverability only; none of its metrics, reviews, awards, logos, or proprietary claims were reused
 - The homepage and shared active accents use white, sky blue, aqua, and cool gray with no active pink or brown theme surfaces; major headings and UI use one modern Korean sans-serif system
-- At 390 × 844 both gender cards and their CTA labels remain visible; at 320 × 568 the complete promise, four trust points, and both people remain intact while the gender cards begin immediately after the image band
+- At 390 × 844 both gender cards and their CTA labels remain visible and the following ticker begins inside the captured viewport
+- At 320 × 568 the complete promise, four proof tiles, and both people remain intact; the compact gender cards remain inside the same full-bleed hero immediately below the short viewport
 - The chat launcher is hidden while the first-fold gender cards are visible, so it cannot intersect either CTA
-- Portrait tablets use the wide hero composition and keep both people, both cards, and both CTAs inside the first fold
+- Portrait tablets use the portrait hero composition, keep both faces below the proof rail, and keep both gender cards inside the first fold
 
 ## Detail pages and eligibility
 
@@ -41,6 +46,7 @@
 
 - No global horizontal overflow at 1440, 768, 390, or 320 pixels; measured document `scrollWidth` equals `clientWidth` at all four widths
 - At 390 × 844, 768 × 1024, and 1440 × 1000, both home cards and CTA labels are fully inside the first fold
+- Measured hero heights are 820, 1024, and 1000 pixels at those three viewports; the 320-pixel layout expands safely to 760 pixels instead of clipping content
 - At 390 and 320 pixels, the member gallery and process story use contained horizontal scrolling with a visible next-card edge and a swipe hint; these regions do not create document-level overflow
 - At 768 × 1024, detail-page member portraits use a 4:5 frame and preserve the subject’s complete head and face
 - Home FAQ uses native `details` controls and retains visible keyboard focus styles

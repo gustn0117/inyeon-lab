@@ -32,6 +32,13 @@ const TRUST_ITEMS = [
   "대면 소개팅 보장",
 ] as const;
 
+const HERO_FACTS = [
+  { label: "가입비", value: "0원" },
+  { label: "결제 시점", value: "매칭 후" },
+  { label: "운영 기준", value: "100% 실회원" },
+  { label: "진행 방식", value: "수도권 1:1" },
+] as const;
+
 const PRINCIPLES = [
   {
     number: "01",
@@ -144,7 +151,7 @@ export default function Home() {
         <section className={styles.homeEntry} aria-labelledby="home-title" data-floating-ui-guard>
           <picture className={styles.homeEntryPicture} aria-hidden="true">
             <source
-              media="(max-width: 720px)"
+              media="(max-width: 980px) and (orientation: portrait)"
               srcSet="/inyeon-2026/home-hero-mobile-v3.webp"
             />
             <Image
@@ -165,26 +172,36 @@ export default function Home() {
               <strong>인연연구소</strong>
               <span>INYEON LAB</span>
             </Link>
-            <div className={styles.homeCategory}>
-              <span aria-hidden="true" />
-              수도권 중심 1:1 연애정보회사
-            </div>
+            <nav className={styles.homeNav} aria-label="홈페이지 주요 안내">
+              <a href="#home-pool">회원 분위기</a>
+              <a href="#how-it-works">진행 과정</a>
+              <a href="#pricing">금액 안내</a>
+            </nav>
+            <a href="#choose" className={styles.homeNavAction}>
+              남녀 안내 선택 <span aria-hidden="true">→</span>
+            </a>
           </header>
 
           <div className={styles.homeEntryCopy}>
-            <span className={styles.homeEntryEyebrow}>앱이 아닌, 사람을 소개하는 곳</span>
+            <span className={styles.homeEntryEyebrow}>수도권 중심 · 앱이 아닌 1:1 연애정보회사</span>
             <h1 id="home-title">
               매칭된 뒤 결제하고
               <span>대면으로 만나는 소개팅</span>
             </h1>
             <p>
-              가입비 없이 시작해 매칭 후 결제
-              <br />금액은 투명하게 공개하고 100% 실회원으로 진행합니다
+              가입비 없이 시작하고, 두 분 모두 만남에 동의한 뒤에만 결제합니다
+              <br />금액은 처음부터 공개하며 실제 대면 소개팅까지 연결합니다
             </p>
-            <div className={styles.homeTrustList} aria-label="인연연구소 핵심 운영 원칙">
-              {TRUST_ITEMS.slice(1, 5).map((item) => <span key={item}>{item}</span>)}
-            </div>
+            <dl className={styles.homeHeroFacts} aria-label="인연연구소 핵심 운영 기준">
+              {HERO_FACTS.map((fact) => (
+                <div key={fact.label}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
+
 
           <div id="choose" className={styles.homeChoiceGrid} aria-label="성별별 서비스 안내 선택">
             {ENTRANCES.map((entrance) => (
@@ -211,51 +228,6 @@ export default function Home() {
             ))}
           </div>
           <p className={styles.srOnly}>{TRUST_ITEMS.join(" · ")}</p>
-        </section>
-
-        <section className={styles.homeIdentitySection}>
-          <div className={`${styles.shell} ${styles.homeIdentityIntro}`}>
-            <div>
-              <span className={styles.homeSectionEyebrow}>NOT AN APP, A REAL INTRODUCTION</span>
-              <h2>온라인에서 끝나지 않도록<br />실제 만남까지 연결합니다</h2>
-            </div>
-            <p>
-              인연연구소는 수도권을 중심으로 운영하는 연애정보회사이며,
-              <br />
-              조건을 입력하고 기다리는 앱이 아니라 담당자가 소개 의사와 일정을 확인해 대면 소개팅까지 함께합니다
-            </p>
-          </div>
-
-          <div className={`${styles.shell} ${styles.homeIdentityGrid}`}>
-            <figure className={styles.homeMeetingVisual}>
-              <Image
-                src="/inyeon-2026/meeting-wide-v3.webp"
-                alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
-                fill
-                sizes="(max-width: 900px) calc(100vw - 32px), 56vw"
-                quality={92}
-                className={styles.homeMeetingImage}
-              />
-              <span className={styles.homeMeetingShade} aria-hidden="true" />
-              <figcaption>
-                <span>FROM MATCH TO MEETING</span>
-                <strong>대면 소개팅 보장</strong>
-                <small>매칭 성사 후 날짜와 장소까지 조율</small>
-              </figcaption>
-            </figure>
-
-            <div className={styles.homePrincipleList}>
-              {PRINCIPLES.map((item) => (
-                <article key={item.number} className={styles.homePrincipleCard}>
-                  <span>{item.number}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
         </section>
 
         <section id="home-pool" className={styles.homePoolSection} aria-labelledby="home-pool-title">
@@ -306,32 +278,58 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.homePricingSection} aria-labelledby="pricing-title">
-          <div className={`${styles.shell} ${styles.homePricingLayout}`}>
-            <div className={styles.homePricingIntro}>
-              <span className={styles.homeSectionEyebrow}>OPEN &amp; CLEAR PRICE</span>
-              <h2 id="pricing-title">숨기지 않는 금액<br />매칭된 후에만 결제</h2>
-              <p>
-                신청할 때 내는 가입비는 0원이며,
-                <br />
-                홈페이지에 공개된 금액 그대로, 양측이 실제 만남에 동의한 뒤에만 결제합니다
-              </p>
-              <div className={styles.homePricingZero}>
-                <span>가입비</span>
-                <strong>0원</strong>
-              </div>
+        <section className={styles.homeIdentitySection}>
+          <div className={`${styles.shell} ${styles.homeIdentityIntro}`}>
+            <div>
+              <span className={styles.homeSectionEyebrow}>NOT AN APP, A REAL INTRODUCTION</span>
+              <h2>온라인에서 끝나지 않도록<br />실제 만남까지 연결합니다</h2>
             </div>
+            <p>
+              인연연구소는 수도권을 중심으로 운영하는 연애정보회사이며,
+              <br />
+              조건을 입력하고 기다리는 앱이 아니라 담당자가 소개 의사와 일정을 확인해 대면 소개팅까지 함께합니다
+            </p>
+          </div>
 
-            <div className={styles.homePriceCards}>
-              {ENTRANCES.map((entrance) => (
-                <Link key={entrance.href} href={entrance.href} className={styles.homePriceCard}>
-                  <span>{entrance.title}</span>
-                  <strong>{entrance.price.replace("매칭 성사 후 ", "")}</strong>
-                  <small>양측 매칭 성사 후 결제</small>
-                  <p>{entrance.condition}</p>
-                  <b>안내 확인하기 <i aria-hidden="true">→</i></b>
-                </Link>
+          <div className={`${styles.shell} ${styles.homeIdentityGrid}`}>
+            <figure className={styles.homeMeetingVisual}>
+              <Image
+                src="/inyeon-2026/meeting-wide-v3.webp"
+                alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
+                fill
+                sizes="(max-width: 900px) calc(100vw - 32px), 56vw"
+                quality={92}
+                className={styles.homeMeetingImage}
+              />
+              <span className={styles.homeMeetingShade} aria-hidden="true" />
+              <figcaption>
+                <span>FROM MATCH TO MEETING</span>
+                <strong>대면 소개팅 보장</strong>
+                <small>매칭 성사 후 날짜와 장소까지 조율</small>
+              </figcaption>
+            </figure>
+
+            <div className={styles.homePrincipleList}>
+              {PRINCIPLES.map((item) => (
+                <article key={item.number} className={styles.homePrincipleCard}>
+                  <span>{item.number}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
+                </article>
               ))}
+            </div>
+          </div>
+
+          <div className={`${styles.shell} ${styles.homeIdentityCta}`}>
+            <div>
+              <span>NO MEMBERSHIP FEE · PAY AFTER MATCH</span>
+              <strong>조건과 공개 금액을 확인한 뒤<br />부담 없이 시작해 보세요</strong>
+            </div>
+            <div className={styles.homeIdentityCtaActions}>
+              <Link href="/men">남성 안내 <b aria-hidden="true">→</b></Link>
+              <Link href="/women">여성 안내 <b aria-hidden="true">→</b></Link>
             </div>
           </div>
         </section>
@@ -370,6 +368,36 @@ export default function Home() {
               ))}
             </div>
             <p className={styles.homeProcessSwipeHint} aria-hidden="true">옆으로 밀어 과정 보기 <span>→</span></p>
+          </div>
+        </section>
+
+        <section id="pricing" className={styles.homePricingSection} aria-labelledby="pricing-title">
+          <div className={`${styles.shell} ${styles.homePricingLayout}`}>
+            <div className={styles.homePricingIntro}>
+              <span className={styles.homeSectionEyebrow}>OPEN &amp; CLEAR PRICE</span>
+              <h2 id="pricing-title">숨기지 않는 금액<br />매칭된 후에만 결제</h2>
+              <p>
+                신청할 때 내는 가입비는 0원이며,
+                <br />
+                홈페이지에 공개된 금액 그대로, 양측이 실제 만남에 동의한 뒤에만 결제합니다
+              </p>
+              <div className={styles.homePricingZero}>
+                <span>가입비</span>
+                <strong>0원</strong>
+              </div>
+            </div>
+
+            <div className={styles.homePriceCards}>
+              {ENTRANCES.map((entrance) => (
+                <Link key={entrance.href} href={entrance.href} className={styles.homePriceCard}>
+                  <span>{entrance.title}</span>
+                  <strong>{entrance.price.replace("매칭 성사 후 ", "")}</strong>
+                  <small>양측 매칭 성사 후 결제</small>
+                  <p>{entrance.condition}</p>
+                  <b>안내 확인하기 <i aria-hidden="true">→</i></b>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

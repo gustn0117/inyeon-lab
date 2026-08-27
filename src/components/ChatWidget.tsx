@@ -24,7 +24,7 @@ export default function ChatWidget() {
   const [sending, setSending] = useState(false);
   const [unread, setUnread] = useState(0);
   const [tooltipShown, setTooltipShown] = useState(false);
-  const [guarded, setGuarded] = useState(false);
+  const [guarded, setGuarded] = useState(true);
   const lastIdRef = useRef(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -62,19 +62,24 @@ export default function ChatWidget() {
       ...Array.from(document.querySelectorAll("[data-floating-ui-guard]")),
       ...Array.from(document.querySelectorAll("footer")),
     ];
-    const visibleTargets = new Set<Element>();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) visibleTargets.add(entry.target);
-        else visibleTargets.delete(entry.target);
+    const updateGuarded = () => {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const nextGuarded = targets.some((target) => {
+        const rect = target.getBoundingClientRect();
+        return rect.bottom > 0 && rect.top < viewportHeight;
       });
-      const nextGuarded = visibleTargets.size > 0;
       setGuarded(nextGuarded);
       if (nextGuarded) setOpen(false);
-    }, { threshold: 0.01 });
+    };
+    const observer = new IntersectionObserver(updateGuarded, { threshold: [0, 0.01] });
 
     targets.forEach((target) => observer.observe(target));
-    return () => observer.disconnect();
+    updateGuarded();
+    window.addEventListener("resize", updateGuarded);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateGuarded);
+    };
   }, []);
 
   // 폴링 (열렸든 닫혔든 unread 알림 위해 동작)
