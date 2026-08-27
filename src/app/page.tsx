@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArtDirectedImage from "@/components/ArtDirectedImage";
 import ChatWidget from "@/components/ChatWidget";
+import HomeMobileDock from "@/components/HomeMobileDock";
 import { RenewalFooter } from "@/components/RenewalShell";
 import styles from "@/components/renewal.module.css";
 
@@ -413,7 +414,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.homeFinalSection} data-floating-ui-guard>
+        <section id="home-final" className={styles.homeFinalSection} data-floating-ui-guard>
           <ArtDirectedImage
             desktopSrc="/inyeon-2026/home-final-desktop-v4.webp"
             mobileSrc="/inyeon-2026/home-final-mobile-v4.webp"
@@ -439,6 +440,7 @@ export default function Home() {
         </section>
       </main>
       <RenewalFooter />
+      <HomeMobileDock />
       <ChatWidget />
     </div>
   );
