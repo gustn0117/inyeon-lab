@@ -189,8 +189,12 @@ export default function Home() {
               <span>대면으로 만나는 소개팅</span>
             </h1>
             <p>
-              가입비 없이 시작하고, 두 분 모두 만남에 동의한 뒤에만 결제합니다
-              <br />금액은 처음부터 공개하며 실제 대면 소개팅까지 연결합니다
+              <span className={styles.homeEntryLead}>
+                가입비 없이 시작하고, 두 분 모두 만남에 동의한 뒤에만 결제합니다
+              </span>
+              <span className={styles.homeEntrySub}>
+                금액은 처음부터 공개하며 실제 대면 소개팅까지 연결합니다
+              </span>
             </p>
             <dl className={styles.homeHeroFacts} aria-label="인연연구소 핵심 운영 기준">
               {HERO_FACTS.map((fact) => (
@@ -203,7 +207,18 @@ export default function Home() {
           </div>
 
 
-          <div id="choose" className={styles.homeChoiceGrid} aria-label="성별별 서비스 안내 선택">
+          <div className={styles.homeMobilePrimaryAction} aria-label="성별별 안내 바로가기">
+            <Link href="/men">
+              <span><small>FOR MEN</small>남성 안내</span>
+              <b aria-hidden="true">→</b>
+            </Link>
+            <Link href="/women">
+              <span><small>FOR WOMEN</small>여성 안내</span>
+              <b aria-hidden="true">→</b>
+            </Link>
+          </div>
+
+          <div id="choose" className={`${styles.homeChoiceGrid} ${styles.homeChoiceGridDesktop}`} aria-label="성별별 서비스 안내 선택">
             {ENTRANCES.map((entrance) => (
               <Link key={entrance.href} href={entrance.href} className={styles.homeChoiceCard}>
                 <span className={styles.homeChoiceEyebrow}>{entrance.eyebrow}</span>
@@ -211,6 +226,43 @@ export default function Home() {
                 <span className={styles.homeChoiceCondition}>{entrance.condition}</span>
                 <span className={styles.homeChoicePrice}>{entrance.price}</span>
                 <span className={styles.homeChoiceDescription}>{entrance.description}</span>
+                <span className={styles.homeChoiceAction}>상세 안내 보기 <b aria-hidden="true">↗</b></span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="mobile-choose"
+          className={styles.homeMobileChoiceSection}
+          aria-labelledby="mobile-choice-title"
+          data-floating-ui-guard
+        >
+          <div className={styles.homeMobileChoiceIntro}>
+            <span>CHOOSE YOUR GUIDE</span>
+            <h2 id="mobile-choice-title">내 안내를 선택하고<br />이용 조건을 확인하세요</h2>
+            <p>
+              가입비 없이 시작하고, 두 분 모두 만남에 동의한 뒤에만 결제합니다
+              <br />금액은 처음부터 공개하며 실제 대면 소개팅까지 연결합니다
+            </p>
+          </div>
+
+          <dl className={styles.homeMobileFacts} aria-label="인연연구소 핵심 운영 기준">
+            {HERO_FACTS.map((fact) => (
+              <div key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className={styles.homeMobileChoiceGrid} aria-label="성별별 상세 안내">
+            {ENTRANCES.map((entrance) => (
+              <Link key={entrance.href} href={entrance.href} className={`${styles.homeChoiceCard} ${styles.homeMobileChoiceCard}`}>
+                <span className={styles.homeChoiceEyebrow}>{entrance.eyebrow}</span>
+                <strong>{entrance.title}</strong>
+                <span className={styles.homeChoiceCondition}>{entrance.condition}</span>
+                <span className={styles.homeChoicePrice}>{entrance.price}</span>
                 <span className={styles.homeChoiceAction}>상세 안내 보기 <b aria-hidden="true">↗</b></span>
               </Link>
             ))}
