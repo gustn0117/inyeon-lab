@@ -34,7 +34,7 @@ const MATCHING_STEPS = [
 
 const CONTENT = {
   women: {
-    kicker: "연애정보회사 · 여성 안내",
+    kicker: "1:1 연애정보회사 · 여성 안내",
     title: <>괜찮은 사람과,<br /><span className={styles.lemonMark}>부담 없는 시작</span></>,
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 능력과 매너, 기본 신원을 확인한 회원 중 조건에 맞는 소개가 성사될 때만 33,000원을 결제하세요.",
     price: "33,000원",
@@ -82,7 +82,7 @@ const CONTENT = {
     stickyLabel: "가입비 0원 · 성사 시 33,000원",
   },
   men: {
-    kicker: "연애정보회사 · 남성 안내",
+    kicker: "1:1 연애정보회사 · 남성 안내",
     title: <>원하는 분과,<br /><span className={styles.lemonMark}>매칭된 뒤 결제</span></>,
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며 원하는 거리, 나이, 스타일에 맞는 분을 제안받고 두 분 모두 동의해 매칭이 성사된 뒤에만 44,000원을 결제합니다.",
     price: "44,000원",
