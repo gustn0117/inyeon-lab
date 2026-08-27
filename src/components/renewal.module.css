@@ -50,6 +50,9 @@
 }
 
 .brand {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--r-ink);
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: 20px;
@@ -77,7 +80,7 @@
 .navLink,
 .navApply {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
@@ -1078,6 +1081,9 @@
 }
 
 .footerLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   text-decoration: none;
 }
 
@@ -1999,6 +2005,7 @@
 
 .homeBrand {
   display: inline-flex;
+  min-height: 44px;
   align-items: baseline;
   gap: 11px;
   color: var(--home-dark);
@@ -8670,5 +8677,98 @@
     background:
       radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.72) 22%, rgba(255, 255, 255, 0) 48%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.6) 34%, rgba(20, 40, 51, 0.02) 62%, rgba(20, 40, 51, 0.5) 100%);
+  }
+}
+
+/* Mobile detail hero: show the full member portrait before the supporting copy. */
+@media (max-width: 720px) and (orientation: portrait) {
+  .genderHero {
+    padding: 26px 0 64px;
+  }
+
+  .genderHeroGrid {
+    display: grid;
+    gap: 0;
+  }
+
+  .genderHeroCopy {
+    display: contents;
+  }
+
+  .genderKicker,
+  .genderTitle,
+  .heroImageWrap,
+  .genderLead,
+  .priceBlock,
+  .primaryButton,
+  .eligibilityNote {
+    grid-column: 1;
+  }
+
+  .genderKicker {
+    order: 1;
+  }
+
+  .genderTitle {
+    order: 2;
+    margin-top: 10px;
+    font-size: clamp(38px, 11.7vw, 50px);
+    line-height: 1.025;
+  }
+
+  .heroImageWrap {
+    width: 100%;
+    min-height: 0;
+    order: 3;
+    aspect-ratio: 4 / 5;
+    margin-top: 24px;
+    border-radius: 22px;
+  }
+
+  .heroImageWomen,
+  .heroImageMen {
+    object-position: center top;
+  }
+
+  .genderLead {
+    order: 4;
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.72;
+  }
+
+  .priceBlock {
+    order: 5;
+    margin-top: 20px;
+  }
+
+  .primaryButton {
+    width: 100%;
+    min-height: 56px;
+    order: 6;
+    margin-top: 22px;
+  }
+
+  .eligibilityNote {
+    order: 7;
+    margin-top: 12px;
+  }
+
+  .journeyShade {
+    background:
+      linear-gradient(180deg, rgba(247, 252, 253, 0.88) 0%, rgba(247, 252, 253, 0.56) 36%, rgba(240, 249, 251, 0.86) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.52), transparent);
+  }
+}
+
+@media (max-width: 340px) {
+  .comparisonRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .comparisonBefore,
+  .comparisonOurs {
+    min-height: 0;
   }
 }

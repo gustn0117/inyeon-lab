@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ArtDirectedImage from "@/components/ArtDirectedImage";
 import ChatWidget from "@/components/ChatWidget";
 import { RenewalFooter } from "@/components/RenewalShell";
 import styles from "@/components/renewal.module.css";
@@ -62,60 +63,60 @@ const PROCESS = [
     number: "01",
     title: "가입비 없이 신청",
     body: "기본 정보와 활동 지역을 간단히 남겨주세요",
-    image: "/inyeon-2026/process-01-v1.webp",
+    image: "/inyeon-2026/process-01-v2.webp",
     alt: "밝은 공간에서 스마트폰으로 소개팅을 신청하는 20대 여성의 연출 이미지",
   },
   {
     number: "02",
     title: "희망 조건 확인",
     body: "담당자가 원하는 거리·나이·스타일을 확인해요",
-    image: "/inyeon-2026/process-02-v1.webp",
+    image: "/inyeon-2026/process-02-v2.webp",
     alt: "매칭 담당자와 희망 조건을 상담하는 20대 남성의 연출 이미지",
   },
   {
     number: "03",
     title: "양측 소개 의사 확인",
     body: "두 분 모두 만나고 싶을 때만 매칭이 성사돼요",
-    image: "/inyeon-2026/process-03-v1.webp",
+    image: "/inyeon-2026/process-03-v2.webp",
     alt: "서로 다른 공간에서 소개 프로필을 확인하는 20대 남녀의 연출 이미지",
   },
   {
     number: "04",
     title: "결제 후 대면 조율",
     body: "공개된 금액을 결제하면 날짜와 장소를 조율해요",
-    image: "/inyeon-2026/process-04-v1.webp",
+    image: "/inyeon-2026/process-04-v2.webp",
     alt: "밝은 카페에서 첫 만남의 대화를 나누는 20대 남녀의 연출 이미지",
   },
 ] as const;
 
 const HOME_MEMBER_POOL = [
   {
-    src: "/inyeon-2026/male-02-v3.webp",
+    src: "/inyeon-2026/male-02-v4.webp",
     alt: "밝은 야외 공간에서 하늘색 재킷을 입은 20대 남성의 서비스 연출 이미지",
     label: "MEN · MOOD 01",
   },
   {
-    src: "/inyeon-2026/female-02-v3.webp",
+    src: "/inyeon-2026/female-02-v4.webp",
     alt: "화이트와 스카이블루 공간에서 미소 짓는 20대 여성의 서비스 연출 이미지",
     label: "WOMEN · MOOD 01",
   },
   {
-    src: "/inyeon-2026/male-03-v3.webp",
+    src: "/inyeon-2026/male-03-v4.webp",
     alt: "밝은 전시 공간에서 아쿠아 재킷을 입은 20대 남성의 서비스 연출 이미지",
     label: "MEN · MOOD 02",
   },
   {
-    src: "/inyeon-2026/female-03-v3.webp",
+    src: "/inyeon-2026/female-03-v4.webp",
     alt: "푸른 하늘이 보이는 공간에서 밝게 웃는 20대 여성의 서비스 연출 이미지",
     label: "WOMEN · MOOD 02",
   },
   {
-    src: "/inyeon-2026/male-04-v3.webp",
+    src: "/inyeon-2026/male-04-v4.webp",
     alt: "화이트 셔츠와 스카이블루 팬츠를 입은 20대 남성의 서비스 연출 이미지",
     label: "MEN · MOOD 03",
   },
   {
-    src: "/inyeon-2026/female-04-v3.webp",
+    src: "/inyeon-2026/female-04-v4.webp",
     alt: "화이트와 아쿠아 공간에서 하늘색 재킷을 입은 20대 여성의 서비스 연출 이미지",
     label: "WOMEN · MOOD 03",
   },
@@ -149,22 +150,19 @@ export default function Home() {
     <div className={`${styles.site} ${styles.homeSite}`}>
       <main>
         <section className={styles.homeEntry} aria-labelledby="home-title" data-floating-ui-guard>
-          <picture className={styles.homeEntryPicture} aria-hidden="true">
-            <source
-              media="(max-width: 980px) and (orientation: portrait)"
-              srcSet="/inyeon-2026/home-hero-mobile-v3.webp"
-            />
-            <Image
-              src="/inyeon-2026/home-hero-desktop-v3.webp"
-              alt=""
-              fill
-              loading="eager"
-              fetchPriority="high"
-              sizes="100vw"
-              quality={94}
-              className={styles.homeEntryImage}
-            />
-          </picture>
+          <ArtDirectedImage
+            desktopSrc="/inyeon-2026/home-hero-desktop-v4.webp"
+            mobileSrc="/inyeon-2026/home-hero-mobile-v4.webp"
+            alt=""
+            pictureClassName={styles.homeEntryPicture}
+            className={styles.homeEntryImage}
+            media="(max-width: 980px) and (orientation: portrait)"
+            sizes="100vw"
+            mobileSizes="(max-width: 430px) 480px, (max-width: 720px) 720px, 768px"
+            quality={88}
+            priority
+            ariaHidden
+          />
           <span className={styles.homeEntryShade} aria-hidden="true" />
 
           <header className={styles.homeTopbar}>
@@ -307,7 +305,7 @@ export default function Home() {
                     alt={item.alt}
                     fill
                     sizes="(max-width: 720px) 64vw, (max-width: 980px) 33vw, 17vw"
-                    quality={82}
+                    quality={86}
                     className={styles.homePoolImage}
                   />
                   <figcaption>
@@ -345,13 +343,15 @@ export default function Home() {
 
           <div className={`${styles.shell} ${styles.homeIdentityGrid}`}>
             <figure className={styles.homeMeetingVisual}>
-              <Image
-                src="/inyeon-2026/meeting-wide-v3.webp"
-                alt="밝은 카페에서 대화를 나누는 남녀의 연출 모습"
-                fill
-                sizes="(max-width: 900px) calc(100vw - 32px), 56vw"
-                quality={92}
+              <ArtDirectedImage
+                desktopSrc="/inyeon-2026/meeting-wide-v4.webp"
+                mobileSrc="/inyeon-2026/meeting-mobile-v4.webp"
+                alt="밝은 카페에서 대화를 나누는 20대 남녀의 연출 모습"
                 className={styles.homeMeetingImage}
+                media="(max-width: 900px)"
+                sizes="1067px"
+                mobileSizes="calc(100vw - 32px)"
+                quality={88}
               />
               <span className={styles.homeMeetingShade} aria-hidden="true" />
               <figcaption>
@@ -407,7 +407,7 @@ export default function Home() {
                       alt={step.alt}
                       fill
                       sizes="(max-width: 720px) 80vw, (max-width: 960px) 48vw, 25vw"
-                      quality={84}
+                      quality={86}
                       className={styles.homeProcessImage}
                     />
                     <span className={styles.homeProcessNumber}>{step.number}</span>
@@ -472,20 +472,18 @@ export default function Home() {
         </section>
 
         <section className={styles.homeFinalSection} data-floating-ui-guard>
-          <picture className={styles.homeFinalPicture} aria-hidden="true">
-            <source
-              media="(max-width: 720px), (max-width: 960px) and (orientation: portrait)"
-              srcSet="/inyeon-2026/home-final-mobile-v3.webp"
-            />
-            <Image
-              src="/inyeon-2026/home-final-desktop-v3.webp"
-              alt=""
-              fill
-              sizes="100vw"
-              quality={90}
-              className={styles.homeFinalImage}
-            />
-          </picture>
+          <ArtDirectedImage
+            desktopSrc="/inyeon-2026/home-final-desktop-v4.webp"
+            mobileSrc="/inyeon-2026/home-final-mobile-v4.webp"
+            alt=""
+            pictureClassName={styles.homeFinalPicture}
+            className={styles.homeFinalImage}
+            media="(max-width: 720px), (max-width: 960px) and (orientation: portrait)"
+            sizes="100vw"
+            mobileSizes="100vw"
+            quality={88}
+            ariaHidden
+          />
           <span className={styles.homeFinalShade} aria-hidden="true" />
           <div className={`${styles.shell} ${styles.homeFinalInner}`}>
             <span className={styles.homeSectionEyebrow}>START WITHOUT A MEMBERSHIP FEE</span>
