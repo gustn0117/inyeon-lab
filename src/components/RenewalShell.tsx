@@ -11,8 +11,8 @@ export function RenewalHeader({ applyHref = "/#choose", applyLabel = "안내 선
   return (
     <header className={styles.header}>
       <div className={`${styles.shell} ${styles.headerInner}`}>
-        <Link href="/" className={styles.brand} aria-label="인연연구소 홈">
-          인연연구소
+        <Link href="/" className={styles.brand} aria-label="인연픽 홈">
+          인연픽
           <span className={styles.brandSub}>수도권 1:1 연애정보회사</span>
         </Link>
         <nav className={styles.nav} aria-label="주요 메뉴">

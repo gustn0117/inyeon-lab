@@ -170,8 +170,8 @@ export default function Home() {
           </div>
 
           <header className={styles.homeCampaignHeader}>
-            <Link href="/" className={styles.homeCampaignBrand} aria-label="인연연구소 홈">
-              <strong>인연연구소</strong>
+            <Link href="/" className={styles.homeCampaignBrand} aria-label="인연픽 홈">
+              <strong>인연픽</strong>
               <span>INYEON LAB</span>
             </Link>
             <nav className={styles.homeCampaignNav} aria-label="홈페이지 주요 안내">
