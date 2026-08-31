@@ -9847,3 +9847,18 @@
 .brand .brandSub {
   margin-left: 10px;
 }
+
+/* ═══ 상단 슬로건형 로고 '인연을 pick 하다' — 크기 소폭 축소 ═══ */
+.homeCampaignBrand strong {
+  font-size: 19px;
+}
+
+.brandWord {
+  font-size: 18px;
+}
+
+@media (max-width: 720px) {
+  .homeCampaignBrand strong {
+    font-size: 17px;
+  }
+}
