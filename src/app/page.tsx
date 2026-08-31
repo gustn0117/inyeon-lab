@@ -171,8 +171,8 @@ export default function Home() {
 
           <header className={styles.homeCampaignHeader}>
             <Link href="/" className={styles.homeCampaignBrand} aria-label="인연픽 홈">
-              <strong>인연픽</strong>
-              <span>INYEON LAB</span>
+              <strong>인연<em>픽</em></strong>
+              <span className={styles.brandPick}>(pick)</span>
             </Link>
             <nav className={styles.homeCampaignNav} aria-label="홈페이지 주요 안내">
               <a href="#home-pool">회원 분위기</a>
