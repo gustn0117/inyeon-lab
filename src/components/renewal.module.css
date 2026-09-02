@@ -9862,3 +9862,18 @@
     font-size: 17px;
   }
 }
+
+/* ═══ 상단 로고 '인연연구소' 복귀 — '연구소' 그라데이션 포인트, 크기 복원 ═══ */
+.homeCampaignBrand strong {
+  font-size: 21px;
+}
+
+.brandWord {
+  font-size: 19px;
+}
+
+@media (max-width: 720px) {
+  .homeCampaignBrand strong {
+    font-size: 19px;
+  }
+}
