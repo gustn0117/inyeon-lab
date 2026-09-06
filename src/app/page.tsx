@@ -12,7 +12,8 @@ const ENTRANCES = [
     eyebrow: "FOR MEN",
     title: "남성 회원 안내",
     condition: "한국나이 기준 1984년생까지",
-    price: "매칭 성사 후 44,000원",
+    price: "1회권 44,000원",
+    note: "매칭 성사 시점에 결제 · 정해진 횟수 프로필 제안",
     description: "가입비 없이 이용 방식과 공개 금액을 확인하세요",
   },
   {
@@ -20,7 +21,8 @@ const ENTRANCES = [
     eyebrow: "FOR WOMEN",
     title: "여성 회원 안내",
     condition: "한국나이 기준 1988년생까지",
-    price: "매칭 성사 후 33,000원",
+    price: "1회권 33,000원",
+    note: "첫 프로필 전달 후 30일 · 횟수 제한 없는 프로필 제안",
     description: "가입비 없이 이용 방식과 공개 금액을 확인하세요",
   },
 ] as const;
@@ -28,7 +30,7 @@ const ENTRANCES = [
 const TRUST_ITEMS = [
   "1:1 연애정보회사",
   "가입비 없음",
-  "매칭 후 결제",
+  "남녀 성비 균형",
   "금액 공개",
   "100% 실회원",
   "대면 소개팅 보장",
@@ -36,7 +38,7 @@ const TRUST_ITEMS = [
 
 const HERO_FACTS = [
   { label: "가입비", value: "0원" },
-  { label: "결제 시점", value: "매칭 후" },
+  { label: "남녀 성비", value: "균형 관리" },
   { label: "운영 기준", value: "100% 실회원" },
   { label: "진행 방식", value: "수도권 1:1" },
 ] as const;
@@ -49,8 +51,8 @@ const PRINCIPLES = [
   },
   {
     number: "02",
-    title: "가입비 없이 매칭 후 결제",
-    body: "신청과 프로필 확인에는 가입비가 없고 두 분 모두 만남에 동의해 매칭된 후에만 결제",
+    title: "가입비 없는 1회권 이용",
+    body: "신청과 상담은 0원이며, 1회권 금액과 진행 방식은 남녀 안내 페이지에 그대로 공개",
   },
   {
     number: "03",
@@ -83,8 +85,8 @@ const PROCESS = [
   },
   {
     number: "04",
-    title: "결제 후 대면 조율",
-    body: "공개된 금액을 결제하면 날짜와 장소를 조율해요",
+    title: "대면 일정 조율",
+    body: "매칭이 확정되면 담당자가 날짜와 장소를 조율해요",
     image: "/inyeon-2026/process-04-v2.webp",
     alt: "밝은 카페에서 첫 만남의 대화를 나누는 20대 남녀의 연출 이미지",
   },
@@ -130,7 +132,11 @@ const FAQS = [
   },
   {
     question: "가입비와 결제 시점은 어떻게 되나요",
-    answer: "가입비는 없습니다. 두 분 모두 프로필을 확인하고 실제 만남에 동의해 매칭이 성사된 후에만 공개된 금액을 결제합니다",
+    answer: "가입비는 없습니다. 여성은 1회권 33,000원으로 시작해 첫 프로필 전달일부터 30일 동안 횟수 제한 없이 프로필을 받고, 남성은 정해진 횟수의 프로필을 제안받은 뒤 매칭이 성사된 시점에 1회권 44,000원을 결제합니다",
+  },
+  {
+    question: "남녀 이용권이 왜 다른가요",
+    answer: "여성은 시작 시 결제하는 대신 30일 동안 횟수 제한 없이 프로필을 받고, 남성은 제안 횟수가 정해진 대신 매칭이 성사된 뒤에 결제합니다. 각자에게 유리한 방식으로 설계했습니다",
   },
   {
     question: "정말 대면 소개팅까지 진행하나요",
@@ -184,13 +190,13 @@ export default function Home() {
           <div className={styles.homeCampaignCopy}>
             <span className={styles.homeCampaignKicker}>앱이 아닌 수도권 1:1 연애정보회사</span>
             <h1 id="home-title">
-              매칭된 뒤 결제하고
+              남녀 성비가 균형 잡힌
               <strong>대면으로 만나는 소개팅</strong>
             </h1>
-            <p>가입비 없이 시작해, 두 분 모두 만남에 동의한 뒤에만 결제합니다</p>
+            <p>가입비 없이 시작하고, 남녀 성비를 비슷하게 관리해 소개가 원활합니다</p>
             <div className={styles.homeCampaignProof} aria-label="핵심 운영 기준">
               <span>가입비 <b>0원</b></span>
-              <span>매칭 후 결제</span>
+              <span>남녀 성비 균형</span>
               <span>100% 실회원</span>
               <span>금액 공개</span>
               <span>대면 소개팅 보장</span>
@@ -379,11 +385,11 @@ export default function Home() {
           <div className={`${styles.shell} ${styles.homePricingLayout}`}>
             <div className={styles.homePricingIntro}>
               <span className={styles.homeSectionEyebrow}>OPEN &amp; CLEAR PRICE</span>
-              <h2 id="pricing-title">숨기지 않는 금액<br />매칭된 후에만 결제</h2>
+              <h2 id="pricing-title">숨기지 않는 금액<br />1회권으로 투명하게</h2>
               <p>
                 신청할 때 내는 가입비는 0원이며,
                 <br />
-                홈페이지에 공개된 금액 그대로, 양측이 실제 만남에 동의한 뒤에만 결제합니다
+                1회권 금액과 진행 방식을 홈페이지에 그대로 공개합니다
               </p>
               <div className={styles.homePricingZero}>
                 <span>가입비</span>
@@ -396,7 +402,7 @@ export default function Home() {
                 <Link key={entrance.href} href={entrance.href} className={styles.homePriceCard}>
                   <span>{entrance.title}</span>
                   <strong>{entrance.price.replace("매칭 성사 후 ", "")}</strong>
-                  <small>양측 매칭 성사 후 결제</small>
+                  <small>{entrance.note}</small>
                   <p>{entrance.condition}</p>
                   <b>안내 확인하기 <i aria-hidden="true">→</i></b>
                 </Link>
@@ -440,7 +446,7 @@ export default function Home() {
           <div className={`${styles.shell} ${styles.homeFinalInner}`}>
             <span className={styles.homeSectionEyebrow}>START WITHOUT A MEMBERSHIP FEE</span>
             <h2>앱이 아닌 소개팅을 찾고 있다면<br />나에게 맞는 안내부터 확인해 보세요</h2>
-            <p>가입비 없음 · 매칭 후 결제 · 수도권 중심 대면 소개팅</p>
+            <p>가입비 없음 · 남녀 성비 균형 · 수도권 중심 대면 소개팅</p>
             <div className={styles.homeFinalActions}>
               <Link href="/men">남성 안내 보기 <span aria-hidden="true">→</span></Link>
               <Link href="/women">여성 안내 보기 <span aria-hidden="true">→</span></Link>
