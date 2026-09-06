@@ -12,8 +12,8 @@ const COPY = {
   women: {
     label: "여성",
     oldestBirthYear: (_year: number) => 1988,
-    price: "33,000원",
-    payNote: "1회권 33,000원 · 첫 프로필 전달 후 30일 유효",
+    price: "22,000원",
+    payNote: "매칭 성사 후 기본 1회권 22,000원 (옵션 별도)",
     confirmation: "저는 만 19세 이상 미혼 여성이며, 한국나이 기준 1988년생까지의 가입 조건에 해당합니다.",
     birthYearError: "한국나이 기준 1988년생까지에 해당하는 출생연도를 입력해주세요.",
     eligibilityHint: "만 나이가 아닌 출생연도 기준으로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
@@ -21,8 +21,8 @@ const COPY = {
   men: {
     label: "남성",
     oldestBirthYear: (_year: number) => 1984,
-    price: "44,000원",
-    payNote: "1회권 44,000원 · 매칭 성사 시점에 결제",
+    price: "33,000원",
+    payNote: "매칭 성사 후 기본 1회권 33,000원 (옵션 별도)",
     confirmation: "저는 만 19세 이상 미혼 남성이며, 한국나이 기준 1984년생까지의 가입 조건에 해당합니다.",
     birthYearError: "한국나이 기준 1984년생까지에 해당하는 출생연도를 입력해주세요.",
     eligibilityHint: "만 나이가 아닌 출생연도 기준으로 확인해주세요. 허위 정보가 확인되면 매칭이 제한될 수 있습니다.",
