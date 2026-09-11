@@ -9904,3 +9904,63 @@
     font-size: clamp(24px, 6.6vw, 29px);
   }
 }
+
+/* ═══ 홈 상단 무료 신청 바로가기 버튼 ═══ */
+.homeApplyCta {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto 0;
+  scroll-margin-top: 80px;
+}
+
+.homeApplyCta a {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 0 26px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.homeApplyMen {
+  background: var(--home-wine-deep, #0f5ea6);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(15, 94, 166, 0.28);
+}
+
+.homeApplyWomen {
+  background: #fff;
+  color: #0e3d63;
+  border: 1.5px solid rgba(15, 94, 166, 0.35);
+  box-shadow: 0 8px 20px rgba(20, 40, 51, 0.1);
+}
+
+@media (hover: hover) {
+  .homeApplyCta a:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 720px) {
+  .homeApplyCta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .homeApplyCta a {
+    min-height: 50px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+}
