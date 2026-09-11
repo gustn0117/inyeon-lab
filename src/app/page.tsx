@@ -184,7 +184,7 @@ export default function Home() {
               <a href="#how-it-works">진행 과정</a>
               <a href="#pricing">금액 안내</a>
             </nav>
-            <a href="#quick-apply" className={styles.homeCampaignHeaderAction}>무료 신청 <span aria-hidden="true">↓</span></a>
+            <Link href="/apply" className={styles.homeCampaignHeaderAction}>무료 신청 <span aria-hidden="true">→</span></Link>
           </header>
 
           <div className={styles.homeCampaignCopy}>
@@ -202,8 +202,7 @@ export default function Home() {
               <span>대면 소개팅 보장</span>
             </div>
             <div id="quick-apply" className={styles.homeApplyCta} aria-label="무료 신청 바로가기">
-              <Link href="/men#apply" className={styles.homeApplyMen}>남성 무료 신청 <b aria-hidden="true">→</b></Link>
-              <Link href="/women#apply" className={styles.homeApplyWomen}>여성 무료 신청 <b aria-hidden="true">→</b></Link>
+              <Link href="/apply" className={styles.homeApplyMen}>무료 신청 <b aria-hidden="true">→</b></Link>
             </div>
           </div>
 

@@ -39,11 +39,8 @@ export default function HomeMobileDock() {
       aria-label="성별별 안내 바로가기"
       aria-hidden={!show}
     >
-      <Link href="/men#apply" className={styles.homeMobileDockMen} tabIndex={show ? 0 : -1}>
-        <small>FOR MEN</small>남성 무료 신청
-      </Link>
-      <Link href="/women#apply" className={styles.homeMobileDockWomen} tabIndex={show ? 0 : -1}>
-        <small>FOR WOMEN</small>여성 무료 신청
+      <Link href="/apply" className={styles.homeMobileDockMen} tabIndex={show ? 0 : -1}>
+        <small>FREE APPLICATION</small>무료 신청
       </Link>
     </nav>
   );

@@ -9964,3 +9964,113 @@
     font-size: 14px;
   }
 }
+
+/* ═══ 무료 신청 단일 진입 페이지(/apply) ═══ */
+.homeMobileDock {
+  grid-template-columns: 1fr;
+}
+
+.applyPageMain {
+  background: linear-gradient(180deg, #f3fafc 0%, #fff 60%);
+}
+
+.applyGate {
+  width: min(720px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+.applyGateHead {
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.applyGateHead h1 {
+  margin: 10px 0 12px;
+  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 6vw, 38px);
+  letter-spacing: -0.01em;
+}
+
+.applyGateHead p {
+  color: #536873;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.applyGateTiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.applyGateTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid rgba(15, 94, 166, 0.22);
+  border-radius: 18px;
+  padding: 18px 12px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.applyGateTile strong {
+  font-size: 18px;
+  font-weight: 800;
+  color: #142833;
+}
+
+.applyGateTile span {
+  color: #5f7079;
+  font-size: 12px;
+}
+
+.applyGateTile em {
+  color: var(--home-wine-deep, #0f5ea6);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.applyGateTileActive {
+  border-color: var(--home-wine-deep, #0f5ea6);
+  background: #eef6fc;
+  box-shadow: 0 10px 26px rgba(15, 94, 166, 0.16);
+}
+
+.applyGateHint {
+  padding: 26px 0 10px;
+  color: #5f7079;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .applyGateTile strong {
+    font-size: 16px;
+  }
+
+  .applyGateTile span,
+  .applyGateTile em {
+    font-size: 11px;
+  }
+}
+
+/* 단일 무료 신청 버튼 — 모바일 전체 폭 */
+@media (max-width: 720px) {
+  .homeApplyCta {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formPriceSummary strong {
+  white-space: nowrap;
+}
