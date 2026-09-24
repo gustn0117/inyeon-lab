@@ -10074,3 +10074,560 @@
 .formPriceSummary strong {
   white-space: nowrap;
 }
+
+/* ═══ 첫 화면: 운영자 사진 + 회원 만족 메시지 + 남녀 안내 ═══ */
+.trustHero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 22%, rgba(87, 207, 203, 0.2), transparent 30rem),
+    radial-gradient(circle at 0% 100%, rgba(11, 121, 182, 0.08), transparent 26rem),
+    linear-gradient(180deg, #f3fafd 0%, #ffffff 80%);
+}
+
+.trustHeroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: clamp(36px, 4.4vw, 56px);
+}
+
+.trustHeroKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #086aa6;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.trustHeroKicker::before {
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  content: "";
+}
+
+.trustHeroCopy h1 {
+  margin: 16px 0 0;
+  color: #142833;
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.18;
+  word-break: keep-all;
+}
+
+.trustHeroCopy h1 strong {
+  display: block;
+  color: #086aa6;
+  font-weight: 800;
+}
+
+.trustHeroLead {
+  max-width: 34em;
+  margin: 20px 0 0;
+  color: #536873;
+  font-size: clamp(15px, 1.25vw, 17px);
+  font-weight: 500;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.trustHeroPoints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 560px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trustHeroPoints li {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px 14px 44px;
+  border: 1px solid #dceaf0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 22px -16px rgba(20, 40, 51, 0.3);
+}
+
+.trustHeroPoints li::before {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #086aa6;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  content: "✓";
+}
+
+.trustHeroPoints strong {
+  color: #142833;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.trustHeroPoints span {
+  color: #5f7079;
+  font-size: 12.5px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.trustHeroCopy .homeApplyCta {
+  justify-content: flex-start;
+  margin: 26px 0 0;
+}
+
+.trustHeroCopy .homeApplyCta a {
+  min-height: 56px;
+  padding: 0 38px;
+  font-size: 16px;
+}
+
+/* 운영자 사진 — 아치 프레임 */
+.trustHeroPortrait {
+  position: relative;
+  isolation: isolate;
+  justify-self: center;
+  width: min(400px, 100%);
+  margin: 0 0 30px;
+}
+
+.trustHeroPortrait::before,
+.trustHeroPortrait::after {
+  position: absolute;
+  z-index: -1;
+  border-radius: 999px 999px 34px 34px;
+  content: "";
+}
+
+.trustHeroPortrait::before {
+  inset: 24px -24px -24px 24px;
+  background: linear-gradient(160deg, #dff4f8 0%, #c6e4f1 100%);
+}
+
+.trustHeroPortrait::after {
+  inset: -16px 16px 16px -16px;
+  border: 1.5px solid rgba(8, 106, 166, 0.22);
+}
+
+.trustHeroArch {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 34px 34px;
+  background: #f4f2f1;
+  box-shadow: 0 34px 60px -30px rgba(20, 40, 51, 0.45);
+}
+
+.trustHeroImage {
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.trustHeroPortrait figcaption {
+  position: absolute;
+  bottom: 34px;
+  left: -30px;
+  display: grid;
+  gap: 4px;
+  padding: 14px 20px;
+  border: 1px solid #dceaf0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 16px 36px -18px rgba(20, 40, 51, 0.4);
+}
+
+.trustHeroPortrait figcaption strong {
+  color: #142833;
+  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.trustHeroPortrait figcaption span {
+  color: #19a9c1;
+  font-family: Inter, sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+/* 남녀 안내 */
+.trustGuide {
+  width: min(1180px, calc(100% - 48px));
+  margin: clamp(36px, 4.4vw, 56px) auto 0;
+  padding-bottom: clamp(48px, 6vw, 80px);
+  scroll-margin-top: 24px;
+}
+
+.trustGuideHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.trustGuideHead span {
+  color: #086aa6;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.trustGuideHead h2 {
+  margin: 0;
+  color: #142833;
+  font-size: clamp(19px, 1.8vw, 23px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+
+.trustGuideCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.trustGuideCard {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  overflow: hidden;
+  padding: 24px 84px 22px 26px;
+  border: 1px solid #dceaf0;
+  border-radius: 22px;
+  background: #fff;
+  color: #142833;
+  text-decoration: none;
+  box-shadow: 0 16px 34px -24px rgba(20, 40, 51, 0.35);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.trustGuideCard::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: #086aa6;
+  content: "";
+}
+
+.trustGuideCard[data-gender="women"]::before {
+  background: #57cfcb;
+}
+
+.trustGuideCard small {
+  color: #086aa6;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.trustGuideCard strong {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.trustGuideCard em {
+  color: #5f7079;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.trustGuideCard b {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  margin-top: 4px;
+  color: #086aa6;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.trustGuideCard b span {
+  color: #5f7079;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trustGuideCard i {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid #cfe3ec;
+  border-radius: 50%;
+  color: #086aa6;
+  font-size: 18px;
+  font-style: normal;
+  transform: translateY(-50%);
+  transition: background 200ms ease, color 200ms ease;
+}
+
+@media (hover: hover) {
+  .trustGuideCard:hover {
+    transform: translateY(-3px);
+    border-color: #b8d9e8;
+    box-shadow: 0 22px 40px -24px rgba(20, 40, 51, 0.45);
+  }
+
+  .trustGuideCard:hover i {
+    background: #086aa6;
+    color: #fff;
+  }
+}
+
+.trustGuideCard:focus-visible {
+  outline: 3px solid rgba(8, 106, 166, 0.45);
+  outline-offset: 3px;
+}
+
+/* 중간 섹션: 원칙 목록 제거 후 비주얼 단독 배치 */
+.homeIdentityGrid.homeIdentitySolo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.homeIdentitySolo .homeMeetingVisual {
+  min-height: 0;
+  aspect-ratio: 2 / 1;
+}
+
+/* 태블릿 */
+@media (max-width: 980px) {
+  .trustHeroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
+    gap: 36px;
+  }
+
+  .trustHeroPortrait figcaption {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 720px) {
+  .trustHeroGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    width: calc(100% - 32px);
+    padding-top: 26px;
+    text-align: center;
+  }
+
+  .trustHeroPortrait {
+    order: -1;
+    width: min(60vw, 240px);
+    margin: 10px auto 16px;
+  }
+
+  .trustHeroPortrait::before,
+  .trustHeroPortrait::after,
+  .trustHeroArch {
+    border-radius: 999px 999px 26px 26px;
+  }
+
+  .trustHeroPortrait::before {
+    inset: 14px -14px -14px 14px;
+  }
+
+  .trustHeroPortrait::after {
+    inset: -10px 10px 10px -10px;
+  }
+
+  .trustHeroPortrait figcaption {
+    padding: 10px 16px;
+  }
+
+  .trustHeroPortrait figcaption strong {
+    font-size: 14px;
+  }
+
+  .trustHeroKicker {
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .trustHeroKicker::before {
+    display: none;
+  }
+
+  .trustHeroCopy h1 {
+    margin-top: 10px;
+    font-size: clamp(28px, 8.2vw, 35px);
+  }
+
+  .trustHeroLead {
+    margin: 14px auto 0;
+    font-size: 14.5px;
+  }
+
+  .trustHeroPoints {
+    gap: 8px;
+    margin: 20px auto 0;
+    text-align: left;
+  }
+
+  .trustHeroPoints li {
+    padding: 12px 10px 12px 34px;
+    border-radius: 14px;
+  }
+
+  .trustHeroPoints li::before {
+    top: 13px;
+    left: 11px;
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+  }
+
+  .trustHeroPoints strong {
+    font-size: 14px;
+  }
+
+  .trustHeroPoints span {
+    font-size: 11.5px;
+  }
+
+  .trustHeroCopy .homeApplyCta {
+    margin: 20px 0 0;
+  }
+
+  .trustHeroCopy .homeApplyCta a {
+    min-height: 54px;
+  }
+
+  .trustGuide {
+    width: calc(100% - 32px);
+    margin-top: 34px;
+    padding-bottom: 44px;
+  }
+
+  .trustGuideHead {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .trustGuideCards {
+    gap: 10px;
+  }
+
+  .trustGuideCard {
+    padding: 18px 14px 16px;
+    border-radius: 18px;
+  }
+
+  .trustGuideCard strong {
+    font-size: 17px;
+  }
+
+  .trustGuideCard em {
+    font-size: 12px;
+  }
+
+  .trustGuideCard b {
+    font-size: 15px;
+  }
+
+  .trustGuideCard b span {
+    font-size: 11px;
+  }
+
+  .trustGuideCard i {
+    top: auto;
+    right: 12px;
+    bottom: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    transform: none;
+  }
+
+  .homeIdentitySolo .homeMeetingVisual {
+    min-height: 410px;
+    aspect-ratio: auto;
+  }
+}
+
+/* 남녀 안내 페이지: 비교표 제거 후 담당자 비주얼 단독 배치 */
+.curationBody.curationBodySolo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 901px) {
+  .curationBodySolo .consultantVisual {
+    min-height: 0;
+    aspect-ratio: 2 / 1;
+  }
+}
+
+/* 모바일: 무료 신청 버튼을 첫 화면 안에 — 설명 문구 바로 아래로, 포인트는 그 다음 */
+@media (max-width: 720px) {
+  .trustHeroGrid {
+    padding-top: 18px;
+  }
+
+  .trustHeroPortrait {
+    width: min(54vw, 214px);
+  }
+
+  .trustHeroCopy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trustHeroCopy .homeApplyCta {
+    order: 4;
+    align-self: stretch;
+  }
+
+  .trustHeroPoints {
+    order: 5;
+    align-self: stretch;
+    margin: 18px 0 0;
+  }
+}
+
+/* 모바일 남녀 안내 카드: 화살표를 우상단으로 (좁은 화면에서 가격 글자와 겹침 방지) */
+@media (max-width: 720px) {
+  .trustGuideCard i {
+    top: 10px;
+    bottom: auto;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+}
