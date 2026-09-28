@@ -23,7 +23,7 @@
 - Each process step has its own newly generated 4:3 scene for application, consultation, mutual intent confirmation, and the in-person meeting
 - Client decision: do not add any visible '연출 이미지' / 'staged imagery' captions or disclaimers on any page; keep all explanatory copy as live HTML text (alt text may still describe images)
 - The reference site informed image density, repeated card rhythm, and CTA discoverability only; none of its metrics, reviews, awards, logos, or proprietary claims were reused
-- Client decision (2026-09): active accents are rose/pink (#d63a63 family) on light sky/white surfaces with navy text, so the site reads as a blind-date service; men use a blue accent and women a rose accent in gender-specific cards
+- Client decision (2026-09): one unified rose palette — rose/pink accents (#d63a63 family), blush/white surfaces, warm charcoal text; no blue, sky, aqua, or navy UI colors anywhere (photos excepted), and men/women cards and the chat launcher use the same rose accent
 - At 390 × 844 both gender cards and their CTA labels remain visible and the following ticker begins inside the captured viewport
 - At 320 × 568 the complete promise, four proof tiles, and both people remain intact; the compact gender cards remain inside the same full-bleed hero immediately below the short viewport
 - The chat launcher is labeled 상담 and always visible; on mobile the sticky apply bar keeps a right gap so the two never overlap

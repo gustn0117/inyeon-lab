@@ -7,7 +7,7 @@ type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string
 const INK = "#c8335a";
 const LEMON = "#d63a63";
 const LEMON_WASH = "#fff4f7";
-const LAUNCHER = "#1f2d3d";
+const LAUNCHER = "#d63a63";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
