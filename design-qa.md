@@ -10,7 +10,7 @@
 
 - The first fold identifies the service as a 1:1 post-paid personalized blind-date service (1:1 후불제 맞춤형 소개팅) rather than an app; do not describe it as a 연애정보회사 anywhere
 - The hero now follows a promise → proof → action hierarchy over a full-bleed photograph instead of separating copy and imagery into stacked bands
-- A sticky top header on every page shows two actions at all widths: 상담하기 (opens the live chat) and 소개팅 신청하기 (links to /apply); both stay visible without scrolling
+- Client decision: the sticky top header shows only the logo (plus 여성/남성 안내 links on desktop; logo centered on mobile) — do not put apply or consult buttons in the header. The first fold of the home and gender pages places 소개팅 신청하기 and 1:1 상담하기 directly below the headline, and the floating 상담 launcher is the only other consult entry
 - The first-fold proof rail uses only approved operating facts: membership fee 0 won, payment after matching, 100% real members, and capital-area 1:1 operation
 - Membership fee, payment timing, public prices, 100% real-member operation, and in-person meeting support are visible before scrolling at the primary 390, 768, and 1440 viewports
 - Men and women have distinct full-card links with their eligibility and post-match prices

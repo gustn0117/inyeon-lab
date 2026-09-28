@@ -1,14 +1,8 @@
 import Link from "next/link";
-import ConsultButton from "@/components/ConsultButton";
 import KakaoCopyButton from "@/components/KakaoCopyButton";
-import { HeartIcon } from "@/components/SiteIcons";
 import styles from "@/components/renewal.module.css";
 
-type HeaderProps = {
-  applyHref?: string;
-};
-
-export function RenewalHeader({ applyHref = "/apply" }: HeaderProps) {
+export function RenewalHeader() {
   return (
     <header className={styles.header}>
       <div className={`${styles.shell} ${styles.headerInner}`}>
@@ -19,11 +13,6 @@ export function RenewalHeader({ applyHref = "/apply" }: HeaderProps) {
         <nav className={styles.nav} aria-label="주요 메뉴">
           <Link href="/women" className={styles.navLink}>여성 안내</Link>
           <Link href="/men" className={styles.navLink}>남성 안내</Link>
-          <ConsultButton className={styles.navConsult} />
-          <Link href={applyHref} className={styles.navApply}>
-            <HeartIcon />
-            <span><span data-lead="">소개팅 </span>신청하기</span>
-          </Link>
         </nav>
       </div>
     </header>

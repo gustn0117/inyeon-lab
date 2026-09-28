@@ -106,7 +106,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
 
   return (
     <div className={styles.site}>
-      <RenewalHeader applyHref="#apply" />
+      <RenewalHeader />
       <main>
         <section className={styles.genderHero} data-floating-ui-guard>
           <div className={`${styles.shell} ${styles.genderHeroGrid}`}>

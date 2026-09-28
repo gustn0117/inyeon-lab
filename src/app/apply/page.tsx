@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 export default function ApplyPage() {
   return (
     <div className={styles.site}>
-      <RenewalHeader applyHref="#apply-gate" />
-      <main id="apply-gate" className={styles.applyPageMain}>
+      <RenewalHeader />
+      <main className={styles.applyPageMain}>
         <ApplyGate />
       </main>
       <RenewalFooter />

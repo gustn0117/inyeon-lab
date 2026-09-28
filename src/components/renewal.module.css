@@ -77,8 +77,7 @@
   gap: 10px;
 }
 
-.navLink,
-.navApply {
+.navLink {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -96,12 +95,6 @@
   background: rgba(217, 170, 165, 0.22);
 }
 
-.navApply {
-  background: var(--r-lemon);
-  box-shadow: inset 0 0 0 1px rgba(23, 25, 16, 0.08);
-}
-
-.navApply:hover,
 .primaryButton:hover,
 .formSubmit:hover {
   transform: translateY(-2px);
@@ -4913,12 +4906,6 @@
     display: none;
   }
 
-  .navApply {
-    min-height: 38px;
-    padding-inline: 14px;
-    font-size: 12px;
-  }
-
   .homeHero {
     min-height: 750px;
     align-items: flex-end;
@@ -5252,7 +5239,6 @@
   background: rgba(217, 84, 110, 0.09);
 }
 
-.navApply,
 .primaryButton,
 .formButton,
 .formSubmit,
@@ -5708,8 +5694,7 @@
 }
 
 @media (max-width: 720px) {
-  .navLink,
-  .navApply {
+  .navLink {
     min-height: 44px;
   }
 
@@ -5831,7 +5816,6 @@
   --home-dark: #1b191d;
 }
 
-.navApply,
 .primaryButton,
 .formButton,
 .formSubmit,
@@ -6101,7 +6085,6 @@
   background: rgba(214, 58, 99, 0.09);
 }
 
-.navApply,
 .primaryButton,
 .formButton,
 .formSubmit,
@@ -10166,97 +10149,6 @@
   }
 }
 
-/* ═══ 소개팅 리뉴얼: 상단 신청·상담 버튼 ═══ */
-.nav {
-  gap: 8px;
-}
-
-.navConsult,
-.navApply {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 0 18px;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-}
-
-.navConsult {
-  border: 1.5px solid #ecd7dd;
-  color: #1f2d3d;
-  background: #fff;
-}
-
-.navConsult svg {
-  width: 17px;
-  height: 17px;
-  color: #c8335a;
-}
-
-.navApply {
-  border: none;
-  color: #fff;
-  background: linear-gradient(135deg, #e0476f 0%, #c92e58 100%);
-  box-shadow: 0 12px 24px -12px rgba(200, 51, 90, 0.7);
-}
-
-.navApply svg {
-  width: 15px;
-  height: 15px;
-}
-
-@media (hover: hover) {
-  .navConsult:hover,
-  .navApply:hover {
-    transform: translateY(-2px);
-  }
-}
-
-.navConsult:focus-visible,
-.navApply:focus-visible {
-  outline: 3px solid rgba(214, 58, 99, 0.45);
-  outline-offset: 2px;
-}
-
-@media (max-width: 720px) {
-  .headerInner {
-    gap: 10px;
-  }
-
-  .nav {
-    gap: 6px;
-  }
-
-  .navConsult,
-  .navApply {
-    min-height: 40px;
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
-  .navConsult [data-tail] {
-    display: none;
-  }
-}
-
-@media (max-width: 374px) {
-  .brandWord {
-    font-size: 17px;
-  }
-
-  .navApply [data-lead] {
-    display: none;
-  }
-}
-
 /* ═══ 소개팅 리뉴얼: 첫 화면 — 매니저가 직접 주선하는 소개팅 ═══ */
 .dateHero {
   position: relative;
@@ -10834,10 +10726,6 @@
   font-size: clamp(26px, 2.6vw, 36px);
 }
 
-.applyPageMain {
-  scroll-margin-top: 72px;
-}
-
 @media (max-width: 720px) and (orientation: portrait) {
   .genderHeroActions {
     grid-column: 1;
@@ -10860,4 +10748,44 @@
 
 .genderLead {
   word-break: keep-all;
+}
+
+/* 모바일 헤더: 로고만 가운데 */
+@media (max-width: 720px) {
+  .headerInner {
+    justify-content: center;
+  }
+
+  .nav {
+    display: none;
+  }
+}
+
+/* 남녀 안내 모바일: 헤더 버튼 제거에 맞춰 신청·상담 버튼을 제목 바로 아래로 */
+@media (max-width: 720px) and (orientation: portrait) {
+  .genderHeroActions {
+    order: 3;
+    margin-top: 18px;
+  }
+
+  .genderHeroActions .primaryButton {
+    grid-column: auto;
+    order: 0;
+  }
+
+  .eligibilityNote {
+    order: 4;
+  }
+
+  .heroImageWrap {
+    order: 5;
+  }
+
+  .genderLead {
+    order: 6;
+  }
+
+  .priceBlock {
+    order: 7;
+  }
 }
