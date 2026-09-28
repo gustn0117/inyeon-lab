@@ -1,11 +1,13 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { OPEN_CHAT_EVENT } from "@/lib/contact";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const INK = "#086aa6";
-const LEMON = "#0b79b6";
-const LEMON_WASH = "#effaff";
+const INK = "#c8335a";
+const LEMON = "#d63a63";
+const LEMON_WASH = "#fff4f7";
+const LAUNCHER = "#1f2d3d";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
@@ -24,7 +26,6 @@ export default function ChatWidget() {
   const [sending, setSending] = useState(false);
   const [unread, setUnread] = useState(0);
   const [tooltipShown, setTooltipShown] = useState(false);
-  const [guarded, setGuarded] = useState(true);
   const lastIdRef = useRef(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -56,30 +57,11 @@ export default function ChatWidget() {
     } catch {}
   }, []);
 
-  // 핵심 CTA와 가로 탐색 영역에서는 플로팅 UI가 콘텐츠를 가리지 않도록 숨깁니다.
+  // 페이지의 '상담하기' 버튼으로 열기
   useEffect(() => {
-    const targets = [
-      ...Array.from(document.querySelectorAll("[data-floating-ui-guard]")),
-      ...Array.from(document.querySelectorAll("footer")),
-    ];
-    const updateGuarded = () => {
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const nextGuarded = targets.some((target) => {
-        const rect = target.getBoundingClientRect();
-        return rect.bottom > 0 && rect.top < viewportHeight;
-      });
-      setGuarded(nextGuarded);
-      if (nextGuarded) setOpen(false);
-    };
-    const observer = new IntersectionObserver(updateGuarded, { threshold: [0, 0.01] });
-
-    targets.forEach((target) => observer.observe(target));
-    updateGuarded();
-    window.addEventListener("resize", updateGuarded);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateGuarded);
-    };
+    const openChat = () => setOpen(true);
+    window.addEventListener(OPEN_CHAT_EVENT, openChat);
+    return () => window.removeEventListener(OPEN_CHAT_EVENT, openChat);
   }, []);
 
   // 폴링 (열렸든 닫혔든 unread 알림 위해 동작)
@@ -217,7 +199,7 @@ export default function ChatWidget() {
   return (
     <>
       {/* 플로팅 버튼 */}
-      {!guarded && <div className="fixed bottom-[calc(0.875rem+env(safe-area-inset-bottom))] right-3.5 sm:bottom-7 sm:right-7 z-[90]">
+      <div className="fixed bottom-[calc(0.875rem+env(safe-area-inset-bottom))] right-3.5 sm:bottom-7 sm:right-7 z-[90]">
         {/* 첫 방문 안내 풍선 */}
         {tooltipShown && !open && !sessionId && (
           <div className="hidden sm:block absolute right-0 bottom-[4.25rem] sm:right-16 sm:bottom-1 bg-white rounded-2xl shadow-xl px-4 py-2.5 animate-pulse-soft" style={{ animation: "float-in 0.4s ease-out", whiteSpace: "nowrap" }}>
@@ -231,15 +213,15 @@ export default function ChatWidget() {
           ref={launcherRef}
           type="button"
           onClick={() => open ? closeChat() : setOpen(true)}
-          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-all duration-300 group"
-          style={{ background: LEMON, color: "white" }}
+          className="relative h-12 sm:h-14 pl-4 pr-5 sm:pl-5 sm:pr-6 rounded-full flex items-center justify-center gap-1.5 shadow-xl hover:scale-105 transition-all duration-300 group text-[14px] sm:text-[15px] font-extrabold"
+          style={{ background: LAUNCHER, color: "white" }}
           aria-label={open ? "채팅 닫기" : "실시간 채팅 열기"}
           aria-expanded={open}
           aria-controls="inyeon-chat-dialog"
         >
           {/* 펄스 링 (첫 방문 시) */}
           {tooltipShown && !open && (
-            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: LEMON, opacity: 0.4 }} />
+            <span className="absolute inset-0 rounded-full animate-ping" style={{ background: LAUNCHER, opacity: 0.3 }} />
           )}
 
           {open ? (
@@ -251,13 +233,14 @@ export default function ChatWidget() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
             </svg>
           )}
+          <span className="relative">{open ? "닫기" : "상담"}</span>
           {unread > 0 && !open && (
             <span className="absolute -top-1 -right-1 min-w-[20px] h-5 px-1.5 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center shadow-md ring-2 ring-white">
               {unread > 99 ? "99+" : unread}
             </span>
           )}
         </button>
-      </div>}
+      </div>
 
       {/* 채팅 패널 */}
       {open && (
@@ -318,7 +301,7 @@ export default function ChatWidget() {
                 maxLength={20}
                 onChange={e => setDraftName(e.target.value)}
                 onKeyDown={e => { if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) startSession(); }}
-                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#0b79b6] focus:outline-none focus:ring-4 focus:ring-[#0b79b6]/10 mb-3"
+                className="w-full rounded-xl px-4 py-3 text-sm border border-gray-200 focus:border-[#d63a63] focus:outline-none focus:ring-4 focus:ring-[#d63a63]/10 mb-3"
               />
               <button
                 onClick={startSession}
@@ -401,7 +384,7 @@ export default function ChatWidget() {
                         send();
                       }
                     }}
-                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#0b79b6] focus:outline-none focus:ring-4 focus:ring-[#0b79b6]/10 resize-none leading-snug"
+                    className="flex-1 rounded-xl px-3.5 py-2.5 text-sm border border-gray-200 focus:border-[#d63a63] focus:outline-none focus:ring-4 focus:ring-[#d63a63]/10 resize-none leading-snug"
                     style={{ minHeight: "40px", maxHeight: "88px" }}
                   />
                   <button

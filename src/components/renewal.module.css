@@ -6056,27 +6056,27 @@
   --r-ink: #142833;
   --r-ink-soft: #5f7079;
   --r-line: #dceaf0;
-  --r-lemon: #57cfcb;
-  --r-lemon-soft: #dff8f6;
-  --r-lemon-wash: #effaff;
-  --accent: #0b79b6;
-  --accent-deep: #086aa6;
-  --accent-soft: #e2f4fb;
+  --r-lemon: #ff8fab;
+  --r-lemon-soft: #ffe4ec;
+  --r-lemon-wash: #fff4f7;
+  --accent: #d63a63;
+  --accent-deep: #c8335a;
+  --accent-soft: #ffe8ee;
   --line: #dceaf0;
   background:
-    radial-gradient(circle at 4% 0%, rgba(87, 207, 203, 0.16), transparent 28rem),
+    radial-gradient(circle at 4% 0%, rgba(255, 143, 171, 0.16), transparent 28rem),
     var(--r-canvas);
 }
 
 .site ::selection {
   color: var(--r-ink);
-  background: rgba(87, 207, 203, 0.34);
+  background: rgba(255, 143, 171, 0.34);
 }
 
 .homeSite {
-  --home-wine: #0b79b6;
-  --home-wine-deep: #086aa6;
-  --home-blush: #dff8f6;
+  --home-wine: #d63a63;
+  --home-wine-deep: #c8335a;
+  --home-blush: #ffe4ec;
   --home-blush-soft: #f3fbfd;
   --home-dark: #142833;
   --home-ink-soft: #5f7079;
@@ -6098,7 +6098,7 @@
 }
 
 .navLink:hover {
-  background: rgba(13, 127, 192, 0.09);
+  background: rgba(214, 58, 99, 0.09);
 }
 
 .navApply,
@@ -6109,16 +6109,16 @@
 .faqDetailIntro a {
   color: #fff;
   background: var(--accent-deep);
-  box-shadow: 0 14px 34px rgba(8, 106, 166, 0.2);
+  box-shadow: 0 14px 34px rgba(200, 51, 90, 0.2);
 }
 
 .lemonMark::after {
-  background: linear-gradient(90deg, rgba(87, 207, 203, 0.34), rgba(13, 127, 192, 0.72));
+  background: linear-gradient(90deg, rgba(255, 143, 171, 0.34), rgba(214, 58, 99, 0.72));
 }
 
 .eyebrow,
 .homeEntryEyebrow {
-  border-color: rgba(13, 127, 192, 0.2);
+  border-color: rgba(214, 58, 99, 0.2);
   color: var(--accent-deep);
   background: rgba(255, 255, 255, 0.84);
 }
@@ -6138,13 +6138,13 @@
 }
 
 .homeCategory {
-  border-color: rgba(13, 127, 192, 0.2);
+  border-color: rgba(214, 58, 99, 0.2);
   color: #39515e;
   background: rgba(255, 255, 255, 0.8);
 }
 
 .homeCategory span {
-  background: #19a9c1;
+  background: #ec6f8e;
   box-shadow: 0 0 0 4px rgba(25, 169, 193, 0.13);
 }
 
@@ -6172,13 +6172,13 @@
 
 .homeChoiceCard {
   color: var(--home-dark);
-  border-color: rgba(13, 127, 192, 0.24);
+  border-color: rgba(214, 58, 99, 0.24);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 20px 54px rgba(22, 65, 84, 0.13), inset 0 1px 0 #fff;
 }
 
 .homeChoiceCard::after {
-  background: rgba(87, 207, 203, 0.17);
+  background: rgba(255, 143, 171, 0.17);
 }
 
 .homeChoicePrice {
@@ -6188,7 +6188,7 @@
 .homeChoiceAction {
   color: #fff;
   background: var(--accent-deep);
-  box-shadow: 0 10px 26px rgba(8, 106, 166, 0.23);
+  box-shadow: 0 10px 26px rgba(200, 51, 90, 0.23);
 }
 
 .homeChoiceAction b {
@@ -6198,20 +6198,20 @@
 .homeTicker {
   border-block-color: #d7edf3;
   color: #304a57;
-  background: #effaff;
+  background: #fff4f7;
 }
 
 .homeTickerTrack b,
 .homeFaqIntro .homeSectionEyebrow,
 .homeFaqItem summary span,
 .homeFinalInner .homeSectionEyebrow {
-  color: #0b79b6;
+  color: #d63a63;
 }
 
 .homeIdentitySection,
 .showcaseSection {
   background:
-    radial-gradient(circle at 7% 12%, rgba(87, 207, 203, 0.11), transparent 25rem),
+    radial-gradient(circle at 7% 12%, rgba(255, 143, 171, 0.11), transparent 25rem),
     #fff;
 }
 
@@ -6231,12 +6231,12 @@
 
 .homePricingSection {
   background:
-    radial-gradient(circle at 91% 8%, rgba(87, 207, 203, 0.15), transparent 27rem),
+    radial-gradient(circle at 91% 8%, rgba(255, 143, 171, 0.15), transparent 27rem),
     #f3fbfd;
 }
 
 .homePricingZero {
-  border-color: rgba(13, 127, 192, 0.2);
+  border-color: rgba(214, 58, 99, 0.2);
 }
 
 .homePriceCard {
@@ -6246,7 +6246,7 @@
 }
 
 .homePriceCard::before {
-  background: rgba(87, 207, 203, 0.14);
+  background: rgba(255, 143, 171, 0.14);
 }
 
 .homePriceCard > p,
@@ -6259,17 +6259,17 @@
 }
 
 .homeProcessCard::after {
-  color: rgba(13, 127, 192, 0.06);
+  color: rgba(214, 58, 99, 0.06);
 }
 
 .homeProcessCard > span {
-  background: linear-gradient(135deg, #0b79b6, #159fba);
+  background: linear-gradient(135deg, #d63a63, #159fba);
 }
 
 .homeFaqSection {
   color: var(--home-dark);
   background:
-    radial-gradient(circle at 12% 10%, rgba(87, 207, 203, 0.14), transparent 24rem),
+    radial-gradient(circle at 12% 10%, rgba(255, 143, 171, 0.14), transparent 24rem),
     #f3f9fb;
 }
 
@@ -6299,11 +6299,11 @@
   border-color: var(--accent-deep);
   color: #fff;
   background: var(--accent-deep);
-  box-shadow: 0 14px 36px rgba(8, 106, 166, 0.21);
+  box-shadow: 0 14px 36px rgba(200, 51, 90, 0.21);
 }
 
 .homeFinalActions a:last-child {
-  border-color: rgba(13, 127, 192, 0.25);
+  border-color: rgba(214, 58, 99, 0.25);
   color: #29424f;
   background: rgba(255, 255, 255, 0.88);
 }
@@ -6311,17 +6311,17 @@
 .detailSignal {
   border-color: #d5ecf2;
   color: var(--r-ink);
-  background: #effaff;
+  background: #fff4f7;
 }
 
 .detailSignalInner span,
 .detailSignalInner span:last-child {
-  border-color: rgba(13, 127, 192, 0.15);
+  border-color: rgba(214, 58, 99, 0.15);
   color: #3c535f;
 }
 
 .showcaseLead strong {
-  border-color: #57cfcb;
+  border-color: #ff8fab;
   color: #314a56;
 }
 
@@ -6332,7 +6332,7 @@
 .curationSection {
   border-color: #d8edf2;
   background:
-    radial-gradient(circle at 8% 10%, rgba(87, 207, 203, 0.15), transparent 24rem),
+    radial-gradient(circle at 8% 10%, rgba(255, 143, 171, 0.15), transparent 24rem),
     linear-gradient(180deg, #f8fdfe 0%, #eef9fc 100%);
 }
 
@@ -6396,7 +6396,7 @@
 
 .faqDetailSection {
   background:
-    radial-gradient(circle at 90% 15%, rgba(87, 207, 203, 0.13), transparent 20rem),
+    radial-gradient(circle at 90% 15%, rgba(255, 143, 171, 0.13), transparent 20rem),
     #f5fafc;
 }
 
@@ -6420,7 +6420,7 @@
 
 .field input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(13, 127, 192, 0.12);
+  box-shadow: 0 0 0 4px rgba(214, 58, 99, 0.12);
 }
 
 .field input[aria-invalid="true"] {
@@ -6437,7 +6437,7 @@
 .site input:focus-visible,
 .showcaseMosaic:focus-visible,
 .journeyGrid:focus-visible {
-  outline-color: rgba(13, 127, 192, 0.48);
+  outline-color: rgba(214, 58, 99, 0.48);
 }
 
 .footer {
@@ -6458,7 +6458,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .homeChoiceCard:hover {
-    border-color: rgba(13, 127, 192, 0.48);
+    border-color: rgba(214, 58, 99, 0.48);
     background: rgba(255, 255, 255, 0.97);
     box-shadow: 0 25px 66px rgba(22, 65, 84, 0.16), inset 0 1px 0 #fff;
   }
@@ -6472,7 +6472,7 @@
 
   .detailSignalInner span:nth-child(2n),
   .detailSignalInner span:nth-child(-n + 2) {
-    border-color: rgba(13, 127, 192, 0.15);
+    border-color: rgba(214, 58, 99, 0.15);
   }
 
   .journeyShade {
@@ -6531,7 +6531,7 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 92% 12%, rgba(87, 207, 203, 0.12), transparent 25rem),
+    radial-gradient(circle at 92% 12%, rgba(255, 143, 171, 0.12), transparent 25rem),
     #fff;
 }
 
@@ -6563,7 +6563,7 @@
   justify-content: center;
   border-radius: 50%;
   color: #fff;
-  background: linear-gradient(135deg, #0b79b6, #25b8c5);
+  background: linear-gradient(135deg, #d63a63, #25b8c5);
   font-family: Inter, sans-serif;
   font-size: 9px;
   font-weight: 850;
@@ -6575,7 +6575,7 @@
 
 .homeProcessGrid:focus-visible {
   border-radius: 24px;
-  outline: 3px solid rgba(13, 127, 192, 0.48);
+  outline: 3px solid rgba(214, 58, 99, 0.48);
   outline-offset: 6px;
 }
 
@@ -6621,7 +6621,7 @@
   border-radius: 999px;
   padding: 0 11px;
   color: #fff;
-  background: rgba(8, 106, 166, 0.9);
+  background: rgba(200, 51, 90, 0.9);
   box-shadow: 0 8px 24px rgba(8, 61, 91, 0.2);
   font-family: Inter, sans-serif;
   font-size: 9px;
@@ -6791,7 +6791,7 @@
   left: 0;
   height: 2px;
   border-radius: 99px;
-  background: linear-gradient(90deg, #0b79b6, #57cfcb);
+  background: linear-gradient(90deg, #d63a63, #ff8fab);
   content: "";
   opacity: 0;
   transform: scaleX(0.35);
@@ -6809,7 +6809,7 @@
   padding: 0 18px;
   color: #fff;
   background: var(--accent-deep);
-  box-shadow: 0 12px 28px rgba(8, 106, 166, 0.2);
+  box-shadow: 0 12px 28px rgba(200, 51, 90, 0.2);
   font-size: 11px;
   font-weight: 820;
   text-decoration: none;
@@ -6824,8 +6824,8 @@
 
 .homeEntryEyebrow {
   min-height: 31px;
-  border-color: rgba(13, 127, 192, 0.24);
-  color: #086aa6;
+  border-color: rgba(214, 58, 99, 0.24);
+  color: #c8335a;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 8px 25px rgba(22, 75, 94, 0.07);
 }
@@ -6920,8 +6920,8 @@
 .homeChoiceCard:first-child {
   border-color: rgba(255, 255, 255, 0.68);
   color: #fff;
-  background: linear-gradient(135deg, rgba(8, 106, 166, 0.94), rgba(17, 159, 186, 0.91));
-  box-shadow: 0 24px 60px rgba(5, 76, 116, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, rgba(200, 51, 90, 0.94), rgba(17, 159, 186, 0.91));
+  box-shadow: 0 24px 60px rgba(122, 28, 56, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .homeChoiceCard:last-child {
@@ -6967,17 +6967,17 @@
   min-height: 43px;
   justify-content: center;
   color: #fff;
-  background: #086aa6;
+  background: #c8335a;
 }
 
 .homeChoiceCard:first-child .homeChoiceAction {
-  color: #086aa6;
+  color: #c8335a;
   background: #fff;
-  box-shadow: 0 10px 28px rgba(3, 68, 104, 0.2);
+  box-shadow: 0 10px 28px rgba(122, 28, 56, 0.2);
 }
 
 .homeChoiceCard:first-child .homeChoiceAction b {
-  color: #086aa6;
+  color: #c8335a;
 }
 
 .homeEntryDisclosure {
@@ -6993,7 +6993,7 @@
   min-height: 60px;
   border: 0;
   color: #fff;
-  background: linear-gradient(90deg, #086aa6, #0b79b6 52%, #1199b2);
+  background: linear-gradient(90deg, #c8335a, #d63a63 52%, #1199b2);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
@@ -7016,7 +7016,7 @@
   border-radius: 28px;
   padding: 29px 32px;
   background:
-    radial-gradient(circle at 92% 20%, rgba(87, 207, 203, 0.2), transparent 17rem),
+    radial-gradient(circle at 92% 20%, rgba(255, 143, 171, 0.2), transparent 17rem),
     linear-gradient(135deg, #f8fdfe, #eaf8fc);
   box-shadow: 0 20px 55px rgba(22, 75, 94, 0.09);
 }
@@ -7027,7 +7027,7 @@
 }
 
 .homeIdentityCta > div:first-child > span {
-  color: #0b79b6;
+  color: #d63a63;
   font-family: Inter, sans-serif;
   font-size: 8px;
   font-weight: 850;
@@ -7057,18 +7057,18 @@
   align-items: center;
   justify-content: center;
   gap: 18px;
-  border: 1px solid #086aa6;
+  border: 1px solid #c8335a;
   border-radius: 999px;
   color: #fff;
-  background: #086aa6;
-  box-shadow: 0 12px 28px rgba(8, 106, 166, 0.18);
+  background: #c8335a;
+  box-shadow: 0 12px 28px rgba(200, 51, 90, 0.18);
   font-size: 11px;
   font-weight: 800;
   text-decoration: none;
 }
 
 .homeIdentityCtaActions a:last-child {
-  border-color: rgba(13, 127, 192, 0.24);
+  border-color: rgba(214, 58, 99, 0.24);
   color: #274652;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: none;
@@ -7081,18 +7081,18 @@
   }
 
   .homeNavAction:hover {
-    box-shadow: 0 16px 34px rgba(8, 106, 166, 0.27);
+    box-shadow: 0 16px 34px rgba(200, 51, 90, 0.27);
     transform: translateY(-2px);
   }
 
   .homeChoiceCard:first-child:hover {
     border-color: rgba(255, 255, 255, 0.82);
     background: linear-gradient(135deg, rgba(7, 99, 155, 0.97), rgba(13, 145, 173, 0.94));
-    box-shadow: 0 28px 68px rgba(5, 76, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 28px 68px rgba(122, 28, 56, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   .homeChoiceCard:last-child:hover {
-    border-color: rgba(13, 127, 192, 0.5);
+    border-color: rgba(214, 58, 99, 0.5);
     background: rgba(255, 255, 255, 0.97);
   }
 }
@@ -7313,7 +7313,7 @@
 
   .homeChoiceCard:last-child .homeChoiceAction,
   .homeChoiceCard:last-child .homeChoiceAction b {
-    color: #086aa6;
+    color: #c8335a;
   }
 
   .homeEntryDisclosure {
@@ -7437,9 +7437,9 @@
 
   .homeNavAction {
     min-height: 34px;
-    border: 1px solid rgba(8, 106, 166, 0.12);
+    border: 1px solid rgba(200, 51, 90, 0.12);
     padding: 0 12px;
-    box-shadow: 0 8px 20px rgba(8, 106, 166, 0.14);
+    box-shadow: 0 8px 20px rgba(200, 51, 90, 0.14);
     font-size: 9px;
   }
 
@@ -7459,7 +7459,7 @@
   .homeEntryEyebrow {
     min-height: 25px;
     padding: 0 9px;
-    border-color: rgba(8, 106, 166, 0.2);
+    border-color: rgba(200, 51, 90, 0.2);
     font-size: clamp(7.2px, 2vw, 8.3px);
     letter-spacing: 0.065em;
   }
@@ -7617,7 +7617,7 @@
   .homeChoiceCard:first-child .homeChoiceAction {
     color: #096ca7;
     background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 8px 18px rgba(3, 68, 104, 0.15);
+    box-shadow: 0 8px 18px rgba(122, 28, 56, 0.15);
   }
 
   .homeChoiceCard:first-child .homeChoiceAction b {
@@ -7626,8 +7626,8 @@
 
   .homeChoiceCard:last-child .homeChoiceAction {
     color: #fff;
-    background: #086aa6;
-    box-shadow: 0 8px 18px rgba(8, 106, 166, 0.17);
+    background: #c8335a;
+    box-shadow: 0 8px 18px rgba(200, 51, 90, 0.17);
   }
 
   .homeChoiceCard:last-child .homeChoiceAction b {
@@ -7823,8 +7823,8 @@
     border-radius: 999px;
     padding: 8px 9px 8px 24px;
     color: #fff;
-    background: linear-gradient(135deg, rgba(7, 105, 166, 0.97), rgba(13, 154, 184, 0.96));
-    box-shadow: 0 20px 44px rgba(4, 72, 110, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, rgba(200, 51, 90, 0.97), rgba(13, 154, 184, 0.96));
+    box-shadow: 0 20px 44px rgba(122, 28, 56, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     text-decoration: none;
     backdrop-filter: blur(16px) saturate(1.1);
   }
@@ -7856,7 +7856,7 @@
     border-radius: 50%;
     color: #0872b0;
     background: #fff;
-    box-shadow: 0 8px 20px rgba(3, 68, 104, 0.16);
+    box-shadow: 0 8px 20px rgba(122, 28, 56, 0.16);
     font-size: 18px;
   }
 
@@ -8353,8 +8353,8 @@
     border-radius: 999px;
     padding: 8px 9px 8px 22px;
     color: #fff;
-    background: linear-gradient(135deg, rgba(7, 105, 166, 0.97), rgba(13, 154, 184, 0.96));
-    box-shadow: 0 18px 40px rgba(4, 72, 110, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    background: linear-gradient(135deg, rgba(200, 51, 90, 0.97), rgba(13, 154, 184, 0.96));
+    box-shadow: 0 18px 40px rgba(122, 28, 56, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.24);
     text-decoration: none;
     backdrop-filter: blur(16px) saturate(1.1);
   }
@@ -8399,7 +8399,7 @@
     border-radius: 50%;
     color: #0872b0;
     background: #fff;
-    box-shadow: 0 7px 18px rgba(3, 68, 104, 0.15);
+    box-shadow: 0 7px 18px rgba(122, 28, 56, 0.15);
     font-size: 16px;
   }
 
@@ -9536,72 +9536,8 @@
 }
 
 /* ═══ 모바일 전용 보강 (PC와 별개 구성) ═══ */
-/* 1) 하단 고정 안내 도크 — 히어로를 지나면 등장, 채팅 버튼 자리(우측 88px)는 비워 둠 */
-.homeMobileDock {
-  position: fixed;
-  right: 88px;
-  bottom: max(12px, env(safe-area-inset-bottom));
-  left: 12px;
-  z-index: 60;
-  display: none;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  padding: 6px;
-  border: 1px solid rgba(20, 40, 51, 0.08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 14px 34px rgba(20, 40, 51, 0.2);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  opacity: 0;
-  transform: translateY(130%);
-  transition: transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 260ms ease;
-  pointer-events: none;
-}
-
-.homeMobileDockShow {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-
-.homeMobileDock a {
-  display: flex;
-  min-height: 48px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-}
-
-.homeMobileDock a small {
-  margin-bottom: 3px;
-  font-family: Inter, sans-serif;
-  font-size: 8.5px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  opacity: 0.72;
-}
-
-.homeMobileDockMen {
-  background: var(--home-wine-deep, #0f5ea6);
-  color: #fff;
-}
-
-.homeMobileDockWomen {
-  background: #e9f3fa;
-  color: #0e3d63;
-}
 
 @media (max-width: 720px) {
-  .homeMobileDock {
-    display: grid;
-  }
 
   /* 2) 섹션 리듬 통일 — 모바일에선 여백을 촘촘하게 */
   .homePoolSection,
@@ -9691,12 +9627,6 @@
   /* 7) 하단 도크가 푸터를 가리지 않도록 여백 */
   .homeSite {
     padding-bottom: 12px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .homeMobileDock {
-    transition: none;
   }
 }
 
@@ -9817,7 +9747,7 @@
 .homeCampaignBrand strong em,
 .brandWord em {
   font-style: normal;
-  background: linear-gradient(120deg, #0f5ea6 5%, #19a9c1 95%);
+  background: linear-gradient(120deg, #c8335a 5%, #ec6f8e 95%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -9826,7 +9756,7 @@
 
 .homeCampaignBrand .brandPick,
 .brand .brandPick {
-  color: #19a9c1;
+  color: #ec6f8e;
   font-family: Inter, sans-serif;
   font-size: 11px;
   font-weight: 800;
@@ -9905,70 +9835,7 @@
   }
 }
 
-/* ═══ 홈 상단 무료 신청 바로가기 버튼 ═══ */
-.homeApplyCta {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px auto 0;
-  scroll-margin-top: 80px;
-}
-
-.homeApplyCta a {
-  display: inline-flex;
-  min-height: 52px;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border-radius: 999px;
-  padding: 0 26px;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-.homeApplyMen {
-  background: var(--home-wine-deep, #0f5ea6);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(15, 94, 166, 0.28);
-}
-
-.homeApplyWomen {
-  background: #fff;
-  color: #0e3d63;
-  border: 1.5px solid rgba(15, 94, 166, 0.35);
-  box-shadow: 0 8px 20px rgba(20, 40, 51, 0.1);
-}
-
-@media (hover: hover) {
-  .homeApplyCta a:hover {
-    transform: translateY(-2px);
-  }
-}
-
-@media (max-width: 720px) {
-  .homeApplyCta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 16px;
-  }
-
-  .homeApplyCta a {
-    min-height: 50px;
-    padding: 0 10px;
-    font-size: 14px;
-  }
-}
-
 /* ═══ 무료 신청 단일 진입 페이지(/apply) ═══ */
-.homeMobileDock {
-  grid-template-columns: 1fr;
-}
 
 .applyPageMain {
   background: linear-gradient(180deg, #f3fafc 0%, #fff 60%);
@@ -10012,7 +9879,7 @@
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  border: 1.5px solid rgba(15, 94, 166, 0.22);
+  border: 1.5px solid rgba(200, 51, 90, 0.22);
   border-radius: 18px;
   padding: 18px 12px;
   background: #fff;
@@ -10033,16 +9900,16 @@
 }
 
 .applyGateTile em {
-  color: var(--home-wine-deep, #0f5ea6);
+  color: var(--home-wine-deep, #c8335a);
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
 }
 
 .applyGateTileActive {
-  border-color: var(--home-wine-deep, #0f5ea6);
+  border-color: var(--home-wine-deep, #c8335a);
   background: #eef6fc;
-  box-shadow: 0 10px 26px rgba(15, 94, 166, 0.16);
+  box-shadow: 0 10px 26px rgba(200, 51, 90, 0.16);
 }
 
 .applyGateHint {
@@ -10064,213 +9931,11 @@
   }
 }
 
-/* 단일 무료 신청 버튼 — 모바일 전체 폭 */
-@media (max-width: 720px) {
-  .homeApplyCta {
-    grid-template-columns: 1fr;
-  }
-}
-
 .formPriceSummary strong {
   white-space: nowrap;
 }
 
 /* ═══ 첫 화면: 운영자 사진 + 회원 만족 메시지 + 남녀 안내 ═══ */
-.trustHero {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 86% 22%, rgba(87, 207, 203, 0.2), transparent 30rem),
-    radial-gradient(circle at 0% 100%, rgba(11, 121, 182, 0.08), transparent 26rem),
-    linear-gradient(180deg, #f3fafd 0%, #ffffff 80%);
-}
-
-.trustHeroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: center;
-  gap: clamp(32px, 5vw, 72px);
-  width: min(1180px, calc(100% - 48px));
-  margin: 0 auto;
-  padding-top: clamp(36px, 4.4vw, 56px);
-}
-
-.trustHeroKicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #086aa6;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.trustHeroKicker::before {
-  width: 22px;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  content: "";
-}
-
-.trustHeroCopy h1 {
-  margin: 16px 0 0;
-  color: #142833;
-  font-size: clamp(34px, 4.4vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1.18;
-  word-break: keep-all;
-}
-
-.trustHeroCopy h1 strong {
-  display: block;
-  color: #086aa6;
-  font-weight: 800;
-}
-
-.trustHeroLead {
-  max-width: 34em;
-  margin: 20px 0 0;
-  color: #536873;
-  font-size: clamp(15px, 1.25vw, 17px);
-  font-weight: 500;
-  line-height: 1.75;
-  word-break: keep-all;
-}
-
-.trustHeroPoints {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  max-width: 560px;
-  margin: 26px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.trustHeroPoints li {
-  position: relative;
-  display: grid;
-  gap: 4px;
-  padding: 14px 16px 14px 44px;
-  border: 1px solid #dceaf0;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 10px 22px -16px rgba(20, 40, 51, 0.3);
-}
-
-.trustHeroPoints li::before {
-  position: absolute;
-  top: 15px;
-  left: 16px;
-  display: grid;
-  width: 18px;
-  height: 18px;
-  place-items: center;
-  border-radius: 50%;
-  background: #086aa6;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 900;
-  content: "✓";
-}
-
-.trustHeroPoints strong {
-  color: #142833;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.trustHeroPoints span {
-  color: #5f7079;
-  font-size: 12.5px;
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
-.trustHeroCopy .homeApplyCta {
-  justify-content: flex-start;
-  margin: 26px 0 0;
-}
-
-.trustHeroCopy .homeApplyCta a {
-  min-height: 56px;
-  padding: 0 38px;
-  font-size: 16px;
-}
-
-/* 운영자 사진 — 아치 프레임 */
-.trustHeroPortrait {
-  position: relative;
-  isolation: isolate;
-  justify-self: center;
-  width: min(400px, 100%);
-  margin: 0 0 30px;
-}
-
-.trustHeroPortrait::before,
-.trustHeroPortrait::after {
-  position: absolute;
-  z-index: -1;
-  border-radius: 999px 999px 34px 34px;
-  content: "";
-}
-
-.trustHeroPortrait::before {
-  inset: 24px -24px -24px 24px;
-  background: linear-gradient(160deg, #dff4f8 0%, #c6e4f1 100%);
-}
-
-.trustHeroPortrait::after {
-  inset: -16px 16px 16px -16px;
-  border: 1.5px solid rgba(8, 106, 166, 0.22);
-}
-
-.trustHeroArch {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  border-radius: 999px 999px 34px 34px;
-  background: #f4f2f1;
-  box-shadow: 0 34px 60px -30px rgba(20, 40, 51, 0.45);
-}
-
-.trustHeroImage {
-  object-fit: cover;
-  object-position: 50% 30%;
-}
-
-.trustHeroPortrait figcaption {
-  position: absolute;
-  bottom: 34px;
-  left: -30px;
-  display: grid;
-  gap: 4px;
-  padding: 14px 20px;
-  border: 1px solid #dceaf0;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 16px 36px -18px rgba(20, 40, 51, 0.4);
-}
-
-.trustHeroPortrait figcaption strong {
-  color: #142833;
-  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-}
-
-.trustHeroPortrait figcaption span {
-  color: #19a9c1;
-  font-family: Inter, sans-serif;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-}
 
 /* 남녀 안내 */
 .trustGuide {
@@ -10288,7 +9953,7 @@
 }
 
 .trustGuideHead span {
-  color: #086aa6;
+  color: #c8335a;
   font-size: 13px;
   font-weight: 800;
 }
@@ -10329,16 +9994,16 @@
   right: 0;
   left: 0;
   height: 4px;
-  background: #086aa6;
+  background: #c8335a;
   content: "";
 }
 
 .trustGuideCard[data-gender="women"]::before {
-  background: #57cfcb;
+  background: #ff8fab;
 }
 
 .trustGuideCard small {
-  color: #086aa6;
+  color: #c8335a;
   font-family: Inter, sans-serif;
   font-size: 10px;
   font-weight: 800;
@@ -10363,7 +10028,7 @@
   align-items: baseline;
   gap: 2px 8px;
   margin-top: 4px;
-  color: #086aa6;
+  color: #c8335a;
   font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -10386,7 +10051,7 @@
   place-items: center;
   border: 1px solid #cfe3ec;
   border-radius: 50%;
-  color: #086aa6;
+  color: #c8335a;
   font-size: 18px;
   font-style: normal;
   transform: translateY(-50%);
@@ -10401,13 +10066,13 @@
   }
 
   .trustGuideCard:hover i {
-    background: #086aa6;
+    background: #c8335a;
     color: #fff;
   }
 }
 
 .trustGuideCard:focus-visible {
-  outline: 3px solid rgba(8, 106, 166, 0.45);
+  outline: 3px solid rgba(200, 51, 90, 0.45);
   outline-offset: 3px;
 }
 
@@ -10421,111 +10086,8 @@
   aspect-ratio: 2 / 1;
 }
 
-/* 태블릿 */
-@media (max-width: 980px) {
-  .trustHeroGrid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
-    gap: 36px;
-  }
-
-  .trustHeroPortrait figcaption {
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
 /* 모바일 */
 @media (max-width: 720px) {
-  .trustHeroGrid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
-    width: calc(100% - 32px);
-    padding-top: 26px;
-    text-align: center;
-  }
-
-  .trustHeroPortrait {
-    order: -1;
-    width: min(60vw, 240px);
-    margin: 10px auto 16px;
-  }
-
-  .trustHeroPortrait::before,
-  .trustHeroPortrait::after,
-  .trustHeroArch {
-    border-radius: 999px 999px 26px 26px;
-  }
-
-  .trustHeroPortrait::before {
-    inset: 14px -14px -14px 14px;
-  }
-
-  .trustHeroPortrait::after {
-    inset: -10px 10px 10px -10px;
-  }
-
-  .trustHeroPortrait figcaption {
-    padding: 10px 16px;
-  }
-
-  .trustHeroPortrait figcaption strong {
-    font-size: 14px;
-  }
-
-  .trustHeroKicker {
-    justify-content: center;
-    font-size: 12px;
-  }
-
-  .trustHeroKicker::before {
-    display: none;
-  }
-
-  .trustHeroCopy h1 {
-    margin-top: 10px;
-    font-size: clamp(28px, 8.2vw, 35px);
-  }
-
-  .trustHeroLead {
-    margin: 14px auto 0;
-    font-size: 14.5px;
-  }
-
-  .trustHeroPoints {
-    gap: 8px;
-    margin: 20px auto 0;
-    text-align: left;
-  }
-
-  .trustHeroPoints li {
-    padding: 12px 10px 12px 34px;
-    border-radius: 14px;
-  }
-
-  .trustHeroPoints li::before {
-    top: 13px;
-    left: 11px;
-    width: 16px;
-    height: 16px;
-    font-size: 9px;
-  }
-
-  .trustHeroPoints strong {
-    font-size: 14px;
-  }
-
-  .trustHeroPoints span {
-    font-size: 11.5px;
-  }
-
-  .trustHeroCopy .homeApplyCta {
-    margin: 20px 0 0;
-  }
-
-  .trustHeroCopy .homeApplyCta a {
-    min-height: 54px;
-  }
 
   .trustGuide {
     width: calc(100% - 32px);
@@ -10593,34 +10155,6 @@
   }
 }
 
-/* 모바일: 무료 신청 버튼을 첫 화면 안에 — 설명 문구 바로 아래로, 포인트는 그 다음 */
-@media (max-width: 720px) {
-  .trustHeroGrid {
-    padding-top: 18px;
-  }
-
-  .trustHeroPortrait {
-    width: min(54vw, 214px);
-  }
-
-  .trustHeroCopy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .trustHeroCopy .homeApplyCta {
-    order: 4;
-    align-self: stretch;
-  }
-
-  .trustHeroPoints {
-    order: 5;
-    align-self: stretch;
-    margin: 18px 0 0;
-  }
-}
-
 /* 모바일 남녀 안내 카드: 화살표를 우상단으로 (좁은 화면에서 가격 글자와 겹침 방지) */
 @media (max-width: 720px) {
   .trustGuideCard i {
@@ -10630,4 +10164,700 @@
     height: 26px;
     font-size: 12px;
   }
+}
+
+/* ═══ 소개팅 리뉴얼: 상단 신청·상담 버튼 ═══ */
+.nav {
+  gap: 8px;
+}
+
+.navConsult,
+.navApply {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.navConsult {
+  border: 1.5px solid #ecd7dd;
+  color: #1f2d3d;
+  background: #fff;
+}
+
+.navConsult svg {
+  width: 17px;
+  height: 17px;
+  color: #c8335a;
+}
+
+.navApply {
+  border: none;
+  color: #fff;
+  background: linear-gradient(135deg, #e0476f 0%, #c92e58 100%);
+  box-shadow: 0 12px 24px -12px rgba(200, 51, 90, 0.7);
+}
+
+.navApply svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (hover: hover) {
+  .navConsult:hover,
+  .navApply:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.navConsult:focus-visible,
+.navApply:focus-visible {
+  outline: 3px solid rgba(214, 58, 99, 0.45);
+  outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .headerInner {
+    gap: 10px;
+  }
+
+  .nav {
+    gap: 6px;
+  }
+
+  .navConsult,
+  .navApply {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .navConsult [data-tail] {
+    display: none;
+  }
+}
+
+@media (max-width: 374px) {
+  .brandWord {
+    font-size: 17px;
+  }
+
+  .navApply [data-lead] {
+    display: none;
+  }
+}
+
+/* ═══ 소개팅 리뉴얼: 첫 화면 — 매니저가 직접 주선하는 소개팅 ═══ */
+.dateHero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 16%, rgba(255, 143, 171, 0.26), transparent 28rem),
+    radial-gradient(circle at 6% 94%, rgba(255, 196, 208, 0.34), transparent 24rem),
+    linear-gradient(180deg, #fff5f7 0%, #ffffff 82%);
+}
+
+.dateHeroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: clamp(36px, 5vw, 64px);
+}
+
+.dateHeroKicker {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #f6c9d5;
+  border-radius: 999px;
+  padding: 0 14px;
+  color: #c8335a;
+  background: #fff;
+  box-shadow: 0 8px 20px -14px rgba(200, 51, 90, 0.6);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.dateHeroKicker svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dateHeroCopy h1 {
+  margin: 18px 0 0;
+  color: #142833;
+  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-size: clamp(34px, 3.9vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+  word-break: keep-all;
+  text-wrap: balance;
+}
+
+.dateHeroCopy h1 strong {
+  display: block;
+  font-weight: 400;
+  background: linear-gradient(100deg, #d63a63 0%, #f25a7e 55%, #ff8a6b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dateHeroLead {
+  max-width: 33em;
+  margin: 18px 0 0;
+  color: #4f5e69;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 500;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.dateHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.dateApplyButton,
+.dateConsultButton {
+  display: inline-flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 0 30px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.dateApplyButton {
+  border: none;
+  color: #fff;
+  background: linear-gradient(135deg, #e0476f 0%, #c92e58 100%);
+  box-shadow: 0 18px 34px -14px rgba(200, 51, 90, 0.75);
+}
+
+.dateApplyButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dateConsultButton {
+  border: 1.5px solid #ecd7dd;
+  color: #1f2d3d;
+  background: #fff;
+  box-shadow: 0 10px 24px -18px rgba(20, 40, 51, 0.5);
+}
+
+.dateConsultButton svg {
+  width: 19px;
+  height: 19px;
+  color: #c8335a;
+}
+
+@media (hover: hover) {
+  .dateApplyButton:hover,
+  .dateConsultButton:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.dateApplyButton:focus-visible,
+.dateConsultButton:focus-visible {
+  outline: 3px solid rgba(214, 58, 99, 0.45);
+  outline-offset: 3px;
+}
+
+.dateHeroPoints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 580px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dateHeroPoints li {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  border: 1px solid #f4dde4;
+  border-radius: 16px;
+  padding: 13px 14px 13px 40px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.dateHeroPoints li::before {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  color: #e0476f;
+  font-size: 15px;
+  line-height: 1.3;
+  content: "♥";
+}
+
+.dateHeroPoints strong {
+  color: #142833;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.dateHeroPoints span {
+  color: #5f6b75;
+  font-size: 12.5px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 주선자(운영자) 사진 + 소개팅 대화 말풍선 */
+.matchmaker {
+  position: relative;
+  isolation: isolate;
+  justify-self: center;
+  width: min(360px, 100%);
+  margin: 26px 0 44px;
+}
+
+.matchmaker::before {
+  position: absolute;
+  z-index: -1;
+  inset: 6% -14% -8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 164, 186, 0.45) 0%, rgba(255, 164, 186, 0) 70%);
+  content: "";
+}
+
+.matchmakerArch {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 6px solid #fff;
+  border-radius: 999px 999px 32px 32px;
+  background: #f4efef;
+  box-shadow: 0 30px 60px -30px rgba(122, 28, 56, 0.45);
+}
+
+.matchmakerImage {
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  border-radius: 20px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  word-break: keep-all;
+  box-shadow: 0 16px 30px -18px rgba(20, 40, 51, 0.45);
+}
+
+.bubbleAsk {
+  top: 4%;
+  left: -26%;
+  max-width: 220px;
+  border: 1px solid #f0e3e7;
+  border-bottom-left-radius: 6px;
+  color: #142833;
+  background: #fff;
+}
+
+.bubbleReply {
+  right: -16%;
+  bottom: 22%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom-right-radius: 6px;
+  color: #fff;
+  background: linear-gradient(135deg, #e0476f 0%, #c92e58 100%);
+  white-space: nowrap;
+}
+
+.bubbleReply svg {
+  width: 14px;
+  height: 14px;
+}
+
+.matchmaker figcaption {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  z-index: 2;
+  border: 1px solid #f0e3e7;
+  border-radius: 999px;
+  padding: 10px 18px;
+  color: #142833;
+  background: #fff;
+  box-shadow: 0 14px 28px -18px rgba(20, 40, 51, 0.45);
+  font-family: "Cafe24 Ssurround", "Pretendard Variable", sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+/* 남녀 안내 카드 — 남성 블루 / 여성 로즈 */
+.trustGuideCard[data-gender="men"]::before {
+  background: #2f7fc1;
+}
+
+.trustGuideCard[data-gender="men"] small,
+.trustGuideCard[data-gender="men"] b,
+.trustGuideCard[data-gender="men"] i {
+  color: #2f7fc1;
+}
+
+.trustGuideCard[data-gender="women"]::before {
+  background: #e0476f;
+}
+
+.trustGuideCard[data-gender="women"] small,
+.trustGuideCard[data-gender="women"] b,
+.trustGuideCard[data-gender="women"] i {
+  color: #d63a63;
+}
+
+@media (hover: hover) {
+  .trustGuideCard[data-gender="men"]:hover i {
+    color: #fff;
+    background: #2f7fc1;
+  }
+
+  .trustGuideCard[data-gender="women"]:hover i {
+    color: #fff;
+    background: #d63a63;
+  }
+}
+
+/* 태블릿·모바일: 한 줄 흐름 — 제목 → 신청/상담 버튼 → 주선자 사진 → 설명 */
+@media (max-width: 980px) {
+  .dateHeroGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    text-align: center;
+  }
+
+  .dateHeroCopy {
+    display: contents;
+  }
+
+  .dateHeroKicker { order: 1; }
+  .dateHeroCopy h1 { order: 2; }
+  .dateHeroActions { order: 3; justify-content: center; }
+  .matchmaker { order: 4; }
+  .dateHeroLead { order: 5; margin-inline: auto; }
+  .dateHeroPoints { order: 6; margin-inline: auto; text-align: left; }
+
+  .matchmaker {
+    width: min(300px, 62vw);
+    margin: 34px 0 40px;
+  }
+}
+
+@media (max-width: 720px) {
+  .dateHeroGrid {
+    width: calc(100% - 32px);
+    padding-top: 22px;
+  }
+
+  .dateHeroKicker {
+    min-height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .dateHeroCopy h1 {
+    margin-top: 12px;
+    font-size: clamp(26px, 7.4vw, 32px);
+  }
+
+  .dateHeroActions {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    width: 100%;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .dateApplyButton,
+  .dateConsultButton {
+    min-height: 54px;
+    padding: 0 10px;
+    font-size: 15px;
+  }
+
+  .matchmaker {
+    width: min(210px, 56vw);
+    margin: 46px 0 36px;
+  }
+
+  .matchmakerArch {
+    border-width: 4px;
+    border-radius: 999px 999px 24px 24px;
+  }
+
+  .bubble {
+    border-radius: 16px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+  }
+
+  .bubbleAsk {
+    top: -9%;
+    left: -32%;
+    max-width: 196px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .bubbleReply {
+    right: -26%;
+    bottom: 20%;
+    border-bottom-right-radius: 5px;
+  }
+
+  .matchmaker figcaption {
+    bottom: -16px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .dateHeroLead {
+    margin-top: 6px;
+    font-size: 14.5px;
+  }
+
+  .dateHeroPoints {
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .dateHeroPoints li {
+    border-radius: 14px;
+    padding: 12px 10px 12px 32px;
+  }
+
+  .dateHeroPoints li::before {
+    top: 11px;
+    left: 11px;
+    font-size: 13px;
+  }
+
+  .dateHeroPoints strong {
+    font-size: 14px;
+  }
+
+  .dateHeroPoints span {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 374px) {
+  .dateApplyButton,
+  .dateConsultButton {
+    font-size: 14px;
+  }
+
+  .dateConsultButton [data-tail] {
+    display: none;
+  }
+}
+
+/* ═══ 소개팅 리뉴얼: 섹션 라벨·공통 버튼 ═══ */
+.homeSectionEyebrow,
+.journeyIntro > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.homeSectionEyebrow::before,
+.journeyIntro > span::before {
+  font-size: 11px;
+  content: "♥";
+}
+
+.eyebrow {
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.inlineHeart {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.homeFinalActions a {
+  gap: 8px;
+}
+
+.homeFinalConsult,
+.genderConsultButton {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px solid #ecd7dd;
+  border-radius: 999px;
+  padding: 0 25px;
+  color: #1f2d3d;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.homeFinalConsult {
+  min-width: 190px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.homeFinalConsult svg,
+.genderConsultButton svg {
+  width: 18px;
+  height: 18px;
+  color: #c8335a;
+}
+
+@media (hover: hover) {
+  .homeFinalConsult:hover,
+  .genderConsultButton:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.genderHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.genderHeroActions .primaryButton {
+  gap: 8px;
+  margin-top: 0;
+}
+
+@media (max-width: 720px) {
+  .homeFinalConsult {
+    min-width: 0;
+    min-height: 50px;
+    padding-inline: 12px;
+    font-size: 14px;
+  }
+
+  .genderHeroActions {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .genderHeroActions .primaryButton,
+  .genderConsultButton {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 0;
+    padding-inline: 10px;
+    font-size: 14px;
+  }
+}
+
+/* 남녀 안내 첫 화면: 가격 한 줄 정리 (라벨 위, 금액·가입비 아래) */
+.priceBlock {
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 6px;
+}
+
+.priceLabel {
+  flex-basis: 100%;
+  padding-bottom: 0;
+  white-space: nowrap;
+}
+
+.priceValue {
+  font-size: clamp(30px, 3.2vw, 42px);
+  white-space: nowrap;
+}
+
+.priceZero {
+  white-space: nowrap;
+}
+
+/* 금액 카드: '1회권 ○○,000원'이 카드 안에 들어가도록 */
+.homePriceCard > strong {
+  font-size: clamp(26px, 2.6vw, 36px);
+}
+
+.applyPageMain {
+  scroll-margin-top: 72px;
+}
+
+@media (max-width: 720px) and (orientation: portrait) {
+  .genderHeroActions {
+    grid-column: 1;
+    order: 6;
+  }
+}
+
+@media (max-width: 720px) {
+  .homePriceCard > strong {
+    font-size: clamp(17px, 5.1vw, 20px);
+  }
+}
+
+/* 모바일: 고정 신청 바가 '상담' 버튼(글자 포함, 폭 ≈ 92px)과 겹치지 않도록 */
+@media (max-width: 720px) {
+  .stickyApply {
+    right: 118px;
+  }
+}
+
+.genderLead {
+  word-break: keep-all;
 }

@@ -1,24 +1,29 @@
 import Link from "next/link";
+import ConsultButton from "@/components/ConsultButton";
 import KakaoCopyButton from "@/components/KakaoCopyButton";
+import { HeartIcon } from "@/components/SiteIcons";
 import styles from "@/components/renewal.module.css";
 
 type HeaderProps = {
   applyHref?: string;
-  applyLabel?: string;
 };
 
-export function RenewalHeader({ applyHref = "/#choose", applyLabel = "안내 선택" }: HeaderProps) {
+export function RenewalHeader({ applyHref = "/apply" }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={`${styles.shell} ${styles.headerInner}`}>
         <Link href="/" className={styles.brand} aria-label="인연연구소 홈">
           <strong className={styles.brandWord}>인연<em>연구소</em></strong>
-          <span className={styles.brandSub}>수도권 1:1 연애정보회사</span>
+          <span className={styles.brandSub}>1:1 후불제 맞춤형 소개팅</span>
         </Link>
         <nav className={styles.nav} aria-label="주요 메뉴">
           <Link href="/women" className={styles.navLink}>여성 안내</Link>
           <Link href="/men" className={styles.navLink}>남성 안내</Link>
-          <Link href={applyHref} className={styles.navApply}>{applyLabel}</Link>
+          <ConsultButton className={styles.navConsult} />
+          <Link href={applyHref} className={styles.navApply}>
+            <HeartIcon />
+            <span><span data-lead="">소개팅 </span>신청하기</span>
+          </Link>
         </nav>
       </div>
     </header>
@@ -33,7 +38,7 @@ export function RenewalFooter() {
           <div>
             <div className={styles.footerBrand}>인연연구소</div>
             <p className={styles.footerCopy}>
-              가입비 없이 시작해 매칭이 성사된 뒤에만 결제하는<br />수도권 중심 1:1 연애정보회사
+              가입비 없이 시작해 매칭이 성사된 뒤에만 결제하는<br />수도권 중심 1:1 후불제 맞춤형 소개팅
             </p>
           </div>
           <div>

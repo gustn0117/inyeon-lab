@@ -8,9 +8,9 @@
 
 ## Homepage
 
-- The first fold identifies the service as a capital-area relationship information company rather than an app
+- The first fold identifies the service as a 1:1 post-paid personalized blind-date service (1:1 후불제 맞춤형 소개팅) rather than an app; do not describe it as a 연애정보회사 anywhere
 - The hero now follows a promise → proof → action hierarchy over a full-bleed photograph instead of separating copy and imagery into stacked bands
-- A white top navigation exposes member mood, process, price, and a direct gender-selection action
+- A sticky top header on every page shows two actions at all widths: 상담하기 (opens the live chat) and 소개팅 신청하기 (links to /apply); both stay visible without scrolling
 - The first-fold proof rail uses only approved operating facts: membership fee 0 won, payment after matching, 100% real members, and capital-area 1:1 operation
 - Membership fee, payment timing, public prices, 100% real-member operation, and in-person meeting support are visible before scrolling at the primary 390, 768, and 1440 viewports
 - Men and women have distinct full-card links with their eligibility and post-match prices
@@ -21,19 +21,18 @@
 - Moving the member gallery to the first scroll makes the reference-inspired image density visible immediately rather than several sections later
 - The member gallery uses six staged portraits in a scan-friendly editorial rhythm; desktop shows all six, tablet uses a 3 × 2 grid, and mobile uses a clearly signposted horizontal gallery
 - Each process step has its own newly generated 4:3 scene for application, consultation, mutual intent confirmation, and the in-person meeting
-- Both new image-led sections disclose that the photographs are staged service imagery and keep all explanatory copy as live HTML text
+- Client decision: do not add any visible '연출 이미지' / 'staged imagery' captions or disclaimers on any page; keep all explanatory copy as live HTML text (alt text may still describe images)
 - The reference site informed image density, repeated card rhythm, and CTA discoverability only; none of its metrics, reviews, awards, logos, or proprietary claims were reused
-- The homepage and shared active accents use white, sky blue, aqua, and cool gray with no active pink or brown theme surfaces; major headings and UI use one modern Korean sans-serif system
+- Client decision (2026-09): active accents are rose/pink (#d63a63 family) on light sky/white surfaces with navy text, so the site reads as a blind-date service; men use a blue accent and women a rose accent in gender-specific cards
 - At 390 × 844 both gender cards and their CTA labels remain visible and the following ticker begins inside the captured viewport
 - At 320 × 568 the complete promise, four proof tiles, and both people remain intact; the compact gender cards remain inside the same full-bleed hero immediately below the short viewport
-- The chat launcher is hidden while the first-fold gender cards are visible, so it cannot intersect either CTA
+- The chat launcher is labeled 상담 and always visible; on mobile the sticky apply bar keeps a right gap so the two never overlap
 - Portrait tablets use the portrait hero composition, keep both faces below the proof rail, and keep both gender cards inside the first fold
 
 ## Detail pages and eligibility
 
 - `/women` and `/men` share one detail-page component while preserving their respective prices and eligibility copy
 - Both routes repeat the key operating principles: no membership fee, payment after a match, 100% real members, and in-person meeting support
-- Service imagery used around the member-pool explanation is explicitly disclosed as staged imagery
 - Four newly generated male portraits and four newly generated female portraits replace the previous member-pool imagery
 - A newly generated matching-consultant scene and a newly generated in-person meeting scene replace the previous shared service photographs
 - Men are eligible from birth year 1984 onward under the stated Korean-age operating rule

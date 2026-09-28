@@ -2,16 +2,17 @@ import Image from "next/image";
 import ArtDirectedImage from "@/components/ArtDirectedImage";
 import ApplicationForm from "@/components/ApplicationForm";
 import ChatWidget from "@/components/ChatWidget";
+import ConsultButton from "@/components/ConsultButton";
 import StickyApplyButton from "@/components/StickyApplyButton";
 import { RenewalFooter, RenewalHeader } from "@/components/RenewalShell";
-import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
+import { HeartIcon } from "@/components/SiteIcons";
 import styles from "@/components/renewal.module.css";
 
 type GenderKey = "women" | "men";
 
 const CONTENT = {
   women: {
-    kicker: "1:1 연애정보회사 · 여성 안내",
+    kicker: "1:1 후불제 맞춤형 소개팅 · 여성 안내",
     title: <>좋은 인연의 시작,<br /><span className={styles.lemonMark}>인연연구소에서</span></>,
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며, 두 분 모두 만남에 동의해 매칭이 성사된 뒤에만 기본 1회권 22,000원을 결제합니다.",
     price: "1회권 22,000원",
@@ -19,7 +20,7 @@ const CONTENT = {
     condition: "한국나이 기준 1988년생까지의 미혼 여성만 신청 가능",
     heroImage: "/inyeon-2026/male-01-v4.webp",
     heroImageClass: styles.heroImageWomen,
-    poolKicker: "CURATED MEN'S POOL",
+    poolKicker: "소개해 드릴 남성 회원",
     poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀",
     poolLead: "등록된 숫자만 보여드리는 방식이 아닙니다. 실제 만남 의사가 확인된 회원과 진행 중인 소개 현황을 함께 살피고, 여성·남성의 소개 흐름이 한쪽으로 쏠리지 않도록 성비 균형을 관리합니다.",
     poolImages: [
@@ -54,7 +55,7 @@ const CONTENT = {
     stickyLabel: "가입비 0원 · 성사 후 22,000원",
   },
   men: {
-    kicker: "1:1 연애정보회사 · 남성 안내",
+    kicker: "1:1 후불제 맞춤형 소개팅 · 남성 안내",
     title: <>다양한 매력의 여성 회원들과,<br /><span className={styles.lemonMark}>1:1 대면 소개팅</span></>,
     lead: "수도권을 중심으로 진행합니다. 가입비는 0원이며, 두 분 모두 만남에 동의해 매칭이 성사된 뒤에만 기본 1회권 33,000원을 결제합니다. 실제로 여성 회원이 더 많아 소개 흐름이 원활해요.",
     price: "1회권 33,000원",
@@ -62,7 +63,7 @@ const CONTENT = {
     condition: "한국나이 기준 1984년생까지의 미혼 남성만 신청 가능",
     heroImage: "/inyeon-2026/female-01-v4.webp",
     heroImageClass: styles.heroImageMen,
-    poolKicker: "CURATED WOMEN'S POOL",
+    poolKicker: "소개해 드릴 여성 회원",
     poolTitle: "다양한 매력의 여성 회원이 활동하는 회원풀",
     poolLead: "막연한 랜덤 소개가 아닙니다. 실제로 여성 회원이 더 많고, 현재 소개 가능한 상태와 성비 균형을 함께 관리합니다. 담당 매니저가 프로필을 보고 결이 맞을 것 같은 분을 제안합니다.",
     poolImages: [
@@ -105,7 +106,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
 
   return (
     <div className={styles.site}>
-      <RenewalHeader applyHref="#apply" applyLabel="무료 신청" />
+      <RenewalHeader applyHref="#apply" />
       <main>
         <section className={styles.genderHero} data-floating-ui-guard>
           <div className={`${styles.shell} ${styles.genderHeroGrid}`}>
@@ -118,7 +119,10 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 <span className={styles.priceValue}>{content.price}</span>
                 <span className={styles.priceZero}>가입비 0원</span>
               </div>
-              <a className={styles.primaryButton} href="#apply">가입 조건 확인하고 신청</a>
+              <div className={styles.genderHeroActions}>
+                <a className={styles.primaryButton} href="#apply"><HeartIcon className={styles.inlineHeart} />소개팅 신청하기</a>
+                <ConsultButton className={styles.genderConsultButton} label="1:1 상담" tail="하기" />
+              </div>
               <p className={styles.eligibilityNote}>{content.condition} · 매칭 전 신원 확인 절차가 진행됩니다.</p>
             </div>
             <div className={styles.heroImageWrap}>
@@ -178,7 +182,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
         <section className={styles.curationSection} data-floating-ui-guard>
           <div className={styles.shell}>
             <div className={styles.curationIntro}>
-              <span className={styles.eyebrow}>MATCHING, WITH A HUMAN TOUCH</span>
+              <span className={styles.eyebrow}>매니저가 직접 주선하는 소개팅</span>
               <h2>자동 추천만으로는 알기 어려운 것까지,<br />담당자가 함께 봅니다</h2>
               <p>조건표를 기계적으로 맞추기보다, 담당 매니저가 프로필과 현재 소개 가능 상태를 함께 살펴 결이 맞을 것 같은 분을 마음에 드실 때까지 제안합니다.</p>
             </div>
@@ -219,7 +223,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <span className={styles.journeyShade} aria-hidden="true" />
           <div className={`${styles.shell} ${styles.journeyContent}`}>
             <div className={styles.journeyIntro}>
-              <span>FROM PROFILE TO REAL MEETING</span>
+              <span>소개팅 진행 과정</span>
               <h2><span className={styles.noWrap}>신청부터</span><br /><span className={styles.noWrap}>대면 소개팅까지</span><br />책임지고 연결</h2>
               <p>양쪽 소개 의사를 확인한 뒤, 성사된 소개의 날짜와 장소까지 담당자가 직접 조율합니다.</p>
             </div>
@@ -245,7 +249,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
           <div className={styles.shell}>
             <div className={styles.promiseIntro}>
               <div>
-                <span className={styles.eyebrow}>OUR PROMISE</span>
+                <span className={styles.eyebrow}>인연연구소의 약속</span>
                 <h2>{content.promiseTitle}</h2>
               </div>
               <p>{content.promiseLead}</p>
@@ -265,10 +269,10 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
         <section className={styles.faqDetailSection}>
           <div className={`${styles.shell} ${styles.faqDetailLayout}`}>
             <div className={styles.faqDetailIntro}>
-              <span className={styles.eyebrow}>BEFORE YOU APPLY</span>
+              <span className={styles.eyebrow}>자주 묻는 질문</span>
               <h2>신청 전에<br />궁금한 점</h2>
               <p>가입비, 매칭 성사 기준, 성비 관리와 실제 만남까지의 진행 범위를 먼저 확인해보세요.</p>
-              <a href="#apply">가입 조건 확인하고 신청</a>
+              <a href="#apply">소개팅 신청하기</a>
             </div>
             <div className={styles.faqDetailList}>
               {content.faqs.map((faq, index) => (
@@ -284,7 +288,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
         <section id="apply" className={styles.applySection} data-floating-ui-guard>
           <div className={`${styles.shell} ${styles.applyGrid}`}>
             <div className={styles.applyIntro}>
-              <span className={styles.eyebrow}>SIMPLE APPLICATION</span>
+              <span className={styles.eyebrow}>소개팅 신청</span>
               <h2>1분이면<br />신청이 끝나요</h2>
               <p>{content.applicationLead}</p>
               <p className={styles.kakaoNote}>
