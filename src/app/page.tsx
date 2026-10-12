@@ -24,42 +24,42 @@ const PROCESS = [
     number: "01",
     title: "소개팅 신청",
     body: "기본 정보와 원하는 만남을 간단히 알려주세요.",
-    image: "/inyeon-hq/process-01-apply-v2.webp",
+    image: "/inyeon-ultra/process-01-apply-v3.webp",
     alt: "스마트폰으로 인연연구소 소개팅을 신청하는 여성의 연출 이미지",
   },
   {
     number: "02",
     title: "전담 매니저 상담",
     body: "취향과 가치관, 상대에게 바라는 점을 1:1로 나눠요.",
-    image: "/inyeon-hq/process-02-consult-v2.webp",
+    image: "/inyeon-ultra/process-02-consult-v3.webp",
     alt: "전담 매니저와 상담을 진행하는 회원의 연출 이미지",
   },
   {
     number: "03",
     title: "프로필 카드 제작",
     body: "상담 내용을 바탕으로 나를 잘 보여주는 프로필을 완성해요.",
-    image: "/inyeon-hq/process-03-profile-v2.webp",
+    image: "/inyeon-ultra/process-03-profile-v3.webp",
     alt: "노트북으로 소개팅 프로필을 작성하는 남성의 연출 이미지",
   },
   {
     number: "04",
     title: "맞춤 인연 제안",
     body: "매니저가 양측의 조건과 결을 살펴 어울리는 인연을 제안해요.",
-    image: "/inyeon-hq/process-04-match-v2.webp",
+    image: "/inyeon-ultra/process-04-match-v3.webp",
     alt: "회원 프로필을 세심하게 살펴보는 매니저의 연출 이미지",
   },
   {
     number: "05",
     title: "양측 수락 · 후불 결제",
     body: "서로 만나고 싶다는 의사가 확인된 뒤에만 1회 이용료를 결제해요.",
-    image: "/inyeon-hq/process-05-schedule-v2.webp",
+    image: "/inyeon-ultra/process-05-schedule-v3.webp",
     alt: "매니저가 소개팅 일정과 장소를 조율하는 연출 이미지",
   },
   {
     number: "06",
     title: "만남 · 피드백",
     body: "일정과 장소를 조율하고, 만남 후 의견까지 세심히 확인해요.",
-    image: "/inyeon-hq/process-06-feedback-v2.webp",
+    image: "/inyeon-ultra/process-06-feedback-v3.webp",
     alt: "소개팅 후 매니저에게 피드백을 전하는 여성의 연출 이미지",
   },
 ] as const;
@@ -99,9 +99,9 @@ export default function Home() {
       <main>
         <section className={styles.hero} aria-labelledby="home-title">
           <picture className={styles.heroPicture} aria-hidden="true">
-            <source media="(max-width: 820px)" srcSet="/inyeon-hq/home-hero-mobile-v2.webp" />
+            <source media="(max-width: 820px)" srcSet="/inyeon-ultra/home-hero-mobile-v3.webp" />
             <img
-              src="/inyeon-hq/home-hero-desktop-v2.webp"
+              src="/inyeon-ultra/home-hero-desktop-v3.webp"
               alt=""
               className={styles.heroImage}
               fetchPriority="high"
@@ -138,7 +138,7 @@ export default function Home() {
             <Link href="/#process" className={styles.textLink}>서비스 자세히 보기</Link>
           </div>
           <figure className={styles.storyMedia} data-reveal="right">
-            <Image src="/inyeon-hq/story-couple-v2.webp" alt="서울 도심을 함께 걸으며 대화하는 직장인 남녀의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 58vw" quality={94} className={styles.coverImage} />
+            <Image src="/inyeon-ultra/story-couple-v3.webp" alt="밝은 공간에서 함께 책을 보며 대화하는 직장인 남녀의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 58vw" quality={96} className={styles.coverImage} />
             <figcaption>좋은 사람과의 만남이 좋은 하루를 만듭니다.</figcaption>
           </figure>
         </section>
@@ -148,11 +148,11 @@ export default function Home() {
           <div className={styles.guideGrid}>
             <Link href="/men" className={styles.guideCard} data-reveal="left">
               <div><span>FOR MEN</span><h3>남성 회원 안내</h3><p>신뢰할 수 있는 만남,<br />지금 시작하세요.</p><strong>자세히 보기</strong></div>
-              <div className={styles.guideImage}><Image src="/inyeon-hq/member-man-v2.webp" alt="밝은 카페에 있는 30대 남성의 서비스 연출 이미지" fill sizes="(max-width: 720px) 48vw, 25vw" quality={94} className={styles.coverImage} /></div>
+              <div className={styles.guideImage}><Image src="/inyeon-ultra/member-man-v3.webp" alt="밝은 공간에서 책을 살펴보는 20대 남성의 서비스 연출 이미지" fill sizes="(max-width: 720px) 48vw, 25vw" quality={96} className={styles.coverImage} /></div>
             </Link>
             <Link href="/women" className={styles.guideCard} data-reveal="right">
               <div><span>FOR WOMEN</span><h3>여성 회원 안내</h3><p>더 특별한 인연을,<br />안전하고 편안하게.</p><strong>자세히 보기</strong></div>
-              <div className={styles.guideImage}><Image src="/inyeon-hq/member-woman-v2.webp" alt="독립서점에서 책을 살펴보는 30대 여성의 서비스 연출 이미지" fill sizes="(max-width: 720px) 48vw, 25vw" quality={94} className={styles.coverImage} /></div>
+              <div className={styles.guideImage}><Image src="/inyeon-ultra/member-woman-v3.webp" alt="밝은 작업 공간에 있는 20대 여성의 서비스 연출 이미지" fill sizes="(max-width: 720px) 48vw, 25vw" quality={96} className={styles.coverImage} /></div>
             </Link>
           </div>
         </section>
@@ -168,7 +168,7 @@ export default function Home() {
                 {row.map((step) => (
                   <article className={styles.routeCard} key={step.number}>
                     <span className={styles.routeMarker}>{step.number}</span>
-                    <div className={styles.routeMedia}><Image src={step.image} alt={step.alt} fill sizes="(max-width: 720px) 100vw, 36vw" quality={94} className={styles.coverImage} /></div>
+                    <div className={styles.routeMedia}><Image src={step.image} alt={step.alt} fill sizes="(max-width: 720px) 100vw, 36vw" quality={96} className={styles.coverImage} /></div>
                     <div className={styles.routeCopy}><h3>{step.title}</h3><p>{step.body}</p></div>
                   </article>
                 ))}
@@ -194,7 +194,7 @@ export default function Home() {
               <div className={styles.profilePreview} aria-label="맞춤 프로필 카드 예시">
                 <div className={styles.previewTopbar}><IdentificationCard size={22} weight="regular" aria-hidden="true" /><span>INTRODUCTION NOTE</span><small>01</small></div>
                 <div className={styles.profilePreviewHero}>
-                  <Image src="/inyeon-hq/process-03-profile-v2.webp" alt="차분한 공간에서 자신의 프로필을 작성하는 회원의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={94} className={styles.coverImage} />
+                  <Image src="/inyeon-ultra/process-03-profile-v3.webp" alt="차분한 공간에서 자신의 프로필을 작성하는 회원의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={96} className={styles.coverImage} />
                   <span>담당 매니저가 정리한<br />회원님의 소개 포인트</span>
                 </div>
                 <dl className={styles.profileFacts}>
@@ -215,7 +215,7 @@ export default function Home() {
               <div className={styles.schedulePreview} aria-label="매니저 일정 조율 예시">
                 <div className={styles.previewTopbar}><CalendarCheck size={22} weight="regular" aria-hidden="true" /><span>MEETING PLAN</span><small>02</small></div>
                 <div className={styles.schedulePhoto}>
-                  <Image src="/inyeon-hq/process-05-schedule-v2.webp" alt="회원들의 첫 만남 일정과 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={94} className={styles.coverImage} />
+                  <Image src="/inyeon-ultra/process-05-schedule-v3.webp" alt="회원들의 첫 만남 일정과 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={96} className={styles.coverImage} />
                 </div>
                 <div className={styles.scheduleRows}>
                   <div><span>DATE</span><strong>토요일 오후 3:00</strong></div>
@@ -249,20 +249,20 @@ export default function Home() {
           <div className={styles.careIntro} data-reveal="up"><div><span className={styles.sectionKicker}>MANAGER FULL CARE</span><h2 id="care-title">결정사급 케어를,<br />{" "}소개팅에 꼭 필요한 만큼</h2></div><p>화려한 수치보다 실제 만남을 편하게 만드는 관리에 집중합니다.</p></div>
           <div className={styles.careBento}>
             <article className={`${styles.careBlock} ${styles.careBlockLead}`} data-reveal="scale">
-              <Image src="/inyeon-hq/process-02-consult-v2.webp" alt="처음부터 끝까지 함께하는 전담 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 42vw" quality={94} className={styles.coverImage} />
+              <Image src="/inyeon-ultra/process-02-consult-v3.webp" alt="처음부터 끝까지 함께하는 전담 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 42vw" quality={96} className={styles.coverImage} />
               <div><span>1:1 MANAGER</span><h3>처음부터 끝까지<br />한 명의 매니저가 함께</h3><p>상담 · 매칭 · 일정 · 피드백</p></div>
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockCost}`} data-reveal="scale"><Wallet size={30} weight="regular" aria-hidden="true" /><strong>0원</strong><h3>가입비 · 성혼비</h3><p>양측 수락 후에만 1회 이용료를 결제해요.</p></article>
             <article className={`${styles.careBlock} ${styles.careBlockMatch}`} data-reveal="scale">
-              <div className={styles.careBlockMedia}><Image src="/inyeon-hq/process-04-match-v2.webp" alt="프로필과 희망 조건을 직접 살피는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={94} className={styles.coverImage} /></div>
+              <div className={styles.careBlockMedia}><Image src="/inyeon-ultra/process-04-match-v3.webp" alt="프로필과 희망 조건을 직접 살피는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={96} className={styles.coverImage} /></div>
               <div className={styles.careBlockCopy}><IdentificationCard size={26} weight="regular" aria-hidden="true" /><h3>사람이 직접 보는 매칭</h3><p>조건만이 아니라 두 사람의 결까지 살펴요.</p></div>
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockSchedule}`} data-reveal="scale">
-              <div className={styles.careBlockMedia}><Image src="/inyeon-hq/process-05-schedule-v2.webp" alt="첫 만남의 날짜와 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 28vw" quality={94} className={styles.coverImage} /></div>
+              <div className={styles.careBlockMedia}><Image src="/inyeon-ultra/process-05-schedule-v3.webp" alt="첫 만남의 날짜와 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 28vw" quality={96} className={styles.coverImage} /></div>
               <div className={styles.careBlockCopy}><CalendarCheck size={26} weight="regular" aria-hidden="true" /><h3>일정과 장소까지 조율</h3><p>두 분은 첫 만남에만 집중하세요.</p></div>
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockFeedback}`} data-reveal="scale">
-              <Image src="/inyeon-hq/process-06-feedback-v2.webp" alt="소개팅 후 매니저에게 피드백을 전하는 여성의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={94} className={styles.coverImage} />
+              <Image src="/inyeon-ultra/process-06-feedback-v3.webp" alt="소개팅 후 매니저에게 피드백을 전하는 여성의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={96} className={styles.coverImage} />
               <div><ChatCircleDots size={27} weight="regular" aria-hidden="true" /><h3>만남 후 피드백</h3><p>어려운 마음도 편하게 전해요.</p></div>
             </article>
           </div>
@@ -289,7 +289,7 @@ export default function Home() {
 
         <section className={styles.finalCta} aria-labelledby="final-title">
           <div className={styles.finalCopy} data-reveal="left"><span className={styles.sectionKicker}>YOUR NEXT STORY</span><h2 id="final-title">좋은 인연이,<br />좋은 일상을 만듭니다.</h2><p>지금, 인연연구소에서<br />당신의 이야기를 시작해 보세요.</p><div className={styles.heroActions}><Link href="/apply" className={styles.primaryButton}>내 인연 시작하기</Link><ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" /></div></div>
-          <div className={styles.finalMedia} data-reveal="right"><Image src="/inyeon-hq/final-couple-v2.webp" alt="저녁 무렵 서울의 서점 앞을 함께 걷는 직장인 남녀의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 58vw" quality={94} className={styles.coverImage} /></div>
+          <div className={styles.finalMedia} data-reveal="right"><Image src="/inyeon-ultra/final-couple-v3.webp" alt="밝은 갤러리에서 함께 걸으며 대화하는 직장인 남녀의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 58vw" quality={96} className={styles.coverImage} /></div>
         </section>
       </main>
       <RenewalFooter />
