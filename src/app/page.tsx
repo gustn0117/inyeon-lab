@@ -98,23 +98,31 @@ export default function Home() {
       <RenewalHeader />
       <main>
         <section className={styles.hero} aria-labelledby="home-title">
-          <div className={styles.heroCopy} data-reveal="left">
-            <span className={styles.kicker}>수도권 1:1 맞춤 소개팅</span>
-            <h1 id="home-title">가입비 없는{" "}<strong>후불제 소개팅</strong></h1>
-            <p><strong>매칭이 성사된 뒤에만 결제합니다.</strong>{" "}결정사급 매니저 케어는 그대로, <span>비용은 소개팅만큼 가볍게.</span></p>
-            <dl className={styles.heroFees}>
-              <div><dt>가입비</dt><dd>0원</dd></div>
-              <div><dt>성혼비</dt><dd>0원</dd></div>
-              <div><dt>기본 1회 이용료</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
-            </dl>
-            <div className={styles.heroActions}>
-              <Link href="/apply" className={styles.primaryButton}>내 인연 시작하기</Link>
-              <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
+          <picture className={styles.heroPicture} aria-hidden="true">
+            <source media="(max-width: 820px)" srcSet="/inyeon-2026/home-hero-white-mobile-v1.webp" />
+            <img
+              src="/inyeon-2026/home-hero-white-desktop-v1.webp"
+              alt=""
+              className={styles.heroImage}
+              fetchPriority="high"
+            />
+          </picture>
+          <div className={styles.heroScrim} aria-hidden="true" />
+          <div className={styles.heroInner}>
+            <div className={styles.heroCopy} data-reveal="left">
+              <span className={styles.kicker}>수도권 1:1 맞춤 소개팅</span>
+              <h1 id="home-title">가입비 없는 <strong>후불제 소개팅</strong></h1>
+              <p><strong>매칭이 성사된 뒤에만 결제합니다.</strong>{" "}결정사급 매니저 케어는 그대로, <span>비용은 소개팅만큼 가볍게.</span></p>
+              <div className={styles.heroActions}>
+                <Link href="/apply" className={styles.primaryButton}>내 인연 시작하기</Link>
+                <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
+              </div>
+              <dl className={styles.heroFees}>
+                <div><dt>가입비</dt><dd>0원</dd></div>
+                <div><dt>성혼비</dt><dd>0원</dd></div>
+                <div><dt>기본 1회 이용료</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+              </dl>
             </div>
-          </div>
-          <div className={styles.heroMedia} data-reveal="right">
-            <Image src="/inyeon-white/hero-couple-v1.webp" alt="밝은 카페에서 서로를 바라보며 대화하는 남녀의 연출 이미지" fill priority sizes="(max-width: 820px) 100vw, 58vw" quality={92} className={styles.coverImage} />
-            <p className={styles.heroNote}>좋은 인연이<br />좋은 일상을 만듭니다.</p>
           </div>
         </section>
 
