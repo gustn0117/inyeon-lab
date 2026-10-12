@@ -18,15 +18,15 @@ const CONTENT = {
     price: "1회권 22,000원",
     priceLabel: "매칭 성사 후 결제 · 기본가",
     condition: "한국나이 기준 1988년생까지의 미혼 여성만 신청 가능",
-    heroImage: "/inyeon-2026/male-01-v4.webp",
+    heroImage: "/inyeon-hq/male-01-v5.webp",
     heroImageClass: styles.heroImageWomen,
     poolKicker: "소개해 드릴 남성 회원",
     poolTitle: "능력과 매너를 함께 갖춘, 소개 가능한 남성 회원풀",
     poolLead: "등록된 숫자만 보여드리는 방식이 아닙니다. 실제 만남 의사가 확인된 회원과 진행 중인 소개 현황을 함께 살피고, 여성·남성의 소개 흐름이 한쪽으로 쏠리지 않도록 성비 균형을 관리합니다.",
     poolImages: [
-      { src: "/inyeon-2026/male-02-v4.webp", label: "기본 신원 확인" },
-      { src: "/inyeon-2026/male-03-v4.webp", label: "현재 소개 가능 상태 확인" },
-      { src: "/inyeon-2026/male-04-v4.webp", label: "관계에 진지한 회원 중심" },
+      { src: "/inyeon-hq/male-02-v5.webp", label: "기본 신원 확인" },
+      { src: "/inyeon-hq/male-03-v5.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-hq/male-04-v5.webp", label: "관계에 진지한 회원 중심" },
     ],
     promiseTitle: "좋은 만남에 필요한 기준은 분명하게",
     promiseLead: "담당 매니저가 프로필을 보고 결이 맞을 것 같은 분을 횟수 제한 없이 제안합니다.",
@@ -61,15 +61,15 @@ const CONTENT = {
     price: "1회권 33,000원",
     priceLabel: "매칭 성사 후 결제 · 기본가",
     condition: "한국나이 기준 1984년생까지의 미혼 남성만 신청 가능",
-    heroImage: "/inyeon-2026/female-01-v4.webp",
+    heroImage: "/inyeon-hq/female-01-v5.webp",
     heroImageClass: styles.heroImageMen,
     poolKicker: "소개해 드릴 여성 회원",
     poolTitle: "다양한 매력의 여성 회원이 활동하는 회원풀",
     poolLead: "막연한 랜덤 소개가 아닙니다. 실제로 여성 회원이 더 많고, 현재 소개 가능한 상태와 성비 균형을 함께 관리합니다. 담당 매니저가 프로필을 보고 결이 맞을 것 같은 분을 제안합니다.",
     poolImages: [
-      { src: "/inyeon-2026/female-02-v4.webp", label: "다양한 매력의 여성 회원" },
-      { src: "/inyeon-2026/female-03-v4.webp", label: "결이 맞는 분 제안" },
-      { src: "/inyeon-2026/female-04-v4.webp", label: "현재 소개 가능 상태 확인" },
+      { src: "/inyeon-hq/female-02-v5.webp", label: "다양한 매력의 여성 회원" },
+      { src: "/inyeon-hq/female-03-v5.webp", label: "결이 맞는 분 제안" },
+      { src: "/inyeon-hq/female-04-v5.webp", label: "현재 소개 가능 상태 확인" },
     ],
     promiseTitle: "대면 소개팅까지 보장합니다",
     promiseLead: "서로 프로필을 확인하고 두 분 모두 동의한 매칭만 진행하며, 담당자가 일정과 장소까지 직접 조율해 대면 소개팅으로 연결합니다.",
@@ -132,7 +132,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                 fill
                 priority
                 sizes="(max-width: 900px) calc(100vw - 28px), (max-width: 1220px) 52vw, 650px"
-                quality={88}
+                quality={94}
                 className={`${styles.heroImage} ${content.heroImageClass}`}
               />
             </div>
@@ -166,7 +166,7 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
                     alt={`${item.label}을 표현한 ${featuredGender} 인물 연출 이미지`}
                     fill
                     sizes="(max-width: 720px) min(78vw, 330px), (max-width: 1180px) 31vw, 370px"
-                    quality={86}
+                    quality={94}
                     className={styles.showcaseImage}
                   />
                   <span className={styles.showcaseImageShade} aria-hidden="true" />
@@ -190,14 +190,14 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
             <div className={`${styles.curationBody} ${styles.curationBodySolo}`}>
               <figure className={styles.consultantVisual}>
                 <ArtDirectedImage
-                  desktopSrc="/inyeon-2026/consultant-v4.webp"
-                  mobileSrc="/inyeon-2026/consultant-mobile-v4.webp"
+                  desktopSrc="/inyeon-hq/consultant-v5.webp"
+                  mobileSrc="/inyeon-hq/consultant-mobile-v5.webp"
                   alt="무지 프로필 카드와 태블릿으로 매칭 조건을 검토하는 담당자의 연출 모습"
                   className={styles.consultantImage}
                   media="(max-width: 900px)"
                   sizes="1046px"
                   mobileSizes="calc(100vw - 28px)"
-                  quality={88}
+                  quality={94}
                 />
                 <span className={styles.consultantShade} aria-hidden="true" />
                 <figcaption>
@@ -211,14 +211,14 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
 
         <section id="matching" className={styles.journeySection} data-floating-ui-guard>
           <ArtDirectedImage
-            desktopSrc="/inyeon-2026/meeting-wide-v4.webp"
-            mobileSrc="/inyeon-2026/meeting-mobile-v4.webp"
+            desktopSrc="/inyeon-hq/meeting-wide-v5.webp"
+            mobileSrc="/inyeon-hq/meeting-mobile-v5.webp"
             alt="밝은 카페에서 대화를 나누는 20대 남녀의 연출 모습"
             className={styles.journeyImage}
             media="(max-width: 900px)"
             sizes="100vw"
             mobileSizes="(max-width: 480px) 600px, 100vw"
-            quality={88}
+            quality={94}
           />
           <span className={styles.journeyShade} aria-hidden="true" />
           <div className={`${styles.shell} ${styles.journeyContent}`}>
