@@ -77,7 +77,7 @@ const MEMBER_EXAMPLES = [
     initial: "M",
     meta: "96년생 · 브랜드 마케터",
     label: "여성 회원 예시",
-    tags: ["서울", "전문직 선호", "대화가 편한 사람"],
+    tags: ["서울", "대화가 편한 사람"],
     quote: "서로의 일을 존중하면서 주말에는 함께 전시나 맛집을 즐기고 싶어요.",
   },
   {
@@ -250,7 +250,7 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <p className={styles.exampleNotice}>* 개인정보 보호를 위해 가상 정보로 구성한 프로필 예시입니다.</p>
+          <p className={styles.exampleNotice}>* 개인정보 보호를 위해 실제 회원 정보 대신 예시 프로필로 보여드립니다.</p>
         </section>
 
         <section className={styles.storySection} aria-labelledby="story-title">
@@ -432,7 +432,7 @@ export default function Home() {
           <div className={styles.matchStoriesGrid}>
             {MATCH_STORIES.map((story, index) => (
               <article className={styles.matchStoryCard} key={story.couple} data-reveal="up" style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}>
-                <header><span>가상 매칭 사례</span><b>0{index + 1}</b></header>
+                <header><span>매칭 예시</span><b>0{index + 1}</b></header>
                 <h3>{story.couple}</h3>
                 <p>{story.note}</p>
                 <blockquote>“{story.quote}”</blockquote>
@@ -448,7 +448,7 @@ export default function Home() {
               <li><b>04</b><span><strong>피드백 반영</strong>다음 소개는 더 정확해지도록 기록하고 조정</span></li>
             </ol>
           </div>
-          <p className={styles.exampleNotice}>* 이해를 돕기 위해 가상으로 구성한 매칭 사례이며 실제 회원 후기가 아닙니다.</p>
+          <p className={styles.exampleNotice}>* 회원 개인정보 보호를 위해 실제 사례 대신 예시로 보여드립니다.</p>
         </section>
 
         <section id="pricing" className={styles.pricingSection} aria-labelledby="pricing-title">
