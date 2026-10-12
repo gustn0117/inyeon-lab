@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import {
   CalendarCheck,
   ChatCircleDots,
@@ -13,24 +14,35 @@ import ScrollEffects from "@/components/ScrollEffects";
 import styles from "./home.module.css";
 
 const BENEFITS = [
-  { title: "전담 매니저 1:1 상담", body: "취향과 가치관부터 차근차근" },
-  { title: "사람이 직접 보는 매칭", body: "조건만이 아니라 결까지" },
-  { title: "일정·장소 매니저 조율", body: "첫 만남까지 세심하게" },
-  { title: "만남 후 피드백", body: "어려운 마음도 편하게" },
+  { title: "현재 소개 의사 확인", body: "지금 만날 준비가 된 회원만" },
+  { title: "프로필 직접 검토", body: "조건표보다 대화와 생활의 결까지" },
+  { title: "양측 수락 후 매칭", body: "한쪽만 원하는 소개는 진행하지 않아요" },
+  { title: "첫 만남까지 조율", body: "일정·장소·피드백을 한 번에" },
 ] as const;
 
-const PROCESS = [
+type ProcessVisual = "apply" | "consult" | "profile" | "match" | "schedule" | "feedback";
+
+type ProcessStep = {
+  number: string;
+  title: string;
+  body: string;
+  visual: ProcessVisual;
+  image?: string;
+  alt?: string;
+};
+
+const PROCESS: readonly ProcessStep[] = [
   {
     number: "01",
     title: "소개팅 신청",
     body: "기본 정보와 원하는 만남을 간단히 알려주세요.",
-    image: "/inyeon-ultra/process-01-apply-v3.webp",
-    alt: "스마트폰으로 인연연구소 소개팅을 신청하는 여성의 연출 이미지",
+    visual: "apply",
   },
   {
     number: "02",
     title: "전담 매니저 상담",
     body: "취향과 가치관, 상대에게 바라는 점을 1:1로 나눠요.",
+    visual: "consult",
     image: "/inyeon-ultra/process-02-consult-v3.webp",
     alt: "전담 매니저와 상담을 진행하는 회원의 연출 이미지",
   },
@@ -38,29 +50,67 @@ const PROCESS = [
     number: "03",
     title: "프로필 카드 제작",
     body: "상담 내용을 바탕으로 나를 잘 보여주는 프로필을 완성해요.",
-    image: "/inyeon-ultra/process-03-profile-v3.webp",
-    alt: "노트북으로 소개팅 프로필을 작성하는 남성의 연출 이미지",
+    visual: "profile",
   },
   {
     number: "04",
     title: "맞춤 인연 제안",
     body: "매니저가 양측의 조건과 결을 살펴 어울리는 인연을 제안해요.",
-    image: "/inyeon-ultra/process-04-match-v3.webp",
-    alt: "회원 프로필을 세심하게 살펴보는 매니저의 연출 이미지",
+    visual: "match",
   },
   {
     number: "05",
     title: "양측 수락 · 후불 결제",
     body: "서로 만나고 싶다는 의사가 확인된 뒤에만 1회 이용료를 결제해요.",
-    image: "/inyeon-ultra/process-05-schedule-v3.webp",
-    alt: "매니저가 소개팅 일정과 장소를 조율하는 연출 이미지",
+    visual: "schedule",
   },
   {
     number: "06",
     title: "만남 · 피드백",
     body: "일정과 장소를 조율하고, 만남 후 의견까지 세심히 확인해요.",
-    image: "/inyeon-ultra/process-06-feedback-v3.webp",
-    alt: "소개팅 후 매니저에게 피드백을 전하는 여성의 연출 이미지",
+    visual: "feedback",
+  },
+] as const;
+
+const MEMBER_EXAMPLES = [
+  {
+    initial: "M",
+    meta: "96년생 · 브랜드 마케터",
+    label: "여성 회원 예시",
+    tags: ["서울", "전문직 선호", "대화가 편한 사람"],
+    quote: "서로의 일을 존중하면서 주말에는 함께 전시나 맛집을 즐기고 싶어요.",
+  },
+  {
+    initial: "J",
+    meta: "94년생 · 대기업 연구원",
+    label: "남성 회원 예시",
+    tags: ["수도권", "비흡연", "차분한 관계"],
+    quote: "급하게 가까워지기보다 대화가 잘 통하는 사람과 오래 만나고 싶어요.",
+  },
+  {
+    initial: "S",
+    meta: "97년생 · 초등교사",
+    label: "여성 회원 예시",
+    tags: ["경기", "주말 데이트", "따뜻한 성향"],
+    quote: "일상을 다정하게 나눌 수 있고 약속을 소중히 여기는 분이면 좋겠어요.",
+  },
+] as const;
+
+const MATCH_STORIES = [
+  {
+    couple: "96년생 브랜드 마케터  ♡  94년생 대기업 연구원",
+    note: "직업 조건보다 ‘주말을 보내는 방식’이 닮은 두 분을 먼저 연결했어요.",
+    quote: "프로필보다 실제 대화가 더 편했어요. 억지로 맞춘 소개가 아니라는 느낌이 들었습니다.",
+  },
+  {
+    couple: "97년생 교사  ♡  95년생 IT 개발자",
+    note: "활동적인 취미는 달라도 관계에서 중요하게 보는 기준이 같았던 매칭이에요.",
+    quote: "매니저님이 왜 서로를 추천했는지 만나보니 알겠더라고요.",
+  },
+  {
+    couple: "95년생 간호사  ♡  93년생 공기업 재직",
+    note: "교대 근무와 출퇴근 거리까지 고려해 무리 없는 첫 만남을 조율했어요.",
+    quote: "일정 잡는 과정이 편했고, 부담 없이 서로에게 집중할 수 있었어요.",
   },
 ] as const;
 
@@ -91,6 +141,59 @@ const FAQS = [
   },
 ] as const;
 
+function ProcessGraphic({ type }: { type: ProcessVisual }) {
+  if (type === "apply") {
+    return (
+      <div className={`${styles.processGraphic} ${styles.applyGraphic}`} aria-label="소개팅 신청 화면 예시">
+        <div className={styles.mockPhone}>
+          <span>INYEON LAB</span>
+          <strong>어떤 만남을<br />원하시나요?</strong>
+          <i /><i /><i />
+          <b>신청서 작성하기</b>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "profile") {
+    return (
+      <div className={`${styles.processGraphic} ${styles.profileGraphic}`} aria-label="프로필 카드 제작 예시">
+        <span className={styles.graphicInitial}>M</span>
+        <div><small>CURATED PROFILE</small><strong>96년생 · 마케터</strong><p>대화의 온도와 생활 리듬까지 정리해요.</p></div>
+      </div>
+    );
+  }
+
+  if (type === "match") {
+    return (
+      <div className={`${styles.processGraphic} ${styles.matchGraphic}`} aria-label="맞춤 인연 제안 예시">
+        <div><span>M</span><small>96 · 마케터</small></div>
+        <b aria-hidden="true">♡</b>
+        <div><span>J</span><small>94 · 연구원</small></div>
+        <p>생활 리듬 · 관계 기준 · 거리 확인</p>
+      </div>
+    );
+  }
+
+  if (type === "schedule") {
+    return (
+      <div className={`${styles.processGraphic} ${styles.scheduleGraphic}`} aria-label="양측 수락과 일정 조율 예시">
+        <div className={styles.scheduleGraphicTop}><span>양측 수락 완료</span><strong>✓</strong></div>
+        <div className={styles.scheduleGraphicDate}><small>SAT</small><b>24</b><span>오후 3:00</span></div>
+        <p>두 분의 중간 지점 · 조용한 카페</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.processGraphic} ${styles.feedbackGraphic}`} aria-label="만남 후 피드백 예시">
+      <span>오늘 만남은 어떠셨어요?</span>
+      <span>대화가 편하고 즐거웠어요.</span>
+      <strong>다음 만남 의사 확인 중</strong>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className={styles.site}>
@@ -110,24 +213,44 @@ export default function Home() {
           <div className={styles.heroScrim} aria-hidden="true" />
           <div className={styles.heroInner}>
             <div className={styles.heroCopy} data-reveal="left">
-              <span className={styles.kicker}>수도권 1:1 맞춤 소개팅</span>
-              <h1 id="home-title">가입비 없는 <strong>후불제 소개팅</strong></h1>
-              <p><strong>매칭이 성사된 뒤에만 결제합니다.</strong>{" "}결정사급 매니저 케어는 그대로, <span>비용은 소개팅만큼 가볍게.</span></p>
+              <span className={styles.kicker}>결정사급 1:1 매칭 · 가입비·성혼비 0원</span>
+              <h1 id="home-title">아무나 만나지 마세요.<strong>아무나 소개하지 않으니까.</strong></h1>
+              <p><strong>프로필 숫자만 맞춰 연결하지 않습니다.</strong>{" "}전담 매니저가 두 사람의 생활과 관계 기준을 직접 읽고, <span>서로 원하는 소개만 이어드립니다.</span></p>
               <div className={styles.heroActions}>
-                <Link href="/apply" className={styles.primaryButton}>내 인연 시작하기</Link>
+                <Link href="/apply" className={styles.primaryButton}>나와 맞는 사람 찾기</Link>
                 <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
               </div>
               <dl className={styles.heroFees}>
-                <div><dt>가입비</dt><dd>0원</dd></div>
-                <div><dt>성혼비</dt><dd>0원</dd></div>
-                <div><dt>기본 1회 이용료</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+                <div><dt>소개받기 전</dt><dd>0원</dd></div>
+                <div><dt>가입비 · 성혼비</dt><dd>0원</dd></div>
+                <div><dt>양측 수락 후 1회</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
               </dl>
+              <a href="#member-preview" className={styles.scrollCue}><span>왜 아무나 소개하지 않는지</span><i aria-hidden="true">↓</i></a>
             </div>
           </div>
         </section>
 
         <section className={styles.benefitRail} aria-label="전담 매니저가 챙기는 네 가지">
           {BENEFITS.map((benefit) => <div key={benefit.title} data-reveal="up"><strong>{benefit.title}</strong><span>{benefit.body}</span></div>)}
+        </section>
+
+        <section id="member-preview" className={styles.memberSection} aria-labelledby="member-title">
+          <div className={styles.memberHeading} data-reveal="up">
+            <div><span className={styles.sectionKicker}>WHO YOU COULD MEET</span><h2 id="member-title">숫자가 아니라,<br />지금 만날 준비가 된 사람</h2></div>
+            <p>나이와 직업은 시작일 뿐이에요. 담당 매니저가 요즘의 생활, 관계에서 중요한 기준, 만나고 싶은 이유까지 확인해 소개합니다.</p>
+          </div>
+          <div className={styles.memberGrid}>
+            {MEMBER_EXAMPLES.map((member, index) => (
+              <article className={styles.memberCard} key={member.meta} data-reveal="up" style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}>
+                <div className={styles.memberCardTop}><span>{member.initial}</span><small>{member.label}</small><b>소개 가능</b></div>
+                <h3>{member.meta}</h3>
+                <div className={styles.memberTags}>{member.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                <p>“{member.quote}”</p>
+                <footer><span>PROFILE NOTE</span><i aria-hidden="true" /></footer>
+              </article>
+            ))}
+          </div>
+          <p className={styles.exampleNotice}>* 개인정보 보호를 위해 가상 정보로 구성한 프로필 예시입니다.</p>
         </section>
 
         <section className={styles.storySection} aria-labelledby="story-title">
@@ -168,12 +291,41 @@ export default function Home() {
                 {row.map((step) => (
                   <article className={styles.routeCard} key={step.number}>
                     <span className={styles.routeMarker}>{step.number}</span>
-                    <div className={styles.routeMedia}><Image src={step.image} alt={step.alt} fill sizes="(max-width: 720px) 100vw, 36vw" quality={96} className={styles.coverImage} /></div>
+                    <div className={`${styles.routeMedia} ${step.visual === "consult" ? "" : styles.routeGraphicMedia}`}>
+                      {step.visual === "consult" && step.image ? (
+                        <Image src={step.image} alt={step.alt ?? "전담 매니저 상담 연출 이미지"} fill sizes="(max-width: 720px) 100vw, 36vw" quality={96} className={styles.coverImage} />
+                      ) : (
+                        <ProcessGraphic type={step.visual} />
+                      )}
+                    </div>
                     <div className={styles.routeCopy}><h3>{step.title}</h3><p>{step.body}</p></div>
                   </article>
                 ))}
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className={styles.profileDeliverySection} aria-labelledby="delivery-title">
+          <div className={styles.deliveryCopy} data-reveal="left">
+            <span className={styles.sectionKicker}>PROFILE DELIVERY</span>
+            <h2 id="delivery-title">사진 한 장 보내고<br />답을 재촉하지 않아요</h2>
+            <p>매니저가 소개 이유와 상대의 분위기를 함께 안내하고, 프로필을 충분히 살펴볼 시간을 드립니다. 양측 모두 수락해야 일정 조율과 결제가 시작돼요.</p>
+            <dl>
+              <div><dt>01</dt><dd><strong>프로필 수령</strong><span>소개 이유와 핵심 포인트를 함께 확인</span></dd></div>
+              <div><dt>02</dt><dd><strong>24시간 내 의사 전달</strong><span>부담 없이 수락 또는 패스 선택</span></dd></div>
+              <div><dt>03</dt><dd><strong>양측 수락 후 연결</strong><span>그때부터 일정·장소와 결제를 안내</span></dd></div>
+            </dl>
+          </div>
+          <div className={styles.deliveryChat} data-reveal="right" aria-label="상대 프로필 수령 후 매니저 대화 예시">
+            <header><span className={styles.deliveryAvatar}>IN</span><div><strong>인연연구소 · 담당 매니저</strong><small>상대 프로필 수령</small></div><b>안심 매칭</b></header>
+            <div className={styles.deliveryBody}>
+              <span className={styles.deliveryDate}>오늘</span>
+              <div className={styles.managerMessage}>이번에 소개드리는 분은 차분하고 배려 깊은 성향이에요. 두 분 모두 일과 관계의 균형을 중요하게 생각해 추천드렸어요.</div>
+              <div className={styles.managerMessage}>천천히 살펴보신 뒤 내일 오후 6시까지 수락 또는 패스 의사를 알려주세요. 만나기 싫은 분을 억지로 연결하지 않아요.</div>
+              <div className={styles.memberMessage}>이번에도 매니저님의 선택 믿어볼게요!<br />프로필보다 대화의 결을 잘 짚어주신 것 같아요 :)</div>
+              <div className={styles.deliveryResult}><span>✓</span><p><strong>양측 수락 확인</strong>이제 담당 매니저가 첫 만남 일정을 조율합니다.</p></div>
+            </div>
           </div>
         </section>
 
@@ -194,8 +346,8 @@ export default function Home() {
               <div className={styles.profilePreview} aria-label="맞춤 프로필 카드 예시">
                 <div className={styles.previewTopbar}><IdentificationCard size={22} weight="regular" aria-hidden="true" /><span>INTRODUCTION NOTE</span><small>01</small></div>
                 <div className={styles.profilePreviewHero}>
-                  <Image src="/inyeon-ultra/process-03-profile-v3.webp" alt="차분한 공간에서 자신의 프로필을 작성하는 회원의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={96} className={styles.coverImage} />
-                  <span>담당 매니저가 정리한<br />회원님의 소개 포인트</span>
+                  <div className={styles.profileMonogram}>M</div>
+                  <p><small>96 · BRAND MARKETER</small><strong>“편안한 대화가<br />오래 이어지는 관계”</strong></p>
                 </div>
                 <dl className={styles.profileFacts}>
                   <div><dt>생활의 리듬</dt><dd>평일에는 일에 집중하고 주말의 여유를 소중히 여겨요.</dd></div>
@@ -215,7 +367,10 @@ export default function Home() {
               <div className={styles.schedulePreview} aria-label="매니저 일정 조율 예시">
                 <div className={styles.previewTopbar}><CalendarCheck size={22} weight="regular" aria-hidden="true" /><span>MEETING PLAN</span><small>02</small></div>
                 <div className={styles.schedulePhoto}>
-                  <Image src="/inyeon-ultra/process-05-schedule-v3.webp" alt="회원들의 첫 만남 일정과 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 560px) 80vw, 440px" quality={96} className={styles.coverImage} />
+                  <span>OCTOBER</span>
+                  <strong>24</strong>
+                  <div><i />M <b>15:00</b><i />J</div>
+                  <small>두 사람의 시간을 한 곳으로</small>
                 </div>
                 <div className={styles.scheduleRows}>
                   <div><span>DATE</span><strong>토요일 오후 3:00</strong></div>
@@ -254,18 +409,46 @@ export default function Home() {
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockCost}`} data-reveal="scale"><Wallet size={30} weight="regular" aria-hidden="true" /><strong>0원</strong><h3>가입비 · 성혼비</h3><p>양측 수락 후에만 1회 이용료를 결제해요.</p></article>
             <article className={`${styles.careBlock} ${styles.careBlockMatch}`} data-reveal="scale">
-              <div className={styles.careBlockMedia}><Image src="/inyeon-ultra/process-04-match-v3.webp" alt="프로필과 희망 조건을 직접 살피는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={96} className={styles.coverImage} /></div>
+              <div className={`${styles.careBlockMedia} ${styles.careMatchGraphic}`}><span>M</span><b>♡</b><span>J</span><small>CURATED MATCH</small></div>
               <div className={styles.careBlockCopy}><IdentificationCard size={26} weight="regular" aria-hidden="true" /><h3>사람이 직접 보는 매칭</h3><p>조건만이 아니라 두 사람의 결까지 살펴요.</p></div>
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockSchedule}`} data-reveal="scale">
-              <div className={styles.careBlockMedia}><Image src="/inyeon-ultra/process-05-schedule-v3.webp" alt="첫 만남의 날짜와 장소를 조율하는 매니저의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 28vw" quality={96} className={styles.coverImage} /></div>
+              <div className={`${styles.careBlockMedia} ${styles.careScheduleGraphic}`}><small>SAT</small><strong>24</strong><span>15:00 · 성수</span></div>
               <div className={styles.careBlockCopy}><CalendarCheck size={26} weight="regular" aria-hidden="true" /><h3>일정과 장소까지 조율</h3><p>두 분은 첫 만남에만 집중하세요.</p></div>
             </article>
             <article className={`${styles.careBlock} ${styles.careBlockFeedback}`} data-reveal="scale">
-              <Image src="/inyeon-ultra/process-06-feedback-v3.webp" alt="소개팅 후 매니저에게 피드백을 전하는 여성의 연출 이미지" fill sizes="(max-width: 820px) 100vw, 24vw" quality={96} className={styles.coverImage} />
+              <div className={styles.careFeedbackGraphic}><span>오늘 만남은<br />어떠셨어요?</span><span>다음 만남도<br />기대돼요 :)</span></div>
               <div><ChatCircleDots size={27} weight="regular" aria-hidden="true" /><h3>만남 후 피드백</h3><p>어려운 마음도 편하게 전해요.</p></div>
             </article>
           </div>
+        </section>
+
+        <section id="match-stories" className={styles.matchStoriesSection} aria-labelledby="match-stories-title">
+          <div className={styles.matchStoriesHeading} data-reveal="up">
+            <span className={styles.sectionKicker}>MATCHING STORIES</span>
+            <h2 id="match-stories-title">이런 두 사람도,<br />서로를 몰랐을 뿐이니까</h2>
+            <p>스펙 한 줄보다 두 사람의 일상과 관계 기준이 만나는 지점을 찾습니다.</p>
+          </div>
+          <div className={styles.matchStoriesGrid}>
+            {MATCH_STORIES.map((story, index) => (
+              <article className={styles.matchStoryCard} key={story.couple} data-reveal="up" style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}>
+                <header><span>가상 매칭 사례</span><b>0{index + 1}</b></header>
+                <h3>{story.couple}</h3>
+                <p>{story.note}</p>
+                <blockquote>“{story.quote}”</blockquote>
+              </article>
+            ))}
+          </div>
+          <div className={styles.matchMethod} data-reveal="up">
+            <div><span>WHY IT WORKS</span><h3>매칭 가능성을 높이는 건<br />과장된 숫자가 아니라 과정입니다.</h3></div>
+            <ol>
+              <li><b>01</b><span><strong>활동 의사 확인</strong>지금 소개받을 수 있는 회원인지 먼저 확인</span></li>
+              <li><b>02</b><span><strong>사람이 직접 큐레이션</strong>가치관·생활 리듬·거리까지 함께 검토</span></li>
+              <li><b>03</b><span><strong>양측 수락 원칙</strong>서로 만나고 싶은 소개만 실제 만남으로</span></li>
+              <li><b>04</b><span><strong>피드백 반영</strong>다음 소개는 더 정확해지도록 기록하고 조정</span></li>
+            </ol>
+          </div>
+          <p className={styles.exampleNotice}>* 이해를 돕기 위해 가상으로 구성한 매칭 사례이며 실제 회원 후기가 아닙니다.</p>
         </section>
 
         <section id="pricing" className={styles.pricingSection} aria-labelledby="pricing-title">
