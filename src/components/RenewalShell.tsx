@@ -8,11 +8,15 @@ export function RenewalHeader() {
       <div className={`${styles.shell} ${styles.headerInner}`}>
         <Link href="/" className={styles.brand} aria-label="인연연구소 홈">
           <strong className={styles.brandWord}>인연<em>연구소</em></strong>
-          <span className={styles.brandSub}>1:1 후불제 맞춤형 소개팅</span>
+          <span className={styles.brandSub}>좋은 인연이, 더 좋은 일상을 만듭니다.</span>
         </Link>
         <nav className={styles.nav} aria-label="주요 메뉴">
+          <Link href="/#process" className={styles.navLink}>서비스 소개</Link>
           <Link href="/women" className={styles.navLink}>여성 안내</Link>
           <Link href="/men" className={styles.navLink}>남성 안내</Link>
+          <Link href="/#pricing" className={styles.navLink}>이용 안내</Link>
+          <Link href="/#faq" className={styles.navLink}>고객센터</Link>
+          <Link href="/apply" className={styles.headerApply}>내 인연 시작하기</Link>
         </nav>
       </div>
     </header>
@@ -27,7 +31,7 @@ export function RenewalFooter() {
           <div>
             <div className={styles.footerBrand}>인연연구소</div>
             <p className={styles.footerCopy}>
-              가입비 없이 시작해 매칭이 성사된 뒤에만 결제하는<br />수도권 중심 1:1 후불제 맞춤형 소개팅
+              결정사급 케어를 소개팅만큼 가볍게.<br />가입비·성혼비 없이 매칭 성사 후 결제하는 1:1 맞춤 소개팅
             </p>
           </div>
           <div>

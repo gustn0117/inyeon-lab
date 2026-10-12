@@ -4,10 +4,10 @@ import { OPEN_CHAT_EVENT } from "@/lib/contact";
 
 type Msg = { id: number; sender: "visitor" | "admin" | "system"; content: string; created_at: string; pending?: boolean };
 
-const INK = "#c8335a";
-const LEMON = "#d63a63";
-const LEMON_WASH = "#fff4f7";
-const LAUNCHER = "#d63a63";
+const INK = "#18355d";
+const LEMON = "#18355d";
+const LEMON_WASH = "#f2f5f8";
+const LAUNCHER = "#18355d";
 const STORAGE_KEY = "inyeon_chat";
 const TOOLTIP_KEY = "inyeon_chat_tip_seen";
 
