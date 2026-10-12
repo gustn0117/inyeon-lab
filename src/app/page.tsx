@@ -13,10 +13,10 @@ import ScrollEffects from "@/components/ScrollEffects";
 import styles from "./home.module.css";
 
 const BENEFITS = [
-  { title: "가입비 0원", body: "부담 없이 시작하세요" },
-  { title: "성혼비 0원", body: "추가 비용 걱정 없이" },
-  { title: "매칭 성사 후 결제", body: "만나보기로 결정한 뒤 결제" },
+  { title: "전담 매니저 1:1 상담", body: "취향과 가치관부터 차근차근" },
+  { title: "사람이 직접 보는 매칭", body: "조건만이 아니라 결까지" },
   { title: "일정·장소 매니저 조율", body: "첫 만남까지 세심하게" },
+  { title: "만남 후 피드백", body: "어려운 마음도 편하게" },
 ] as const;
 
 const PROCESS = [
@@ -99,9 +99,14 @@ export default function Home() {
       <main>
         <section className={styles.hero} aria-labelledby="home-title">
           <div className={styles.heroCopy} data-reveal="left">
-            <span className={styles.kicker}>A MORE MEANINGFUL TOMORROW</span>
-            <h1 id="home-title">결정사급 케어,<strong>소개팅만큼 가볍게</strong></h1>
-            <p>바쁜 일상 속에서도 좋은 사람을 만날 수 있도록,<br />신청부터 첫 만남까지 전담 매니저가 함께합니다.</p>
+            <span className={styles.kicker}>수도권 1:1 맞춤 소개팅</span>
+            <h1 id="home-title">가입비 없는{" "}<strong>후불제 소개팅</strong></h1>
+            <p><strong>매칭이 성사된 뒤에만 결제합니다.</strong>{" "}결정사급 매니저 케어는 그대로, <span>비용은 소개팅만큼 가볍게.</span></p>
+            <dl className={styles.heroFees}>
+              <div><dt>가입비</dt><dd>0원</dd></div>
+              <div><dt>성혼비</dt><dd>0원</dd></div>
+              <div><dt>기본 1회 이용료</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+            </dl>
             <div className={styles.heroActions}>
               <Link href="/apply" className={styles.primaryButton}>내 인연 시작하기</Link>
               <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
@@ -113,7 +118,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.benefitRail} aria-label="인연연구소의 네 가지 원칙">
+        <section className={styles.benefitRail} aria-label="전담 매니저가 챙기는 네 가지">
           {BENEFITS.map((benefit) => <div key={benefit.title} data-reveal="up"><strong>{benefit.title}</strong><span>{benefit.body}</span></div>)}
         </section>
 
@@ -261,7 +266,7 @@ export default function Home() {
             <div className={styles.priceHead} role="row"><span role="columnheader">구분</span><span role="columnheader">남성 회원</span><span role="columnheader">여성 회원</span></div>
             <div role="row"><span role="cell">가입비</span><strong role="cell">0원</strong><strong role="cell">0원</strong></div>
             <div role="row"><span role="cell">성혼비</span><strong role="cell">0원</strong><strong role="cell">0원</strong></div>
-            <div role="row"><span role="cell">1회 이용비</span><strong role="cell">33,000원</strong><strong role="cell">22,000원</strong></div>
+            <div role="row"><span role="cell">1회 이용료</span><strong role="cell">33,000원</strong><strong role="cell">22,000원</strong></div>
             <div role="row"><span role="cell">매니저 케어</span><span role="cell">맞춤 매칭·일정 조율</span><span role="cell">맞춤 매칭·일정 조율</span></div>
             <small>* 매칭이 성사된 경우에만 결제가 진행됩니다.</small>
           </div>
