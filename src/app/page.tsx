@@ -223,7 +223,7 @@ export default function Home() {
               <dl className={styles.heroFees}>
                 <div><dt>소개받기 전</dt><dd>0원</dd></div>
                 <div><dt>가입비 · 성혼비</dt><dd>0원</dd></div>
-                <div><dt>양측 수락 후 1회</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+                <div><dt>수락 후 기본 1회</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
               </dl>
               <a href="#member-preview" className={styles.scrollCue}><span>왜 아무나 소개하지 않는지</span><i aria-hidden="true">↓</i></a>
             </div>
@@ -250,7 +250,7 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <p className={styles.exampleNotice}>* 개인정보 보호를 위해 실제 회원 정보 대신 예시 프로필로 보여드립니다.</p>
+          <p className={styles.exampleNotice}>* 개인정보 보호를 위해 예시 프로필로 보여드립니다.</p>
         </section>
 
         <section className={styles.storySection} aria-labelledby="story-title">
@@ -448,7 +448,7 @@ export default function Home() {
               <li><b>04</b><span><strong>피드백 반영</strong>다음 소개는 더 정확해지도록 기록하고 조정</span></li>
             </ol>
           </div>
-          <p className={styles.exampleNotice}>* 회원 개인정보 보호를 위해 실제 사례 대신 예시로 보여드립니다.</p>
+          <p className={styles.exampleNotice}>* 매칭 방식을 보여드리기 위한 예시입니다.</p>
         </section>
 
         <section id="pricing" className={styles.pricingSection} aria-labelledby="pricing-title">
@@ -457,9 +457,9 @@ export default function Home() {
             <div className={styles.priceHead} role="row"><span role="columnheader">구분</span><span role="columnheader">남성 회원</span><span role="columnheader">여성 회원</span></div>
             <div role="row"><span role="cell">가입비</span><strong role="cell">0원</strong><strong role="cell">0원</strong></div>
             <div role="row"><span role="cell">성혼비</span><strong role="cell">0원</strong><strong role="cell">0원</strong></div>
-            <div role="row"><span role="cell">1회 이용료</span><strong role="cell">33,000원</strong><strong role="cell">22,000원</strong></div>
+            <div role="row"><span role="cell">기본 1회 이용료</span><strong role="cell">33,000원</strong><strong role="cell">22,000원</strong></div>
             <div role="row"><span role="cell">매니저 케어</span><span role="cell">맞춤 매칭·일정 조율</span><span role="cell">맞춤 매칭·일정 조율</span></div>
-            <small>* 매칭이 성사된 경우에만 결제가 진행됩니다.</small>
+            <small>* 매칭이 성사된 경우에만 결제가 진행됩니다.<br />* 지역·나이·직업군 등 원하시는 조건은 선택 옵션으로 보장받을 수 있어요.</small>
           </div>
         </section>
 

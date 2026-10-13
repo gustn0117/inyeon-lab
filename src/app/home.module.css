@@ -245,7 +245,7 @@
   .heroFees dd { font-size: 16px; }
 }
 
-@container (max-width: 299px) {
+@container (max-width: 310px) {
   .heroFees dd { flex-direction: column; align-items: flex-end; }
 }
 
@@ -910,7 +910,7 @@
 .priceTable .priceHead { min-height: 44px; background: #f1f2f3; }
 .priceHead span { color: #3d4248; font-weight: 750; }
 .priceTable strong { color: #a93a4d; font-size: 15px; font-weight: 800; }
-.priceTable small { display: block; margin: 10px 0 -25px; color: #7c8187; font-size: 10px; }
+.priceTable small { display: block; margin: 10px 0 -41px; color: #7c8187; font-size: 10px; line-height: 1.6; }
 
 .faqSection { max-width: none; background: var(--wash); }
 .faqIntro { justify-self: end; width: min(100%, 460px); }
