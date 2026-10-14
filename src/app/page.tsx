@@ -98,19 +98,16 @@ const MEMBER_EXAMPLES = [
 
 const MATCH_STORIES = [
   {
-    couple: "96년생 브랜드 마케터  ♡  94년생 대기업 연구원",
+    couple: "95년생 UX 디자이너  ♡  92년생 회계사",
     note: "직업 조건보다 ‘주말을 보내는 방식’이 닮은 두 분을 먼저 연결했어요.",
-    quote: "프로필보다 실제 대화가 더 편했어요. 억지로 맞춘 소개가 아니라는 느낌이 들었습니다.",
   },
   {
-    couple: "97년생 교사  ♡  95년생 IT 개발자",
+    couple: "98년생 약사  ♡  95년생 IT 개발자",
     note: "활동적인 취미는 달라도 관계에서 중요하게 보는 기준이 같았던 매칭이에요.",
-    quote: "매니저님이 왜 서로를 추천했는지 만나보니 알겠더라고요.",
   },
   {
     couple: "95년생 간호사  ♡  93년생 공기업 재직",
     note: "교대 근무와 출퇴근 거리까지 고려해 무리 없는 첫 만남을 조율했어요.",
-    quote: "일정 잡는 과정이 편했고, 부담 없이 서로에게 집중할 수 있었어요.",
   },
 ] as const;
 
@@ -221,9 +218,8 @@ export default function Home() {
                 <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
               </div>
               <dl className={styles.heroFees}>
-                <div><dt>소개받기 전</dt><dd>0원</dd></div>
                 <div><dt>가입비 · 성혼비</dt><dd>0원</dd></div>
-                <div><dt>수락 후 기본 1회</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+                <div><dt>매칭 후 결제</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
               </dl>
               <a href="#member-preview" className={styles.scrollCue}><span>왜 아무나 소개하지 않는지</span><i aria-hidden="true">↓</i></a>
             </div>
@@ -435,7 +431,6 @@ export default function Home() {
                 <header><span>매칭 예시</span><b>0{index + 1}</b></header>
                 <h3>{story.couple}</h3>
                 <p>{story.note}</p>
-                <blockquote>“{story.quote}”</blockquote>
               </article>
             ))}
           </div>
