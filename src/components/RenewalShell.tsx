@@ -1,8 +1,9 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import KakaoCopyButton from "@/components/KakaoCopyButton";
 import styles from "@/components/renewal.module.css";
 
-export function RenewalHeader() {
+export function RenewalHeader({ children }: { children?: ReactNode }) {
   return (
     <header className={styles.header}>
       <div className={`${styles.shell} ${styles.headerInner}`}>
@@ -19,6 +20,7 @@ export function RenewalHeader() {
           <Link href="/apply" className={styles.headerApply}>내 인연 시작하기</Link>
         </nav>
       </div>
+      {children}
     </header>
   );
 }

@@ -11,6 +11,7 @@ import ChatWidget from "@/components/ChatWidget";
 import ConsultButton from "@/components/ConsultButton";
 import { RenewalFooter, RenewalHeader } from "@/components/RenewalShell";
 import ScrollEffects from "@/components/ScrollEffects";
+import SectionNav from "@/components/SectionNav";
 import styles from "./home.module.css";
 
 const BENEFITS = [
@@ -195,7 +196,7 @@ export default function Home() {
   return (
     <div className={styles.site}>
       <ScrollEffects />
-      <RenewalHeader />
+      <RenewalHeader><SectionNav /></RenewalHeader>
       <main>
         <section className={styles.hero} aria-labelledby="home-title">
           <picture className={styles.heroPicture} aria-hidden="true">
@@ -217,10 +218,13 @@ export default function Home() {
                 <Link href="/apply" className={styles.primaryButton}>나와 맞는 사람 찾기</Link>
                 <ConsultButton className={styles.secondaryButton} label="1:1 무료 상담" tail="받기" />
               </div>
-              <dl className={styles.heroFees}>
-                <div><dt>가입비 · 성혼비</dt><dd>0원</dd></div>
-                <div><dt>매칭 후 결제</dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
-              </dl>
+              <div className={styles.heroFees}>
+                <dl>
+                  <div><dt>가입비 · 성혼비</dt><dd>0원</dd></div>
+                  <div><dt><span>기본 매칭<small>매칭 후 결제</small></span></dt><dd><span><small>여성</small> 22,000원</span>{" "}<span><small>남성</small> 33,000원</span></dd></div>
+                </dl>
+                <p className={styles.heroFeesNote}>원하는 조건은 옵션으로 보장받을 수 있어요</p>
+              </div>
               <a href="#member-preview" className={styles.scrollCue}><span>왜 아무나 소개하지 않는지</span><i aria-hidden="true">↓</i></a>
             </div>
           </div>
