@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminPw } from "@/lib/adminPw";
 
-const SUPABASE_URL = "https://api.hsweb.pics";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE2NDE3NjkyMDAsImV4cCI6MTc5OTUzNTYwMH0.xTNteRFphY3F9W2PPWOwCQ9PDXD05ySRqkJu5d4Cej0";
+import { SUPABASE_URL, SUPABASE_KEY } from "@/lib/server-db";
 
 async function supaFetch(path: string, opts: RequestInit = {}) {
   return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {

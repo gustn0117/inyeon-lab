@@ -1,5 +1,2 @@
 import { permanentRedirect } from "next/navigation";
-
-export default function LegacyIdealMatchPage() {
-  permanentRedirect("/#choose");
-}
+export default function LegacyIdealMatchPage() { permanentRedirect("/diagnosis"); }

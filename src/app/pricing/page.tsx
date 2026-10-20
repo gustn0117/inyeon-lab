@@ -1,5 +1,2 @@
 import { permanentRedirect } from "next/navigation";
-
-export default function LegacyPricingPage() {
-  permanentRedirect("/#choose");
-}
+export default function LegacyPricingPage() { permanentRedirect("/programs"); }

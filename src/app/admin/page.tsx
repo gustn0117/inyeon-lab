@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { CoachingApplicationsAdmin, CoachingProgramsAdmin } from "@/components/coaching/CoachingAdmin";
 
 type Inquiry = { id: number; name: string; phone: string; created_at: string };
 type Session = { id: string; visitor_name: string; created_at: string; last_visitor_at: string; last_admin_at: string | null; unread_admin: number; unread_visitor: number };
@@ -9,14 +10,14 @@ type IdealMatch = {
   ideal_age: string | null; ideal_region: string | null; ideal_style: string | null;
   phone: string; created_at: string;
 };
-type Tab = "inquiries" | "chat" | "ideal";
+type Tab = "inquiries" | "chat" | "ideal" | "coaching" | "programs";
 
-const PINK = "#d4567a";
+const PINK = "#742d40";
 
 export default function AdminPage() {
   const [pw, setPw] = useState("");
   const [authed, setAuthed] = useState(false);
-  const [tab, setTab] = useState<Tab>("chat");
+  const [tab, setTab] = useState<Tab>("coaching");
 
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [sessions, setSessions] = useState<Session[]>([]);
@@ -65,15 +66,14 @@ export default function AdminPage() {
   const login = async () => {
     setLoading(true);
     setError("");
-    const ok = await fetchInquiries(pw);
-    if (ok) {
-      await fetchSessions();
-      await fetchIdeals();
-      setAuthed(true);
-    } else {
-      setError("비밀번호가 틀렸습니다.");
-    }
-    setLoading(false);
+    try {
+      const ok = await fetchInquiries(pw);
+      if (ok) {
+        await Promise.all([fetchSessions(), fetchIdeals()]);
+        setAuthed(true);
+      } else setError("비밀번호 또는 관리자 설정을 확인해주세요.");
+    } catch { setError("서버 연결을 확인한 뒤 다시 시도해주세요."); }
+    finally { setLoading(false); }
   };
 
   // 세션 목록 폴링 (3초)
@@ -157,8 +157,8 @@ export default function AdminPage() {
   };
   const submitPwChange = async () => {
     setPwMsg(null);
-    if (!/^[0-9]{4}$/.test(pwNew)) {
-      setPwMsg({ kind: "err", text: "새 비밀번호는 숫자 4자리여야 합니다." });
+    if (!/^\S{8,72}$/.test(pwNew)) {
+      setPwMsg({ kind: "err", text: "새 비밀번호는 공백 없이 8~72자로 입력해주세요." });
       return;
     }
     if (pwNew !== pwConfirm) {
@@ -221,11 +221,12 @@ export default function AdminPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-5 bg-white rounded-2xl p-1.5 shadow-sm">
+        <div className="flex flex-wrap gap-2 mb-5 bg-white rounded-2xl p-1.5 shadow-sm">
+          {([ ["coaching", "코칭 신청"], ["programs", "프로그램·가격"] ] as const).map(([value, label]) => <button key={value} onClick={() => setTab(value)} className={`flex-1 min-w-[100px] py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === value ? "text-white" : "text-gray-500 hover:bg-gray-50"}`} style={tab === value ? { background: PINK } : {}}>{label}</button>)}
           <button onClick={() => setTab("chat")}
             className={`flex-1 relative py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "chat" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "chat" ? { background: PINK } : {}}>
-            실시간 채팅 ({sessions.length})
+            기존 채팅 ({sessions.length})
             {chatUnreadTotal > 0 && (
               <span className="absolute top-1 right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
                 {chatUnreadTotal > 99 ? "99+" : chatUnreadTotal}
@@ -235,14 +236,17 @@ export default function AdminPage() {
           <button onClick={() => setTab("inquiries")}
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "inquiries" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "inquiries" ? { background: PINK } : {}}>
-            문의 ({inquiries.length})
+            이전 문의 ({inquiries.length})
           </button>
           <button onClick={() => setTab("ideal")}
             className={`flex-1 py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "ideal" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "ideal" ? { background: PINK } : {}}>
-            신청서 ({ideals.length})
+            이전 소개팅 ({ideals.length})
           </button>
         </div>
+
+        {tab === "coaching" && <CoachingApplicationsAdmin password={pw} />}
+        {tab === "programs" && <CoachingProgramsAdmin password={pw} />}
 
         {/* CHAT */}
         {tab === "chat" && (
@@ -474,43 +478,37 @@ export default function AdminPage() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm" onClick={() => !pwBusy && setPwModalOpen(false)}>
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xs p-6" onClick={e => e.stopPropagation()}>
             <h2 className="text-base font-extrabold mb-1" style={{ color: "#222" }}>비밀번호 변경</h2>
-            <p className="text-[11px] mb-5" style={{ color: "#888" }}>숫자 4자리로만 입력해주세요.</p>
+            <p className="text-[11px] mb-5" style={{ color: "#888" }}>새 비밀번호는 공백 없이 8~72자로 입력해주세요.</p>
 
             <label className="block text-[11px] font-semibold mb-1.5" style={{ color: "#666" }}>현재 비밀번호</label>
             <input
               type="password"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={4}
+              maxLength={72}
               value={pwCurrent}
-              onChange={e => setPwCurrent(e.target.value.replace(/\D/g, "").slice(0, 4))}
-              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-[0.4em]"
+              onChange={e => setPwCurrent(e.target.value)}
+              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-normal"
               autoFocus
             />
 
             <label className="block text-[11px] font-semibold mb-1.5" style={{ color: "#666" }}>새 비밀번호</label>
             <input
               type="password"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={4}
+              maxLength={72}
               value={pwNew}
-              onChange={e => setPwNew(e.target.value.replace(/\D/g, "").slice(0, 4))}
-              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-[0.4em]"
+              onChange={e => setPwNew(e.target.value)}
+              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-normal"
             />
 
             <label className="block text-[11px] font-semibold mb-1.5" style={{ color: "#666" }}>새 비밀번호 확인</label>
             <input
               type="password"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={4}
+              maxLength={72}
               value={pwConfirm}
-              onChange={e => setPwConfirm(e.target.value.replace(/\D/g, "").slice(0, 4))}
+              onChange={e => setPwConfirm(e.target.value)}
               onKeyDown={e => {
                 if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) submitPwChange();
               }}
-              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-[0.4em]"
+              className="w-full rounded-xl px-4 py-2.5 text-sm border border-gray-200 focus:border-pink-400 focus:outline-none mb-3 tracking-normal"
             />
 
             {pwMsg && (
@@ -525,7 +523,7 @@ export default function AdminPage() {
               >취소</button>
               <button
                 onClick={submitPwChange}
-                disabled={pwBusy || pwCurrent.length !== 4 || pwNew.length !== 4 || pwConfirm.length !== 4}
+                disabled={pwBusy || !pwCurrent.length || pwNew.length < 8 || pwConfirm.length < 8}
                 className="flex-1 rounded-xl py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-40"
                 style={{ background: PINK }}
               >{pwBusy ? "변경 중..." : "변경하기"}</button>

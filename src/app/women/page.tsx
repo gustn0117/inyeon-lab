@@ -1,11 +1,2 @@
-import type { Metadata } from "next";
-import GenderLanding from "@/components/GenderLanding";
-
-export const metadata: Metadata = {
-  title: "여성 회원 안내 | 인연연구소",
-  description: "한국나이 기준 1988년생까지의 미혼 여성 대상. 가입비 0원, 매칭 성사 후 기본 1회권 22,000원 결제. 제안 횟수 제한 없는 수도권 중심 1:1 후불제 맞춤형 소개팅입니다.",
-};
-
-export default function WomenPage() {
-  return <GenderLanding gender="women" />;
-}
+import { permanentRedirect } from "next/navigation";
+export default function LegacyWomenPage() { permanentRedirect("/programs"); }

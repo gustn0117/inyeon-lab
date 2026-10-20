@@ -1,104 +1,135 @@
-# Design QA
+# 인연연구소 · 흑백 디자인 보강 및 직접 코칭 안내
 
-## Comparison target
+검수일: 2026-10-20
 
-- User-supplied layout inspiration: `/tmp/inyeon-captures/reference-desktop.png`
-- Inspiration process crop: `/tmp/inyeon-qa-extension/source-process.png`
-- Inspiration Full Care crop: `/tmp/inyeon-qa-extension/source-care.png`
-- Live `/serviceprocess` reference capture: `/tmp/inyeon-serviceprocess/reference-full.png`
-- Live reference detail crop: `/tmp/inyeon-serviceprocess/crops/top.png`
-- Final desktop implementation: `/tmp/inyeon-qa-layout-style/desktop-final.png`
-- Final mobile implementation: `/tmp/inyeon-qa-layout-style/mobile-final.png`
-- Focused implementation crop: `/tmp/inyeon-qa-layout-style/implementation-process-care-final.png`
-- Side-by-side layout comparison: `/tmp/inyeon-qa-layout-style/compare-layout-style-final.png`
-- Extended desktop implementation: `/tmp/inyeon-serviceprocess/desktop-implementation.png`
-- Extended 390 px mobile implementation: `/tmp/inyeon-serviceprocess/mobile-implementation.png`
-- New manager-process crop: `/tmp/inyeon-serviceprocess/crops/implementation-manager.png`
-- New manager-process mobile crop: `/tmp/inyeon-serviceprocess/crops/implementation-manager-mobile.png`
-- Live reference vs. new section comparison: `/tmp/inyeon-serviceprocess/compare-serviceprocess.png`
-- Before-change manager-region baseline: `/tmp/inyeon-effects/before-manager-region.png`
-- Final wide desktop implementation: `/tmp/inyeon-effects/desktop-wide-effects-final.png`
-- Final wide manager-region crop: `/tmp/inyeon-effects/manager-wide-final.png`
-- Final mobile implementation with effects initialized: `/tmp/inyeon-effects/mobile-effects-final.png`
-- Final mobile manager-region crop: `/tmp/inyeon-effects/manager-mobile-final.png`
-- Before/after wide-background comparison: `/tmp/inyeon-effects/compare-before-wide.png`
-- Hover-state evidence: `/tmp/inyeon-effects/process-hover.png`
-- Route and state: `/`, default state, white theme, FAQ collapsed, chat closed
+최신 화면은 **배경 사진 위 중앙 정렬 히어로 + 소개·차별점·이벤트·상담의 이미지 확장**이다. 아래 초기 흑백 검수 기록 이후의 변경은 문서 마지막에 기록했다. 최신 캡처는 `/tmp/inyeon-story-refresh/`를 기준으로 확인한다.
 
-## Design intent
+## 이번 작업의 기준
 
-The supplied screenshots define the layout style rather than an exact design to copy. The implementation should visibly borrow the connected process-card layout and modular Full Care/Bento layout while changing proportions, content order, photography, brand colors, and component composition for 인연연구소. The live `/serviceprocess` page adds a second process language: a long pale-mint editorial rail that repeats number, headline, explanation, and a large rounded service preview.
+사용자가 승인한 현재 레이아웃과 스크롤·전환 효과를 기준으로 디자인을 보강했다. 최신 요청은 **사진을 제외한 블랙·화이트 스타일**과 **사람이 직접 진행하는 코칭과 남녀 상담사에 관한 제공 문구**다. 이전 버건디 색상 요청보다 이번 흑백 요청을 우선한다.
 
-The latest revision must make the mint manager-story background visibly wider and add a richer motion layer throughout the homepage without reducing readability, breaking navigation, or causing horizontal overflow. Motion must remain restrained on touch screens and be disabled when the user requests reduced motion.
+레이아웃의 시각 기준은 작업 전 로컬 화면이다. 참고 사이트의 광고 콘텐츠를 다시 복제하는 작업으로 판정하지 않는다. 사진 교체·흑백 필터·크롭 변경 없이 나머지 색상과 UI를 다듬었다.
 
-## Viewport and normalization
+## 발견 사항과 수정 이력
 
-- Inspiration desktop capture: 1440 × 7000 px at device scale factor 1.
-- Final desktop implementation: 1440 × 7400 px at device scale factor 1.
-- Final mobile implementation: 390 × 10451 px at a real 390 px emulated CSS viewport and device scale factor 1.
-- Live `/serviceprocess` capture: 1440 × 9548 px at device scale factor 1.
-- Extended homepage capture: 1440 × 8742 px at device scale factor 1.
-- Extended mobile capture: 390 × 13378 px at a real 390 px emulated CSS viewport and device scale factor 1.
-- Final effects desktop capture: 1440 × 8742 px at CSS viewport 1440 × 900 and device scale factor 1.
-- Final effects mobile capture: 390 × 13344 px at CSS viewport 390 × 844 and device scale factor 1.
-- Focus comparison: reference process and Full Care crops were stacked at 1440 px width. The implementation's corresponding region was cropped at 1440 px and height-normalized for side-by-side layout inspection.
-- Wide-background comparison: both before and after manager regions were cropped from 1440 px desktop captures at device scale factor 1 and placed in one 2882 × 2502 px comparison image. Different vertical start points normalize the manager-story headings while retaining enough neighboring content to show the section transition.
+1. **P2 / 전체 색상 체계**: 버건디, 파란 기가 있는 회색, 노란 카카오 버튼이 혼재했다. 세 개의 코칭 스타일 모듈을 무채색 토큰으로 정리하고 가격 배지·선택 탭·버튼·고리·그래프를 통일했다.
+2. **P2 / 구간의 위계**: 넓은 회색 고정 패널과 마지막 밝은 폼 구간의 대비가 약했다. 고정 문구 패널에 블랙 표면, 가는 프레임, 진행 표시를 적용했다. 상담 구간과 푸터는 블랙, 실제 폼은 화이트로 구성했다. 모든 추가 메타 정보는 기존 영역 안에 배치했다.
+3. **P2 / 모바일 폼**: 기존 스타일 우선순위 때문에 고민 입력란이 작아 긴 안내가 잘렸다. 모바일 168px 최소 높이와 여유 있는 줄 높이를 적용했다. 원어민 UI처럼 보이지 않던 기본 파일 선택 표시도 한글 ‘사진 선택/사진 변경’ 버튼과 파일명으로 개선했다.
+4. **P2 / 작은 글자와 포커스**: 첫 시각 검수에서 일부 보조 글자와 플레이스홀더가 너무 연했고, 어두운 푸터·메뉴의 검정 포커스는 눈에 띄기 어려웠다. 작은 글자 대비를 높이고 어두운 표면에는 흰색 포커스를 적용했다.
+5. **사용자 추가 문구**: 사람이 직접 듣고 코칭한다는 메시지를 히어로 설명·고정 문구·설명 영역에 배치했다. 제공된 소개 문단, 여섯 차별점과 마무리 문구를 기존 설명 영역 아래에 추가하고 전체 메뉴에 해당 앵커를 연결했다.
 
-## Findings
+첫 디자인 반영 후 화면을 다시 촬영해 3·4번 세부 문제를 수정했다. 빌드 성공만으로 시각 검수를 대체하지 않았다.
 
-No actionable P0, P1, or P2 issues remain.
+## 비교 조건과 증거
 
-- Process layout style: the final section preserves the reference's two-row, connected, image-card journey. It avoids direct replication through asymmetric 4:5:3 and 3:5:4 column spans, image-first cards, left-positioned step markers, different copy proportions, and original generated photography.
-- `/serviceprocess` extension: the added “보이지 않는 과정까지” section borrows the live page's long mint field, numbered editorial chapters, generous vertical pacing, and large white service previews. It is reduced from four source steps to three original manager moments: profile curation, date coordination, and private feedback.
-- Distinction from the live page: desktop chapters alternate copy and preview left-to-right instead of using the source's single vertical phone/chat stack. Step markers are circular, preview chrome is original, copy is rewritten, and the visuals use existing 인연연구소-generated photography. On mobile, the alternating grid intentionally collapses to the reference's readable one-step-at-a-time rhythm.
-- Full Care layout style: the final section uses the reference's mixed photo/text modular rhythm but changes it into a five-block Bento: one tall manager tile, one cost tile, two split service tiles, and one feedback image tile. The 5:3:4 composition and navy/sage balance are specific to 인연연구소.
-- Typography: Pretendard display weights, compact English eyebrows, tight Korean heading tracking, and restrained body copy match the established site rather than the reference typography.
-- Spacing and rhythm: both sections use generous white space and soft radii from the inspiration, while asymmetric widths and the image-first process cards establish a distinct page silhouette.
-- Colors and tokens: white and deep navy remain dominant. Sage is limited to connector lines, markers, icons, and pale mint surfaces, keeping the reference influence secondary to the brand.
-- Image fidelity: original Korean lifestyle images are used throughout with consistent bright daylight grading. All images loaded with positive natural widths; no source-site photographs, embedded text, logos, watermarks, or placeholders are present.
-- Copy and service logic: the six real stages and supported advantages remain: 가입비·성혼비 0원, person-led review, mutual acceptance before payment, manager-led scheduling, and post-date feedback. Unsupported reference metrics and system claims are excluded.
-- Responsive behavior: the desktop route grid becomes one image card per row at 390 px. The Bento becomes a vertical mixed-media stack while retaining card hierarchy. Document width measured 390 px and the pricing table ended at x=366.
-- New responsive rail: at 390 px the manager panel is 342 px wide from x=24 to x=366, with all three chapters and previews stacked inside it. No horizontal overflow is present.
-- Wide background: the manager panel now measures x=`0` to `1440` on desktop and x=`0` to `390` on mobile. Its content remains aligned to the 1288 px desktop grid (x=`76` to `1364`) and to 18 px mobile content gutters, so the background is full-bleed without making the text difficult to scan.
-- Motion system: 30 reveal targets use IntersectionObserver with directional, vertical, or scale variants. Process connectors draw from left to right, route cards stagger in, and hero/final photography has a slow breathing crop. Hover states add lift, image zoom, shadow depth, pricing-row movement, FAQ affordance, and button sheen.
-- Motion accessibility: `prefers-reduced-motion: reduce` disables animations and forces reveal targets visible. Motion does not gate content or navigation.
-- Accessibility and interaction: semantic sections/articles, descriptive alt text, library icons, native FAQ disclosure, and existing CTA/chat affordances remain. No runtime exceptions or non-aborted network failures were observed.
+데스크톱 **1440 × 1000**, 모바일 **390 × 844**, `deviceScaleFactor: 1`. 기기 프레임이나 브라우저 주소창을 포함하지 않는다. 사진·텍스트가 정상적으로 표시되는 첫 슬라이드 및 해당 섹션의 같은 위치를 비교했다. 인트로 및 자동 슬라이더의 진행 중 프레임을 정적인 레이아웃 차이로 판정하지 않았다.
 
-## Comparison history
+- 승인된 작업 전 화면: `/tmp/inyeon-monochrome-qa/before/`
+- 최초 흑백 반영 화면: `/tmp/inyeon-monochrome-qa/after/`
+- 추가 문구·폼 보강 후 화면: `/tmp/inyeon-monochrome-qa/final/`
+- 동작 회귀 검사와 녹화: `/tmp/inyeon-monochrome-qa/final-interactions/`
 
-- Earlier P1: the first implementation copied the equal 3 × 2 card grid and Full Care mosaic too literally.
-- Earlier P1: the following revision moved too far away by replacing the reference layout language with three wide editorial chapters and a flat proof row.
-- Final fix: restored the connected two-row card system and modular Bento layout, then differentiated them using asymmetric spans, image-first flow, five-block composition, navy brand emphasis, original copy, and original imagery.
-- Post-fix evidence: `/tmp/inyeon-qa-layout-style/compare-layout-style-final.png` shows recognizable layout inspiration without an identical arrangement.
-- `/serviceprocess` extension: added a separate three-chapter manager-story rail after directly capturing the live page. The comparison at `/tmp/inyeon-serviceprocess/compare-serviceprocess.png` confirms shared editorial rhythm while showing different composition, content, imagery, and interface previews.
-- Latest P2 found during the effects pass: when the manager heading's explicit line break was hidden on mobile, Korean wrapping placed `매` at the end of the first line and weakened the headline rhythm.
-- Latest fix: restored the intentional mobile line break so “보이지 않는 과정까지,” and “매니저가 이어갑니다” form two balanced lines. Post-fix evidence is `/tmp/inyeon-effects/manager-mobile-final.png`.
-- Wide-background result: `/tmp/inyeon-effects/compare-before-wide.png` visibly shows the former centered mint rectangle beside the new edge-to-edge mint field with the same aligned content hierarchy.
+각 디렉터리의 `desktop-hero.png`, `mobile-hero.png`, `*-brand.png`, `*-programs.png`, `*-recommend.png`, `*-value.png`, `*-consultation.png`를 비교했다. 전후 이미지를 같은 비교 입력에서 열어 확인했다. 다음 구간 캡처로 작은 글자와 밀도도 확인했다.
 
-## Browser verification
+- `final/desktop-human-intro.png`: 소개 문단 및 차별점 2열 구성
+- `final/mobile-human-intro.png`: 좁은 화면의 소개·첫 차별점
+- `final/mobile-human-details.png`: 뒤쪽 차별점 및 마무리 문구
+- `final/mobile-form-refined.png`: 확장한 고민 입력란과 흑백 폼
+- `final/desktop-checkout.png`, `final/mobile-checkout.png`: 프로그램 선택과 계좌이체 안내
 
-- Real mobile emulation after the effects revision: `innerWidth=390`, document width `390`, total height `13344`.
-- Six process cards and five Full Care blocks render at both breakpoints.
-- Three manager-story chapters render; the mobile background spans x=`0` to `390` and its content grid spans x=`18` to `372`.
-- All homepage images loaded after scrolling through the final document (`badImages=[]`).
-- FAQ disclosure opens with its answer, and the primary CTA still resolves to `/apply`; the shared live-chat component was not altered by this extension.
-- Runtime exceptions: none.
-- Non-aborted failed network responses: none.
-- Reveal verification: all `30/30` reveal targets reached the visible state after a complete scroll pass; all images reported positive natural widths.
-- Hover verification: the first process card reached `transform: matrix(1, 0, 0, 1, 0, -9)` with the intended elevated shadow. Evidence is `/tmp/inyeon-effects/process-hover.png`.
-- Next.js production build: passed, including type checking and static generation for 21 pages.
+새 문구를 포함하므로 완전히 같은 텍스트 외곽선이나 전체 페이지 높이를 요구하지 않는다. 첫 여섯 구간은 순서·높이를 유지했고, 기존 설명 구간은 여섯 차별점이 들어가 길어졌다. 마지막 폼도 입력란을 넓힌 만큼 길어졌다.
 
-## Implementation checklist
+## 다섯 가지 시각 기준
 
-- [x] Borrow the connected card and modular Bento layout language.
-- [x] Avoid exact card proportions, content order, images, colors, and composition.
-- [x] Preserve all six matching stages and real service advantages.
-- [x] Borrow the live `/serviceprocess` vertical editorial rhythm without copying its assets or exact arrangement.
-- [x] Add original profile, scheduling, and feedback service previews.
-- [x] Expand the manager-story background to the full viewport width while preserving readable inner gutters.
-- [x] Add scroll reveals, connector drawing, image motion, staggered cards, hover lift, button sheen, and interactive row feedback.
-- [x] Respect reduced-motion preferences and prevent hidden content when motion is disabled.
-- [x] Preserve existing application, pricing, FAQ, and chat behavior.
-- [x] Verify desktop, real 390 px mobile, image loading, overflow, and production build.
+- **글꼴**: 기존 Pretendard, 큰 제목의 굵기와 계층을 유지했다. 설명은 제목보다 한 단계 가볍게, 작은 안내는 충분히 진하게 적용했다. 가격·입금 계좌·페이지 숫자는 표 폭 숫자를 사용한다. 한글 단어 단위 줄바꿈과 모바일 2열 이름·연락처를 확인했다.
+- **배열·여백**: 첫 화면 52/48 분할, 고정 패널, 양방향 흐름, 세로 슬라이더와 원형 추천을 유지했다. 첫 여섯 구간의 전후 높이 차이는 두 뷰포트 모두 반올림 0px이다. 여섯 차별점은 데스크톱 2열, 모바일 1열로 읽기 쉽게 추가했다.
+- **색상**: 사진 외 UI는 블랙·화이트와 중립 회색이다. 선택 상태는 블랙 배경·화이트 글자, 기본 상태는 화이트·가는 테두리로 구분한다. 그래프와 지도만 그래픽 요소로 무채색 처리했다. 어두운 영역의 텍스트·버튼·포커스도 별도로 확인했다.
+- **이미지**: 기존 사진 파일 72개의 SHA-256 해시가 모두 동일하다. DOM의 사진 URL과 CSS 필터도 작업 전후 동일하다. 사진에 흑백 필터를 적용하지 않았다. 증거: `final/preservation.json`.
+- **내용**: 사용자가 보낸 여섯 제목·본문과 마무리 문구를 반영했다. 코칭 프로그램·가격·계좌번호·신청 조건을 유지했다. 직접 코칭 안내는 사용자가 제공한 사업 설명이며, AI가 해당 경력을 독립 검증했다는 의미로 표현하지 않는다.
 
-final result: passed
+## 검증
+
+- `npm run build`: 마지막 색상·포커스 보정을 포함해 통과.
+- `scripts/verify-coaching-design.mjs`: 통과. 첫 여섯 구간 배열·높이, 정방향·역방향 고정 문구, 자동·수동 사진 전환, 반대 방향 카드 흐름, 프로그램 탭·드래그, 원형 추천, 숫자 등장, 메뉴, 퀵 메뉴 및 모션 줄이기 설정을 확인했다.
+- `scripts/verify-coaching.mjs` (`COACHING_QA_FAST=1`): 통과. 기존 전체 API 검사와 브라우저 신청·사진·유료 신청·진단·관리자·픽셀 검사를 실행했다. 이번 빠른 실행에서는 전체 페이지의 모든 폭 순회를 반복하지 않았다. 동작 검사의 별도 반응형 검증으로 320/390/768/900/1024/1440px 가로 넘침을 확인했다.
+- 사용자 제공 여섯 차별점의 DOM 제목과 실제 본문을 확인했다.
+- ‘사진 선택’ 버튼을 누르면 실제 파일 선택기가 열리는 것을 확인했다.
+- 실제 신청 데이터 생성·수정 없이 격리된 가짜 백엔드로 제출을 검증했다.
+- 사진 및 앞부분 레이아웃 보존: 통과.
+- 마지막 작은 글자·포커스 스타일 확인: 통과. 플레이스홀더 대비 4.62:1, 모바일 고민 입력란 최소 168px, 검정 푸터의 흰색 키보드 포커스를 실제 브라우저에서 확인했다. `final/final-style-check.json`, `final/mobile-upload-final.png`, `final/mobile-footer-focus.png`에 기록했다.
+
+최종 판정: 승인된 레이아웃과 사진을 보존한 범위에서 흑백 디자인·추가 문구·반응형·입력 흐름 검수 통과. 남아 있는 P0/P1/P2 결함은 발견되지 않았다.
+
+로컬: http://127.0.0.1:3000/
+
+## 남녀 상담사 안내 추가
+
+추가 요청에 따라 메인 첫 슬라이드, 직접 코칭 소개, 두 번째 차별점, 검색·공유 설명에 남녀 상담사의 체계적이고 전문적인 1:1 코칭을 반영했다. 기존 소개팅 운영 경험은 유지하면서 운영자 한 사람이 상담한다는 문구를 정리했다. 상담사 자격·동시 상담·성별 선택 절차 등 제공되지 않은 운영 조건은 추가하지 않았다.
+
+프로덕션 빌드 생성 및 갱신한 로컬 서버 기동을 확인했다. 실제 브라우저 1440/390/320px에서 첫 슬라이드 설명은 두 줄을 유지하고, 가로 넘침과 런타임 오류가 없음을 확인했다. 데스크톱·모바일 화면도 열어 확인했다. 이번 변경은 문구만 다루며 신청·결제 동작 검사는 반복하지 않았다.
+
+추가 화면 및 측정: `/tmp/inyeon-counselor-update/`. 이전 비교 캡처는 이전 문구를 기록한 자료로 유지한다.
+
+## 무료 소개팅 연결 이벤트 안내
+
+코칭 후 서로 맞는 분이 있을 경우 무료로 소개팅 연결을 돕는 선택형 이벤트를 메인 소개 하단, 프로그램 목록·상세페이지와 FAQ에 추가했다. ‘선택 참여’와 희망자에 한해 진행한다는 조건을 함께 표시했다. 이벤트 문의는 기존 무료 상담 신청서로 연결한다.
+
+`npm run build`와 `git diff --check` 통과. 실제 로컬 브라우저에서 메인 1440/390/320px, 프로그램 목록·상세 390px의 표시와 문의 링크를 확인했다. 확인한 페이지는 HTTP 200, 가로 넘침 0px, 런타임 오류 없음. 데스크톱·모바일·320px 캡처를 열어 줄바꿈과 여백을 확인했다. 캡처 및 측정: `/tmp/inyeon-match-event/`. 신청 데이터나 프로그램 가격은 변경하지 않았다.
+
+## 최신: 배경형 히어로와 이미지 중심의 후반부
+
+사용자가 히어로 사진을 배경에 깔고 문구를 중앙에 겹치도록 요청해, PC·모바일 모두 전체 배경 사진과 중앙 흰색 문구로 변경했다. 사진 위에는 명암을 더했고, 기존 다섯 슬라이드·자동 전환·수동 조작을 유지했다. 모바일 인물 위치도 조정했다. 히어로는 이제 최소 높이를 둔 100svh이며, 이후 다섯 구간의 높이와 순서는 기존 기준을 유지한다.
+
+이어 추천·프로그램 구간처럼 홈페이지 전반에 이미지와 움직임을 요청해, 후반부를 다음과 같이 보강했다.
+
+- 직접 코칭 소개: 큰 문구와 사진의 2열 구성, 겹친 대화 예시, 1:1·100% 지표.
+- 여섯 차별점: 각 내용에 맞는 사진 카드. PC는 3열, 중간 폭은 2열, 모바일은 가로 넘김·이전/다음 버튼·현재 카드 표시를 제공한다.
+- 마무리 메시지: 사진 배경 위 중앙 문구를 배치한 배너.
+- 선택형 소개팅 이벤트: 만남 사진과 흑백 안내를 결합한 배너. 동일 컴포넌트를 사용하는 프로그램 목록·상세에도 반영된다.
+- 상담 신청: PC는 사진과 기존 신청 폼을 2열, 모바일은 사진 뒤에 폼이 이어지는 구성. 사진 속 작은 글자의 명암을 높였다.
+- 이미지 구간의 스크롤 등장과 카드 사진의 호버 확대를 적용했다. 모션 줄이기 설정에서는 효과 없이 내용을 표시한다.
+
+사진 원본 파일과 색상을 유지하며 기존 이미지를 재사용했다. 남녀 상담사 안내, 여섯 차별점, 선택형 이벤트 조건을 유지했다. 새 대화는 ‘대화 예시’로 표시했다. 모바일에서는 대화 예시와 겹치던 장식용 사진 설명을 숨겨 겹침을 해소했다.
+
+검증: 프로덕션 빌드 통과. `scripts/verify-coaching-design.mjs` 통과(히어로 높이 기준은 새로운 요청에 맞춰 갱신). 기존 슬라이드·고정 문구·카드 흐름·프로그램 탭·추천·폼 필수 항목·사진 선택 유형·메뉴·모션 줄이기 등을 확인했다. 별도 실제 브라우저 검수로 1440/390px 후반부 사진 10개의 정상 로드 및 필터 없음, 런타임 오류 없음, 모바일 여섯 카드의 순방향·역방향 조작과 마지막 다음 버튼 비활성화를 확인했다. 320/390/768/900/1024/1440px에서 가로 넘침은 0px이며, 프로그램 상세의 이벤트도 320px에서 넘침이 없다. 신청·결제 데이터는 생성하거나 수정하지 않았다.
+
+최신 증거: `/tmp/inyeon-story-refresh/evidence.json`, `interactions/measurements.json`, `desktop-*.png`, `mobile-*.png`, `small-*.png`. 마지막 명암·겹침 보정 캡처는 같은 폴더의 `final-*.png`로 기록한다. 이전 캡처는 변경 이력을 위한 자료다.
+
+## 최신: 검은 브랜드 패널의 여백 축소
+
+사용자가 첨부한 검은 패널의 배경이 문구보다 지나치게 넓다는 지적에 따라 최대 폭을 1120px, PC 높이를 300~420px로 제한했다. 모바일 높이는 260~320px로 줄였다. 문구를 위로 이동시키던 설정을 제거하고 패널의 가로·세로 정중앙에 배치했다. 내부 프레임·작은 브랜드명·진행 표시도 줄어든 패널에 맞췄다. 전체 스크롤 구간도 짧게 조정하고, 네 문구의 전환 기준을 실제 패널 고정 구간에 맞췄다.
+
+최종 빌드와 `git diff --check` 통과. 실제 브라우저 1762×900, 1440×1000, 390×844, 320×844에서 정방향 0→1→2→3 및 역방향 3→1→0 전환, 글자 정중앙 배치, 가로 넘침·런타임 오류 없음을 확인했다. 중심 오차는 최대 0.008px이다. 320px 모션 줄이기 화면도 확인했다. 이번 검수는 변경한 브랜드 구간에 집중했으며 전체 신청·결제 검사를 반복하지 않았다. 기존 디자인 회귀 스크립트의 패널 높이·스크롤 위치 기준도 갱신했다.
+
+이번 최신 비교·측정: `/tmp/inyeon-brand-compact/before-*.png`, `after-*.png`, `evidence.json`, `reduced-320.png`. 화면을 직접 열어 PC·모바일의 여백과 배치를 확인했다. 앞서 보강한 히어로·이미지 카드·이벤트·폼 구성은 유지한다.
+
+## 최신: 프로그램·신청·진단 화면까지 이미지 흐름 확장
+
+같은 이미지 중심의 분위기를 홈페이지 전반에 적용해 달라는 추가 요청에 따라, 프로그램 목록·다섯 상세페이지·무료 상담·무료 첫인상 진단·자가진단·결제 신청 화면까지 구성 범위를 넓혔다. 작업 전 실제 브라우저 확인에서 메인에는 이미지가 있었지만 프로그램 목록·상세에는 이벤트 사진만 1개씩, 신청·결제·자가진단 페이지에는 사진이 없었다.
+
+사진이 있는 공통 소개 영역, 프로그램별 대표 사진 카드, 사진을 곁들인 다섯 진행 단계, FAQ 사진, 상세페이지의 대화 예시·소개팅 실전·남녀 스타일링 사진을 추가했다. 무료 신청·유료 신청의 안내 영역에도 사진을 배치했고, 자가진단 결과의 추천 프로그램에도 해당 프로그램 사진을 표시한다. 프로그램 목록은 사진 13개, 상세는 6개, 신청·결제는 각 2개의 이미지가 이어지는 구성이다. 기존 사진 원본과 흑백 UI를 사용하며, 이미지에 흑백 필터를 적용하지 않았다.
+
+소개 영역의 사진·문구 등장, 카드 사진 호버 확대, 하위 구간의 스크롤 등장과 모바일 진행 단계 가로 넘김을 적용했다. 페이지 이동 시에도 등장 효과가 초기화되고 모션 줄이기 설정에서는 정적으로 표시한다. 소개 영역의 바로가기 버튼은 실제 콘텐츠로 이동하며 고정 헤더 아래 140px(PC)·110px(모바일)의 시작 위치를 확인했다. 앞서 수정한 배경형 히어로, 축소한 검은 브랜드 패널, 메인 이미지 카드는 유지한다.
+
+검증:
+- 최종 `npm run build`, `git diff --check` 통과.
+- `scripts/verify-coaching.mjs` (`COACHING_QA_FAST=1`) 통과. 전체 페이지·가격 변경·신청 API·사진 처리·관리자·브라우저 무료 사진 신청/유료 신청/진단/픽셀 분리를 격리된 가짜 백엔드로 확인했다. 실제 신청 데이터는 생성하거나 변경하지 않았다. 빠른 실행에서 전체 폭 순회는 생략하고 별도 화면 검수로 대체했다.
+- `scripts/verify-coaching-design.mjs` 통과. 메인 구간 높이·순서, 정방향/역방향 브랜드 문구, 슬라이드·자동 전환, 카드 흐름, 프로그램 탭, 추천, 폼·메뉴, 반응형과 모션 줄이기 설정을 확인했다.
+- 별도 실제 브라우저에서 주요 새 화면 6종을 1440/390px로 촬영하고, 프로그램·상세·상담·결제·진단을 320px에서도 확인했다. 가로 넘침과 런타임 오류가 없었다. 프로그램 카드에서 상세로 이동한 뒤 모션 초기화, 결제 신청의 기존 선택 프로그램·계좌번호, 자가진단 추천 사진의 실제 로드도 확인했다.
+- 최종 PC·모바일 캡처를 열어 문구·사진·가격·배치·링크 이동을 확인했다. 작은 사진 설명은 명암을 높이고 프로그램 목록 시작 여백을 정리했다.
+
+증거: `/tmp/inyeon-site-imagery/before/`, `after/`, `final/`, `functional/`, `home-regression/`. 최신 UI는 `final/` 캡처를 기준으로 확인하며, `after/`는 첫 시각 검수 자료다.
+
+## 선택형 소개팅 이벤트 문구 재확인
+
+추가 요청에 맞춰 공통 이벤트 안내를 ‘코칭 후 서로 맞는 분이 있을 경우, 희망하시는 분에 한해 무료 소개팅 연결 서비스도 제공합니다. 이벤트 참여는 선택사항입니다.’로 맞췄다. 메인·프로그램 목록·상세·FAQ에 같은 문구가 반영된다. 빌드와 `git diff --check` 통과. 실제 브라우저에서 메인 1440px, 상세 390px의 이벤트와 펼친 FAQ를 확인했고 가로 넘침은 없었다. 확인 중 상세 소개의 바로가기 대상이 없던 부분도 연결해, 클릭 후 콘텐츠 시작 위치가 헤더 아래 110px임을 확인했다. 캡처·측정: `/tmp/inyeon-event-confirmation/`. 신청·결제 기능의 전체 검사는 이 문구 수정에서 반복하지 않았다.
+
+## 최신: 스크롤 중 섹션 간격이 붙었다 벌어지는 문제 수정
+
+사용자 화면과 같은 히어로·검은 브랜드 패널 경계에서 문제를 재현했다. 패널을 축소하면서 남아 있던 고정 위치와 별도의 스크롤 높이 때문에, PC의 히어로–패널 간격이 0~900px, 모바일에서는 0~844px로 달라지고 있었다. 패널의 고정을 해제하고 일반 문서 흐름에 배치했다. 위·아래 여백은 PC 80/56px, 모바일 48/40px로 정했다(아래 값은 다음 섹션 시작점 기준). 작은 패널 크기·중앙 문구·진행 표시는 유지했다. 네 문구의 전환은 패널의 화면 내 위치를 기준으로 작동하도록 변경해 별도 스크롤 공간이 필요 없게 했다.
+
+최종 빌드와 `git diff --check` 통과. 실제 브라우저에서 1676/1440/390/320px의 마우스 휠 정방향·역방향 및 구간 진입·이탈을 확인했다. 모든 샘플에서 상하 간격은 위 수치 그대로 유지됐고 가로 넘침·런타임 오류가 없었다. 모션 줄이기 화면도 확인했다. 경계 캡처를 열어 히어로와 패널 사이에 일정한 여백이 생겼음을 확인했다.
+
+`verify-coaching-design.mjs`에도 구간 진입·이탈·왕복 중 간격이 양수이며 변하지 않아야 한다는 검사와 새로운 문구 전환 기준을 반영했다. 전체 검사가 통과했다: 구간 배열·높이, 간격 안정성, 정방향/역방향 네 문구, 사진 전환·자동 넘김, 카드 흐름, 프로그램 탭, 추천, 폼·메뉴·연락 버튼, 반응형·모션 줄이기. 이번 수정에서 신청·결제의 전체 API 검사는 반복하지 않았다.
+
+증거: `/tmp/inyeon-section-spacing/before.json`, `after.json`, `after-1676-boundary.png`, `after-390-boundary.png`, `regression/measurements.json`. 앞선 고정 패널 검수 기록은 이전 단계의 자료이며 이 수정으로 대체한다.

@@ -1,5 +1,2 @@
 import { permanentRedirect } from "next/navigation";
-
-export default function LegacyContactPage() {
-  permanentRedirect("/#choose");
-}
+export default function LegacyContactPage() { permanentRedirect("/apply"); }

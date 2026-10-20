@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import MetaPixel from "@/components/coaching/MetaPixel";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "인연연구소 | 가입비 없이 매칭 후 결제하는 수도권 1:1 대면 소개팅",
+  title: "인연연구소 | 나에게 맞는 1:1 카카오톡 연애코칭",
   description:
-    "앱이 아닌 수도권 중심 1:1 후불제 맞춤형 소개팅. 가입비 없이 시작해 매칭이 성사된 뒤에만 결제하고, 남녀 성비를 균형 있게 관리하며 실제 대면 소개팅까지 연결합니다.",
-  keywords: "1:1 맞춤형 소개팅, 후불제 소개팅, 수도권 소개팅, 소개팅, 인연매칭, 매칭 후 결제, 남녀 성비 균형 소개팅, 가입비 없는 소개팅, 대면 소개팅, 인연연구소",
+    "AI가 아닌, 사람이 직접 듣고 코칭합니다. 실제 소개팅 운영 경험을 바탕으로 남녀 상담사가 체계적이고 전문적인 1:1 카카오톡 연애코칭을 제공합니다. 대화 분석, 소개팅 실전 피드백, 무료 연애진단까지, 인연연구소.",
+  keywords: "연애코칭, 연애상담, 카톡 대화 코칭, 소개팅 코칭, 썸 상담, 무료 연애진단, 첫인상 진단, 스타일링, 인연연구소",
   metadataBase: new URL("https://inyeon.today"),
   openGraph: {
-    title: "인연연구소 | 가입비 없이 매칭 후 결제하는 수도권 1:1 대면 소개팅",
-    description: "앱이 아닌 수도권 중심 1:1 후불제 맞춤형 소개팅. 가입비 없이 시작해 매칭이 성사된 뒤에만 결제하고 실제 대면 소개팅까지 연결합니다.",
+    title: "인연연구소 | 연애에도 연습이 필요합니다",
+    description: "남녀 상담사가 직접 듣고 체계적으로 코칭합니다. 카톡 한 줄부터 소개팅에서의 대화까지, 나에게 맞는 관계의 방식을 전문적인 1:1 카카오톡 코칭으로 함께 찾아갑니다.",
     url: "https://inyeon.today",
     siteName: "인연연구소",
     locale: "ko_KR",
@@ -26,27 +26,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const configuredPixel = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "926857046612598";
+  const pixelId = /^\d+$/.test(configuredPixel) ? configuredPixel : "";
   return (
     <html lang="ko">
-      <head>
-        <Script id="fb-pixel" strategy="afterInteractive">{`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '926857046612598');
-          fbq('track', 'PageView');
-        `}</Script>
-        <noscript>
-          <img height="1" width="1" style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=926857046612598&ev=PageView&noscript=1" alt="" />
-        </noscript>
-      </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">{children}<MetaPixel pixelId={pixelId} /></body>
     </html>
   );
 }

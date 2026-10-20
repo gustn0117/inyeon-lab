@@ -1,6 +1,6 @@
-const SUPABASE_URL = "https://api.hsweb.pics";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE2NDE3NjkyMDAsImV4cCI6MTc5OTUzNTYwMH0.xTNteRFphY3F9W2PPWOwCQ9PDXD05ySRqkJu5d4Cej0";
-const DEFAULT_PW = "1234";
+import { SUPABASE_URL, SUPABASE_KEY } from "@/lib/server-db";
+import { timingSafeEqual } from "node:crypto";
+const DEFAULT_PW = process.env.ADMIN_PASSWORD ?? "";
 const TTL_MS = 5 * 60 * 1000;
 
 let cached: { value: string; at: number } | null = null;
@@ -14,6 +14,7 @@ async function readFromDb(): Promise<string> {
         "Accept-Profile": "inyeon_lab",
       },
       cache: "no-store",
+      signal: AbortSignal.timeout(10000),
     });
     if (!res.ok) return DEFAULT_PW;
     const rows = await res.json();
@@ -38,7 +39,9 @@ export function invalidateAdminPwCache() {
 export async function verifyAdminPw(pw: string | null | undefined): Promise<boolean> {
   if (!pw) return false;
   const current = await getAdminPw();
-  return pw === current;
+  const candidate = Buffer.from(pw);
+  const stored = Buffer.from(current);
+  return candidate.length === stored.length && stored.length > 0 && timingSafeEqual(candidate, stored);
 }
 
 export async function setAdminPw(newPw: string): Promise<boolean> {
