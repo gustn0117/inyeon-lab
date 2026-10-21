@@ -798,99 +798,6 @@
   margin-top: 22px;
 }
 
-/* 카카오톡 대화 예시 — 질문만 반복하던 대화가 이렇게 달라져요 (운영자 홍보 이미지 문구) */
-.chatDemo {
-  margin-top: 20px;
-  padding: 32px;
-  border: 1px solid #e6e6e6;
-  border-radius: 24px;
-  background: #fff;
-}
-
-.chatDemo header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.chatDemo header strong {
-  color: #111;
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -.03em;
-}
-
-.chatDemo header small {
-  color: #6b6b6b;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.chatDemoGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
-  align-items: stretch;
-  gap: 14px;
-}
-
-.chatBefore,
-.chatAfter {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  padding: 22px;
-  border-radius: 18px;
-  background: #f4f4f4;
-}
-
-.chatLabel {
-  align-self: flex-start;
-  margin-bottom: 4px;
-  color: #6b6b6b;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .1em;
-}
-
-.chatBefore p,
-.chatAfter p {
-  max-width: 88%;
-  margin: 0;
-  padding: 10px 14px;
-  border-radius: 16px 16px 4px 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  word-break: keep-all;
-}
-
-.chatBefore p { border: 1px solid #e0e0e0; background: #fff; color: #444; }
-.chatAfter p { background: #111; color: #fff; }
-
-.chatBefore small,
-.chatAfter small {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: 10px;
-  color: #555;
-  font-size: 13px;
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
-.chatTurn {
-  display: grid;
-  width: 40px;
-  height: 40px;
-  align-self: center;
-  place-items: center;
-  border-radius: 50%;
-  background: #111;
-  color: #fff;
-}
-
 .footnote {
   margin: 22px 0 0;
   color: #6b6b6b;
@@ -1406,11 +1313,6 @@
   .exampleGrid { grid-template-columns: 1fr; gap: 14px; }
   .exampleCard { padding: 24px 20px; border-radius: 20px; }
   .exampleConcern p { font-size: 16px; }
-  .chatDemo { padding: 22px 18px; border-radius: 20px; }
-  .chatDemoGrid { grid-template-columns: 1fr; gap: 10px; }
-  .chatTurn { justify-self: center; transform: rotate(90deg); }
-  .chatBefore,
-  .chatAfter { padding: 18px 16px; }
 
   .stepGrid { grid-template-columns: 1fr; gap: 12px; }
   .stepCard { padding: 22px; border-radius: 18px; }

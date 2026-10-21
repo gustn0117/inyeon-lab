@@ -169,24 +169,6 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
             <Link href={`/services/${example.service}`} className={l.textLink}>{serviceName(example.service)} 자세히 보기 <ArrowRight size={14} aria-hidden="true" /></Link>
           </article>)}
         </div>
-        <article className={l.chatDemo} aria-labelledby="chat-demo-title" data-editorial-reveal>
-          <header><span className={l.exampleBadge}>가상 예시</span><strong id="chat-demo-title">어색한 대화도 자연스럽게</strong><small>카카오톡 대화 코칭</small></header>
-          <div className={l.chatDemoGrid}>
-            <div className={l.chatBefore}>
-              <span className={l.chatLabel}>BEFORE</span>
-              <p>오늘 뭐 했어요?</p>
-              <p>밥은 먹었어요?</p>
-              <small>질문만 이어지면 대화가 쉽게 끊겨요.</small>
-            </div>
-            <div className={l.chatTurn} aria-hidden="true"><ArrowRight size={18} /></div>
-            <div className={l.chatAfter}>
-              <span className={l.chatLabel}>AFTER</span>
-              <p>오늘은 업무가 좀 바빴는데 맛있는 거 먹고 나니 힐링되네요 ㅎㅎ OO님은 오늘 뭐 하셨어요?</p>
-              <p>주말에 시간 되시면 제가 맛있는 곳 알려드리고 싶어요!</p>
-              <small>내 이야기를 먼저 나누고, 자연스럽게 다음 만남을 제안해요.</small>
-            </div>
-          </div>
-        </article>
         <p className={l.footnote}>※ 실제 상담 사례가 아닌 서비스 이해를 돕기 위한 가상 예시입니다.</p>
       </div>
     </section>
