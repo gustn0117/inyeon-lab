@@ -3,8 +3,8 @@ import { ArrowDown, ArrowUpRight, ChatCircleDots } from "@phosphor-icons/react/d
 import EditorialMotion from "./EditorialMotion";
 import v from "./visual.module.css";
 
-export function PhotoIntro({ eyebrow, title, description, image, imageCaption, anchorLabel = "자세히 살펴보기", children }: {
-  eyebrow: string; title: ReactNode; description: ReactNode; image: string;
+export function PhotoIntro({ eyebrow, title, description, image, imagePosition, imageCaption, anchorLabel = "자세히 살펴보기", children }: {
+  eyebrow: string; title: ReactNode; description: ReactNode; image: string; imagePosition?: string;
   imageCaption?: string; anchorLabel?: string; children?: ReactNode;
 }) {
   return <section className={v.pageIntro}>
@@ -16,7 +16,7 @@ export function PhotoIntro({ eyebrow, title, description, image, imageCaption, a
         <div className={v.introActions}><a href="#coaching-content">{anchorLabel}<ArrowDown size={16}/></a><span>1:1 카카오톡 · 비밀 상담</span></div>
       </div>
       <figure className={v.introPhoto}>
-        <img src={image} alt="" decoding="async" />
+        <img src={image} alt="" decoding="async" style={imagePosition ? { objectPosition: imagePosition } : undefined} />
         <span className={v.photoBadge}>PERSONAL COACHING</span>
         <figcaption><span>INYEON LAB</span><strong>{imageCaption ?? "나에게 맞는 관계의 방식."}</strong><ArrowUpRight size={27}/></figcaption>
       </figure>

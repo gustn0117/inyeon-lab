@@ -1,0 +1,112 @@
+/* 연애코칭 서비스 상세 페이지 — 프로그램 상세(coaching.module.css)의 레이아웃 위에 쓰는 보조 스타일 */
+.blockTitle { margin-top: 15px; }
+
+.perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700;
+  line-height: 1.4 !important;
+}
+
+.whyList {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 12px;
+  list-style: none;
+}
+
+.whyList li {
+  display: flex;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid #e6e6e6;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.whyList li > span {
+  flex: none;
+  color: #6b6b6b;
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.7;
+}
+
+.whyList strong {
+  display: block;
+  color: #111;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.whyList p {
+  margin: 6px 0 0;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+
+.asideText {
+  margin-top: 12px;
+  color: #5f5f5f;
+  font-size: 14px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.asideActions {
+  display: grid;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.asideActions > a { width: 100%; }
+
+.otherTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.otherList {
+  display: grid;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.otherList a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.otherList li:last-child a { border-bottom: 0; }
+
+.otherList a span {
+  color: #6b6b6b;
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.otherList a svg { margin-left: auto; color: #8a8a8a; }
+.otherList a:hover { color: #000; }
+
+/* 프로그램 상세와 달리 모바일에서는 설명을 먼저 읽고, 신청 안내는 그 아래 */
+@media (max-width: 800px) {
+  .grid > aside.aside { grid-row: auto; }
+}

@@ -252,6 +252,10 @@
   margin-top: 20px;
   font-size: 13px;
 }
+.footerLinks a {
+  padding-block: 8px;
+  margin-block: -8px;
+}
 .footerLinks a:hover {
   text-decoration: underline;
 }
@@ -791,3 +795,29 @@
 .navLink { color: #737373; }
 .footer :focus-visible, .menu :focus-visible, .tray :focus-visible { outline-color: #fff; }
 .quick > a:focus-visible, .quick > button:focus-visible { outline: 2px solid currentColor; outline-offset: -5px; }
+
+/* 모바일 하단 고정 상담 버튼 — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
+.mobileBar { display: none; }
+@media(max-width:900px) {
+  .shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  .tray { display: none !important; }
+  .mobileBar {
+    position: fixed;
+    z-index: 68;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    left: 12px;
+    display: flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 16px;
+    background: #111;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 750;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+  }
+  .mobileBar:focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
+}

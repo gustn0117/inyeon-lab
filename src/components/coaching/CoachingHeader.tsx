@@ -4,13 +4,14 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowRight, CaretDown, List, Phone, X } from "@phosphor-icons/react";
+import { COACHING_SERVICES } from "@/lib/coaching-services";
 import s from "./chrome.module.css";
 
 const GROUPS=[
- {label:"연구소 소개",href:"/#coaching",links:[["/#coaching","사람이 직접 하는 코칭"],["/#difference","인연연구소만의 차별점"],["/#for-you","이런 분들께 추천해요"]]},
- {label:"코칭 프로그램",href:"/programs",links:[["/programs","전체 프로그램 · 가격"],["/programs/conversation","카톡 · 말투 개선"],["/programs/intensive","2주 집중 코칭"],["/programs/premium","4주 프리미엄"]]},
- {label:"무료 진단",href:"/diagnosis",links:[["/diagnosis","무료 연애 자가진단"],["/#recommend","나에게 맞는 코칭 찾기"],["/apply?kind=impression","무료 첫인상 진단"]]},
- {label:"상담 안내",href:"/apply",links:[["/apply","무료 상담 신청"],["/checkout","프로그램 신청 · 입금 안내"],["/programs#faq","자주 묻는 질문"],["/refund","취소 및 환불 안내"]]},
+ {label:"연애코칭 서비스",href:"/#services",links:COACHING_SERVICES.map(service=>[`/services/${service.id}`,service.name])},
+ {label:"코칭 안내",href:"/#concerns",links:[["/#concerns","이런 고민 있으신가요?"],["/#examples","코칭 예시"],["/#process","상담 진행 과정"]]},
+ {label:"프로그램·가격",href:"/#pricing",links:[["/#pricing","프로그램 및 가격 비교"],["/programs","프로그램 자세히 보기"],["/checkout","프로그램 신청 · 입금 안내"]]},
+ {label:"상담 안내",href:"/#faq",links:[["/#faq","자주 묻는 질문"],["/apply","무료 상담 신청서"],["/diagnosis","무료 연애 자가진단"],["/apply?kind=impression","무료 첫인상 진단"],["/refund","취소 및 환불 안내"]]},
 ];
 export default function CoachingHeader(){
  const [open,setOpen]=useState(false);const pathname=usePathname();const menuButton=useRef<HTMLButtonElement>(null);const menu=useRef<HTMLElement>(null);
