@@ -1,10 +1,10 @@
 import CoachingShell from "@/components/coaching/CoachingShell";
-import CoachingLanding from "@/components/coaching/CoachingLanding";
+import ReferenceHome from "@/components/coaching/ReferenceHome";
 import { getPrograms } from "@/lib/coaching-store";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const programs = await getPrograms().catch(() => null);
-  return <CoachingShell><CoachingLanding programs={programs} /></CoachingShell>;
+  return <CoachingShell><ReferenceHome programs={programs}/></CoachingShell>;
 }

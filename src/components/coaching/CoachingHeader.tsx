@@ -9,9 +9,9 @@ import s from "./chrome.module.css";
 
 const GROUPS=[
  {label:"연애코칭 서비스",href:"/#services",links:COACHING_SERVICES.map(service=>[`/services/${service.id}`,service.name])},
- {label:"코칭 안내",href:"/#about",links:[["/#about","인연연구소 소개"],["/#concerns","이런 고민 있으신가요?"],["/#examples","코칭 예시"],["/#process","상담 진행 과정"]]},
+ {label:"코칭 안내",href:"/#coaching",links:[["/#coaching","인연연구소 소개"],["/#concerns","이런 고민 있으신가요?"],["/#examples","코칭 예시"],["/#process","상담 진행 과정"]]},
  {label:"프로그램·가격",href:"/#pricing",links:[["/#pricing","프로그램 및 가격 비교"],["/programs","프로그램 자세히 보기"],["/checkout","프로그램 신청하기"]]},
- {label:"상담 안내",href:"/#start",links:[["/#start","상담 시작 방법"],["/#faq","자주 묻는 질문"],["/apply","무료 상담 신청서"],["/diagnosis","무료 연애 자가진단"],["/apply?kind=impression","무료 첫인상 진단"],["/refund","취소 및 환불 안내"]]},
+ {label:"상담 안내",href:"/#faq",links:[["/#faq","자주 묻는 질문"],["/apply","무료 상담 신청서"],["/diagnosis","무료 연애 자가진단"],["/apply?kind=impression","무료 첫인상 진단"],["/refund","취소 및 환불 안내"]]},
 ];
 export default function CoachingHeader(){
  const [open,setOpen]=useState(false);const pathname=usePathname();const menuButton=useRef<HTMLButtonElement>(null);const menu=useRef<HTMLElement>(null);

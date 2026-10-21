@@ -801,7 +801,7 @@
   .quick>a:not(.quickKakao) { box-shadow: -1px 0 0 #3a3a3a, 0 -1px 0 #3a3a3a; }
 }
 
-/* 모바일 하단 고정 상담 버튼 — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
+/* 모바일 하단 고정 상담 버튼 — 홈 첫 화면 슬라이드 위에서만 숨고 나머지는 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
 .mobileBar { display: none; }
 @media(max-width:900px) {
   .shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
@@ -825,4 +825,7 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
   }
   .mobileBar:focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
+  /* 홈 첫 화면 슬라이드 위에서는 숨김 — 슬라이드의 상담 버튼과 겹치지 않게, 내려가면 다시 보인다 */
+  .quick,.mobileBar { transition: opacity .25s, visibility .25s; }
+  .onHero { opacity: 0; visibility: hidden; pointer-events: none; }
 }

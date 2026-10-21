@@ -28,9 +28,9 @@ export function GuidePhoto({ caption }: { caption: string }) {
   return <figure className={v.guidePhoto} data-editorial-reveal><figcaption><span>HUMAN TO HUMAN</span><strong>{caption}</strong><ArrowUpRight size={23}/></figcaption></figure>;
 }
 
-export function ConversationExample({ question, answer }: { question: string; answer: string }) {
+export function ConversationExample({ question, answer, caption = "내 상황으로 연습하는 코칭", label = "대화 예시" }: { question: string; answer: string; caption?: string; label?: string }) {
   return <div className={v.conversation} data-editorial-reveal>
-    <div className={v.conversationPhoto}><span>내 상황으로 연습하는 코칭</span></div>
-    <div className={v.conversationBody}><div className={v.conversationHead}><ChatCircleDots size={20}/><strong>이렇게 함께 살펴봅니다.</strong><span>대화 예시</span></div><p className={v.question}>{question}</p><p className={v.answer}>{answer}</p></div>
+    <div className={v.conversationPhoto}><span>{caption}</span></div>
+    <div className={v.conversationBody}><div className={v.conversationHead}><ChatCircleDots size={20}/><strong>이렇게 함께 살펴봅니다.</strong><span>{label}</span></div><p className={v.question}>{question}</p><p className={v.answer}>{answer}</p></div>
   </div>;
 }

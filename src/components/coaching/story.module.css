@@ -1,0 +1,146 @@
+.storySection { padding: 110px 64px 100px; background: #fff; color: #111; }
+.storyInner { max-width: 1280px; margin: auto; }
+.kicker { display: block; margin-bottom: 24px; color: #737373; font-size: 10px; font-weight: 650; letter-spacing: .18em; }
+.visualIntro { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+.storySection .introCopy h2 { font-size: clamp(38px,4.1vw,64px); line-height: 1.2; letter-spacing: -.055em; }
+.introCopy > p { margin-top: 28px; color: #333; font-size: 22px; font-weight: 600; line-height: 1.65; letter-spacing: -.035em; word-break: keep-all; }
+.introCopy > .introDescription { margin-top: 16px; color: #666; font-size: 15px; font-weight: 400; line-height: 1.9; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; margin-top: 38px; padding-top: 26px; border-top: 1px solid #ddd; }
+.metrics > div { display: flex; flex-direction: column; gap: 9px; }
+.metrics > div + div { border-left: 1px solid #ddd; padding-left: 28px; }
+.metrics strong { color: #111; font-size: clamp(36px,3.2vw,50px); font-weight: 800; line-height: 1.1; letter-spacing: -.065em; font-variant-numeric: tabular-nums; }
+.metrics strong span { font: inherit; color: inherit; }
+.metrics > div > span { color: #737373; font-size: 12px; }
+.introVisual { position: relative; padding-bottom: 42px; }
+.introPhoto { position: relative; height: 540px; margin: 0; border-radius: 28px; overflow: hidden; background: #f1f1f1; }
+.introPhoto > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.introPhoto::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent,#000c); pointer-events: none; }
+.introPhoto figcaption { position: absolute; z-index: 1; right: 28px; bottom: 28px; color: #fff; text-align: right; }
+.introPhoto figcaption span { display: block; font-size: 9px; font-weight: 600; letter-spacing: .12em; }
+.introPhoto figcaption b { display: block; margin-top: 9px; font-size: 19px; font-weight: 650; letter-spacing: -.04em; }
+.chatPreview { position: absolute; z-index: 2; bottom: 0; left: -34px; width: 288px; padding: 20px; border: 1px solid #e6e6e6; border-radius: 20px; background: #fff; box-shadow: 0 20px 60px #00000012; }
+.chatPreviewHead { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; }
+.chatPreviewHead small { margin-left: auto; color: #737373; font-size: 9px; font-weight: 400; }
+.chatPreview p { width: fit-content; margin: 17px 0 0; padding: 11px 13px; border-radius: 3px 12px 12px; background: #f1f1f1; font-size: 12px; line-height: 1.6; }
+.chatPreview p:last-child { margin: 9px 0 0 auto; border-radius: 12px 3px 12px 12px; background: #111; color: #fff; }
+.visualStamp { position: absolute; top: -26px; right: -22px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 94px; height: 94px; border: 7px solid #fff; border-radius: 50%; background: #111; color: #fff; font-size: 9px; font-weight: 600; letter-spacing: .06em; transform: rotate(12deg); }
+.visualStamp i { font-size: 30px; font-style: normal; line-height: 1.1; }
+.differences { margin-top: 130px; scroll-margin-top: 155px; }
+.differenceIntro { display: grid; grid-template-columns: .95fr 1.05fr; gap: 80px; align-items: start; }
+.differenceIntro h3 { margin: 0; color: #111; font-size: clamp(30px,3.25vw,48px); font-weight: 800; line-height: 1.3; letter-spacing: -.05em; word-break: keep-all; }
+.differenceDescription { padding-top: 30px; }
+.differenceDescription p { color: #666; font-size: 15px; line-height: 1.95; word-break: keep-all; }
+.differenceDescription p + p { margin-top: 16px; color: #333; }
+.featureTools { display: flex; align-items: center; justify-content: space-between; margin: 50px 0 22px; padding-top: 22px; border-top: 1px solid #ddd; }
+.featureTools > span { color: #737373; font-size: 12px; letter-spacing: -.02em; }
+.featureNavigation { display: none; align-items: center; gap: 8px; }
+.featureNavigation > span { margin-right: 12px; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.featureNavigation i { color: #888; font-style: normal; font-weight: 400; }
+.featureNavigation button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ddd; border-radius: 50%; background: #fff; color: #111; }
+.featureNavigation button:disabled { opacity: .3; cursor: default; }
+.featureNavigation button:focus-visible,.featureGrid:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+.featureGrid { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.featureCard { min-width: 0; overflow: hidden; border: 1px solid #e5e5e5; border-radius: 24px; background: #fafafa; }
+.featurePhoto { position: relative; height: 215px; overflow: hidden; background: #eee; }
+.featurePhoto::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(transparent,#000c); pointer-events: none; }
+.featurePhoto img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.featureNumber { position: absolute; top: 16px; left: 16px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: #fff; color: #111; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.featureLabel { position: absolute; z-index: 1; right: 20px; bottom: 19px; left: 20px; color: #fff; font-size: 13px; font-weight: 600; }
+.featureCopy { padding: 25px 26px 28px; }
+.featureCopy h4 { min-height: 3em; margin: 0 0 15px; color: #111; font-size: 21px; font-weight: 750; line-height: 1.5; letter-spacing: -.04em; word-break: keep-all; }
+.featureCopy p { color: #666; font-size: 14px; line-height: 1.85; word-break: keep-all; }
+.swipeHint { display: none; }
+.closingBanner { position: relative; display: grid; place-items: center; min-height: 370px; margin-top: 64px; padding: 52px 36px; overflow: hidden; border-radius: 28px; background: #111; text-align: center; }
+.closingBanner > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.closingBanner::after { content: ""; position: absolute; inset: 0; background: #0009; }
+.closingCopy { position: relative; z-index: 1; }
+.closingCopy .kicker { margin-bottom: 22px; color: #ddd; }
+.closingCopy p { color: #fff; font-size: clamp(24px,2.7vw,40px); font-weight: 750; line-height: 1.5; letter-spacing: -.045em; word-break: keep-all; }
+.closingCopy > span:last-child { display: block; margin-top: 22px; color: #eee; font-size: 14px; line-height: 1.85; word-break: keep-all; }
+.consultSection .consultLayout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; max-width: 1280px; margin: auto; }
+.consultVisual { position: sticky; top: 150px; min-width: 0; }
+.consultVisual figure { position: relative; height: 630px; margin: 0; overflow: hidden; border-radius: 24px; background: #222; }
+.consultVisual figure > img { width: 100%; height: 100%; object-fit: cover; object-position: 65% center; }
+.consultVisual figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 20%,rgba(0,0,0,.36) 45%,rgba(0,0,0,.74) 65%,rgba(0,0,0,.84)); }
+.privateBadge { position: absolute; top: 24px; left: 24px; display: flex; align-items: center; gap: 7px; padding: 10px 13px; border-radius: 30px; background: #fff; color: #111; font-size: 12px; font-weight: 600; }
+.consultVisual figcaption { position: absolute; z-index: 1; right: 32px; bottom: 34px; left: 32px; color: #fff; }
+.consultVisual figcaption > span { font-size: 9px; letter-spacing: .16em; }
+.consultVisual figcaption p { margin-top: 15px; font-size: clamp(24px,2vw,30px); font-weight: 700; line-height: 1.5; letter-spacing: -.04em; word-break: keep-all; }
+.consultCaption { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #444; color: #d0d0d0; font-size: 11px; }
+.consultCaption span:first-child { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 13px; font-weight: 600; }
+.consultSection .consultForm { width: 100%; min-width: 0; margin: 0; padding: 32px; }
+.visualPending { opacity: 0; transform: translateY(32px); transition: opacity .8s,transform .9s cubic-bezier(.22,1,.36,1); }
+.visualEntered { opacity: 1; transform: none; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) { .featureCard:hover .featurePhoto img { transform: scale(1.055); } }
+@media(max-width:1100px) {
+  .storySection { padding-inline: 48px; }
+  .visualIntro { gap: 50px; }
+  .introPhoto { height: 490px; }
+  .differenceIntro { gap: 45px; }
+  .featureGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .consultSection .consultLayout { gap: 28px; }
+}
+@media(max-width:900px) {
+  .storySection { padding: 80px 32px; }
+  .visualIntro { grid-template-columns: 1fr; gap: 50px; }
+  .introCopy { max-width: 600px; }
+  .introVisual { width: 100%; max-width: 600px; margin-inline: auto; }
+  .introPhoto { height: 460px; }
+  .chatPreview { left: 24px; }
+  .visualStamp { right: 12px; }
+  .desktopBreak { display: none; }
+  .differences { margin-top: 90px; scroll-margin-top: 120px; }
+  .consultSection .consultLayout { grid-template-columns: 1fr; max-width: 700px; gap: 28px; }
+  .consultVisual { position: relative; top: auto; }
+  .consultVisual figure { height: 350px; }
+  .consultVisual figure > img { object-position: center 43%; }
+  .consultCaption { margin-top: 16px; padding-top: 16px; }
+}
+@media(max-width:768px) {
+  .storySection { padding: 72px 20px; }
+  .storySection .introCopy h2 { font-size: clamp(35px,9.8vw,48px); }
+  .kicker { margin-bottom: 22px; font-size: 9px; }
+  .introCopy > p { font-size: 20px; margin-top: 24px; }
+  .introCopy > .introDescription { font-size: 13px; }
+  .metrics { margin-top: 28px; padding-top: 22px; }
+  .metrics strong { font-size: 42px; }
+  .metrics > div > span { font-size: 11px; }
+  .metrics > div + div { padding-left: 20px; }
+  .introVisual { padding-bottom: 110px; }
+  .introPhoto { height: 340px; border-radius: 22px; }
+  .introPhoto figcaption { display: none; }
+  .introPhoto figcaption b { font-size: 17px; }
+  .chatPreview { left: 16px; width: min(285px,calc(100% - 32px)); padding: 18px; }
+  .visualStamp { top: -22px; right: 14px; width: 82px; height: 82px; }
+  .differenceIntro { grid-template-columns: 1fr; gap: 24px; }
+  .differenceIntro h3 { font-size: 34px; }
+  .differenceDescription { padding: 0; }
+  .differenceDescription p { font-size: 14px; }
+  .featureTools { margin-top: 30px; padding-top: 18px; gap: 12px; }
+  .featureTools > span { max-width: 125px; font-size: 11px; line-height: 1.6; word-break: keep-all; }
+  .featureNavigation { display: flex; }
+  .featureGrid { display: flex; gap: 16px; margin-inline: -20px; padding: 0 20px 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: thin; scrollbar-color: #111 #e9e9e9; }
+  .featureGrid::-webkit-scrollbar { height: 3px; }
+  .featureGrid::-webkit-scrollbar-track { background: #e9e9e9; }
+  .featureGrid::-webkit-scrollbar-thumb { background: #111; border-radius: 5px; }
+  .featureCard { flex: 0 0 calc(100% - 44px); scroll-snap-align: start; border-radius: 20px; }
+  .featurePhoto { height: 190px; }
+  .featureCopy { padding: 23px 22px 27px; }
+  .featureCopy h4 { font-size: 20px; }
+  .featureCopy p { font-size: 13px; }
+  .swipeHint { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; color: #737373; font-size: 10px; }
+  .closingBanner { min-height: 340px; margin-top: 48px; padding: 35px 22px; border-radius: 22px; }
+  .closingCopy p { font-size: 25px; }
+  .closingCopy > span:last-child { font-size: 12px; }
+  .consultVisual figure { height: 300px; border-radius: 20px; }
+  .consultVisual figcaption { right: 25px; bottom: 26px; left: 25px; }
+  .consultVisual figcaption p { font-size: 24px; }
+  .privateBadge { top: 20px; left: 20px; }
+  .consultCaption { gap: 10px; font-size: 10px; }
+  .consultCaption span:first-child { font-size: 11px; }
+  .consultSection .consultForm { padding: 24px 20px 20px; }
+}
+@media(prefers-reduced-motion:reduce) { .visualPending { opacity: 1; transform: none; transition: none; } .featurePhoto img { transition: none; } }
+
+/* AI 인물 사진 대신 빗금 자리 — 원래 사진 틀 크기 그대로 */
+.introPhoto,.featurePhoto,.closingBanner,.consultVisual figure { background: var(--hatch-dark); }

@@ -320,85 +320,6 @@
 
 .whoPanel a:hover > svg { color: #111; transform: translateX(3px); }
 
-/* 상담 시작 방법 — 첫 칸(카카오톡 상담)은 검정으로 강조 */
-.startSection { padding: 96px 0; }
-
-.startGrid {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  list-style: none;
-}
-
-.startCard {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 228px;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px 20px 20px;
-  border: 1px solid #e6e6e6;
-  border-radius: 20px;
-  background: #fff;
-  color: #111;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color .25s, transform .25s, box-shadow .25s;
-}
-
-.startCard:hover {
-  border-color: #111;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, .07);
-  transform: translateY(-4px);
-}
-
-.startIcon {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  flex: none;
-  place-items: center;
-  border-radius: 14px;
-  background: #111;
-  color: #fff;
-}
-
-.startCard strong {
-  margin-top: 18px;
-  font-size: 17px;
-  font-weight: 800;
-  line-height: 1.4;
-  letter-spacing: -.03em;
-}
-
-.startText {
-  margin-top: 8px;
-  color: #5f5f5f;
-  font-size: 14px;
-  line-height: 1.6;
-  word-break: keep-all;
-}
-
-.startMore {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: auto;
-  padding-top: 16px;
-  color: #111;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.startGrid li:first-child .startCard { border-color: #111; background: #111; color: #fff; }
-.startGrid li:first-child .startIcon { background: #fff; color: #111; }
-.startGrid li:first-child .startText { color: #cfcfcf; }
-.startGrid li:first-child .startMore { color: #fff; }
-.startGrid li:first-child .startCard:focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
-
 /* 인연연구소 소개 */
 .aboutGrid {
   display: grid;
@@ -534,174 +455,6 @@
   font-weight: 700;
   text-decoration: underline !important;
   text-underline-offset: 5px;
-}
-
-/* 서비스 — 사진 대신 글로: 어떤 분이 신청하는지와 받을 수 있는 도움을 카드에 풀어 쓴다 */
-.serviceGrid {
-  display: grid;
-  margin: 0;
-  padding: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  list-style: none;
-}
-
-.serviceCard {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  padding: 28px 26px 24px;
-  border: 1px solid #e6e6e6;
-  border-radius: 22px;
-  background: #fff;
-  color: #111;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
-}
-
-.serviceCard:hover {
-  border-color: #111;
-  box-shadow: 0 22px 48px rgba(0, 0, 0, .08);
-  transform: translateY(-5px);
-}
-
-.serviceTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.serviceIcon {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  flex: none;
-  place-items: center;
-  border-radius: 14px;
-  background: #111;
-  color: #fff;
-}
-
-.serviceNumber {
-  color: #6b6b6b;
-  font-size: 13px;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-
-.serviceCard h3,
-.serviceFeatured h3 {
-  margin: 18px 0 0;
-  color: #111;
-  font-size: 21px;
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: -.035em;
-  word-break: keep-all;
-}
-
-.serviceTagline {
-  margin: 8px 0 0;
-  color: #5f5f5f;
-  font-size: 15px;
-  line-height: 1.6;
-  word-break: keep-all;
-}
-
-.serviceWho {
-  margin-top: 18px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: #f4f4f4;
-}
-
-.serviceWho strong {
-  display: block;
-  color: #111;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .02em;
-}
-
-.serviceWho p {
-  margin: 6px 0 0;
-  color: #333;
-  font-size: 14px;
-  line-height: 1.7;
-  word-break: keep-all;
-}
-
-.servicePoints {
-  display: grid;
-  margin: 18px 0 0;
-  padding: 0;
-  gap: 7px;
-  list-style: none;
-}
-
-.servicePoints li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  color: #333;
-  font-size: 14px;
-  line-height: 1.5;
-  word-break: keep-all;
-}
-
-.servicePoints svg { flex: none; margin-top: 3px; }
-
-.serviceMore {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  padding-top: 20px;
-  color: #111;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* 07 종합 코칭은 넓은 검정 카드 */
-.serviceFeatured {
-  display: grid;
-  margin-top: 16px;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 24px 56px;
-  padding: 40px 44px;
-  border-radius: 24px;
-  background: #111;
-  color: #fff;
-  transition: transform .3s, box-shadow .3s;
-}
-
-.serviceFeatured:hover {
-  box-shadow: 0 26px 56px rgba(0, 0, 0, .18);
-  transform: translateY(-4px);
-}
-
-.featuredNumber {
-  color: #bdbdbd;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-.serviceFeatured h3 { color: #fff; font-size: clamp(26px, 2.4vw, 34px); }
-.serviceFeatured .serviceTagline { color: #d9d9d9; font-size: 16px; }
-.serviceFeatured .serviceWho { background: #1f1f1f; }
-.serviceFeatured .serviceWho strong { color: #fff; }
-.serviceFeatured .serviceWho p { color: #d6d6d6; }
-.serviceFeatured .servicePoints { margin-top: 0; }
-.serviceFeatured .servicePoints li { color: #ededed; font-size: 15px; }
-.serviceFeatured .serviceMore { color: #fff; }
-.featuredPointsTitle {
-  display: block;
-  margin-bottom: 14px;
-  color: #bdbdbd;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .02em;
 }
 
 /* 코칭 예시 */
@@ -1146,10 +899,8 @@
 .closing button:focus-visible { outline: 2px solid #fff !important; outline-offset: 4px !important; }
 
 @media (max-width: 1100px) {
-  .startGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .aboutGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .concernGrid,
-  .serviceGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .concernGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stepGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stepCard::after { display: none; }
 
@@ -1263,32 +1014,13 @@
   .heroGhost,
   .heroKakao { width: 100%; min-height: 54px; }
 
-  .startSection { padding: 64px 0; }
-  .startGrid { grid-template-columns: 1fr; gap: 10px; }
-  .startCard {
-    display: grid;
-    min-height: 0;
-    grid-template-columns: 44px minmax(0, 1fr) auto;
-    grid-template-areas: "icon title more" "icon text more";
-    align-items: center;
-    column-gap: 14px;
-    row-gap: 2px;
-    padding: 16px;
-    border-radius: 16px;
-  }
-  .startIcon { grid-area: icon; width: 44px; height: 44px; border-radius: 12px; }
-  .startCard strong { grid-area: title; margin: 0; font-size: 16px; }
-  .startText { grid-area: text; margin: 0; font-size: 13px; line-height: 1.5; }
-  .startMore { grid-area: more; margin: 0; padding: 0; font-size: 0; } /* 모바일은 화살표만 */
-  .startMore svg { width: 16px; height: 16px; }
   .aboutGrid { grid-template-columns: 1fr; gap: 10px; }
   .aboutCard { padding: 22px 20px; border-radius: 18px; }
   .aboutCard small { margin-top: 12px; }
   .aboutCard h3 { font-size: 18px; }
   .aboutCard p { font-size: 14px; }
 
-  .concernGrid,
-  .serviceGrid { grid-template-columns: 1fr; gap: 12px; }
+  .concernGrid { grid-template-columns: 1fr; gap: 12px; }
   .concernCard { min-height: 0; padding: 22px 22px 20px; border-radius: 18px; }
   .concernCard p { margin-top: 10px; font-size: 17px; }
   .concernLink { padding-top: 14px; }
@@ -1296,19 +1028,6 @@
   .textLink { min-height: 44px; margin-top: 4px; }
   .exampleCard .textLink { margin-top: 10px; }
 
-  .serviceCard { padding: 22px 20px 20px; border-radius: 18px; }
-  .serviceIcon { width: 42px; height: 42px; border-radius: 12px; }
-  .serviceCard h3,
-  .serviceFeatured h3 { margin-top: 14px; font-size: 19px; }
-  .serviceTagline { font-size: 14px; }
-  .serviceWho { margin-top: 14px; padding: 13px 14px; }
-  .serviceWho p { font-size: 13.5px; }
-  .servicePoints { margin-top: 14px; }
-  .servicePoints li { font-size: 13.5px; }
-  .serviceMore { padding-top: 16px; }
-  .serviceFeatured { grid-template-columns: 1fr; margin-top: 12px; padding: 26px 20px 24px; border-radius: 20px; }
-  .serviceFeatured .serviceTagline { font-size: 15px; }
-  .serviceFeatured .servicePoints li { font-size: 14px; }
 
   .exampleGrid { grid-template-columns: 1fr; gap: 14px; }
   .exampleCard { padding: 24px 20px; border-radius: 20px; }
@@ -1338,8 +1057,5 @@
   .heroHighlights,
   .heroActions,
   .whoPanel { animation: none; }
-  .startCard,
-  .concernCard,
-  .serviceCard,
-  .serviceFeatured { transition: none; }
+  .concernCard { transition: none; }
 }
