@@ -1,7 +1,7 @@
-import { ChatCircleDots, ChatsCircle, Info } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { ArrowUpRight, ChatCircleDots, Info } from "@phosphor-icons/react/dist/ssr";
 import { DETAIL_NOTICES, DETAIL_STEPS } from "@/lib/coaching-services";
 import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
-import ChatButton from "./ChatButton";
 import l from "./landing.module.css";
 import d from "./service.module.css";
 
@@ -27,10 +27,10 @@ export default function DetailFooter({ noticeTitle = "상담 전 확인해 주�
       <div className={l.closingCopy}>
         <span className={l.eyebrow}>YOUR STORY STARTS HERE</span>
         <h2 id="detail-closing-title">혼자 고민했던 연애,<br />이제는 함께 해결 방향을 찾아보세요.</h2>
-        <p>지금의 고민을 카카오톡이나 실시간 채팅으로 편하게 남겨주세요.</p>
+        <p>지금의 고민을 카카오톡으로 편하게 남겨주세요.</p>
         <div className={l.closingActions}>
           <a href={KAKAO_OPEN_CHAT_URL} target="_blank" rel="noopener noreferrer" className={l.lightButton}><ChatCircleDots size={18} weight="fill" aria-hidden="true" /> 카카오톡 상담 신청<span className="sr-only"> (새 창)</span></a>
-          <ChatButton className={l.outlineButton}><ChatsCircle size={18} aria-hidden="true" /> 실시간 채팅 상담</ChatButton>
+          <Link href="/apply" className={l.outlineButton}>무료 상담 신청서 작성 <ArrowUpRight size={15} aria-hidden="true" /></Link>
         </div>
       </div>
     </section>

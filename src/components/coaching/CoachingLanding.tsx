@@ -1,18 +1,16 @@
 import Link from "next/link";
 import type { Icon } from "@phosphor-icons/react";
-import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, ChatsCircle, Check, ClipboardText, NotePencil, UserFocus } from "@phosphor-icons/react/dist/ssr";
+import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, Check, ClipboardText, NotePencil, UserFocus } from "@phosphor-icons/react/dist/ssr";
 import { type Program, won } from "@/lib/coaching";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
 import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
-import ChatButton from "./ChatButton";
 import { SERVICE_ICONS } from "./serviceIcons";
 import CoachingHero from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
 import l from "./landing.module.css";
 
 // 첫 화면 바로 아래: 사이트에서 할 수 있는 상담·무료 진단을 한눈에
-const START: { title: string; text: string; cta: string; icon: Icon; href?: string; external?: boolean }[] = [
-  { title: "실시간 채팅 상담", text: "사이트에서 바로 궁금한 점을 남기면 상담사가 확인 후 답변드려요.", cta: "채팅 열기", icon: ChatsCircle },
+const START: { title: string; text: string; cta: string; icon: Icon; href: string; external?: boolean }[] = [
   { title: "카카오톡 상담", text: "오픈채팅으로 편하게 1:1 상담을 신청하세요.", cta: "오픈채팅 열기", icon: ChatCircleDots, href: KAKAO_OPEN_CHAT_URL, external: true },
   { title: "무료 연애 자가진단", text: "10문항으로 나의 연애 성향과 필요한 연습을 알아보세요.", cta: "진단 시작", icon: ClipboardText, href: "/diagnosis" },
   { title: "무료 첫인상 진단", text: "사진과 스타일 고민을 남기면 간단한 피드백을 카카오톡으로 드려요.", cta: "사진 보내기", icon: UserFocus, href: "/apply?kind=impression" },
@@ -57,7 +55,7 @@ const FAQS = [
   { question: "상담은 얼마나 진행되나요?", answer: "프로그램마다 상담 시간과 횟수가 다릅니다. 한 번에 고민을 정리하는 단회 상담부터 여러 회차에 걸쳐 연습하는 집중 코칭까지 있으니, 위의 프로그램 및 가격 안내에서 비교해보세요." },
   { question: "어떤 프로그램을 선택해야 할지 모르겠어요.", answer: "카카오톡으로 지금의 고민을 편하게 말씀해주세요. 상황을 듣고 맞는 프로그램을 안내해드립니다. 무료 연애 자가진단이나 무료 상담 신청서로 먼저 시작하셔도 됩니다." },
   { question: "스타일링 제안은 정말 무료인가요?", answer: "네. 사진을 보내주시면 어울리는 헤어스타일과 옷차림 등 기본 스타일링 방향을 무료로 제안해드립니다. 사진 제출은 선택사항이며, 보내주신 사진은 동의 없이 공개하지 않습니다." },
-  { question: "상담 후 추가 질문도 가능한가요?", answer: "상담 시간, 답변 횟수와 추가 질문 가능 범위는 선택하신 프로그램에 따라 다릅니다. 신청 전 카카오톡이나 실시간 채팅으로 문의하시면 프로그램별로 자세히 안내해드립니다." },
+  { question: "상담 후 추가 질문도 가능한가요?", answer: "상담 시간, 답변 횟수와 추가 질문 가능 범위는 선택하신 프로그램에 따라 다릅니다. 신청 전 카카오톡으로 문의하시면 프로그램별로 자세히 안내해드립니다." },
   { question: "재회 상담도 진행하나요?", answer: "재회 상담은 진행하지 않습니다. 지난 연애에서 반복된 문제를 돌아보고 다음 관계를 준비하고 싶으시다면, '연애 성향·문제점 분석'으로 앞으로의 방향을 함께 정리해드립니다." },
 ];
 
@@ -87,7 +85,7 @@ function Pricing({ programs }: { programs: Program[] | null }) {
         <div className={l.priceActions}><Link href={`/checkout?program=${program.id}`} className={l.priceApply} aria-label={`${program.name} 신청하기`}>신청하기</Link><Link href={`/programs/${program.id}`} className={l.priceMore} aria-label={`${program.name} 자세히 보기`}>자세히 보기</Link></div>
       </article>)}
     </div>
-    <p className={l.footnote}>표시 금액은 프로그램 전체 이용 금액입니다. 기본 스타일링 제안은 희망하시는 분께 무료로 제공합니다.</p>
+    <p className={l.footnote}>표시 금액은 프로그램 전체 이용 금액입니다. 사진 기반 기본 스타일링 제안은 선택사항이며, 희망하시는 분께 무료로 제공합니다.</p>
   </>;
 }
 
@@ -101,13 +99,12 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
 
     <section id="start" className={`${l.section} ${l.startSection}`} aria-labelledby="start-title" data-home-section="start">
       <div className={l.container}>
-        <SectionHead eyebrow="HOW TO START" title={<span id="start-title">원하는 방법으로 편하게 시작하세요</span>}>실시간 채팅부터 무료 진단까지, 모든 상담은 1:1 비대면으로 진행합니다.</SectionHead>
+        <SectionHead eyebrow="HOW TO START" title={<span id="start-title">원하는 방법으로 편하게 시작하세요</span>}>카카오톡 상담부터 무료 진단까지, 모든 상담은 1:1 비대면으로 진행합니다.</SectionHead>
         <ul className={l.startGrid}>
           {START.map(item => {
             const body = <><span className={l.startIcon} aria-hidden="true"><item.icon size={22} /></span><strong>{item.title}</strong><span className={l.startText}>{item.text}</span><span className={l.startMore}>{item.cta} <ArrowRight size={13} aria-hidden="true" /></span></>;
             return <li key={item.title} data-editorial-reveal>
-              {!item.href ? <ChatButton className={l.startCard}>{body}</ChatButton>
-                : item.external ? <a href={item.href} target="_blank" rel="noopener noreferrer" className={l.startCard}>{body}<span className="sr-only"> (새 창)</span></a>
+              {item.external ? <a href={item.href} target="_blank" rel="noopener noreferrer" className={l.startCard}>{body}<span className="sr-only"> (새 창)</span></a>
                 : <Link href={item.href} className={l.startCard}>{body}</Link>}
             </li>;
           })}

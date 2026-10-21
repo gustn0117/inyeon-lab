@@ -1,7 +1,6 @@
 import Image from "next/image";
 import ArtDirectedImage from "@/components/ArtDirectedImage";
 import ApplicationForm from "@/components/ApplicationForm";
-import ChatWidget from "@/components/ChatWidget";
 import ConsultButton from "@/components/ConsultButton";
 import StickyApplyButton from "@/components/StickyApplyButton";
 import { RenewalFooter, RenewalHeader } from "@/components/RenewalShell";
@@ -301,7 +300,6 @@ export default function GenderLanding({ gender }: { gender: GenderKey }) {
       </main>
       <RenewalFooter />
       <StickyApplyButton label={content.stickyLabel} />
-      <ChatWidget />
     </div>
   );
 }

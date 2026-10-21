@@ -796,82 +796,33 @@
 .footer :focus-visible, .menu :focus-visible, .tray :focus-visible { outline-color: #fff; }
 .quick > a:focus-visible, .quick > button:focus-visible { outline: 2px solid currentColor; outline-offset: -5px; }
 
-/* 실시간 채팅 상담 탭 — 데스크톱은 오른쪽 빠른 상담 맨 위, 모바일은 하단 고정 버튼이 대신한다. */
-.liveDot {
-  position: absolute;
-  top: 12px;
-  right: 9px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #3ecf6e;
-  box-shadow: 0 0 0 2px #111;
-}
-.chatBadge {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 5px;
-  border-radius: 10px;
-  background: #e5484d;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 20px;
-  text-align: center;
-}
+/* 어두운 섹션 위에서도 검정 탭 경계가 보이도록 */
 @media(min-width:901px) {
-  .quick>a,.quick>button:not(.quickToggle) { height: 124px; font-size: 17px; }
-  .quick>a span:not(:global(.sr-only)),.quick>button:not(.quickToggle) span { top: 50px; }
-  .quick>a>svg,.quick .quickChat>svg { position: absolute; bottom: 18px; }
-  .quick .quickTop svg { top: 28px; }
-  .quick .quickTop span { top: 74px!important; }
-  .quick .quickChat { border-bottom: 1px solid #333; }
-  /* 어두운 섹션 위에서도 검정 탭 경계가 보이도록 */
-  .quick>a:not(.quickKakao),.quick .quickChat { box-shadow: -1px 0 0 #3a3a3a, 0 -1px 0 #3a3a3a; }
-}
-@media(min-width:901px) and (max-height:700px) {
-  .quick>a,.quick>button:not(.quickToggle) { height: 104px; font-size: 15px; }
-  .quick>a span:not(:global(.sr-only)),.quick>button:not(.quickToggle) span { top: 42px; }
-  .quick>a>svg,.quick .quickChat>svg { bottom: 12px; }
-  .quick .quickTop svg { top: 22px; }
-  .quick .quickTop span { top: 64px!important; }
+  .quick>a:not(.quickKakao) { box-shadow: -1px 0 0 #3a3a3a, 0 -1px 0 #3a3a3a; }
 }
 
-/* 모바일 하단 고정 상담 버튼(채팅 상담 + 카카오톡 상담) — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
+/* 모바일 하단 고정 상담 버튼 — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
 .mobileBar { display: none; }
 @media(max-width:900px) {
   .shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
   .tray { display: none !important; }
-  .quick .quickChat { display: none !important; }
   .mobileBar {
     position: fixed;
     z-index: 68;
     right: 12px;
     bottom: calc(10px + env(safe-area-inset-bottom));
     left: 12px;
-    display: grid;
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-    gap: 8px;
-  }
-  .mobileBar > a,
-  .mobileBar > button {
-    position: relative;
     display: flex;
     min-height: 54px;
     align-items: center;
     justify-content: center;
-    gap: 7px;
+    gap: 8px;
     border-radius: 16px;
-    font-size: 15px;
+    background: #111;
+    color: #fff;
+    font-size: 16px;
     font-weight: 750;
-    white-space: nowrap;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
   }
-  .mobileChat { border: 1px solid #111; background: #fff; color: #111; cursor: pointer; }
-  .mobileKakao { background: #111; color: #fff; }
-  .mobileBar > :focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
-  .mobileChat .chatBadge { top: -7px; right: -5px; left: auto; }
+  .mobileBar:focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
 }

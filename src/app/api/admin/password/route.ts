@@ -3,6 +3,12 @@ import { verifyAdminPw, setAdminPw } from "@/lib/adminPw";
 
 const PW_RE = /^\S{8,72}$/;
 
+// GET: 관리자 로그인 확인 (x-admin-password 헤더)
+export async function GET(req: NextRequest) {
+  if (!(await verifyAdminPw(req.headers.get("x-admin-password")))) return NextResponse.json({ error: "비밀번호가 일치하지 않습니다." }, { status: 401 });
+  return NextResponse.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
+}
+
 // POST: 비밀번호 변경
 // Current credentials remain valid; newly configured passwords require at least eight characters.
 export async function POST(req: NextRequest) {
