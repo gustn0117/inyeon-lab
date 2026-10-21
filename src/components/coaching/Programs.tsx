@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { ArrowUpRight, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import { PROGRAM_IMAGES, type Program, won } from "@/lib/coaching";
+import { DEFAULT_PROGRAMS, type Program, won } from "@/lib/coaching";
 import s from "./coaching.module.css";
 import v from "./visual.module.css";
 
 export function ProgramCard({ program }: { program: Program }) {
   return <article className={`${s.programCard} ${v.imageCard} ${program.featured ? s.programFeatured : ""}`} data-featured={program.featured} data-editorial-reveal>
-    <figure className={v.cardPhoto}><img src={`/inyeon-2026/${PROGRAM_IMAGES[program.id] ?? PROGRAM_IMAGES.consultation}`} alt="" loading="lazy" decoding="async"/><span>{String(Object.keys(PROGRAM_IMAGES).indexOf(program.id)+1).padStart(2,"0")}</span></figure>
+    <figure className={v.cardPhoto}><span>{String(DEFAULT_PROGRAMS.findIndex(p => p.id === program.id)+1).padStart(2,"0")}</span></figure>
     <div className={v.cardBody}>
     <span className={s.programBadge}>{program.featured ? <><Sparkle size={13} /> 실전 연습과 피드백</> : `${program.duration} · 1:1 카카오톡 코칭`}</span>
     <h3>{program.name}</h3><p className={s.programTagline}>{program.tagline}</p>

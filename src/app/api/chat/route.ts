@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyAdminPw } from "@/lib/adminPw";
 
 import { SUPABASE_URL, SUPABASE_KEY } from "@/lib/server-db";
+import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
 
 async function supa(path: string, opts: RequestInit = {}) {
   return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -19,7 +20,7 @@ const CJK_RE = /[一-鿿぀-ヿ]/g;
 const cjkCount = (s: string) => (s.match(CJK_RE) ?? []).length;
 const isUuid = (v: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
 
-const WELCOME_MSG = "문의주시면 매칭전문사가 24시간 내에 순차적으로 답변 드립니다. 따로 답변 알림이 가진 않으니, 카카오톡 아이디인 inyeon_으로 문의주시면 보다 빠르게 답변 받으실 수 있습니다.\n\n어떤 점이 궁금하실까요?";
+const WELCOME_MSG = `문의를 남겨주시면 상담사가 24시간 내에 순차적으로 답변드립니다. 답변 알림은 따로 가지 않으니, 더 빠른 상담을 원하시면 카카오톡 오픈채팅으로 문의해주세요.\n${KAKAO_OPEN_CHAT_URL}\n\n어떤 점이 궁금하신가요?`;
 const RECEIVED_MSG = "채팅이 상담사에게 전달되었습니다.\n빠르게 안내드리도록 하겠습니다.\n폭언, 욕설 사용 시 채팅이 제한됩니다.";
 
 async function insertSystemMsg(session: string, content: string) {

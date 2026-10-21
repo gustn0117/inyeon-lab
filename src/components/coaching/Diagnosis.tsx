@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle } from "@phosphor-icons/react";
-import { calculateDiagnosis, DIMENSIONS, PROGRAM_IMAGES, QUIZ_QUESTIONS, type Program, won } from "@/lib/coaching";
+import { calculateDiagnosis, DIMENSIONS, QUIZ_QUESTIONS, type Program, won } from "@/lib/coaching";
 import { trackCoachingEvent } from "@/lib/analytics";
 import s from "./coaching.module.css";
 import v from "./visual.module.css";
@@ -30,7 +30,7 @@ export default function Diagnosis({ programs }: { programs: Program[] | null }) 
       <p>{result.comfortable ? "여러 상황에서 비교적 편안하게 소통하고 있다고 답하셨어요. 지금의 강점을 이어가면서, 구체적으로 고민되는 상황이 있다면 함께 정리해보세요." : `현재 답변에서는 ‘${DIMENSIONS[result.focus].name}’ 영역의 어려움이 상대적으로 크게 나타났어요. 부족한 사람이라는 뜻이 아니라, 먼저 연습해볼 부분을 찾는 과정입니다.`}</p>
       <div className={s.scoreList} aria-label="영역별 내가 느끼는 어려움">{result.domains.map(domain => <div className={s.scoreRow} key={domain.key}><span>{DIMENSIONS[domain.key].name}</span><span className={s.scoreTrack} role="meter" aria-label={`${DIMENSIONS[domain.key].name} 어려움 정도`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(domain.score * 100)}><span className={s.scoreFill} style={{ width: `${domain.score * 100}%` }} /></span><small>{domain.score >= .67 ? "먼저 연습" : domain.score >= .34 ? "함께 점검" : "편안한 편"}</small></div>)}</div>
       <div className={s.notice}><strong>오늘부터 해볼 수 있는 작은 연습</strong><br />{DIMENSIONS[result.focus].tip}</div>
-      <div className={s.quizRecommend}><img className={v.quizPhoto} src={`/inyeon-2026/${PROGRAM_IMAGES[result.programId] ?? PROGRAM_IMAGES.consultation}`} alt="" loading="lazy" decoding="async"/><span className={s.eyebrow}>RECOMMENDED FOR YOU</span><h3>{program?.name ?? "무료 상담으로 방향 찾기"}</h3><p>{program?.tagline ?? "진단 결과와 함께 현재 고민을 남겨주시면 적합한 코칭을 안내해드립니다."}</p>{program && <p className={s.price} style={{ marginTop: 14 }}>{won(program.price)}<small>/ {program.duration}</small></p>}<div className={s.actions}>{program && <Link href={`/programs/${program.id}`} className={s.primary}>추천 프로그램 보기 <ArrowRight size={16} /></Link>}<Link href="/apply" className={s.secondary}>무료 상담 먼저 받기</Link></div></div>
+      <div className={s.quizRecommend}><span className={v.quizPhoto} aria-hidden="true"/><span className={s.eyebrow}>RECOMMENDED FOR YOU</span><h3>{program?.name ?? "무료 상담으로 방향 찾기"}</h3><p>{program?.tagline ?? "진단 결과와 함께 현재 고민을 남겨주시면 적합한 코칭을 안내해드립니다."}</p>{program && <p className={s.price} style={{ marginTop: 14 }}>{won(program.price)}<small>/ {program.duration}</small></p>}<div className={s.actions}>{program && <Link href={`/programs/${program.id}`} className={s.primary}>추천 프로그램 보기 <ArrowRight size={16} /></Link>}<Link href="/apply" className={s.secondary}>무료 상담 먼저 받기</Link></div></div>
       <p className={s.note}>이 결과는 답변에 기반한 참고용 자가점검입니다. 전문적인 심리검사나 의학적 진단이 아니며, 개인의 연애 성향 전체를 판단하지 않습니다. 응답 내용은 서버에 저장하지 않습니다.</p><button type="button" className={s.textButton} onClick={restart} style={{ marginTop: 15 }}>처음부터 다시 해보기</button>
     </div> : <>
       <div className={s.quizProgress}><span>QUESTION {String(step + 1).padStart(2, "0")} / 10</span><progress value={step + 1} max={10} aria-label="자가진단 진행률" /></div>

@@ -869,3 +869,9 @@ h1, h2, h3, h4, h5, h6 {
 .star-deco { display: none; }
 
 .border-gradient::before { display: none; }
+
+/* 사진 자리 빗금 — AI 인물 사진 대신, 실제 사진이 준비될 때까지 쓴다 */
+:root {
+  --hatch-dark: repeating-linear-gradient(135deg, rgba(255, 255, 255, .08) 0 1px, transparent 1px 12px) #1c1c1c;
+  --hatch-light: repeating-linear-gradient(135deg, rgba(0, 0, 0, .07) 0 1px, transparent 1px 12px) #f3f3f3;
+}

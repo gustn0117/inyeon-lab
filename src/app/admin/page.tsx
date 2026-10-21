@@ -226,7 +226,7 @@ export default function AdminPage() {
           <button onClick={() => setTab("chat")}
             className={`flex-1 relative py-2.5 text-sm font-bold rounded-xl transition-colors ${tab === "chat" ? "text-white" : "text-gray-500 hover:bg-gray-50"}`}
             style={tab === "chat" ? { background: PINK } : {}}>
-            기존 채팅 ({sessions.length})
+            실시간 채팅 ({sessions.length})
             {chatUnreadTotal > 0 && (
               <span className="absolute top-1 right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
                 {chatUnreadTotal > 99 ? "99+" : chatUnreadTotal}

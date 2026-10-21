@@ -1,11 +1,33 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, Check } from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
+import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, ChatsCircle, Check, ClipboardText, NotePencil, UserFocus } from "@phosphor-icons/react/dist/ssr";
 import { type Program, won } from "@/lib/coaching";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
 import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
+import ChatButton from "./ChatButton";
+import { SERVICE_ICONS } from "./serviceIcons";
 import CoachingHero from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
 import l from "./landing.module.css";
+
+// 첫 화면 바로 아래: 사이트에서 할 수 있는 상담·무료 진단을 한눈에
+const START: { title: string; text: string; cta: string; icon: Icon; href?: string; external?: boolean }[] = [
+  { title: "실시간 채팅 상담", text: "사이트에서 바로 궁금한 점을 남기면 상담사가 확인 후 답변드려요.", cta: "채팅 열기", icon: ChatsCircle },
+  { title: "카카오톡 상담", text: "오픈채팅으로 편하게 1:1 상담을 신청하세요.", cta: "오픈채팅 열기", icon: ChatCircleDots, href: KAKAO_OPEN_CHAT_URL, external: true },
+  { title: "무료 연애 자가진단", text: "10문항으로 나의 연애 성향과 필요한 연습을 알아보세요.", cta: "진단 시작", icon: ClipboardText, href: "/diagnosis" },
+  { title: "무료 첫인상 진단", text: "사진과 스타일 고민을 남기면 간단한 피드백을 카카오톡으로 드려요.", cta: "사진 보내기", icon: UserFocus, href: "/apply?kind=impression" },
+  { title: "무료 상담 신청서", text: "어떤 코칭이 좋을지, 현재 상황부터 함께 정리해요.", cta: "신청서 작성", icon: NotePencil, href: "/apply" },
+];
+
+// 인연연구소는 어떤 곳인가요? — 운영자 제공 '인연연구소만의 차이' 원문
+const DIFFERENCES = [
+  { label: "현실을 아는 조언", title: "실제 소개팅 운영 경험을 바탕으로 한 코칭", text: "다양한 남녀의 선호 조건과 소개팅 과정에서 나타나는 반응을 접한 경험을 바탕으로 현실적인 조언을 제공합니다." },
+  { label: "나에게 맞는 방향", title: "남녀 상담사의 체계적인 1:1 맞춤 상담", text: "같은 고민이라도 사람마다 상황과 성향은 다릅니다. 남녀 상담사가 고객님의 이야기를 충분히 듣고, 필요한 질문으로 고민을 분석해 개인에게 맞는 실천 방향을 제안합니다." },
+  { label: "대화의 디테일", title: "실제 카카오톡 대화 분석 및 교정", text: "이성과 나눈 대화를 함께 살펴보고 어색한 표현, 대화 습관, 호감 표현 등을 분석하여 자연스러운 대화 방법을 제안합니다." },
+  { label: "질문하고 답하는 시간", title: "실시간으로 소통하는 연애코칭", text: "일방적인 분석 결과만 전달하는 것이 아니라, 카카오톡으로 직접 대화하며 궁금한 점을 질문하고 답변받을 수 있습니다." },
+  { label: "따뜻하고 솔직하게", title: "공감과 현실적인 조언의 균형", text: "무조건 고객님의 편을 들거나 듣기 좋은 말만 하지 않습니다. 개선이 필요한 부분은 솔직하게 안내하되, 고객님의 감정과 입장을 존중합니다." },
+  { label: "일상에서 실천하기", title: "실천할 수 있는 구체적인 솔루션", text: "막연히 자신감을 가지라는 조언이 아닌, 실제 상황에서 사용할 수 있는 대화 예시와 행동 방법을 제안합니다." },
+];
 
 const CONCERNS = [
   { text: "소개팅만 하면 다음 만남으로 이어지지 않아요.", service: "first-date" },
@@ -35,8 +57,8 @@ const FAQS = [
   { question: "상담은 얼마나 진행되나요?", answer: "프로그램마다 상담 시간과 횟수가 다릅니다. 한 번에 고민을 정리하는 단회 상담부터 여러 회차에 걸쳐 연습하는 집중 코칭까지 있으니, 위의 프로그램 및 가격 안내에서 비교해보세요." },
   { question: "어떤 프로그램을 선택해야 할지 모르겠어요.", answer: "카카오톡으로 지금의 고민을 편하게 말씀해주세요. 상황을 듣고 맞는 프로그램을 안내해드립니다. 무료 연애 자가진단이나 무료 상담 신청서로 먼저 시작하셔도 됩니다." },
   { question: "스타일링 제안은 정말 무료인가요?", answer: "네. 사진을 보내주시면 어울리는 헤어스타일과 옷차림 등 기본 스타일링 방향을 무료로 제안해드립니다. 사진 제출은 선택사항이며, 보내주신 사진은 동의 없이 공개하지 않습니다." },
-  { question: "상담 후 추가 질문도 가능한가요?", answer: "코칭 기간 중에는 카카오톡으로 궁금한 점을 질문하실 수 있습니다. 코칭이 끝난 뒤 추가 상담이 필요하면 상황에 맞는 프로그램을 안내해드립니다." },
-  { question: "재회 상담도 진행하나요?", answer: "헤어진 연인과의 관계로 고민하신다면 먼저 상황을 들려주세요. 지금의 관계를 객관적으로 살펴보고 현실적인 방향을 함께 정리해드립니다. 다만 재회 자체를 보장하지는 않습니다." },
+  { question: "상담 후 추가 질문도 가능한가요?", answer: "상담 시간, 답변 횟수와 추가 질문 가능 범위는 선택하신 프로그램에 따라 다릅니다. 신청 전 카카오톡이나 실시간 채팅으로 문의하시면 프로그램별로 자세히 안내해드립니다." },
+  { question: "재회 상담도 진행하나요?", answer: "재회 상담은 진행하지 않습니다. 지난 연애에서 반복된 문제를 돌아보고 다음 관계를 준비하고 싶으시다면, '연애 성향·문제점 분석'으로 앞으로의 방향을 함께 정리해드립니다." },
 ];
 
 const serviceName = (id: string) => COACHING_SERVICES.find(service => service.id === id)?.name ?? "";
@@ -65,7 +87,7 @@ function Pricing({ programs }: { programs: Program[] | null }) {
         <div className={l.priceActions}><Link href={`/checkout?program=${program.id}`} className={l.priceApply} aria-label={`${program.name} 신청하기`}>신청하기</Link><Link href={`/programs/${program.id}`} className={l.priceMore} aria-label={`${program.name} 자세히 보기`}>자세히 보기</Link></div>
       </article>)}
     </div>
-    <p className={l.footnote}>표시 금액은 프로그램 전체 이용 금액이며, 계좌이체로 신청합니다. 기본 스타일링 제안은 희망하시는 분께 무료로 제공합니다.</p>
+    <p className={l.footnote}>표시 금액은 프로그램 전체 이용 금액입니다. 기본 스타일링 제안은 희망하시는 분께 무료로 제공합니다.</p>
   </>;
 }
 
@@ -77,7 +99,23 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
     <EditorialMotion />
     <CoachingHero />
 
-    <section id="concerns" className={l.section} aria-labelledby="concerns-title" data-home-section="concerns">
+    <section id="start" className={`${l.section} ${l.startSection}`} aria-labelledby="start-title" data-home-section="start">
+      <div className={l.container}>
+        <SectionHead eyebrow="HOW TO START" title={<span id="start-title">원하는 방법으로 편하게 시작하세요</span>}>실시간 채팅부터 무료 진단까지, 모든 상담은 1:1 비대면으로 진행합니다.</SectionHead>
+        <ul className={l.startGrid}>
+          {START.map(item => {
+            const body = <><span className={l.startIcon} aria-hidden="true"><item.icon size={22} /></span><strong>{item.title}</strong><span className={l.startText}>{item.text}</span><span className={l.startMore}>{item.cta} <ArrowRight size={13} aria-hidden="true" /></span></>;
+            return <li key={item.title} data-editorial-reveal>
+              {!item.href ? <ChatButton className={l.startCard}>{body}</ChatButton>
+                : item.external ? <a href={item.href} target="_blank" rel="noopener noreferrer" className={l.startCard}>{body}<span className="sr-only"> (새 창)</span></a>
+                : <Link href={item.href} className={l.startCard}>{body}</Link>}
+            </li>;
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <section id="concerns" className={`${l.section} ${l.sectionSoft}`} aria-labelledby="concerns-title" data-home-section="concerns">
       <div className={l.container}>
         <SectionHead eyebrow="DO YOU RELATE?" title={<span id="concerns-title">이런 고민 있으신가요?</span>} />
         <ul className={l.concernGrid}>
@@ -87,19 +125,35 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       </div>
     </section>
 
-    <section id="services" className={`${l.section} ${l.sectionSoft}`} aria-labelledby="services-title" data-home-section="services">
+    <section id="services" className={l.section} aria-labelledby="services-title" data-home-section="services">
       <div className={l.container}>
-        <SectionHead eyebrow="COACHING SERVICES" title={<span id="services-title">인연연구소의 연애코칭 서비스</span>}>궁금한 서비스를 누르면 자세한 내용을 볼 수 있어요.</SectionHead>
+        <SectionHead eyebrow="COACHING SERVICES" title={<span id="services-title">인연연구소의 연애코칭 서비스</span>}>연애가 어려운 게 아니라, 방법을 모르는 거예요.<br />어떤 분이 신청하는지 살펴보고, 나에게 맞는 코칭을 찾아보세요.</SectionHead>
         <ul className={l.serviceGrid}>
-          {services.map(service => <li key={service.id} data-editorial-reveal><Link href={`/services/${service.id}`} className={l.serviceCard}>
-            <figure className={l.servicePhoto}><img src={`/inyeon-2026/${service.image}`} alt="" loading="lazy" decoding="async" style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined} /><span>{service.number}</span></figure>
-            <div className={l.serviceBody}><h3>{service.name}</h3><p>{service.tagline}</p><span className={l.serviceMore}>자세히 보기 <ArrowUpRight size={15} aria-hidden="true" /></span></div>
-          </Link></li>)}
+          {services.map(service => {
+            const ServiceIcon = SERVICE_ICONS[service.id] ?? ChatCircleDots;
+            return <li key={service.id} data-editorial-reveal><Link href={`/services/${service.id}`} className={l.serviceCard}>
+              <div className={l.serviceTop}><span className={l.serviceIcon} aria-hidden="true"><ServiceIcon size={22} /></span><span className={l.serviceNumber}>{service.number}</span></div>
+              <h3>{service.name}</h3>
+              <p className={l.serviceTagline}>{service.tagline}</p>
+              <div className={l.serviceWho}><strong>이런 분이 신청해요</strong><p>{service.whoText}</p></div>
+              <ul className={l.servicePoints}>{service.points.map(point => <li key={point}><Check size={14} weight="bold" aria-hidden="true" />{point}</li>)}</ul>
+              <span className={l.serviceMore}>자세히 보기 <ArrowUpRight size={15} aria-hidden="true" /></span>
+            </Link></li>;
+          })}
         </ul>
         <Link href={`/services/${featured.id}`} className={l.serviceFeatured} data-editorial-reveal>
-          <figure><img src={`/inyeon-2026/${featured.image}`} alt="" loading="lazy" decoding="async" /></figure>
-          <div><span className={l.featuredNumber}>{featured.number} · 여러 고민을 함께</span><h3>{featured.name}</h3><p>{featured.tagline}</p><ul>{featured.recommend.map(item => <li key={item}><Check size={14} weight="bold" aria-hidden="true" />{item}</li>)}</ul><span className={l.serviceMore}>자세히 보기 <ArrowUpRight size={15} aria-hidden="true" /></span></div>
+          <div><span className={l.featuredNumber}>{featured.number} · 여러 고민을 함께</span><h3>{featured.name}</h3><p className={l.serviceTagline}>{featured.tagline}</p><div className={l.serviceWho}><strong>이런 분이 신청해요</strong><p>{featured.whoText}</p></div></div>
+          <div><span className={l.featuredPointsTitle}>이런 도움을 받을 수 있어요</span><ul className={l.servicePoints}>{featured.helps.map(item => <li key={item}><Check size={14} weight="bold" aria-hidden="true" />{item}</li>)}</ul><span className={l.serviceMore}>자세히 보기 <ArrowUpRight size={15} aria-hidden="true" /></span></div>
         </Link>
+      </div>
+    </section>
+
+    <section id="about" className={`${l.section} ${l.sectionDark}`} aria-labelledby="about-title" data-home-section="about">
+      <div className={l.container}>
+        <SectionHead eyebrow="WHY INYEON LAB" title={<span id="about-title">AI가 아닌, 사람이 직접 듣고 코칭합니다.</span>}>인연연구소는 소개팅 업체를 운영하며 쌓은 경험을 바탕으로, 연애 고민을 1:1로 함께 풀어가는 카카오톡 연애코칭 서비스입니다.</SectionHead>
+        <ol className={l.aboutGrid}>
+          {DIFFERENCES.map((item, i) => <li key={item.title} className={l.aboutCard} data-editorial-reveal><span className={l.aboutNumber}>{String(i + 1).padStart(2, "0")}</span><small>{item.label}</small><h3>{item.title}</h3><p>{item.text}</p></li>)}
+        </ol>
       </div>
     </section>
 
@@ -115,6 +169,24 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
             <Link href={`/services/${example.service}`} className={l.textLink}>{serviceName(example.service)} 자세히 보기 <ArrowRight size={14} aria-hidden="true" /></Link>
           </article>)}
         </div>
+        <article className={l.chatDemo} aria-labelledby="chat-demo-title" data-editorial-reveal>
+          <header><span className={l.exampleBadge}>가상 예시</span><strong id="chat-demo-title">어색한 대화도 자연스럽게</strong><small>카카오톡 대화 코칭</small></header>
+          <div className={l.chatDemoGrid}>
+            <div className={l.chatBefore}>
+              <span className={l.chatLabel}>BEFORE</span>
+              <p>오늘 뭐 했어요?</p>
+              <p>밥은 먹었어요?</p>
+              <small>질문만 이어지면 대화가 쉽게 끊겨요.</small>
+            </div>
+            <div className={l.chatTurn} aria-hidden="true"><ArrowRight size={18} /></div>
+            <div className={l.chatAfter}>
+              <span className={l.chatLabel}>AFTER</span>
+              <p>오늘은 업무가 좀 바빴는데 맛있는 거 먹고 나니 힐링되네요 ㅎㅎ OO님은 오늘 뭐 하셨어요?</p>
+              <p>주말에 시간 되시면 제가 맛있는 곳 알려드리고 싶어요!</p>
+              <small>내 이야기를 먼저 나누고, 자연스럽게 다음 만남을 제안해요.</small>
+            </div>
+          </div>
+        </article>
         <p className={l.footnote}>※ 실제 상담 사례가 아닌 서비스 이해를 돕기 위한 가상 예시입니다.</p>
       </div>
     </section>
@@ -145,7 +217,6 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
     </section>
 
     <section id="consultation" className={l.closing} aria-labelledby="closing-title" data-home-section="consultation">
-      <img src="/inyeon-2026/process-04-v2.webp" alt="" loading="lazy" decoding="async" />
       <div className={l.closingCopy} data-editorial-reveal>
         <span className={l.eyebrow}>YOUR STORY STARTS HERE</span>
         <h2 id="closing-title">혼자 고민했던 연애,<br />이제는 함께 해결 방향을 찾아보세요.</h2>
