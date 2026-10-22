@@ -6,6 +6,7 @@ import { COACHING_SERVICES } from "@/lib/coaching-services";
 import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
 import ChatButton from "./ChatButton";
 import { SERVICE_ICONS } from "./serviceIcons";
+import CoachingEvent from "./CoachingEvent";
 import CoachingHero from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
 import l from "./landing.module.css";
@@ -186,6 +187,7 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       <div className={l.container}>
         <SectionHead eyebrow="PROGRAMS & PRICE" title={<span id="pricing-title">프로그램 및 가격 안내</span>}>프로그램별 가격과 제공 내용을 한눈에 비교해보세요. 모든 코칭은 1:1 카카오톡 비대면으로 진행합니다.</SectionHead>
         <Pricing programs={programs} />
+        <CoachingEvent />
       </div>
     </section>
 

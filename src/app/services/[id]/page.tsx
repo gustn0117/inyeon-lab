@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowDown, ArrowUpRight, ChatCircleDots, ChatsCircle, LockKey, Sparkle } from "@phosphor-icons/react/dist/ssr";
 import CoachingShell, { KakaoLink, PageIntro } from "@/components/coaching/CoachingShell";
 import ChatButton from "@/components/coaching/ChatButton";
+import CoachingEvent from "@/components/coaching/CoachingEvent";
 import DetailFooter from "@/components/coaching/DetailFooter";
 import s from "@/components/coaching/coaching.module.css";
 import v from "@/components/coaching/visual.module.css";
@@ -60,6 +61,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
             <span className={s.eyebrow}>FOR YOU</span><h2 className={d.blockTitle}>이런 분께 추천합니다.</h2>
             <ul className={s.featureList}>{service.recommend.map(item => <li key={item}>{item}</li>)}</ul>
           </div>
+          <CoachingEvent />
         </div>
         <aside className={`${s.aside} ${d.aside}`}>
           <div className={s.asideCard}>

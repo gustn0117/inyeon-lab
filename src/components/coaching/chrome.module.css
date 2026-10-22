@@ -841,6 +841,14 @@
 }
 
 /* 모바일 하단 고정 상담 버튼(채팅 상담 + 카카오톡 상담) — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
+/* 모바일 상단 바의 '가격 안내' — 데스크톱은 가운데 메뉴에 같은 항목이 있다 */
+.priceLink { display: none; }
+@media(max-width:900px) {
+  .priceLink { position: relative; display: inline-flex; height: 34px; align-items: center; margin-right: 4px; padding: 0 13px; border: 1px solid #111; border-radius: 999px; color: #111; font-size: 13px; font-weight: 750; white-space: nowrap; }
+  .priceLink::after { position: absolute; inset: -6px -2px; content: ""; }
+  .priceLink:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+}
+
 .mobileBar { display: none; }
 @media(max-width:900px) {
   .shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
