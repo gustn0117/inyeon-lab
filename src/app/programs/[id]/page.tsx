@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, LockKey } from "@phosphor-icons/react/dist/ssr";
-import CoachingShell, { KakaoLink, PageIntro } from "@/components/coaching/CoachingShell";
+import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
+import KakaoIdButton from "@/components/coaching/KakaoIdButton";
 import CoachingEvent from "@/components/coaching/CoachingEvent";
 import { ConversationExample } from "@/components/coaching/CoachingVisual";
 import DetailFooter from "@/components/coaching/DetailFooter";
@@ -11,6 +12,7 @@ import d from "@/components/coaching/service.module.css";
 import { DEFAULT_PROGRAMS, won } from "@/lib/coaching";
 import { type CoachingService, findService } from "@/lib/coaching-services";
 import { getPrograms } from "@/lib/coaching-store";
+import { KAKAO_ID } from "@/lib/contact";
 import s from "@/components/coaching/coaching.module.css";
 
 export const dynamic = "force-dynamic";
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 export default async function ProgramPage({ params }: { params: { id: string } }) {
   if (!DEFAULT_PROGRAMS.some(p => p.id === params.id)) notFound();
   const program = (await getPrograms().catch(() => null))?.find(p => p.id === params.id);
-  if (!program) return <CoachingShell><section id="coaching-content" className={s.section}><div className={s.narrow}><h1 className={s.formTitle}>프로그램 정보를 확인하고 있습니다.</h1><p className={s.formHint}>잠시 후 다시 시도하거나 카카오톡으로 문의해주세요.</p><KakaoLink /></div></section></CoachingShell>;
+  if (!program) return <CoachingShell><section id="coaching-content" className={s.section}><div className={s.narrow}><h1 className={s.formTitle}>프로그램 정보를 확인하고 있습니다.</h1><p className={s.formHint}>잠시 후 다시 시도하거나 카카오톡 ID {KAKAO_ID}으로 문의해주세요.</p><KakaoIdButton className={s.kakao} /></div></section></CoachingShell>;
   const related = (RELATED_SERVICES[program.id] ?? []).map(id => findService(id)).filter((service): service is CoachingService => Boolean(service));
   const example: [string, string] = related.length === 1 ? [related[0].example.concern, related[0].example.answer] : EXAMPLES[program.id];
   // 서비스가 하나면 원고 목록 그대로, 여럿이면 서비스마다 대표 추천 대상 하나·도움 내용 두 가지씩, 없으면 자체 문구만

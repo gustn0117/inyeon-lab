@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowUpRight, ChatCircleDots, ChatsCircle, LockKey, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import CoachingShell, { KakaoLink, PageIntro } from "@/components/coaching/CoachingShell";
+import { ArrowDown, ArrowUpRight, ChatsCircle, LockKey, NotePencil, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
 import ChatButton from "@/components/coaching/ChatButton";
 import CoachingEvent from "@/components/coaching/CoachingEvent";
+import KakaoIdButton from "@/components/coaching/KakaoIdButton";
 import DetailFooter from "@/components/coaching/DetailFooter";
 import s from "@/components/coaching/coaching.module.css";
 import v from "@/components/coaching/visual.module.css";
@@ -68,10 +69,10 @@ export default function ServicePage({ params }: { params: { id: string } }) {
             <span className={s.eyebrow}>START COACHING</span><h2 className={d.blockTitle}>{service.name}</h2>
             <p className={d.asideText}>모든 상담은 1:1 카카오톡 비대면으로 진행합니다. 지금의 고민을 남겨주시면 상황에 맞는 프로그램을 안내해드립니다.</p>
             <div className={d.asideActions}>
-              <KakaoLink className={s.primary}>카카오톡 상담 신청 <ChatCircleDots size={17} weight="fill" /></KakaoLink>
+              <Link href="/apply" className={s.primary}>신청 접수하기 <NotePencil size={17} /></Link>
               <ChatButton className={s.secondary}>실시간 채팅 상담 <ChatsCircle size={16} aria-hidden="true" /></ChatButton>
               <Link href="/#pricing" className={s.secondary}>프로그램·가격 보기 <ArrowUpRight size={15} /></Link>
-              <Link href="/apply" className={s.textButton}>무료 상담 신청서 작성</Link>
+              <KakaoIdButton className={s.textButton} />
             </div>
             <p className={s.micro}><LockKey size={15} /> 상담 내용은 동의 없이 외부에 공개하지 않습니다.</p>
           </div>

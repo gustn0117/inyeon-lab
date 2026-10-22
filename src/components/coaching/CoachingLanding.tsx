@@ -3,21 +3,22 @@ import type { Icon } from "@phosphor-icons/react";
 import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, ChatsCircle, Check, ClipboardText, NotePencil, UserFocus } from "@phosphor-icons/react/dist/ssr";
 import { type Program, won } from "@/lib/coaching";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
-import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
+import { KAKAO_ID } from "@/lib/contact";
 import ChatButton from "./ChatButton";
+import KakaoIdButton from "./KakaoIdButton";
 import { SERVICE_ICONS } from "./serviceIcons";
 import CoachingEvent from "./CoachingEvent";
 import CoachingHero from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
 import l from "./landing.module.css";
 
-// 첫 화면 바로 아래: 사이트에서 할 수 있는 상담·무료 진단을 한눈에
-const START: { title: string; text: string; cta: string; icon: Icon; href?: string; external?: boolean }[] = [
-  { title: "실시간 채팅 상담", text: "사이트에서 바로 궁금한 점을 남기면 상담사가 확인 후 답변드려요.", cta: "채팅 열기", icon: ChatsCircle },
-  { title: "카카오톡 상담", text: "오픈채팅으로 편하게 1:1 상담을 신청하세요.", cta: "오픈채팅 열기", icon: ChatCircleDots, href: KAKAO_OPEN_CHAT_URL, external: true },
+// 첫 화면 바로 아래: 상담을 시작하는 방법(채팅·신청서·카카오톡 ID)과 무료 진단을 한눈에
+const START: { title: string; text: string; cta: string; icon: Icon; href?: string; action?: "chat" | "kakao" }[] = [
+  { title: "실시간 채팅 상담", text: "사이트에서 바로 궁금한 점을 남기면 상담사가 확인 후 답변드려요.", cta: "채팅 열기", icon: ChatsCircle, action: "chat" },
+  { title: "무료 상담 신청서", text: "어떤 코칭이 좋을지, 현재 상황부터 함께 정리해요.", cta: "신청 접수하기", icon: NotePencil, href: "/apply" },
+  { title: "카카오톡 ID 문의", text: `카카오톡에서 ID ${KAKAO_ID}을 친구 추가한 뒤 편하게 문의하세요.`, cta: "ID 복사하기", icon: ChatCircleDots, action: "kakao" },
   { title: "무료 연애 자가진단", text: "10문항으로 나의 연애 성향과 필요한 연습을 알아보세요.", cta: "진단 시작", icon: ClipboardText, href: "/diagnosis" },
   { title: "무료 첫인상 진단", text: "사진과 스타일 고민을 남기면 간단한 피드백을 카카오톡으로 드려요.", cta: "사진 보내기", icon: UserFocus, href: "/apply?kind=impression" },
-  { title: "무료 상담 신청서", text: "어떤 코칭이 좋을지, 현재 상황부터 함께 정리해요.", cta: "신청서 작성", icon: NotePencil, href: "/apply" },
 ];
 
 // 인연연구소는 어떤 곳인가요? — 운영자 제공 '인연연구소만의 차이' 원문
@@ -68,12 +69,12 @@ function SectionHead({ eyebrow, title, children }: { eyebrow: string; title: Rea
   return <div className={l.sectionHead} data-editorial-reveal><span className={l.eyebrow}>{eyebrow}</span><h2>{title}</h2>{children && <p>{children}</p>}</div>;
 }
 
-function KakaoButton({ className, label = "카카오톡 상담 신청" }: { className: string; label?: string }) {
-  return <a href={KAKAO_OPEN_CHAT_URL} target="_blank" rel="noopener noreferrer" className={className}><ChatCircleDots size={18} weight="fill" aria-hidden="true" /> {label}<span className="sr-only"> (새 창)</span></a>;
+function ApplyButton({ className }: { className: string }) {
+  return <Link href="/apply" className={className}><NotePencil size={18} aria-hidden="true" /> 신청 접수하기</Link>;
 }
 
 function Pricing({ programs }: { programs: Program[] | null }) {
-  if (!programs?.length) return <div className={l.priceFallback} role="status"><p>프로그램 정보를 불러오지 못했습니다. 카카오톡으로 문의하시면 바로 안내해드립니다.</p><KakaoButton className={l.darkButton} /></div>;
+  if (!programs?.length) return <div className={l.priceFallback} role="status"><p>프로그램 정보를 불러오지 못했습니다. 신청서를 남겨주시면 바로 안내해드립니다.</p><ApplyButton className={l.darkButton} /></div>;
   return <>
     <div className={l.priceTable}>
       <div className={l.priceHead} aria-hidden="true"><span>프로그램</span><span>이용 가격</span><span>진행 방식</span><span>제공 코칭 내용</span><span>상담 시간·횟수</span><span /></div>
@@ -107,9 +108,9 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
           {START.map(item => {
             const body = <><span className={l.startIcon} aria-hidden="true"><item.icon size={22} /></span><strong>{item.title}</strong><span className={l.startText}>{item.text}</span><span className={l.startMore}>{item.cta} <ArrowRight size={13} aria-hidden="true" /></span></>;
             return <li key={item.title} data-editorial-reveal>
-              {!item.href ? <ChatButton className={l.startCard}>{body}</ChatButton>
-                : item.external ? <a href={item.href} target="_blank" rel="noopener noreferrer" className={l.startCard}>{body}<span className="sr-only"> (새 창)</span></a>
-                : <Link href={item.href} className={l.startCard}>{body}</Link>}
+              {item.action === "chat" ? <ChatButton className={l.startCard}>{body}</ChatButton>
+                : item.action === "kakao" ? <KakaoIdButton className={l.startCard}>{body}</KakaoIdButton>
+                : <Link href={item.href ?? "/apply"} className={l.startCard}>{body}</Link>}
             </li>;
           })}
         </ul>
@@ -204,8 +205,8 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       <div className={l.closingCopy} data-editorial-reveal>
         <span className={l.eyebrow}>YOUR STORY STARTS HERE</span>
         <h2 id="closing-title">혼자 고민했던 연애,<br />이제는 함께 해결 방향을 찾아보세요.</h2>
-        <p>지금의 고민을 카카오톡으로 편하게 남겨주세요.</p>
-        <div className={l.closingActions}><KakaoButton className={l.lightButton} /><Link href="/apply" className={l.outlineButton}>무료 상담 신청서 작성 <ArrowUpRight size={15} aria-hidden="true" /></Link></div>
+        <p>신청서를 접수하거나 실시간 채팅으로 지금의 고민을 편하게 남겨주세요.</p>
+        <div className={l.closingActions}><ApplyButton className={l.lightButton} /><ChatButton className={l.outlineButton}><ChatsCircle size={18} aria-hidden="true" /> 실시간 채팅 상담</ChatButton><KakaoIdButton className={l.outlineButton} /></div>
       </div>
     </section>
   </div>;

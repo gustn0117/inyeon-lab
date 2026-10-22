@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
-import { ArrowDown, ArrowRight, ChatCircleDots, ChatCircleText, Check } from "@phosphor-icons/react";
+import { ArrowDown, ArrowRight, ChatCircleText, Check, NotePencil } from "@phosphor-icons/react";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
-import { KAKAO_OPEN_CHAT_URL } from "@/lib/contact";
 import { SERVICE_ICONS } from "./serviceIcons";
 import s from "./home.module.css";
 import l from "./landing.module.css";
@@ -35,7 +34,7 @@ export default function CoachingHero() {
           </ul>
           <div className={l.heroActions}>
             <a href="#services" className={l.heroGhost}>연애코칭 알아보기 <ArrowDown size={16} aria-hidden="true" /></a>
-            <a href={KAKAO_OPEN_CHAT_URL} target="_blank" rel="noopener noreferrer" className={l.heroKakao}><ChatCircleDots size={18} weight="fill" aria-hidden="true" /> 카카오톡 상담 신청<span className="sr-only"> (새 창)</span></a>
+            <Link href="/apply" className={l.heroApply}><NotePencil size={18} aria-hidden="true" /> 신청 접수하기</Link>
           </div>
         </div>
         <nav className={l.whoPanel} aria-labelledby="who-title">

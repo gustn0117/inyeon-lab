@@ -268,17 +268,20 @@
   justify-content: flex-end;
   margin-bottom: 18px;
 }
-.footerButtons a {
+.footerButtons > a,
+.footerButtons > button {
   padding: 11px 20px;
   display: flex;
   align-items: center;
   gap: 10px;
   border: 1px solid #e8e8e8;
   border-radius: 12px;
+  font-family: inherit;
   font-size: 14px;
   color: #3c3c3c;
   background: #f9f9f9;
   font-weight: 600;
+  cursor: pointer;
 }
 .footerPhone {
   font-size: clamp(28px,2.4vw,36px);
@@ -385,21 +388,26 @@
   gap: 10px;
   flex: none;
 }
-.trayButtons a {
+/* 링크 = 신청 접수하기, 버튼 = 채팅 상담 */
+.trayButtons > a,
+.trayButtons > button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-width: 188px;
   height: 54px;
+  border: 0;
   border-radius: 12px;
   background: var(--wine);
   color: white;
+  font-family: inherit;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -.04em;
+  cursor: pointer;
 }
-.trayButtons a+a {
+.trayButtons > button {
   background: #f4f4f4;
   color: #3c3c3c;
 }
@@ -640,7 +648,8 @@
     gap: 8px;
     width: 100%;
   }
-  .trayButtons a {
+  .trayButtons > a,
+  .trayButtons > button {
     min-width: 0;
     flex: 1;
     height: 52px;
@@ -690,7 +699,7 @@
   writing-mode: horizontal-tb;
   transform: translate(-50%,-50%) rotate(-90deg);
 }
-.quick>a>svg {
+.quick>a>svg,.quick .quickKakao>svg {
   position: absolute;
   bottom: 26px;
 }
@@ -716,7 +725,7 @@
   .quickOpen>a span:not(:global(.sr-only)),.quickOpen>button:not(.quickToggle) span {
     top: 40px;
   }
-  .quickOpen>a>svg {
+  .quickOpen>a>svg,.quickOpen .quickKakao>svg {
     bottom: 13px;
   }
   .quickOpen .quickTop svg {
@@ -769,8 +778,8 @@
 .footer { background: #111; color: #a3a3a3; border-color: #2b2b2b; }
 .footer .brand { color: #fff; }
 .footerLinks { color: #ccc; }
-.footerButtons a { background: transparent; color: #fff; border-color: #444; border-radius: 10px; transition: background .2s, color .2s; }
-.footerButtons a:hover { background: #fff; color: #111; }
+.footerButtons > a, .footerButtons > button { background: transparent; color: #fff; border-color: #444; border-radius: 10px; transition: background .2s, color .2s; }
+.footerButtons > a:hover, .footerButtons > button:hover { background: #fff; color: #111; }
 .footerPhone { color: #fff; font-variant-numeric: tabular-nums; }
 .footerBottom { color: #888; border-color: #333; }
 .quick > a, .quick > button:not(.quickToggle) { background: #111; }
@@ -780,17 +789,18 @@
 .tray { background: #111; border-color: #333; border-radius: 18px; box-shadow: 0 8px 35px #00000016; }
 .trayText strong { color: #fff; }
 .trayText p { color: #aaa; }
-.trayButtons a { background: #fff; color: #111; border-radius: 10px; transition: background .2s; }
-.trayButtons a:hover { background: #e9e9e9; }
-.trayButtons a+a { background: #292929; color: #fff; }
-.trayButtons a+a:hover { background: #3a3a3a; }
+.trayButtons > a, .trayButtons > button { border-radius: 10px; transition: background .2s; }
+.trayButtons > a { background: #fff; color: #111; }
+.trayButtons > a:hover { background: #e9e9e9; }
+.trayButtons > button { background: #292929; color: #fff; }
+.trayButtons > button:hover { background: #3a3a3a; }
 .trayClose { background: #2b2b2b; color: #bbb; }
 @media(max-width:900px) {
   .header .call svg { background: none; color: #111; }
   .menuButton { box-shadow: none; background: transparent; }
   .tray { border-radius: 18px 18px 0 0; }
   .trayClose { background: transparent; }
-  .trayButtons a { border-radius: 11px; }
+  .trayButtons > a, .trayButtons > button { border-radius: 11px; }
 }
 .navLink { color: #737373; }
 .footer :focus-visible, .menu :focus-visible, .tray :focus-visible { outline-color: #fff; }
@@ -825,7 +835,7 @@
 @media(min-width:901px) {
   .quick>a,.quick>button:not(.quickToggle) { height: 124px; font-size: 17px; }
   .quick>a span:not(:global(.sr-only)),.quick>button:not(.quickToggle) span { top: 50px; }
-  .quick>a>svg,.quick .quickChat>svg { position: absolute; bottom: 18px; }
+  .quick>a>svg,.quick .quickChat>svg,.quick .quickKakao>svg { position: absolute; bottom: 18px; }
   .quick .quickTop svg { top: 28px; }
   .quick .quickTop span { top: 74px!important; }
   .quick .quickChat { border-bottom: 1px solid #333; }
@@ -835,12 +845,11 @@
 @media(min-width:901px) and (max-height:700px) {
   .quick>a,.quick>button:not(.quickToggle) { height: 104px; font-size: 15px; }
   .quick>a span:not(:global(.sr-only)),.quick>button:not(.quickToggle) span { top: 42px; }
-  .quick>a>svg,.quick .quickChat>svg { bottom: 12px; }
+  .quick>a>svg,.quick .quickChat>svg,.quick .quickKakao>svg { bottom: 12px; }
   .quick .quickTop svg { top: 22px; }
   .quick .quickTop span { top: 64px!important; }
 }
 
-/* 모바일 하단 고정 상담 버튼(채팅 상담 + 카카오톡 상담) — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
 /* 모바일 상단 바의 '가격 안내' — 데스크톱은 가운데 메뉴에 같은 항목이 있다 */
 .priceLink { display: none; }
 @media(max-width:900px) {
@@ -849,6 +858,7 @@
   .priceLink:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
 }
 
+/* 모바일 하단 고정 상담 버튼(채팅 상담 + 신청 접수하기) — 스크롤과 관계없이 항상 보인다(메뉴가 열리면 메뉴가 위를 덮음). */
 .mobileBar { display: none; }
 @media(max-width:900px) {
   .shell { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
@@ -879,7 +889,16 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
   }
   .mobileChat { border: 1px solid #111; background: #fff; color: #111; cursor: pointer; }
-  .mobileKakao { background: #111; color: #fff; }
+  .mobileApply { background: #111; color: #fff; }
   .mobileBar > :focus-visible { outline: 3px solid #787878; outline-offset: 3px; }
   .mobileChat .chatBadge { top: -7px; right: -5px; left: auto; }
+}
+
+/* 카카오톡 ID 복사 안내 — 화면 아래 가운데에 잠깐 (데스크톱은 상담 안내 띠 위, 모바일은 하단 버튼 위) */
+.kakaoToast { position: fixed; z-index: 95; left: 50%; bottom: 168px; display: grid; gap: 3px; width: max-content; max-width: calc(100% - 32px); padding: 14px 20px; border-radius: 14px; background: #111; color: #fff; box-shadow: 0 14px 36px rgba(0, 0, 0, .28); font-size: 14px; line-height: 1.5; text-align: center; opacity: 0; visibility: hidden; transform: translate(-50%, 10px); transition: opacity .2s, transform .2s, visibility .2s; pointer-events: none; }
+.kakaoToast strong { font-size: 15px; font-weight: 800; }
+.kakaoToast span { color: #cfcfcf; font-size: 13px; word-break: keep-all; }
+.kakaoToastShow { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+@media(max-width:900px) {
+  .kakaoToast { bottom: calc(76px + env(safe-area-inset-bottom)); }
 }

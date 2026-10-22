@@ -15,7 +15,7 @@ declare global { interface Window { fbq?: (...args: unknown[]) => void; } }
 const fmtTime = (iso: string) =>
   new Date(iso).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" });
 
-// 안내 메시지 속 주소(카카오톡 오픈채팅 등)는 눌러서 열 수 있게 한다.
+// 안내 메시지 속 주소(예전 대화에 남은 링크 등)는 눌러서 열 수 있게 한다.
 function Linkified({ text }: { text: string }) {
   return <>{text.split(URL_RE).map((part, i) => i % 2 ? <a key={i} href={part} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</>;
 }
