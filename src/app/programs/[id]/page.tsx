@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, LockKey } from "@phosphor-icons/react/dist/ssr";
 import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
 import KakaoIdButton from "@/components/coaching/KakaoIdButton";
-import CoachingEvent from "@/components/coaching/CoachingEvent";
 import { ConversationExample } from "@/components/coaching/CoachingVisual";
 import DetailFooter from "@/components/coaching/DetailFooter";
 import v from "@/components/coaching/visual.module.css";
@@ -65,7 +64,6 @@ export default async function ProgramPage({ params }: { params: { id: string } }
           <div className={s.detailBlock}><h2>프로그램에 포함된 내용</h2><ul className={s.featureList}>{program.features.map(feature => <li key={feature}>{feature}</li>)}</ul></div>
           {practice && <div className={s.detailBlock}><h2>소개팅 실전도 함께 연습합니다.</h2><figure className={v.scenePhoto} data-editorial-reveal><figcaption>첫 대화부터, 다음 만남의 제안까지.</figcaption></figure><p>만남에서 어떤 질문을 할지, 내 이야기를 어떻게 나눌지, 마음에 드는 상대에게 다음 만남을 어떻게 제안할지. 프로그램 범위 안에서 대화 방식과 호감 표현을 함께 점검합니다. 실제 소개팅 동행이 아닌, 만남 전 준비와 만남 후 피드백을 카카오톡으로 진행합니다.</p></div>}
           <div><h2>첫인상까지, 나를 잘 보여주도록.</h2><div className={v.stylePair} data-editorial-reveal><figure><figcaption>나에게 어울리는 스타일</figcaption></figure><figure><figcaption>자연스럽고 편안한 첫인상</figcaption></figure></div><p>본인 사진을 제공하시면 어울리는 헤어스타일, 패션·의상, 소개팅 복장과 이미지 개선 방향을 무료로 제안합니다. 사진 제출은 선택사항이며, 프로그램당 1회 제공됩니다.</p><p className={s.micro}><LockKey size={15} /> 사진과 상담 내용은 동의 없이 외부에 공개하지 않습니다.</p></div>
-          <CoachingEvent />
         </div>
         <aside className={s.aside}><div className={s.asideCard}><span className={s.eyebrow}>YOUR COACHING</span><h2 style={{ marginTop: 15 }}>{program.name}</h2><p className={s.price}>{won(program.price)}<small>/ {program.duration}</small></p><p style={{ marginTop: 15 }}>1:1 카카오톡 비대면 채팅<br />신청 확인 후 일정 조율<br />사진 기반 스타일링 제안 1회 · 선택사항</p><Link href={`/checkout?program=${program.id}`} className={s.primary} style={{ width: "100%", marginTop: 25 }}>이 프로그램 신청하기 <ArrowUpRight size={16} /></Link><Link href="/apply" className={s.textButton} style={{ width: "100%", marginTop: 9 }}>선택 전 무료 상담받기</Link></div></aside>
       </div>

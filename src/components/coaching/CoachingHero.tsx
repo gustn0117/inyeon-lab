@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
-import { ArrowDown, ArrowRight, ChatCircleText, Check, NotePencil } from "@phosphor-icons/react";
+import { ArrowDown, ArrowRight, ChatCircleText, Check, Heart, NotePencil } from "@phosphor-icons/react";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
 import { SERVICE_ICONS } from "./serviceIcons";
 import s from "./home.module.css";
 import l from "./landing.module.css";
 
-const HIGHLIGHTS = ["100% 카카오톡 비대면 상담", "1:1 개인 맞춤형 코칭", "소개팅 업체 운영 경험 기반", "기본 스타일링 무료 제안"];
+const HIGHLIGHTS = ["100% 카카오톡 비대면 상담", "1:1 개인 맞춤형 코칭", "소개팅 주선", "기본 스타일링 무료 제안"];
 
 export default function CoachingHero() {
   const [ready, setReady] = useState(false);
@@ -35,6 +35,7 @@ export default function CoachingHero() {
           <div className={l.heroActions}>
             <a href="#services" className={l.heroGhost}>연애코칭 알아보기 <ArrowDown size={16} aria-hidden="true" /></a>
             <Link href="/apply" className={l.heroApply}><NotePencil size={18} aria-hidden="true" /> 신청 접수하기</Link>
+            <Link href="/apply?kind=impression#coaching-content" className={l.heroGhost}><Heart size={17} aria-hidden="true" /> 소개팅 신청하기</Link>
           </div>
         </div>
         <nav className={l.whoPanel} aria-labelledby="who-title">

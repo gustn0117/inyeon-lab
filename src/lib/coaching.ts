@@ -51,10 +51,8 @@ export const DEFAULT_PROGRAMS: Program[] = [
   },
 ];
 
-export const COACHING_MATCH_EVENT = {
-  title: "코칭 후, 무료 소개팅 연결 이벤트",
-  description: "코칭 후 서로 맞는 분이 있을 경우, 희망하시는 분에 한해 무료 소개팅 연결 서비스도 제공합니다. 이벤트 참여는 선택사항입니다.",
-};
+// 소개팅 주선 1회 금액 — 소개팅 신청서 접수 → 사전 상담 후 결제(운영자 요청 2026-10-23). 자세한 안내는 운영자가 만드는 팝업으로.
+export const MATCH_PRICE = 30000;
 
 export const FAQS = [
   { question: "상담은 어떻게 진행되나요?", answer: "모든 코칭은 카카오톡 1:1 비대면 채팅으로 진행됩니다. 신청과 결제 확인 후 남겨주신 연락처로 연락드려 일정을 조율합니다. 소개팅 실전 코칭도 만남 전 대화 준비와 만남 후 상황 피드백을 카카오톡으로 함께 진행합니다." },
@@ -62,11 +60,10 @@ export const FAQS = [
   { question: "어떤 프로그램을 선택하면 좋을까요?", answer: "하나의 고민을 정리하려면 30분 고민 상담, 카톡 대화나 썸·소개팅 고민을 코칭받으려면 연애코칭, 연애 전반이 어렵게 느껴져 무엇부터 바꿔야 할지 모르겠다면 60분 연애 종합 코칭을 권합니다. 실전 연습과 꾸준한 피드백을 원하시면 2주 또는 4주 코칭을 선택해주세요. 무료 자가진단이나 무료 상담 신청으로 먼저 도움받을 수도 있습니다." },
   { question: "신청과 결제는 어떻게 하나요?", answer: "원하는 프로그램을 선택해 신청서를 작성해주세요. 결제 방법은 신청 화면에서 안내해드리며, 결제가 확인되면 남겨주신 연락처로 연락드려 일정을 조율합니다." },
   { question: "2주와 4주 코칭은 무엇이 다른가요?", answer: "모두 주 3회 카카오톡 코칭을 진행하며 2주는 총 6회, 4주는 총 12회입니다. 2주는 당면한 소개팅·썸 상황의 실전 연습에, 4주는 심층 분석과 반복되는 연애 습관의 개선·점검에 집중합니다. 회차별 일정과 진행 범위는 시작 전 함께 조율합니다." },
-  { question: "사진은 꼭 제출해야 하나요?", answer: "아닙니다. 일반 상담에서 사진 제출은 선택사항입니다. 무료 첫인상 진단을 원하시면 본인 사진을 첨부해주세요. 유료 프로그램에는 희망자에 한해 사진 기반 스타일링 제안이 프로그램당 1회 포함됩니다." },
-  { question: "코칭 후 무료 소개팅 연결도 받을 수 있나요?", answer: COACHING_MATCH_EVENT.description },
+  { question: "사진은 꼭 제출해야 하나요?", answer: "아닙니다. 일반 상담에서 사진 제출은 선택사항입니다. 소개팅 신청에는 본인 사진이 필요합니다. 유료 프로그램에는 희망자에 한해 사진 기반 스타일링 제안이 프로그램당 1회 포함됩니다." },
   { question: "상담 내용이나 사진이 공개되나요?", answer: "모든 상담은 100% 비밀유지 원칙으로 진행합니다. 상담 내용과 제출 사진은 담당자의 상담·피드백 목적으로만 사용하며, 동의 없이 후기·홍보 자료로 공개하거나 외부에 공유하지 않습니다. 자세한 보관·파기 기준은 개인정보 처리방침에서 확인할 수 있습니다." },
   { question: "코칭을 받으면 연애에 성공할 수 있나요?", answer: "연애 성공이나 상대의 마음을 보장하지는 않습니다. 인연연구소는 대화 방식, 호감 표현과 관계 형성 태도를 점검하고, 스스로 더 나은 선택과 소통을 할 수 있도록 돕습니다." },
-  { question: "무료 상담과 유료 코칭은 무엇이 다른가요?", answer: "무료 상담은 남겨주신 고민을 확인하고 현재 상황과 적합한 프로그램을 안내하는 과정입니다. 실제 대화 분석, 구체적인 연습과 지속적인 피드백은 선택하신 유료 프로그램의 범위에 따라 진행합니다. 무료 첫인상 진단은 사진과 스타일링 고민에 대한 간단한 피드백을 카카오톡으로 제공합니다." },
+  { question: "무료 상담과 유료 코칭은 무엇이 다른가요?", answer: "무료 상담은 남겨주신 고민을 확인하고 현재 상황과 적합한 프로그램을 안내하는 과정입니다. 실제 대화 분석, 구체적인 연습과 지속적인 피드백은 선택하신 유료 프로그램의 범위에 따라 진행합니다." },
   { question: "취소·환불은 어떻게 요청하나요?", answer: "카카오톡으로 신청자 성함·연락처·프로그램명을 알려주세요. 코칭 시작 전 또는 일부 진행 후 등 이용 상태를 확인하여 취소·환불 절차와 금액을 안내합니다. 자세한 내용은 하단의 취소 및 환불 안내를 확인해주세요." },
 ];
 
@@ -111,10 +108,12 @@ export function calculateDiagnosis(answers: number[]) {
   return { domains, focus: highest.key, comfortable, programId: comfortable ? "consultation" : DIMENSIONS[highest.key].program };
 }
 
+// impression: 예전 '무료 첫인상 진단' 자리 — 2026-10-23부터 화면 이름만 '소개팅 신청'(사진·나이·성별·지역·직업·키 필수)
 export type ApplicationKind = "consultation" | "impression" | "paid";
 export type CoachingApplication = {
   id: string; kind: ApplicationKind; name: string; phone: string; kakaoId: string;
   age: string; gender: string; concern: string; direction: string; preferredAt: string;
+  region?: string; job?: string; height?: string; // 소개팅 신청 기본 정보(2026-10-23부터)
   programId: string; programName: string; price: number; depositor: string;
   requestedProgramName: string; adultConsent: true; termsConsent: boolean;
   photoPath: string | null; privacyConsent: true; photoConsent: boolean; consentVersion: string;
@@ -122,5 +121,5 @@ export type CoachingApplication = {
   createdAt: string; updatedAt: string;
 };
 
-export const APPLICATION_LABELS = { consultation: "무료 상담", impression: "무료 첫인상 진단", paid: "유료 코칭 신청" };
+export const APPLICATION_LABELS = { consultation: "무료 상담", impression: "소개팅 신청", paid: "유료 코칭 신청" };
 export const STATUS_LABELS = { received: "접수", contacted: "연락 완료", paid: "입금 확인", completed: "진행 완료" };

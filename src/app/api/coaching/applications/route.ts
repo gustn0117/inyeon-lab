@@ -56,17 +56,22 @@ export async function POST(req: NextRequest) {
   if (!name || name.length > 40 || /[<>\r\n]/.test(name)) return failure("성함 또는 닉네임을 40자 이내로 입력해주세요.");
   if (!/^01[016789]\d{7,8}$/.test(phone)) return failure("연락 가능한 휴대전화 번호를 입력해주세요.");
   if (field("privacyConsent") !== "true" || field("adultConsent") !== "true") return failure("개인정보 수집·이용 동의와 만 19세 이상 여부를 확인해주세요.");
-  if (kind !== "paid" && (!field("concern") || field("concern").length > 5000)) return failure("고민과 질문을 5,000자 이내로 입력해주세요.");
+  if (kind !== "paid" && (!field("concern") || field("concern").length > 5000)) return failure(kind === "impression" ? "간단한 자기소개를 5,000자 이내로 입력해주세요." : "고민과 질문을 5,000자 이내로 입력해주세요.");
   if (field("concern").length > 5000 || field("kakaoId").length > 60 || field("direction").length > 100 || field("depositor").length > 40) return failure("입력한 내용의 길이를 확인해주세요.");
   if (field("age") && (!/^\d{2,3}$/.test(field("age")) || Number(field("age")) < 19 || Number(field("age")) > 120)) return failure("나이는 만 19세 이상으로 입력해주세요.");
   if (field("gender") && !["여성", "남성", "응답하지 않음"].includes(field("gender"))) return failure("성별 선택을 확인해주세요.");
+  const region = field("region"), job = field("job"), height = field("height");
+  if ([region, job].some(value => value.length > 40 || /[<>\r\n]/.test(value))) return failure("지역과 직업은 40자 이내로 입력해주세요.");
+  if (height && (!/^\d{3}$/.test(height) || Number(height) < 130 || Number(height) > 220)) return failure("키는 cm 단위 숫자로 입력해주세요.");
+  // impression = 소개팅 신청 — 상대 제안에 필요한 기본 정보(만 나이·성별·지역·직업·키)는 필수
+  if (kind === "impression" && (!field("age") || !["여성", "남성"].includes(field("gender")) || !region || !job || !height)) return failure("소개팅 신청을 위해 만 나이·성별·지역·직업·키를 입력해주세요.");
   const preferredAt = field("preferredAt");
   if (preferredAt && (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(preferredAt) || !Number.isFinite(Date.parse(preferredAt + "+09:00")) || Date.parse(preferredAt + "+09:00") < now)) return failure("희망 상담 일시는 현재 이후로 선택해주세요.");
   if (kind === "paid" && !field("depositor")) return failure("입금자명을 입력해주세요.");
   if (kind === "paid" && field("termsConsent") !== "true") return failure("이용약관과 취소·환불 안내를 확인해주세요.");
   const file = form.get("photo");
   const photo = file instanceof File && file.size > 0 ? file : null;
-  if (kind === "impression" && !photo) return failure("무료 첫인상 진단을 위한 본인 사진을 첨부해주세요.");
+  if (kind === "impression" && !photo) return failure("소개팅 신청을 위한 본인 사진을 첨부해주세요.");
   if (photo && field("photoConsent") !== "true") return failure("사진을 첨부하려면 사진 수집·이용에 동의해주세요.");
   if (photo && (photo.size > 5 * 1024 * 1024 || !["image/jpeg", "image/png", "image/webp"].includes(photo.type))) return failure("사진은 JPG·PNG·WebP 형식, 5MB 이하로 첨부해주세요.");
 
@@ -93,12 +98,12 @@ export async function POST(req: NextRequest) {
     if (image) photoPath = await savePhoto(id, image);
     const timestamp = new Date().toISOString();
     const application: CoachingApplication = {
-      id, kind, name, phone, kakaoId: field("kakaoId"), age: field("age"), gender: field("gender"),
+      id, kind, name, phone, kakaoId: field("kakaoId"), age: field("age"), gender: field("gender"), region, job, height,
       concern: field("concern"), direction: field("direction"), preferredAt,
       programId: program?.id ?? "", programName: program?.name ?? "", price: program?.price ?? 0,
       depositor: kind === "paid" ? field("depositor") : "", photoPath, privacyConsent: true,
       requestedProgramName: requestedProgram?.name ?? "", adultConsent: true, termsConsent: kind === "paid",
-      photoConsent: !!photo, consentVersion: "2026-10-20", status: "received", createdAt: timestamp, updatedAt: timestamp,
+      photoConsent: !!photo, consentVersion: "2026-10-23", status: "received", createdAt: timestamp, updatedAt: timestamp,
     };
     await saveApplication(application);
     return NextResponse.json({ ok: true, id });
