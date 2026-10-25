@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowUpRight, ChatsCircle, LockKey, NotePencil, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import { ArrowDown, ArrowUpRight, ChatsCircle, HandHeart, LockKey, NotePencil, Sparkle } from "@phosphor-icons/react/dist/ssr";
 import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
 import ChatButton from "@/components/coaching/ChatButton";
 import KakaoIdButton from "@/components/coaching/KakaoIdButton";
@@ -9,7 +9,8 @@ import DetailFooter from "@/components/coaching/DetailFooter";
 import s from "@/components/coaching/coaching.module.css";
 import v from "@/components/coaching/visual.module.css";
 import d from "@/components/coaching/service.module.css";
-import { COACHING_SERVICES, findService } from "@/lib/coaching-services";
+import { MATCH_PRICE, won } from "@/lib/coaching";
+import { COACHING_SERVICES, MATCH_NOTICES, MATCH_STEPS, findService } from "@/lib/coaching-services";
 
 export const dynamicParams = false;
 
@@ -27,8 +28,11 @@ export default function ServicePage({ params }: { params: { id: string } }) {
   const service = findService(params.id);
   if (!service) notFound();
   const others = COACHING_SERVICES.filter(item => item.id !== service.id);
+  // 08 소개팅 주선은 코칭이 아니라 소개팅 신청서로 받고, 하단 진행 과정·확인 사항도 소개팅용을 쓴다.
+  const matching = service.id === "matching";
+  const apply = matching ? { href: "/apply?kind=impression#coaching-content", label: "소개팅 신청하기" } : { href: "/apply", label: "신청 접수하기" };
   return <CoachingShell>
-    <PageIntro photo eyebrow={`COACHING SERVICE ${service.number}`} title={service.name} description={`“${service.headline}”`}>
+    <PageIntro photo eyebrow={`${matching ? "MATCHING" : "COACHING"} SERVICE ${service.number}`} title={service.name} description={`“${service.headline}”`}>
       <nav className={s.breadcrumb} aria-label="현재 위치"><Link href="/">홈</Link><span>/</span><Link href="/#services">연애코칭 서비스</Link><span>/</span><span>{service.name}</span></nav>
     </PageIntro>
     <section id="coaching-content" className={s.section}>
@@ -64,23 +68,23 @@ export default function ServicePage({ params }: { params: { id: string } }) {
         </div>
         <aside className={`${s.aside} ${d.aside}`}>
           <div className={s.asideCard}>
-            <span className={s.eyebrow}>START COACHING</span><h2 className={d.blockTitle}>{service.name}</h2>
-            <p className={d.asideText}>모든 상담은 1:1 카카오톡 비대면으로 진행합니다. 지금의 고민을 남겨주시면 상황에 맞는 프로그램을 안내해드립니다.</p>
+            <span className={s.eyebrow}>{matching ? "START MATCHING" : "START COACHING"}</span><h2 className={d.blockTitle}>{service.name}</h2>
+            <p className={d.asideText}>{matching ? `사전 상담 후 진행을 원하시면 1회 ${won(MATCH_PRICE)}으로 결이 맞는 분을 연결해드립니다.` : "모든 상담은 1:1 카카오톡 비대면으로 진행합니다. 지금의 고민을 남겨주시면 상황에 맞는 프로그램을 안내해드립니다."}</p>
             <div className={d.asideActions}>
-              <Link href="/apply" className={s.primary}>신청 접수하기 <NotePencil size={17} /></Link>
+              <Link href={apply.href} className={s.primary}>{apply.label} {matching ? <HandHeart size={17} /> : <NotePencil size={17} />}</Link>
               <ChatButton className={s.secondary}>실시간 채팅 상담 <ChatsCircle size={16} aria-hidden="true" /></ChatButton>
               <Link href="/#pricing" className={s.secondary}>프로그램·가격 보기 <ArrowUpRight size={15} /></Link>
               <KakaoIdButton className={s.textButton} />
             </div>
             <p className={s.micro}><LockKey size={15} /> 상담 내용은 동의 없이 외부에 공개하지 않습니다.</p>
           </div>
-          <nav className={s.asideCard} aria-label="다른 코칭 서비스">
-            <h3 className={d.otherTitle}>다른 코칭 서비스</h3>
+          <nav className={s.asideCard} aria-label="다른 서비스">
+            <h3 className={d.otherTitle}>다른 서비스</h3>
             <ul className={d.otherList}>{others.map(item => <li key={item.id}><Link href={`/services/${item.id}`}><span>{item.number}</span>{item.name}<ArrowUpRight size={14} aria-hidden="true" /></Link></li>)}</ul>
           </nav>
         </aside>
       </div>
     </section>
-    <DetailFooter />
+    {matching ? <DetailFooter processTitle="소개팅은 어떻게 진행되나요?" steps={MATCH_STEPS} noticeTitle="신청 전 확인해 주세요." notices={MATCH_NOTICES} apply={apply} /> : <DetailFooter />}
   </CoachingShell>;
 }

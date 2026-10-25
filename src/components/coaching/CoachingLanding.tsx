@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Icon } from "@phosphor-icons/react";
 import { ArrowDown, ArrowRight, ArrowUpRight, ChatCircleDots, ChatsCircle, Check, ClipboardText, Heart, NotePencil } from "@phosphor-icons/react/dist/ssr";
-import { type Program, won } from "@/lib/coaching";
+import { MATCH_GUIDE, MATCH_PRICE, type Program, won } from "@/lib/coaching";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
 import { KAKAO_ID } from "@/lib/contact";
 import ChatButton from "./ChatButton";
@@ -62,6 +62,9 @@ const FAQS = [
   { question: "재회 상담도 진행하나요?", answer: "재회 상담은 진행하지 않습니다. 지난 연애에서 반복된 문제를 돌아보고 다음 관계를 준비하고 싶으시다면, '연애 성향·문제점 분석'으로 앞으로의 방향을 함께 정리해드립니다." },
 ];
 
+// 서비스 카드 아래 넓은 카드로 따로 보여 주는 서비스와 그 표시 문구 (07 종합 연애코칭, 08 소개팅 주선)
+const WIDE_SERVICES: Record<string, string> = { total: "여러 고민을 함께", matching: "결이 맞는 인연" };
+
 const serviceName = (id: string) => COACHING_SERVICES.find(service => service.id === id)?.name ?? "";
 
 function SectionHead({ eyebrow, title, children }: { eyebrow: string; title: React.ReactNode; children?: React.ReactNode }) {
@@ -92,10 +95,27 @@ function Pricing({ programs }: { programs: Program[] | null }) {
   </>;
 }
 
+// 코칭 프로그램과 따로 보여 주는 소개팅 — 사전 상담이 먼저라 결제가 아니라 소개팅 신청서로 보낸다.
+function MatchPricing() {
+  return <div className={`${l.priceTable} ${l.priceTableMatch}`}>
+    <div className={l.priceHead} aria-hidden="true"><span>소개팅</span><span>이용 가격</span><span>진행 방식</span><span>제공 내용</span><span>횟수</span><span /></div>
+    <article className={l.priceRow} aria-labelledby="price-match" data-editorial-reveal>
+      <div className={l.priceName}><h3 id="price-match">{MATCH_GUIDE.name}</h3><p>{MATCH_GUIDE.tagline}</p></div>
+      <dl className={l.priceFacts}>
+        <div><dt>이용 가격</dt><dd className={l.priceAmount}>{won(MATCH_PRICE)}</dd></div>
+        <div><dt>진행 방식</dt><dd>{MATCH_GUIDE.method}</dd></div>
+        <div className={l.priceContent}><dt>제공 내용</dt><dd><ul>{MATCH_GUIDE.features.map(feature => <li key={feature}><Check size={13} weight="bold" aria-hidden="true" />{feature}</li>)}</ul></dd></div>
+        <div><dt>횟수</dt><dd>{MATCH_GUIDE.count}</dd></div>
+      </dl>
+      <div className={l.priceActions}><Link href="/apply?kind=impression#coaching-content" className={l.priceApply}>소개팅 신청</Link><Link href="/services/matching" className={l.priceMore} aria-label={`${MATCH_GUIDE.name} 자세히 보기`}>자세히 보기</Link></div>
+    </article>
+  </div>;
+}
+
 export default function CoachingLanding({ programs }: { programs: Program[] | null }) {
   // 01–06 are the focused services; 07 (종합 코칭) gets the wide card underneath.
-  const services = COACHING_SERVICES.slice(0, -1);
-  const featured = COACHING_SERVICES[COACHING_SERVICES.length - 1];
+  const services = COACHING_SERVICES.filter(service => !(service.id in WIDE_SERVICES));
+  const wide = COACHING_SERVICES.filter(service => service.id in WIDE_SERVICES);
   return <div className={l.landing}>
     <EditorialMotion />
     <CoachingHero />
@@ -142,10 +162,10 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
             </Link></li>;
           })}
         </ul>
-        <Link href={`/services/${featured.id}`} className={l.serviceFeatured} data-editorial-reveal>
-          <div><span className={l.featuredNumber}>{featured.number} · 여러 고민을 함께</span><h3>{featured.name}</h3><p className={l.serviceTagline}>{featured.tagline}</p><div className={l.serviceWho}><strong>이런 분이 신청해요</strong><p>{featured.whoText}</p></div></div>
+        {wide.map(featured => <Link key={featured.id} href={`/services/${featured.id}`} className={`${l.serviceFeatured} ${featured.id === "matching" ? l.serviceFeaturedLight : ""}`} data-editorial-reveal>
+          <div><span className={l.featuredNumber}>{featured.number} · {WIDE_SERVICES[featured.id]}</span><h3>{featured.name}</h3><p className={l.serviceTagline}>{featured.tagline}</p><div className={l.serviceWho}><strong>이런 분이 신청해요</strong><p>{featured.whoText}</p></div></div>
           <div><span className={l.featuredPointsTitle}>이런 도움을 받을 수 있어요</span><ul className={l.servicePoints}>{featured.helps.map(item => <li key={item}><Check size={14} weight="bold" aria-hidden="true" />{item}</li>)}</ul><span className={l.serviceMore}>자세히 보기 <ArrowUpRight size={15} aria-hidden="true" /></span></div>
-        </Link>
+        </Link>)}
       </div>
     </section>
 
@@ -187,6 +207,7 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       <div className={l.container}>
         <SectionHead eyebrow="PROGRAMS & PRICE" title={<span id="pricing-title">프로그램 및 가격 안내</span>}>프로그램별 가격과 제공 내용을 한눈에 비교해보세요. 모든 코칭은 1:1 카카오톡 비대면으로 진행합니다.</SectionHead>
         <Pricing programs={programs} />
+        <MatchPricing />
       </div>
     </section>
 

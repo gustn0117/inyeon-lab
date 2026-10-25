@@ -140,6 +140,9 @@
   animation: heroIn 640ms 60ms cubic-bezier(.22, 1, .36, 1) both;
 }
 
+/* 좁은 화면에서 '소개팅 / 주선'처럼 갈라지지 않게 한 줄로 */
+.noBreak { white-space: nowrap; }
+
 .heroSub {
   max-width: 620px;
   margin: 24px 0 0;
@@ -704,6 +707,19 @@
   letter-spacing: .02em;
 }
 
+/* 08 소개팅 주선 — 07 종합 연애코칭과 같은 넓은 카드, 밝은 톤으로 구분 */
+.serviceFeaturedLight { background: #f6f6f6; color: #111; box-shadow: inset 0 0 0 1px #e3e3e3; }
+.serviceFeaturedLight:hover { box-shadow: inset 0 0 0 1px #d6d6d6, 0 26px 56px rgba(0, 0, 0, .08); }
+.serviceFeaturedLight .featuredNumber,
+.serviceFeaturedLight .featuredPointsTitle { color: #6b6b6b; }
+.serviceFeaturedLight h3 { color: #111; }
+.serviceFeaturedLight .serviceTagline { color: #4a4a4a; }
+.serviceFeaturedLight .serviceWho { background: #fff; }
+.serviceFeaturedLight .serviceWho strong { color: #111; }
+.serviceFeaturedLight .serviceWho p { color: #555; }
+.serviceFeaturedLight .servicePoints li { color: #333; }
+.serviceFeaturedLight .serviceMore { color: #111; }
+
 /* 코칭 예시 */
 .exampleGrid {
   display: grid;
@@ -892,6 +908,9 @@
 }
 
 .priceFeatured { background: #f7f7f7; }
+
+/* 소개팅 — 코칭 프로그램 표 아래 따로 */
+.priceTableMatch { margin-top: 44px; }
 
 .priceBadge {
   display: inline-flex;

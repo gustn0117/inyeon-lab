@@ -27,7 +27,7 @@ export default function CoachingHero() {
       <div className={l.heroInner}>
         <div key={String(ready)} className={l.heroCopy}>
           <p className={l.heroIdentity}><span aria-hidden="true" />당신의 연애에도 변화가 시작됩니다</p>
-          <h1 id="home-title">연애가 어려운<br className={l.mobileBreak} /> 당신을 위한<br />1:1 맞춤 연애코칭</h1>
+          <h1 id="home-title">연애가 어려운<br className={l.mobileBreak} /> 당신을 위한<br />연애컨설팅 그리고 <span className={l.noBreak}>소개팅 주선</span></h1>
           <p className={l.heroSub}>썸부터 소개팅, 카카오톡 대화, 연애 고민까지.<br className={l.desktopBreak} /> 혼자 고민했던 연애 문제를 함께 분석하고 현실적인 해결 방향을 제안합니다.</p>
           <ul className={l.heroHighlights} aria-label="인연연구소 연애코칭의 특징">
             {HIGHLIGHTS.map(item => <li key={item}><Check size={14} weight="bold" aria-hidden="true" />{item}</li>)}

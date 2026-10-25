@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Sparkle } from "@phosphor-icons/react/dist/ssr";
-import { DEFAULT_PROGRAMS, type Program, won } from "@/lib/coaching";
+import { ArrowUpRight, Heart, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import { DEFAULT_PROGRAMS, MATCH_GUIDE, MATCH_PRICE, type Program, won } from "@/lib/coaching";
 import s from "./coaching.module.css";
 import v from "./visual.module.css";
 
@@ -15,6 +15,20 @@ export function ProgramCard({ program }: { program: Program }) {
     <div className={s.programActions}><Link href={`/checkout?program=${program.id}`} className={program.featured ? s.primary : s.secondary}>프로그램 신청 <ArrowUpRight size={15} /></Link><Link href={`/programs/${program.id}`} className={s.textButton} aria-label={`${program.name} 자세히 보기`}>어떤 코칭인지 자세히 보기</Link></div>
     </div>
   </article>;
+}
+
+// 코칭 프로그램과 따로 보여 주는 소개팅 — 사전 상담이 먼저라 결제가 아니라 소개팅 신청서로 보낸다.
+export function MatchGroup() {
+  return <><p className={s.programGroupLabel}>결이 맞는 인연을 · 소개팅</p><div className={s.programGrid}><article className={`${s.programCard} ${v.imageCard}`} data-editorial-reveal>
+    <figure className={v.cardPhoto}><span><Heart size={16} weight="fill" aria-hidden="true" /></span></figure>
+    <div className={v.cardBody}>
+    <span className={s.programBadge}>{MATCH_GUIDE.count} · {MATCH_GUIDE.method}</span>
+    <h3>{MATCH_GUIDE.name}</h3><p className={s.programTagline}>{MATCH_GUIDE.tagline}</p>
+    <p className={s.price}>{won(MATCH_PRICE)}<small>/ {MATCH_GUIDE.count}</small></p>
+    <ul className={s.featureList}>{MATCH_GUIDE.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
+    <div className={s.programActions}><Link href="/apply?kind=impression#coaching-content" className={s.secondary}>소개팅 신청 <ArrowUpRight size={15} /></Link><Link href="/services/matching" className={s.textButton} aria-label={`${MATCH_GUIDE.name} 자세히 보기`}>어떤 소개팅인지 자세히 보기</Link></div>
+    </div>
+  </article></div></>;
 }
 
 export default function Programs({ programs }: { programs: Program[] | null }) {
