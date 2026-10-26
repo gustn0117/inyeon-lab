@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   },
 };
 
+// http로 들어오면(카카오톡·인스타에 'www.inyeon.today'로 적힌 링크 등) 바로 https로 옮긴다.
+// http는 보안 연결이 아니라 신청서 제출에 쓰는 기능이 빠져 아이폰에서 신청이 안 됐다(2026-10-26). 개인정보·사진도 https로만 받는다.
+const HTTPS_REDIRECT = `if(location.protocol==="http:"&&/(^|\\.)inyeon\\.today$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +34,7 @@ export default function RootLayout({
   const pixelId = /^\d+$/.test(configuredPixel) ? configuredPixel : "";
   return (
     <html lang="ko">
+      <head><script dangerouslySetInnerHTML={{ __html: HTTPS_REDIRECT }} /></head>
       <body className="antialiased">{children}<MetaPixel pixelId={pixelId} /></body>
     </html>
   );

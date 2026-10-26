@@ -22,8 +22,13 @@ export function BankDetails({ price }: { price: number }) {
   return <div className={s.bankBox}><h3>계좌이체 안내</h3><p>{BANK_ACCOUNT.bank} · 예금주 {BANK_ACCOUNT.holder}</p><strong className={s.bankNumber}>{BANK_ACCOUNT.number}</strong><button type="button" className={s.copyButton} onClick={copy}>{copied ? "계좌번호를 복사했어요 ✓" : "계좌번호 복사"}</button>{copyError && <p role="status" style={{ marginTop: 8 }}>위 계좌번호를 길게 눌러 복사해주세요.</p>}<div className={s.price}>{won(price)}<small>입금 금액</small></div><p>입금 확인 후 남겨주신 연락처로 연락드려<br />상담 일정을 확정합니다.</p></div>;
 }
 
-// 휴대폰 사진(특히 아이폰)은 그대로 올리면 5MB를 넘기 쉬워, 브라우저에서 긴 변 1800px JPEG로 줄여 올린다(서버도 같은 크기로 줄여 보관한다).
+// http로 들어오면(보안 연결이 아니면) crypto.randomUUID가 없어 제출이 멈췄다 — 같은 형식(v4)의 번호를 getRandomValues로 만든다.
+const newRequestId = () => typeof crypto.randomUUID === "function" ? crypto.randomUUID() : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (Number(c) ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> Number(c) / 4).toString(16));
+
+// 휴대폰 사진(특히 아이폰)은 용량이 커서, 브라우저에서 긴 변 1800px JPEG로 줄여 올린다(서버도 같은 크기로 줄여 보관한다).
+// 줄이지 못한 사진은 20MB까지 그대로 받는다(운영자 요청 2026-10-26).
 const PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const PHOTO_MAX = 20 * 1024 * 1024;
 async function shrinkPhoto(file: File) {
   if (!file.type.startsWith("image/")) return file;
   const url = URL.createObjectURL(file);
@@ -90,7 +95,7 @@ export default function CoachingForm({ mode, initialKind = "consultation", initi
     const ready = await shrinkPhoto(file).catch(() => file);
     if (pick !== photoPick.current) return;
     setPhotoBusy(false);
-    if (!PHOTO_TYPES.includes(ready.type) || ready.size > 5 * 1024 * 1024) { setPhotoError("JPG·PNG·WebP 형식의 5MB 이하 사진을 선택해주세요."); setPhoto(null); if (fileInput.current) fileInput.current.value = ""; return; }
+    if (!PHOTO_TYPES.includes(ready.type) || ready.size > PHOTO_MAX) { setPhotoError("JPG·PNG·WebP 형식의 20MB 이하 사진을 선택해주세요."); setPhoto(null); if (fileInput.current) fileInput.current.value = ""; return; }
     setPhoto(ready);
   };
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -101,7 +106,7 @@ export default function CoachingForm({ mode, initialKind = "consultation", initi
     if (dating && !photo) { setPhotoError("소개팅 신청을 위한 본인 사진을 첨부해주세요."); fileInput.current?.parentElement?.scrollIntoView({ block: "center" }); fileInput.current?.focus({ preventScroll: true }); return; }
     const form = event.currentTarget;
     const data = new FormData(form);
-    if (!requestId.current) requestId.current = crypto.randomUUID();
+    if (!requestId.current) requestId.current = newRequestId();
     data.set("requestId", requestId.current); data.set("kind", kind);
     if (selected) { data.set("programId", selected.id); data.set("expectedPrice", String(selected.price)); }
     data.delete("photo"); if (photo) data.set("photo", photo);

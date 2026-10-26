@@ -7,13 +7,15 @@ import { deleteObjects, getPhoto, getPrograms, listApplications, readApplication
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const MAX_BODY = 6 * 1024 * 1024;
+// 사진 20MB + 입력 내용(운영자 요청 2026-10-26) — 보통은 브라우저에서 줄여 1MB 안팎으로 온다
+const PHOTO_MAX = 20 * 1024 * 1024;
+const MAX_BODY = PHOTO_MAX + 1024 * 1024;
 const attempts = new Map<string, { count: number; reset: number }>();
 const failure = (error: string, status = 400) => NextResponse.json({ error }, { status, headers: { "Cache-Control": "no-store" } });
 
 async function boundedForm(req: NextRequest) {
   if (!req.headers.get("content-type")?.startsWith("multipart/form-data")) throw new Error("신청 양식을 확인해주세요.");
-  if (Number(req.headers.get("content-length")) > MAX_BODY) throw new Error("사진은 5MB 이하로 첨부해주세요.");
+  if (Number(req.headers.get("content-length")) > MAX_BODY) throw new Error("사진은 20MB 이하로 첨부해주세요.");
   const reader = req.body?.getReader();
   if (!reader) throw new Error("신청 내용을 입력해주세요.");
   let size = 0;
@@ -22,7 +24,7 @@ async function boundedForm(req: NextRequest) {
     const { done, value } = await reader.read();
     if (done) break;
     size += value.length;
-    if (size > MAX_BODY) { await reader.cancel(); throw new Error("사진은 5MB 이하로 첨부해주세요."); }
+    if (size > MAX_BODY) { await reader.cancel(); throw new Error("사진은 20MB 이하로 첨부해주세요."); }
     chunks.push(value);
   }
   return new Response(Buffer.concat(chunks), { headers: { "Content-Type": req.headers.get("content-type")! } }).formData();
@@ -73,12 +75,13 @@ export async function POST(req: NextRequest) {
   const photo = file instanceof File && file.size > 0 ? file : null;
   if (kind === "impression" && !photo) return failure("소개팅 신청을 위한 본인 사진을 첨부해주세요.");
   if (photo && field("photoConsent") !== "true") return failure("사진을 첨부하려면 사진 수집·이용에 동의해주세요.");
-  if (photo && (photo.size > 5 * 1024 * 1024 || !["image/jpeg", "image/png", "image/webp"].includes(photo.type))) return failure("사진은 JPG·PNG·WebP 형식, 5MB 이하로 첨부해주세요.");
+  if (photo && (photo.size > PHOTO_MAX || !["image/jpeg", "image/png", "image/webp"].includes(photo.type))) return failure("사진은 JPG·PNG·WebP 형식, 20MB 이하로 첨부해주세요.");
 
   let image: Buffer | null = null;
   if (photo) {
     try {
-      const pipeline = sharp(Buffer.from(await photo.arrayBuffer()), { limitInputPixels: 25000000, animated: false });
+      // 4,800만 화소 아이폰 원본(8064×6048)까지 — JPEG는 줄여서 읽어 메모리를 크게 쓰지 않는다
+      const pipeline = sharp(Buffer.from(await photo.arrayBuffer()), { limitInputPixels: 50000000, animated: false });
       const metadata = await pipeline.metadata();
       if (!metadata.format || !["jpeg", "png", "webp"].includes(metadata.format)) return failure("사용할 수 없는 사진 형식입니다.");
       image = await pipeline.rotate().resize({ width: 1800, height: 1800, fit: "inside", withoutEnlargement: true }).webp({ quality: 85 }).toBuffer();
