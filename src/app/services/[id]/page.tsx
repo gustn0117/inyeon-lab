@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { ArrowDown, ArrowUpRight, ChatsCircle, HandHeart, LockKey, NotePencil, Sparkle } from "@phosphor-icons/react/dist/ssr";
 import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
@@ -21,7 +22,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
   const service = findService(params.id);
   if (!service) return {};
-  return { title: `${service.name} | 인연연구소 연애코칭`, description: `${service.headline} ${service.why[service.why.length - 1]}` };
+  return { title: `${service.name} | 인연연구소 연애코칭`, description: `${service.headline.replace(/\n/g, " ")} ${service.why[service.why.length - 1]}` };
 }
 
 export default function ServicePage({ params }: { params: { id: string } }) {
@@ -32,7 +33,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
   const matching = service.id === "matching";
   const apply = matching ? { href: "/apply?kind=impression#coaching-content", label: "소개팅 신청하기" } : { href: "/apply", label: "신청 접수하기" };
   return <CoachingShell>
-    <PageIntro photo eyebrow={`${matching ? "MATCHING" : "COACHING"} SERVICE ${service.number}`} title={service.name} description={`“${service.headline}”`}>
+    <PageIntro photo eyebrow={`${matching ? "MATCHING" : "COACHING"} SERVICE ${service.number}`} title={service.name} description={<>“{service.headline.split("\n").map((line, i) => <Fragment key={i}>{i > 0 && <br />}{line}</Fragment>)}”</>}>
       <nav className={s.breadcrumb} aria-label="현재 위치"><Link href="/">홈</Link><span>/</span><Link href="/#services">연애코칭 서비스</Link><span>/</span><span>{service.name}</span></nav>
     </PageIntro>
     <section id="coaching-content" className={s.section}>

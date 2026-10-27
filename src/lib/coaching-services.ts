@@ -7,7 +7,7 @@ export type CoachingService = {
   number: string;
   name: string;
   tagline: string; // 메인 카드 한 줄 설명
-  headline: string; // 상세 페이지 상단 문구
+  headline: string; // 상세 페이지 상단 문구 (\n 자리에서 줄을 나눈다)
   who: string; // 첫 화면 '이런 분들이 신청해요'에 쓰는 대표 추천 대상
   whoText: string; // 메인 서비스 카드의 '이런 분이 신청해요' — 원고의 고민·추천 대상을 풀어 쓴 문장
   points: string[]; // 메인 서비스 카드의 도움 내용 3가지 (운영자 홍보 이미지 문구 우선)
@@ -167,7 +167,7 @@ export const COACHING_SERVICES: CoachingService[] = [
     number: "08",
     name: "소개팅 주선",
     tagline: "전체적인 요소를 고려해, 나와 결이 맞는 분을 찾아드립니다.",
-    headline: "조건보다 결이 맞는 사람을 만나고 싶다면, 사전 상담부터 시작해 보세요.",
+    headline: "나에게 맞는 사람을 소개받고 싶으시다면,\n성향 기반 소개팅 어떠세요?", // 운영자 원고(2026-10-27)
     who: "결이 맞는 이성을 소개받고 싶은 분",
     whoText: "새로운 만남의 기회가 필요한 분, 조건보다 성향과 가치관이 맞는 사람을 만나고 싶은 분이 신청해요.",
     points: ["사전 상담으로 성향과 가치관 파악", "거리·나이 등 전체적인 요소를 고려한 상대 제안", "결이 맞는 이성과의 1:1 소개팅"],
