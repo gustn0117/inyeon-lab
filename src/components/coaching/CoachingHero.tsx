@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
-import { ArrowDown, ArrowRight, ChatCircleText, Check, Heart, NotePencil } from "@phosphor-icons/react";
+import { ArrowRight, CaretRight, ChatCircleText, ChatsCircle, Heart, NotePencil } from "@phosphor-icons/react";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
+import ChatButton from "./ChatButton";
 import { SERVICE_ICONS } from "./serviceIcons";
 import s from "./home.module.css";
 import l from "./landing.module.css";
-
-const HIGHLIGHTS = ["100% 카카오톡 비대면 상담", "1:1 개인 맞춤형 코칭", "소개팅 주선", "기본 스타일링 무료 제안"];
 
 export default function CoachingHero() {
   const [ready, setReady] = useState(false);
@@ -25,18 +24,19 @@ export default function CoachingHero() {
       {/* 사진 자리 — AI 인물 사진 대신 빗금으로 둔다 (실제 사진이 준비되면 교체) */}
       <div className={l.heroMedia} aria-hidden="true" />
       <div className={l.heroInner}>
+        {/* 운영자 원고·예시 시안(2026-10-27) — 큰 제목 → 서비스 한 줄 → 설명 → 채팅·신청 버튼 → 브랜드 한 줄.
+            '소개팅 신청하기'는 시안에 없지만 운영자가 첫 화면에 따로 요청했던 버튼이라 그 아래 둔다. */}
         <div key={String(ready)} className={l.heroCopy}>
           <p className={l.heroIdentity}><span aria-hidden="true" />당신의 연애에도 변화가 시작됩니다</p>
-          <h1 id="home-title">연애가 어려운<br className={l.mobileBreak} /> 당신을 위한<br />연애컨설팅 그리고 <span className={l.noBreak}>소개팅 주선</span></h1>
-          <p className={l.heroSub}>썸부터 소개팅, 카카오톡 대화, 연애 고민까지.<br className={l.desktopBreak} /> 혼자 고민했던 연애 문제를 함께 분석하고 현실적인 해결 방향을 제안합니다.</p>
-          <ul className={l.heroHighlights} aria-label="인연연구소 연애코칭의 특징">
-            {HIGHLIGHTS.map(item => <li key={item}><Check size={14} weight="bold" aria-hidden="true" />{item}</li>)}
-          </ul>
+          <h1 id="home-title">당신에게 맞는<br /><span className={l.heroAccent}>연애 솔루션</span></h1>
+          <p className={l.heroLead}><span className={l.noBreak}>1:1 연애컨설팅 ·</span> <span className={l.noBreak}>성향 기반 소개팅</span></p>
+          <p className={l.heroSub}>연애 성향 분석과 맞춤 코칭, 가치관을 고려한<br /> 소개팅 주선 서비스를 제공합니다.</p>
           <div className={l.heroActions}>
-            <a href="#services" className={l.heroGhost}>연애코칭 알아보기 <ArrowDown size={16} aria-hidden="true" /></a>
-            <Link href="/apply" className={l.heroApply}><NotePencil size={18} aria-hidden="true" /> 신청 접수하기</Link>
+            <ChatButton className={l.heroChat}><ChatsCircle size={20} aria-hidden="true" /> 채팅 상담<CaretRight size={15} weight="bold" aria-hidden="true" /></ChatButton>
+            <Link href="/apply" className={l.heroApply}><NotePencil size={20} aria-hidden="true" /> 신청 접수하기<CaretRight size={15} weight="bold" aria-hidden="true" /></Link>
             <Link href="/apply?kind=impression#coaching-content" className={l.heroGhost}><Heart size={17} aria-hidden="true" /> 소개팅 신청하기</Link>
           </div>
+          <p className={l.heroBrand}><span>INYEON LAB</span>연애 고민부터 새로운 인연까지, 인연연구소가 함께합니다.</p>
         </div>
         <nav className={l.whoPanel} aria-labelledby="who-title">
           <div className={l.whoHead}>
