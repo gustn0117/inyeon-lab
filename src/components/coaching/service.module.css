@@ -1,6 +1,55 @@
 /* 연애코칭 서비스·프로그램 상세 페이지 — 프로그램 상세(coaching.module.css)의 레이아웃 위에 쓰는 보조 스타일 */
 .blockTitle { margin-top: 15px; }
 
+/* 소개팅 주선 — 인연연구소 소개팅은 이렇게 다릅니다 (본문 맨 위) */
+/* 휴대폰에서 '다릅니다.'만 둘째 줄에 남지 않게 두 줄 길이를 맞춘다 */
+.matchTitle { text-wrap: balance; }
+
+.matchPoints {
+  display: grid;
+  margin: 22px 0 0;
+  padding: 0;
+  gap: 10px;
+  list-style: none;
+}
+
+.matchPoints li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 16px;
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: #f3f3f3;
+}
+
+.matchPoints li > span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  grid-row: span 2;
+  align-self: center;
+  place-items: center;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+}
+
+.matchPoints strong {
+  color: #111;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -.02em;
+  word-break: keep-all;
+}
+
+.matchPoints p {
+  margin: 4px 0 0 !important;
+  color: #5f5f5f !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
 /* 이런 고민을 하고 계신가요? */
 .concernList {
   display: grid;
@@ -286,6 +335,10 @@
 /* 프로그램 상세와 달리 모바일에서는 설명을 먼저 읽고, 신청 안내는 그 아래 */
 @media (max-width: 800px) {
   .grid > aside.aside { grid-row: auto; }
+  .matchPoints li { grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; padding: 16px 18px; }
+  .matchPoints li > span { width: 40px; height: 40px; }
+  .matchPoints strong { font-size: 16px; }
+  .matchPoints p { font-size: 13.5px !important; }
   .concernList { grid-template-columns: 1fr; }
   .concernList li { font-size: 15px; }
   .why p:first-child { font-size: 16px !important; }

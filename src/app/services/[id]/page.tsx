@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowUpRight, ChatsCircle, HandHeart, LockKey, NotePencil, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import { ArrowDown, ArrowUpRight, ChatsCircle, HandHeart, Handshake, Heart, LockKey, NotePencil, Sparkle, UserCircleCheck } from "@phosphor-icons/react/dist/ssr";
 import CoachingShell, { PageIntro } from "@/components/coaching/CoachingShell";
 import ChatButton from "@/components/coaching/ChatButton";
 import KakaoIdButton from "@/components/coaching/KakaoIdButton";
@@ -11,9 +11,12 @@ import s from "@/components/coaching/coaching.module.css";
 import v from "@/components/coaching/visual.module.css";
 import d from "@/components/coaching/service.module.css";
 import { MATCH_PRICE, won } from "@/lib/coaching";
-import { COACHING_SERVICES, MATCH_NOTICES, MATCH_STEPS, findService } from "@/lib/coaching-services";
+import { COACHING_SERVICES, MATCH_NOTICES, MATCH_POINTS, MATCH_STEPS, findService } from "@/lib/coaching-services";
 
 export const dynamicParams = false;
+
+// MATCH_POINTS 순서대로 — 사람이 직접 주선 · 결이 맞는 분 제안 · 전담 매니저 배정
+const MATCH_POINT_ICONS = [Handshake, Heart, UserCircleCheck];
 
 export function generateStaticParams() {
   return COACHING_SERVICES.map(service => ({ id: service.id }));
@@ -39,6 +42,10 @@ export default function ServicePage({ params }: { params: { id: string } }) {
     <section id="coaching-content" className={s.section}>
       <div className={`${s.container} ${s.detailGrid} ${d.grid}`}>
         <div className={s.detailText}>
+          {matching && <div className={s.detailBlock}>
+            <span className={s.eyebrow}>HOW WE MATCH</span><h2 className={`${d.blockTitle} ${d.matchTitle}`}>인연연구소 소개팅은 이렇게 다릅니다.</h2>
+            <ul className={d.matchPoints}>{MATCH_POINTS.map((point, i) => { const Icon = MATCH_POINT_ICONS[i]; return <li key={point.title}><span aria-hidden="true"><Icon size={22} /></span><strong>{point.title}</strong><p>{point.text}</p></li>; })}</ul>
+          </div>}
           <div className={s.detailBlock}>
             <span className={s.eyebrow}>DO YOU RELATE?</span><h2 className={d.blockTitle}>이런 고민을 하고 계신가요?</h2>
             <ul className={d.concernList}>{service.concerns.map(item => <li key={item}>“{item}”</li>)}</ul>

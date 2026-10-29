@@ -25,7 +25,8 @@ export default function CoachingHero() {
       <div className={l.heroMedia} aria-hidden="true" />
       <div className={l.heroInner}>
         {/* 운영자 원고·예시 시안(2026-10-27) — 큰 제목 → 서비스 한 줄 → 설명 → 채팅·신청 버튼 → 브랜드 한 줄.
-            '소개팅 신청하기'는 시안에 없지만 운영자가 첫 화면에 따로 요청했던 버튼이라 그 아래 둔다. */}
+            '소개팅 신청하기'는 시안에 없지만 운영자가 첫 화면에 따로 요청했던 버튼이라 그 아래 둔다.
+            누르면 신청서가 아니라 소개팅 주선 설명(08)으로 먼저 간다 — 운영자 요청(2026-10-29). */}
         <div key={String(ready)} className={l.heroCopy}>
           <p className={l.heroIdentity}><span aria-hidden="true" />당신의 연애에도 변화가 시작됩니다</p>
           <h1 id="home-title">당신에게 맞는<br /><span className={l.heroAccent}>연애 솔루션</span></h1>
@@ -34,7 +35,7 @@ export default function CoachingHero() {
           <div className={l.heroActions}>
             <ChatButton className={l.heroChat}><ChatsCircle size={20} aria-hidden="true" /> 채팅 상담<CaretRight size={15} weight="bold" aria-hidden="true" /></ChatButton>
             <Link href="/apply" className={l.heroApply}><NotePencil size={20} aria-hidden="true" /> 신청 접수하기<CaretRight size={15} weight="bold" aria-hidden="true" /></Link>
-            <Link href="/apply?kind=impression#coaching-content" className={l.heroGhost}><Heart size={17} aria-hidden="true" /> 소개팅 신청하기</Link>
+            <Link href="/services/matching" className={l.heroGhost}><Heart size={17} aria-hidden="true" /> 소개팅 신청하기</Link>
           </div>
           <p className={l.heroBrand}><span>INYEON LAB</span>연애 고민부터 새로운 인연까지, 인연연구소가 함께합니다.</p>
         </div>
