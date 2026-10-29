@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: "연애코칭, 연애상담, 카톡 대화 코칭, 소개팅 코칭, 썸 상담, 무료 연애진단, 소개팅 주선, 스타일링, 인연연구소",
   metadataBase: new URL("https://inyeon.today"),
   openGraph: {
-    title: "인연연구소 | 연애에도 연습이 필요합니다",
+    title: "인연연구소 | 당신에게 맞는 연애 솔루션",
     description: "남녀 상담사가 직접 듣고 체계적으로 코칭합니다. 카톡 한 줄부터 소개팅에서의 대화까지, 나에게 맞는 관계의 방식을 전문적인 1:1 카카오톡 코칭으로 함께 찾아갑니다.",
     url: "https://inyeon.today",
     siteName: "인연연구소",

@@ -1,5 +1,5 @@
 .pageIntro { padding: 64px 48px 72px; background: #fff; color: #111; }
-.pageIntro + :global(#coaching-content) { scroll-margin-top: 140px; }
+.pageIntro + :global(#coaching-content) { scroll-margin-top: calc(var(--header-height) + 16px); }
 .contentSection[class] { padding-top: 50px; }
 .contentSection > div > p:first-child { margin-top: 0; }
 .introGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: center; max-width: 1280px; margin: auto; }
@@ -65,7 +65,7 @@
 @keyframes photoIn { from { opacity: 0; clip-path: inset(0 0 12% 0 round 28px); transform: translateY(18px); } to { opacity: 1; clip-path: inset(0 round 28px); transform: none; } }
 @media(hover:hover) and (prefers-reduced-motion:no-preference) { .imageCard:hover .cardPhoto > img { transform: scale(1.05); } }
 @media(max-width:1100px) { .introGrid { gap: 40px; } .introPhoto { height: 390px; } .processGrid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-@media(max-width:900px) { .pageIntro { padding: 48px 32px 55px; } .pageIntro + :global(#coaching-content) { scroll-margin-top: 110px; } .introGrid { grid-template-columns: 1fr; gap: 32px; } .introCopy { max-width: 650px; } .introPhoto { height: 330px; } .cardBody { padding: 25px; } }
+@media(max-width:900px) { .pageIntro { padding: 48px 32px 55px; } .introGrid { grid-template-columns: 1fr; gap: 32px; } .introCopy { max-width: 650px; } .introPhoto { height: 330px; } .cardBody { padding: 25px; } }
 @media(max-width:768px) {
   .pageIntro { padding: 40px 20px 42px; }
   .eyebrow { font-size: 9px; line-height: 1.6; margin-bottom: 18px; }
