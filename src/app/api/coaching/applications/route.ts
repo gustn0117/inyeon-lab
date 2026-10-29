@@ -73,7 +73,6 @@ export async function POST(req: NextRequest) {
   if (kind === "paid" && field("termsConsent") !== "true") return failure("이용약관과 취소·환불 안내를 확인해주세요.");
   const file = form.get("photo");
   const photo = file instanceof File && file.size > 0 ? file : null;
-  if (kind === "impression" && !photo) return failure("소개팅 신청을 위한 본인 사진을 첨부해주세요.");
   if (photo && field("photoConsent") !== "true") return failure("사진을 첨부하려면 사진 수집·이용에 동의해주세요.");
   if (photo && (photo.size > PHOTO_MAX || !["image/jpeg", "image/png", "image/webp"].includes(photo.type))) return failure("사진은 JPG·PNG·WebP 형식, 20MB 이하로 첨부해주세요.");
 
@@ -106,7 +105,7 @@ export async function POST(req: NextRequest) {
       programId: program?.id ?? "", programName: program?.name ?? "", price: program?.price ?? 0,
       depositor: kind === "paid" ? field("depositor") : "", photoPath, privacyConsent: true,
       requestedProgramName: requestedProgram?.name ?? "", adultConsent: true, termsConsent: kind === "paid",
-      photoConsent: !!photo, consentVersion: "2026-10-23", status: "received", createdAt: timestamp, updatedAt: timestamp,
+      photoConsent: !!photo, consentVersion: "2026-10-29", status: "received", createdAt: timestamp, updatedAt: timestamp,
     };
     await saveApplication(application);
     return NextResponse.json({ ok: true, id });

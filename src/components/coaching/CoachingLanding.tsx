@@ -17,7 +17,7 @@ const START: { title: string; text: string; cta: string; icon: Icon; href?: stri
   { title: "무료 상담 신청서", text: "어떤 코칭이 좋을지, 현재 상황부터 함께 정리해요.", cta: "신청 접수하기", icon: NotePencil, href: "/apply" },
   { title: "카카오톡 ID 문의", text: `카카오톡에서 ID ${KAKAO_ID}을 친구 추가한 뒤 편하게 문의하세요.`, cta: "ID 복사하기", icon: ChatCircleDots, action: "kakao" },
   { title: "무료 연애 자가진단", text: "10문항으로 나의 연애 성향과 필요한 연습을 알아보세요.", cta: "진단 시작", icon: ClipboardText, href: "/diagnosis" },
-  { title: "소개팅 신청", text: "사진과 간단한 정보를 남기면 사전 상담 후 결이 맞는 분을 제안해드려요.", cta: "소개팅 신청", icon: Heart, href: "/apply?kind=impression" },
+  { title: "소개팅 신청", text: "간단한 정보를 남기면 사전 상담 후 결이 맞는 분을 제안해드려요.", cta: "소개팅 신청", icon: Heart, href: "/apply?kind=impression" },
 ];
 
 // 인연연구소는 어떤 곳인가요? — 운영자 제공 '인연연구소만의 차이' 원문
