@@ -327,42 +327,37 @@
 
 .whoPanel a:hover > svg { color: #111; transform: translateX(3px); }
 
-/* 소개팅 후기 — 운영자가 보내준 카카오톡 캡처를 옆으로 넘겨 본다(첫 화면 바로 아래) */
+/* 소개팅 후기 — 운영자가 보내준 카카오톡 캡처(첫 화면 바로 아래).
+   캡처 비율이 제각각이라 한 줄로 늘어놓으면 높이가 들쭉날쭉하다(2026-11-02 사용자 지적) →
+   컴퓨터는 같은 크기 칸의 3열 격자(가장 긴 3번은 두 칸 높이), 태블릿은 2열, 휴대폰은 한 장씩 넘기는 띠.
+   캡처는 자르지 않고 칸 위쪽에 맞춰 다 보이게 두고, 남는 아래는 카카오톡 배경색이라 대화창처럼 보인다. */
 .reviewSection { padding: 96px 0; }
-.reviewSection .sectionHead { margin-bottom: 28px; }
-
-/* 높이는 ReviewStrip이 보이는 카드에 맞춰 바꾼다 — 세로로는 스크롤되지 않게 */
-.reviewTrack {
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  transition: height .3s ease;
-}
+.reviewSection .sectionHead { margin-bottom: 44px; }
 
 .reviewTrack::-webkit-scrollbar { display: none; }
 .reviewTrack:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
 
-/* 카드는 캡처 높이 그대로, 위쪽 맞춤 — 늘려서 빈 배경을 채우면 짧은 캡처가 휑하고, 위가 잘린 말풍선(1번)이 드러난다 */
 .reviewTrack ul {
-  display: flex;
-  width: max-content;
-  align-items: flex-start;
-  gap: 16px;
+  display: grid;
   margin: 0;
   padding: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
   list-style: none;
 }
 
-/* 배경은 카카오톡 대화창 색 — 사진이 뜨기 전 자리 표시 */
+/* 한 칸 비율은 한 칸짜리 중 가장 긴 6번(1080×597)에 맞춘다 */
 .reviewTrack li {
-  width: 372px;
-  flex: none;
+  aspect-ratio: 1080 / 597;
   overflow: hidden;
   border-radius: 20px;
   background: #abc0d1;
-  scroll-snap-align: start;
+}
+
+/* 3번(1080×1059)은 두 칸 높이 — 3열이면 8장이 3×3을 꼭 채운다 */
+.reviewTrack li.reviewTall {
+  grid-row: span 2;
+  aspect-ratio: auto;
 }
 
 .reviewTrack img {
@@ -371,13 +366,8 @@
   height: auto;
 }
 
-/* 가운데 — 오른쪽 끝에 두면 컴퓨터 화면 오른쪽에 붙은 빠른 메뉴 탭과 겹친다 */
-.reviewNav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
+/* 넘김 버튼은 휴대폰 띠에서만 — 가운데에 둔다(오른쪽 끝이면 컴퓨터 화면의 빠른 메뉴 탭과 겹친다) */
+.reviewNav { display: none; }
 
 .reviewNav button {
   display: grid;
@@ -394,6 +384,34 @@
 
 .reviewNav button:hover:not([aria-disabled="true"]) { border-color: #111; }
 .reviewNav button[aria-disabled="true"] { cursor: default; opacity: .35; }
+
+@media (max-width: 1024px) {
+  .reviewTrack ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* 2열이면 칸이 하나 남으므로 8번이 마지막 줄을 혼자 채운다 — 한 칸 높이(두 칸 + 사이 16px ≈ 한 칸 비율의 2.04배)에 맞춰 가운데 */
+  .reviewTrack li.reviewWide { grid-column: span 2; aspect-ratio: 2203 / 597; }
+  .reviewTrack li.reviewWide img { width: auto; height: 100%; margin-inline: auto; }
+}
+
+/* 휴대폰은 한 장씩 넘기는 띠 — 화면 끝까지 넘기고 다음 카드가 살짝 보이게. 높이는 ReviewStrip이 보이는 카드에 맞춘다(세로 스크롤 없음) */
+@media (max-width: 640px) {
+  .reviewSection .sectionHead { margin-bottom: 20px; }
+  .reviewNav { display: flex; justify-content: center; gap: 10px; margin-bottom: 12px; }
+  .reviewTrack {
+    margin-inline: -20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scrollbar-width: none;
+    transition: height .3s ease;
+  }
+  .reviewTrack ul { display: flex; width: max-content; align-items: flex-start; padding-inline: 20px; }
+  .reviewTrack li,
+  .reviewTrack li.reviewTall,
+  .reviewTrack li.reviewWide { width: min(84vw, 340px); flex: none; aspect-ratio: auto; grid-row: auto; grid-column: auto; border-radius: 16px; scroll-snap-align: start; }
+  .reviewTrack li.reviewWide img { width: 100%; height: auto; margin-inline: 0; }
+}
 
 /* 상담 시작 방법 — 첫 칸(실시간 채팅)은 검정으로 강조 */
 .startSection { padding: 96px 0; }
@@ -1359,12 +1377,6 @@
   .heroBrand { margin-top: 26px; font-size: 13px; }
 
   .reviewSection { padding: 64px 0; }
-  /* 휴대폰은 화면 끝까지 넘기고, 다음 카드가 살짝 보이게 */
-  .reviewTrack { margin-inline: -20px; scroll-padding-inline: 20px; }
-  .reviewTrack ul { padding-inline: 20px; }
-  .reviewTrack li { width: min(84vw, 340px); border-radius: 16px; }
-  .reviewSection .sectionHead { margin-bottom: 20px; }
-  .reviewNav { margin-bottom: 12px; }
   .startSection { padding: 64px 0; }
   .startGrid { grid-template-columns: 1fr; gap: 10px; }
   .startCard {
