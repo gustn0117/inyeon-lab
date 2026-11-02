@@ -9,9 +9,10 @@ import KakaoIdButton from "./KakaoIdButton";
 import { SERVICE_ICONS } from "./serviceIcons";
 import CoachingHero from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
+import ReviewStrip from "./ReviewStrip";
 import l from "./landing.module.css";
 
-// 첫 화면 바로 아래: 상담을 시작하는 방법(채팅·신청서·카카오톡 ID)과 무료 진단을 한눈에
+// 소개팅 후기 다음: 상담을 시작하는 방법(채팅·신청서·카카오톡 ID)과 무료 진단을 한눈에
 const START: { title: string; text: string; cta: string; icon: Icon; href?: string; action?: "chat" | "kakao" }[] = [
   { title: "실시간 채팅 상담", text: "사이트에서 바로 궁금한 점을 남기면 상담사가 확인 후 답변드려요.", cta: "채팅 열기", icon: ChatsCircle, action: "chat" },
   { title: "무료 상담 신청서", text: "어떤 코칭이 좋을지, 현재 상황부터 함께 정리해요.", cta: "신청 접수하기", icon: NotePencil, href: "/apply" },
@@ -119,6 +120,14 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
   return <div className={l.landing}>
     <EditorialMotion />
     <CoachingHero />
+
+    {/* 첫 화면 바로 아래 — 운영자 요청(2026-11-02): 신뢰가 중요하니 '소개팅 후기'로 실제 카카오톡 캡처를 보여준다 */}
+    <section id="reviews" className={`${l.section} ${l.sectionSoft} ${l.reviewSection}`} aria-labelledby="reviews-title" data-home-section="reviews">
+      <div className={l.container}>
+        <SectionHead eyebrow="REVIEW" title={<span id="reviews-title">소개팅 후기</span>}>인연연구소 소개팅을 이용하신 분들이 매니저에게 직접 보내주신 메시지입니다.</SectionHead>
+        <ReviewStrip />
+      </div>
+    </section>
 
     <section id="start" className={`${l.section} ${l.startSection}`} aria-labelledby="start-title" data-home-section="start">
       <div className={l.container}>
