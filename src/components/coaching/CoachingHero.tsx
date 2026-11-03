@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState, type CSSProperties } from "react";
 import { ArrowRight, CaretRight, ChatCircleText, ChatsCircle, Heart, NotePencil } from "@phosphor-icons/react";
 import { COACHING_SERVICES } from "@/lib/coaching-services";
@@ -19,19 +20,17 @@ export default function CoachingHero() {
     return () => clearTimeout(timer);
   }, []);
   return <>
-    {intro && <div className={s.intro} aria-hidden="true"><div className={s.introInner}><small>INYEON LAB</small><p>마음을 전하는 방법을 연구합니다</p><strong>{Array.from("인연연구소").map((char, i) => <span key={i} style={{ "--i": i } as CSSProperties}>{char}</span>)}</strong><i /></div></div>}
+    {intro && <div className={`${s.intro} ${l.heroIntro}`} aria-hidden="true"><div className={s.introInner}><small>INYEON LAB</small><p>마음을 전하는 방법을 연구합니다</p><strong>{Array.from("인연연구소").map((char, i) => <span key={i} style={{ "--i": i } as CSSProperties}>{char}</span>)}</strong><i /></div></div>}
     <section className={l.hero} data-home-section="hero" aria-labelledby="home-title">
-      {/* 사진 자리 — AI 인물 사진 대신 빗금으로 둔다 (실제 사진이 준비되면 교체) */}
-      <div className={l.heroMedia} aria-hidden="true" />
+      <div className={l.heroMedia}>
+        <Image src="/photos/holding-hands-sunlight.webp" alt="따뜻한 햇살 아래 자연스럽게 손을 맞잡은 두 사람" fill priority sizes="100vw" quality={90} className={l.heroPhoto} />
+      </div>
       <div className={l.heroInner}>
-        {/* 운영자 원고·예시 시안(2026-10-27) — 큰 제목 → 서비스 한 줄 → 설명 → 채팅·신청 버튼 → 브랜드 한 줄.
-            '소개팅 신청하기'는 시안에 없지만 운영자가 첫 화면에 따로 요청했던 버튼이라 그 아래 둔다.
-            누르면 신청서가 아니라 소개팅 주선 설명(08)으로 먼저 간다 — 운영자 요청(2026-10-29). */}
+        {/* 운영자 요청(2026-11-03): 밝은 실사 배경과 프리미엄 소개팅 문구. 지표는 후기 아래에 표시한다. */}
         <div key={String(ready)} className={l.heroCopy}>
-          <p className={l.heroIdentity}><span aria-hidden="true" />당신의 연애에도 변화가 시작됩니다</p>
-          <h1 id="home-title">당신에게 맞는<br /><span className={l.heroAccent}>연애 솔루션</span></h1>
-          <p className={l.heroLead}><span className={l.noBreak}>1:1 연애컨설팅 ·</span> <span className={l.noBreak}>성향 기반 소개팅</span></p>
-          <p className={l.heroSub}>연애 성향 분석과 맞춤 코칭, 가치관을 고려한<br /> 소개팅 주선 서비스를 제공합니다.</p>
+          <p className={l.heroIdentity}><span aria-hidden="true" />회원님의 만족을 가장 중요하게</p>
+          <h1 id="home-title">아무나 주선하지 않는<br /><span className={l.heroAccent}>프리미엄 소개팅</span></h1>
+          <p className={l.heroLead}><span className={l.noBreak}>연애컨설팅</span><span className={l.heroSeparator} aria-hidden="true"> • </span><span className={l.noBreak}>성향기반 소개팅</span></p>
           <div className={l.heroActions}>
             <ChatButton className={l.heroChat}><ChatsCircle size={20} aria-hidden="true" /> 채팅 상담<CaretRight size={15} weight="bold" aria-hidden="true" /></ChatButton>
             <Link href="/apply" className={l.heroApply}><NotePencil size={20} aria-hidden="true" /> 신청 접수하기<CaretRight size={15} weight="bold" aria-hidden="true" /></Link>
@@ -39,7 +38,16 @@ export default function CoachingHero() {
           </div>
           <p className={l.heroBrand}><span>INYEON LAB</span>연애 고민부터 새로운 인연까지, 인연연구소가 함께합니다.</p>
         </div>
-        <nav className={l.whoPanel} aria-labelledby="who-title">
+      </div>
+    </section>
+  </>;
+}
+
+// 사진과 핵심 문구에 집중할 수 있도록 기존 코칭 바로가기는 후기·지표 다음에 배치한다.
+export function CoachingAudience() {
+  return <div className={l.whoSection}>
+    <div className={l.container}>
+      <nav className={l.whoPanel} aria-labelledby="who-title">
           <div className={l.whoHead}>
             <span className={l.eyebrow}>WHO WE HELP</span>
             <h2 id="who-title">이런 분들이 신청해요</h2>
@@ -55,8 +63,7 @@ export default function CoachingHero() {
               </Link></li>;
             })}
           </ul>
-        </nav>
-      </div>
-    </section>
-  </>;
+      </nav>
+    </div>
+  </div>;
 }

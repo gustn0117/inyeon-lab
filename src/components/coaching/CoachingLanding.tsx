@@ -7,7 +7,7 @@ import { KAKAO_ID } from "@/lib/contact";
 import ChatButton from "./ChatButton";
 import KakaoIdButton from "./KakaoIdButton";
 import { SERVICE_ICONS } from "./serviceIcons";
-import CoachingHero from "./CoachingHero";
+import CoachingHero, { CoachingAudience } from "./CoachingHero";
 import EditorialMotion from "./EditorialMotion";
 import ReviewStrip from "./ReviewStrip";
 import l from "./landing.module.css";
@@ -129,6 +129,22 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       </div>
     </section>
 
+    <section id="matching-results" className={l.resultsSection} aria-labelledby="results-title" data-home-section="results">
+      <div className={`${l.container} ${l.resultsInner}`}>
+        <div className={l.resultsHeading}>
+          <span className={l.eyebrow}>INYEON IN NUMBERS</span>
+          <h2 id="results-title">좋은 인연을 향한 선택</h2>
+          <p><time dateTime="2026-11">2026.11월</time> 기준</p>
+        </div>
+        <dl className={l.resultsStats}>
+          <div><dt>소개팅 누적신청</dt><dd>32,121<span>명</span></dd></div>
+          <div><dt>만족도</dt><dd>96<span>%</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <CoachingAudience />
+
     <section id="start" className={`${l.section} ${l.startSection}`} aria-labelledby="start-title" data-home-section="start">
       <div className={l.container}>
         <SectionHead eyebrow="HOW TO START" title={<span id="start-title">원하는 방법으로 편하게 시작하세요</span>}>실시간 채팅부터 무료 진단까지, 모든 상담은 1:1 비대면으로 진행합니다.</SectionHead>
@@ -178,7 +194,7 @@ export default function CoachingLanding({ programs }: { programs: Program[] | nu
       </div>
     </section>
 
-    <section id="about" className={`${l.section} ${l.sectionDark}`} aria-labelledby="about-title" data-home-section="about">
+    <section id="about" className={`${l.section} ${l.sectionWarm}`} aria-labelledby="about-title" data-home-section="about">
       <div className={l.container}>
         <SectionHead eyebrow="WHY INYEON LAB" title={<span id="about-title">AI가 아닌, 사람이 직접 듣고 코칭합니다.</span>}>인연연구소는 소개팅 업체를 운영하며 쌓은 경험을 바탕으로, 연애 고민을 1:1로 함께 풀어가는 카카오톡 연애코칭 서비스입니다.</SectionHead>
         <ol className={l.aboutGrid}>
