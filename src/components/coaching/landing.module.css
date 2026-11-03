@@ -338,8 +338,9 @@
 
 /* 소개팅 후기 — 운영자가 보내준 카카오톡 캡처(첫 화면 바로 아래).
    캡처 비율이 제각각이라 한 줄로 늘어놓으면 높이가 들쭉날쭉하다(2026-11-02 사용자 지적) →
-   컴퓨터는 같은 크기 칸의 3열 격자(가장 긴 3번은 두 칸 높이), 태블릿은 2열, 휴대폰은 한 장씩 넘기는 띠.
-   캡처는 자르지 않고 칸 위쪽에 맞춰 다 보이게 두고, 남는 아래는 카카오톡 배경색이라 대화창처럼 보인다. */
+   컴퓨터는 같은 크기 칸의 3열 격자(맨 앞 9번은 세 줄, 3번은 두 줄을 차지 — 9장이 4줄을 꼭 채운다), 휴대폰은 한 장씩 넘기는 띠.
+   태블릿은 2열 6줄 — 셋째 줄엔 한 칸짜리가 없어 그 줄은 3번 캡처 길이에 맞춰 줄어든다(9번 위·3번 아래 여백이 적다).
+   캡처는 자르지 않고 칸 위쪽에 맞춰 다 보이게 두고(9번만 아래쪽), 남는 곳은 카카오톡 배경색이라 대화창처럼 보인다. */
 .reviewSection { padding: 96px 0; }
 .reviewSection .sectionHead { margin-bottom: 44px; }
 
@@ -376,9 +377,18 @@
   background: #abc0d1;
 }
 
-/* 3번(1080×1059)은 두 칸 높이 — 3열이면 8장이 3×3을 꼭 채운다 */
+/* 3번(1080×1059)은 두 줄을 차지 */
 .reviewTrack li.reviewTall {
   grid-row: span 2;
+  aspect-ratio: auto;
+}
+
+/* 맨 앞 9번(1079×1548)은 세 줄을 차지. 캡처 아래 끝에서 사진이 잘려 있어 칸 아래에 붙인다(남는 위쪽이 배경색) */
+.reviewTrack li.reviewLong {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-row: span 3;
   aspect-ratio: auto;
 }
 
@@ -409,9 +419,6 @@
 
 @media (max-width: 1024px) {
   .reviewTrack ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  /* 2열이면 칸이 하나 남으므로 8번이 마지막 줄을 혼자 채운다 — 한 칸 높이(두 칸 + 사이 16px ≈ 한 칸 비율의 2.04배)에 맞춰 가운데 */
-  .reviewTrack li.reviewWide { grid-column: span 2; aspect-ratio: 2203 / 597; }
-  .reviewTrack li.reviewWide img { width: auto; height: 100%; margin-inline: auto; }
 }
 
 /* 휴대폰은 한 장씩 넘기는 띠 — 화면 끝까지 넘기고 다음 카드가 살짝 보이게. 높이는 ReviewStrip이 보이는 카드에 맞춘다(세로 스크롤 없음) */
@@ -431,8 +438,7 @@
   .reviewTrack ul { display: flex; width: max-content; align-items: flex-start; padding-inline: 20px; }
   .reviewTrack li,
   .reviewTrack li.reviewTall,
-  .reviewTrack li.reviewWide { width: min(84vw, 340px); flex: none; aspect-ratio: auto; grid-row: auto; grid-column: auto; border-radius: 16px; scroll-snap-align: start; }
-  .reviewTrack li.reviewWide img { width: 100%; height: auto; margin-inline: 0; }
+  .reviewTrack li.reviewLong { width: min(84vw, 340px); flex: none; aspect-ratio: auto; grid-row: auto; border-radius: 16px; scroll-snap-align: start; }
 }
 
 /* 상담 시작 방법 — 첫 칸(실시간 채팅)은 따뜻한 베이지로 강조 */

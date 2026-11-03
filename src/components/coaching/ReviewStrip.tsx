@@ -7,9 +7,12 @@ import l from "./landing.module.css";
 
 // 운영자가 보내준 소개팅 후기 카카오톡 캡처(2026-11-02, 원본은 1102/) — 이름은 오픈채팅 무작위 닉네임, 프로필은 캐릭터·모자이크.
 // 가장자리에 잘린 말풍선과 2번 왼쪽 위 프로필 사진 조각만 정리해 public/reviews/에 두었다. alt에는 화면 읽기용으로 대화 내용을 옮겨 둔다.
-// 캡처 비율이 제각각이라 컴퓨터·태블릿은 같은 크기 칸의 격자로 다 보여 주고(tall: 두 칸 높이, wide: 두 줄 격자에서 마지막 줄을 혼자 채움),
+// 9번은 2026-11-03에 받은 캡처(원본 1103.jpeg)로, 운영자 요청에 따라 맨 앞에 둔다 — 오른쪽 아래 사진 공유 버튼과 맨 아래 얼룩 줄만 정리했다.
+// 파일 번호는 받은 순서, 보여 주는 순서는 이 배열 순서.
+// 캡처 비율이 제각각이라 컴퓨터·태블릿은 같은 크기 칸의 격자로 다 보여 주고(long: 세 줄, tall: 두 줄을 차지),
 // 휴대폰은 한 장씩 넘기는 띠로 보여 준다 — 배치는 landing.module.css의 '소개팅 후기' 부분.
-const REVIEWS: { src: string; width: number; height: number; text: string; layout?: "tall" | "wide" }[] = [
+const REVIEWS: { src: string; width: number; height: number; text: string; layout?: "long" | "tall" }[] = [
+  { src: "/reviews/match-review-09.jpg", width: 1079, height: 1548, layout: "long", text: "“안녕하세요 매니저님! 저번에 소개해주신 분이랑 오늘부터 사귀게 됐어용ㅎㅎ 감사합니다 잘 만나 볼게요” — 이모티콘과 함께 두 사람이 손을 맞잡은 사진" },
   { src: "/reviews/match-review-01.jpg", width: 1080, height: 420, text: "“한번 더 보기로 했어요! 이번주 토요일이요! 생각보다 나이 차이가 안 느껴지더라구용”" },
   { src: "/reviews/match-review-02.jpg", width: 964, height: 478, text: "“네네 만났어요~ 내일 한번 더 뵙기로 했습니다” — 매니저 답장 “오 다행입니다 :) 좋은 소식 있으시길 바랍니다!”" },
   { src: "/reviews/match-review-03.jpg", width: 1080, height: 1059, layout: "tall", text: "“이번에는 월요일에 만날 수 있을 것 같습니다. 좋은 분 같았습니다. 좀 더 이야기해 봐야 알겠지만 행복한 가정에서 잘 지낸 좋은 분 같습니다. 저는 요리 좋아하는 사람을 좋아해서 좋은 감정으로 보려고 합니다.” — 매니저 답장 “잘되시면 좋겠습니다 ㅎㅎ”" },
@@ -17,7 +20,7 @@ const REVIEWS: { src: string; width: number; height: number; text: string; layou
   { src: "/reviews/match-review-05.jpg", width: 1080, height: 549, text: "“안녕하세요? 간호사분 괜찮으셔서 내일 또 보기로 했습니다!”" },
   { src: "/reviews/match-review-06.jpg", width: 1080, height: 597, text: "“저 여기 너무 마음에 드는데, 제 주위 친구들 매니저님 소개시켜 드려도 되나요?”" },
   { src: "/reviews/match-review-07.jpg", width: 1080, height: 549, text: "“안녕하세요 매니저님! 꾸준한 매칭 감사해요..! 조건도 마음에 들어요 ㅎㅎ”" },
-  { src: "/reviews/match-review-08.jpg", width: 1080, height: 471, layout: "wide", text: "“저 정말 좋은 업체 만난 것 같아서 기분이 너무 좋고 설레요”" },
+  { src: "/reviews/match-review-08.jpg", width: 1080, height: 471, text: "“저 정말 좋은 업체 만난 것 같아서 기분이 너무 좋고 설레요”" },
 ];
 
 export default function ReviewStrip() {
@@ -68,7 +71,7 @@ export default function ReviewStrip() {
       <button type="button" onClick={() => move(1)} aria-disabled={edge.end} aria-label="다음 후기 보기"><CaretRight size={18} weight="bold" aria-hidden="true" /></button>
     </div>
     <div ref={track} className={l.reviewTrack} role="region" aria-label={strip ? "소개팅 후기 캡처 — 옆으로 넘겨 볼 수 있어요" : "소개팅 후기 캡처"} tabIndex={strip ? 0 : undefined}>
-      <ul>{REVIEWS.map((review, i) => <li key={review.src} className={review.layout === "tall" ? l.reviewTall : review.layout === "wide" ? l.reviewWide : undefined}><Image src={review.src} width={review.width} height={review.height} alt={`소개팅 후기 ${i + 1}: ${review.text}`} sizes="(max-width: 640px) 84vw, (max-width: 1024px) 50vw, 400px" quality={90} /></li>)}</ul>
+      <ul>{REVIEWS.map((review, i) => <li key={review.src} className={review.layout === "long" ? l.reviewLong : review.layout === "tall" ? l.reviewTall : undefined}><Image src={review.src} width={review.width} height={review.height} alt={`소개팅 후기 ${i + 1}: ${review.text}`} sizes="(max-width: 640px) 84vw, (max-width: 1024px) 50vw, 400px" quality={90} /></li>)}</ul>
     </div>
   </div>;
 }
