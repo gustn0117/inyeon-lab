@@ -25,7 +25,14 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
   const service = findService(params.id);
   if (!service) return {};
-  return { title: `${service.name} | 인연연구소 연애코칭`, description: `${service.headline.replace(/\n/g, " ")} ${service.why[service.why.length - 1]}` };
+  const description = `${service.headline.replace(/\n/g, " ")} ${service.why[service.why.length - 1]}`;
+  // 08 소개팅 주선은 코칭이 아니다 — 탭 제목과 카카오톡 등의 공유 미리보기(사이트 기본값은 코칭 소개)도 소개팅 주선 내용으로.
+  // openGraph는 페이지에서 정하면 사이트 기본값을 통째로 대신하므로 사이트 이름·언어·종류도 함께 적는다.
+  if (service.id === "matching") {
+    const title = `${service.name} | 인연연구소`;
+    return { title, description, openGraph: { title, description, url: `/services/${service.id}`, siteName: "인연연구소", locale: "ko_KR", type: "website" } };
+  }
+  return { title: `${service.name} | 인연연구소 연애코칭`, description };
 }
 
 export default function ServicePage({ params }: { params: { id: string } }) {
@@ -33,11 +40,12 @@ export default function ServicePage({ params }: { params: { id: string } }) {
   if (!service) notFound();
   const others = COACHING_SERVICES.filter(item => item.id !== service.id);
   // 08 소개팅 주선은 코칭이 아니라 소개팅 신청서로 받고, 하단 진행 과정·확인 사항도 소개팅용을 쓴다.
+  // 머리말의 사진 이름표·경로 표시에도 '코칭'을 쓰지 않는다(2026-11-06 운영자 지적: "소개팅주선에 코칭이 아직 남아있어서").
   const matching = service.id === "matching";
   const apply = matching ? { href: "/apply?kind=impression#coaching-content", label: "소개팅 신청하기" } : { href: "/apply", label: "신청 접수하기" };
   return <CoachingShell>
-    <PageIntro photo eyebrow={`${matching ? "MATCHING" : "COACHING"} SERVICE ${service.number}`} title={service.name} description={<>“{service.headline.split("\n").map((line, i) => <Fragment key={i}>{i > 0 && <br />}{line}</Fragment>)}”</>}>
-      <nav className={s.breadcrumb} aria-label="현재 위치"><Link href="/">홈</Link><span>/</span><Link href="/#services">연애코칭 서비스</Link><span>/</span><span>{service.name}</span></nav>
+    <PageIntro photo eyebrow={`${matching ? "MATCHING" : "COACHING"} SERVICE ${service.number}`} badge={matching ? "PERSONAL MATCHING" : undefined} title={service.name} description={<>“{service.headline.split("\n").map((line, i) => <Fragment key={i}>{i > 0 && <br />}{line}</Fragment>)}”</>}>
+      <nav className={s.breadcrumb} aria-label="현재 위치"><Link href="/">홈</Link><span>/</span><Link href="/#services">{matching ? "서비스" : "연애코칭 서비스"}</Link><span>/</span><span>{service.name}</span></nav>
     </PageIntro>
     <section id="coaching-content" className={s.section}>
       <div className={`${s.container} ${s.detailGrid} ${d.grid}`}>

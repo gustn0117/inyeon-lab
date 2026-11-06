@@ -19,7 +19,7 @@ export default function CoachingShell({ children }: { children: React.ReactNode 
   return <div className={`${s.site} ${c.shell}`}><a href="#main-content" className={s.skipLink}>본문으로 바로가기</a><CoachingHeader /><main id="main-content">{children}</main><CoachingFooter /></div>;
 }
 
-export function PageIntro({ eyebrow, title, description, photo, imageCaption, anchorLabel, children }: { eyebrow: string; title: React.ReactNode; description: React.ReactNode; photo?: boolean; imageCaption?: string; anchorLabel?: string; children?: React.ReactNode }) {
-  if (photo) return <PhotoIntro eyebrow={eyebrow} title={title} description={description} imageCaption={imageCaption} anchorLabel={anchorLabel}>{children}</PhotoIntro>;
+export function PageIntro({ eyebrow, title, description, photo, imageCaption, anchorLabel, badge, children }: { eyebrow: string; title: React.ReactNode; description: React.ReactNode; photo?: boolean; imageCaption?: string; anchorLabel?: string; badge?: string; children?: React.ReactNode }) {
+  if (photo) return <PhotoIntro eyebrow={eyebrow} title={title} description={description} imageCaption={imageCaption} anchorLabel={anchorLabel} badge={badge}>{children}</PhotoIntro>;
   return <section className={s.pageIntro}><div className={s.container}><span className={s.eyebrow}><i className={s.dot} />{eyebrow}</span><h1>{title}</h1><p>{description}</p></div></section>;
 }

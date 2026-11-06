@@ -4,9 +4,10 @@ import EditorialMotion from "./EditorialMotion";
 import v from "./visual.module.css";
 
 // 사진 자리(figure)는 AI 인물 사진 대신 빗금으로 둔다 — 실제 사진이 준비되면 img를 다시 넣는다.
-export function PhotoIntro({ eyebrow, title, description, imageCaption, anchorLabel = "자세히 살펴보기", children }: {
+// 사진 위 이름표는 기본 'PERSONAL COACHING' — 코칭이 아닌 소개팅 주선(08)은 'PERSONAL MATCHING'을 넘긴다.
+export function PhotoIntro({ eyebrow, title, description, imageCaption, anchorLabel = "자세히 살펴보기", badge = "PERSONAL COACHING", children }: {
   eyebrow: string; title: ReactNode; description: ReactNode;
-  imageCaption?: string; anchorLabel?: string; children?: ReactNode;
+  imageCaption?: string; anchorLabel?: string; badge?: string; children?: ReactNode;
 }) {
   return <section className={v.pageIntro}>
     <EditorialMotion />
@@ -17,7 +18,7 @@ export function PhotoIntro({ eyebrow, title, description, imageCaption, anchorLa
         <div className={v.introActions}><a href="#coaching-content">{anchorLabel}<ArrowDown size={16}/></a><span>1:1 카카오톡 · 비밀 상담</span></div>
       </div>
       <figure className={v.introPhoto}>
-        <span className={v.photoBadge}>PERSONAL COACHING</span>
+        <span className={v.photoBadge}>{badge}</span>
         <figcaption><span>INYEON LAB</span><strong>{imageCaption ?? "나에게 맞는 관계의 방식."}</strong><ArrowUpRight size={27}/></figcaption>
       </figure>
     </div>
